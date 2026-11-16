@@ -803,9 +803,9 @@
                     <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                     <span>Masuk ke Web Utama & Peta WebGIS</span>
                 </a>
-                <a href="/portal#sectionAbout" class="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition flex items-center gap-2">
+                <a href="/portal#sectionDesaPresisi" class="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition flex items-center gap-2">
                     <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span>Tentang Inisiatif Madani</span>
+                    <span>Data Desa Presisi</span>
                 </a>
             </div>
         </div>
@@ -837,7 +837,7 @@
                     <h4 class="font-extrabold text-amber-400 text-sm">Portal Utama</h4>
                     <ul class="space-y-1.5 text-slate-300">
                         <li><a href="/portal" class="hover:text-amber-300 font-bold transition flex items-center gap-1.5"><span>→ Web Utama & Peta WebGIS Desa</span></a></li>
-                        <li><a href="/portal#sectionAbout" class="hover:text-amber-300 transition">Tentang Inisiatif Desa Madani</a></li>
+                        <li><a href="/portal#sectionDesaPresisi" class="hover:text-amber-300 transition">Data Desa Presisi PODES</a></li>
                         <li><a href="https://kolutkab.bps.go.id" target="_blank" class="hover:text-white transition">BPS Kabupaten Kolaka Utara</a></li>
                         <li><a href="https://kolakautarakab.go.id" target="_blank" class="hover:text-white transition">Pemerintah Kabupaten Kolaka Utara</a></li>
                     </ul>
