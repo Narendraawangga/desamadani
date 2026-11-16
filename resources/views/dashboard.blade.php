@@ -252,33 +252,39 @@
         <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME -->
     <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all">
         <div class="w-full px-4 lg:px-10 py-3 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
-            <!-- Left: Logo Desa Madani -->
-            <a href="/" class="flex items-center gap-3 group">
-                <!-- Desa Madani Custom Vector Emblem -->
-                <div class="w-10 h-10 relative flex items-center justify-center shrink-0">
-                    <svg class="w-10 h-10 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 100 100" fill="none">
-                        <!-- Emerald Top-Left Wing / Leaf & Arch -->
-                        <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#059669"/>
-                        <!-- Navy Bottom-Right Base Wing -->
-                        <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#0b2545"/>
-                        <!-- Golden Central Spark -->
-                        <circle cx="50" cy="50" r="7" fill="#f59e0b"/>
-                        <circle cx="50" cy="50" r="3" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="text-xl sm:text-2xl font-black text-[#0b2545] leading-none tracking-tight">
-                        Desa <span class="text-[#059669]">Madani</span>
+            <!-- Left: Logo Desa Madani (Tombol Tersembunyi untuk Form Login) -->
+            <div class="flex items-center gap-3">
+                <button type="button" 
+                        id="btnBrandLoginTrigger" 
+                        onclick="openLoginModal()" 
+                        class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
+                        title="Desa Madani Kabupaten Kolaka Utara">
+                    <!-- Desa Madani Custom Vector Emblem -->
+                    <div class="w-10 h-10 relative flex items-center justify-center shrink-0">
+                        <svg class="w-10 h-10 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" viewBox="0 0 100 100" fill="none">
+                            <!-- Emerald Top-Left Wing / Leaf & Arch -->
+                            <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#059669"/>
+                            <!-- Navy Bottom-Right Base Wing -->
+                            <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#0b2545"/>
+                            <!-- Golden Central Spark -->
+                            <circle cx="50" cy="50" r="7" fill="#f59e0b"/>
+                            <circle cx="50" cy="50" r="3" fill="#ffffff"/>
+                        </svg>
                     </div>
-                    <div class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
-                        Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-[#0b2545] leading-none tracking-tight">
+                            Desa <span class="text-[#059669]">Madani</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
+                            Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
+                        </div>
                     </div>
-                </div>
+                </button>
                 <!-- Institutional BPS Partner Logo -->
-                <div class="hidden sm:flex items-center pl-3 ml-2 border-l border-slate-200">
+                <a href="/" class="hidden sm:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition" title="Kembali ke Beranda">
                     <img src="/images/bps_kolaka_utara_logo.jpg" alt="BPS Kolaka Utara" class="h-8 w-auto object-contain">
-                </div>
-            </a>
+                </a>
+            </div>
 
             <!-- Center/Right: Navigation Menu Links -->
             <nav class="hidden md:flex items-center gap-6 text-[13px] font-semibold text-slate-700">
@@ -1862,6 +1868,131 @@
     </div>
 
     
+    <!-- =========================================================================
+         MODAL: FORM LOGIN PORTAL DESA MADANI (BPS KOLAKA UTARA)
+         ========================================================================= -->
+    <div id="modalLoginForm" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-fadeIn" style="display: none;">
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300">
+            
+            <!-- Top Gradient Header with Vector Emblem -->
+            <div class="relative bg-gradient-to-br from-[#064e3b] via-[#047857] to-[#0b2545] p-6 text-white text-center overflow-hidden">
+                <!-- Soft Glow Blur -->
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-400/30 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-amber-400/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Close Button -->
+                <button type="button" 
+                        onclick="closeLoginModal()" 
+                        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition focus:outline-none" 
+                        title="Tutup Form Login">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+
+                <!-- Desa Madani Emblem in Header -->
+                <div class="w-14 h-14 mx-auto mb-2 relative flex items-center justify-center bg-white/15 backdrop-blur-md rounded-2xl border border-white/25 shadow-inner">
+                    <svg class="w-10 h-10 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+                        <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#34d399"/>
+                        <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#93c5fd"/>
+                        <circle cx="50" cy="50" r="7" fill="#fbbf24"/>
+                        <circle cx="50" cy="50" r="3" fill="#ffffff"/>
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-black tracking-tight text-white">Desa <span class="text-emerald-300">Madani</span></h3>
+                <p class="text-xs text-emerald-100/90 font-medium mt-0.5">Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara</p>
+                <div class="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1 rounded-full bg-white/15 text-emerald-100 border border-white/20 text-[11px] font-semibold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Masuk Administrator & Operator</span>
+                </div>
+            </div>
+
+            <!-- Modal Body: Form Login -->
+            <div class="p-6 sm:p-7">
+                <!-- Alert Message Container -->
+                <div id="loginAlertBox" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold"></div>
+
+                <form id="formLoginModal" method="POST" action="/login" onsubmit="handleLoginSubmit(event)">
+                    @csrf
+                    
+                    <!-- Input Email / Username -->
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            <span>Email / Username</span>
+                        </label>
+                        <div class="relative">
+                            <input type="text" 
+                                   name="login" 
+                                   id="modalLoginUsername" 
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition" 
+                                   placeholder="Contoh: admin@bps.go.id" 
+                                   required 
+                                   autocomplete="username">
+                        </div>
+                    </div>
+
+                    <!-- Input Password -->
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                <span>Kata Sandi</span>
+                            </label>
+                            <span class="text-[11px] text-slate-400 hover:text-emerald-600 cursor-pointer transition" onclick="alert('Silakan hubungi BPS Kolaka Utara untuk bantuan akses akun.')">Lupa sandi?</span>
+                        </div>
+                        <div class="relative">
+                            <input type="password" 
+                                   name="password" 
+                                   id="modalLoginPassword" 
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition pr-10" 
+                                   placeholder="••••••••" 
+                                   required 
+                                   autocomplete="current-password">
+                            <button type="button" 
+                                    onclick="togglePasswordVisibility('modalLoginPassword', this)" 
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 focus:outline-none"
+                                    title="Tampilkan / Sembunyikan Kata Sandi">
+                                <svg class="w-4 h-4 eye-icon-show" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me Checkbox -->
+                    <div class="flex items-center justify-between mb-5">
+                        <label class="flex items-center gap-2 text-xs text-slate-600 font-semibold cursor-pointer">
+                            <input type="checkbox" name="remember" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300">
+                            <span>Ingat Sesi Masuk</span>
+                        </label>
+                        <span class="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-bold border border-emerald-200/60">BPS Kolut</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            id="btnSubmitLogin" 
+                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#059669] via-[#047857] to-[#0b2545] hover:from-[#047857] hover:to-[#061a33] text-white font-extrabold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 focus:outline-none">
+                        <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                        <span id="btnSubmitLoginText">Masuk ke Sistem</span>
+                    </button>
+                </form>
+
+                <!-- Demo / Fast Login Hint -->
+                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Akun: <code class="text-slate-700 bg-slate-100 px-1 py-0.2 rounded font-mono">admin@bps.go.id</code>
+                    </span>
+                    <button type="button" onclick="fillAdminDemo()" class="text-emerald-600 hover:text-emerald-800 font-bold hover:underline">Isi Otomatis</button>
+                </div>
+            </div>
+
+            <!-- Footer Logo Bar -->
+            <div class="px-6 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+                <span>Badan Pusat Statistik Kab. Kolaka Utara</span>
+                <span>© 2026 Desa Madani</span>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL: PORTAL MANAJEMEN & INPUT DATA DESA (ADMIN BPS KOLAKA UTARA) -->
     <div id="modalAdminPortal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-md animate-fadeIn">
         <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
@@ -5863,5 +5994,123 @@ https://kolutkab.bps.go.id/id/publication
     })();
     </script>
     <!-- MODAL: PREVIEW & RINGKASAN PUBLIKASI BPS -->
+    <!-- =========================================================================
+         LOGIN MODAL LOGIC SCRIPT
+         ========================================================================= -->
+    <script>
+        window.openLoginModal = function(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const modal = document.getElementById('modalLoginForm');
+            if (modal) {
+                modal.style.display = 'flex';
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('modalLoginUsername')?.focus();
+                }, 100);
+            }
+        };
+
+        window.closeLoginModal = function() {
+            const modal = document.getElementById('modalLoginForm');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+                const alertBox = document.getElementById('loginAlertBox');
+                if (alertBox) {
+                    alertBox.classList.add('hidden');
+                    alertBox.innerHTML = '';
+                }
+            }
+        };
+
+        window.togglePasswordVisibility = function(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = `<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>`;
+            } else {
+                input.type = 'password';
+                btn.innerHTML = `<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`;
+            }
+        };
+
+        window.fillAdminDemo = function() {
+            const userInput = document.getElementById('modalLoginUsername');
+            const passInput = document.getElementById('modalLoginPassword');
+            if (userInput) userInput.value = 'admin@bps.go.id';
+            if (passInput) passInput.value = 'bps7408';
+        };
+
+        window.handleLoginSubmit = async function(e) {
+            e.preventDefault();
+            const form = document.getElementById('formLoginModal');
+            const alertBox = document.getElementById('loginAlertBox');
+            const submitBtn = document.getElementById('btnSubmitLogin');
+            const btnText = document.getElementById('btnSubmitLoginText');
+            
+            const login = document.getElementById('modalLoginUsername').value.trim();
+            const password = document.getElementById('modalLoginPassword').value;
+            const csrfToken = form.querySelector('input[name="_token"]')?.value || '';
+
+            if (alertBox) {
+                alertBox.classList.add('hidden');
+                alertBox.className = 'mb-4 p-3 rounded-xl text-xs font-semibold';
+            }
+
+            if (submitBtn) submitBtn.disabled = true;
+            if (btnText) btnText.innerHTML = 'Memproses...';
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({ login, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    if (alertBox) {
+                        alertBox.classList.remove('hidden');
+                        alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+                        alertBox.innerHTML = `✓ ${data.message || 'Login berhasil! Mengalihkan...'}`;
+                    }
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/portal';
+                    }, 600);
+                } else {
+                    throw new Error(data.message || 'Email atau kata sandi tidak sesuai.');
+                }
+            } catch (err) {
+                if (alertBox) {
+                    alertBox.classList.remove('hidden');
+                    alertBox.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+                    alertBox.innerHTML = `✕ ${err.message || 'Terjadi kesalahan saat masuk.'}`;
+                }
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                if (btnText) btnText.innerHTML = 'Masuk ke Sistem';
+            }
+        };
+
+        // Close on escape & backdrop click
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLoginModal();
+        });
+
+        document.getElementById('modalLoginForm')?.addEventListener('click', function(e) {
+            if (e.target === this) closeLoginModal();
+        });
+
+        // Auto open if url parameter ?login=1 exists
+        if (new URLSearchParams(window.location.search).has('login')) {
+            window.openLoginModal();
+        }
+    </script>
     </body>
 </html>
