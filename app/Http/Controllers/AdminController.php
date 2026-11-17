@@ -250,7 +250,7 @@ class AdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:6'],
-            'role' => ['required', 'string', 'in:admin,operator_desa'],
+            'role' => ['nullable', 'string', 'in:admin,operator_desa'],
             'kecamatan' => ['nullable', 'string', 'max:100'],
             'desa' => ['nullable', 'string', 'max:100'],
             'phone' => ['nullable', 'string', 'max:30'],
@@ -260,10 +260,12 @@ class AdminController extends Controller
             'email.unique' => 'Email atau username ini sudah terdaftar.',
             'password.required' => 'Kata sandi wajib diisi.',
             'password.min' => 'Kata sandi minimal 6 karakter.',
-            'role.required' => 'Peran akun wajib dipilih.',
+            'role.in' => 'Peran akun tidak valid.',
         ]);
 
-        if ($validated['role'] === 'operator_desa' && (empty($validated['kecamatan']) || empty($validated['desa']))) {
+        $role = $validated['role'] ?? 'admin';
+
+        if ($role === 'operator_desa' && (empty($validated['kecamatan']) || empty($validated['desa']))) {
             return back()->with('error', 'Kecamatan dan Desa wajib dipilih untuk Akun Operator Desa.');
         }
 
@@ -271,13 +273,13 @@ class AdminController extends Controller
             'name' => $validated['name'],
             'email' => strtolower($validated['email']),
             'password' => Hash::make($validated['password']),
-            'role' => $validated['role'],
-            'kecamatan' => $validated['role'] === 'operator_desa' ? strtoupper($validated['kecamatan']) : null,
-            'desa' => $validated['role'] === 'operator_desa' ? strtoupper($validated['desa']) : null,
+            'role' => $role,
+            'kecamatan' => $role === 'operator_desa' ? strtoupper($validated['kecamatan']) : null,
+            'desa' => $role === 'operator_desa' ? strtoupper($validated['desa']) : null,
             'phone' => $validated['phone'] ?? null,
         ]);
 
-        $roleText = $validated['role'] === 'operator_desa' ? "Operator Desa {$validated['desa']}" : "Administrator BPS";
+        $roleText = $role === 'operator_desa' ? "Operator Desa {$validated['desa']}" : "Administrator BPS";
         return back()->with('success', "Akun {$roleText} ({$validated['name']}) berhasil ditambahkan!");
     }
 

@@ -895,7 +895,7 @@
                     <div data-parallax-speed="-0.03" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
                         <div>
                             <div class="h-44 bg-gradient-to-br from-[#0D6E5B] to-[#148972] relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');"></div>
+                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/pantai_berova_pitulua.webp');"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Desa Mandiri</span>
                                 <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -926,7 +926,7 @@
                     <div data-parallax-speed="0.04" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
                         <div>
                             <div class="h-44 bg-gradient-to-br from-blue-700 to-indigo-900 relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=600&q=80');"></div>
+                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/kelurahan_lasusua.jpg');"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Ibukota Kabupaten</span>
                                 <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -957,7 +957,7 @@
                     <div data-parallax-speed="-0.03" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
                         <div>
                             <div class="h-44 bg-gradient-to-br from-[#0D6E5B] to-[#043328] relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=600&q=80');"></div>
+                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/danau_biru_walasiho.jpg');"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Desa Maju</span>
                                 <div class="absolute bottom-3 left-3 right-3 text-white">
