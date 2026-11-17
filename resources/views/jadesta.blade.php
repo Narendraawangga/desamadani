@@ -239,6 +239,7 @@
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
                         <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
                     </div>
+                    </div>
                 </button>
 
                 <!-- Soft Control Pills -->

@@ -321,17 +321,19 @@
 
         <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME -->
     <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all">
-        <div class="w-full px-4 lg:px-10 py-3 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
-            <!-- Left: Logo Kolaka Utara bersampingan dengan Logo BPS Kolut & Desa Madani Brand (Tombol Login) -->
+        <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME -->
+    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all">
+        <div class="w-full px-4 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-3 sm:gap-4 max-w-[1720px] mx-auto">
+            <!-- Left: Logo Kolaka Utara & BPS + Desa Madani Brand (Tombol Login) -->
             <div class="flex items-center gap-3">
                 <button type="button" 
                         id="btnBrandLoginTrigger" 
                         onclick="openLoginModal()" 
                         class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
                         title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
-                    <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/80 px-2 py-1 rounded-xl">
+                    <div class="flex items-center gap-2 shrink-0 bg-white border border-slate-200/90 shadow-2xs px-2.5 py-1.5 rounded-xl">
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain drop-shadow-xs">
-                        <div class="h-5 w-[1.5px] bg-slate-300"></div>
+                        <div class="h-5 w-[1.5px] bg-slate-200"></div>
                         <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain drop-shadow-xs">
                     </div>
                     <div>
@@ -343,47 +345,97 @@
                         </div>
                     </div>
                 </button>
-                <!-- Institutional BPS Partner Link -->
-                <a href="/" class="hidden sm:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition" title="Kembali ke Beranda">
-                    <span class="text-[11px] font-black text-[#005ea6]">BPS Kolut</span>
-                </a>
             </div>
 
-<!-- Center/Right: Navigation Menu Links -->
-            <nav class="hidden md:flex items-center gap-6 text-[13px] font-semibold text-slate-700">
-                <a href="/" class="hover:text-[#0D6E5B] transition">Beranda</a>
-                <a href="#sectionAgregatKecamatan" class="hover:text-[#0D6E5B] transition flex items-center gap-1 text-slate-700"><span>Agregat 15 Kecamatan</span></a>
-                <a href="#sectionPeta" class="text-[#0D6E5B] font-black border-b-2 border-[#0D6E5B] pb-0.5 flex items-center gap-1.5">
-                    <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                    <span>WebGIS Peta Spasial</span>
+            <!-- Center: Navigation Menu Links (Modern Segmented Bar) -->
+            <nav class="hidden xl:flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60 text-xs font-semibold text-slate-600">
+                <a href="/" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-white/80 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    <span>Beranda</span>
                 </a>
-
-                <a href="/descan" class="hover:text-[#059669] transition">Desa Cantik (DESCAN)</a>
-                <a href="#sectionAbout" class="hover:text-[#059669] transition">Tentang Madani</a>
-
+                <a href="#sectionPeta" class="px-3 py-1.5 rounded-lg bg-white text-[#0D6E5B] font-bold shadow-2xs border border-slate-200/80 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                    <span>WebGIS Spasial</span>
+                </a>
+                <a href="#sectionAgregatKecamatan" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-white/80 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    <span>Agregat 15 Kecamatan</span>
+                </a>
+                <a href="/descan" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-white/80 transition flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Desa Cantik</span>
+                </a>
+                <a href="#sectionAbout" class="px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-white/80 transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Tentang</span>
+                </a>
             </nav>
 
-            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
-            <div class="flex items-center gap-3">
-                
-
-                <button id="btnOpenKecamatanModal" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition">
+            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher, Mobile Toggle -->
+            <div class="flex items-center gap-2 sm:gap-2.5">
+                <button type="button" 
+                        id="btnOpenKecamatanModal" 
+                        class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-[#0D6E5B]/40 text-slate-700 hover:text-[#0D6E5B] text-xs font-semibold shadow-2xs transition active:scale-95" 
+                        title="Daftar 15 Kecamatan Kabupaten Kolaka Utara">
                     <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                     <span>15 Kecamatan</span>
                 </button>
 
-                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-full shadow-sm hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95" title="Buka Portal Admin Input & Kelola Data Desa">
-                    <svg class="w-3.5 h-3.5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <button type="button" 
+                        id="btnOpenAdminPortal" 
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#0D6E5B] hover:bg-[#0a5848] text-white text-xs font-bold shadow-xs hover:shadow transition-all active:scale-95" 
+                        title="Buka Portal Admin Input & Kelola Data Desa">
+                    <svg class="w-3.5 h-3.5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     <span>Kelola Data</span>
-                    <span id="badgeAdminCustomCount" class="bg-slate-950 text-amber-300 text-[10px] px-1.5 py-0.2 rounded-full font-black hidden">0 Baru</span>
+                    <span id="badgeAdminCustomCount" class="bg-amber-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black hidden">0 Baru</span>
                 </button>
 
                 <!-- Language Switcher Pill -->
-                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200">
-                    <span class="px-2.5 py-1 rounded-full bg-[#0D6E5B] text-white shadow-xs">ID</span>
-                    <span class="px-2.5 py-1 text-slate-500 hover:text-[#0b2545] cursor-pointer transition">EN</span>
+                <div class="inline-flex items-center bg-slate-100 rounded-xl p-0.5 text-[11px] font-bold border border-slate-200/80">
+                    <span class="px-2.5 py-1 rounded-lg bg-white text-[#0D6E5B] font-black shadow-2xs">ID</span>
+                    <span class="px-2.5 py-1 text-slate-500 hover:text-slate-900 cursor-pointer transition">EN</span>
                 </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button type="button" 
+                        id="btnMobileNavToggle" 
+                        onclick="const m = document.getElementById('mobileNavMenu'); m.classList.toggle('hidden');" 
+                        class="xl:hidden p-1.5 rounded-xl border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition focus:outline-none" 
+                        title="Menu Navigasi Mobile">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Drawer / Dropdown -->
+        <div id="mobileNavMenu" class="hidden xl:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-md px-4 py-3 space-y-2">
+            <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-semibold text-xs">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>Beranda</span>
+            </a>
+            <a href="#sectionPeta" onclick="document.getElementById('mobileNavMenu').classList.add('hidden')" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-50 text-[#0D6E5B] font-bold text-xs border border-emerald-200/60">
+                <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <span>WebGIS Peta Spasial</span>
+            </a>
+            <a href="#sectionAgregatKecamatan" onclick="document.getElementById('mobileNavMenu').classList.add('hidden')" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-semibold text-xs">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <span>Agregat 15 Kecamatan</span>
+            </a>
+            <a href="/descan" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-semibold text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Desa Cantik (DESCAN)</span>
+            </a>
+            <a href="#sectionAbout" onclick="document.getElementById('mobileNavMenu').classList.add('hidden')" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-semibold text-xs">
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Tentang Madani</span>
+            </a>
+            <button type="button" onclick="document.getElementById('mobileNavMenu').classList.add('hidden'); document.getElementById('btnOpenKecamatanModal').click()" class="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold text-xs">
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                    <span>Daftar 15 Kecamatan</span>
+                </span>
+                <span class="text-[10px] text-slate-400">Modal Tabel</span>
+            </button>
         </div>
     </header>
 
