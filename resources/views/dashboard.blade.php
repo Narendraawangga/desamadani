@@ -363,7 +363,7 @@
 
             </nav>
 
-            <!-- Right Controls: 15 Kecamatan & Admin Portal -->
+            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
             <div class="flex items-center gap-3">
                 <button id="btnOpenKecamatanModal" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition">
                     <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
@@ -375,6 +375,12 @@
                     <span>Kelola Data</span>
                     <span id="badgeAdminCustomCount" class="bg-slate-950 text-amber-300 text-[10px] px-1.5 py-0.2 rounded-full font-black hidden">0 Baru</span>
                 </button>
+
+                <!-- Language Switcher Pill (ID | EN) -->
+                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200">
+                    <span class="px-2.5 py-1 rounded-full bg-[#0D6E5B] text-white shadow-xs">ID</span>
+                    <span class="px-2.5 py-1 text-slate-500 hover:text-[#0b2545] cursor-pointer transition">EN</span>
+                </div>
             </div>
         </div>
     </header>
