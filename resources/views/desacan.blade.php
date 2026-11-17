@@ -204,16 +204,16 @@
             <!-- EXACTLY 4 MENUS (Minimal, Bersih, Sesuai Instruksi User) -->
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#beranda" class="nav-link">
-                    1. Beranda
+                    Beranda
                 </a>
                 <a href="#dashboard" class="nav-link">
-                    2. Dashboard & Grafik
+                    Dashboard & Grafik
                 </a>
                 <a href="#desa" class="nav-link">
-                    3. 6 Desa Binaan
+                    6 Desa Binaan
                 </a>
                 <a href="#output" class="nav-link">
-                    4. Output Program
+                    Output Program
                 </a>
             </nav>
 
@@ -1079,10 +1079,10 @@
 
                 <!-- 4 Quick Links Konsisten Sesuai Menu -->
                 <div class="flex flex-wrap items-center gap-5 text-slate-300 font-bold">
-                    <a href="#beranda" class="hover:text-emerald-400 transition">1. Beranda</a>
-                    <a href="#dashboard" class="hover:text-emerald-400 transition">2. Dashboard</a>
-                    <a href="#desa" class="hover:text-emerald-400 transition">3. 6 Desa</a>
-                    <a href="#output" class="hover:text-emerald-400 transition">4. Output</a>
+                    <a href="#beranda" class="hover:text-emerald-400 transition">Beranda</a>
+                    <a href="#dashboard" class="hover:text-emerald-400 transition">Dashboard & Grafik</a>
+                    <a href="#desa" class="hover:text-emerald-400 transition">6 Desa Binaan</a>
+                    <a href="#output" class="hover:text-emerald-400 transition">Output Program</a>
                     <a href="/descan/login" class="text-emerald-400 hover:text-emerald-300 font-black">Login Akun Desa</a>
                 </div>
             </div>

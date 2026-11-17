@@ -225,19 +225,19 @@
             <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
                 <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer">
                     <span class="text-sm">📊</span>
-                    <span>1. Beranda (Dashboard)</span>
+                    <span>Beranda</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer">
                     <span class="text-sm">🏛️</span>
-                    <span>2. Profil Desa</span>
+                    <span>Profil Desa</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer">
                     <span class="text-sm">📖</span>
-                    <span>3. Pembelajaran (LMS)</span>
+                    <span>Pembelajaran (LMS)</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer">
                     <span class="text-sm">📈</span>
-                    <span>4. Monev (Evaluasi)</span>
+                    <span>Monev (Evaluasi)</span>
                 </button>
             </nav>
 
