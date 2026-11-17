@@ -1198,7 +1198,16 @@
                                     </div>
                                     <span class="text-[10px] font-mono text-[#5A6B65]/70">Peringkat & Kesenjangan</span>
                                 </div>
-                                <div class="w-full h-[270px] relative">
+                                <!-- Legend Penjelas Warna Disparitas -->
+                                <div class="flex items-center justify-between text-[10px] font-medium text-[#5A6B65] mb-2 px-2.5 py-1 rounded-lg bg-[#F7F7F5] border border-[#5A6B65]/15">
+                                    <span class="flex items-center gap-1.5 font-semibold text-[#0D6E5B]">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B] inline-block shadow-xs"></span> Top 5 Sentra Terbanyak
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-[#ea580c]">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> 5 Terbawah (Prioritas Afirmasi)
+                                    </span>
+                                </div>
+                                <div class="w-full h-[250px] relative">
                                     <canvas id="presisiChart3"></canvas>
                                 </div>
                             </div>

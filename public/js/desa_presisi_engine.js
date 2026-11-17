@@ -1290,12 +1290,20 @@ window.PresisiEngine = (function() {
       });
     }
 
-    // Sort kecamatan list for Top 5 vs Bottom 5 in Chart 3
+    // Sort kecamatan list for Top 5 vs Bottom 5 in Chart 3 (Descending order with rank labels)
     const sortedKec = [...db.kecamatanList].sort((a, b) => getFeatureMetricValue(b.nama, cat) - getFeatureMetricValue(a.nama, cat));
     const top5 = sortedKec.slice(0, 5);
-    const bottom5 = sortedKec.slice(-5).reverse();
+    const bottom5 = sortedKec.slice(-5); // Keep descending so bars decrease smoothly (10 -> 9)
     const combined3 = [...top5, ...bottom5];
-    const labels3 = combined3.map(k => k.nama);
+    const labels3 = combined3.map((k, idx) => {
+      const val = getFeatureMetricValue(k.nama, cat);
+      if (idx < 5) {
+        return `[Top ${idx + 1}] ${k.nama} (${val})`;
+      } else {
+        const rank = sortedKec.length - 5 + (idx - 5) + 1;
+        return `[#${rank}] ${k.nama} (${val})`;
+      }
+    });
     const data3 = combined3.map(k => getFeatureMetricValue(k.nama, cat));
     const colors3 = combined3.map((k, idx) => idx < 5 ? '#0D6E5B' : '#ea580c');
 
