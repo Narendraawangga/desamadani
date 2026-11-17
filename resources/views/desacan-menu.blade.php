@@ -1079,17 +1079,36 @@
                                     </div>
                                     <h5 class="font-black text-slate-900 text-sm mt-3">Video Edukasi Desa Cantik BPS</h5>
                                     
-                                    <!-- Video Embed Player Container -->
-                                    <div class="mt-2 relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 shadow-md border border-slate-200">
-                                        <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/6iR8V5bBw64?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <!-- Video Embed Player Container with Click-to-Play Overlay -->
+                                    <div class="mt-2 relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 shadow-md border border-slate-200 group">
+                                        <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/6iR8V5bBw64?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        
+                                        <!-- Quick Click to Play Overlay (Langsung Berputar Otomatis Saat Diklik) -->
+                                        <div id="videoPlayOverlay" onclick="playMicrolearningVideo(true)" class="absolute inset-0 bg-slate-950/45 hover:bg-slate-950/25 flex flex-col items-center justify-center cursor-pointer transition z-10">
+                                            <div class="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-xl shadow-xl transition transform group-hover:scale-110">
+                                                ▶
+                                            </div>
+                                            <span class="text-[11px] font-black text-white mt-2 drop-shadow-md tracking-wide">Klik untuk Putar Otomatis</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-between text-xs text-slate-600 pt-1">
-                                    <span class="font-bold">Kurikulum: BPS Kolaka Utara</span>
-                                    <button type="button" onclick="toggleMainVideoSound()" class="font-extrabold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1">
-                                        <span id="iconVideoSound">🔊</span>
-                                        <span id="textVideoSound">Suara Aktif</span>
+                                <div class="space-y-2">
+                                    <button type="button" onclick="playMicrolearningVideo(true)" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                                        <span>▶ Putar Video Sekarang (Otomatis)</span>
                                     </button>
+                                    <div class="flex items-center justify-between text-xs text-slate-600 pt-1">
+                                        <span class="font-bold">Kurikulum: BPS Kolaka Utara</span>
+                                        <div class="flex items-center gap-3">
+                                            <button type="button" onclick="openVideoTheaterModal()" class="font-extrabold text-[#005ea6] hover:underline cursor-pointer flex items-center gap-1">
+                                                <span>⛶</span>
+                                                <span>Full Layar</span>
+                                            </button>
+                                            <button type="button" onclick="toggleMainVideoSound()" class="font-extrabold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1">
+                                                <span id="iconVideoSound">🔊</span>
+                                                <span id="textVideoSound">Suara Aktif</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1647,23 +1666,104 @@
         }
 
         function openPretestModal() {
-            showToast('📝 Membuka Kuis Pre-Test Desa Cantik...');
+            showToast('📝 Membuka Kuis Pre-Test Desa Cantik (Tampilan Layar Penuh)...');
             const m = document.getElementById('pretestModal');
-            if (m) m.classList.remove('hidden');
+            if (m) {
+                m.classList.remove('hidden');
+                m.classList.add('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.add('overflow-hidden');
+            }
         }
         function closePretestModal() {
             const m = document.getElementById('pretestModal');
-            if (m) m.classList.add('hidden');
+            if (m) {
+                m.classList.add('hidden');
+                m.classList.remove('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.remove('overflow-hidden');
+            }
         }
 
         function openPosttestModal() {
-            showToast('📝 Membuka Kuis Evaluasi Post-Test...');
+            showToast('🎓 Membuka Ujian Evaluasi Post-Test Kelulusan (Tampilan Layar Penuh)...');
             const m = document.getElementById('posttestModal');
-            if (m) m.classList.remove('hidden');
+            if (m) {
+                m.classList.remove('hidden');
+                m.classList.add('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.add('overflow-hidden');
+            }
         }
         function closePosttestModal() {
             const m = document.getElementById('posttestModal');
-            if (m) m.classList.add('hidden');
+            if (m) {
+                m.classList.add('hidden');
+                m.classList.remove('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        function playMicrolearningVideo(unmute = true) {
+            const overlay = document.getElementById('videoPlayOverlay');
+            if (overlay) overlay.classList.add('hidden');
+            const iframe = document.getElementById('mainVideoIframe');
+            if (!iframe) return;
+
+            const currentSrc = iframe.getAttribute('src') || '';
+            if (!currentSrc.includes('autoplay=1')) {
+                iframe.setAttribute('src', 'https://www.youtube.com/embed/6iR8V5bBw64?autoplay=1&enablejsapi=1&rel=0');
+            }
+
+            try {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                if (unmute) {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                    iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+                    isMainVideoMuted = false;
+                    const textEl = document.getElementById('textVideoSound');
+                    const iconEl = document.getElementById('iconVideoSound');
+                    if (textEl) textEl.textContent = 'Suara Aktif';
+                    if (iconEl) iconEl.textContent = '🔊';
+                }
+            } catch(e) {}
+            showToast('▶ Memutar Video Edukasi Desa Cantik BPS secara otomatis...');
+        }
+
+        function openVideoTheaterModal() {
+            const m = document.getElementById('videoTheaterModal');
+            const iframe = document.getElementById('theaterVideoIframe');
+            if (iframe) {
+                iframe.src = 'https://www.youtube.com/embed/6iR8V5bBw64?autoplay=1&enablejsapi=1&rel=0';
+            }
+            if (m) {
+                m.classList.remove('hidden');
+                m.classList.add('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.add('overflow-hidden');
+            }
+            showToast('🎬 Menampilkan Video Microlearning Layar Penuh...');
+        }
+
+        function closeVideoTheaterModal() {
+            const m = document.getElementById('videoTheaterModal');
+            const iframe = document.getElementById('theaterVideoIframe');
+            if (iframe) {
+                iframe.src = '';
+            }
+            if (m) {
+                m.classList.add('hidden');
+                m.classList.remove('flex');
+            }
+            if (typeof document !== 'undefined' && document.body) {
+                document.body.classList.remove('overflow-hidden');
+            }
         }
 
         function openSertifikatModal() {
@@ -5265,208 +5365,326 @@
     </div>
 
     <!-- ============================================================== -->
-    <!-- MODAL LMS 1: PRE-TEST PEMBELAJARAN APARAT DESA                -->
+    <!-- MODAL LMS 1: PRE-TEST PEMBELAJARAN APARAT DESA (FULL SCREEN)   -->
     <!-- ============================================================== -->
-    <div id="pretestModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
-            <div class="bg-gradient-to-r from-[#005ea6] to-[#0b2545] text-white p-5 sm:p-6 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📝</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-amber-300">LMS Desa Cantik BPS Kolaka Utara</div>
-                        <h3 class="text-lg font-black">[1. PRE-TEST] Uji Kemampuan Awal Aparatur</h3>
-                    </div>
+    <div id="pretestModal" class="fixed inset-0 z-50 hidden bg-white flex flex-col overflow-hidden animate-in fade-in duration-150">
+        <!-- Sticky Header Bar -->
+        <div class="shrink-0 bg-gradient-to-r from-[#005ea6] via-[#09487d] to-[#0b2545] text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl shadow-inner">📝</div>
+                <div>
+                    <div class="text-[10px] font-black uppercase tracking-widest text-amber-300">LMS Desa Cantik BPS Kolaka Utara</div>
+                    <h3 class="text-base sm:text-lg font-black tracking-tight">[1. PRE-TEST] Uji Kemampuan Awal Aparatur</h3>
                 </div>
-                <button type="button" onclick="closePretestModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
             </div>
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 text-white text-xs font-semibold">
+                    <span>⏱️ Estimasi: 15 Menit</span>
+                    <span class="opacity-40">•</span>
+                    <span>4 Butir Soal Terstandar SDI</span>
+                </div>
+                <button type="button" onclick="closePretestModal()" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer border border-white/20">
+                    <span class="text-sm leading-none">✕</span>
+                    <span>Tutup / Keluar</span>
+                </button>
+            </div>
+        </div>
 
-            <form onsubmit="submitPretest(event)" class="p-6 space-y-5 text-xs text-slate-700">
-                <div id="pretestResultArea" class="hidden"></div>
-
-                <!-- Soal 1 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-[#005ea6]">Soal 1 dari 4:</span>
-                    <p class="font-bold text-slate-900">Apa tujuan utama dari implementasi prinsip Satu Data Indonesia (SDI) di tingkat desa?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q1" value="A" required class="text-[#005ea6]">
-                            <span>A. Menambah beban administrasi laporan perangkat desa</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q1" value="B" required class="text-[#005ea6]">
-                            <span class="font-semibold text-slate-900">B. Menghasilkan data desa yang akurat, mutakhir, terpadu, dan berstandar BPS untuk perencanaan pembangunan desa</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q1" value="C" required class="text-[#005ea6]">
-                            <span>C. Mengganti seluruh struktur perangkat desa yang ada</span>
-                        </label>
+        <!-- Scrollable Test Content Body -->
+        <div class="flex-1 overflow-y-auto px-4 sm:px-8 py-6 bg-slate-50/70">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Guidance / Instruction Card -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-blue-50 border border-blue-200 text-blue-900 flex items-start gap-3.5 shadow-2xs">
+                    <span class="text-2xl shrink-0 mt-0.5">ℹ️</span>
+                    <div class="text-xs space-y-1">
+                        <div class="font-black text-sm text-[#005ea6]">Petunjuk Pengerjaan Pre-Test:</div>
+                        <p class="leading-relaxed text-blue-800">
+                            Pre-Test ini merupakan evaluasi diagnostik awal untuk mengukur pemahaman aparatur desa mengenai prinsip <b>Satu Data Indonesia (SDI)</b>, statistik sektoral, dan pengolahan monografi desa. Hasil tes ini tidak membatalkan sertifikasi akhir dan digunakan BPS sebagai bahan penyesuaian materi pembinaan.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Soal 2 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-[#005ea6]">Soal 2 dari 4:</span>
-                    <p class="font-bold text-slate-900">Bagaimana rumus standar BPS untuk menghitung Rasio Jenis Kelamin (Sex Ratio) penduduk desa?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q2" value="A" required class="text-[#005ea6]">
-                            <span>A. (Jumlah Balita / Jumlah Lansia) x 100</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q2" value="B" required class="text-[#005ea6]">
-                            <span class="font-semibold text-slate-900">B. (Jumlah Penduduk Laki-Laki / Jumlah Penduduk Perempuan) x 100</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q2" value="C" required class="text-[#005ea6]">
-                            <span>C. (Total Kepala Keluarga / Total Rumah Tangga) x 100%</span>
-                        </label>
-                    </div>
-                </div>
+                <form id="pretestForm" onsubmit="submitPretest(event)" class="space-y-5 text-slate-800">
+                    <div id="pretestResultArea" class="hidden"></div>
 
-                <!-- Soal 3 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-[#005ea6]">Soal 3 dari 4:</span>
-                    <p class="font-bold text-slate-900">Dalam pengolahan data monografi Excel, rumus apa yang paling tepat untuk menghitung total otomatis data per dusun?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q3" value="A" required class="text-[#005ea6]">
-                            <span class="font-semibold text-slate-900">A. Fungsi =SUM(range_data)</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q3" value="B" required class="text-[#005ea6]">
-                            <span>B. Fungsi =CONCATENATE()</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q3" value="C" required class="text-[#005ea6]">
-                            <span>C. Mengetik angka satu per satu secara manual</span>
-                        </label>
+                    <!-- Soal 1 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 1 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Prinsip Satu Data Indonesia</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa tujuan utama dari implementasi prinsip Satu Data Indonesia (SDI) di tingkat desa?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q1" value="A" required class="w-4 h-4 text-[#005ea6]">
+                                <span>A. Menambah beban administrasi laporan perangkat desa</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q1" value="B" required class="w-4 h-4 text-[#005ea6]">
+                                <span class="font-semibold text-slate-900">B. Menghasilkan data desa yang akurat, mutakhir, terpadu, dan berstandar BPS untuk perencanaan pembangunan desa</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q1" value="C" required class="w-4 h-4 text-[#005ea6]">
+                                <span>C. Mengganti seluruh struktur perangkat desa yang ada</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Soal 4 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-[#005ea6]">Soal 4 dari 4:</span>
-                    <p class="font-bold text-slate-900">Siapakah penanggung jawab teknis verifikasi data statistik sektoral desa binaan Desa Cantik?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q4" value="A" required class="text-[#005ea6]">
-                            <span>A. Hanya pihak ketiga dari swasta</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q4" value="B" required class="text-[#005ea6]">
-                            <span class="font-semibold text-slate-900">B. Agen Statistik Desa bersama Tim Pembina BPS Kabupaten Kolaka Utara</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="pre_q4" value="C" required class="text-[#005ea6]">
-                            <span>C. Tidak perlu ada verifikasi</span>
-                        </label>
+                    <!-- Soal 2 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 2 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Rumus Demografi & Sektoral</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana rumus standar BPS untuk menghitung Rasio Jenis Kelamin (Sex Ratio) penduduk desa?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q2" value="A" required class="w-4 h-4 text-[#005ea6]">
+                                <span>A. (Jumlah Balita / Jumlah Lansia) x 100</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q2" value="B" required class="w-4 h-4 text-[#005ea6]">
+                                <span class="font-semibold text-slate-900">B. (Jumlah Penduduk Laki-Laki / Jumlah Penduduk Perempuan) x 100</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q2" value="C" required class="w-4 h-4 text-[#005ea6]">
+                                <span>C. (Total Kepala Keluarga / Total Rumah Tangga) x 100%</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="pt-2 flex items-center justify-between border-t border-slate-100">
-                    <span class="text-[11px] text-slate-400">Passing Grade: Bebas (Penilaian Diagnostik Awal)</span>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs shadow-md transition cursor-pointer">
-                        Kumpulkan Jawaban Pre-Test ✓
-                    </button>
-                </div>
-            </form>
+                    <!-- Soal 3 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 3 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Pengolahan Spreadsheet Monografi</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Dalam pengolahan data monografi Excel, rumus apa yang paling tepat untuk menghitung total otomatis data per dusun?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q3" value="A" required class="w-4 h-4 text-[#005ea6]">
+                                <span class="font-semibold text-slate-900">A. Fungsi =SUM(range_data)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q3" value="B" required class="w-4 h-4 text-[#005ea6]">
+                                <span>B. Fungsi =CONCATENATE()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q3" value="C" required class="w-4 h-4 text-[#005ea6]">
+                                <span>C. Mengetik angka satu per satu secara manual</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 4 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Tata Kelola Agen Statistik</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Siapakah penanggung jawab teknis verifikasi data statistik sektoral desa binaan Desa Cantik?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q4" value="A" required class="w-4 h-4 text-[#005ea6]">
+                                <span>A. Hanya pihak ketiga dari swasta</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q4" value="B" required class="w-4 h-4 text-[#005ea6]">
+                                <span class="font-semibold text-slate-900">B. Agen Statistik Desa bersama Tim Pembina BPS Kabupaten Kolaka Utara</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
+                                <input type="radio" name="pre_q4" value="C" required class="w-4 h-4 text-[#005ea6]">
+                                <span>C. Tidak perlu ada verifikasi</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Actions Bar -->
+                    <div class="pt-4 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium text-center sm:text-left">
+                            Passing Grade: Bebas (Penilaian Diagnostik Awal Aparatur Desa)
+                        </span>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <button type="button" onclick="closePretestModal()" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer transition">
+                                Batal
+                            </button>
+                            <button type="submit" class="w-1/2 sm:w-auto px-7 py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                                <span>Kumpulkan Jawaban Pre-Test</span>
+                                <span>✓</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- ============================================================== -->
-    <!-- MODAL LMS 2: POST-TEST EVALUASI KELULUSAN                     -->
+    <!-- MODAL LMS 2: POST-TEST EVALUASI KELULUSAN (FULL SCREEN)        -->
     <!-- ============================================================== -->
-    <div id="posttestModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
-            <div class="bg-gradient-to-r from-indigo-700 to-slate-900 text-white p-5 sm:p-6 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">🎓</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">Uji Kelulusan SDM Desa Cantik</div>
-                        <h3 class="text-lg font-black">[3. POST-TEST] Kuis Evaluasi Standarisasi SDM</h3>
-                    </div>
+    <div id="posttestModal" class="fixed inset-0 z-50 hidden bg-white flex flex-col overflow-hidden animate-in fade-in duration-150">
+        <!-- Sticky Header Bar -->
+        <div class="shrink-0 bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-950 text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl shadow-inner">🎓</div>
+                <div>
+                    <div class="text-[10px] font-black uppercase tracking-widest text-emerald-300">Uji Kelulusan SDM Desa Cantik</div>
+                    <h3 class="text-base sm:text-lg font-black tracking-tight">[3. POST-TEST] Kuis Evaluasi Standarisasi SDM</h3>
                 </div>
-                <button type="button" onclick="closePosttestModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
             </div>
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 text-white text-xs font-semibold">
+                    <span>Passing Grade: <b class="text-emerald-300">70 / 100</b></span>
+                    <span class="opacity-40">•</span>
+                    <span>Syarat Sertifikat Resmi</span>
+                </div>
+                <button type="button" onclick="closePosttestModal()" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer border border-white/20">
+                    <span class="text-sm leading-none">✕</span>
+                    <span>Tutup / Keluar</span>
+                </button>
+            </div>
+        </div>
 
-            <form onsubmit="submitPosttest(event)" class="p-6 space-y-5 text-xs text-slate-700">
-                <div id="posttestResultArea" class="hidden"></div>
-
-                <!-- Soal 1 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-indigo-700">Soal 1 dari 4:</span>
-                    <p class="font-bold text-slate-900">Berapa standar minimal variabel data monografi yang wajib dikelola agen statistik desa binaan BPS?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q1" value="A" required class="text-indigo-600">
-                            <span class="font-semibold text-slate-900">A. 44 Indikator Makro Sektoral (Kependudukan, Sosial, Pertanian, Sanitasi & Ekonomi)</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q1" value="B" required class="text-indigo-600">
-                            <span>B. Hanya 1 data kependudukan saja</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q1" value="C" required class="text-indigo-600">
-                            <span>C. Data tidak dibatasi dan tidak memiliki standar</span>
-                        </label>
+        <!-- Scrollable Test Content Body -->
+        <div class="flex-1 overflow-y-auto px-4 sm:px-8 py-6 bg-slate-50/70">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Guidance / Instruction Card -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-950 flex items-start gap-3.5 shadow-2xs">
+                    <span class="text-2xl shrink-0 mt-0.5">🎯</span>
+                    <div class="text-xs space-y-1">
+                        <div class="font-black text-sm text-indigo-800">Petunjuk Pengerjaan Post-Test Kelulusan:</div>
+                        <p class="leading-relaxed text-indigo-900">
+                            Evaluasi akhir ini menentukan penerbitan <b>Sertifikat Kompetensi Agen Statistik Desa Cantik</b> yang diakui BPS Kabupaten Kolaka Utara. Diperlukan nilai minimal <b>70</b> untuk lulus. Pastikan menjawab setiap soal secara akurat sesuai materi microlearning dan pembinaan.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Soal 2 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-indigo-700">Soal 2 dari 4:</span>
-                    <p class="font-bold text-slate-900">Bagaimana agen statistik memastikan tidak ada data ganda (duplikasi) dalam spreadsheet registrasi keluarga?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q2" value="A" required class="text-indigo-600">
-                            <span class="font-semibold text-slate-900">A. Memvalidasi NIK / Nomor KK sebagai primary key dan menggunakan fungsi Conditional Formatting Duplicate</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q2" value="B" required class="text-indigo-600">
-                            <span>B. Menghapus baris secara acak tanpa verifikasi</span>
-                        </label>
-                    </div>
-                </div>
+                <form id="posttestForm" onsubmit="submitPosttest(event)" class="space-y-5 text-slate-800">
+                    <div id="posttestResultArea" class="hidden"></div>
 
-                <!-- Soal 3 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-indigo-700">Soal 3 dari 4:</span>
-                    <p class="font-bold text-slate-900">Apakah data hasil sensus monografi desa dapat langsung dipublikasikan sebelum disetujui BPS Kolut?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q3" value="A" required class="text-indigo-600">
-                            <span class="font-semibold text-slate-900">A. Harus melalui tahap Verifikasi & Validasi Kualitas Data oleh Pembina BPS</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q3" value="B" required class="text-indigo-600">
-                            <span>B. Boleh langsung dipublikasikan tanpa diperiksa siapapun</span>
-                        </label>
+                    <!-- Soal 1 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 1 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Indikator Monografi BPS</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Berapa standar minimal variabel data monografi yang wajib dikelola agen statistik desa binaan BPS?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q1" value="A" required class="w-4 h-4 text-indigo-600">
+                                <span class="font-semibold text-slate-900">A. 44 Indikator Makro Sektoral (Kependudukan, Sosial, Pertanian, Sanitasi & Ekonomi)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q1" value="B" required class="w-4 h-4 text-indigo-600">
+                                <span>B. Hanya 1 data kependudukan saja</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q1" value="C" required class="w-4 h-4 text-indigo-600">
+                                <span>C. Data tidak dibatasi dan tidak memiliki standar</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Soal 4 -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <span class="font-black text-indigo-700">Soal 4 dari 4:</span>
-                    <p class="font-bold text-slate-900">Apa manfaat utama ketersediaan WebGIS Peta Tematik bagi pemerintah desa binaan BPS?</p>
-                    <div class="space-y-1.5 pt-1">
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q4" value="A" required class="text-indigo-600">
-                            <span class="font-semibold text-slate-900">A. Memberikan visualisasi sebaran spasial keluarga prasejahtera, balita stunting, dan potensi kakao per dusun</span>
-                        </label>
-                        <label class="flex items-center gap-2 p-2 rounded-xl hover:bg-white border border-transparent hover:border-slate-200 cursor-pointer">
-                            <input type="radio" name="post_q4" value="B" required class="text-indigo-600">
-                            <span>B. Hanya sebagai hiasan grafis</span>
-                        </label>
+                    <!-- Soal 2 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 2 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Verifikasi Integritas Data</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana agen statistik memastikan tidak ada data ganda (duplikasi) dalam spreadsheet registrasi keluarga?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q2" value="A" required class="w-4 h-4 text-indigo-600">
+                                <span class="font-semibold text-slate-900">A. Memvalidasi NIK / Nomor KK sebagai primary key dan menggunakan fungsi Conditional Formatting Duplicate</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q2" value="B" required class="w-4 h-4 text-indigo-600">
+                                <span>B. Menghapus baris secara acak tanpa verifikasi</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="pt-2 flex items-center justify-between border-t border-slate-100">
-                    <span class="text-[11px] text-slate-400">Passing Grade: <b>70 / 100</b> (Syarat Sertifikat)</span>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-md transition cursor-pointer">
-                        Selesaikan Ujian Post-Test 🎓
-                    </button>
+                    <!-- Soal 3 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 3 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Alur Validasi BPS</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apakah data hasil sensus monografi desa dapat langsung dipublikasikan sebelum disetujui BPS Kolut?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q3" value="A" required class="w-4 h-4 text-indigo-600">
+                                <span class="font-semibold text-slate-900">A. Harus melalui tahap Verifikasi & Validasi Kualitas Data oleh Pembina BPS</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q3" value="B" required class="w-4 h-4 text-indigo-600">
+                                <span>B. Boleh langsung dipublikasikan tanpa diperiksa siapapun</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 4 dari 4</span>
+                            <span class="text-[11px] font-bold text-slate-400">Topik: Pemanfaatan WebGIS SDI</span>
+                        </div>
+                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa manfaat utama ketersediaan WebGIS Peta Tematik bagi pemerintah desa binaan BPS?</p>
+                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q4" value="A" required class="w-4 h-4 text-indigo-600">
+                                <span class="font-semibold text-slate-900">A. Memberikan visualisasi sebaran spasial keluarga prasejahtera, balita stunting, dan potensi kakao per dusun</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
+                                <input type="radio" name="post_q4" value="B" required class="w-4 h-4 text-indigo-600">
+                                <span>B. Hanya sebagai hiasan grafis</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Actions Bar -->
+                    <div class="pt-4 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
+                        <span class="text-xs text-slate-500 font-medium text-center sm:text-left">
+                            Passing Grade: <b>70 / 100</b> (Syarat Penerbitan Sertifikat Kompetensi)
+                        </span>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <button type="button" onclick="closePosttestModal()" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer transition">
+                                Batal
+                            </button>
+                            <button type="submit" class="w-1/2 sm:w-auto px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                                <span>Selesaikan Ujian Post-Test</span>
+                                <span>🎓</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL LMS: VIDEO THEATER FULL SCREEN                          -->
+    <!-- ============================================================== -->
+    <div id="videoTheaterModal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex flex-col overflow-hidden animate-in fade-in duration-200">
+        <!-- Header -->
+        <div class="shrink-0 bg-slate-900/90 text-white px-5 sm:px-8 py-3.5 flex items-center justify-between border-b border-white/10 z-20">
+            <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center text-lg">🎬</span>
+                <div>
+                    <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Video Microlearning Desa Cantik BPS</div>
+                    <h3 class="text-sm sm:text-base font-black text-white">Panduan Statistik Sektoral & Monografi Desa</h3>
                 </div>
-            </form>
+            </div>
+            <button type="button" onclick="closeVideoTheaterModal()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                <span>✕</span>
+                <span>Tutup Video</span>
+            </button>
+        </div>
+        <!-- Theater Video Container -->
+        <div class="flex-1 flex items-center justify-center p-3 sm:p-6 md:p-8">
+            <div class="w-full h-full max-w-6xl aspect-video max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10">
+                <iframe id="theaterVideoIframe" class="w-full h-full" src="" title="Video Microlearning Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
