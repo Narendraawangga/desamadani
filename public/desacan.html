@@ -161,7 +161,7 @@
     <!-- 1. TOP BAR BPS RESMI (Ringkas & Rapi)                           -->
     <!-- ============================================================== -->
     <div class="topbar-bps">
-        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="font-bold text-white">BPS Kabupaten Kolaka Utara</span>
@@ -181,14 +181,14 @@
     <!-- 2. NAVBAR (Tepat 4 Menu Bersih, Tanpa Menu WebGIS)              -->
     <!-- ============================================================== -->
     <header class="navbar-clean">
-        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 py-3.5 flex items-center justify-between gap-4">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
             
             <!-- Brand Logo -->
             <a href="/descan" class="flex items-center gap-3 group">
-                <div class="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition">
-                    <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8.5 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
+                <div class="flex items-center gap-2 bg-white px-2 py-1.5 rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition">
+                    <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                     <div class="h-5 w-[1.5px] bg-slate-200"></div>
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7.5 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
                 </div>
                 <div>
                     <div class="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none flex items-center gap-1.5">
@@ -202,7 +202,7 @@
             </a>
 
             <!-- EXACTLY 4 MENUS (Minimal, Bersih, Sesuai Instruksi User) -->
-            <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+            <nav class="hidden md:flex items-center gap-8">
                 <a href="#beranda" class="nav-link">
                     Beranda
                 </a>
@@ -219,7 +219,7 @@
 
             <!-- Action Button: Login Akun Desa -->
             <div class="flex items-center gap-3">
-                <a href="/descan/login" class="px-5 py-2.5 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5">
+                <a href="/descan/login" class="px-4 py-2 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5">
                     <span>🔒</span>
                     <span>Login Akun Desa</span>
                 </a>
@@ -231,7 +231,7 @@
     <!-- 3. HERO SECTION (Ringkas, Berisi, Tidak Ramai)                  -->
     <!-- ============================================================== -->
     <section id="beranda" class="hero-banner py-12 sm:py-16">
-        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <!-- Left Column: Typography & Action -->
             <div class="lg:col-span-7 space-y-4 text-left">
@@ -303,7 +303,7 @@
     <!-- ============================================================== -->
     <!-- 4. FLOATING STATS STRIP (5 Angka Pokok Bersih)                  -->
     <!-- ============================================================== -->
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 -mt-7 relative z-20">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-7 relative z-20">
         <div class="card-surface p-4 sm:p-5 grid grid-cols-2 md:grid-cols-5 gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 shadow-md">
             <div class="text-center px-2 py-1">
                 <div class="text-2xl sm:text-3xl font-black text-slate-900 leading-none">6</div>
@@ -336,7 +336,7 @@
     <!-- ============================================================== -->
     <!-- 5. MENU 2: DASHBOARD & GRAFIK VISUAL (Paling Menonjol)         -->
     <!-- ============================================================== -->
-    <section id="dashboard" class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 pt-12 pb-14 space-y-6">
+    <section id="dashboard" class="max-w-[1240px] mx-auto px-4 sm:px-6 pt-12 pb-14 space-y-6">
         
         <!-- Header Section + Tab Switcher Rapi -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-slate-200">
@@ -474,7 +474,7 @@
                         </p>
                     </div>
 
-                    <div class="relative w-full h-72 sm:h-84 my-2">
+                    <div class="relative w-full h-64 sm:h-72 my-2">
                         <canvas id="chartKeluargaPerDesa"></canvas>
                     </div>
 
@@ -495,7 +495,7 @@
                         <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">2.426 KK</span>
                     </div>
                     <p class="text-[11px] text-slate-400 mb-3">Distribusi status hunian keluarga</p>
-                    <div class="relative w-full h-56 sm:h-64">
+                    <div class="relative w-full h-44">
                         <canvas id="chartKepemilikanRumah"></canvas>
                     </div>
                 </div>
@@ -507,7 +507,7 @@
                         <span class="text-[10px] font-black text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Sanitasi</span>
                     </div>
                     <p class="text-[11px] text-slate-400 mb-3">Akses air bersih rumah tangga</p>
-                    <div class="relative w-full h-56 sm:h-64">
+                    <div class="relative w-full h-44">
                         <canvas id="chartSumberAir"></canvas>
                     </div>
                 </div>
@@ -519,7 +519,7 @@
                         <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Ekonomi</span>
                     </div>
                     <p class="text-[11px] text-slate-400 mb-3">Sebaran pendapatan per bulan</p>
-                    <div class="relative w-full h-56 sm:h-64">
+                    <div class="relative w-full h-44">
                         <canvas id="chartPenghasilan"></canvas>
                     </div>
                 </div>
@@ -574,7 +574,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">Komposisi keluarga menurut sumber penerangan rumah tangga</p>
-                    <div class="relative w-full h-72 sm:h-80">
+                    <div class="relative w-full h-64">
                         <canvas id="chartPeneranganCanvas"></canvas>
                     </div>
                 </div>
@@ -588,7 +588,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">Jumlah keluarga menurut jenis lantai terluas bangunan tinggal</p>
-                    <div class="relative w-full h-72 sm:h-80">
+                    <div class="relative w-full h-64">
                         <canvas id="chartLantaiCanvas"></canvas>
                     </div>
                 </div>
@@ -605,7 +605,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">Sebaran keluarga penerima bansos (PKH, BPNT, BLT-DD, PIP)</p>
-                    <div class="relative w-full h-72 sm:h-80">
+                    <div class="relative w-full h-64">
                         <canvas id="chartBansosCanvas"></canvas>
                     </div>
                 </div>
@@ -619,7 +619,7 @@
                         </span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">Proporsi kepemilikan kartu BPJS (PBI APBN/APBD vs Mandiri)</p>
-                    <div class="relative w-full h-72 sm:h-80">
+                    <div class="relative w-full h-64">
                         <canvas id="chartBPJSCanvas"></canvas>
                     </div>
                 </div>
@@ -632,7 +632,7 @@
     <!-- ============================================================== -->
     <!-- 6. MENU 3: 6 DESA BINAAN (Gambar Dikecilkan & Data Utuh)       -->
     <!-- ============================================================== -->
-    <section id="desa" class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 py-10 space-y-6">
+    <section id="desa" class="max-w-[1240px] mx-auto px-4 sm:px-6 py-10 space-y-6">
         
         <div class="pb-2 border-b border-slate-200">
             <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
@@ -952,7 +952,7 @@
     <!-- 7. MENU 4: OUTPUT PROGRAM DESA CANTIK (#output)                -->
     <!-- ============================================================== -->
     <section class="py-14 bg-white border-t border-slate-200" id="output">
-        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 space-y-8">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 space-y-8">
             
             <div class="text-center max-w-xl mx-auto space-y-1.5">
                 <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
@@ -1062,7 +1062,7 @@
     <!-- 8. FOOTER RESMI BPS KOLAKA UTARA                               -->
     <!-- ============================================================== -->
     <footer class="bg-[#071b12] text-white pt-10 pb-8 text-xs border-t border-white/10">
-        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 space-y-6">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 space-y-6">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
                     <div class="flex items-center gap-2 bg-white px-2 py-1.5 rounded-xl shadow-md shrink-0">
