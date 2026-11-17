@@ -377,7 +377,7 @@
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
         <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
     <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 space-y-6">
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
