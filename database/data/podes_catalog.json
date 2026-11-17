@@ -1,0 +1,1995 @@
+[
+  {
+    "file": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+    "tables": [
+      {
+        "sheet": "4.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS PRASARANA  TRANSPORTASI  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "4.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KETERSEDIAAN ANGKUTAN UMUM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "4.3",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUTU KETERSEDIAAN ANGKUTAN ONLINE DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "4.4",
+        "title": "BANYAKNYA DESA/KELURAHAN YANG MENGGUNAKAN PRASARANA  TRANSPORTASI DARAT ATAU DARAT DAN AIR MENURUT JENIS  PERMUKAAN JALAN DARAT TERLUAS DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "4.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN BASE  TRANSCEIVER STATION (BTS) DAN KEKUATAN SINYAL TELEPON SELULER DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "4.6",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEKUATAN SINYAL  INTERNET DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "4.7",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN SARANA  KOMUNIKASI DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "4.1",
+        "variabel": "Jenis Prasarana Transportasi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": "4.2",
+        "variabel": "Ketersediaan Angkutan Umum",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": "4.3",
+        "variabel": "Ketersediaan Angkutan Online",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": "4.4",
+        "variabel": "Jenis Permukaan Jalan Darat Terluas",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": "4.5",
+        "variabel": "Keberadaan BTS",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Kekuatan Sinyal Telepon Seluler",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": "4.6",
+        "variabel": "Sinyal Internet Telepon Seluler/Handphone",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": "4.7",
+        "variabel": "Kantor Pos/Pos Pembantu/ Rumah Pos",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Pos Keliling",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Perusahaan Jasa Ekspedisi Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      }
+    ]
+  },
+  {
+    "file": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+    "tables": [
+      {
+        "sheet": "8.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA ANTISIPASI/MITIGASI BENCANA ALAM  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS BENCANA ALAM  DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN AKTIVITAS YANG BERPOTENSI MENINGKATKAN EMISI GAS RUMAH KACA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN KEJADIAN YANG DIRASAKAN PENDUDUK AKIBAT PERUBAHAN IKLIM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN KEJADIAN PERKELAHIAN MASSAL DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN KEBARADAAN KORBAN MENINGGAL DAN LUKA-LUKA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "8.7",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN INISIATOR PENYELESAIANNYA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "8.8",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA WARGA MENJAGA KEAMANAN LINGKUNGAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "8.1",
+        "variabel": "Sistem Peringatan Dini Bencana Alam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Sistem Peringatan Dini Tsunami",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Perlengkapan Keselamatan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Rambu-Rambu dan Jalur Evakuasi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Pembuatan, Perawatan, atau Normalisasi: Sungai, Kanal, Tanggul, dll",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": "8.2",
+        "variabel": "Tanah Longsor",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Banjir",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Banjir Bandang",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Gempa Bumi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Tsunami",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Gelombang Pasang Laut",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "12.0",
+        "tabel": null,
+        "variabel": "Angin Puyuh/Puting Beliung/Topan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "13.0",
+        "tabel": null,
+        "variabel": "Gunung Meletus",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "14.0",
+        "tabel": null,
+        "variabel": "Kebakaran Hutan dan Lahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "15.0",
+        "tabel": null,
+        "variabel": "Kekeringan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "16.0",
+        "tabel": null,
+        "variabel": "Abrasi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "17.0",
+        "tabel": null,
+        "variabel": "Tidak Ada Bencana Alam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "18.0",
+        "tabel": "8.3",
+        "variabel": "Penggundulan Hutan untuk Permukiman, Kebun, Tambang, dll",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "19.0",
+        "tabel": null,
+        "variabel": "Peningkatan Penggunaan Pupuk Kimia dan Pestisida",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "20.0",
+        "tabel": null,
+        "variabel": "Peningkatan Pembakaran dan Pembuangan Sampah di Tempat Ilegal",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "21.0",
+        "tabel": null,
+        "variabel": "Peningkatan Jumlah Pabrik dan Industri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "22.0",
+        "tabel": null,
+        "variabel": "Peningkatan Kepemilikan Kendaraan Bermotor Roda Empat atau Lebih",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "23.0",
+        "tabel": "8.4",
+        "variabel": "Kelangkaan Air Akibat Kemarau Panjang",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "24.0",
+        "tabel": null,
+        "variabel": "Kesulitan Bertani/Melaut (Hama, Kemarau, Cuaca Ekstrem)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "25.0",
+        "tabel": null,
+        "variabel": "Kehilangan Mata Pencaharian yang Bergantung pada Alam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "26.0",
+        "tabel": null,
+        "variabel": "Gangguan Kesehatan (Pneumonia, Malaria, DBD)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "27.0",
+        "tabel": null,
+        "variabel": "Kerusakan Rumah/Harta Benda Akibat Bencana Terkait Iklim",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "28.0",
+        "tabel": null,
+        "variabel": "Gagal Panen, Rusaknya Tanaman, atau Kematian Ternak Akibat Bencana Terkait Iklim",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "29.0",
+        "tabel": "8.5",
+        "variabel": "Keberadaan Kejadian Perkelahian Massal",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "30.0",
+        "tabel": "8.6",
+        "variabel": "Kejadian Perkelahian Massal: Meninggal",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "31.0",
+        "tabel": null,
+        "variabel": "Kejadian Perkelahian Massal: Luka-luka",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "32.0",
+        "tabel": "8.7",
+        "variabel": "Kejadian Perkelahian Massal dan Inisiator Penyelesaiannya",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "33.0",
+        "tabel": "8.8",
+        "variabel": "Pembangunan/Pemeliharaan Pos Keamanan Lingkungan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "34.0",
+        "tabel": null,
+        "variabel": "Pembentukan/Pengaturan Regu Keamanan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "35.0",
+        "tabel": null,
+        "variabel": "Penambahan Jumlah Anggota Hansip/Linmas",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "36.0",
+        "tabel": null,
+        "variabel": "Pelaporan Tamu Menginap Lebih dari 24 Jam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "37.0",
+        "tabel": null,
+        "variabel": "Pengaktifan Sistem Keamanan Lingkungan dari Inisiatif Warga",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      }
+    ]
+  },
+  {
+    "file": "INFRASTRUKTUR EKONOMI.xlsx",
+    "tables": [
+      {
+        "sheet": "11.1",
+        "title": "BANYAKNYA KELOMPOK PERTOKOAN DAN PASAR MENURUT DESA/KELURAHAN",
+        "total_rows": 152
+      },
+      {
+        "sheet": "11.2",
+        "title": "BANYAKNYA SARANA PERDAGANGAN  MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "sheet": "11.3",
+        "title": "BANYAKNYA SARANA AKOMODASI MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "sheet": "11.4",
+        "title": "BANYAKNYA LEMBAGA KEUANGAN BANK MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "11.1",
+        "variabel": "Kelompok Pertokoan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Pasar dengan Bangunan Permanen",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Pasar dengan Bangunan Semi Permanen",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Pasar tanpa Bangunan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": "11.2",
+        "variabel": "Sarana Perdagangan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": "11.3",
+        "variabel": "Sarana Akomodasi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": "11.4",
+        "variabel": "Jenis Bank",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "INFRASTRUKTUR KESEHATAN.xlsx",
+    "tables": [
+      {
+        "sheet": "10.1",
+        "title": "Tabel 10.1: Jumlah Rumah Sakit, Klinik Utama, dan Balai Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "10.2",
+        "title": "Tabel 10.2: Jumlah Puskesmas Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "10.3",
+        "title": "Tabel 10.3: Jumlah Klinik Pratama, Tempat Praktik Dokter, Tempat Praktik Bidan, dan Apotek Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "10.1",
+        "variabel": "Jumlah Rumah Sakit",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Jumlah Klinik Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Jumlah Balai Kesehatan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": "10.2",
+        "variabel": "Jumlah Puskesmas dengan Rawat Inap",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Jumlah Puskesmas tanpa Rawat Inap",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": "10.3",
+        "variabel": "Jumlah Klinik Pratama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Jumlah Tempat Praktik Dokter",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Jumlah Tempat Praktik Bidan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Jumlah Apotek",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+    "tables": [
+      {
+        "sheet": "9.1",
+        "title": "Tabel 9.1: Jumlah SD/MI Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "9.2",
+        "title": "Tabel 9.2: Jumlah SMP/MTs Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "9.3",
+        "title": "Tabel 9.3: Jumlah SMA/MA Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "9.4",
+        "title": "Tabel 9.4: Jumlah SMK Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "9.5",
+        "title": "Tabel 9.5: Jumlah Akademi/Perguruan Tinggi Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "9.1",
+        "variabel": "Jumlah SD Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Jumlah SD Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Jumlah MI Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Jumlah MI Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": "9.2",
+        "variabel": "Jumlah SMP Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Jumlah SMP Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Jumlah MTs Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Jumlah MTs Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": "9.3",
+        "variabel": "Jumlah SMA Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Jumlah SMA Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Jumlah MA Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "12.0",
+        "tabel": null,
+        "variabel": "Jumlah MA Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "13.0",
+        "tabel": "9.4",
+        "variabel": "Jumlah SMK Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "14.0",
+        "tabel": null,
+        "variabel": "Jumlah SMK Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "15.0",
+        "tabel": "9.5",
+        "variabel": "Jumlah Akademi/Perguruan Tinggi Negeri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "16.0",
+        "tabel": null,
+        "variabel": "Jumlah Akademi/Perguruan Tinggi Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+    "tables": [
+      {
+        "sheet": "7.1",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN APARAT PEMERINTAH DESA/KELURAHAN  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "7.2",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH DAN/ATAU SEKRETARIS DESA/KELURAHAN MENURUT JENIS KELAMIN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "7.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "7.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "7.5",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "7.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "7.1",
+        "variabel": "Jumlah Aparat Pemerintah: Kepala Desa/Lurah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Jumlah Aparat Pemerintah: Sekretaris Desa/Kelurahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Jumlah Aparat Pemerintah: Pelaksana Kewilayahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Jumlah Aparat Pemerintah: Pelaksana Teknis",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": "7.2",
+        "variabel": "Jenis Kelamin: Kepala Desa/Lurah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Jenis Kelamin: Sekretaris Desa/Kelurahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": "7.3",
+        "variabel": "Kelompok Umur Kepala Desa/Lurah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "8.0",
+        "tabel": "7.4",
+        "variabel": "Kelompok Umur Sekretaris Desa/Kelurahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "9.0",
+        "tabel": "7.5",
+        "variabel": "Tingkat Pendidikan Tertinggi Kepala Desa/Lurah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "10.0",
+        "tabel": "7.6",
+        "variabel": "Tingkat Pendidikan Tertinggi Sekretaris",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      }
+    ]
+  },
+  {
+    "file": "KETERANGAN UMUM DESA.xlsx",
+    "tables": [
+      {
+        "sheet": "1.1",
+        "title": "Tabel 1.1: Status Pemerintahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "1.2",
+        "title": "Tabel 1.2: Lokasi Desa Terhadap Kawasan Hutan dan Fungsi Kawasan Hutan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "1.3",
+        "title": "Tabel 1.3: Lokasi Desa Terhadap Laut Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "1.4",
+        "title": "Tabel 1.4: Sumber Penghasilan Utama Sebagian Besar Penduduk dan Persentase Keluarga Menurut Sumber Penghasilan Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "1.5",
+        "title": "Tabel 1.5: Sebagian Besar Penduduknya Bekerja pada Sektor Pertanian Menurut Desa/Kelurahan dan Jenis Sub Sektor Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "1.1",
+        "variabel": "Status Pemerintahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": "1.2",
+        "variabel": "Lokasi wilayah desa/kelurahan terhadap kawasan hutan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Fungsi Kawasan Hutan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": "1.3",
+        "variabel": "Ada wilayah desa/kelurahan yang berbatasan langsung dengan laut",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Pemanfaatan Laut",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": "1.4",
+        "variabel": "Sumber Penghasilan Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Persentase Keluarga Menurut Sumber Penghasilan Utama",
+        "sumber": "DATA TAMBAHAN",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Sedang"
+      },
+      {
+        "no": "8.0",
+        "tabel": "1.5",
+        "variabel": "Jenis Sub Sektor Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Komoditas Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "KEUANGAN DAN ASET DESA 2025.xlsx",
+    "tables": [
+      {
+        "sheet": "6.1",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "sheet": "6.2",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "sheet": "6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "sheet": "Sambungan 6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "sheet": "6.4",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN PERATURAN DESA TAHUN 2024 DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "6.1",
+        "variabel": "Sistem Informasi Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": "6.2",
+        "variabel": "Sistem Keuangan Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": "6.3",
+        "variabel": "Badan Usaha Milik  Desa (BUMDes)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Tanah Kas Desa/Ulayat",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Tambatan Perahu",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Pasar Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Bangunan Milik Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Hutan Milik Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Mata Air Milik Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Tempat Wisata/Pemandian Umum",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Lainnya",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "12.0",
+        "tabel": "6.4",
+        "variabel": "Keberadaan Peraturan Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "PENDIDIKAN DAN KESEHATAN.xlsx",
+    "tables": [
+      {
+        "sheet": "3.1",
+        "title": "Tabel 3.1: Keberadaan Sarana Pendidikan dan Jenis Sarana Pendidikan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "3.2",
+        "title": "Tabel 3.2: Keberadaan Sarana Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "3.3",
+        "title": "Tabel 3.3: Jumlah Upaya Kesehatan Bersumberdaya Masyarakat (UKBM) Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "3.1",
+        "variabel": "Keberadaan TK/RA/BA",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Keberadaan SD/MI",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": null,
+        "variabel": "Keberadaan SMP/MTS",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Keberadaan SMA/MA",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Keberadaan SMK",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Keberadaan Akademi/Perguruan Tinggi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": "3.2",
+        "variabel": "Rumah Sakit",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Klinik Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Balai Kesehatan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Puskesmas",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Puskesmas Pembantu",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "12.0",
+        "tabel": null,
+        "variabel": "Klinik Pratama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "13.0",
+        "tabel": null,
+        "variabel": "Praktik Mandiri Dokter",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "14.0",
+        "tabel": null,
+        "variabel": "Praktik Mandiri Bidan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "15.0",
+        "tabel": null,
+        "variabel": "Poskesdes",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "16.0",
+        "tabel": null,
+        "variabel": "Polindes",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "17.0",
+        "tabel": null,
+        "variabel": "Apotek",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "18.0",
+        "tabel": null,
+        "variabel": "Toko Khusus Obat/Jamu",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "19.0",
+        "tabel": "3.3",
+        "variabel": "Kegiatan Posyandu",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "20.0",
+        "tabel": null,
+        "variabel": "Pos Pembinaan Terpadu (Posbindu)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  },
+  {
+    "file": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+    "tables": [
+      {
+        "sheet": "2.1",
+        "title": "Tabel 2.1: Jumlah Keluarga Pengguna Listrik dan Bukan Pengguna Listrik Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "2.2",
+        "title": "Tabel 2.2: Keberadaan dan Sumber Penerangan Jalan Utama Desa Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "2.3",
+        "title": "Tabel 2.3: Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "2.4",
+        "title": "Tabel 2.4: Keberadaan Agen/Penjual Bahan Bakar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "2.5",
+        "title": "Tabel 2.5: Keberadaan Kejadian Pencemaran Lingkungan Hidup Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "2.6",
+        "title": "Tabel 2.6: Pencemaran Lingkungan Hidup dan Sumber Utama Pencemaran Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "2.7",
+        "title": "Tabel 2.7: Keberadaan Kegiatan Pengelolaan dan Pelestarian Lingkungan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "2.8",
+        "title": "Tabel 2.8: Keberadaan Kegiatan Adaptasi dan Mitigasi Perubahan Iklim Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "2.1",
+        "variabel": "Jumlah Keluarga Pengguna Listrik (Keluarga)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Jumlah Keluarga Bukan Pengguna Listrik (Keluarga)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": "2.2",
+        "variabel": "Keberadaan Penerangan Jalan Utama",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Sumber Penerangan Jalan Utama Desa/Kelurahan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": "2.3",
+        "variabel": "Bahan bakar untuk memasak : Listrik",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Bahan bakar untuk memasak : Elpiji 5,5 kg",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": null,
+        "variabel": "Bahan bakar untuk memasak : Elpiji 12 kg",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Bahan bakar untuk memasak : Elpiji 3 kg",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Bahan bakar untuk memasak : Minyak Tanah",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "10.0",
+        "tabel": null,
+        "variabel": "Bahan bakar untuk memasak : Kayu Bakar",
+        "sumber": "Data Tambahan",
+        "status": "999.0",
+        "keterangan": "Perlu dilengkapi",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "11.0",
+        "tabel": "2.4",
+        "variabel": "Keberadaan Agen/Penjual Minyak Tanah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "12.0",
+        "tabel": null,
+        "variabel": "Keberadaan Agen/Pangkalan/Penjual LPG",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "13.0",
+        "tabel": "2.5",
+        "variabel": "Pencemaran Air",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "14.0",
+        "tabel": null,
+        "variabel": "Pencemaran Tanah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "15.0",
+        "tabel": null,
+        "variabel": "Pencemaran Udara",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "16.0",
+        "tabel": null,
+        "variabel": "Tidak Ada Pencemaran",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "17.0",
+        "tabel": "2.6",
+        "variabel": "Sumber Pencemaran Air",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "18.0",
+        "tabel": null,
+        "variabel": "Sumber Pencemaran Tanah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "19.0",
+        "tabel": null,
+        "variabel": "Sumber Pencemaran Udara",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "20.0",
+        "tabel": "2.7",
+        "variabel": "Penanaman/Pemeliharaan Pohon dan Mangrove",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "21.0",
+        "tabel": null,
+        "variabel": "Pengolahan/Daur Ulang Sampah/Limbah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "22.0",
+        "tabel": null,
+        "variabel": "Penggalakan Penggunaan Pupuk Organik",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "23.0",
+        "tabel": "2.8",
+        "variabel": "Pembuatan Lubang Biopori",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "24.0",
+        "tabel": null,
+        "variabel": "Pemanfaatan Energi Baru Terbarukan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "25.0",
+        "tabel": null,
+        "variabel": "Penerapan Pola Tanam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "26.0",
+        "tabel": null,
+        "variabel": "Penampungan/Pemanenan Air Hujan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      },
+      {
+        "no": "27.0",
+        "tabel": null,
+        "variabel": "Pembuatan/Pemeliharaan Terasering",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": null
+      }
+    ]
+  },
+  {
+    "file": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+    "tables": [
+      {
+        "sheet": "5.1",
+        "title": "Tabel 5.1: Jumlah Sarana Perdagangan dan Akomodasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "5.2",
+        "title": "Tabel 5.2: Jumlah Kelompok Pertokoan dan Pasar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "5.3",
+        "title": "Tabel 5.3: Jumlah Bank Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "5.4",
+        "title": "Tabel 5.4: Jumlah Koperasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "5.5",
+        "title": "Tabel 5.5: Keberadaan Fasilitas Perkreditan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "5.6",
+        "title": "Tabel 5.6: Jumlah Industri Mikro dan Kecil dan Sentra Industri Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "sheet": "5.7",
+        "title": "Tabel 5.7: Keberadaan Produk Barang Unggulan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ],
+    "monitoring": [
+      {
+        "no": "1.0",
+        "tabel": "5.1",
+        "variabel": "Jumlah Sarana Perdagangan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "2.0",
+        "tabel": null,
+        "variabel": "Jumlah Sarana Akomodasi",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "3.0",
+        "tabel": "5.2",
+        "variabel": "Jumlah Kelompok Pertokoan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "4.0",
+        "tabel": null,
+        "variabel": "Jumlah Pasar dengan Bangunan Permanen",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "5.0",
+        "tabel": null,
+        "variabel": "Jumlah Pasar dengan Bangunan Semi Permanen",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "6.0",
+        "tabel": null,
+        "variabel": "Jumlah Pasar tanpa Bangunan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "7.0",
+        "tabel": "5.3",
+        "variabel": "Jumlah Bank Umum Pemerintah",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "8.0",
+        "tabel": null,
+        "variabel": "Jumlah Bank Umum Swasta",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "9.0",
+        "tabel": null,
+        "variabel": "Jumlah Bank Perkreditan Rakyat (BPR)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "10.0",
+        "tabel": "5.4",
+        "variabel": "Jumlah Koperasi Unit Desa",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "11.0",
+        "tabel": null,
+        "variabel": "Jumlah Koperasi Industri Kecil dan Kerajinan Rakyat",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "12.0",
+        "tabel": null,
+        "variabel": "Jumlah Koperasi Simpan Pinjam",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "13.0",
+        "tabel": null,
+        "variabel": "Jumlah Koperasi Lainnya",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "14.0",
+        "tabel": "5.5",
+        "variabel": "Keberadaan Kredit Usaha Rakyat (KUR)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "15.0",
+        "tabel": null,
+        "variabel": "Keberadaan Kredit Ketahanan Pangan dan Energi (KKP-E)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "16.0",
+        "tabel": null,
+        "variabel": "Keberadaan Kredit Usaha Kecil (KUK)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "17.0",
+        "tabel": null,
+        "variabel": "Keberadaan Kelompok Usaha Bersama (KUBE)",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "18.0",
+        "tabel": "5.6",
+        "variabel": "Jumlah Industri Mikro dan Kecil",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "19.0",
+        "tabel": null,
+        "variabel": "Jumlah Sentra Industri",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "20.0",
+        "tabel": "5.7",
+        "variabel": "Produk Barang Unggulan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "21.0",
+        "tabel": null,
+        "variabel": "Makanan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      },
+      {
+        "no": "22.0",
+        "tabel": null,
+        "variabel": "Non Makanan",
+        "sumber": "PODES 2025",
+        "status": "Aman",
+        "keterangan": "Data lengkap",
+        "prioritas": "Tinggi"
+      }
+    ]
+  }
+]
