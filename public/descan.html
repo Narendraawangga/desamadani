@@ -301,21 +301,21 @@
             </div>
         </div>
 
-        <!-- 6 VILLAGE CARDS (Clean Pill/Squircle Shapes matching Reference) -->
+        <!-- 6 VILLAGE CARDS (KECAMATAN KODEOHA - KABUPATEN KOLAKA UTARA) -->
         <div id="villageCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
 
             <!-- ======================================================== -->
-            <!-- CARD 1: DESA CIJATI (PANGALENGAN / PERTANIAN)            -->
+            <!-- CARD 1: DESA KALU KALUKU (PILOT UTAMA • TERDEKAT BPS)   -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'cijati')" 
-                 data-desa-name="desa cijati" 
-                 data-klaster="pertanian" 
-                 class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
+            <div onclick="handleDesaCardAccess(event, 'kalukaluku')" 
+                 data-desa-name="desa kalu kaluku" 
+                 data-klaster="pertanian umkm" 
+                 class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between ring-2 ring-amber-400/80 shadow-md">
                 
                 <!-- TOP HALF: ULTRA CLEAR PREMIUM HD PHOTO IN ROUNDED FRAME -->
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
                     <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Cijati" 
+                         alt="Pemandangan Desa Kalu Kaluku" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <!-- Top Gradient Overlay -->
@@ -325,21 +325,24 @@
                     <div class="absolute top-3 left-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/30 text-amber-300 font-black text-xs flex items-center gap-1 shadow-md">
                             <span>★ 4.9</span>
-                            <span class="text-[10px] text-white font-medium">BPS Terbina</span>
+                            <span class="text-[10px] text-white font-medium">Pilot Utama BPS</span>
                         </span>
                     </div>
 
                     <!-- Category Pill -->
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-amber-500/95 backdrop-blur-md text-slate-950 font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Pertanian & Ekowisata
+                            Sentra Kakao & Pesisir
                         </span>
                     </div>
 
                     <!-- Title on Image -->
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest block">Kec. Pangalengan • Jawa Barat</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Cijati</h3>
+                        <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight flex items-center gap-1.5">
+                            <span>Desa Kalu Kaluku</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500 text-white font-extrabold">Terdekat BPS</span>
+                        </h3>
                     </div>
                 </div>
 
@@ -347,7 +350,7 @@
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Kemandirian pertanian hortikultura dan agrowisata berbasis registrasi digital petani binaan BPS dan penguatan peran kader statistik.
+                        Pusat percontohan Desa Cantik terdekat dengan Kantor BPS Kolaka Utara di Lasusua. Memiliki keunggulan agribisnis kakao rakyat, 24 IKM, dan perikanan terpadu.
                     </p>
 
                     <!-- Key Metrics Pill Row -->
@@ -357,12 +360,12 @@
                             <b class="text-sm font-black text-slate-900 mt-0.5 block">4.150</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">UMKM</span>
-                            <b class="text-sm font-black text-amber-600 mt-0.5 block">48 Unit</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">IKM</span>
+                            <b class="text-sm font-black text-amber-600 mt-0.5 block">24 Unit</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Pertanian</span>
-                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">80%</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">BUMDes</span>
+                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">3 Unit</b>
                         </div>
                     </div>
 
@@ -370,7 +373,7 @@
                     <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                         <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span>Status: Aktif Terbina</span>
+                            <span>Status: Pilot Mandiri (85%)</span>
                         </div>
                         <span class="text-xs font-black text-amber-700 group-hover:text-amber-800 flex items-center gap-1 transition">
                             <span>Pilih Desa</span>
@@ -382,16 +385,16 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- CARD 2: DESA SUKAMAJU (SENTRA KAKAO & PERKEBUNAN)        -->
+            <!-- CARD 2: DESA AWO (SENTRA GULA MERAH & MINYAK NILAM)      -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'sukamaju')" 
-                 data-desa-name="desa sukamaju" 
-                 data-klaster="umkm" 
+            <div onclick="handleDesaCardAccess(event, 'awo')" 
+                 data-desa-name="desa awo" 
+                 data-klaster="umkm pertanian" 
                  class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
                 
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
                     <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Sukamaju" 
+                         alt="Pemandangan Desa Awo" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
@@ -405,34 +408,34 @@
 
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-emerald-600/95 backdrop-blur-md text-white font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Sentra Kakao & UMKM
+                            Gula Aren & Nilam
                         </span>
                     </div>
 
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest block">Kec. Lasusua • Kolaka Utara</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Sukamaju</h3>
+                        <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight">Desa Awo</h3>
                     </div>
                 </div>
 
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Pusat hilirisasi perkebunan kakao dan kelapa sawit rakyat dengan integrasi basis data UMKM dan rantai pasok agribisnis berkelanjutan.
+                        Sentra industri rumah tangga pengolahan gula merah aren asli dan penyulingan minyak nilam dengan 38 IKM dan 5 BUMDes aktif.
                     </p>
 
                     <div class="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
                         <div>
                             <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Penduduk</span>
-                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.820</b>
+                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.250</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">UMKM</span>
-                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">64 Unit</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">IKM</span>
+                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">38 Unit</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Kakao</span>
-                            <b class="text-sm font-black text-amber-600 mt-0.5 block">72%</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">BUMDes</span>
+                            <b class="text-sm font-black text-amber-600 mt-0.5 block">5 Unit</b>
                         </div>
                     </div>
 
@@ -451,57 +454,57 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- CARD 3: DESA MEKARWANGI (PENANGANAN STUNTING)             -->
+            <!-- CARD 3: DESA KAMISI (PESISIR & PENGOLAHAN IKAN TERI)     -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'mekarwangi')" 
-                 data-desa-name="desa mekarwangi" 
-                 data-klaster="stunting" 
+            <div onclick="handleDesaCardAccess(event, 'kamisi')" 
+                 data-desa-name="desa kamisi" 
+                 data-klaster="pesisir pertanian" 
                  class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
                 
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Mekarwangi" 
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=90" 
+                         alt="Pemandangan Desa Kamisi" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
 
                     <div class="absolute top-3 left-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/30 text-blue-300 font-black text-xs flex items-center gap-1 shadow-md">
-                            <span>★ 4.9</span>
-                            <span class="text-[10px] text-white font-medium">BPS Percontohan</span>
+                            <span>★ 4.8</span>
+                            <span class="text-[10px] text-white font-medium">Bahari Mandiri</span>
                         </span>
                     </div>
 
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-blue-600/95 backdrop-blur-md text-white font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Penanganan Stunting
+                            Pesisir & Ikan Teri
                         </span>
                     </div>
 
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-blue-300 uppercase tracking-widest block">Kec. Ngapa • Kolaka Utara</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Mekarwangi</h3>
+                        <span class="text-[10px] font-bold text-blue-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight">Desa Kamisi</h3>
                     </div>
                 </div>
 
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Pelopor dashboard kesehatan mikro desa untuk monitoring tumbuh kembang balita dan zero-stunting melalui data posyandu terintegrasi.
+                        Pusat perikanan tangkap dan pengeringan ikan teri tradisional pesisir Teluk Bone dengan populasi 394 KK listrik PLN.
                     </p>
 
                     <div class="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
                         <div>
                             <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Penduduk</span>
-                            <b class="text-sm font-black text-slate-900 mt-0.5 block">2.940</b>
+                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.940</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Stunting</span>
-                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">3.2% (Rendah)</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Keluarga</span>
+                            <b class="text-sm font-black text-blue-600 mt-0.5 block">1.050 KK</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Posyandu</span>
-                            <b class="text-sm font-black text-blue-600 mt-0.5 block">6 Pos Aktif</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">IKM</span>
+                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">14 Unit</b>
                         </div>
                     </div>
 
@@ -520,16 +523,16 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- CARD 4: DESA TEGALASRI (PERLINDUNGAN SOSIAL & BANSOS)    -->
+            <!-- CARD 4: DESA KOROHA (KAKAO & BUDIDAYA LAUT)             -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'tegalasri')" 
-                 data-desa-name="desa tegalasri" 
-                 data-klaster="bansos" 
+            <div onclick="handleDesaCardAccess(event, 'koroha')" 
+                 data-desa-name="desa koroha" 
+                 data-klaster="pesisir pertanian" 
                  class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
                 
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Tegalasri" 
+                    <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1600&q=90" 
+                         alt="Pemandangan Desa Koroha" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
@@ -537,40 +540,40 @@
                     <div class="absolute top-3 left-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/30 text-teal-300 font-black text-xs flex items-center gap-1 shadow-md">
                             <span>★ 4.7</span>
-                            <span class="text-[10px] text-white font-medium">BPS Transparan</span>
+                            <span class="text-[10px] text-white font-medium">BPS Maritim</span>
                         </span>
                     </div>
 
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-teal-600/95 backdrop-blur-md text-white font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Perlindungan Sosial & Bansos
+                            Kakao & Budidaya Laut
                         </span>
                     </div>
 
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-teal-300 uppercase tracking-widest block">Kec. Kodeoha • Kolaka Utara</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Tegalasri</h3>
+                        <span class="text-[10px] font-bold text-teal-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight">Desa Koroha</h3>
                     </div>
                 </div>
 
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Standarisasi akurasi data sosial ekonomi masyarakat, registrasi penerima bansos tepat sasaran, dan pemetaan kemiskinan ekstrem.
+                        Perkebunan kakao sambung pucuk dan sentra budidaya rumput laut dengan integrasi data monografi wilayah pesisir.
                     </p>
 
                     <div class="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
                         <div>
                             <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Penduduk</span>
-                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.120</b>
+                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.350</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Verifikasi</span>
-                            <b class="text-sm font-black text-teal-600 mt-0.5 block">100% Valid</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Keluarga</span>
+                            <b class="text-sm font-black text-teal-600 mt-0.5 block">910 KK</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Bansos Tepat</span>
-                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">98.4%</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">IKM</span>
+                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">16 Unit</b>
                         </div>
                     </div>
 
@@ -589,57 +592,57 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- CARD 5: DESA HARAPAN (SANITASI & AIR BERSIH 92%)          -->
+            <!-- CARD 5: DESA LAMETUNA (PERTANIAN TERPADU & HORTIKULTURA)  -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'harapan')" 
-                 data-desa-name="desa harapan" 
-                 data-klaster="air" 
+            <div onclick="handleDesaCardAccess(event, 'lametuna')" 
+                 data-desa-name="desa lametuna" 
+                 data-klaster="pertanian bansos" 
                  class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
                 
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Harapan" 
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=90" 
+                         alt="Pemandangan Desa Lametuna" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
 
                     <div class="absolute top-3 left-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/30 text-sky-300 font-black text-xs flex items-center gap-1 shadow-md">
-                            <span>★ 4.9</span>
-                            <span class="text-[10px] text-white font-medium">BPS Sanitasi</span>
+                            <span>★ 4.7</span>
+                            <span class="text-[10px] text-white font-medium">BPS Agraris</span>
                         </span>
                     </div>
 
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-sky-600/95 backdrop-blur-md text-white font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Air Bersih & Sanitasi
+                            Pertanian Terpadu
                         </span>
                     </div>
 
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-sky-300 uppercase tracking-widest block">Kec. Tiwu • Kolaka Utara</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Harapan</h3>
+                        <span class="text-[10px] font-bold text-sky-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight">Desa Lametuna</h3>
                     </div>
                 </div>
 
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Pencapaian sanitasi total berbasis masyarakat (STBM) dan digitalisasi jaringan air minum perpipaan desa dengan akurasi 92%.
+                        Sentra pertanian tanaman pangan hortikultura dan perkebunan kakao dengan pemutakhiran data SID dan Siskeudes terstandar BPS.
                     </p>
 
                     <div class="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
                         <div>
                             <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Penduduk</span>
-                            <b class="text-sm font-black text-slate-900 mt-0.5 block">2.610</b>
+                            <b class="text-sm font-black text-slate-900 mt-0.5 block">2.210</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Air Bersih</span>
-                            <b class="text-sm font-black text-sky-600 mt-0.5 block">92% Layak</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Keluarga</span>
+                            <b class="text-sm font-black text-sky-600 mt-0.5 block">620 KK</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Jamban Sehat</span>
-                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">96% ODF</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">BUMDes</span>
+                            <b class="text-sm font-black text-emerald-600 mt-0.5 block">3 Unit</b>
                         </div>
                     </div>
 
@@ -658,16 +661,16 @@
             </div>
 
             <!-- ======================================================== -->
-            <!-- CARD 6: DESA LESTARI (PESISIR & KELAUTAN TELUK BONE)     -->
+            <!-- CARD 6: DESA SAWANGAOHA (AGROINDUSTRI & KERAJINAN KAYU)   -->
             <!-- ======================================================== -->
-            <div onclick="handleDesaCardAccess(event, 'lestari')" 
-                 data-desa-name="desa lestari" 
-                 data-klaster="pesisir" 
+            <div onclick="handleDesaCardAccess(event, 'sawangaoha')" 
+                 data-desa-name="desa sawangaoha" 
+                 data-klaster="umkm pertanian" 
                  class="village-card group bg-white rounded-[2rem] p-4 sm:p-5 cursor-pointer select-none flex flex-col justify-between">
                 
                 <div class="relative w-full h-52 sm:h-56 rounded-[1.5rem] overflow-hidden bg-slate-900 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=90" 
-                         alt="Pemandangan Desa Lestari" 
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=90" 
+                         alt="Pemandangan Desa Sawangaoha" 
                          class="village-img w-full h-full object-cover object-center">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-black/30 pointer-events-none"></div>
@@ -675,40 +678,40 @@
                     <div class="absolute top-3 left-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/30 text-purple-300 font-black text-xs flex items-center gap-1 shadow-md">
                             <span>★ 4.8</span>
-                            <span class="text-[10px] text-white font-medium">Bahari Mandiri</span>
+                            <span class="text-[10px] text-white font-medium">Agro Industri</span>
                         </span>
                     </div>
 
                     <div class="absolute top-3 right-3 z-10">
                         <span class="px-3 py-1 rounded-full bg-purple-600/95 backdrop-blur-md text-white font-black text-[10px] shadow-md uppercase tracking-wider">
-                            Pesisir Teluk Bone
+                            Kakao & Kerajinan
                         </span>
                     </div>
 
                     <div class="absolute bottom-3 left-4 z-10 text-white">
-                        <span class="text-[10px] font-bold text-purple-300 uppercase tracking-widest block">Kec. Katoi • Kolaka Utara</span>
-                        <h3 class="text-xl font-black text-white leading-tight">Desa Lestari</h3>
+                        <span class="text-[10px] font-bold text-purple-300 uppercase tracking-widest block">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                        <h3 class="text-xl font-black text-white leading-tight">Desa Sawangaoha</h3>
                     </div>
                 </div>
 
                 <div class="pt-4 space-y-3 flex-1 flex flex-col justify-between">
                     
                     <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
-                        Kemandirian nelayan pesisir Teluk Bone melalui registrasi kapal tangkap, armada rumput laut, dan potensi ekowisata pantai terpadu.
+                        Sentra agroindustri pengolahan biji kakao, cengkeh dan kerajinan kayu lokal dengan 25 unit usaha IKM binaan aktif.
                     </p>
 
                     <div class="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
                         <div>
                             <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Penduduk</span>
-                            <b class="text-sm font-black text-slate-900 mt-0.5 block">3.980</b>
+                            <b class="text-sm font-black text-slate-900 mt-0.5 block">2.570</b>
                         </div>
                         <div class="border-x border-slate-200">
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">UMKM</span>
-                            <b class="text-sm font-black text-amber-600 mt-0.5 block">52 Unit</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">IKM</span>
+                            <b class="text-sm font-black text-amber-600 mt-0.5 block">25 Unit</b>
                         </div>
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Perikanan</span>
-                            <b class="text-sm font-black text-purple-600 mt-0.5 block">82%</b>
+                            <span class="text-[10px] font-extrabold uppercase text-slate-400 block tracking-wider">Keluarga</span>
+                            <b class="text-sm font-black text-purple-600 mt-0.5 block">730 KK</b>
                         </div>
                     </div>
 
@@ -862,10 +865,10 @@
                         <span class="text-xs text-slate-200 font-semibold">Tersedia 30 Lembar Panduan Interaktif Excel dan Video Edukasi Resmi</span>
                     </div>
                     <div class="flex items-center gap-2.5">
-                        <a href="/descan/menu?desa=cijati&menu=pembelajaran" class="px-4 py-2 rounded-full bg-white text-slate-900 font-black text-xs hover:bg-slate-100 transition shadow-md">
+                        <a href="/descan/menu?desa=kalukaluku&menu=pembelajaran" class="px-4 py-2 rounded-full bg-white text-slate-900 font-black text-xs hover:bg-slate-100 transition shadow-md">
                             Buka Buku Excel →
                         </a>
-                        <a href="/descan/menu?desa=cijati&menu=video" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white font-black text-xs border border-white/20 transition">
+                        <a href="/descan/menu?desa=kalukaluku&menu=pembelajaran" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white font-black text-xs border border-white/20 transition">
                             Tonton Video
                         </a>
                     </div>

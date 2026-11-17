@@ -47,6 +47,12 @@
             background: radial-gradient(circle at 20% 20%, #06182e 0%, #0b2545 50%, #031424 100%);
             min-height: 100vh;
         }
+        .desa-pill-btn.active {
+            background: #005ea6;
+            color: #ffffff;
+            font-weight: 800;
+            border-color: #005ea6;
+        }
     </style>
 </head>
 <body class="text-slate-800 flex flex-col justify-between p-4 sm:p-6 lg:p-8 min-h-screen selection:bg-amber-200 selection:text-amber-950">
@@ -99,15 +105,15 @@
                 <div class="relative z-10 space-y-4">
                     <div class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Portal Login Resmi Desa Binaan</span>
+                        <span>Portal Login Resmi Desa Binaan (Kec. Kodeoha)</span>
                     </div>
 
                     <!-- Village Feature Landscape Photo Card -->
                     <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group">
                         <img id="sideDesaHeroPhoto" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=90" alt="Foto Desa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4">
-                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest" id="sideDesaKecamatanTag">Kec. Pangalengan • Jawa Barat</span>
-                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">Desa Cijati</h2>
+                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest" id="sideDesaKecamatanTag">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">Desa Kalu Kaluku</h2>
                         </div>
                     </div>
 
@@ -115,22 +121,22 @@
                     <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 backdrop-blur-sm text-xs">
                         <div class="flex items-center justify-between">
                             <span class="text-slate-400">Lembaga:</span>
-                            <span id="sideDesaLembaga" class="font-bold text-white">Pemerintah Desa Cijati</span>
+                            <span id="sideDesaLembaga" class="font-bold text-white">Pemerintah Desa Kalu Kaluku</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-slate-400">Status Pembinaan:</span>
-                            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS</span>
+                            <span id="sideDesaStatusBadge" class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS (Mandiri)</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-slate-400">Akses Modul:</span>
-                            <span class="text-amber-300 text-[11px] font-bold font-mono">Buku Excel & Evaluasi</span>
+                            <span class="text-amber-300 text-[11px] font-bold font-mono">Buku Excel 30 Lembar & Monev</span>
                         </div>
                     </div>
 
                     <!-- Explanation text specifically for this village -->
                     <div class="pt-2">
-                        <p class="text-xs text-slate-300 leading-relaxed font-medium">
-                            Masukkan email dan kata sandi resmi untuk membuka dashboard pembinaan, buku panduan digital Excel, dan monografi data desa ini.
+                        <p id="sideDesaDesc" class="text-xs text-slate-300 leading-relaxed font-medium">
+                            Pilot Utama Desa Cantik BPS Kolaka Utara. Terletak strategis di perbatasan Ibu Kota Lasusua, dengan sentra kakao rakyat dan perikanan terpadu.
                         </p>
                     </div>
                 </div>
@@ -140,7 +146,7 @@
                         <span>←</span>
                         <span>Dashboard 6 Desa</span>
                     </a>
-                    <span class="text-[10px] text-slate-500 font-medium">BPS Kolaka Utara</span>
+                    <span class="text-[10px] text-slate-500 font-medium">BPS Kolaka Utara 2026</span>
                 </div>
             </div>
 
@@ -150,22 +156,53 @@
                 <!-- Top Gradient Accent Line -->
                 <div class="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-[#005ea6] to-amber-500"></div>
 
-                <div class="p-6 sm:p-10 space-y-6 flex-1 flex flex-col justify-between">
+                <div class="p-6 sm:p-8 space-y-5 flex-1 flex flex-col justify-between">
                     <div>
+                        
+                        <!-- 6 VILLAGES SELECTOR CHIPS (Kecamatan Kodeoha - Kolaka Utara) -->
+                        <div class="space-y-1.5 mb-4">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
+                                <span>PILIH DESA BINAAN (KEC. KODEOHA):</span>
+                                <span class="text-emerald-700 font-extrabold">6 Desa Pilot</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5" id="desaSelectorChips">
+                                <button type="button" onclick="selectLoginDesa('kalukaluku')" id="btnChip-kalukaluku" class="desa-pill-btn active px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-bold transition flex items-center gap-1 cursor-pointer">
+                                    <span>🌟</span>
+                                    <span>Kalu Kaluku</span>
+                                    <span class="text-[9px] px-1 py-0.2 rounded bg-amber-400 text-slate-900 font-black">Utama</span>
+                                </button>
+                                <button type="button" onclick="selectLoginDesa('awo')" id="btnChip-awo" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                    Awo
+                                </button>
+                                <button type="button" onclick="selectLoginDesa('kamisi')" id="btnChip-kamisi" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                    Kamisi
+                                </button>
+                                <button type="button" onclick="selectLoginDesa('koroha')" id="btnChip-koroha" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                    Koroha
+                                </button>
+                                <button type="button" onclick="selectLoginDesa('lametuna')" id="btnChip-lametuna" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                    Lametuna
+                                </button>
+                                <button type="button" onclick="selectLoginDesa('sawangaoha')" id="btnChip-sawangaoha" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                    Sawangaoha
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Active Village Header Context Card -->
                         <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-emerald-50/60 to-slate-50 border border-slate-200 flex items-center justify-between gap-3 shadow-2xs">
                             <div class="flex items-center gap-3.5">
                                 <img id="activeDesaAvatar" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80" alt="Foto Desa" class="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-500 shadow-sm shrink-0">
                                 <div>
                                     <div class="flex items-center gap-2">
-                                        <h2 id="activeDesaName" class="text-lg font-black text-slate-900 leading-tight">Desa Cijati</h2>
-                                        <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">Terbina BPS</span>
+                                        <h2 id="activeDesaName" class="text-lg font-black text-slate-900 leading-tight">Desa Kalu Kaluku</h2>
+                                        <span id="activeDesaBadge" class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">Terbina BPS</span>
                                     </div>
                                     <p id="activeDesaRep" class="text-xs font-semibold text-slate-600 mt-0.5">
-                                        Pemerintah Desa Cijati • Admin Resmi
+                                        Pemerintah Desa Kalu Kaluku • Admin Resmi
                                     </p>
                                     <p id="activeDesaWilayah" class="text-[10px] text-slate-400 font-medium">
-                                        Kec. Pangalengan • Jawa Barat
+                                        Kec. Kodeoha • Kab. Kolaka Utara
                                     </p>
                                 </div>
                             </div>
@@ -177,17 +214,17 @@
                         </div>
 
                         <!-- 1-Click Fast Fill & Direct Viewer Mobile Buttons -->
-            <div class="sm:hidden mt-2 grid grid-cols-2 gap-2">
-                <button type="button" onclick="autoFillActiveCredentials()" class="w-full py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
-                    <span>⚡ Isi Sandi</span>
-                </button>
-                <button type="button" onclick="loginAsGuestViewer()" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
-                    <span>👁️ Buka Langsung</span>
-                </button>
-            </div>
+                        <div class="sm:hidden mt-2 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="autoFillActiveCredentials()" class="w-full py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
+                                <span>⚡ Isi Sandi</span>
+                            </button>
+                            <button type="button" onclick="loginAsGuestViewer()" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
+                                <span>👁️ Buka Langsung</span>
+                            </button>
+                        </div>
             
-            <!-- FORM LOGIN -->
-                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-6">
+                        <!-- FORM LOGIN -->
+                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-5">
                             
                             <!-- Error Alert Banner -->
                             <div id="loginErrorAlert" class="hidden p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 shadow-xs">
@@ -204,7 +241,7 @@
                                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
                                         ✉️
                                     </span>
-                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
+                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.kalukaluku@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
                                 </div>
                             </div>
 
@@ -214,7 +251,7 @@
                                     <label for="inpPassword" class="block text-xs font-bold text-slate-700">
                                         Kata Sandi (Password)
                                     </label>
-                                    <span id="hintPasswordDisplay" class="text-[11px] font-mono text-slate-400"></span>
+                                    <span id="hintPasswordDisplay" class="text-[11px] font-mono text-slate-500 font-bold"></span>
                                 </div>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
@@ -229,7 +266,7 @@
 
                             <!-- Submit Button -->
                             <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#005ea6] via-[#0b2545] to-[#005ea6] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 transform active:scale-98 cursor-pointer">
-                                <span id="btnSubmitText">Masuk ke Dashboard Desa</span>
+                                <span id="btnSubmitText">Masuk ke Dashboard Desa Kalu Kaluku</span>
                                 <span class="text-base">→</span>
                             </button>
                         </form>
@@ -239,7 +276,7 @@
                     <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
                         <div class="flex items-center gap-1.5">
                             <span class="text-slate-400">Akun:</span>
-                            <span id="hintCurrentEmail" class="font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-lg text-[11px] border border-slate-200"></span>
+                            <span id="hintCurrentEmail" class="font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-lg text-[11px] border border-slate-200">admin.kalukaluku@descan.bps.go.id</span>
                         </div>
                         <button type="button" onclick="autoFillActiveCredentials()" class="text-[#005ea6] hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer">
                             <span>⚡ Isi Sandi Otomatis</span>
@@ -262,11 +299,30 @@
 
     <!-- SCRIPT LOGIC -->
     <script>
-        let currentSelectedDesa = 'cijati';
+        let currentSelectedDesa = 'kalukaluku';
 
         function selectLoginDesa(key) {
+            key = (key || 'kalukaluku').toLowerCase();
+            if (key === 'cijati') key = 'kalukaluku';
+            if (key === 'sukamaju') key = 'awo';
+            if (key === 'mekarwangi') key = 'kamisi';
+            if (key === 'tegalasri') key = 'koroha';
+            if (key === 'harapan') key = 'lametuna';
+            if (key === 'lestari') key = 'sawangaoha';
+
             currentSelectedDesa = key;
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['cijati'];
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['kalukaluku'];
+
+            // Update Chip UI active classes
+            document.querySelectorAll('.desa-pill-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-[#005ea6]', 'text-white');
+                btn.classList.add('bg-slate-50', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById(`btnChip-${key}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-50', 'text-slate-700');
+                activeBtn.classList.add('active', 'bg-[#005ea6]', 'text-white');
+            }
 
             // Update Left Hero Panel specifically for this village
             const sideHeroPhoto = document.getElementById('sideDesaHeroPhoto');
@@ -274,12 +330,16 @@
             const sideTitle = document.getElementById('sideDesaHeroTitle');
             const sideKec = document.getElementById('sideDesaKecamatanTag');
             const sideLembaga = document.getElementById('sideDesaLembaga');
+            const sideDesc = document.getElementById('sideDesaDesc');
+            const sideStatus = document.getElementById('sideDesaStatusBadge');
 
             if (sideHeroPhoto) sideHeroPhoto.src = acc.avatar;
             if (sideBgPhoto) sideBgPhoto.src = acc.avatar;
             if (sideTitle) sideTitle.textContent = acc.desaName;
             if (sideKec) sideKec.textContent = acc.kecamatan;
             if (sideLembaga) sideLembaga.textContent = acc.rep;
+            if (sideDesc) sideDesc.textContent = acc.description;
+            if (sideStatus) sideStatus.textContent = `Terverifikasi BPS (${acc.kategori || 'Mandiri'})`;
 
             // Update Right Context Card
             const nameEl = document.getElementById('activeDesaName');
@@ -307,14 +367,9 @@
         }
 
         function loginAsGuestViewer() {
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[activeDesaKey]) ? DESCAN_ACCOUNTS[activeDesaKey] : {
-                desaName: 'Desa Cijati',
-                rep: 'Pemerintah Desa',
-                avatar: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80',
-                email: 'admin.cijati@descan.bps.go.id'
-            };
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentSelectedDesa]) ? DESCAN_ACCOUNTS[currentSelectedDesa] : DESCAN_ACCOUNTS['kalukaluku'];
             const session = {
-                desaKey: activeDesaKey,
+                desaKey: currentSelectedDesa,
                 desaName: acc.desaName,
                 rep: acc.rep,
                 avatar: acc.avatar,
@@ -326,7 +381,7 @@
                 localStorage.setItem('descan_auth_session', JSON.stringify(session));
                 sessionStorage.setItem('descan_auth_session', JSON.stringify(session));
             } catch(e) {}
-            window.location.href = `/descan/menu?desa=${activeDesaKey}&menu=dashboard`;
+            window.location.href = `/descan/menu?desa=${currentSelectedDesa}&menu=dashboard`;
         }
 
         function autoFillActiveCredentials() {
@@ -377,7 +432,7 @@
             showLoginToast(`✓ Berhasil login sebagai ${result.account.desaName}! Mengarahkan ke dashboard...`);
 
             setTimeout(() => {
-                window.location.href = `/descan/menu?desa=${result.account.desaKey}&menu=tentang`;
+                window.location.href = `/descan/menu?desa=${result.account.desaKey}&menu=dashboard`;
             }, 700);
         }
 
@@ -390,7 +445,7 @@
             }
         }
 
-        // Init on load: Bersihkan sesi lama sehingga setiap login benar-benar baru
+        // Init on load
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof clearDescanAuth === 'function') clearDescanAuth();
             try {
@@ -399,7 +454,7 @@
             } catch(e) {}
 
             const params = new URLSearchParams(window.location.search);
-            const desaParam = (params.get('desa') || 'cijati').toLowerCase();
+            const desaParam = (params.get('desa') || 'kalukaluku').toLowerCase();
             selectLoginDesa(desaParam);
 
             // Pastikan password selalu kosong saat halaman dimuat
