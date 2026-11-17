@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/podes/table-data', [AdminController::class, 'getPodesTableData'])->name('admin.podes.table-data');
     Route::post('/admin/podes/save', [AdminController::class, 'savePodesData'])->name('admin.podes.save');
     Route::post('/admin/podes/sync', [AdminController::class, 'syncPodesFiles'])->name('admin.podes.sync');
+    Route::post('/admin/desa/save', [AdminController::class, 'saveDesaMaster'])->name('admin.desa.save');
 });
 
 // Dashboard Awal: Tampilan Identik Jejaring Desa Wisata (Jadesta Kemenpar)

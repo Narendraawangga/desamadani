@@ -123,13 +123,17 @@ class AdminController extends Controller
         // Filter rows for the requested kecamatan
         $kecamatanRows = [];
         $desaRow = null;
+        $cleanKecTarget = str_replace([' ', '-', '_'], '', $kecamatan);
+        $cleanDesaTarget = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', $desa);
 
         foreach ($rows as $r) {
             $rKec = strtoupper($r['kecamatan'] ?? '');
-            if ($rKec === $kecamatan) {
+            $cleanRKec = str_replace([' ', '-', '_'], '', $rKec);
+            if ($cleanRKec === $cleanKecTarget || $rKec === $kecamatan) {
                 $kecamatanRows[] = $r;
                 $rDesa = strtoupper($r['desa'] ?? '');
-                if (!$r['is_total'] && ($rDesa === $desa || empty($desa))) {
+                $cleanRDesa = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', $rDesa);
+                if (!$r['is_total'] && ($cleanRDesa === $cleanDesaTarget || $rDesa === $desa || empty($desa))) {
                     if (!$desaRow) {
                         $desaRow = $r;
                     }
@@ -163,6 +167,7 @@ class AdminController extends Controller
             'columns' => $columns,
             'desa_row' => $desaRow,
             'kecamatan_rows' => $kecamatanRows,
+            'all_rows' => $rows,
             'monitoring' => $monitoringItems,
         ]);
     }
@@ -204,13 +209,21 @@ class AdminController extends Controller
         }
 
         $found = false;
+        $cleanKecTarget = str_replace([' ', '-', '_'], '', $kecamatan);
+        $cleanDesaTarget = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', $desa);
+
         foreach ($allData[$module][$table]['rows'] as &$r) {
-            if (!$r['is_total'] && strtoupper($r['kecamatan']) === $kecamatan && strtoupper($r['desa']) === $desa) {
-                foreach ($newValues as $col => $val) {
-                    $r['values'][$col] = (string) $val;
+            if (!empty($r['desa']) && !$r['is_total']) {
+                $cleanRKec = str_replace([' ', '-', '_'], '', strtoupper($r['kecamatan'] ?? ''));
+                $cleanRDesa = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', strtoupper($r['desa'] ?? ''));
+                if (($cleanRKec === $cleanKecTarget || strtoupper($r['kecamatan']) === $kecamatan) &&
+                    ($cleanRDesa === $cleanDesaTarget || strtoupper($r['desa']) === $desa)) {
+                    foreach ($newValues as $col => $val) {
+                        $r['values'][$col] = (string) $val;
+                    }
+                    $found = true;
+                    break;
                 }
-                $found = true;
-                break;
             }
         }
 
@@ -229,16 +242,129 @@ class AdminController extends Controller
     }
 
     /**
+     * Save / Update Master Data Potensi Desa (podes_master.json).
+     */
+    public function saveDesaMaster(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_desa' => 'required|string|max:100',
+            'nama_kec' => 'required|string|max:100',
+            'ipd' => 'required|numeric|min:0|max:100',
+            'status' => 'required|string|in:Mandiri,Maju,Berkembang',
+            'komoditas' => 'nullable|string|max:255',
+            'faskes' => 'nullable|string|max:255',
+            'lat' => 'nullable|numeric|between:-90,90',
+            'lng' => 'nullable|numeric|between:-180,180',
+        ]);
+
+        $authUser = Auth::user();
+        if ($authUser && $authUser->isOperatorDesa() && $authUser->desa) {
+            $validated['nama_kec'] = $authUser->kecamatan;
+            $validated['nama_desa'] = $authUser->desa;
+        }
+
+        $podesFile = database_path('data/podes_master.json');
+        if (!file_exists($podesFile)) {
+            return response()->json(['success' => false, 'message' => 'File data podes_master.json tidak ditemukan.'], 404);
+        }
+
+        $kecamatanList = json_decode(file_get_contents($podesFile), true) ?: [];
+        $kecNamaTarget = trim(strtoupper($validated['nama_kec']));
+        $desaNamaTarget = trim(strtoupper($validated['nama_desa']));
+
+        $kecFound = false;
+        $desaFound = false;
+
+        foreach ($kecamatanList as &$kec) {
+            if (strtoupper($kec['nama']) === $kecNamaTarget) {
+                $kecFound = true;
+                if (!isset($kec['desaList']) || !is_array($kec['desaList'])) {
+                    $kec['desaList'] = [];
+                }
+
+                foreach ($kec['desaList'] as &$d) {
+                    if (strtoupper($d['nama']) === $desaNamaTarget) {
+                        $d['ipd'] = (float) $validated['ipd'];
+                        $d['status'] = $validated['status'];
+                        if (!empty($validated['komoditas'])) $d['komoditas'] = $validated['komoditas'];
+                        if (!empty($validated['faskes'])) $d['faskes'] = $validated['faskes'];
+                        if (!empty($validated['lat'])) $d['lat'] = (float) $validated['lat'];
+                        if (!empty($validated['lng'])) $d['lng'] = (float) $validated['lng'];
+                        $desaFound = true;
+                        break;
+                    }
+                }
+
+                // Jika desa baru
+                if (!$desaFound) {
+                    $newDesa = [
+                        'nama' => $validated['nama_desa'],
+                        'status' => $validated['status'],
+                        'sektor' => 'pertanian',
+                        'lat' => !empty($validated['lat']) ? (float) $validated['lat'] : (float) ($kec['lat'] ?? -3.52),
+                        'lng' => !empty($validated['lng']) ? (float) $validated['lng'] : (float) ($kec['lng'] ?? 120.98),
+                        'topografi' => 'Dataran Rendah',
+                        'penduduk' => 1500,
+                        'kk' => 400,
+                        'luas' => '12.0 km²',
+                        'ipd' => (float) $validated['ipd'],
+                        'potensi' => 'Potensi komoditas ' . ($validated['komoditas'] ?? 'Pertanian Rakyat'),
+                        'komoditas' => $validated['komoditas'] ?? 'Kakao, Cengkeh',
+                        'bumdes' => 'BUMDes Desa ' . $validated['nama_desa'],
+                        'faskes' => $validated['faskes'] ?? 'Poskesdes',
+                        'sekolah' => '1 SD Negeri',
+                        'sinyal' => 'Listrik PLN 24 Jam, 4G Baik',
+                    ];
+                    $kec['desaList'][] = $newDesa;
+                    $kec['desa_count'] = count($kec['desaList']);
+                    $desaFound = true;
+                }
+
+                break;
+            }
+        }
+
+        if (!$kecFound) {
+            return response()->json([
+                'success' => false,
+                'message' => "Kecamatan {$validated['nama_kec']} tidak ditemukan di data master."
+            ], 422);
+        }
+
+        file_put_contents($podesFile, json_encode($kecamatanList, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+        return response()->json([
+            'success' => true,
+            'message' => "Data Potensi Desa {$validated['nama_desa']} (Kec. {$validated['nama_kec']}) berhasil disimpan!",
+            'desa' => [
+                'nama_desa' => $validated['nama_desa'],
+                'nama_kec' => $validated['nama_kec'],
+                'ipd' => (float) $validated['ipd'],
+                'status' => $validated['status'],
+                'komoditas' => $validated['komoditas'] ?? '-',
+                'faskes' => $validated['faskes'] ?? '-',
+                'lat' => (float) ($validated['lat'] ?? 0),
+                'lng' => (float) ($validated['lng'] ?? 0),
+            ]
+        ]);
+    }
+
+    /**
      * Sync PODES files from storage/app/podes_raw.
      */
     public function syncPodesFiles()
     {
+        $scriptCatalog = database_path('data/build_podes_catalog.py');
+        if (file_exists($scriptCatalog)) {
+            shell_exec("python " . escapeshellarg($scriptCatalog));
+        }
+
         $script = database_path('data/build_podes_tables_data.py');
         if (file_exists($script)) {
             shell_exec("python " . escapeshellarg($script));
         }
 
-        return back()->with('success', '11 File Spreadsheet PODES berhasil disinkronkan ke basis data!');
+        return back()->with('success', '12 File Spreadsheet PODES berhasil disinkronkan ke basis data!');
     }
 
     /**

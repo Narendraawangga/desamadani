@@ -881,6 +881,22 @@
     ]
   },
   {
+    "file": "KEPENDUDUKAN.xlsx",
+    "tables": [
+      {
+        "sheet": "2.1",
+        "title": "2.1 Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "sheet": "2.2",
+        "title": "2.2   Jumlah Penduduk Menurut Kelompok Umur dan Jenis Kelamin, 2025",
+        "total_rows": 259
+      }
+    ],
+    "monitoring": []
+  },
+  {
     "file": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
     "tables": [
       {
