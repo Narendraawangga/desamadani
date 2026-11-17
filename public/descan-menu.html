@@ -58,25 +58,30 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f1f6fa;
         }
+        .nav-tab {
+            padding: 0.55rem 1.1rem !important;
+            border-radius: 0.75rem !important;
+            transition: all 0.18s ease-in-out !important;
+            border: 1px solid transparent !important;
+            color: #cbd5e1 !important;
+            font-weight: 700 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            font-size: 0.8125rem !important;
+            letter-spacing: -0.01em !important;
+        }
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #ffffff !important;
+        }
         .nav-tab.active {
             color: #ffffff !important;
             font-weight: 800 !important;
-            background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
-            box-shadow: 0 4px 14px -2px rgba(2, 132, 199, 0.45) !important;
-            border-radius: 9999px !important;
-            border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        }
-        .nav-tab {
-            padding: 0.4rem 0.9rem !important;
-            border-radius: 9999px !important;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            border: 1px solid transparent !important;
-            color: #bfdbfe !important;
-            font-weight: 700 !important;
-        }
-        .nav-tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.12) !important;
-            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.14) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25) !important;
+            border-bottom: 3px solid #f59e0b !important;
         }
         .m-nav-tab.active {
             background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
@@ -212,36 +217,40 @@
         </div>
     </div>
 
-    <!-- TOP DARK NAVY NAVIGATION BAR (ALL MENUS ACCESSIBLE & 100% FUNCTIONAL) -->
+    <!-- TOP DARK NAVY NAVIGATION BAR (ELEGAN, RAPI & 100% RESPONSIF) -->
     <header class="w-full bg-[#072448] text-white border-b border-blue-900/60 sticky top-0 z-40 shadow-md">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-1.5 flex items-center justify-between gap-2 overflow-x-auto scrollbar-none">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-2 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
             
-            <!-- Left Menu Items: CUKUP 4 MENU UTAMA SESUAI PERMINTAAN USER -->
-            <div class="flex items-center gap-1 sm:gap-2 text-xs font-bold whitespace-nowrap">
-                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active px-3.5 py-2 rounded-xl border-b-2 border-amber-400 font-black text-white flex items-center gap-2 cursor-pointer transition">
+            <!-- Left Menu Items: 4 MENU UTAMA RAPI DENGAN IKON & LABEL -->
+            <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
+                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer">
                     <span class="text-sm">📊</span>
-                    <span>Beranda</span>
+                    <span>1. Beranda (Dashboard)</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab px-3.5 py-2 rounded-xl text-blue-200 hover:text-white hover:bg-white/10 flex items-center gap-2 cursor-pointer transition">
+                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer">
                     <span class="text-sm">🏛️</span>
-                    <span>Profil Desa</span>
+                    <span>2. Profil Desa</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab px-3.5 py-2 rounded-xl text-blue-200 hover:text-white hover:bg-white/10 flex items-center gap-2 cursor-pointer transition">
+                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer">
                     <span class="text-sm">📖</span>
-                    <span>Pembelajaran</span>
+                    <span>3. Pembelajaran (LMS)</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab px-3.5 py-2 rounded-xl text-blue-200 hover:text-white hover:bg-white/10 flex items-center gap-2 cursor-pointer transition">
+                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer">
                     <span class="text-sm">📈</span>
-                    <span>Monitoring & Evaluasi (Monev)</span>
+                    <span>4. Monev (Evaluasi)</span>
                 </button>
-            </div>
+            </nav>
 
-            <!-- Village Indicator Pill on far right -->
-            <div class="hidden sm:flex items-center gap-2 shrink-0 pl-2 border-l border-blue-800/80">
-                <span class="text-[10px] text-blue-300 font-extrabold uppercase">Desa Binaan:</span>
-                <span id="topNavVillageBadge" class="px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider">
-                    DESA KALU KALUKU
-                </span>
+            <!-- Right: Status Desa Binaan Capsule Badge -->
+            <div class="flex items-center gap-2 shrink-0">
+                <div class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-3 py-1.5 rounded-xl text-xs backdrop-blur-md transition shadow-2xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan BPS:</span>
+                    <span id="topNavVillageBadge" class="font-black text-amber-300 uppercase tracking-wide text-xs">
+                        DESA KALU KALUKU
+                    </span>
+                    <span class="text-[10px] text-slate-300/80 font-semibold hidden lg:inline">• Kodeoha</span>
+                </div>
             </div>
 
         </div>
@@ -1411,6 +1420,22 @@
 
     <!-- CLIENT DATA & SCRIPT LOGIC (CRYSTAL CLEAR PREMIUM HD IMAGES) -->
     <script>
+        // ==============================================================
+        // GLOBAL STATE VARIABLES (SAFE TOP-LEVEL INITIALIZATION)
+        // ==============================================================
+        let currentTargetVillage = 'kalukaluku';
+        let currentVillageKey = 'kalukaluku';
+        let currentNavMenu = 'dashboard';
+        let currentPemTab = 'panduan-excel';
+        let currentAnalitikDesa = 'kalukaluku';
+        let currentMonevBuktiTab = 'desa';
+        let currentExcelPage = 1;
+        let bookViewMode = 'spread';
+        let thematicLeafletMap = null;
+        let thematicLayersGroup = null;
+        let peneranganChartInstance = null;
+        let desilChartInstance = null;
+
         
         
         // Wireframe Interactivity Handlers
@@ -2138,13 +2163,7 @@
             }
         };
 
-        analitikDataMap.cijati = analitikDataMap.kalukaluku;
-        analitikDataMap.desa1 = analitikDataMap.kalukaluku;
-        analitikDataMap.desa2 = analitikDataMap.awo;
-        analitikDataMap.desa3 = analitikDataMap.kamisi;
-        analitikDataMap.desa4 = analitikDataMap.koroha;
-        analitikDataMap.desa5 = analitikDataMap.lametuna;
-        analitikDataMap.desa6 = analitikDataMap.sawangaoha;
+        // analitikDataMap aliases initialized after its declaration below
 
         // Aliases for compatibility
         descanSectoralData.cijati = descanSectoralData.kalukaluku;
@@ -2154,8 +2173,6 @@
         descanSectoralData.harapan = descanSectoralData.lametuna;
         descanSectoralData.lestari = descanSectoralData.sawangaoha;
 
-        let currentTargetVillage = 'kalukaluku';
-        let currentNavMenu = 'dashboard';
 
         function switchNavMenu(menuKey) {
             // Handle aliases & shortcuts
@@ -2232,13 +2249,11 @@
 
             // Update Top Nav Tabs (4 buttons)
             document.querySelectorAll('.nav-tab').forEach(el => {
-                el.classList.remove('active', 'text-white', 'border-b-2', 'border-amber-400', 'font-black');
-                el.classList.add('text-blue-200');
+                el.classList.remove('active');
             });
             const dBtn = document.getElementById('nav-' + menuKey);
             if (dBtn) {
-                dBtn.classList.remove('text-blue-200');
-                dBtn.classList.add('active', 'text-white', 'border-b-2', 'border-amber-400', 'font-black');
+                dBtn.classList.add('active');
             }
 
             // Update Sidebar Buttons (4 buttons)
@@ -2336,8 +2351,6 @@
         }
 
 
-        let thematicLeafletMap = null;
-        let thematicLayersGroup = null;
 
         function handleDashFilterChange() {
             const wilSelect = document.getElementById('dashFilterWilayah');
@@ -2367,8 +2380,6 @@
         // Dashboard 6 Desa | Analitik Sektoral | 🔒 Data & Publikasi
         // ==============================================================
         let currentDashTab = 'dashboard';
-        let currentAnalitikDesa = 'kalukaluku';
-        let peneranganChartInstance = null;
 
         const analitikDataMap = {
             kalukaluku: {
@@ -2485,13 +2496,7 @@
             }
         };
 
-        analitikDataMap.cijati = analitikDataMap.kalukaluku;
-        analitikDataMap.desa1 = analitikDataMap.kalukaluku;
-        analitikDataMap.desa2 = analitikDataMap.awo;
-        analitikDataMap.desa3 = analitikDataMap.kamisi;
-        analitikDataMap.desa4 = analitikDataMap.koroha;
-        analitikDataMap.desa5 = analitikDataMap.lametuna;
-        analitikDataMap.desa6 = analitikDataMap.sawangaoha;
+        // analitikDataMap aliases initialized after its declaration below
 
         function switchDashTab(tabKey) {
             currentDashTab = tabKey;
@@ -2773,10 +2778,13 @@
             if (inNon) inNon.value = sData.bansos?.[3]?.non || 140;
 
             // Populate Disabilitas inputs
+            if (!sData.disabilitas) {
+                sData.disabilitas = { male: { mandiri: 78, rentan: 22 }, female: { mandiri: 65, rentan: 35 } };
+            }
             const inDisM = document.getElementById('inputDisMaleMandiri');
             const inDisF = document.getElementById('inputDisFemaleMandiri');
-            if (inDisM) inDisM.value = sData.disabilitas.male.mandiri;
-            if (inDisF) inDisF.value = sData.disabilitas.female.mandiri;
+            if (inDisM) inDisM.value = sData.disabilitas?.male?.mandiri ?? 78;
+            if (inDisF) inDisF.value = sData.disabilitas?.female?.mandiri ?? 65;
 
             // Populate Pendidikan inputs
             sData.pendidikan.forEach((edu, idx) => {
@@ -2932,6 +2940,9 @@
             ];
 
             // Read Disabilitas
+            if (!sData.disabilitas) {
+                sData.disabilitas = { male: { mandiri: 78, rentan: 22 }, female: { mandiri: 65, rentan: 35 } };
+            }
             const disM = parseInt(document.getElementById('inputDisMaleMandiri')?.value, 10) || 78;
             const disF = parseInt(document.getElementById('inputDisFemaleMandiri')?.value, 10) || 65;
             sData.disabilitas.male.mandiri = Math.min(100, Math.max(0, disM));
@@ -2974,8 +2985,9 @@
 
             // Populate Dusun Dropdown if needed
             const wilSelect = document.getElementById('dashFilterWilayah');
-            if (wilSelect && (!wilSelect.dataset.currentDesa || wilSelect.dataset.currentDesa !== villageKey)) {
+            if (wilSelect && (!wilSelect.dataset || !wilSelect.dataset.currentDesa || wilSelect.dataset.currentDesa !== villageKey)) {
                 populateDashDusunOptions(villageKey, filterDusun);
+                if (!wilSelect.dataset) wilSelect.dataset = {};
                 wilSelect.dataset.currentDesa = villageKey;
             }
 
@@ -3121,7 +3133,6 @@
         }
 
         // Global Chart Instance Holder
-        let desilChartInstance = null;
 
         function renderDesilDonutChart(sData) {
             const canvas = document.getElementById('desilDonutCanvas');
@@ -3289,8 +3300,14 @@
             }
 
             // Update View & Layers
-            thematicLayersGroup.clearLayers();
-            thematicLeafletMap.setView(center, filterDusun === 'all' ? 13 : 14);
+            if (thematicLayersGroup) {
+                thematicLayersGroup.clearLayers();
+            } else if (thematicLeafletMap && typeof L !== 'undefined') {
+                thematicLayersGroup = L.layerGroup().addTo(thematicLeafletMap);
+            }
+            if (thematicLeafletMap) {
+                thematicLeafletMap.setView(center, filterDusun === 'all' ? 13 : 14);
+            }
 
             // Draw Thematic Density Polygon Zones
             const [cLat, cLng] = center;
@@ -3476,7 +3493,6 @@
             renderDashboardCantik(key);
         }
 
-        let currentPemTab = 'panduan-excel';
         function switchPemTab(tab) {
             currentPemTab = tab;
             const kur = document.getElementById('pemContent-kurikulum');
@@ -3569,7 +3585,6 @@
         // ==============================================================
         // SISTEM BUKTI DUKUNG: A. TINGKAT DESA & B. TINGKAT KABUPATEN
         // ==============================================================
-        let currentMonevBuktiTab = 'desa';
 
         const defaultBuktiDukungDesa = [
             {
@@ -3669,7 +3684,7 @@
             }
         ];
 
-                let currentMonevBuktiTab = 'desa';
+                // currentMonevBuktiTab declared above
 
         const defaultMonevBukti = {
             desa: [
@@ -3808,8 +3823,6 @@
         }
 
         // BUKU PANDUAN PEMBINAAN: PELATIHAN EXCEL (30 LEMBAR)
-        let currentExcelPage = 1;
-        let bookViewMode = 'spread'; // 'spread' (2 pages) or 'single' (1 page)
         let isBookSoundEnabled = true;
 
         function getExcelBookPages() {
