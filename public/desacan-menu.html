@@ -1081,7 +1081,7 @@
                                     
                                     <!-- Video Embed Player Container with Click-to-Play Overlay -->
                                     <div class="mt-2 relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 shadow-md border border-slate-200 group">
-                                        <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/6iR8V5bBw64?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/RXV4X0cOIA0?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         
                                         <!-- Quick Click to Play Overlay (Langsung Berputar Otomatis Saat Diklik) -->
                                         <div id="videoPlayOverlay" onclick="playMicrolearningVideo(true)" class="absolute inset-0 bg-slate-950/45 hover:bg-slate-950/25 flex flex-col items-center justify-center cursor-pointer transition z-10">
@@ -1717,7 +1717,7 @@
 
             const currentSrc = iframe.getAttribute('src') || '';
             if (!currentSrc.includes('autoplay=1')) {
-                iframe.setAttribute('src', 'https://www.youtube.com/embed/6iR8V5bBw64?autoplay=1&enablejsapi=1&rel=0');
+                iframe.setAttribute('src', 'https://www.youtube.com/embed/RXV4X0cOIA0?autoplay=1&enablejsapi=1&rel=0');
             }
 
             try {
@@ -1739,7 +1739,7 @@
             const m = document.getElementById('videoTheaterModal');
             const iframe = document.getElementById('theaterVideoIframe');
             if (iframe) {
-                iframe.src = 'https://www.youtube.com/embed/6iR8V5bBw64?autoplay=1&enablejsapi=1&rel=0';
+                iframe.src = 'https://www.youtube.com/embed/RXV4X0cOIA0?autoplay=1&enablejsapi=1&rel=0';
             }
             if (m) {
                 m.classList.remove('hidden');
