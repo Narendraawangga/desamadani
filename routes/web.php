@@ -50,4 +50,47 @@ Route::get('/se2026', function () {
     return view('dashboard');
 });
 
+// Dashboard Menu Utama DESCAN (Desa Cantik - 6 Desa Binaan)
+Route::get('/descan', function () {
+    return view('desacan');
+});
+
+Route::get('/desacan', function () {
+    return view('desacan');
+});
+
+Route::get('/desa-cantik', function () {
+    return view('desacan');
+});
+
+// Halaman Login Akun Resmi Desa Cantik (DESCAN)
+Route::get('/descan/login', function () {
+    return view('desacan-login');
+});
+
+Route::get('/login', function () {
+    return view('desacan-login');
+});
+
+Route::get('/desacan/login', function () {
+    return view('desacan-login');
+});
+
+// Halaman Menu Utama Desa DESCAN (Detail Desa Binaan dengan Multi-Menu)
+Route::get('/descan/menu', function () {
+    return view('desacan-menu');
+});
+
+Route::get('/descan/desa/{slug?}', function () {
+    return view('desacan-menu');
+});
+
+Route::get('/desacan/menu', function () {
+    return view('desacan-menu');
+});
+
+Route::get('/desacan/desa/{slug?}', function () {
+    return view('desacan-menu');
+});
+
 

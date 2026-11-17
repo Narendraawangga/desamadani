@@ -235,8 +235,9 @@
                             Kabupaten Kolaka Utara
                         </div>
                     </div>
-                    <div class="hidden sm:flex items-center pl-2.5 border-l border-white/25 ml-1">
-                        <img src="/images/bps_kolaka_utara_logo.jpg" alt="BPS Kolut" class="h-5 w-auto object-contain rounded-md bg-white/90 p-0.5">
+                    <div class="hidden sm:flex items-center gap-1.5 pl-2.5 border-l border-white/25 ml-1">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
                     </div>
                 </button>
 
@@ -1226,6 +1227,8 @@
                     <ul class="space-y-1.5 text-slate-300">
                         <li><a href="/portal" class="hover:text-amber-300 font-bold transition flex items-center gap-1.5"><span>→ Web Utama & Peta WebGIS Desa</span></a></li>
                         <li><a href="/portal#sectionDesaPresisi" class="hover:text-amber-300 transition">Data Desa Presisi PODES</a></li>
+                        <li><a href="/descan" class="hover:text-amber-300 transition">Program Desa Cantik (DESCAN)</a></li>
+                        <li><a href="/portal#sectionAbout" class="hover:text-amber-300 transition">Tentang Inisiatif Desa Madani</a></li>
                         <li><a href="https://kolutkab.bps.go.id" target="_blank" class="hover:text-white transition">BPS Kabupaten Kolaka Utara</a></li>
                         <li><a href="https://kolakautarakab.go.id" target="_blank" class="hover:text-white transition">Pemerintah Kabupaten Kolaka Utara</a></li>
                     </ul>

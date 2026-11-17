@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-            <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,11 +40,17 @@
         }
     </script>
 
-    <!-- Local Leaflet CSS (Offline & Instant) -->
+    <!-- Local Leaflet CSS (Offline & Instant) with CDN fallback -->
     <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    <!-- Local Leaflet JS (MUST LOAD IN HEAD) -->
+    <!-- Local Leaflet JS (MUST LOAD IN HEAD) with CDN fallback -->
     <script src="/vendor/leaflet/leaflet.js"></script>
+    <script>
+        if (typeof L === 'undefined') {
+            document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');
+        }
+    </script>
 
     <!-- Local Chart.js (Offline & Instant) with CDN fallback -->
     <script src="/vendor/chart.umd.min.js"></script>
@@ -56,1822 +62,7 @@
 
     <!-- EMBEDDED GEOJSON DATA (Instant Zero-Latency Loading) -->
     <script>
-        window.KOLAKA_UTARA_GEOJSON = {
-    "type": "FeatureCollection",
-    "name": "Kecamatan_Kolaka_Utara_SE2026",
-    "crs": {
-        "type": "name",
-        "properties": {
-            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-        }
-    },
-    "features": [
-        {
-            "type": "Feature",
-            "id": "74.08.01",
-            "properties": {
-                "kode": "74.08.01",
-                "kecamatan": "Lasusua",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.5291005191214335,
-                "lng": 120.98547604785591,
-                "nama": "Lasusua",
-                "responden": 6420,
-                "target": 6500,
-                "progres": 98.77,
-                "sls_selesai": 45,
-                "target_sls": 48,
-                "geotag": 99.1,
-                "ipd": 84.5,
-                "status_ipd": "Desa Mandiri \/ Sangat Maju",
-                "potensi_utama": "Pusat Perdagangan, Jasa, Perikanan Tangkap & Wisata Bahari",
-                "komoditas_unggulan": "Kakao, Ikan Cakalang, Kuliner Bahari, Olahan Cokelat",
-                "desa_count": 12,
-                "mandiri_count": 6,
-                "maju_count": 5,
-                "berkembang_count": 1,
-                "luas_ha": 28420,
-                "odtw_wisata": "Pantai Berova, Taman Kota Lasusua, Wisata Mangrove"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.92699487921038,
-                            -3.4677419604230977
-                        ],
-                        [
-                            121.05527312815241,
-                            -3.496648919312122
-                        ],
-                        [
-                            121.1246902437598,
-                            -3.4913264292712256
-                        ],
-                        [
-                            121.15087845137953,
-                            -3.5080168589908
-                        ],
-                        [
-                            121.07256535810484,
-                            -3.5554385268664532
-                        ],
-                        [
-                            120.9662799452633,
-                            -3.5986588139530795
-                        ],
-                        [
-                            120.95795465398419,
-                            -3.5955241981831705
-                        ],
-                        [
-                            120.96525641065489,
-                            -3.6107687509770017
-                        ],
-                        [
-                            120.9594726853162,
-                            -3.6263149139020925
-                        ],
-                        [
-                            120.94462979672778,
-                            -3.6202113141008
-                        ],
-                        [
-                            120.93450404382668,
-                            -3.59505675936191
-                        ],
-                        [
-                            120.90561159100218,
-                            -3.5762808521795364
-                        ],
-                        [
-                            120.89931956434646,
-                            -3.565682667421129
-                        ],
-                        [
-                            120.91086939730485,
-                            -3.567973538348042
-                        ],
-                        [
-                            120.88048958092952,
-                            -3.5296120571506435
-                        ],
-                        [
-                            120.8732574191946,
-                            -3.498789803106888
-                        ],
-                        [
-                            120.87004780806001,
-                            -3.4724717549674438
-                        ],
-                        [
-                            120.92699487921038,
-                            -3.4677419604230977
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.02",
-            "properties": {
-                "kode": "74.08.02",
-                "kecamatan": "Pakue",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.258386746136825,
-                "lng": 121.09855447454052,
-                "nama": "Pakue",
-                "responden": 3120,
-                "target": 3350,
-                "progres": 93.13,
-                "sls_selesai": 22,
-                "target_sls": 46,
-                "geotag": 96.5,
-                "ipd": 76.4,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Budidaya Tambak Udang & Bandeng, Perkebunan Kakao",
-                "komoditas_unggulan": "Udang Windu, Ikan Bandeng, Kakao, Kelapa Kopra",
-                "desa_count": 11,
-                "mandiri_count": 2,
-                "maju_count": 7,
-                "berkembang_count": 2,
-                "luas_ha": 24150,
-                "odtw_wisata": "Pantai Olo-oloho, Tambak Perikanan Rakyat"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.07437279127134,
-                            -3.19706218986812
-                        ],
-                        [
-                            121.19162675936752,
-                            -3.2708138407861043
-                        ],
-                        [
-                            121.1701288291822,
-                            -3.2961647427086405
-                        ],
-                        [
-                            121.16013671373844,
-                            -3.2929000418034207
-                        ],
-                        [
-                            121.15754288639516,
-                            -3.322153201908691
-                        ],
-                        [
-                            121.12151688969277,
-                            -3.3160335582020934
-                        ],
-                        [
-                            121.03819241065128,
-                            -3.2652797879318314
-                        ],
-                        [
-                            121.02407862223072,
-                            -3.2781228253081167
-                        ],
-                        [
-                            121.00913300858156,
-                            -3.2500885757271476
-                        ],
-                        [
-                            121.02052605463382,
-                            -3.2441356897102764
-                        ],
-                        [
-                            121.03071699129612,
-                            -3.2113004660436104
-                        ],
-                        [
-                            121.0497164186778,
-                            -3.1993529339906672
-                        ],
-                        [
-                            121.06579669795929,
-                            -3.206910884129968
-                        ],
-                        [
-                            121.07437279127134,
-                            -3.19706218986812
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.03",
-            "properties": {
-                "kode": "74.08.03",
-                "kecamatan": "Batu Putih",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.1115951860156743,
-                "lng": 121.21484486343414,
-                "nama": "Batu Putih",
-                "responden": 2840,
-                "target": 3010,
-                "progres": 94.35,
-                "sls_selesai": 19,
-                "target_sls": 42,
-                "geotag": 95.8,
-                "ipd": 75.2,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perikanan Tangkap, Perkebunan Kelapa & Potensi Bahari",
-                "komoditas_unggulan": "Ikan Karang, Kelapa Dalam, Kakao, Cengkeh",
-                "desa_count": 11,
-                "mandiri_count": 2,
-                "maju_count": 6,
-                "berkembang_count": 3,
-                "luas_ha": 31200,
-                "odtw_wisata": "Tanjung Batu Putih, Wisata Bahari Latowu"
-            },
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
-                    [
-                        [
-                            [
-                                121.04413702560328,
-                                -3.0312214893801865
-                            ],
-                            [
-                                121.04296948705223,
-                                -3.0306009113029404
-                            ],
-                            [
-                                121.04313079934695,
-                                -3.029797616167002
-                            ],
-                            [
-                                121.04436584460814,
-                                -3.030579032596222
-                            ],
-                            [
-                                121.04413702560328,
-                                -3.0312214893801865
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0549213619314,
-                                -3.02167431891462
-                            ],
-                            [
-                                121.05525861309457,
-                                -3.0216873590842965
-                            ],
-                            [
-                                121.05543901889564,
-                                -3.022023361988545
-                            ],
-                            [
-                                121.05501136788041,
-                                -3.0219553480608283
-                            ],
-                            [
-                                121.0549213619314,
-                                -3.02167431891462
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07353430026785,
-                                -2.9882502299640805
-                            ],
-                            [
-                                121.07271825364455,
-                                -2.9878286655604143
-                            ],
-                            [
-                                121.07274243101847,
-                                -2.9875804526757292
-                            ],
-                            [
-                                121.07353485784745,
-                                -2.9879303626960336
-                            ],
-                            [
-                                121.07353430026785,
-                                -2.9882502299640805
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0646602651592,
-                                -2.9802383011566462
-                            ],
-                            [
-                                121.0641495968265,
-                                -2.9818361329311642
-                            ],
-                            [
-                                121.0630553125527,
-                                -2.9817812850781706
-                            ],
-                            [
-                                121.06286169481143,
-                                -2.9811855606650397
-                            ],
-                            [
-                                121.0646602651592,
-                                -2.9802383011566462
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06497213295768,
-                                -2.9620259352486755
-                            ],
-                            [
-                                121.06453699058966,
-                                -2.9617091022931845
-                            ],
-                            [
-                                121.06483393323947,
-                                -2.961102015845313
-                            ],
-                            [
-                                121.06520446831166,
-                                -2.9615674842519297
-                            ],
-                            [
-                                121.06497213295768,
-                                -2.9620259352486755
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06400684743812,
-                                -2.9603894919814024
-                            ],
-                            [
-                                121.06371272326362,
-                                -2.960223870135451
-                            ],
-                            [
-                                121.06370632638595,
-                                -2.9600751195710586
-                            ],
-                            [
-                                121.06399966005631,
-                                -2.9602660213597574
-                            ],
-                            [
-                                121.06400684743812,
-                                -2.9603894919814024
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0645646366487,
-                                -2.9579215049734557
-                            ],
-                            [
-                                121.08514926212877,
-                                -2.979236106561018
-                            ],
-                            [
-                                121.10819099461878,
-                                -2.9813106635562576
-                            ],
-                            [
-                                121.10318246419945,
-                                -3.030315405331635
-                            ],
-                            [
-                                121.12509154913573,
-                                -3.0349079003792667
-                            ],
-                            [
-                                121.12368478822248,
-                                -3.04973855459059
-                            ],
-                            [
-                                121.13881386177036,
-                                -3.0499782751772386
-                            ],
-                            [
-                                121.12798014007149,
-                                -3.0705618637389875
-                            ],
-                            [
-                                121.13434861899361,
-                                -3.0757602734178136
-                            ],
-                            [
-                                121.21459759290462,
-                                -3.0889243390869296
-                            ],
-                            [
-                                121.23366158621332,
-                                -3.1082453973072006
-                            ],
-                            [
-                                121.32459376588963,
-                                -3.151836145721518
-                            ],
-                            [
-                                121.43814457940891,
-                                -3.1613322176077077
-                            ],
-                            [
-                                121.43644200179699,
-                                -3.202808090620863
-                            ],
-                            [
-                                121.30432036879006,
-                                -3.1817310251666413
-                            ],
-                            [
-                                121.14455564722539,
-                                -3.112319819903746
-                            ],
-                            [
-                                121.05764470963572,
-                                -3.0873405960915647
-                            ],
-                            [
-                                121.05846061506543,
-                                -3.059458626914079
-                            ],
-                            [
-                                121.04547380487224,
-                                -3.0507842341050946
-                            ],
-                            [
-                                121.04357916624554,
-                                -3.036636050213474
-                            ],
-                            [
-                                121.05613957098444,
-                                -3.0228461652183114
-                            ],
-                            [
-                                121.0643256238285,
-                                -3.037124365896716
-                            ],
-                            [
-                                121.0730465421642,
-                                -3.0324680603526417
-                            ],
-                            [
-                                121.0756665586648,
-                                -3.0090818812237785
-                            ],
-                            [
-                                121.08962477516332,
-                                -3.0157792332249755
-                            ],
-                            [
-                                121.09153258795868,
-                                -2.9967554153300853
-                            ],
-                            [
-                                121.07328489218412,
-                                -2.9983751590862653
-                            ],
-                            [
-                                121.07869941344723,
-                                -2.9814818027429624
-                            ],
-                            [
-                                121.0663273339394,
-                                -2.9834836639398645
-                            ],
-                            [
-                                121.06793540899196,
-                                -2.963334885896245
-                            ],
-                            [
-                                121.0645646366487,
-                                -2.9579215049734557
-                            ]
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.04",
-            "properties": {
-                "kode": "74.08.04",
-                "kecamatan": "Rante Angin",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.6135558542467545,
-                "lng": 121.06990363855061,
-                "nama": "Rante Angin",
-                "responden": 2410,
-                "target": 2580,
-                "progres": 93.41,
-                "sls_selesai": 18,
-                "target_sls": 39,
-                "geotag": 97.2,
-                "ipd": 76.9,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Kakao Rakyat & Padi Sawah Irigasi",
-                "komoditas_unggulan": "Biji Kakao, Beras Sawah, Ternak Sapi",
-                "desa_count": 7,
-                "mandiri_count": 2,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 18900,
-                "odtw_wisata": "Agrowisata Kakao Pohu, Lembah Rante Baru"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.16555875063591,
-                            -3.5406978093563453
-                        ],
-                        [
-                            121.18091362596317,
-                            -3.555347195316756
-                        ],
-                        [
-                            121.14212772231656,
-                            -3.570540877959104
-                        ],
-                        [
-                            121.13068177184641,
-                            -3.589364957326893
-                        ],
-                        [
-                            121.11493367335038,
-                            -3.594880431087006
-                        ],
-                        [
-                            121.07294580010864,
-                            -3.6353638527595535
-                        ],
-                        [
-                            121.0573903597774,
-                            -3.6339524099756773
-                        ],
-                        [
-                            121.04812596224338,
-                            -3.6601638021177223
-                        ],
-                        [
-                            121.02031632643741,
-                            -3.6844093014480563
-                        ],
-                        [
-                            120.98689588243906,
-                            -3.6480381980043717
-                        ],
-                        [
-                            121.01480175020072,
-                            -3.615397646084432
-                        ],
-                        [
-                            121.04927926542587,
-                            -3.6115211957465476
-                        ],
-                        [
-                            121.15457065401256,
-                            -3.538805139345641
-                        ],
-                        [
-                            121.16555875063591,
-                            -3.5406978093563453
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.05",
-            "properties": {
-                "kode": "74.08.05",
-                "kecamatan": "Kodeoha",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.411955589459265,
-                "lng": 121.00305444997728,
-                "nama": "Kodeoha",
-                "responden": 3650,
-                "target": 3780,
-                "progres": 96.56,
-                "sls_selesai": 26,
-                "target_sls": 52,
-                "geotag": 98,
-                "ipd": 78.8,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Sentra Utama Kakao Fermentasi & Perikanan Pesisir",
-                "komoditas_unggulan": "Kakao Super, Padi Sawah, Rumput Laut, Udang",
-                "desa_count": 15,
-                "mandiri_count": 4,
-                "maju_count": 9,
-                "berkembang_count": 2,
-                "luas_ha": 27500,
-                "odtw_wisata": "Pantai Mala-Mala, Sentra Biji Cokelat Meeto"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.94599552697207,
-                            -3.333900750818941
-                        ],
-                        [
-                            120.95354364392404,
-                            -3.3435724468109242
-                        ],
-                        [
-                            120.94888711534816,
-                            -3.3534925022771063
-                        ],
-                        [
-                            120.9623388840323,
-                            -3.3634885576507827
-                        ],
-                        [
-                            121.14533371457935,
-                            -3.4586442387405896
-                        ],
-                        [
-                            121.12376154535912,
-                            -3.4721738878146198
-                        ],
-                        [
-                            120.96111924685579,
-                            -3.4319499286462474
-                        ],
-                        [
-                            120.89615126357,
-                            -3.3858176538615794
-                        ],
-                        [
-                            120.94599552697207,
-                            -3.333900750818941
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.06",
-            "properties": {
-                "kode": "74.08.06",
-                "kecamatan": "Ngapa",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.3567661323175195,
-                "lng": 121.07454386878669,
-                "nama": "Ngapa",
-                "responden": 4230,
-                "target": 4420,
-                "progres": 95.7,
-                "sls_selesai": 31,
-                "target_sls": 64,
-                "geotag": 97.6,
-                "ipd": 79.1,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Lumbung Pangan (Padi\/Jagung) & Perkebunan Kakao",
-                "komoditas_unggulan": "Beras Organik, Jagung Hibrida, Kakao, Peternakan",
-                "desa_count": 12,
-                "mandiri_count": 3,
-                "maju_count": 7,
-                "berkembang_count": 2,
-                "luas_ha": 29400,
-                "odtw_wisata": "Hamparan Persawahan Lawolatu, Agrowisata Ngapa"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.03926466693088,
-                            -3.2673965869828407
-                        ],
-                        [
-                            121.12151688969277,
-                            -3.3160335582020934
-                        ],
-                        [
-                            121.15754288639516,
-                            -3.322153201908691
-                        ],
-                        [
-                            121.15155811131785,
-                            -3.32783259419881
-                        ],
-                        [
-                            121.15814980197183,
-                            -3.3392383242891697
-                        ],
-                        [
-                            121.14143607441531,
-                            -3.3652755087576907
-                        ],
-                        [
-                            121.13417673696688,
-                            -3.365776988717016
-                        ],
-                        [
-                            121.13565037506487,
-                            -3.389922523905284
-                        ],
-                        [
-                            121.1228622278096,
-                            -3.4111557728206208
-                        ],
-                        [
-                            121.15502405171867,
-                            -3.4357590719235986
-                        ],
-                        [
-                            121.14625875633658,
-                            -3.456164727819896
-                        ],
-                        [
-                            121.070812104595,
-                            -3.4252805068898056
-                        ],
-                        [
-                            121.01962187175207,
-                            -3.393481920054512
-                        ],
-                        [
-                            121.0167939517795,
-                            -3.3673571991753306
-                        ],
-                        [
-                            120.98339111830558,
-                            -3.318459704251893
-                        ],
-                        [
-                            121.00790108396791,
-                            -3.285238821614257
-                        ],
-                        [
-                            121.03382680916002,
-                            -3.2912313011835295
-                        ],
-                        [
-                            121.03420148291218,
-                            -3.283462809860737
-                        ],
-                        [
-                            121.02314240010173,
-                            -3.2792356751862144
-                        ],
-                        [
-                            121.03926466693088,
-                            -3.2673965869828407
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.07",
-            "properties": {
-                "kode": "74.08.07",
-                "kecamatan": "Wawo",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.6465338227676467,
-                "lng": 121.14461661413677,
-                "nama": "Wawo",
-                "responden": 2180,
-                "target": 2340,
-                "progres": 93.16,
-                "sls_selesai": 14,
-                "target_sls": 36,
-                "geotag": 96.2,
-                "ipd": 77.2,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Agrowisata Danau Biru & Perkebunan Cengkeh\/Kopi",
-                "komoditas_unggulan": "Cengkeh, Kopi Robusta, Kakao, Pariwisata Alam",
-                "desa_count": 7,
-                "mandiri_count": 2,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 25800,
-                "odtw_wisata": "Danau Biru Kolaka Utara, Arung Jeram Sungai Tinukari"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.17807617767357,
-                            -3.5555368326586745
-                        ],
-                        [
-                            121.23589610921817,
-                            -3.602632540359423
-                        ],
-                        [
-                            121.25272830266908,
-                            -3.657021738162655
-                        ],
-                        [
-                            121.13296448142569,
-                            -3.709467510916852
-                        ],
-                        [
-                            121.10265097566207,
-                            -3.745308020648565
-                        ],
-                        [
-                            121.08361131171273,
-                            -3.7144208103720757
-                        ],
-                        [
-                            121.02031632643741,
-                            -3.6844093014480563
-                        ],
-                        [
-                            121.04812596224338,
-                            -3.6601638021177223
-                        ],
-                        [
-                            121.0573903597774,
-                            -3.6339524099756773
-                        ],
-                        [
-                            121.07294580010864,
-                            -3.6353638527595535
-                        ],
-                        [
-                            121.11493367335038,
-                            -3.594880431087006
-                        ],
-                        [
-                            121.13068177184641,
-                            -3.589364957326893
-                        ],
-                        [
-                            121.14212772231656,
-                            -3.570540877959104
-                        ],
-                        [
-                            121.17807617767357,
-                            -3.5555368326586745
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.08",
-            "properties": {
-                "kode": "74.08.08",
-                "kecamatan": "Lambai",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.582217561433025,
-                "lng": 121.05022234090123,
-                "nama": "Lambai",
-                "responden": 1950,
-                "target": 2080,
-                "progres": 93.75,
-                "sls_selesai": 15,
-                "target_sls": 34,
-                "geotag": 98.4,
-                "ipd": 74.5,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Cengkeh, Minyak Nilam & Kakao",
-                "komoditas_unggulan": "Minyak Nilam, Bunga Cengkeh Kering, Kakao",
-                "desa_count": 7,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 17600,
-                "odtw_wisata": "Air Terjun Lambai, Kebun Cengkeh Perbukitan"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.1579702073592,
-                            -3.5369075257616487
-                        ],
-                        [
-                            121.05096906367146,
-                            -3.610626764213748
-                        ],
-                        [
-                            121.01480175020072,
-                            -3.615397646084432
-                        ],
-                        [
-                            120.98663004733885,
-                            -3.6475331531324855
-                        ],
-                        [
-                            120.9594726853162,
-                            -3.6263149139020925
-                        ],
-                        [
-                            120.96525641065489,
-                            -3.6107687509770017
-                        ],
-                        [
-                            120.95795465398419,
-                            -3.5955241981831705
-                        ],
-                        [
-                            120.9662799452633,
-                            -3.5986588139530795
-                        ],
-                        [
-                            121.07247174227712,
-                            -3.5554808471633237
-                        ],
-                        [
-                            121.15049288683736,
-                            -3.5098305550360465
-                        ],
-                        [
-                            121.1579702073592,
-                            -3.5369075257616487
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.09",
-            "properties": {
-                "kode": "74.08.09",
-                "kecamatan": "Watunohu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.2825588426024574,
-                "lng": 120.99028453929073,
-                "nama": "Watunohu",
-                "responden": 2010,
-                "target": 2120,
-                "progres": 94.81,
-                "sls_selesai": 16,
-                "target_sls": 35,
-                "geotag": 97.9,
-                "ipd": 75.6,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Hortikultura Sayur-Buah & Perkebunan Kakao",
-                "komoditas_unggulan": "Sayuran Dataran, Pisang, Kakao, Ternak Kambing",
-                "desa_count": 8,
-                "mandiri_count": 1,
-                "maju_count": 5,
-                "berkembang_count": 2,
-                "luas_ha": 16400,
-                "odtw_wisata": "Wisata Agro Buah Watunohu, Lembah Samaturu"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.01263691835914,
-                            -3.2475484091317526
-                        ],
-                        [
-                            121.01300330216077,
-                            -3.2597842881143606
-                        ],
-                        [
-                            121.03382680916002,
-                            -3.2912313011835295
-                        ],
-                        [
-                            121.00790108396791,
-                            -3.285238821614257
-                        ],
-                        [
-                            120.98372677856798,
-                            -3.318576622413161
-                        ],
-                        [
-                            120.97793901167609,
-                            -3.3108387970727904
-                        ],
-                        [
-                            120.95824036140357,
-                            -3.3136781600190375
-                        ],
-                        [
-                            120.95665780821139,
-                            -3.291961997648002
-                        ],
-                        [
-                            120.97246359282065,
-                            -3.264182072744404
-                        ],
-                        [
-                            121.01263691835914,
-                            -3.2475484091317526
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.10",
-            "properties": {
-                "kode": "74.08.10",
-                "kecamatan": "Pakue Tengah",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.1961948677730443,
-                "lng": 121.14906389955873,
-                "nama": "Pakue Tengah",
-                "responden": 2390,
-                "target": 2510,
-                "progres": 95.22,
-                "sls_selesai": 18,
-                "target_sls": 40,
-                "geotag": 96.8,
-                "ipd": 75.8,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Pariwisata Bahari Pasir Putih & Perkebunan Kakao",
-                "komoditas_unggulan": "Kelapa, Kakao, Ikan Tongkol\/Tenggiri",
-                "desa_count": 9,
-                "mandiri_count": 1,
-                "maju_count": 6,
-                "berkembang_count": 2,
-                "luas_ha": 20100,
-                "odtw_wisata": "Pantai Pasir Putih Majapahit, Teluk Salulotong"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.09842865325982,
-                            -3.1300660132358757
-                        ],
-                        [
-                            121.19234090920565,
-                            -3.175322508426973
-                        ],
-                        [
-                            121.27928308114929,
-                            -3.2266775456321852
-                        ],
-                        [
-                            121.22993899908556,
-                            -3.2275307387525345
-                        ],
-                        [
-                            121.22080220995406,
-                            -3.254353337136763
-                        ],
-                        [
-                            121.19161231355747,
-                            -3.2708077703622394
-                        ],
-                        [
-                            121.0796805755981,
-                            -3.198060061422666
-                        ],
-                        [
-                            121.06058194040429,
-                            -3.1955195449909866
-                        ],
-                        [
-                            121.05990754599657,
-                            -3.1342036617695044
-                        ],
-                        [
-                            121.09842865325982,
-                            -3.1300660132358757
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.11",
-            "properties": {
-                "kode": "74.08.11",
-                "kecamatan": "Pakue Utara",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.183828026037818,
-                "lng": 121.26312803635149,
-                "nama": "Pakue Utara",
-                "responden": 2780,
-                "target": 2960,
-                "progres": 93.92,
-                "sls_selesai": 20,
-                "target_sls": 45,
-                "geotag": 95.4,
-                "ipd": 74.9,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perikanan Tangkap & Kelapa Kopra",
-                "komoditas_unggulan": "Ikan Layang, Kopra Putih, Kakao",
-                "desa_count": 9,
-                "mandiri_count": 1,
-                "maju_count": 5,
-                "berkembang_count": 3,
-                "luas_ha": 21800,
-                "odtw_wisata": "Pelabuhan Rakyat Pakue, Pantai Matalle"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.07983694072232,
-                            -3.0896009269411593
-                        ],
-                        [
-                            121.27371995591125,
-                            -3.172324902572143
-                        ],
-                        [
-                            121.338705844699,
-                            -3.191042864636472
-                        ],
-                        [
-                            121.43644200179699,
-                            -3.202808090620863
-                        ],
-                        [
-                            121.43097223428128,
-                            -3.275444164916223
-                        ],
-                        [
-                            121.38136268224207,
-                            -3.2483670359099506
-                        ],
-                        [
-                            121.33784981331826,
-                            -3.2486849237701563
-                        ],
-                        [
-                            121.2954806679985,
-                            -3.2346154098732427
-                        ],
-                        [
-                            121.09968528314937,
-                            -3.1300611263199016
-                        ],
-                        [
-                            121.05990754599657,
-                            -3.1342036617695044
-                        ],
-                        [
-                            121.04499268916129,
-                            -3.1051180291736387
-                        ],
-                        [
-                            121.05764470963572,
-                            -3.0873405960915647
-                        ],
-                        [
-                            121.07983694072232,
-                            -3.0896009269411593
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.12",
-            "properties": {
-                "kode": "74.08.12",
-                "kecamatan": "Porehu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.0323520156018744,
-                "lng": 121.26410321738886,
-                "nama": "Porehu",
-                "responden": 2610,
-                "target": 2800,
-                "progres": 93.21,
-                "sls_selesai": 17,
-                "target_sls": 44,
-                "geotag": 94.9,
-                "ipd": 73.1,
-                "status_ipd": "Desa Berkembang",
-                "potensi_utama": "Perkebunan Cengkeh, Kopi & Wisata Alam Air Terjun",
-                "komoditas_unggulan": "Cengkeh Grade A, Kopi Organik, Madu Hutan",
-                "desa_count": 8,
-                "mandiri_count": 0,
-                "maju_count": 5,
-                "berkembang_count": 3,
-                "luas_ha": 33400,
-                "odtw_wisata": "Air Terjun Sarambu, Panorama Puncak Porehu"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.21349766898231,
-                            -2.8708776907527636
-                        ],
-                        [
-                            121.2259472637553,
-                            -2.8698254857575307
-                        ],
-                        [
-                            121.23071499979744,
-                            -2.886665999736067
-                        ],
-                        [
-                            121.24543100034043,
-                            -2.892703000243216
-                        ],
-                        [
-                            121.25198999973873,
-                            -2.9067109996128693
-                        ],
-                        [
-                            121.29731900007187,
-                            -2.926495000044156
-                        ],
-                        [
-                            121.29996299969275,
-                            -2.944133000437546
-                        ],
-                        [
-                            121.33025299987605,
-                            -2.9741210001839704
-                        ],
-                        [
-                            121.36121816608556,
-                            -2.9875703173162265
-                        ],
-                        [
-                            121.36960349430592,
-                            -3.0116934252113765
-                        ],
-                        [
-                            121.36094225588045,
-                            -3.05147801339956
-                        ],
-                        [
-                            121.38540311496183,
-                            -3.0776996731013924
-                        ],
-                        [
-                            121.38821087932865,
-                            -3.097401611295254
-                        ],
-                        [
-                            121.41205625139492,
-                            -3.109663765770108
-                        ],
-                        [
-                            121.41689131608143,
-                            -3.1430713989258834
-                        ],
-                        [
-                            121.43814457940891,
-                            -3.1613322176077077
-                        ],
-                        [
-                            121.32459376588963,
-                            -3.151836145721518
-                        ],
-                        [
-                            121.23366158621332,
-                            -3.1082453973072006
-                        ],
-                        [
-                            121.21459759290462,
-                            -3.0889243390869296
-                        ],
-                        [
-                            121.12798014007149,
-                            -3.0705618637389875
-                        ],
-                        [
-                            121.14040605299704,
-                            -3.052632114280584
-                        ],
-                        [
-                            121.12310424976135,
-                            -3.0491655155760213
-                        ],
-                        [
-                            121.123091774366,
-                            -3.0336263232961187
-                        ],
-                        [
-                            121.10318246419945,
-                            -3.030315405331635
-                        ],
-                        [
-                            121.10819099461878,
-                            -2.9813106635562576
-                        ],
-                        [
-                            121.15279654522442,
-                            -2.9854303373401763
-                        ],
-                        [
-                            121.16186366387706,
-                            -2.9813708371943335
-                        ],
-                        [
-                            121.15483731199242,
-                            -2.964806005892399
-                        ],
-                        [
-                            121.17800200069189,
-                            -2.9687141015745055
-                        ],
-                        [
-                            121.21105687207705,
-                            -2.8564287079184965
-                        ],
-                        [
-                            121.21349766898231,
-                            -2.8708776907527636
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.13",
-            "properties": {
-                "kode": "74.08.13",
-                "kecamatan": "Katoi",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.45543055051379,
-                "lng": 120.97682049094104,
-                "nama": "Katoi",
-                "responden": 2240,
-                "target": 2330,
-                "progres": 96.14,
-                "sls_selesai": 17,
-                "target_sls": 37,
-                "geotag": 98.7,
-                "ipd": 77.5,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Kampung Nelayan Pesisir & Sentra Kakao",
-                "komoditas_unggulan": "Ikan Teri, Kakao, Olahan Ikan Asin, Kelapa",
-                "desa_count": 6,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 15200,
-                "odtw_wisata": "Pantai Simbula, Dermaga Katoi"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.89642794989004,
-                            -3.3867896492228624
-                        ],
-                        [
-                            120.96111924685579,
-                            -3.4319499286462474
-                        ],
-                        [
-                            121.12376154535912,
-                            -3.4721738878146198
-                        ],
-                        [
-                            121.1246902437598,
-                            -3.4913264292712256
-                        ],
-                        [
-                            121.07147637803246,
-                            -3.498367181999811
-                        ],
-                        [
-                            120.92915162704605,
-                            -3.4674955299946646
-                        ],
-                        [
-                            120.87004780806001,
-                            -3.4724717549674438
-                        ],
-                        [
-                            120.86615499995332,
-                            -3.428826540912098
-                        ],
-                        [
-                            120.8959277505653,
-                            -3.4032588637055596
-                        ],
-                        [
-                            120.89642794989004,
-                            -3.3867896492228624
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.14",
-            "properties": {
-                "kode": "74.08.14",
-                "kecamatan": "Tiwu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.3504571131826464,
-                "lng": 120.98257508855353,
-                "nama": "Tiwu",
-                "responden": 1790,
-                "target": 1890,
-                "progres": 94.71,
-                "sls_selesai": 13,
-                "target_sls": 32,
-                "geotag": 97.5,
-                "ipd": 74,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Kakao, Kelapa & Rumput Laut",
-                "komoditas_unggulan": "Kakao, Rumput Laut Eucheuma, Kelapa",
-                "desa_count": 7,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 14700,
-                "odtw_wisata": "Pantai Tahibua, Sentra Budidaya Rumput Laut"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.97715738120826,
-                            -3.3108142177019317
-                        ],
-                        [
-                            121.0167939517795,
-                            -3.3673571991753306
-                        ],
-                        [
-                            121.01962176743064,
-                            -3.3934821044155115
-                        ],
-                        [
-                            120.94888711534816,
-                            -3.3534925022771063
-                        ],
-                        [
-                            120.95354364392404,
-                            -3.3435724468109242
-                        ],
-                        [
-                            120.94571883795402,
-                            -3.333407181296309
-                        ],
-                        [
-                            120.95699450898951,
-                            -3.3303372069964325
-                        ],
-                        [
-                            120.96018362367533,
-                            -3.312787813206967
-                        ],
-                        [
-                            120.97715738120826,
-                            -3.3108142177019317
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.15",
-            "properties": {
-                "kode": "74.08.15",
-                "kecamatan": "Tolala",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -2.878003988090792,
-                "lng": 121.11764338395923,
-                "nama": "Tolala",
-                "responden": 2689,
-                "target": 2678,
-                "progres": 100.41,
-                "sls_selesai": 14,
-                "target_sls": 36,
-                "geotag": 99.5,
-                "ipd": 72.8,
-                "status_ipd": "Desa Berkembang",
-                "potensi_utama": "Perikanan Bahari Teluk Bone & Hasil Hutan",
-                "komoditas_unggulan": "Ikan Tuna\/Cakalang, Madu Lebah Liar, Kakao",
-                "desa_count": 6,
-                "mandiri_count": 0,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 35600,
-                "odtw_wisata": "Teluk Tolala, Wisata Bahari Desa Bahari"
-            },
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
-                    [
-                        [
-                            [
-                                121.07601449827052,
-                                -2.9653982751102603
-                            ],
-                            [
-                                121.07576540315085,
-                                -2.9654546859849233
-                            ],
-                            [
-                                121.07574903009368,
-                                -2.965171409432969
-                            ],
-                            [
-                                121.0759808726192,
-                                -2.9651785320635327
-                            ],
-                            [
-                                121.07601449827052,
-                                -2.9653982751102603
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07042716867898,
-                                -2.961320983676387
-                            ],
-                            [
-                                121.06966787467275,
-                                -2.961042158768578
-                            ],
-                            [
-                                121.06990342690165,
-                                -2.9604129813739632
-                            ],
-                            [
-                                121.07055844721458,
-                                -2.960921379817762
-                            ],
-                            [
-                                121.07042716867898,
-                                -2.961320983676387
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07038893939807,
-                                -2.9576866020549915
-                            ],
-                            [
-                                121.0698638648256,
-                                -2.9575484284171694
-                            ],
-                            [
-                                121.07090602799087,
-                                -2.957293638790361
-                            ],
-                            [
-                                121.07094736622798,
-                                -2.957416049111316
-                            ],
-                            [
-                                121.07038893939807,
-                                -2.9576866020549915
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06595981159614,
-                                -2.956685354445483
-                            ],
-                            [
-                                121.0658493352787,
-                                -2.9564159562313534
-                            ],
-                            [
-                                121.06590198069193,
-                                -2.956359861918031
-                            ],
-                            [
-                                121.06604089537109,
-                                -2.956588214174701
-                            ],
-                            [
-                                121.06595981159614,
-                                -2.956685354445483
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                120.96761919856726,
-                                -2.8104134196435666
-                            ],
-                            [
-                                120.95769297465108,
-                                -2.815026125155498
-                            ],
-                            [
-                                120.95506010683857,
-                                -2.8110566939112687
-                            ],
-                            [
-                                120.96481325442824,
-                                -2.8074817233028284
-                            ],
-                            [
-                                120.96761919856726,
-                                -2.8104134196435666
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.09908918012161,
-                                -2.786598917705817
-                            ],
-                            [
-                                121.13052127703531,
-                                -2.7952968412761834
-                            ],
-                            [
-                                121.15320712800667,
-                                -2.8127038157284687
-                            ],
-                            [
-                                121.16506999968078,
-                                -2.8468110000275715
-                            ],
-                            [
-                                121.18659000012849,
-                                -2.842016000138244
-                            ],
-                            [
-                                121.2010030001884,
-                                -2.8571310001954657
-                            ],
-                            [
-                                121.21105687207705,
-                                -2.8564287079184965
-                            ],
-                            [
-                                121.17800200069189,
-                                -2.9687141015745055
-                            ],
-                            [
-                                121.15483731199242,
-                                -2.964806005892399
-                            ],
-                            [
-                                121.16186366387706,
-                                -2.9813708371943335
-                            ],
-                            [
-                                121.15279654522442,
-                                -2.9854303373401763
-                            ],
-                            [
-                                121.08514926212877,
-                                -2.979236106561018
-                            ],
-                            [
-                                121.07573463374638,
-                                -2.9730657033194916
-                            ],
-                            [
-                                121.06541899978708,
-                                -2.9595597351935794
-                            ],
-                            [
-                                121.08149458370815,
-                                -2.971901957209525
-                            ],
-                            [
-                                121.09066317736381,
-                                -2.9233423879408065
-                            ],
-                            [
-                                121.07856193498537,
-                                -2.9067306902691143
-                            ],
-                            [
-                                121.08010201589536,
-                                -2.895806398746231
-                            ],
-                            [
-                                121.07256152969092,
-                                -2.8983439716968746
-                            ],
-                            [
-                                121.07416678896618,
-                                -2.8566092000544927
-                            ],
-                            [
-                                121.06216415635083,
-                                -2.8589190583678032
-                            ],
-                            [
-                                121.06439978911908,
-                                -2.87753244906321
-                            ],
-                            [
-                                121.04623661792562,
-                                -2.86526822974497
-                            ],
-                            [
-                                121.03739818337954,
-                                -2.807710103438467
-                            ],
-                            [
-                                121.02731803779727,
-                                -2.849491520217441
-                            ],
-                            [
-                                121.01636409202933,
-                                -2.837915921682395
-                            ],
-                            [
-                                120.99162014525359,
-                                -2.840774579583126
-                            ],
-                            [
-                                121.01019435878266,
-                                -2.866442845061215
-                            ],
-                            [
-                                120.99033333591478,
-                                -2.8425000008742813
-                            ],
-                            [
-                                120.99489082305308,
-                                -2.8287034231244093
-                            ],
-                            [
-                                121.0214444441059,
-                                -2.8169444438309483
-                            ],
-                            [
-                                121.03196795995348,
-                                -2.7919060203465165
-                            ],
-                            [
-                                121.06833279422312,
-                                -2.78701581912469
-                            ],
-                            [
-                                121.08245986113377,
-                                -2.7732887535730697
-                            ],
-                            [
-                                121.09908918012161,
-                                -2.786598917705817
-                            ]
-                        ]
-                    ]
-                ]
-            }
-        }
-    ]
-};
+        window.KOLAKA_UTARA_GEOJSON = {!! file_get_contents(public_path('data/kolaka_utara_kecamatan.geojson')) !!};
     </script>
 
     <!-- PODES 2025 DATABASE & DESA PRESISI ENGINE -->
@@ -2131,35 +322,34 @@
         <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME -->
     <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all">
         <div class="w-full px-4 lg:px-10 py-3 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
-            <!-- Left: Logo Desa Madani -->
-            <a href="/" class="flex items-center gap-3 group">
-                <!-- Desa Madani Custom Vector Emblem -->
-                <div class="w-10 h-10 relative flex items-center justify-center shrink-0">
-                    <svg class="w-10 h-10 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" width="40" height="40" style="width: 40px; height: 40px; min-width: 40px; min-height: 40px;" viewBox="0 0 100 100" fill="none">
-                        <!-- Emerald Top-Left Wing / Leaf & Arch -->
-                        <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#059669"/>
-                        <!-- Navy Bottom-Right Base Wing -->
-                        <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#0b2545"/>
-                        <!-- Golden Central Spark -->
-                        <circle cx="50" cy="50" r="7" fill="#f59e0b"/>
-                        <circle cx="50" cy="50" r="3" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="text-xl sm:text-2xl font-black text-[#0b2545] leading-none tracking-tight">
-                        Desa <span class="text-[#0D6E5B]">Madani</span>
+            <!-- Left: Logo Kolaka Utara bersampingan dengan Logo BPS Kolut & Desa Madani Brand (Tombol Login) -->
+            <div class="flex items-center gap-3">
+                <button type="button" 
+                        id="btnBrandLoginTrigger" 
+                        onclick="openLoginModal()" 
+                        class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
+                        title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
+                    <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/80 px-2 py-1 rounded-xl">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain drop-shadow-xs">
+                        <div class="h-5 w-[1.5px] bg-slate-300"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain drop-shadow-xs">
                     </div>
-                    <div class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
-                        Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-[#0b2545] leading-none tracking-tight">
+                            Desa <span class="text-[#0D6E5B]">Madani</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
+                            Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
+                        </div>
                     </div>
-                </div>
-                <!-- Institutional BPS Partner Logo -->
-                <div class="hidden sm:flex items-center pl-3 ml-2 border-l border-slate-200">
-                    <img src="/images/bps_kolaka_utara_logo.jpg" alt="BPS Kolaka Utara" class="h-8 w-auto object-contain">
-                </div>
-            </a>
+                </button>
+                <!-- Institutional BPS Partner Link -->
+                <a href="/" class="hidden sm:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition" title="Kembali ke Beranda">
+                    <span class="text-[11px] font-black text-[#005ea6]">BPS Kolut</span>
+                </a>
+            </div>
 
-            <!-- Center/Right: Navigation Menu Links -->
+<!-- Center/Right: Navigation Menu Links -->
             <nav class="hidden md:flex items-center gap-6 text-[13px] font-semibold text-slate-700">
                 <a href="/" class="hover:text-[#0D6E5B] transition">Beranda</a>
                 <a href="#sectionAgregatKecamatan" class="hover:text-[#0D6E5B] transition flex items-center gap-1 text-slate-700"><span>Agregat 15 Kecamatan</span></a>
@@ -2167,7 +357,10 @@
                     <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                     <span>WebGIS Peta Spasial</span>
                 </a>
-                
+
+                <a href="/descan" class="hover:text-[#059669] transition">Desa Cantik (DESCAN)</a>
+                <a href="#sectionAbout" class="hover:text-[#059669] transition">Tentang Madani</a>
+
             </nav>
 
             <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
@@ -2893,8 +1086,8 @@
                         </div>
 
                         <!-- Leaflet Map Container -->
-                        <div id="presisiMapContainer" class="relative w-full rounded-xl overflow-hidden border border-slate-200 shadow-inner" style="height: 640px;">
-                            <div id="mapPresisi" class="w-full h-full z-10"></div>
+                        <div id="presisiMapContainer" class="relative w-full rounded-xl overflow-hidden border border-slate-200 shadow-inner" style="height: 640px; min-height: 640px; background-color: #0b192c;">
+                            <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 640px;"></div>
                         </div>
 
                         <!-- Interactive Guide Caption -->
@@ -3129,7 +1322,334 @@
         </section>
 
 
-        
+
+        <!-- ================================================================= -->
+        <!-- SECTION: PROGRAM DESA CANTIK (DESA CINTA STATISTIK) BPS KOLUT    -->
+        <!-- ================================================================= -->
+        <section id="sectionDesaCantik" class="scroll-mt-24 space-y-6">
+            <!-- Header Section -->
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-1.5 text-xs font-bold text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
+                        <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        <span>Program Quick Win BPS RI • Desa Cinta Statistik (Desa Cantik)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-[#0b2545] tracking-tight">
+                        Program Desa Cantik Kabupaten Kolaka Utara
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 max-w-3xl">
+                        Akselerasi pembinaan statistik sektoral pada tingkat desa dan kelurahan oleh BPS Kabupaten Kolaka Utara guna mewujudkan tata kelola Satu Data Indonesia, literasi data aparatur desa, serta perencanaan pembangunan berbasis bukti.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="/descan" class="text-xs bg-gradient-to-r from-emerald-600 to-[#0b2545] hover:from-emerald-500 hover:to-[#162d4a] text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm hover:shadow transition flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Dashboard DESCAN (6 Desa)</span>
+                        <svg class="w-3.5 h-3.5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="https://kolutkab.bps.go.id" target="_blank" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3 py-1.5 rounded-lg border border-slate-200 transition flex items-center gap-1">
+                        <span>Portal BPS</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Top Banner / Highlights Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="bg-gradient-to-br from-rose-50 to-white p-4 rounded-2xl border border-rose-100 shadow-2xs">
+                    <span class="text-[10px] font-bold text-rose-600 uppercase tracking-wider block">Target Pembinaan</span>
+                    <div class="text-2xl sm:text-3xl font-black text-[#0b2545] mt-1">133 Desa</div>
+                    <p class="text-[11px] text-slate-500 mt-0.5">15 Kecamatan Kolaka Utara</p>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-50 to-white p-4 rounded-2xl border border-emerald-100 shadow-2xs">
+                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block">Kaderisasi</span>
+                    <div class="text-2xl sm:text-3xl font-black text-emerald-800 mt-1">Agen Statistik</div>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Aparatur & Pemuda Desa</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-white p-4 rounded-2xl border border-blue-100 shadow-2xs">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider block">Prinsip Data</span>
+                    <div class="text-2xl sm:text-3xl font-black text-blue-800 mt-1">SDI Compliant</div>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Standar & Metadata Baku</p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-50 to-white p-4 rounded-2xl border border-amber-100 shadow-2xs">
+                    <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">Output Utama</span>
+                    <div class="text-2xl sm:text-3xl font-black text-amber-800 mt-1">Monografi & WebGIS</div>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Profil & Spasial Desa</p>
+                </div>
+            </div>
+
+            <!-- 4 Pillar Cards of Desa Cantik -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Pilar 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-rose-500">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">1. Peningkatan Literasi Statistik Desa</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Meningkatkan pemahaman perangkat desa dan komunitas lokal tentang pentingnya data statistik, tata cara pengumpulan data yang valid, serta pembentukan Agen Statistik Desa.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-rose-600 flex items-center gap-1">
+                        <span>Edukasi & Kapasitas SDM Desa</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-blue-600">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">2. Standardisasi & Metadata Baku</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Menerapkan kaidah Satu Data Indonesia (SDI), mencakup standarisasi konsep, variabel, klasifikasi, kode referensi desa, dan metadata kegiatan statistik agar data dapat diperbandingkan.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-blue-600 flex items-center gap-1">
+                        <span>Standar Satu Data Indonesia</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-emerald-600">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">3. Monografi & Diseminasi Digital</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Penyusunan buku monografi profil desa, booklet infografis statistik, dan integrasi data geospasial pada portal Desa Madani untuk kemudahan akses informasi publik secara terbuka.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-emerald-600 flex items-center gap-1">
+                        <span>Publikasi Profil & Portal Terpadu</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 4 -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-amber-500">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">4. Kebijakan Berbasis Bukti (Evidence-Based)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Pemanfaatan data statistik desa untuk perencanaan Musrenbangdes, pengentasan kemiskinan ekstrem, penanganan stunting, dan ketepatan sasaran alokasi Dana Desa (APBDes).
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-amber-600 flex items-center gap-1">
+                        <span>Pembangunan Tepat Sasaran</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Showcase Desa Cantik Binaan di Kolaka Utara -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                    <div>
+                        <h3 class="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                            <span>Model Percontohan & Tahapan Pembinaan Desa Cantik Kolaka Utara</span>
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">Desa-desa percontohan dengan implementasi tata kelola statistik terpadu di Kolaka Utara</p>
+                    </div>
+                    <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                        Model Kolaboratif BPS & Pemkab Kolut
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-xl border border-rose-100 bg-rose-50/40 space-y-3 hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-rose-700 bg-rose-100 px-2 py-0.5 rounded-md">Percontohan Utama</span>
+                            <span class="text-[10px] text-slate-500">Kec. Lasusua</span>
+                        </div>
+                        <h4 class="font-black text-slate-900 text-base">Desa Lasusua</h4>
+                        <p class="text-xs text-slate-600">Pusat pemerintahan dengan kelengkapan monografi digital, registrasi sosial ekonomi keluarga madani, dan integrasi ortofoto pemukiman.</p>
+                        <div class="pt-2 border-t border-rose-100 flex items-center justify-between text-xs">
+                            <span class="font-bold text-emerald-700 flex items-center gap-1">✓ Agen Statistik Aktif</span>
+                            <a href="#sectionPeta" class="text-rose-600 hover:text-rose-700 font-bold hover:underline">Peta Spasial →</a>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl border border-emerald-100 bg-emerald-50/40 space-y-3 hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">Sentra Kakao</span>
+                            <span class="text-[10px] text-slate-500">Kec. Lambai</span>
+                        </div>
+                        <h4 class="font-black text-slate-900 text-base">Desa Lambai</h4>
+                        <p class="text-xs text-slate-600">Fokus pemetaan statistik potensi perkebunan kakao rakyat, data kelompok tani produktif, serta jalur distribusi logistik desa.</p>
+                        <div class="pt-2 border-t border-emerald-100 flex items-center justify-between text-xs">
+                            <span class="font-bold text-emerald-700 flex items-center gap-1">✓ Data Podes Valid</span>
+                            <a href="#sectionPeta" class="text-emerald-700 hover:text-emerald-800 font-bold hover:underline">Peta Spasial →</a>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl border border-blue-100 bg-blue-50/40 space-y-3 hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">Pesisir & Bahari</span>
+                            <span class="text-[10px] text-slate-500">Kec. Katoi</span>
+                        </div>
+                        <h4 class="font-black text-slate-900 text-base">Desa Tobaku</h4>
+                        <p class="text-xs text-slate-600">Sentra konektivitas pelabuhan penyeberangan feri, pendataan nelayan tangkap, dan potensi industri maritim pesisir teluk bone.</p>
+                        <div class="pt-2 border-t border-blue-100 flex items-center justify-between text-xs">
+                            <span class="font-bold text-blue-700 flex items-center gap-1">✓ Integrasi WebGIS</span>
+                            <a href="#sectionPeta" class="text-blue-600 hover:text-blue-700 font-bold hover:underline">Peta Spasial →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to action inside Desa Cantik -->
+                <div class="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                    <div class="flex items-center gap-2 text-slate-700">
+                        <svg class="w-4 h-4 text-rose-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+                        <span>Seluruh data indikator Desa Cantik terhubung secara langsung dengan modul <b>WebGIS Spasial</b> dan <b>11 Klaster Podes BPS</b>.</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="#sectionDataPodes" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition flex items-center gap-1 shadow-2xs">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H6v-2h4v2zm0-4H6v-2h4v2zm0-4H6V7h4v2zm7 8h-5v-2h5v2zm0-4h-5v-2h5v2zm0-4h-5V7h5v2z"/></svg>
+                            <span>Eksplorasi Data Podes</span>
+                        </a>
+                        <a href="#sectionPeta" class="px-3.5 py-1.5 rounded-lg bg-[#0b2545] hover:bg-[#162d4a] text-white font-bold transition flex items-center gap-1 shadow-2xs">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            <span>Buka WebGIS</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION: TENTANG DESA MADANI & 4 PILAR KEMANDIRIAN -->
+        <section id="sectionAbout" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 mb-1">
+                        <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+                        <span>Konsep & Metodologi Resmi Desa Madani</span>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-[#0b2545] tracking-tight">
+                        Tentang Inisiatif Desa Madani
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500">
+                        Inovasi terpadu memadukan data statistik potensi desa (Podes BPS) dan pemetaan spasial tematik untuk mewujudkan kemandirian dan kemakmuran desa di Kolaka Utara
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs bg-emerald-50 text-emerald-800 font-bold px-3 py-1.5 rounded-lg border border-emerald-200">
+                        Inisiator: Pemerintah Kab. Kolaka Utara
+                    </span>
+                    <span class="text-xs bg-blue-100 text-[#005ea6] font-bold px-3 py-1.5 rounded-lg border border-blue-200">
+                        Mitra Data: BPS Kab. Kolaka Utara
+                    </span>
+                </div>
+            </div>
+
+            <!-- 4 Pillar Cards of Desa Madani -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Pilar 1: Spasial Wilayah -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-emerald-600">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">1. Dimensi Spasial & Pemetaan Wilayah</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Akuisisi data spasial dan ortofoto resolusi tinggi untuk memetakan batas administrasi desa, tata guna lahan perkebunan kakao, zonasi pesisir, dan infrastruktur umum desa tanpa tumpang tindih.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                        <span>Akurasi Spasial Tinggi</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 2: Partisipasi Warga Madani -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-teal-600">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">2. Partisipasi Komunitas & Warga</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Menempatkan warga desa sebagai subjek aktif (*bottom-up*). Aparatur desa dan pemuda lokal dilatih melakukan pendataan mandiri, verifikasi lapangan, dan pemeliharaan data berkelanjutan.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-teal-700 flex items-center gap-1">
+                        <span>Kemandirian Warga Desa</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 3: Sensus Profil Keluarga Madani -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-[#005ea6]">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#005ea6] flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">3. Sensus Profil Keluarga Madani</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Pendataan profil keluarga secara menyeluruh (*by name, by address*). Menghimpun status sosial-ekonomi, pendidikan, faskes, sanitasi, dan penerima program perlindungan sosial.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-[#005ea6] flex items-center gap-1">
+                        <span>37.013 Kepala Keluarga</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 4: Analitik Pembangunan & Podes BPS -->
+                <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 p-5 flex flex-col justify-between transition-all duration-300 border-t-4 border-t-amber-500">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">4. Analitik Pembangunan Berbasis Data</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Pengolahan data spasial dan statistik Podes BPS secara terpadu untuk merumuskan kebijakan publik berbasis bukti nyata (*evidence-based policy*) demi akselerasi kemakmuran desa.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-amber-700 flex items-center gap-1">
+                        <span>Solusi Satu Data Kolaka Utara</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Visual Strip -->
+            <div class="bg-gradient-to-r from-[#0b2545] via-[#054e3b] to-[#022c22] text-white p-6 rounded-2xl shadow-md border border-emerald-500/30">
+                <div class="text-xs font-bold text-amber-300 uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span>Alur Kerja Implementasi Desa Madani Kolaka Utara</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+                    <div class="bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 transition">
+                        <span class="text-amber-300 font-bold block mb-1">Tahap 1</span>
+                        <b class="text-white block font-semibold">Pelatihan Warga</b>
+                        <span class="text-emerald-100 text-[11px]">Peningkatan kapasitas aparatur desa dan surveyor pemuda lokal.</span>
+                    </div>
+                    <div class="bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 transition">
+                        <span class="text-emerald-300 font-bold block mb-1">Tahap 2</span>
+                        <b class="text-white block font-semibold">Akuisisi Geospasial</b>
+                        <span class="text-emerald-100 text-[11px]">Pemetaan spasial dan ortofoto resolusi tinggi wilayah desa.</span>
+                    </div>
+                    <div class="bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 transition">
+                        <span class="text-teal-300 font-bold block mb-1">Tahap 3</span>
+                        <b class="text-white block font-semibold">Digitasi Partisipatif</b>
+                        <span class="text-emerald-100 text-[11px]">Musyawarah batas dusun/desa dan identifikasi fasilitas sosial desa.</span>
+                    </div>
+                    <div class="bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 transition">
+                        <span class="text-cyan-300 font-bold block mb-1">Tahap 4</span>
+                        <b class="text-white block font-semibold">Sensus Keluarga Madani</b>
+                        <span class="text-emerald-100 text-[11px]">Pendataan sensus keluarga door-to-door dengan geotagging akurat.</span>
+                    </div>
+                    <div class="bg-white/10 hover:bg-white/15 p-3 rounded-xl border border-white/10 transition">
+                        <span class="text-sky-300 font-bold block mb-1">Tahap 5</span>
+                        <b class="text-white block font-semibold">WebGIS & Monografi</b>
+                        <span class="text-emerald-100 text-[11px]">Penyajian peta analitik, profil desa, dan naskah monografi resmi.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
         
@@ -3153,7 +1673,9 @@
                 <div class="flex items-center gap-3 text-xs flex-wrap justify-center">
                     <a href="/" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">Beranda</a>
                     <a href="#sectionPeta" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">Madani WebGIS</a>
-                    <a href="#sectionDesaPresisi" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">Tentang Madani</a>
+<a href="#sectionDesaCantik" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">Desa Cantik</a>
+                    <a href="#sectionAbout" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">Tentang Madani</a>
+
                     <a href="https://kolutkab.bps.go.id" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition">Portal BPS</a>
                 </div>
             </div>
@@ -3224,6 +1746,131 @@
     </div>
 
     
+    <!-- =========================================================================
+         MODAL: FORM LOGIN PORTAL DESA MADANI (BPS KOLAKA UTARA)
+         ========================================================================= -->
+    <div id="modalLoginForm" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-fadeIn" style="display: none;">
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all duration-300">
+            
+            <!-- Top Gradient Header with Vector Emblem -->
+            <div class="relative bg-gradient-to-br from-[#064e3b] via-[#047857] to-[#0b2545] p-6 text-white text-center overflow-hidden">
+                <!-- Soft Glow Blur -->
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-400/30 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-amber-400/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Close Button -->
+                <button type="button" 
+                        onclick="closeLoginModal()" 
+                        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition focus:outline-none" 
+                        title="Tutup Form Login">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+
+                <!-- Desa Madani Emblem in Header -->
+                <div class="w-14 h-14 mx-auto mb-2 relative flex items-center justify-center bg-white/15 backdrop-blur-md rounded-2xl border border-white/25 shadow-inner">
+                    <svg class="w-10 h-10 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+                        <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#34d399"/>
+                        <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#93c5fd"/>
+                        <circle cx="50" cy="50" r="7" fill="#fbbf24"/>
+                        <circle cx="50" cy="50" r="3" fill="#ffffff"/>
+                    </svg>
+                </div>
+
+                <h3 class="text-xl font-black tracking-tight text-white">Desa <span class="text-emerald-300">Madani</span></h3>
+                <p class="text-xs text-emerald-100/90 font-medium mt-0.5">Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara</p>
+                <div class="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1 rounded-full bg-white/15 text-emerald-100 border border-white/20 text-[11px] font-semibold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Masuk Administrator & Operator</span>
+                </div>
+            </div>
+
+            <!-- Modal Body: Form Login -->
+            <div class="p-6 sm:p-7">
+                <!-- Alert Message Container -->
+                <div id="loginAlertBox" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold"></div>
+
+                <form id="formLoginModal" method="POST" action="/login" onsubmit="handleLoginSubmit(event)">
+                    @csrf
+                    
+                    <!-- Input Email / Username -->
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            <span>Email / Username</span>
+                        </label>
+                        <div class="relative">
+                            <input type="text" 
+                                   name="login" 
+                                   id="modalLoginUsername" 
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition" 
+                                   placeholder="Contoh: admin@bps.go.id" 
+                                   required 
+                                   autocomplete="username">
+                        </div>
+                    </div>
+
+                    <!-- Input Password -->
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                <span>Kata Sandi</span>
+                            </label>
+                            <span class="text-[11px] text-slate-400 hover:text-emerald-600 cursor-pointer transition" onclick="alert('Silakan hubungi BPS Kolaka Utara untuk bantuan akses akun.')">Lupa sandi?</span>
+                        </div>
+                        <div class="relative">
+                            <input type="password" 
+                                   name="password" 
+                                   id="modalLoginPassword" 
+                                   class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition pr-10" 
+                                   placeholder="••••••••" 
+                                   required 
+                                   autocomplete="current-password">
+                            <button type="button" 
+                                    onclick="togglePasswordVisibility('modalLoginPassword', this)" 
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 focus:outline-none"
+                                    title="Tampilkan / Sembunyikan Kata Sandi">
+                                <svg class="w-4 h-4 eye-icon-show" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me Checkbox -->
+                    <div class="flex items-center justify-between mb-5">
+                        <label class="flex items-center gap-2 text-xs text-slate-600 font-semibold cursor-pointer">
+                            <input type="checkbox" name="remember" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300">
+                            <span>Ingat Sesi Masuk</span>
+                        </label>
+                        <span class="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-bold border border-emerald-200/60">BPS Kolut</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            id="btnSubmitLogin" 
+                            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#059669] via-[#047857] to-[#0b2545] hover:from-[#047857] hover:to-[#061a33] text-white font-extrabold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 focus:outline-none">
+                        <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                        <span id="btnSubmitLoginText">Masuk ke Sistem</span>
+                    </button>
+                </form>
+
+                <!-- Demo / Fast Login Hint -->
+                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Akun: <code class="text-slate-700 bg-slate-100 px-1 py-0.2 rounded font-mono">admin@bps.go.id</code>
+                    </span>
+                    <button type="button" onclick="fillAdminDemo()" class="text-emerald-600 hover:text-emerald-800 font-bold hover:underline">Isi Otomatis</button>
+                </div>
+            </div>
+
+            <!-- Footer Logo Bar -->
+            <div class="px-6 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+                <span>Badan Pusat Statistik Kab. Kolaka Utara</span>
+                <span>© 2026 Desa Madani</span>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL: PORTAL MANAJEMEN & INPUT DATA DESA (ADMIN BPS KOLAKA UTARA) -->
     <div id="modalAdminPortal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-md animate-fadeIn">
         <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
@@ -3604,1822 +2251,7 @@
 
     <!-- EMBEDDED GEOJSON DATA (Instant Zero-Latency Loading) -->
     <script>
-        window.KOLAKA_UTARA_GEOJSON = {
-    "type": "FeatureCollection",
-    "name": "Kecamatan_Kolaka_Utara_SE2026",
-    "crs": {
-        "type": "name",
-        "properties": {
-            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-        }
-    },
-    "features": [
-        {
-            "type": "Feature",
-            "id": "74.08.01",
-            "properties": {
-                "kode": "74.08.01",
-                "kecamatan": "Lasusua",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.5291005191214335,
-                "lng": 120.98547604785591,
-                "nama": "Lasusua",
-                "responden": 6420,
-                "target": 6500,
-                "progres": 98.77,
-                "sls_selesai": 45,
-                "target_sls": 48,
-                "geotag": 99.1,
-                "ipd": 84.5,
-                "status_ipd": "Desa Mandiri \/ Sangat Maju",
-                "potensi_utama": "Pusat Perdagangan, Jasa, Perikanan Tangkap & Wisata Bahari",
-                "komoditas_unggulan": "Kakao, Ikan Cakalang, Kuliner Bahari, Olahan Cokelat",
-                "desa_count": 12,
-                "mandiri_count": 6,
-                "maju_count": 5,
-                "berkembang_count": 1,
-                "luas_ha": 28420,
-                "odtw_wisata": "Pantai Berova, Taman Kota Lasusua, Wisata Mangrove"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.92699487921038,
-                            -3.4677419604230977
-                        ],
-                        [
-                            121.05527312815241,
-                            -3.496648919312122
-                        ],
-                        [
-                            121.1246902437598,
-                            -3.4913264292712256
-                        ],
-                        [
-                            121.15087845137953,
-                            -3.5080168589908
-                        ],
-                        [
-                            121.07256535810484,
-                            -3.5554385268664532
-                        ],
-                        [
-                            120.9662799452633,
-                            -3.5986588139530795
-                        ],
-                        [
-                            120.95795465398419,
-                            -3.5955241981831705
-                        ],
-                        [
-                            120.96525641065489,
-                            -3.6107687509770017
-                        ],
-                        [
-                            120.9594726853162,
-                            -3.6263149139020925
-                        ],
-                        [
-                            120.94462979672778,
-                            -3.6202113141008
-                        ],
-                        [
-                            120.93450404382668,
-                            -3.59505675936191
-                        ],
-                        [
-                            120.90561159100218,
-                            -3.5762808521795364
-                        ],
-                        [
-                            120.89931956434646,
-                            -3.565682667421129
-                        ],
-                        [
-                            120.91086939730485,
-                            -3.567973538348042
-                        ],
-                        [
-                            120.88048958092952,
-                            -3.5296120571506435
-                        ],
-                        [
-                            120.8732574191946,
-                            -3.498789803106888
-                        ],
-                        [
-                            120.87004780806001,
-                            -3.4724717549674438
-                        ],
-                        [
-                            120.92699487921038,
-                            -3.4677419604230977
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.02",
-            "properties": {
-                "kode": "74.08.02",
-                "kecamatan": "Pakue",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.258386746136825,
-                "lng": 121.09855447454052,
-                "nama": "Pakue",
-                "responden": 3120,
-                "target": 3350,
-                "progres": 93.13,
-                "sls_selesai": 22,
-                "target_sls": 46,
-                "geotag": 96.5,
-                "ipd": 76.4,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Budidaya Tambak Udang & Bandeng, Perkebunan Kakao",
-                "komoditas_unggulan": "Udang Windu, Ikan Bandeng, Kakao, Kelapa Kopra",
-                "desa_count": 11,
-                "mandiri_count": 2,
-                "maju_count": 7,
-                "berkembang_count": 2,
-                "luas_ha": 24150,
-                "odtw_wisata": "Pantai Olo-oloho, Tambak Perikanan Rakyat"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.07437279127134,
-                            -3.19706218986812
-                        ],
-                        [
-                            121.19162675936752,
-                            -3.2708138407861043
-                        ],
-                        [
-                            121.1701288291822,
-                            -3.2961647427086405
-                        ],
-                        [
-                            121.16013671373844,
-                            -3.2929000418034207
-                        ],
-                        [
-                            121.15754288639516,
-                            -3.322153201908691
-                        ],
-                        [
-                            121.12151688969277,
-                            -3.3160335582020934
-                        ],
-                        [
-                            121.03819241065128,
-                            -3.2652797879318314
-                        ],
-                        [
-                            121.02407862223072,
-                            -3.2781228253081167
-                        ],
-                        [
-                            121.00913300858156,
-                            -3.2500885757271476
-                        ],
-                        [
-                            121.02052605463382,
-                            -3.2441356897102764
-                        ],
-                        [
-                            121.03071699129612,
-                            -3.2113004660436104
-                        ],
-                        [
-                            121.0497164186778,
-                            -3.1993529339906672
-                        ],
-                        [
-                            121.06579669795929,
-                            -3.206910884129968
-                        ],
-                        [
-                            121.07437279127134,
-                            -3.19706218986812
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.03",
-            "properties": {
-                "kode": "74.08.03",
-                "kecamatan": "Batu Putih",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.1115951860156743,
-                "lng": 121.21484486343414,
-                "nama": "Batu Putih",
-                "responden": 2840,
-                "target": 3010,
-                "progres": 94.35,
-                "sls_selesai": 19,
-                "target_sls": 42,
-                "geotag": 95.8,
-                "ipd": 75.2,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perikanan Tangkap, Perkebunan Kelapa & Potensi Bahari",
-                "komoditas_unggulan": "Ikan Karang, Kelapa Dalam, Kakao, Cengkeh",
-                "desa_count": 11,
-                "mandiri_count": 2,
-                "maju_count": 6,
-                "berkembang_count": 3,
-                "luas_ha": 31200,
-                "odtw_wisata": "Tanjung Batu Putih, Wisata Bahari Latowu"
-            },
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
-                    [
-                        [
-                            [
-                                121.04413702560328,
-                                -3.0312214893801865
-                            ],
-                            [
-                                121.04296948705223,
-                                -3.0306009113029404
-                            ],
-                            [
-                                121.04313079934695,
-                                -3.029797616167002
-                            ],
-                            [
-                                121.04436584460814,
-                                -3.030579032596222
-                            ],
-                            [
-                                121.04413702560328,
-                                -3.0312214893801865
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0549213619314,
-                                -3.02167431891462
-                            ],
-                            [
-                                121.05525861309457,
-                                -3.0216873590842965
-                            ],
-                            [
-                                121.05543901889564,
-                                -3.022023361988545
-                            ],
-                            [
-                                121.05501136788041,
-                                -3.0219553480608283
-                            ],
-                            [
-                                121.0549213619314,
-                                -3.02167431891462
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07353430026785,
-                                -2.9882502299640805
-                            ],
-                            [
-                                121.07271825364455,
-                                -2.9878286655604143
-                            ],
-                            [
-                                121.07274243101847,
-                                -2.9875804526757292
-                            ],
-                            [
-                                121.07353485784745,
-                                -2.9879303626960336
-                            ],
-                            [
-                                121.07353430026785,
-                                -2.9882502299640805
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0646602651592,
-                                -2.9802383011566462
-                            ],
-                            [
-                                121.0641495968265,
-                                -2.9818361329311642
-                            ],
-                            [
-                                121.0630553125527,
-                                -2.9817812850781706
-                            ],
-                            [
-                                121.06286169481143,
-                                -2.9811855606650397
-                            ],
-                            [
-                                121.0646602651592,
-                                -2.9802383011566462
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06497213295768,
-                                -2.9620259352486755
-                            ],
-                            [
-                                121.06453699058966,
-                                -2.9617091022931845
-                            ],
-                            [
-                                121.06483393323947,
-                                -2.961102015845313
-                            ],
-                            [
-                                121.06520446831166,
-                                -2.9615674842519297
-                            ],
-                            [
-                                121.06497213295768,
-                                -2.9620259352486755
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06400684743812,
-                                -2.9603894919814024
-                            ],
-                            [
-                                121.06371272326362,
-                                -2.960223870135451
-                            ],
-                            [
-                                121.06370632638595,
-                                -2.9600751195710586
-                            ],
-                            [
-                                121.06399966005631,
-                                -2.9602660213597574
-                            ],
-                            [
-                                121.06400684743812,
-                                -2.9603894919814024
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.0645646366487,
-                                -2.9579215049734557
-                            ],
-                            [
-                                121.08514926212877,
-                                -2.979236106561018
-                            ],
-                            [
-                                121.10819099461878,
-                                -2.9813106635562576
-                            ],
-                            [
-                                121.10318246419945,
-                                -3.030315405331635
-                            ],
-                            [
-                                121.12509154913573,
-                                -3.0349079003792667
-                            ],
-                            [
-                                121.12368478822248,
-                                -3.04973855459059
-                            ],
-                            [
-                                121.13881386177036,
-                                -3.0499782751772386
-                            ],
-                            [
-                                121.12798014007149,
-                                -3.0705618637389875
-                            ],
-                            [
-                                121.13434861899361,
-                                -3.0757602734178136
-                            ],
-                            [
-                                121.21459759290462,
-                                -3.0889243390869296
-                            ],
-                            [
-                                121.23366158621332,
-                                -3.1082453973072006
-                            ],
-                            [
-                                121.32459376588963,
-                                -3.151836145721518
-                            ],
-                            [
-                                121.43814457940891,
-                                -3.1613322176077077
-                            ],
-                            [
-                                121.43644200179699,
-                                -3.202808090620863
-                            ],
-                            [
-                                121.30432036879006,
-                                -3.1817310251666413
-                            ],
-                            [
-                                121.14455564722539,
-                                -3.112319819903746
-                            ],
-                            [
-                                121.05764470963572,
-                                -3.0873405960915647
-                            ],
-                            [
-                                121.05846061506543,
-                                -3.059458626914079
-                            ],
-                            [
-                                121.04547380487224,
-                                -3.0507842341050946
-                            ],
-                            [
-                                121.04357916624554,
-                                -3.036636050213474
-                            ],
-                            [
-                                121.05613957098444,
-                                -3.0228461652183114
-                            ],
-                            [
-                                121.0643256238285,
-                                -3.037124365896716
-                            ],
-                            [
-                                121.0730465421642,
-                                -3.0324680603526417
-                            ],
-                            [
-                                121.0756665586648,
-                                -3.0090818812237785
-                            ],
-                            [
-                                121.08962477516332,
-                                -3.0157792332249755
-                            ],
-                            [
-                                121.09153258795868,
-                                -2.9967554153300853
-                            ],
-                            [
-                                121.07328489218412,
-                                -2.9983751590862653
-                            ],
-                            [
-                                121.07869941344723,
-                                -2.9814818027429624
-                            ],
-                            [
-                                121.0663273339394,
-                                -2.9834836639398645
-                            ],
-                            [
-                                121.06793540899196,
-                                -2.963334885896245
-                            ],
-                            [
-                                121.0645646366487,
-                                -2.9579215049734557
-                            ]
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.04",
-            "properties": {
-                "kode": "74.08.04",
-                "kecamatan": "Rante Angin",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.6135558542467545,
-                "lng": 121.06990363855061,
-                "nama": "Rante Angin",
-                "responden": 2410,
-                "target": 2580,
-                "progres": 93.41,
-                "sls_selesai": 18,
-                "target_sls": 39,
-                "geotag": 97.2,
-                "ipd": 76.9,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Kakao Rakyat & Padi Sawah Irigasi",
-                "komoditas_unggulan": "Biji Kakao, Beras Sawah, Ternak Sapi",
-                "desa_count": 7,
-                "mandiri_count": 2,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 18900,
-                "odtw_wisata": "Agrowisata Kakao Pohu, Lembah Rante Baru"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.16555875063591,
-                            -3.5406978093563453
-                        ],
-                        [
-                            121.18091362596317,
-                            -3.555347195316756
-                        ],
-                        [
-                            121.14212772231656,
-                            -3.570540877959104
-                        ],
-                        [
-                            121.13068177184641,
-                            -3.589364957326893
-                        ],
-                        [
-                            121.11493367335038,
-                            -3.594880431087006
-                        ],
-                        [
-                            121.07294580010864,
-                            -3.6353638527595535
-                        ],
-                        [
-                            121.0573903597774,
-                            -3.6339524099756773
-                        ],
-                        [
-                            121.04812596224338,
-                            -3.6601638021177223
-                        ],
-                        [
-                            121.02031632643741,
-                            -3.6844093014480563
-                        ],
-                        [
-                            120.98689588243906,
-                            -3.6480381980043717
-                        ],
-                        [
-                            121.01480175020072,
-                            -3.615397646084432
-                        ],
-                        [
-                            121.04927926542587,
-                            -3.6115211957465476
-                        ],
-                        [
-                            121.15457065401256,
-                            -3.538805139345641
-                        ],
-                        [
-                            121.16555875063591,
-                            -3.5406978093563453
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.05",
-            "properties": {
-                "kode": "74.08.05",
-                "kecamatan": "Kodeoha",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.411955589459265,
-                "lng": 121.00305444997728,
-                "nama": "Kodeoha",
-                "responden": 3650,
-                "target": 3780,
-                "progres": 96.56,
-                "sls_selesai": 26,
-                "target_sls": 52,
-                "geotag": 98,
-                "ipd": 78.8,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Sentra Utama Kakao Fermentasi & Perikanan Pesisir",
-                "komoditas_unggulan": "Kakao Super, Padi Sawah, Rumput Laut, Udang",
-                "desa_count": 15,
-                "mandiri_count": 4,
-                "maju_count": 9,
-                "berkembang_count": 2,
-                "luas_ha": 27500,
-                "odtw_wisata": "Pantai Mala-Mala, Sentra Biji Cokelat Meeto"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.94599552697207,
-                            -3.333900750818941
-                        ],
-                        [
-                            120.95354364392404,
-                            -3.3435724468109242
-                        ],
-                        [
-                            120.94888711534816,
-                            -3.3534925022771063
-                        ],
-                        [
-                            120.9623388840323,
-                            -3.3634885576507827
-                        ],
-                        [
-                            121.14533371457935,
-                            -3.4586442387405896
-                        ],
-                        [
-                            121.12376154535912,
-                            -3.4721738878146198
-                        ],
-                        [
-                            120.96111924685579,
-                            -3.4319499286462474
-                        ],
-                        [
-                            120.89615126357,
-                            -3.3858176538615794
-                        ],
-                        [
-                            120.94599552697207,
-                            -3.333900750818941
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.06",
-            "properties": {
-                "kode": "74.08.06",
-                "kecamatan": "Ngapa",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.3567661323175195,
-                "lng": 121.07454386878669,
-                "nama": "Ngapa",
-                "responden": 4230,
-                "target": 4420,
-                "progres": 95.7,
-                "sls_selesai": 31,
-                "target_sls": 64,
-                "geotag": 97.6,
-                "ipd": 79.1,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Lumbung Pangan (Padi\/Jagung) & Perkebunan Kakao",
-                "komoditas_unggulan": "Beras Organik, Jagung Hibrida, Kakao, Peternakan",
-                "desa_count": 12,
-                "mandiri_count": 3,
-                "maju_count": 7,
-                "berkembang_count": 2,
-                "luas_ha": 29400,
-                "odtw_wisata": "Hamparan Persawahan Lawolatu, Agrowisata Ngapa"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.03926466693088,
-                            -3.2673965869828407
-                        ],
-                        [
-                            121.12151688969277,
-                            -3.3160335582020934
-                        ],
-                        [
-                            121.15754288639516,
-                            -3.322153201908691
-                        ],
-                        [
-                            121.15155811131785,
-                            -3.32783259419881
-                        ],
-                        [
-                            121.15814980197183,
-                            -3.3392383242891697
-                        ],
-                        [
-                            121.14143607441531,
-                            -3.3652755087576907
-                        ],
-                        [
-                            121.13417673696688,
-                            -3.365776988717016
-                        ],
-                        [
-                            121.13565037506487,
-                            -3.389922523905284
-                        ],
-                        [
-                            121.1228622278096,
-                            -3.4111557728206208
-                        ],
-                        [
-                            121.15502405171867,
-                            -3.4357590719235986
-                        ],
-                        [
-                            121.14625875633658,
-                            -3.456164727819896
-                        ],
-                        [
-                            121.070812104595,
-                            -3.4252805068898056
-                        ],
-                        [
-                            121.01962187175207,
-                            -3.393481920054512
-                        ],
-                        [
-                            121.0167939517795,
-                            -3.3673571991753306
-                        ],
-                        [
-                            120.98339111830558,
-                            -3.318459704251893
-                        ],
-                        [
-                            121.00790108396791,
-                            -3.285238821614257
-                        ],
-                        [
-                            121.03382680916002,
-                            -3.2912313011835295
-                        ],
-                        [
-                            121.03420148291218,
-                            -3.283462809860737
-                        ],
-                        [
-                            121.02314240010173,
-                            -3.2792356751862144
-                        ],
-                        [
-                            121.03926466693088,
-                            -3.2673965869828407
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.07",
-            "properties": {
-                "kode": "74.08.07",
-                "kecamatan": "Wawo",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.6465338227676467,
-                "lng": 121.14461661413677,
-                "nama": "Wawo",
-                "responden": 2180,
-                "target": 2340,
-                "progres": 93.16,
-                "sls_selesai": 14,
-                "target_sls": 36,
-                "geotag": 96.2,
-                "ipd": 77.2,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Agrowisata Danau Biru & Perkebunan Cengkeh\/Kopi",
-                "komoditas_unggulan": "Cengkeh, Kopi Robusta, Kakao, Pariwisata Alam",
-                "desa_count": 7,
-                "mandiri_count": 2,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 25800,
-                "odtw_wisata": "Danau Biru Kolaka Utara, Arung Jeram Sungai Tinukari"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.17807617767357,
-                            -3.5555368326586745
-                        ],
-                        [
-                            121.23589610921817,
-                            -3.602632540359423
-                        ],
-                        [
-                            121.25272830266908,
-                            -3.657021738162655
-                        ],
-                        [
-                            121.13296448142569,
-                            -3.709467510916852
-                        ],
-                        [
-                            121.10265097566207,
-                            -3.745308020648565
-                        ],
-                        [
-                            121.08361131171273,
-                            -3.7144208103720757
-                        ],
-                        [
-                            121.02031632643741,
-                            -3.6844093014480563
-                        ],
-                        [
-                            121.04812596224338,
-                            -3.6601638021177223
-                        ],
-                        [
-                            121.0573903597774,
-                            -3.6339524099756773
-                        ],
-                        [
-                            121.07294580010864,
-                            -3.6353638527595535
-                        ],
-                        [
-                            121.11493367335038,
-                            -3.594880431087006
-                        ],
-                        [
-                            121.13068177184641,
-                            -3.589364957326893
-                        ],
-                        [
-                            121.14212772231656,
-                            -3.570540877959104
-                        ],
-                        [
-                            121.17807617767357,
-                            -3.5555368326586745
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.08",
-            "properties": {
-                "kode": "74.08.08",
-                "kecamatan": "Lambai",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.582217561433025,
-                "lng": 121.05022234090123,
-                "nama": "Lambai",
-                "responden": 1950,
-                "target": 2080,
-                "progres": 93.75,
-                "sls_selesai": 15,
-                "target_sls": 34,
-                "geotag": 98.4,
-                "ipd": 74.5,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Cengkeh, Minyak Nilam & Kakao",
-                "komoditas_unggulan": "Minyak Nilam, Bunga Cengkeh Kering, Kakao",
-                "desa_count": 7,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 17600,
-                "odtw_wisata": "Air Terjun Lambai, Kebun Cengkeh Perbukitan"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.1579702073592,
-                            -3.5369075257616487
-                        ],
-                        [
-                            121.05096906367146,
-                            -3.610626764213748
-                        ],
-                        [
-                            121.01480175020072,
-                            -3.615397646084432
-                        ],
-                        [
-                            120.98663004733885,
-                            -3.6475331531324855
-                        ],
-                        [
-                            120.9594726853162,
-                            -3.6263149139020925
-                        ],
-                        [
-                            120.96525641065489,
-                            -3.6107687509770017
-                        ],
-                        [
-                            120.95795465398419,
-                            -3.5955241981831705
-                        ],
-                        [
-                            120.9662799452633,
-                            -3.5986588139530795
-                        ],
-                        [
-                            121.07247174227712,
-                            -3.5554808471633237
-                        ],
-                        [
-                            121.15049288683736,
-                            -3.5098305550360465
-                        ],
-                        [
-                            121.1579702073592,
-                            -3.5369075257616487
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.09",
-            "properties": {
-                "kode": "74.08.09",
-                "kecamatan": "Watunohu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.2825588426024574,
-                "lng": 120.99028453929073,
-                "nama": "Watunohu",
-                "responden": 2010,
-                "target": 2120,
-                "progres": 94.81,
-                "sls_selesai": 16,
-                "target_sls": 35,
-                "geotag": 97.9,
-                "ipd": 75.6,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Hortikultura Sayur-Buah & Perkebunan Kakao",
-                "komoditas_unggulan": "Sayuran Dataran, Pisang, Kakao, Ternak Kambing",
-                "desa_count": 8,
-                "mandiri_count": 1,
-                "maju_count": 5,
-                "berkembang_count": 2,
-                "luas_ha": 16400,
-                "odtw_wisata": "Wisata Agro Buah Watunohu, Lembah Samaturu"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.01263691835914,
-                            -3.2475484091317526
-                        ],
-                        [
-                            121.01300330216077,
-                            -3.2597842881143606
-                        ],
-                        [
-                            121.03382680916002,
-                            -3.2912313011835295
-                        ],
-                        [
-                            121.00790108396791,
-                            -3.285238821614257
-                        ],
-                        [
-                            120.98372677856798,
-                            -3.318576622413161
-                        ],
-                        [
-                            120.97793901167609,
-                            -3.3108387970727904
-                        ],
-                        [
-                            120.95824036140357,
-                            -3.3136781600190375
-                        ],
-                        [
-                            120.95665780821139,
-                            -3.291961997648002
-                        ],
-                        [
-                            120.97246359282065,
-                            -3.264182072744404
-                        ],
-                        [
-                            121.01263691835914,
-                            -3.2475484091317526
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.10",
-            "properties": {
-                "kode": "74.08.10",
-                "kecamatan": "Pakue Tengah",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.1961948677730443,
-                "lng": 121.14906389955873,
-                "nama": "Pakue Tengah",
-                "responden": 2390,
-                "target": 2510,
-                "progres": 95.22,
-                "sls_selesai": 18,
-                "target_sls": 40,
-                "geotag": 96.8,
-                "ipd": 75.8,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Pariwisata Bahari Pasir Putih & Perkebunan Kakao",
-                "komoditas_unggulan": "Kelapa, Kakao, Ikan Tongkol\/Tenggiri",
-                "desa_count": 9,
-                "mandiri_count": 1,
-                "maju_count": 6,
-                "berkembang_count": 2,
-                "luas_ha": 20100,
-                "odtw_wisata": "Pantai Pasir Putih Majapahit, Teluk Salulotong"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.09842865325982,
-                            -3.1300660132358757
-                        ],
-                        [
-                            121.19234090920565,
-                            -3.175322508426973
-                        ],
-                        [
-                            121.27928308114929,
-                            -3.2266775456321852
-                        ],
-                        [
-                            121.22993899908556,
-                            -3.2275307387525345
-                        ],
-                        [
-                            121.22080220995406,
-                            -3.254353337136763
-                        ],
-                        [
-                            121.19161231355747,
-                            -3.2708077703622394
-                        ],
-                        [
-                            121.0796805755981,
-                            -3.198060061422666
-                        ],
-                        [
-                            121.06058194040429,
-                            -3.1955195449909866
-                        ],
-                        [
-                            121.05990754599657,
-                            -3.1342036617695044
-                        ],
-                        [
-                            121.09842865325982,
-                            -3.1300660132358757
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.11",
-            "properties": {
-                "kode": "74.08.11",
-                "kecamatan": "Pakue Utara",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.183828026037818,
-                "lng": 121.26312803635149,
-                "nama": "Pakue Utara",
-                "responden": 2780,
-                "target": 2960,
-                "progres": 93.92,
-                "sls_selesai": 20,
-                "target_sls": 45,
-                "geotag": 95.4,
-                "ipd": 74.9,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perikanan Tangkap & Kelapa Kopra",
-                "komoditas_unggulan": "Ikan Layang, Kopra Putih, Kakao",
-                "desa_count": 9,
-                "mandiri_count": 1,
-                "maju_count": 5,
-                "berkembang_count": 3,
-                "luas_ha": 21800,
-                "odtw_wisata": "Pelabuhan Rakyat Pakue, Pantai Matalle"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.07983694072232,
-                            -3.0896009269411593
-                        ],
-                        [
-                            121.27371995591125,
-                            -3.172324902572143
-                        ],
-                        [
-                            121.338705844699,
-                            -3.191042864636472
-                        ],
-                        [
-                            121.43644200179699,
-                            -3.202808090620863
-                        ],
-                        [
-                            121.43097223428128,
-                            -3.275444164916223
-                        ],
-                        [
-                            121.38136268224207,
-                            -3.2483670359099506
-                        ],
-                        [
-                            121.33784981331826,
-                            -3.2486849237701563
-                        ],
-                        [
-                            121.2954806679985,
-                            -3.2346154098732427
-                        ],
-                        [
-                            121.09968528314937,
-                            -3.1300611263199016
-                        ],
-                        [
-                            121.05990754599657,
-                            -3.1342036617695044
-                        ],
-                        [
-                            121.04499268916129,
-                            -3.1051180291736387
-                        ],
-                        [
-                            121.05764470963572,
-                            -3.0873405960915647
-                        ],
-                        [
-                            121.07983694072232,
-                            -3.0896009269411593
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.12",
-            "properties": {
-                "kode": "74.08.12",
-                "kecamatan": "Porehu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.0323520156018744,
-                "lng": 121.26410321738886,
-                "nama": "Porehu",
-                "responden": 2610,
-                "target": 2800,
-                "progres": 93.21,
-                "sls_selesai": 17,
-                "target_sls": 44,
-                "geotag": 94.9,
-                "ipd": 73.1,
-                "status_ipd": "Desa Berkembang",
-                "potensi_utama": "Perkebunan Cengkeh, Kopi & Wisata Alam Air Terjun",
-                "komoditas_unggulan": "Cengkeh Grade A, Kopi Organik, Madu Hutan",
-                "desa_count": 8,
-                "mandiri_count": 0,
-                "maju_count": 5,
-                "berkembang_count": 3,
-                "luas_ha": 33400,
-                "odtw_wisata": "Air Terjun Sarambu, Panorama Puncak Porehu"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            121.21349766898231,
-                            -2.8708776907527636
-                        ],
-                        [
-                            121.2259472637553,
-                            -2.8698254857575307
-                        ],
-                        [
-                            121.23071499979744,
-                            -2.886665999736067
-                        ],
-                        [
-                            121.24543100034043,
-                            -2.892703000243216
-                        ],
-                        [
-                            121.25198999973873,
-                            -2.9067109996128693
-                        ],
-                        [
-                            121.29731900007187,
-                            -2.926495000044156
-                        ],
-                        [
-                            121.29996299969275,
-                            -2.944133000437546
-                        ],
-                        [
-                            121.33025299987605,
-                            -2.9741210001839704
-                        ],
-                        [
-                            121.36121816608556,
-                            -2.9875703173162265
-                        ],
-                        [
-                            121.36960349430592,
-                            -3.0116934252113765
-                        ],
-                        [
-                            121.36094225588045,
-                            -3.05147801339956
-                        ],
-                        [
-                            121.38540311496183,
-                            -3.0776996731013924
-                        ],
-                        [
-                            121.38821087932865,
-                            -3.097401611295254
-                        ],
-                        [
-                            121.41205625139492,
-                            -3.109663765770108
-                        ],
-                        [
-                            121.41689131608143,
-                            -3.1430713989258834
-                        ],
-                        [
-                            121.43814457940891,
-                            -3.1613322176077077
-                        ],
-                        [
-                            121.32459376588963,
-                            -3.151836145721518
-                        ],
-                        [
-                            121.23366158621332,
-                            -3.1082453973072006
-                        ],
-                        [
-                            121.21459759290462,
-                            -3.0889243390869296
-                        ],
-                        [
-                            121.12798014007149,
-                            -3.0705618637389875
-                        ],
-                        [
-                            121.14040605299704,
-                            -3.052632114280584
-                        ],
-                        [
-                            121.12310424976135,
-                            -3.0491655155760213
-                        ],
-                        [
-                            121.123091774366,
-                            -3.0336263232961187
-                        ],
-                        [
-                            121.10318246419945,
-                            -3.030315405331635
-                        ],
-                        [
-                            121.10819099461878,
-                            -2.9813106635562576
-                        ],
-                        [
-                            121.15279654522442,
-                            -2.9854303373401763
-                        ],
-                        [
-                            121.16186366387706,
-                            -2.9813708371943335
-                        ],
-                        [
-                            121.15483731199242,
-                            -2.964806005892399
-                        ],
-                        [
-                            121.17800200069189,
-                            -2.9687141015745055
-                        ],
-                        [
-                            121.21105687207705,
-                            -2.8564287079184965
-                        ],
-                        [
-                            121.21349766898231,
-                            -2.8708776907527636
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.13",
-            "properties": {
-                "kode": "74.08.13",
-                "kecamatan": "Katoi",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.45543055051379,
-                "lng": 120.97682049094104,
-                "nama": "Katoi",
-                "responden": 2240,
-                "target": 2330,
-                "progres": 96.14,
-                "sls_selesai": 17,
-                "target_sls": 37,
-                "geotag": 98.7,
-                "ipd": 77.5,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Kampung Nelayan Pesisir & Sentra Kakao",
-                "komoditas_unggulan": "Ikan Teri, Kakao, Olahan Ikan Asin, Kelapa",
-                "desa_count": 6,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 1,
-                "luas_ha": 15200,
-                "odtw_wisata": "Pantai Simbula, Dermaga Katoi"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.89642794989004,
-                            -3.3867896492228624
-                        ],
-                        [
-                            120.96111924685579,
-                            -3.4319499286462474
-                        ],
-                        [
-                            121.12376154535912,
-                            -3.4721738878146198
-                        ],
-                        [
-                            121.1246902437598,
-                            -3.4913264292712256
-                        ],
-                        [
-                            121.07147637803246,
-                            -3.498367181999811
-                        ],
-                        [
-                            120.92915162704605,
-                            -3.4674955299946646
-                        ],
-                        [
-                            120.87004780806001,
-                            -3.4724717549674438
-                        ],
-                        [
-                            120.86615499995332,
-                            -3.428826540912098
-                        ],
-                        [
-                            120.8959277505653,
-                            -3.4032588637055596
-                        ],
-                        [
-                            120.89642794989004,
-                            -3.3867896492228624
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.14",
-            "properties": {
-                "kode": "74.08.14",
-                "kecamatan": "Tiwu",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -3.3504571131826464,
-                "lng": 120.98257508855353,
-                "nama": "Tiwu",
-                "responden": 1790,
-                "target": 1890,
-                "progres": 94.71,
-                "sls_selesai": 13,
-                "target_sls": 32,
-                "geotag": 97.5,
-                "ipd": 74,
-                "status_ipd": "Desa Maju",
-                "potensi_utama": "Perkebunan Kakao, Kelapa & Rumput Laut",
-                "komoditas_unggulan": "Kakao, Rumput Laut Eucheuma, Kelapa",
-                "desa_count": 7,
-                "mandiri_count": 1,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 14700,
-                "odtw_wisata": "Pantai Tahibua, Sentra Budidaya Rumput Laut"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            120.97715738120826,
-                            -3.3108142177019317
-                        ],
-                        [
-                            121.0167939517795,
-                            -3.3673571991753306
-                        ],
-                        [
-                            121.01962176743064,
-                            -3.3934821044155115
-                        ],
-                        [
-                            120.94888711534816,
-                            -3.3534925022771063
-                        ],
-                        [
-                            120.95354364392404,
-                            -3.3435724468109242
-                        ],
-                        [
-                            120.94571883795402,
-                            -3.333407181296309
-                        ],
-                        [
-                            120.95699450898951,
-                            -3.3303372069964325
-                        ],
-                        [
-                            120.96018362367533,
-                            -3.312787813206967
-                        ],
-                        [
-                            120.97715738120826,
-                            -3.3108142177019317
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "74.08.15",
-            "properties": {
-                "kode": "74.08.15",
-                "kecamatan": "Tolala",
-                "kabupaten": "KOLAKA UTARA",
-                "provinsi": "SULAWESI TENGGARA",
-                "lat": -2.878003988090792,
-                "lng": 121.11764338395923,
-                "nama": "Tolala",
-                "responden": 2689,
-                "target": 2678,
-                "progres": 100.41,
-                "sls_selesai": 14,
-                "target_sls": 36,
-                "geotag": 99.5,
-                "ipd": 72.8,
-                "status_ipd": "Desa Berkembang",
-                "potensi_utama": "Perikanan Bahari Teluk Bone & Hasil Hutan",
-                "komoditas_unggulan": "Ikan Tuna\/Cakalang, Madu Lebah Liar, Kakao",
-                "desa_count": 6,
-                "mandiri_count": 0,
-                "maju_count": 4,
-                "berkembang_count": 2,
-                "luas_ha": 35600,
-                "odtw_wisata": "Teluk Tolala, Wisata Bahari Desa Bahari"
-            },
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
-                    [
-                        [
-                            [
-                                121.07601449827052,
-                                -2.9653982751102603
-                            ],
-                            [
-                                121.07576540315085,
-                                -2.9654546859849233
-                            ],
-                            [
-                                121.07574903009368,
-                                -2.965171409432969
-                            ],
-                            [
-                                121.0759808726192,
-                                -2.9651785320635327
-                            ],
-                            [
-                                121.07601449827052,
-                                -2.9653982751102603
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07042716867898,
-                                -2.961320983676387
-                            ],
-                            [
-                                121.06966787467275,
-                                -2.961042158768578
-                            ],
-                            [
-                                121.06990342690165,
-                                -2.9604129813739632
-                            ],
-                            [
-                                121.07055844721458,
-                                -2.960921379817762
-                            ],
-                            [
-                                121.07042716867898,
-                                -2.961320983676387
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.07038893939807,
-                                -2.9576866020549915
-                            ],
-                            [
-                                121.0698638648256,
-                                -2.9575484284171694
-                            ],
-                            [
-                                121.07090602799087,
-                                -2.957293638790361
-                            ],
-                            [
-                                121.07094736622798,
-                                -2.957416049111316
-                            ],
-                            [
-                                121.07038893939807,
-                                -2.9576866020549915
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.06595981159614,
-                                -2.956685354445483
-                            ],
-                            [
-                                121.0658493352787,
-                                -2.9564159562313534
-                            ],
-                            [
-                                121.06590198069193,
-                                -2.956359861918031
-                            ],
-                            [
-                                121.06604089537109,
-                                -2.956588214174701
-                            ],
-                            [
-                                121.06595981159614,
-                                -2.956685354445483
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                120.96761919856726,
-                                -2.8104134196435666
-                            ],
-                            [
-                                120.95769297465108,
-                                -2.815026125155498
-                            ],
-                            [
-                                120.95506010683857,
-                                -2.8110566939112687
-                            ],
-                            [
-                                120.96481325442824,
-                                -2.8074817233028284
-                            ],
-                            [
-                                120.96761919856726,
-                                -2.8104134196435666
-                            ]
-                        ]
-                    ],
-                    [
-                        [
-                            [
-                                121.09908918012161,
-                                -2.786598917705817
-                            ],
-                            [
-                                121.13052127703531,
-                                -2.7952968412761834
-                            ],
-                            [
-                                121.15320712800667,
-                                -2.8127038157284687
-                            ],
-                            [
-                                121.16506999968078,
-                                -2.8468110000275715
-                            ],
-                            [
-                                121.18659000012849,
-                                -2.842016000138244
-                            ],
-                            [
-                                121.2010030001884,
-                                -2.8571310001954657
-                            ],
-                            [
-                                121.21105687207705,
-                                -2.8564287079184965
-                            ],
-                            [
-                                121.17800200069189,
-                                -2.9687141015745055
-                            ],
-                            [
-                                121.15483731199242,
-                                -2.964806005892399
-                            ],
-                            [
-                                121.16186366387706,
-                                -2.9813708371943335
-                            ],
-                            [
-                                121.15279654522442,
-                                -2.9854303373401763
-                            ],
-                            [
-                                121.08514926212877,
-                                -2.979236106561018
-                            ],
-                            [
-                                121.07573463374638,
-                                -2.9730657033194916
-                            ],
-                            [
-                                121.06541899978708,
-                                -2.9595597351935794
-                            ],
-                            [
-                                121.08149458370815,
-                                -2.971901957209525
-                            ],
-                            [
-                                121.09066317736381,
-                                -2.9233423879408065
-                            ],
-                            [
-                                121.07856193498537,
-                                -2.9067306902691143
-                            ],
-                            [
-                                121.08010201589536,
-                                -2.895806398746231
-                            ],
-                            [
-                                121.07256152969092,
-                                -2.8983439716968746
-                            ],
-                            [
-                                121.07416678896618,
-                                -2.8566092000544927
-                            ],
-                            [
-                                121.06216415635083,
-                                -2.8589190583678032
-                            ],
-                            [
-                                121.06439978911908,
-                                -2.87753244906321
-                            ],
-                            [
-                                121.04623661792562,
-                                -2.86526822974497
-                            ],
-                            [
-                                121.03739818337954,
-                                -2.807710103438467
-                            ],
-                            [
-                                121.02731803779727,
-                                -2.849491520217441
-                            ],
-                            [
-                                121.01636409202933,
-                                -2.837915921682395
-                            ],
-                            [
-                                120.99162014525359,
-                                -2.840774579583126
-                            ],
-                            [
-                                121.01019435878266,
-                                -2.866442845061215
-                            ],
-                            [
-                                120.99033333591478,
-                                -2.8425000008742813
-                            ],
-                            [
-                                120.99489082305308,
-                                -2.8287034231244093
-                            ],
-                            [
-                                121.0214444441059,
-                                -2.8169444438309483
-                            ],
-                            [
-                                121.03196795995348,
-                                -2.7919060203465165
-                            ],
-                            [
-                                121.06833279422312,
-                                -2.78701581912469
-                            ],
-                            [
-                                121.08245986113377,
-                                -2.7732887535730697
-                            ],
-                            [
-                                121.09908918012161,
-                                -2.786598917705817
-                            ]
-                        ]
-                    ]
-                ]
-            }
-        }
-    ]
-};
+        window.KOLAKA_UTARA_GEOJSON = {!! file_get_contents(public_path('data/kolaka_utara_kecamatan.geojson')) !!};
     </script>
 
     <!-- Local Leaflet JS (Instant Load, Zero External Dependency) -->
@@ -7081,6 +3913,7 @@
             if (!villageMarkersGroup) return;
             villageMarkersGroup.clearLayers();
         }
+
 
         // Standalone Function: Build all village markers from active dataset (Semua tanda di peta dihilangkan)
         function buildAllVillageMarkers() {
@@ -8879,5 +5712,123 @@ https://kolutkab.bps.go.id/id/publication
     })();
     </script>
     <!-- MODAL: PREVIEW & RINGKASAN PUBLIKASI BPS -->
+    <!-- =========================================================================
+         LOGIN MODAL LOGIC SCRIPT
+         ========================================================================= -->
+    <script>
+        window.openLoginModal = function(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const modal = document.getElementById('modalLoginForm');
+            if (modal) {
+                modal.style.display = 'flex';
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('modalLoginUsername')?.focus();
+                }, 100);
+            }
+        };
+
+        window.closeLoginModal = function() {
+            const modal = document.getElementById('modalLoginForm');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+                const alertBox = document.getElementById('loginAlertBox');
+                if (alertBox) {
+                    alertBox.classList.add('hidden');
+                    alertBox.innerHTML = '';
+                }
+            }
+        };
+
+        window.togglePasswordVisibility = function(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = `<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>`;
+            } else {
+                input.type = 'password';
+                btn.innerHTML = `<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`;
+            }
+        };
+
+        window.fillAdminDemo = function() {
+            const userInput = document.getElementById('modalLoginUsername');
+            const passInput = document.getElementById('modalLoginPassword');
+            if (userInput) userInput.value = 'admin@bps.go.id';
+            if (passInput) passInput.value = 'bps7408';
+        };
+
+        window.handleLoginSubmit = async function(e) {
+            e.preventDefault();
+            const form = document.getElementById('formLoginModal');
+            const alertBox = document.getElementById('loginAlertBox');
+            const submitBtn = document.getElementById('btnSubmitLogin');
+            const btnText = document.getElementById('btnSubmitLoginText');
+            
+            const login = document.getElementById('modalLoginUsername').value.trim();
+            const password = document.getElementById('modalLoginPassword').value;
+            const csrfToken = form.querySelector('input[name="_token"]')?.value || '';
+
+            if (alertBox) {
+                alertBox.classList.add('hidden');
+                alertBox.className = 'mb-4 p-3 rounded-xl text-xs font-semibold';
+            }
+
+            if (submitBtn) submitBtn.disabled = true;
+            if (btnText) btnText.innerHTML = 'Memproses...';
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({ login, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    if (alertBox) {
+                        alertBox.classList.remove('hidden');
+                        alertBox.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+                        alertBox.innerHTML = `✓ ${data.message || 'Login berhasil! Mengalihkan...'}`;
+                    }
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/portal';
+                    }, 600);
+                } else {
+                    throw new Error(data.message || 'Email atau kata sandi tidak sesuai.');
+                }
+            } catch (err) {
+                if (alertBox) {
+                    alertBox.classList.remove('hidden');
+                    alertBox.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+                    alertBox.innerHTML = `✕ ${err.message || 'Terjadi kesalahan saat masuk.'}`;
+                }
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                if (btnText) btnText.innerHTML = 'Masuk ke Sistem';
+            }
+        };
+
+        // Close on escape & backdrop click
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLoginModal();
+        });
+
+        document.getElementById('modalLoginForm')?.addEventListener('click', function(e) {
+            if (e.target === this) closeLoginModal();
+        });
+
+        // Auto open if url parameter ?login=1 exists
+        if (new URLSearchParams(window.location.search).has('login')) {
+            window.openLoginModal();
+        }
+    </script>
     </body>
 </html>
