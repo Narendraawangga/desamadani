@@ -241,8 +241,20 @@
                 </button>
             </nav>
 
-            <!-- Right: Status Desa Binaan Capsule Badge -->
+            <!-- Right: Utility Actions & Status Desa Binaan Badge -->
             <div class="flex items-center gap-2 shrink-0">
+                <button type="button" onclick="openMetadataModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
+                    <span>📋</span>
+                    <span>Metadata SDI</span>
+                </button>
+                <button type="button" onclick="openAgenDesaModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
+                    <span>👤</span>
+                    <span>Agen Statistik</span>
+                </button>
+                <button type="button" onclick="openPstModal()" class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
+                    <span>📞</span>
+                    <span>Layanan PST</span>
+                </button>
                 <div class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-3 py-1.5 rounded-xl text-xs backdrop-blur-md transition shadow-2xs">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan BPS:</span>
@@ -363,76 +375,9 @@
     </div>
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
-        <!-- MAIN CONTAINER (DENGAN SIDEBAR PERSISTEN DI SEMUA 4 TAMPILAN SESUAI WIREFRAME) -->
-    <main id="mainMenuContent" class="w-full flex-1">
-        <div class="flex flex-col lg:flex-row min-h-[calc(100vh-120px)] w-full bg-[#f4f6f9]">
-            
-            <!-- ========================================================================= -->
-            <!-- PERSISTENT LEFT SIDEBAR (MUNCUL DI KEEMPAT MENU: 1, 2, 3, 4)               -->
-            <!-- ========================================================================= -->
-            <aside class="w-full lg:w-64 bg-[#094074] text-white p-4 lg:p-5 flex flex-col justify-between shrink-0 shadow-lg border-r border-blue-900/60 select-none">
-                <!-- Top Navigation Menu Links (4 Menu Utama Sesuai Wireframe) -->
-                <div class="space-y-2">
-                    <div class="px-2 pb-2 text-[10px] font-black uppercase tracking-wider text-blue-200/80 border-b border-white/10 flex items-center justify-between">
-                        <span>Sidebar Menu</span>
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    </div>
-
-                    <!-- 1. Beranda (Dashboard) -->
-                    <button type="button" onclick="switchNavMenu('dashboard')" id="side-dashboard" class="side-nav-btn active w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#005ea6] text-white font-black text-xs shadow-sm transition text-left cursor-pointer">
-                        <span class="text-base">📊</span>
-                        <div class="leading-tight">
-                            <div class="font-black text-white">1. Beranda (Dashboard)</div>
-                            <div class="text-[10px] text-blue-200 font-medium">Dashboard Utama & Potensi</div>
-                        </div>
-                    </button>
-
-                    <!-- 2. Profil Desa -->
-                    <button type="button" onclick="switchNavMenu('tentang')" id="side-tentang" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-blue-100 hover:bg-white/10 font-bold text-xs transition text-left cursor-pointer">
-                        <span class="text-base">🏛️</span>
-                        <div class="leading-tight">
-                            <div class="font-black">2. Profil Desa</div>
-                            <div class="text-[10px] text-blue-200/80 font-medium">Monografi & SDM Aparat</div>
-                        </div>
-                    </button>
-
-                    <!-- 3. Pembelajaran (LMS) -->
-                    <button type="button" onclick="switchNavMenu('pembelajaran')" id="side-pembelajaran" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-blue-100 hover:bg-white/10 font-bold text-xs transition text-left cursor-pointer">
-                        <span class="text-base">📖</span>
-                        <div class="leading-tight">
-                            <div class="font-black">3. Pembelajaran (LMS)</div>
-                            <div class="text-[10px] text-blue-200/80 font-medium">LMS Desa Cantik BPS</div>
-                        </div>
-                    </button>
-
-                    <!-- 4. Monev (Evaluasi) -->
-                    <button type="button" onclick="switchNavMenu('monev')" id="side-monev" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-blue-100 hover:bg-white/10 font-bold text-xs transition text-left cursor-pointer">
-                        <span class="text-base">📈</span>
-                        <div class="leading-tight">
-                            <div class="font-black">4. Monev (Evaluasi)</div>
-                            <div class="text-[10px] text-blue-200/80 font-medium">Monev & Bukti Dukung</div>
-                        </div>
-                    </button>
-                </div>
-
-                <!-- Bottom Action Pill Buttons (Sesuai Referensi & Dokumentasi BPS) -->
-                <div class="pt-4 pb-1 space-y-2 border-t border-white/15 mt-6">
-                    <button type="button" onclick="openMetadataModal()" class="w-full py-2 px-3 rounded-xl border border-white/40 hover:bg-white/15 hover:border-white text-white text-[11px] font-bold transition text-center shadow-2xs cursor-pointer block">
-                        Metadata Statistik
-                    </button>
-                    <button type="button" onclick="openAgenDesaModal()" class="w-full py-2 px-3 rounded-xl border border-white/40 hover:bg-white/15 hover:border-white text-white text-[11px] font-bold transition text-center shadow-2xs cursor-pointer block">
-                        Informasi Agen Desa (Statistik)
-                    </button>
-                    <button type="button" onclick="openPstModal()" class="w-full py-2 px-3 rounded-xl border border-white/40 hover:bg-white/15 hover:border-white text-white text-[11px] font-bold transition text-center shadow-2xs cursor-pointer block">
-                        Hubungi Pelayanan Terpadu (PST)
-                    </button>
-                </div>
-            </aside>
-
-            <!-- ========================================================================= -->
-            <!-- RIGHT MAIN CONTENT (BERISI KEEMPAT VIEW SESUAI DESAIN WIREFRAME)            -->
-            <!-- ========================================================================= -->
-            <div class="flex-1 p-3 sm:p-5 lg:p-6 overflow-x-hidden space-y-4">
+        <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
+    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
@@ -522,56 +467,96 @@
                         </div>
                     </div>
 
-                    <!-- Middle Row: Peta Tematik Geospasial Wilayah & Piramida Penduduk -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                        <!-- Left: Peta Tematik Geospasial Wilayah (Dusun & RT) -->
-                        <div class="lg:col-span-7 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                    <!-- Middle Row: VISUAL CHARTS UTAMA (PIRAMIDA, KOMODITAS, FASILITAS & BANSOS) -->
+                    <!-- Row 1: Demografi Piramida Penduduk & Sektor Lapangan Usaha -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+                        <!-- Chart 1: Piramida Penduduk & Struktur Demografi (Col 7) -->
+                        <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div>
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-2">
                                     <div>
-                                        <h4 class="font-black text-slate-900 text-sm sm:text-base">Peta Tematik Geospasial Wilayah (Dusun & RT)</h4>
-                                        <p class="text-[11px] text-slate-400 mt-0.5">Integrasi Sebaran Dusun, Batas Wilayah & Titik Kerawanan Sosial BPS</p>
+                                        <h4 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">Piramida Penduduk & Struktur Demografi Desa</h4>
+                                        <p class="text-xs text-slate-500 mt-0.5">Struktur Demografi Berdasarkan Kelompok Umur & Jenis Kelamin (Regsosek BPS 2026)</p>
                                     </div>
-                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-300">
-                                        WebGIS SDI
-                                    </span>
-                                </div>
-                                <div class="relative w-full h-80 rounded-xl overflow-hidden mt-3 border border-slate-200 bg-slate-50">
-                                    <div id="thematicVillageMap" class="w-full h-full"></div>
-                                    <div class="absolute bottom-2 left-2 z-10 bg-white/95 backdrop-blur-xs p-2 rounded-lg border border-slate-200 shadow-md flex flex-col gap-1 text-[9px] font-black text-slate-700">
-                                        <div class="w-32 h-2 rounded-full bg-gradient-to-r from-[#fef08a] via-[#f97316] to-[#dc2626]"></div>
-                                        <div class="flex justify-between w-32 font-bold text-[8px] text-slate-500">
-                                            <span>Rendah</span>
-                                            <span>Kepadatan RT</span>
-                                            <span>Tinggi</span>
-                                        </div>
+                                    <div class="flex items-center gap-3 text-xs font-bold shrink-0">
+                                        <span class="flex items-center gap-1.5 text-[#005ea6]"><span class="w-3 h-3 rounded-full bg-[#005ea6]"></span> Laki-laki</span>
+                                        <span class="flex items-center gap-1.5 text-[#e11d48]"><span class="w-3 h-3 rounded-full bg-[#e11d48]"></span> Perempuan</span>
                                     </div>
                                 </div>
+                                <div id="piramidaChartContainer" class="w-full pt-3 h-80 flex flex-col justify-center"></div>
                             </div>
-                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                                <span>Sumber: BPS Satu Data Indonesia • Kab. Kolaka Utara</span>
-                                <button type="button" onclick="resetThematicMapView()" class="font-bold text-[#005ea6] hover:underline cursor-pointer">Pusatkan Peta ⟳</button>
+                            <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 font-semibold gap-2">
+                                <span>Regsosek & Monografi Sektoral Desa 2026</span>
+                                <span class="font-bold text-slate-700">Rasio Jenis Kelamin: <span class="text-[#005ea6] font-black">98,5%</span></span>
                             </div>
                         </div>
 
-                        <!-- Right: Piramida Penduduk & Status Kesejahteraan -->
-                        <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                        <!-- Chart 2: Komoditas Unggulan & Lapangan Usaha (Col 5) -->
+                        <div class="lg:col-span-5 bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div>
                                 <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                                     <div>
-                                        <h4 class="font-black text-slate-900 text-sm sm:text-base">Piramida Penduduk & Status Kesejahteraan</h4>
-                                        <p class="text-[11px] text-slate-400 mt-0.5">Struktur Demografi Berdasarkan Kelompok Umur & Jenis Kelamin</p>
+                                        <h4 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">Komoditas Unggulan & Mata Pencaharian</h4>
+                                        <p class="text-xs text-slate-500 mt-0.5">Distribusi Sektor Usaha & Potensi Ekonomi Sektoral Desa</p>
                                     </div>
-                                    <div class="flex items-center gap-2 text-[10px] font-extrabold">
-                                        <span class="flex items-center gap-1 text-[#005ea6]"><span class="w-2.5 h-2.5 rounded-full bg-[#005ea6]"></span> Laki-laki</span>
-                                        <span class="flex items-center gap-1 text-[#e11d48]"><span class="w-2.5 h-2.5 rounded-full bg-[#e11d48]"></span> Perempuan</span>
-                                    </div>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                                        Sektoral BPS
+                                    </span>
                                 </div>
-                                <div id="piramidaChartContainer" class="w-full pt-2 h-80 flex flex-col justify-center"></div>
+                                <div class="pt-3 h-72 sm:h-80 relative flex items-center justify-center">
+                                    <canvas id="dashKomoditasCanvas"></canvas>
+                                </div>
                             </div>
-                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                                <span>Regsosek & Monografi Sektoral Desa 2026</span>
-                                <span class="font-bold text-slate-600">Rasio Jenis Kelamin: 98,5%</span>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                                <span>Sentra Kakao & Perikanan Kolut</span>
+                                <span class="font-bold text-emerald-700">Potensi Ekonomi Terbina</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Fasilitas Dasar & Perlindungan Kesejahteraan -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
+                        <!-- Chart 3: Akses Fasilitas Dasar & Hunian Layak (KK) -->
+                        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div>
+                                        <h4 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">Akses Fasilitas Dasar & Sanitasi Keluarga</h4>
+                                        <p class="text-xs text-slate-500 mt-0.5">Capaian Indikator SDGs Desa & Satu Data Statistik Sektoral (1.120 KK)</p>
+                                    </div>
+                                    <span class="text-[10px] font-black text-blue-800 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                                        SDGs Desa
+                                    </span>
+                                </div>
+                                <div class="pt-3 h-64 sm:h-72 relative">
+                                    <canvas id="dashFasilitasCanvas"></canvas>
+                                </div>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                                <span>Standar BPS Satu Data Indonesia</span>
+                                <span class="font-black text-emerald-700">Rata-rata Capaian: 91,5%</span>
+                            </div>
+                        </div>
+
+                        <!-- Chart 4: Perlindungan Sosial, Adminduk & Kesejahteraan Balita -->
+                        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div>
+                                        <h4 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">Jaminan Sosial & Perlindungan Balita Bebas Stunting</h4>
+                                        <p class="text-xs text-slate-500 mt-0.5">Integrasi JKN, Bantuan Sosial & Pencegahan Stunting Desa Binaan</p>
+                                    </div>
+                                    <span class="text-[10px] font-black text-purple-800 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+                                        Kesejahteraan
+                                    </span>
+                                </div>
+                                <div class="pt-3 h-64 sm:h-72 relative">
+                                    <canvas id="dashBansosCanvas"></canvas>
+                                </div>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                                <span>Sumber: Regsosek Terpadu & Posyandu 2026</span>
+                                <span class="font-black text-purple-700">Stunting Sangat Rendah (3 Balita)</span>
                             </div>
                         </div>
                     </div>
@@ -1429,7 +1414,6 @@
 
                 </div>
 
-            </div>
         </div>
     </main>
 
@@ -3177,6 +3161,7 @@
                 piramidaContainer.innerHTML = rowsHtml;
             }
 
+            renderDashboardVisualCharts(villageKey);
             // 4. Render Donut Chart Status Kesejahteraan (Desil P3KE)
             renderDesilDonutChart(sData);
 
@@ -3230,6 +3215,136 @@
 
             // 7. Update Thematic Leaflet Map
             initOrUpdateThematicMap(villageKey, filterDusun);
+        }
+
+        // Global Chart Instances for Dashboard Visuals
+        let dashKomoditasChartInstance = null;
+        let dashFasilitasChartInstance = null;
+        let dashBansosChartInstance = null;
+
+        function renderDashboardVisualCharts(villageKey) {
+            if (typeof Chart === 'undefined') return;
+
+            // 1. Chart Komoditas Unggulan & Mata Pencaharian
+            const cKomoditas = document.getElementById('dashKomoditasCanvas');
+            if (cKomoditas) {
+                if (dashKomoditasChartInstance) {
+                    try { dashKomoditasChartInstance.destroy(); } catch(e){}
+                }
+                const ctxK = cKomoditas.getContext('2d');
+                dashKomoditasChartInstance = new Chart(ctxK, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Kakao (Perkebunan)', 'Cengkeh & Nilam', 'Perikanan & Nelayan', 'Pedagang / UMKM', 'Jasa & Lainnya'],
+                        datasets: [{
+                            data: [42, 22, 16, 12, 8],
+                            backgroundColor: ['#0E7C5A', '#0284c7', '#06b6d4', '#f59e0b', '#64748b'],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 12,
+                                    font: { size: 11, weight: 'bold' }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => ' ' + ctx.label + ': ' + ctx.raw + '%'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 2. Chart Fasilitas Dasar & Hunian Layak
+            const cFasilitas = document.getElementById('dashFasilitasCanvas');
+            if (cFasilitas) {
+                if (dashFasilitasChartInstance) {
+                    try { dashFasilitasChartInstance.destroy(); } catch(e){}
+                }
+                const ctxF = cFasilitas.getContext('2d');
+                dashFasilitasChartInstance = new Chart(ctxF, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Air Bersih Layak', 'Listrik PLN', 'Jamban Sehat', 'Rumah Layak Huni'],
+                        datasets: [{
+                            label: 'Persentase Capaian (%)',
+                            data: [92, 98, 89, 87],
+                            backgroundColor: ['#0284c7', '#0E7C5A', '#10b981', '#f59e0b'],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                min: 0,
+                                max: 100,
+                                ticks: { callback: v => v + '%' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => ' ' + ctx.raw + '% Kepala Keluarga (KK)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 3. Chart Bansos & Jaminan Kesehatan
+            const cBansos = document.getElementById('dashBansosCanvas');
+            if (cBansos) {
+                if (dashBansosChartInstance) {
+                    try { dashBansosChartInstance.destroy(); } catch(e){}
+                }
+                const ctxB = cBansos.getContext('2d');
+                dashBansosChartInstance = new Chart(ctxB, {
+                    type: 'bar',
+                    data: {
+                        labels: ['BPJS / JKN', 'Bansos PKH/BPNT', 'Adminduk KTP/KIA', 'Balita Sehat Bebas Stunting'],
+                        datasets: [{
+                            label: 'Capaian Perlindungan (%)',
+                            data: [86, 18, 99, 99.3],
+                            backgroundColor: ['#8b5cf6', '#ec4899', '#0284c7', '#10b981'],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 100,
+                                ticks: { callback: v => v + '%' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => ' ' + ctx.raw + '% Populasi'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         // Global Chart Instance Holder
@@ -4766,6 +4881,7 @@
 
         // Initialize from URL query param (?desa=...&menu=...) with strict login enforcement
         document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => renderDashboardVisualCharts(currentActiveVillage || 'kalu_kaluku'), 200);
             const params = new URLSearchParams(window.location.search);
             const desaParam = (params.get('desa') || 'kalukaluku').toLowerCase();
             const menuParam = (params.get('menu') || (window.location.hash ? window.location.hash.replace('#', '') : 'dashboard')).toLowerCase();
@@ -5367,7 +5483,7 @@
     <!-- ============================================================== -->
     <!-- MODAL LMS 1: PRE-TEST PEMBELAJARAN APARAT DESA (FULL SCREEN)   -->
     <!-- ============================================================== -->
-    <div id="pretestModal" class="fixed inset-0 z-50 hidden bg-white flex flex-col overflow-hidden animate-in fade-in duration-150">
+    <div id="pretestModal" class="fixed inset-0 z-[9999] hidden bg-slate-50 flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-150" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
         <!-- Sticky Header Bar -->
         <div class="shrink-0 bg-gradient-to-r from-[#005ea6] via-[#09487d] to-[#0b2545] text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
             <div class="flex items-center gap-3.5">
@@ -5522,7 +5638,7 @@
     <!-- ============================================================== -->
     <!-- MODAL LMS 2: POST-TEST EVALUASI KELULUSAN (FULL SCREEN)        -->
     <!-- ============================================================== -->
-    <div id="posttestModal" class="fixed inset-0 z-50 hidden bg-white flex flex-col overflow-hidden animate-in fade-in duration-150">
+    <div id="posttestModal" class="fixed inset-0 z-[9999] hidden bg-slate-50 flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-150" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
         <!-- Sticky Header Bar -->
         <div class="shrink-0 bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-950 text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
             <div class="flex items-center gap-3.5">
@@ -5665,7 +5781,7 @@
     <!-- ============================================================== -->
     <!-- MODAL LMS: VIDEO THEATER FULL SCREEN                          -->
     <!-- ============================================================== -->
-    <div id="videoTheaterModal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex flex-col overflow-hidden animate-in fade-in duration-200">
+    <div id="videoTheaterModal" class="fixed inset-0 z-[9999] hidden bg-slate-950/98 backdrop-blur-md flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-200" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
         <!-- Header -->
         <div class="shrink-0 bg-slate-900/90 text-white px-5 sm:px-8 py-3.5 flex items-center justify-between border-b border-white/10 z-20">
             <div class="flex items-center gap-3">
