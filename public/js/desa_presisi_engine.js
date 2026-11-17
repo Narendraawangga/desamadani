@@ -2398,12 +2398,15 @@ function renderAgregatKecamatanSection() {
     const pesisirList = ['tolala', 'batuputih', 'pakueutara', 'pakue', 'kodeoha', 'katoi', 'lasusua', 'lambai', 'ranteangin', 'wawo'];
 
     container.innerHTML = list.map((k, idx) => {
-      const normName = (k.nama || '').replace(/\s+/g, '').toLowerCase();
+      const normName = (k.nama || '').replace(/\\s+/g, '').toLowerCase();
       const isPesisir = pesisirList.includes(normName);
       let statusLabel = isPesisir ? 'PESISIR' : 'DARATAN';
       if (k.kelurahanCount > 0) {
         statusLabel = isPesisir ? 'PESISIR & DARAT' : 'DARATAN';
       }
+
+      // Alternating zig-zag layout (Left vs Right like reference image)
+      const isEven = (idx % 2 === 1); // idx 0 = odd (Left image, Right text), idx 1 = even (Left text, Right image)
 
       // Geo corridor tag for storytelling route
       let geoKoridor = 'KORIDOR TENGAH';
@@ -2441,12 +2444,12 @@ function renderAgregatKecamatanSection() {
         progressSub = `${fmt(k.ekonomi?.ikm)} IMK / ${fmt(k.lingkungan?.pln)} KK PLN (${progressPct}%)`;
       }
 
-      // Map SVG with Stipple Halftone & Organic Mask
+      // Map SVG with Stipple Halftone & Concentric Rings
       const mapData = KECAMATAN_SVG_MAPS[normName] || null;
       let svgMapHtml = '';
       if (mapData) {
         svgMapHtml = `
-          <svg viewBox="0 0 100 100" class="w-full h-full max-h-[220px] drop-shadow-[0_4px_16px_rgba(13,110,91,0.12)] overflow-visible">
+          <svg viewBox="0 0 100 100" class="w-full h-full max-h-[250px] drop-shadow-[0_8px_20px_rgba(13,110,91,0.14)] overflow-visible">
             <defs>
               <pattern id="stipple-route-${idx}" width="6" height="6" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="0.8" fill="#0D6E5B" opacity="0.32"/>
@@ -2475,208 +2478,211 @@ function renderAgregatKecamatanSection() {
         `;
       }
 
-      const isLast = idx === list.length - 1;
-      const isEven = idx % 2 === 0;
+      // Visual Map Column (Col A)
+      const visualMapColumn = `
+        <div class="w-full lg:w-[48%] flex flex-col justify-center">
+          <!-- Visual Peta Siluet Besar dengan Efek Bingkai Organik, Stipple & Watercolor Wash -->
+          <div class="relative w-full h-[240px] sm:h-[280px] lg:h-[300px] rounded-3xl bg-gradient-to-br from-[#0D6E5B]/8 via-white to-[#F7F7F5] border border-[#0D6E5B]/20 p-5 flex items-center justify-center overflow-hidden shadow-[0_8px_30px_rgba(13,110,91,0.06)] group/map">
+            <!-- Stipple Pattern Background -->
+            <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#0D6E5B 0.75px, transparent 0.75px); background-size: 8px 8px;"></div>
+            
+            <!-- Watercolor Wash Accents -->
+            <div class="absolute -top-10 -left-10 w-44 h-44 rounded-full bg-[#0D6E5B]/10 blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-10 -right-10 w-44 h-44 rounded-full bg-emerald-300/15 blur-2xl pointer-events-none"></div>
 
-      // Dashed Route Connector Line between stops
-      const connectingRouteSvg = isLast ? '' : `
-        <div class="hidden lg:flex items-center justify-center w-full h-14 sm:h-16 relative pointer-events-none my-[-6px] z-0">
-          <svg class="w-full max-w-2xl h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 300 50">
-            <path d="${isEven ? 'M 150,0 Q 190,25 150,50' : 'M 150,0 Q 110,25 150,50'}" 
-                  fill="none" 
-                  stroke="#5A6B65" 
-                  stroke-width="1.8" 
-                  stroke-dasharray="5 5" 
-                  opacity="0.45"/>
-            <circle cx="${isEven ? 170 : 130}" cy="25" r="3.5" fill="#0D6E5B" stroke="#F7F7F5" stroke-width="1.5"/>
-            <text x="${isEven ? 182 : 118}" y="28" font-size="8" font-family="monospace" font-weight="bold" fill="#5A6B65" opacity="0.7" text-anchor="${isEven ? 'start' : 'end'}">
-              RUTE SPASIAL: STOP ${String(idx + 1).padStart(2, '0')} ➔ STOP ${String(idx + 2).padStart(2, '0')}
-            </text>
-          </svg>
+            <!-- SVG Map Path -->
+            ${svgMapHtml}
+
+            <!-- Micro Coordinates Badge -->
+            <div class="absolute bottom-3 left-4 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs border border-[#5A6B65]/15 text-[10px] font-mono text-[#5A6B65] flex items-center gap-1.5 shadow-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#0D6E5B]"></span>
+              <span>Posisi Spasial: ${k.lat ? k.lat.toFixed(3) : '-'}, ${k.lng ? k.lng.toFixed(3) : '-'}</span>
+            </div>
+
+            <!-- Stop Tag Overlay -->
+            <div class="absolute top-3 right-4 px-2.5 py-1 rounded-full bg-[#0D6E5B]/10 border border-[#0D6E5B]/20 text-[10px] font-mono font-bold text-[#0D6E5B] shadow-2xs">
+              STOP ${String(idx + 1).padStart(2, '0')}
+            </div>
+          </div>
         </div>
       `;
 
-      return `
-        <div class="relative group">
-          <!-- Storytelling Route Card: Editorial 2-Column Layout -->
-          <div class="bg-[#FDFDFB] hover:bg-white rounded-3xl border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 shadow-[0_2px_12px_rgba(13,110,91,0.03)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.08)] transition-all duration-300 p-6 sm:p-8 lg:p-9 relative overflow-hidden">
+      // Text & Statistic Column (Col B)
+      const textStatColumn = `
+        <div class="w-full lg:w-[48%] flex flex-col justify-between space-y-4">
+          <div>
+            <!-- Header Meta Ribbon -->
+            <div class="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#5A6B65] uppercase mb-1">
+              <span>${k.kode}</span>
+              <span>•</span>
+              <span class="px-2 py-0.5 rounded-full ${isPesisir ? 'bg-sky-100 text-sky-800' : 'bg-amber-100 text-amber-800'} text-[10px] font-black">${statusLabel}</span>
+              <span>•</span>
+              <span>${k.desaCount} Desa ${k.kelurahanCount > 0 ? `(${k.kelurahanCount} Kel)` : ''}</span>
+            </div>
+
+            <!-- Aksen Garis Pendek Khas Editorial Mike Kus -->
+            <div class="w-12 h-1 bg-[#0D6E5B] rounded-full mb-2.5"></div>
             
-            <!-- Large Editorial Watermark Number in Background -->
-            <div class="absolute -right-4 -bottom-6 select-none pointer-events-none opacity-[0.03] text-[110px] font-black text-[#0D6E5B] tracking-tighter leading-none">
-              ${String(idx + 1).padStart(2, '0')}
+            <!-- Nama Kecamatan (Besar & Tebal) -->
+            <h3 class="text-3xl sm:text-4xl font-black text-[#0D6E5B] tracking-tight leading-none mb-2">
+              Kecamatan ${k.nama}
+            </h3>
+
+            <!-- Badge Potensi Wilayah -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0D6E5B]/10 border border-[#0D6E5B]/20 text-xs font-bold text-[#0D6E5B] mb-4">
+              <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>${k.karakteristik || 'Wilayah Strategis Penopang Kemandirian'}</span>
             </div>
 
-            <!-- Header Waypoint Ribbon -->
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#5A6B65]/10">
-              <div class="flex items-center gap-2.5">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] text-xs font-black tracking-wider uppercase font-mono">
-                  <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
-                  STOP ${String(idx + 1).padStart(2, '0')} • ${geoKoridor}
-                </span>
-                <span class="text-xs font-mono font-bold text-[#5A6B65]/80">${k.kode}</span>
+            <!-- Progress Bar Persentase Sektoral -->
+            <div class="space-y-1.5 bg-white/80 backdrop-blur-xs p-3.5 rounded-2xl border border-[#5A6B65]/15 mb-3.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-700">${progressLabel}</span>
+                <span class="font-black text-[#0D6E5B] font-mono">${progressPct}%</span>
               </div>
-              <div class="flex items-center gap-2 text-xs font-bold">
-                <span class="px-3 py-0.5 rounded-full ${isPesisir ? 'bg-sky-50 text-sky-800 border border-sky-200' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'}">
-                  ${statusLabel}
-                </span>
-                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80">
-                  ${k.desaCount} Desa ${k.kelurahanCount > 0 ? `(${k.kelurahanCount} Kel)` : ''}
-                </span>
+              <div class="w-full h-2 rounded-full bg-slate-200/80 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-[#0D6E5B] to-emerald-500 transition-all duration-700" style="width: ${progressPct}%"></div>
+              </div>
+              <div class="text-[11px] text-[#5A6B65] flex items-center justify-between pt-0.5">
+                <span>${progressSub}</span>
+                <span class="font-medium text-[10px] font-mono">PODES 2025</span>
               </div>
             </div>
 
-            <!-- Content Grid: Left Column (~45%) + Center Spine (~10%) + Right Column (~45%) -->
-            <div class="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-6 relative">
-              
-              <!-- SISI KIRI (Kolom Peta & Identitas Daerah - Lebar ~45%) -->
-              <div class="w-full lg:w-[45%] flex flex-col justify-between space-y-5">
-                
-                <!-- Visual Peta Siluet Besar dengan Efek Bingkai Organik, Stipple & Watercolor Wash -->
-                <div class="relative w-full h-[220px] sm:h-[240px] rounded-2xl bg-gradient-to-br from-[#0D6E5B]/5 via-[#F7F7F5] to-white border border-[#0D6E5B]/15 p-4 flex items-center justify-center overflow-hidden shadow-inner group/map">
-                  <!-- Stipple Pattern Background -->
-                  <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#0D6E5B 0.75px, transparent 0.75px); background-size: 8px 8px;"></div>
-                  
-                  <!-- Watercolor Wash Accents -->
-                  <div class="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-[#0D6E5B]/10 blur-2xl pointer-events-none"></div>
-                  <div class="absolute -bottom-10 -right-10 w-36 h-36 rounded-full bg-emerald-300/15 blur-2xl pointer-events-none"></div>
-
-                  <!-- SVG Map Path -->
-                  ${svgMapHtml}
-
-                  <!-- Micro Coordinates Badge -->
-                  <div class="absolute bottom-2.5 left-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-xs border border-[#5A6B65]/15 text-[10px] font-mono text-[#5A6B65] flex items-center gap-1.5 shadow-xs">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#0D6E5B]"></span>
-                    <span>Posisi Spasial: ${k.lat ? k.lat.toFixed(3) : '-'}, ${k.lng ? k.lng.toFixed(3) : '-'}</span>
-                  </div>
+            <!-- 4 Indikator Statistik (Editorial Clean Presentation) -->
+            <div class="grid grid-cols-2 gap-2.5 mb-3.5">
+              <!-- 1. IMK & Sentra Usaha -->
+              <div class="p-3 rounded-2xl bg-white/90 border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 transition shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
+                  <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  <span>IMK & Sentra Usaha</span>
                 </div>
-
-                <!-- Identitas Nama & Potensi Daerah -->
-                <div class="space-y-2">
-                  <!-- Aksen Garis Pendek Khas Editorial Mike Kus -->
-                  <div class="w-10 h-1 bg-[#0D6E5B] rounded-full"></div>
-                  
-                  <h3 class="text-2xl sm:text-3xl font-black text-[#0D6E5B] tracking-tight leading-tight">
-                    Kecamatan ${k.nama}
-                  </h3>
-
-                  <!-- Badge Potensi Wilayah -->
-                  <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0D6E5B]/5 border border-[#0D6E5B]/15 text-xs font-semibold text-[#0D6E5B]">
-                    <svg class="w-4 h-4 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    <span>${k.karakteristik || 'Wilayah Strategis Penopang Kemandirian'}</span>
-                  </div>
-                </div>
-
+                <div class="text-xl font-black text-[#0D6E5B] mt-1">${fmt(k.ekonomi?.ikm)} <span class="text-xs font-semibold text-[#5A6B65]">Unit</span></div>
+                <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${(k.ekonomi?.pasarPerm||0)+(k.ekonomi?.pasarSemi||0)} Pasar • ${k.ekonomi?.bank||0} Bank</div>
               </div>
 
-              <!-- TENGAH: PENGHUBUNG ANTAR DAERAH (Route Waypoint Node) -->
-              <div class="hidden lg:flex flex-col items-center justify-center w-[10%] relative">
-                <div class="w-full h-full flex flex-col items-center justify-center relative">
-                  <!-- Vertical Dashed Line Spine -->
-                  <div class="w-0.5 h-full border-l-2 border-dashed border-[#5A6B65]/25 absolute top-0 bottom-0"></div>
-                  
-                  <!-- Waypoint Pin Circle -->
-                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#0D6E5B] flex items-center justify-center shadow-md relative z-10 group-hover:scale-110 transition-transform">
-                    <span class="w-3 h-3 rounded-full bg-[#0D6E5B] shadow-inner"></span>
-                  </div>
-                  <span class="mt-2 text-[10px] font-mono font-bold text-[#5A6B65] bg-[#F7F7F5] px-2 py-0.5 rounded border border-[#5A6B65]/15 relative z-10">
-                    KM ${(idx * 11) + 12}
-                  </span>
+              <!-- 2. Keluarga Berlistrik -->
+              <div class="p-3 rounded-2xl bg-white/90 border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 transition shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
+                  <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  <span>Keluarga Berlistrik</span>
                 </div>
+                <div class="text-xl font-black text-[#0D6E5B] mt-1">${fmt(k.lingkungan?.pln)} <span class="text-xs font-semibold text-[#5A6B65]">KK</span></div>
+                <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">Elektrifikasi: ${k.lingkungan?.persenPln}%</div>
               </div>
 
-              <!-- SISI KANAN (Kolom Rincian Informasi & Statistik - Lebar ~45%) -->
-              <div class="w-full lg:w-[45%] flex flex-col justify-between space-y-5">
-                
-                <div class="space-y-4">
-                  <!-- Progress Bar Persentase Sektoral -->
-                  <div class="space-y-1.5 bg-[#F7F7F5] p-3.5 rounded-2xl border border-[#5A6B65]/10">
-                    <div class="flex items-center justify-between text-xs">
-                      <span class="font-bold text-slate-700">${progressLabel}</span>
-                      <span class="font-black text-[#0D6E5B] font-mono">${progressPct}%</span>
-                    </div>
-                    <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
-                      <div class="h-full rounded-full bg-gradient-to-r from-[#0D6E5B] to-emerald-500 transition-all duration-700" style="width: ${progressPct}%"></div>
-                    </div>
-                    <div class="text-[11px] text-[#5A6B65] flex items-center justify-between pt-0.5">
-                      <span>${progressSub}</span>
-                      <span class="font-medium text-[10px] font-mono">PODES 2025</span>
-                    </div>
-                  </div>
-
-                  <!-- 4 Indikator Statistik (Editorial Presentation Bersih) -->
-                  <div class="grid grid-cols-2 gap-2.5">
-                    <!-- 1. IMK & Sentra Usaha -->
-                    <div class="p-3 rounded-2xl bg-white border border-[#5A6B65]/10 hover:border-[#0D6E5B]/30 transition shadow-2xs">
-                      <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
-                        <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                        <span>IMK & Sentra Usaha</span>
-                      </div>
-                      <div class="text-lg font-black text-[#0D6E5B] mt-1">${fmt(k.ekonomi?.ikm)} <span class="text-xs font-semibold text-[#5A6B65]">Unit</span></div>
-                      <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${(k.ekonomi?.pasarPerm||0)+(k.ekonomi?.pasarSemi||0)} Pasar • ${k.ekonomi?.bank||0} Bank</div>
-                    </div>
-
-                    <!-- 2. Keluarga Berlistrik -->
-                    <div class="p-3 rounded-2xl bg-white border border-[#5A6B65]/10 hover:border-[#0D6E5B]/30 transition shadow-2xs">
-                      <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
-                        <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        <span>Keluarga Berlistrik</span>
-                      </div>
-                      <div class="text-lg font-black text-[#0D6E5B] mt-1">${fmt(k.lingkungan?.pln)} <span class="text-xs font-semibold text-[#5A6B65]">KK</span></div>
-                      <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">Elektrifikasi: ${k.lingkungan?.persenPln}%</div>
-                    </div>
-
-                    <!-- 3. Sarana Pendidikan -->
-                    <div class="p-3 rounded-2xl bg-white border border-[#5A6B65]/10 hover:border-[#0D6E5B]/30 transition shadow-2xs">
-                      <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
-                        <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
-                        <span>Sarana Pendidikan</span>
-                      </div>
-                      <div class="text-lg font-black text-[#0D6E5B] mt-1">${fmt(k.sosial?.totalSaranaPendidikan)} <span class="text-xs font-semibold text-[#5A6B65]">Sekolah</span></div>
-                      <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${k.sosial?.totalSDMI||0} SD • ${k.sosial?.totalSMPMTs||0} SMP • ${(k.sosial?.totalSMAMA||0)+(k.sosial?.smk||0)} SMA</div>
-                    </div>
-
-                    <!-- 4. Fasilitas Kesehatan -->
-                    <div class="p-3 rounded-2xl bg-white border border-[#5A6B65]/10 hover:border-[#0D6E5B]/30 transition shadow-2xs">
-                      <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
-                        <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                        <span>Fasilitas Kesehatan</span>
-                      </div>
-                      <div class="text-lg font-black text-[#0D6E5B] mt-1">${fmt(k.sosial?.totalSaranaKesehatan)} <span class="text-xs font-semibold text-[#5A6B65]">Faskes</span></div>
-                      <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${(k.sosial?.puskesmasRI||0)+(k.sosial?.puskesmasNonRI||0)} Pusk • ${(k.sosial?.pustu||0)+(k.sosial?.poskesdes||0)} Pustu/Poskes</div>
-                    </div>
-                  </div>
-
-                  <!-- Cakupan Wilayah (Daftar Desa) -->
-                  <div class="text-xs text-[#5A6B65] leading-relaxed bg-[#F7F7F5] p-3.5 rounded-2xl border border-[#5A6B65]/10">
-                    <span class="font-bold text-slate-800">Cakupan Wilayah (${k.desaCount} Desa):</span>
-                    <span class="ml-1">${k.desaList ? k.desaList.join(', ') : '-'}</span>
-                  </div>
+              <!-- 3. Sarana Pendidikan -->
+              <div class="p-3 rounded-2xl bg-white/90 border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 transition shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
+                  <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                  <span>Sarana Pendidikan</span>
                 </div>
-
-                <!-- Tombol Pill Buka di Peta WebGIS -->
-                <div class="pt-2">
-                  <button type="button" 
-                          onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
-                    <span>Buka di Peta WebGIS</span>
-                    <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform">
-                      <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </span>
-                  </button>
-                </div>
-
+                <div class="text-xl font-black text-[#0D6E5B] mt-1">${fmt(k.sosial?.totalSaranaPendidikan)} <span class="text-xs font-semibold text-[#5A6B65]">Sekolah</span></div>
+                <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${k.sosial?.totalSDMI||0} SD • ${k.sosial?.totalSMPMTs||0} SMP • ${(k.sosial?.totalSMAMA||0)+(k.sosial?.smk||0)} SMA</div>
               </div>
 
+              <!-- 4. Fasilitas Kesehatan -->
+              <div class="p-3 rounded-2xl bg-white/90 border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 transition shadow-2xs">
+                <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A6B65]">
+                  <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                  <span>Fasilitas Kesehatan</span>
+                </div>
+                <div class="text-xl font-black text-[#0D6E5B] mt-1">${fmt(k.sosial?.totalSaranaKesehatan)} <span class="text-xs font-semibold text-[#5A6B65]">Faskes</span></div>
+                <div class="text-[10px] text-[#5A6B65]/80 mt-0.5">${(k.sosial?.puskesmasRI||0)+(k.sosial?.puskesmasNonRI||0)} Pusk • ${(k.sosial?.pustu||0)+(k.sosial?.poskesdes||0)} Pustu/Poskes</div>
+              </div>
+            </div>
+
+            <!-- Cakupan Wilayah (Daftar Desa) -->
+            <div class="text-xs text-[#5A6B65] leading-relaxed bg-white/70 backdrop-blur-xs p-3.5 rounded-2xl border border-[#5A6B65]/15 mb-3.5">
+              <span class="font-bold text-slate-800">Cakupan Wilayah (${k.desaCount} Desa):</span>
+              <span class="ml-1">${k.desaList ? k.desaList.join(', ') : '-'}</span>
             </div>
           </div>
 
-          <!-- SVG Dashed Route Line Between Stops -->
+          <!-- Tombol Pill Buka di Peta WebGIS -->
+          <div>
+            <button type="button" 
+                    onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
+              <span>Buka di Peta WebGIS</span>
+              <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      const isLast = idx === list.length - 1;
+
+      // Connecting Dashed Expedition Trail between stops
+      // If current is Odd (visual on left), it connects to Even (visual on right): starts ~250 down to ~750
+      // If current is Even (visual on right), it connects to Odd (visual on left): starts ~750 down to ~250
+      let connectingRouteSvg = '';
+      if (!isLast) {
+        if (!isEven) {
+          // Left to Right diagonal snake path
+          connectingRouteSvg = `
+            <div class="hidden lg:flex items-center justify-center w-full h-24 sm:h-28 relative pointer-events-none my-[-10px] z-10">
+              <svg class="w-full max-w-5xl h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 120">
+                <path d="M 280,10 L 460,45 L 540,80 L 720,110" 
+                      fill="none" 
+                      stroke="#5A6B65" 
+                      stroke-width="2" 
+                      stroke-dasharray="6 6" 
+                      opacity="0.5"/>
+                <!-- Waypoint Node 1 -->
+                <circle cx="460" cy="45" r="4.5" fill="#0D6E5B" stroke="#F7F7F5" stroke-width="2"/>
+                <!-- Waypoint Node 2 -->
+                <circle cx="540" cy="80" r="4.5" fill="#0D6E5B" stroke="#F7F7F5" stroke-width="2"/>
+                <!-- Label Milestone -->
+                <text x="500" y="66" font-size="10" font-family="monospace" font-weight="bold" fill="#5A6B65" opacity="0.8" text-anchor="middle">
+                  RUTE SPASIAL: STOP ${String(idx + 1).padStart(2, '0')} ➔ STOP ${String(idx + 2).padStart(2, '0')}
+                </text>
+              </svg>
+            </div>
+          `;
+        } else {
+          // Right to Left diagonal snake path
+          connectingRouteSvg = `
+            <div class="hidden lg:flex items-center justify-center w-full h-24 sm:h-28 relative pointer-events-none my-[-10px] z-10">
+              <svg class="w-full max-w-5xl h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 120">
+                <path d="M 720,10 L 540,45 L 460,80 L 280,110" 
+                      fill="none" 
+                      stroke="#5A6B65" 
+                      stroke-width="2" 
+                      stroke-dasharray="6 6" 
+                      opacity="0.5"/>
+                <!-- Waypoint Node 1 -->
+                <circle cx="540" cy="45" r="4.5" fill="#0D6E5B" stroke="#F7F7F5" stroke-width="2"/>
+                <!-- Waypoint Node 2 -->
+                <circle cx="460" cy="80" r="4.5" fill="#0D6E5B" stroke="#F7F7F5" stroke-width="2"/>
+                <!-- Label Milestone -->
+                <text x="500" y="66" font-size="10" font-family="monospace" font-weight="bold" fill="#5A6B65" opacity="0.8" text-anchor="middle">
+                  RUTE SPASIAL: STOP ${String(idx + 1).padStart(2, '0')} ➔ STOP ${String(idx + 2).padStart(2, '0')}
+                </text>
+              </svg>
+            </div>
+          `;
+        }
+      }
+
+      // If !isEven: Visual on Left, Text on Right (lg:flex-row)
+      // If isEven: Text on Left, Visual on Right (lg:flex-row-reverse)
+      return `
+        <div class="relative group">
+          <!-- Storytelling Route Row: Alternating Left-Right Spread -->
+          <div class="flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-8 lg:gap-12 relative p-2 sm:p-4">
+            ${visualMapColumn}
+            ${textStatColumn}
+          </div>
+
+          <!-- SVG Dashed Route Line Between Stops (Snaking between Left and Right) -->
           ${connectingRouteSvg}
         </div>
       `;
     }).join('');
   }
-
 
   return {
     init: init,
