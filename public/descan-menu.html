@@ -605,7 +605,7 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Kompilasi kependudukan, perkebunan kakao, perikanan pesisir, dan ekonomi desa.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="showToast('Membuka PDF Monografi Statistik Desa Kalu Kaluku...')" class="w-full py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
+                                <button type="button" onclick="openPublikasiDocModal('monografi')" class="w-full py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
                                     <span>📥 Unduh PDF</span>
                                 </button>
                             </div>
@@ -653,7 +653,7 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Ringkasan berkala indikator ketenagakerjaan, inflasi daerah & komoditas.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="showToast('Membuka Berita Resmi Statistik (BRS)...')" class="w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
+                                <button type="button" onclick="openPublikasiDocModal('brs')" class="w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
                                     <span>📥 Unduh BRS</span>
                                 </button>
                             </div>
@@ -677,7 +677,7 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Data spasial hamparan sentra kakao, kelompok tani, dan olahan produk desa.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="showToast('Membuka Katalog Potensi Desa Kalu Kaluku...')" class="w-full py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
+                                <button type="button" onclick="openPublikasiDocModal('potensi')" class="w-full py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
                                     <span>📥 Unduh Profil</span>
                                 </button>
                             </div>
@@ -1435,6 +1435,190 @@
             if (bPre) { bPre.textContent = 'Terbuka'; bPre.className = 'text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md'; }
             if (bPost) { bPost.textContent = 'Terbuka'; bPost.className = 'text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md'; }
             showToast('🔓 Seluruh materi LMS Desa Cantik telah dibuka!');
+        }
+
+        
+        // ==============================================================
+        // SISTEM PUBLIKASI RESMI STATISTIK SEKTORAL & BRS
+        // ==============================================================
+        let activePubDocType = 'monografi';
+
+        function openPublikasiDocModal(docType) {
+            activePubDocType = docType;
+            const modal = document.getElementById('publikasiDocModal');
+            const iconEl = document.getElementById('pubModalIcon');
+            const tagEl = document.getElementById('pubModalTag');
+            const titleEl = document.getElementById('pubModalTitle');
+            const bodyEl = document.getElementById('pubModalBody');
+            const curVillage = currentTargetVillage || 'kalukaluku';
+            const vTitle = villagesData[curVillage]?.title || 'Desa Kalu Kaluku';
+
+            if (!modal) return;
+
+            if (docType === 'monografi') {
+                if (iconEl) iconEl.textContent = '📘';
+                if (tagEl) tagEl.textContent = 'BUKU PUBLIKASI RESMI • BPS KAB. KOLAKA UTARA';
+                if (titleEl) titleEl.textContent = `Monografi Statistik Sektoral ${vTitle} 2026`;
+                if (bodyEl) {
+                    bodyEl.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                                <div>
+                                    <div class="text-[10px] font-black uppercase text-blue-800">Nomor Registrasi BPS</div>
+                                    <div class="font-bold text-slate-800 text-sm">BPS-7408-DESA-040-2026</div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-blue-600 text-white text-[10px] font-black">Format PDF</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">84 Halaman</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">4,8 MB</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <h4 class="font-black text-slate-900 text-sm">Daftar Bab & Matriks Sektoral</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>Bab I: Geografi & Batas Wilayah</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Batas administrasi, luas 18,45 km², topografi 4 dusun, dan peta tematik spasial.</p>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>Bab II: Kependudukan & Piramida</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">4.150 Jiwa, 1.120 KK, rasio jenis kelamin 98,5%, kelompok umur produktif.</p>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>Bab III: Pertanian, Kakao & Pesisir</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Sentra kakao 480 Ha, produksi 385 Ton/thn, armada tangkap nelayan Teluk Bone.</p>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>Bab IV: Kesejahteraan & Sosial</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Desil P3KE, data penerima bansos (PKH, BPNT, BLT-DD), dan fasilitas desa.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs flex items-center gap-2">
+                                <span class="text-base">✓</span>
+                                <div><b>Terverifikasi BPS RI:</b> Data telah melalui tahapan rekonsiliasi dan memenuhi 4 Prinsip Satu Data Indonesia (SDI).</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else if (docType === 'brs') {
+                if (iconEl) iconEl.textContent = '📰';
+                if (tagEl) tagEl.textContent = 'BERITA RESMI STATISTIK • BPS KAB. KOLAKA UTARA';
+                if (titleEl) titleEl.textContent = 'BRS Sektoral Kolut: Triwulan II 2026';
+                if (bodyEl) {
+                    bodyEl.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                                <div>
+                                    <div class="text-[10px] font-black uppercase text-amber-800">Nomor Publikasi BRS</div>
+                                    <div class="font-bold text-slate-800 text-sm">No. 14/05/7408/Th.XXVI</div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-amber-600 text-white text-[10px] font-black">Rilis Resmi</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">24 Halaman</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">2,1 MB</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <h4 class="font-black text-slate-900 text-sm">Ringkasan Indikator Sektoral Kolaka Utara</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <div class="text-[10px] text-slate-400 font-bold">Inflasi Daerah</div>
+                                        <div class="text-lg font-black text-slate-900 mt-1">2,1%</div>
+                                        <div class="text-[9px] text-emerald-600 font-bold">Terkendali</div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <div class="text-[10px] text-slate-400 font-bold">NTP Kakao</div>
+                                        <div class="text-lg font-black text-slate-900 mt-1">112,4</div>
+                                        <div class="text-[9px] text-emerald-600 font-bold">Surplus</div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <div class="text-[10px] text-slate-400 font-bold">Harga Kakao</div>
+                                        <div class="text-sm font-black text-amber-600 mt-1.5">115 Rb/Kg</div>
+                                        <div class="text-[9px] text-slate-500 font-bold">Fermentasi</div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <div class="text-[10px] text-slate-400 font-bold">Tingkat TPT</div>
+                                        <div class="text-lg font-black text-slate-900 mt-1">3,1%</div>
+                                        <div class="text-[9px] text-emerald-600 font-bold">Rendah</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Berita Resmi Statistik (BRS) diseminasi berkala memuat perkembangan indikator makro, ketenagakerjaan, nilai tukar petani, dan neraca komoditas unggulan desa-desa se-Kecamatan Kodeoha.
+                            </p>
+                        </div>
+                    `;
+                }
+            } else if (docType === 'potensi') {
+                if (iconEl) iconEl.textContent = '🍫';
+                if (tagEl) tagEl.textContent = 'KATALOG SEKTORAL & UMKM • BINAAN BPS & PEMDA';
+                if (titleEl) titleEl.textContent = `Profil Komoditas Unggulan & UMKM ${vTitle}`;
+                if (bodyEl) {
+                    bodyEl.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-teal-50/70 border border-teal-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                                <div>
+                                    <div class="text-[10px] font-black uppercase text-teal-800">Katalog Potensi Sektoral</div>
+                                    <div class="font-bold text-slate-800 text-sm">Sentra Kakao & Pesisir Bahari</div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-teal-600 text-white text-[10px] font-black">Katalog Lengkap</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">36 Halaman</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">3,5 MB</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <h4 class="font-black text-slate-900 text-sm">Potensi Unggulan Wilayah</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>🌱 Sentra Kakao Rakyat</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">480 Ha lahan produktif, 385 ton/thn, didukung 8 kelompok tani dan pembibitan unggul.</p>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>🏪 24 IKM & UMKM</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Olahan cokelat lokal, keripik pisang, furnitur kayu, dan perdagangan sembako.</p>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                                        <b>🐟 Perikanan & Pesisir</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Garis pantai 3,8 km Teluk Bone, 42 armada nelayan, dan budidaya tambak ikan bandeng.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePublikasiDocModal() {
+            const m = document.getElementById('publikasiDocModal');
+            if (m) {
+                m.classList.add('hidden');
+                m.classList.remove('flex');
+            }
+        }
+
+        function triggerPubDownload() {
+            const curVillage = currentTargetVillage || 'kalukaluku';
+            const vTitle = villagesData[curVillage]?.title || 'Desa Kalu Kaluku';
+            let docName = 'Monografi_' + vTitle.replace(/\s+/g, '_') + '_2026.pdf';
+            if (activePubDocType === 'brs') docName = 'BRS_Sektoral_Kolut_Triwulan_II_2026.pdf';
+            if (activePubDocType === 'potensi') docName = 'Katalog_Potensi_Kakao_UMKM_' + vTitle.replace(/\s+/g, '_') + '.pdf';
+            
+            showToast('📥 Mengunduh ' + docName + '...');
+            setTimeout(() => {
+                showToast('✅ Berkas ' + docName + ' berhasil diunduh!');
+                closePublikasiDocModal();
+            }, 1200);
         }
 
         function openPretestModal() {
@@ -5586,5 +5770,43 @@
             </form>
         </div>
     </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL DETAIL PUBLIKASI DOKUMEN RESMI STATISTIK SEKTORAL        -->
+    <!-- ============================================================== -->
+    <div id="publikasiDocModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+            <!-- Header -->
+            <div id="pubModalHeader" class="bg-gradient-to-r from-[#005ea6] to-[#072448] text-white p-5 sm:p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div id="pubModalIcon" class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📄</div>
+                    <div>
+                        <div id="pubModalTag" class="text-[10px] font-black uppercase tracking-wider text-amber-300">PUBLIKASI RESMI BPS KAB. KOLAKA UTARA</div>
+                        <h3 id="pubModalTitle" class="text-base sm:text-lg font-black text-white">Monografi Statistik Sektoral Desa Kalu Kaluku 2026</h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closePublikasiDocModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
+            </div>
+
+            <!-- Body -->
+            <div id="pubModalBody" class="p-6 space-y-4 text-xs text-slate-700 max-h-[70vh] overflow-y-auto">
+                <!-- Injected dynamically -->
+            </div>
+
+            <!-- Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                <span id="pubModalFootnote" class="text-[11px] text-slate-500 font-medium">BPS Kabupaten Kolaka Utara • Terbina Satu Data Indonesia</span>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="triggerPubDownload()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📥 Unduh Berkas Lengkap</span>
+                    </button>
+                    <button type="button" onclick="closePublikasiDocModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
