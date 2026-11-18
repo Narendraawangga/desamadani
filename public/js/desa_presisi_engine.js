@@ -2697,7 +2697,7 @@ let agregatSector = 'all';
 
           <!-- Cakupan Wilayah (Daftar Desa) -->
           <div class="text-xs text-[#5A6B65] leading-relaxed bg-white/80 backdrop-blur-xs p-3.5 rounded-2xl border border-[#5A6B65]/15 mb-4 shadow-2xs">
-            <span class="font-bold text-slate-800">Cakupan Wilayah (${k.desaCount} Desa):</span>
+            <span class="font-bold text-slate-800">${(window.currentPortalLang === 'en') ? `Area Coverage (${k.desaCount} Villages):` : `Cakupan Wilayah (${k.desaCount} Desa):`}</span>
             <span class="ml-1">${k.desaList ? k.desaList.join(', ') : '-'}</span>
           </div>
         </div>
@@ -2707,7 +2707,7 @@ let agregatSector = 'all';
           <button type="button" 
                   onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
-            <span>Buka di Peta WebGIS</span>
+            <span>${(window.currentPortalLang === 'en') ? 'Open in WebGIS Map' : 'Buka di Peta WebGIS'}</span>
             <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </span>
@@ -2726,17 +2726,17 @@ let agregatSector = 'all';
                 onclick="window.PresisiEngine.prevKecamatanSlide()" 
                 class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-[#5A6B65]/20 text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shadow-2xs cursor-pointer group">
           <svg class="w-4 h-4 text-[#5A6B65] group-hover:text-[#0D6E5B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          <span>Etape Sebelumnya: Kec. ${prevItem.nama}</span>
+          <span>${(window.currentPortalLang === 'en') ? `Previous Stage: Dist. ${prevItem.nama}` : `Etape Sebelumnya: Kec. ${prevItem.nama}`}</span>
         </button>
 
         <div class="flex items-center gap-2">
-          <span class="text-xs font-mono font-bold text-[#5A6B65]">Rute Spasial 15 Kecamatan</span>
+          <span class="text-xs font-mono font-bold text-[#5A6B65]">${(window.currentPortalLang === 'en') ? '15 Districts Spatial Route' : 'Rute Spasial 15 Kecamatan'}</span>
         </div>
 
         <button type="button" 
                 onclick="window.PresisiEngine.nextKecamatanSlide()" 
                 class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md cursor-pointer group">
-          <span>Etape Selanjutnya: Kec. ${nextItem.nama}</span>
+          <span>${(window.currentPortalLang === 'en') ? `Next Stage: Dist. ${nextItem.nama}` : `Etape Selanjutnya: Kec. ${nextItem.nama}`}</span>
           <svg class="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
