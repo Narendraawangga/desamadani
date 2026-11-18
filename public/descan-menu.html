@@ -477,14 +477,14 @@
 
                         <!-- Bottom Section: Server BPS Aktif v2.4 & Keluar Akun -->
                         <div class="pt-5 border-t border-slate-100 space-y-2 mt-4">
-                            <!-- Server Status Pill -->
-                            <div class="flex items-center justify-between px-3.5 py-2 rounded-2xl bg-slate-100/80 border border-slate-200/60 text-xs font-semibold text-slate-700">
+                            <!-- Server Status Pill (Interactive Diagnostics) -->
+                            <button type="button" onclick="showBpsServerStatus()" class="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200/60 text-xs font-semibold text-slate-700 transition cursor-pointer text-left group">
                                 <div class="flex items-center gap-2">
                                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span class="text-[11px] font-bold text-slate-700">Server BPS Aktif</span>
+                                    <span class="text-[11px] font-bold text-slate-700 group-hover:text-slate-900">Server BPS Aktif</span>
                                 </div>
-                                <span class="text-[11px] font-extrabold text-emerald-700">v2.4</span>
-                            </div>
+                                <span class="text-[11px] font-extrabold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md">v2.4</span>
+                            </button>
 
                             <!-- Logout Button -->
                             <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-rose-700 hover:bg-rose-50 text-xs font-bold transition duration-150 cursor-pointer text-left">
@@ -807,12 +807,12 @@
 
                 </div>
 
+                
                 <!-- ===================================================================== -->
-                <!-- 2. PROFIL DESA (DESAIN MODERN LUXURY TRAVEL-SHOWCASE SESUAI GAMBAR)   -->
+                <!-- 2. PROFIL DESA (HERO, VISI MISI, SEJARAH, POTENSI, BATAS & DUSUN)     -->
                 <!-- ===================================================================== -->
-                <div id="view-tentang" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
-                    
-                    <!-- ============================================================== -->
+                <div id="view-profil" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+<!-- ============================================================== -->
                     <!-- 1. HERO SECTION: EXPLORE DESA CANTIK (Sesuai Bagian Atas Gambar)-->
                     <!-- ============================================================== -->
                     <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-blue-950/40 bg-[#072448] text-white min-h-[380px] sm:min-h-[440px] flex flex-col justify-between p-6 sm:p-10 select-none">
@@ -1210,127 +1210,7 @@
                         </div>
                     </div>
 
-                    <!-- ============================================================== -->
-                    <!-- 5. SECTION 5: STANDARDIZED SDM / APARATUR DESA (ORGANIGRAM)    -->
-                    <!-- Struktur Organisasi Lengkap & Validasi BPS Kolut             -->
-                    <!-- ============================================================== -->
-                    <div id="sectionAparaturDesa" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm space-y-5 scroll-mt-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                            <div>
-                                <div class="flex items-center gap-2 text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
-                                    <span>—</span>
-                                    <span>STRUKTUR TATA KELOLA PEMERINTAHAN</span>
-                                </div>
-                                <h4 class="font-black text-slate-900 text-base sm:text-xl flex items-center gap-2 mt-1">
-                                    <span>👥</span>
-                                    <span>Standardized SDM &amp; Aparatur Desa</span>
-                                </h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Struktur Organisasi Pemerintahan Desa &amp; Status Sertifikasi Pengelolaan Data Statistik SDI</p>
-                            </div>
-                            <button type="button" onclick="openEditAparatModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
-                                <span>✏️</span>
-                                <span>Edit Aparat Desa</span>
-                            </button>
-                        </div>
-
-                        <!-- Organigram Diagram -->
-                        <div class="space-y-4">
-                            <!-- Top: Kepala Desa (Center) -->
-                            <div class="flex justify-center">
-                                <div class="w-full max-w-sm p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-center shadow-xs">
-                                    <div class="w-12 h-12 mx-auto rounded-full bg-[#005ea6] text-white flex items-center justify-center font-black text-base shadow-xs mb-1.5">
-                                        KD
-                                    </div>
-                                    <div id="aparatKadesName" class="font-black text-slate-900 text-sm">H. Syamsul Bahri, S.Sos</div>
-                                    <div class="text-xs font-bold text-[#005ea6]">Kepala Desa</div>
-                                    <span class="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">
-                                        Update Status (Terverifikasi BPS)
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- Connector Line -->
-                            <div class="w-0.5 h-4 bg-slate-300 mx-auto"></div>
-
-                            <!-- Level 2: Sekretaris Desa (Center) -->
-                            <div class="flex justify-center">
-                                <div class="w-full max-w-sm p-4 rounded-2xl bg-white border border-slate-300 text-center shadow-xs">
-                                    <div class="w-10 h-10 mx-auto rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-xs shadow-xs mb-1.5">
-                                        SD
-                                    </div>
-                                    <div id="aparatSekdesName" class="font-black text-slate-900 text-sm">Muh. Ridwan, S.AP</div>
-                                    <div class="text-xs font-bold text-slate-600">Sekretaris Desa (Koordinator SDI)</div>
-                                    <span class="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">
-                                        Update Status: Selesai BPS
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- Connector Line -->
-                            <div class="w-0.5 h-4 bg-slate-300 mx-auto"></div>
-
-                            <!-- Level 3: 4 Staff / Agen Data Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                                <!-- Staff 1 -->
-                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center flex flex-col justify-between">
-                                    <div>
-                                        <div class="w-9 h-9 mx-auto rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
-                                            AR
-                                        </div>
-                                        <div id="aparatKaurKeuanganName" class="font-black text-slate-900 text-xs">Andi Rahmawati, S.E</div>
-                                        <div class="text-[11px] text-slate-500 font-medium">Kaur Keuangan</div>
-                                    </div>
-                                    <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
-                                        Update Status: Selesai (SDI)
-                                    </span>
-                                </div>
-
-                                <!-- Staff 2 -->
-                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center flex flex-col justify-between">
-                                    <div>
-                                        <div class="w-9 h-9 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
-                                            BP
-                                        </div>
-                                        <div id="aparatKaurPerencanaanName" class="font-black text-slate-900 text-xs">Baharuddin, S.Pd</div>
-                                        <div class="text-[11px] text-slate-500 font-medium">Kaur Perencanaan (Agen Statistik)</div>
-                                    </div>
-                                    <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
-                                        Update Status: Selesai BPS
-                                    </span>
-                                </div>
-
-                                <!-- Staff 3 -->
-                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center flex flex-col justify-between">
-                                    <div>
-                                        <div class="w-9 h-9 mx-auto rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
-                                            RS
-                                        </div>
-                                        <div id="aparatKasiPelayananName" class="font-black text-slate-900 text-xs">Rosmini, S.Kom</div>
-                                        <div class="text-[11px] text-slate-500 font-medium">Kasi Pelayanan (Operator WebGIS)</div>
-                                    </div>
-                                    <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
-                                        Update Status: Selesai (Excel)
-                                    </span>
-                                </div>
-
-                                <!-- Staff 4 -->
-                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-center flex flex-col justify-between">
-                                    <div>
-                                        <div class="w-9 h-9 mx-auto rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
-                                            JA
-                                        </div>
-                                        <div id="aparatKasiPemerintahanName" class="font-black text-slate-900 text-xs">Jodi Asrul</div>
-                                        <div class="text-[11px] text-slate-500 font-medium">Kasi Pemerintahan</div>
-                                    </div>
-                                    <span class="mt-2.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[9px] font-extrabold border border-blue-200">
-                                        Update Status: Terdata
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ============================================================== -->
+<!-- ============================================================== -->
                     <!-- 6. SECTION 6: LUAS WILAYAH & BATAS ADMINISTRASI DESA           -->
                     <!-- Data Akurat Kemendagri & BPS                                   -->
                     <!-- ============================================================== -->
@@ -1398,378 +1278,757 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
 
+
                 <!-- ===================================================================== -->
-                <!-- 3. PEMBELAJARAN (LMS DESA CANTIK - TAMPILAN TERSTRUKTUR & TERSISTEMATIS)-->
-                <!-- Masing-masing menu mengarahkan pada tampilan khususnya masing-masing:   -->
-                <!-- - Khusus Video Pembelajaran                                           -->
-                <!-- - Khusus Pre-test & Post-test                                         -->
-                <!-- - Khusus Buku Panduan                                                 -->
+                <!-- 3. DATA APARATUR DESA (ORGANIGRAM & STANDARDIZED SDM SDI)             -->
                 <!-- ===================================================================== -->
-                <div id="view-pembelajaran" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                <div id="view-aparatur" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
                     
-                    <!-- Content Top Header: Title, BPS Badge & In-Page View Switcher Tabs -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                            <div id="lmsHeaderIcon" class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
-                                📖
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <h2 id="lmsHeaderTitle" class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">LMS - Pembelajaran Aparat Desa</h2>
-                                    <span id="lmsHeaderBadge" class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
-                                        BPS Verified
-                                    </span>
-                                </div>
-                                <p id="lmsHeaderDesc" class="text-xs text-slate-500 mt-0.5">Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI</p>
-                            </div>
-                        </div>
-
-                        <!-- In-Page Tab Navigation (Sistematis & Sinkron Penuh dengan Sidebar) -->
-                        <div class="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200 text-xs font-bold self-start md:self-auto">
-                            <button type="button" onclick="filterLmsSubView('video')" id="tabLmsVideo" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <span>🎬</span>
-                                <span>Video Pembelajaran</span>
-                            </button>
-                            <button type="button" onclick="filterLmsSubView('evaluasi')" id="tabLmsEvaluasi" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <span>📝</span>
-                                <span>Pre-test &amp; Post-test</span>
-                            </button>
-                            <button type="button" onclick="filterLmsSubView('panduan')" id="tabLmsPanduan" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <span>📚</span>
-                                <span>Buku Panduan</span>
-                            </button>
-                            <button type="button" onclick="filterLmsSubView('all')" id="tabLmsAll" class="tab-lms-btn px-3 py-2 rounded-xl transition cursor-pointer flex items-center gap-1 text-slate-500 hover:text-slate-800">
-                                <span>📋</span>
-                                <span>Semua</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- ================================================================= -->
-                    <!-- 1. TAMPILAN KHUSUS: VIDEO PEMBELAJARAN (MICROLEARNING)            -->
-                    <!-- ================================================================= -->
-                    <div id="lmsContainerVideo" class="space-y-4">
-                        <div id="sectionVideoMicrolearning" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-5 scroll-mt-6">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                                <div>
-                                    <span class="px-2.5 py-1 rounded-lg bg-[#0c4a34] text-white text-[11px] font-black inline-block mb-1.5">
-                                        MODUL AUDIO-VISUAL MICROLEARNING DESA CANTIK
-                                    </span>
-                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Video Edukasi Tata Kelola Data &amp; Statistik Sektoral</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Panduan resmi Badan Pusat Statistik untuk standarisasi SDM dan agen statistik desa</p>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
-                                        ⏱️ Durasi: 5-7 Menit
-                                    </span>
-                                    <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200">
-                                        HD 1080p
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- Video Player & Curriculum Grid -->
-                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-                                <!-- Left: Responsive Cinematic Player (7 Cols) -->
-                                <div class="lg:col-span-7 space-y-3">
-                                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-lg border border-slate-200 group">
-                                        <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/RXV4X0cOIA0?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        
-                                        <!-- Quick Click to Play Overlay -->
-                                        <div id="videoPlayOverlay" onclick="playMicrolearningVideo(true)" class="absolute inset-0 bg-slate-950/45 hover:bg-slate-950/25 flex flex-col items-center justify-center cursor-pointer transition z-10">
-                                            <div class="w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-xl transition transform group-hover:scale-110">
-                                                ▶
-                                            </div>
-                                            <span class="text-xs font-black text-white mt-3 drop-shadow-md tracking-wide">Klik untuk Putar Video Otomatis</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Video Control Bar -->
-                                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
-                                        <button type="button" onclick="playMicrolearningVideo(true)" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition flex items-center gap-2 cursor-pointer shadow-xs">
-                                            <span>▶ Putar Video Sekarang</span>
-                                        </button>
-                                        <div class="flex items-center gap-3">
-                                            <button type="button" onclick="openVideoTheaterModal()" class="font-extrabold text-[#005ea6] hover:underline cursor-pointer flex items-center gap-1.5">
-                                                <span>⛶</span>
-                                                <span>Layar Penuh (Bioskop)</span>
-                                            </button>
-                                            <span class="text-slate-300">|</span>
-                                            <button type="button" onclick="toggleMainVideoSound()" class="font-extrabold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1.5">
-                                                <span id="iconVideoSound">🔊</span>
-                                                <span id="textVideoSound">Suara Aktif</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Right: Kurikulum Video & Poin Pembelajaran (5 Cols) -->
-                                <div class="lg:col-span-5 space-y-3">
-                                    <div class="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 space-y-3">
-                                        <div class="font-black text-xs uppercase tracking-wider text-emerald-900 flex items-center gap-2">
-                                            <span>📑</span>
-                                            <span>Silabus Materi Video Edukasi:</span>
-                                        </div>
-                                        <div class="space-y-2 text-xs">
-                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
-                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">1</span>
-                                                <div>
-                                                    <div class="font-bold text-slate-900">Prinsip Satu Data Indonesia (SDI)</div>
-                                                    <div class="text-[11px] text-slate-500">Standar data desa, interoperabilitas, kode referensi, dan metadata statistik.</div>
-                                                </div>
-                                            </div>
-                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
-                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">2</span>
-                                                <div>
-                                                    <div class="font-bold text-slate-900">Teknik Pengumpulan Data Monografi Dusun</div>
-                                                    <div class="text-[11px] text-slate-500">Metodologi sensus data tingkat dusun, validasi kepala keluarga, dan verifikasi lapangan.</div>
-                                                </div>
-                                            </div>
-                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
-                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">3</span>
-                                                <div>
-                                                    <div class="font-bold text-slate-900">Validasi &amp; Entri Data ke Portal Desa</div>
-                                                    <div class="text-[11px] text-slate-500">Praktik verifikasi lapangan data potensi desa dan visualisasi analitik sektoral.</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Action Card to Proceed -->
-                                    <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-200 space-y-2.5">
-                                        <div class="text-xs font-bold text-slate-700">Sudah selesai menyimak video pembelajaran?</div>
-                                        <button type="button" onclick="activateSidebarMenu('evaluasi')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                            <span>Lanjut ke Pre-test &amp; Post-test</span>
-                                            <span>→</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ================================================================= -->
-                    <!-- 2. TAMPILAN KHUSUS: PRE-TEST & POST-TEST (EVALUASI SDM)          -->
-                    <!-- ================================================================= -->
-                    <div id="lmsContainerEvaluasi" class="space-y-4">
-                        <div id="sectionLmsSteps" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-5 scroll-mt-6">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                                <div>
-                                    <span class="px-2.5 py-1 rounded-lg bg-indigo-700 text-white text-[11px] font-black inline-block mb-1.5">
-                                        EVALUASI KOMPETENSI APARATUR DESA
-                                    </span>
-                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Ujian Kemampuan Pre-Test &amp; Post-Test Terstandarisasi BPS</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Pengukuran kompetensi awal dan evaluasi kelulusan akhir penerbitan Sertifikat Agen Statistik</p>
-                                </div>
-                                <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer self-start sm:self-auto">
-                                    <span>🔓</span>
-                                    <span>Unlock semua menu</span>
-                                </button>
-                            </div>
-
-                            <!-- 2 Big Dedicated Cards Grid -->
-                            <div id="sectionPretestPosttest" class="grid grid-cols-1 md:grid-cols-2 gap-5 scroll-mt-6">
-                                <!-- Card 1: PRE-TEST -->
-                                <div class="p-5 sm:p-6 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4 hover:border-blue-300 transition">
-                                    <div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="px-3 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
-                                                [1. PRE-TEST AWAL] 🔒
-                                            </span>
-                                            <span id="badgePretestStatus" class="text-xs font-black text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md border border-emerald-300">
-                                                Siap Dikerjakan
-                                            </span>
-                                        </div>
-                                        <h4 class="font-black text-slate-900 text-base mt-3">Tes Kemampuan Awal Aparatur Desa</h4>
-                                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                            Wajib dikerjakan sebelum materi pembelajaran untuk memetakan baseline pemahaman konsep statistik sektoral dan Satu Data Indonesia.
-                                        </p>
-                                        <div class="mt-4 p-3.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600 space-y-1.5">
-                                            <div class="flex items-center justify-between"><span>Jumlah Soal:</span> <b class="text-slate-900">10 Pertanyaan Pilihan Ganda</b></div>
-                                            <div class="flex items-center justify-between"><span>Alokasi Waktu:</span> <b class="text-slate-900">15 Menit</b></div>
-                                            <div class="flex items-center justify-between"><span>Standar Penilaian:</span> <b class="text-[#005ea6]">BPS Satu Data Indonesia</b></div>
-                                        </div>
-                                    </div>
-                                    <button type="button" onclick="openPretestModal()" class="w-full py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                        <span>📝 Mulai Pengerjaan Pre-Test</span>
-                                    </button>
-                                </div>
-
-                                <!-- Card 2: POST-TEST -->
-                                <div class="p-5 sm:p-6 rounded-2xl border-2 border-indigo-200 bg-indigo-50/40 flex flex-col justify-between space-y-4 hover:border-indigo-300 transition">
-                                    <div>
-                                        <div class="flex items-center justify-between">
-                                            <span class="px-3 py-1 rounded-lg bg-indigo-700 text-white text-xs font-black">
-                                                [2. POST-TEST KELULUSAN] 🔒
-                                            </span>
-                                            <span id="badgePosttestStatus" class="text-xs font-black text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-md border border-indigo-300">
-                                                Kelulusan
-                                            </span>
-                                        </div>
-                                        <h4 class="font-black text-slate-900 text-base mt-3">Kuis Evaluasi Akhir &amp; Cetak Sertifikat</h4>
-                                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                            Kuis evaluasi pemahaman pasca pelatihan untuk kelulusan dan penerbitan Sertifikat Resmi Agen Statistik Sektoral Desa BPS.
-                                        </p>
-                                        <div class="mt-4 p-3.5 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1.5">
-                                            <div class="flex items-center justify-between"><span>Batas Kelulusan (Passing Grade):</span> <b class="text-indigo-700">70 / 100</b></div>
-                                            <div class="flex items-center justify-between"><span>Nilai Ujian Terakhir:</span> <b id="valLastPostScore" class="text-emerald-700">85 (Lulus)</b></div>
-                                            <div class="flex items-center justify-between"><span>Status Sertifikasi:</span> <b class="text-emerald-700">Terverifikasi BPS</b></div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-2">
-                                        <button type="button" onclick="openPosttestModal()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                            <span>📝 Mulai Pengerjaan Post-Test</span>
-                                        </button>
-                                        <button type="button" onclick="openSertifikatModal()" class="w-full py-2.5 rounded-xl bg-white hover:bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                            <span>👁️ Lihat &amp; Cetak Sertifikat Kelulusan</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ================================================================= -->
-                    <!-- 3. TAMPILAN KHUSUS: BUKU PANDUAN & MODUL PRAKTIK STATISTIK       -->
-                    <!-- ================================================================= -->
-                    <div id="lmsContainerPanduan" class="space-y-4">
-                        <div id="sectionBukuPanduan" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                                <div>
-                                    <span class="px-2.5 py-1 rounded-lg bg-[#0c4a34] text-white text-[11px] font-black inline-block mb-1.5">
-                                        MODUL &amp; PEDOMAN RESMI
-                                    </span>
-                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Buku Pedoman, Modul Praktik &amp; Rumus Dasar Statistik</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Daftar Modul, Rumus Resmi Statistik Sektoral, dan Surat Keputusan Agen Statistik Desa BPS RI</p>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
-                                        3 Dokumen Terverifikasi BPS
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- Document Table -->
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-xs text-left">
-                                    <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
-                                        <tr>
-                                            <th class="py-3 px-4">Nama Dokumen Pembelajaran</th>
-                                            <th class="py-3 px-4">Nomor Referensi BPS / Kode</th>
-                                            <th class="py-3 px-4 text-center">Aksi Unduh / Baca</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100 font-medium text-slate-800">
-                                        <!-- Row 1: Buku Pedoman Excel -->
-                                        <tr class="hover:bg-slate-50 transition">
-                                            <td class="py-3.5 px-4">
-                                                <div class="flex items-center gap-3">
-                                                    <span class="text-2xl">📗</span>
-                                                    <div>
-                                                        <div class="font-black text-slate-900 text-sm">Buku Pedoman Excel Desa (30 Lembar Praktik)</div>
-                                                        <div class="text-[11px] text-slate-500">Modul terstandarisasi pengolahan data monografi &amp; agregasi Excel tingkat desa</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SDI-BPS-2026-EXCEL</td>
-                                            <td class="py-3.5 px-4 text-center">
-                                                <button type="button" onclick="openExcelReaderModal()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                    📥 UNDUH / BACA BUKU
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Row 2: Rumus Dasar Statistik -->
-                                        <tr class="hover:bg-slate-50 transition">
-                                            <td class="py-3.5 px-4">
-                                                <div class="flex items-center gap-3">
-                                                    <span class="text-2xl">📐</span>
-                                                    <div>
-                                                        <div class="font-black text-slate-900 text-sm">Rumus Dasar Statistik Sektoral Desa</div>
-                                                        <div class="text-[11px] text-slate-500">Formula Rasio Beban Tanggungan, Desil Kemiskinan, Sex Ratio, dan Indeks Desa</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Excel: FORMULA-BPS-STAT-01</td>
-                                            <td class="py-3.5 px-4 text-center">
-                                                <button type="button" onclick="openRumusStatistikModal()" class="px-4 py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                    📥 UNDUH / LIHAT RUMUS
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Row 3: SK Agen Statistik -->
-                                        <tr class="hover:bg-slate-50 transition">
-                                            <td class="py-3.5 px-4">
-                                                <div class="flex items-center gap-3">
-                                                    <span class="text-2xl">📜</span>
-                                                    <div>
-                                                        <div class="font-black text-slate-900 text-sm">Surat Keputusan (SK) Agen Statistik Desa</div>
-                                                        <div class="text-[11px] text-slate-500">Legalitas resmi pembentukan Agen Statistik Sektoral Desa Binaan BPS</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SK-BPS-KOLUT-008</td>
-                                            <td class="py-3.5 px-4 text-center">
-                                                <button type="button" onclick="openSkAgenModal()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                    📥 UNDUH / LIHAT SK
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- ===================================================================== -->
-                <!-- 4. MONITORING & EVALUASI (MONEV - SISTEM MONEV & KELENGKAPAN)         -->
-                <!-- ===================================================================== -->
-                <div id="view-monev" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
-                    
-                    <!-- Content Top Header: Title -->
+                    <!-- Content Top Header -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
-                                📈
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                👥
                             </div>
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Sistem Monev & Kelengkapan Pembinaan</h2>
-                                <p class="text-xs text-slate-500 mt-0.5">Monitoring Evaluasi Progres Pembinaan Statistik Sektoral & Portofolio Bukti Dukung Desa Cantik</p>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Data Aparatur &amp; SDM Desa</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        6 Terverifikasi BPS
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Struktur Organisasi Tata Kelola Pemerintahan Desa &amp; Status Sertifikasi Agen Statistik SDI</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-300">
-                                Tahap 3 Aktif (Pengolahan)
-                            </span>
+                            <button type="button" onclick="openEditAparatModal()" class="px-4 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                <span>✏️</span>
+                                <span>Kelola / Edit Aparat</span>
+                            </button>
+                            <button type="button" onclick="downloadProfilDesaPdf()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200 shadow-2xs">
+                                <span>📥</span>
+                                <span>Unduh PDF</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Section 1: TIMELINE PEMBINAAN DESA CANTIK (Chevron Stepper Progress Bar) -->
-                    <div id="sectionPembinaanDesa" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                        <div>
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>⏱️</span>
-                                <span>TIMELINE PEMBINAAN DESA CANTIK</span>
-                            </h4>
-                            <p class="text-xs text-slate-400 mt-0.5">(Persiapan -> Pengumpulan Data -> Pengolahan -> Publikasi)</p>
+                    <!-- Organigram Diagram -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-5">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">BAGAN HIERARKI PEMERINTAHAN DESA</span>
+                                <h3 class="font-black text-slate-900 text-base sm:text-lg mt-0.5">Bagan Struktur Organisasi Pemerintah Desa</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-black border border-blue-200">
+                                Standar Kemendagri &amp; BPS
+                            </span>
                         </div>
 
-                        <!-- 4-Phase Chevron Stepper -->
+                        <!-- Top: Kepala Desa (Center) -->
+                        <div class="flex justify-center">
+                            <div class="w-full max-w-sm p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 border-2 border-emerald-300 text-center shadow-xs">
+                                <div class="w-14 h-14 mx-auto rounded-full bg-[#0c4a34] text-white flex items-center justify-center font-black text-lg shadow-sm mb-2 border-2 border-white">
+                                    KD
+                                </div>
+                                <div id="aparatKadesName" class="font-black text-slate-900 text-base">H. Syamsul Bahri, S.Sos</div>
+                                <div class="text-xs font-bold text-[#0c4a34]">Kepala Desa</div>
+                                <span class="inline-block mt-2 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">
+                                    ✓ Terverifikasi BPS Kolut
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Connector Line -->
+                        <div class="w-0.5 h-5 bg-slate-300 mx-auto"></div>
+
+                        <!-- Level 2: Sekretaris Desa (Center) -->
+                        <div class="flex justify-center">
+                            <div class="w-full max-w-sm p-4 rounded-2xl bg-white border border-slate-300 text-center shadow-xs">
+                                <div class="w-11 h-11 mx-auto rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm shadow-xs mb-1.5">
+                                    SD
+                                </div>
+                                <div id="aparatSekdesName" class="font-black text-slate-900 text-sm">Muh. Ridwan, S.AP</div>
+                                <div class="text-xs font-bold text-slate-600">Sekretaris Desa (Koordinator SDI)</div>
+                                <span class="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">
+                                    ✓ Agen SDI Utama
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Connector Line -->
+                        <div class="w-0.5 h-5 bg-slate-300 mx-auto"></div>
+
+                        <!-- Level 3: 4 Staff / Agen Data Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                            <!-- Staff 1 -->
+                            <div class="p-4 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 transition shadow-2xs flex flex-col justify-between">
+                                <div>
+                                    <div class="w-10 h-10 mx-auto rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-2">
+                                        AR
+                                    </div>
+                                    <div id="aparatKaurKeuanganName" class="font-black text-slate-900 text-xs">Andi Rahmawati, S.E</div>
+                                    <div class="text-[11px] text-slate-500 font-medium">Kaur Keuangan</div>
+                                </div>
+                                <span class="mt-3 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200 text-center">
+                                    Sertifikasi SDI (Keuangan)
+                                </span>
+                            </div>
+
+                            <!-- Staff 2 -->
+                            <div class="p-4 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 transition shadow-2xs flex flex-col justify-between">
+                                <div>
+                                    <div class="w-10 h-10 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-2">
+                                        BP
+                                    </div>
+                                    <div id="aparatKaurPerencanaanName" class="font-black text-slate-900 text-xs">Baharuddin, S.Pd</div>
+                                    <div class="text-[11px] text-slate-500 font-medium">Kaur Perencanaan (Agen Statistik)</div>
+                                </div>
+                                <span class="mt-3 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200 text-center">
+                                    Sertifikasi BPS (Pengolahan)
+                                </span>
+                            </div>
+
+                            <!-- Staff 3 -->
+                            <div class="p-4 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 transition shadow-2xs flex flex-col justify-between">
+                                <div>
+                                    <div class="w-10 h-10 mx-auto rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-2">
+                                        RS
+                                    </div>
+                                    <div id="aparatKasiPelayananName" class="font-black text-slate-900 text-xs">Rosmini, S.Kom</div>
+                                    <div class="text-[11px] text-slate-500 font-medium">Kasi Pelayanan (Operator WebGIS)</div>
+                                </div>
+                                <span class="mt-3 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200 text-center">
+                                    Sertifikasi WebGIS &amp; Spasial
+                                </span>
+                            </div>
+
+                            <!-- Staff 4 -->
+                            <div class="p-4 rounded-2xl bg-slate-50 hover:bg-white border border-slate-200 transition shadow-2xs flex flex-col justify-between">
+                                <div>
+                                    <div class="w-10 h-10 mx-auto rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs mb-2">
+                                        JA
+                                    </div>
+                                    <div id="aparatKasiPemerintahanName" class="font-black text-slate-900 text-xs">Jodi Asrul</div>
+                                    <div class="text-[11px] text-slate-500 font-medium">Kasi Pemerintahan</div>
+                                </div>
+                                <span class="mt-3 px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[9px] font-extrabold border border-blue-200 text-center">
+                                    Sertifikasi Sensus Lapangan
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid Detail Profil Kartu Aparatur & Kontak Resmi -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">PORTOFOLIO SDM PEMERINTAHAN</span>
+                                <h3 class="font-black text-slate-900 text-base sm:text-lg mt-0.5">Daftar Lengkap Profil &amp; Tupoksi Sektoral</h3>
+                            </div>
+                            <button type="button" onclick="openEditAparatModal()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1 cursor-pointer">
+                                <span>✏️ Perbarui Data</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Card Kades -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-[#0c4a34] text-white flex items-center justify-center font-black text-sm">KD</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">H. Syamsul Bahri, S.Sos</div>
+                                        <div class="text-xs font-bold text-emerald-700">Kepala Desa</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042001</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Penanggung Jawab Kebijakan Satu Data Desa &amp; Regulasi Perdes</div>
+                                    <div><b>Sertifikat:</b> Kepemimpinan Data Statistik Sektoral BPS RI</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567890" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Sekdes -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-800 text-white flex items-center justify-center font-black text-sm">SD</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Muh. Ridwan, S.AP</div>
+                                        <div class="text-xs font-bold text-slate-700">Sekretaris Desa</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042002</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Koordinator Pelaksana SDI, Verifikator Metadata &amp; Rekonsiliasi</div>
+                                    <div><b>Sertifikat:</b> Manajemen Data Statistik Sektoral (BPS Kolut)</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567891" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Kaur Perencanaan -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-sm">BP</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Baharuddin, S.Pd</div>
+                                        <div class="text-xs font-bold text-blue-700">Kaur Perencanaan</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042003</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Agen Statistik Pengolahan Data Excel, Analisis Podes &amp; Monografi</div>
+                                    <div><b>Sertifikat:</b> Ahli Pengolahan Data Statistik Sektoral (Grade 92/100)</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567892" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Kasi Pelayanan -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm">RS</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Rosmini, S.Kom</div>
+                                        <div class="text-xs font-bold text-indigo-700">Kasi Pelayanan</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042004</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Operator WebGIS Pemetaan Spasial, Diseminasi Infografis Portal</div>
+                                    <div><b>Sertifikat:</b> Pemetaan Tematik WebGIS Desa Cantik (BPS Kolut)</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567893" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Kaur Keuangan -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-teal-600 text-white flex items-center justify-center font-black text-sm">AR</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Andi Rahmawati, S.E</div>
+                                        <div class="text-xs font-bold text-teal-700">Kaur Keuangan</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042005</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Rekonsiliasi Data Bansos (P3KE, PKH, BLT-DD) &amp; Anggaran Desa</div>
+                                    <div><b>Sertifikat:</b> Validasi Data Sosial Ekonomi &amp; Keuangan Desa</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567894" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+
+                            <!-- Card Kasi Pemerintahan -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center font-black text-sm">JA</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Jodi Asrul</div>
+                                        <div class="text-xs font-bold text-amber-700">Kasi Pemerintahan</div>
+                                        <div class="text-[10px] text-slate-400">NIPD: 7408042006</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 bg-white p-2.5 rounded-xl border border-slate-100">
+                                    <div><b>Tupoksi SDI:</b> Supervisi Pendataan Dusun, Batas Wilayah &amp; Kelembagaan RT</div>
+                                    <div><b>Sertifikat:</b> Metodologi Sensus Monografi &amp; Pencatatan Sipil</div>
+                                </div>
+                                <div class="flex items-center justify-between pt-1 text-xs">
+                                    <a href="https://wa.me/6281234567895" target="_blank" class="text-emerald-700 hover:underline font-bold flex items-center gap-1">
+                                        <span>💬 Hubungi WA</span>
+                                    </a>
+                                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">Aktif</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 4. PENGISIAN DATA PODES (POTENSI DESA) 2026                           -->
+                <!-- ===================================================================== -->
+                <div id="view-podes" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                📝
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Pengisian Data PODES 2026</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        Semester I Aktif
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Instrumen Resmi Pendataan Potensi Desa Sektoral BPS RI • Berbasis Prinsip Satu Data Indonesia (SDI)</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button type="button" onclick="simpanDataPodes(event)" class="px-4 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition flex items-center gap-2 cursor-pointer shadow-xs">
+                                <span>💾</span>
+                                <span>Simpan Data PODES</span>
+                            </button>
+                            <button type="button" onclick="resetDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200">
+                                <span>🔄</span>
+                                <span>Reset</span>
+                            </button>
+                            <button type="button" onclick="eksporDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                                <span>📊</span>
+                                <span>Ekspor (CSV/Excel)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Navigation Tabs for 5 PODES Sections -->
+                    <div class="flex flex-wrap items-center gap-2 p-2 bg-slate-100/90 rounded-2xl border border-slate-200 text-xs font-bold">
+                        <button type="button" onclick="scrollPodesSection('secPodesDemografi')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                            <span>👥</span>
+                            <span>1. Kependudukan &amp; Bansos</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesPertanian')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                            <span>🌾</span>
+                            <span>2. Pertanian, Kakao &amp; Nelayan</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesSarpras')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                            <span>🏥</span>
+                            <span>3. Sarpras &amp; Aksesibilitas</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesSanitasi')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                            <span>🚰</span>
+                            <span>4. Lingkungan &amp; Sanitasi</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesKelembagaan')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                            <span>🏛️</span>
+                            <span>5. BUMDes &amp; APBDes</span>
+                        </button>
+                    </div>
+
+                    <form id="formPodes" onsubmit="simpanDataPodes(event)" class="space-y-6">
+                        <!-- Seksi 1: Kependudukan & Ketenagakerjaan -->
+                        <div id="secPodesDemografi" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-sm">1</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Kependudukan, Ketenagakerjaan &amp; Kesejahteraan Sosial</h3>
+                                        <p class="text-xs text-slate-500">Agregat kependudukan, desil P3KE, dan profil mata pencaharian warga desa</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">SDI Kependudukan</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Penduduk (Jiwa):</label>
+                                    <input type="number" id="inpPodesPenduduk" name="penduduk" value="4150" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <span class="text-[10px] text-slate-400">Total laki-laki dan perempuan</span>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Kepala Keluarga (KK):</label>
+                                    <input type="number" id="inpPodesKK" name="kk" value="1120" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <span class="text-[10px] text-slate-400">Berdasarkan KK terdaftar</span>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Laki-laki (Jiwa):</label>
+                                    <input type="number" id="inpPodesLaki" name="laki" value="2060" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Perempuan (Jiwa):</label>
+                                    <input type="number" id="inpPodesPerempuan" name="perempuan" value="2090" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Petani Perkebunan Kakao (Orang):</label>
+                                    <input type="number" id="inpPodesPetani" name="petani" value="820" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Nelayan / Sektor Pesisir (Orang):</label>
+                                    <input type="number" id="inpPodesNelayan" name="nelayan" value="140" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Keluarga Penerima Bansos (KK):</label>
+                                    <input type="number" id="inpPodesBansos" name="bansos" value="280" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <span class="text-[10px] text-slate-400">PKH, BPNT, BLT Dana Desa</span>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Penyandang Disabilitas (Jiwa):</label>
+                                    <input type="number" id="inpPodesDisabilitas" name="disabilitas" value="14" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seksi 2: Pertanian, Perkebunan (Kakao) & Perikanan -->
+                        <div id="secPodesPertanian" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">2</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Pertanian, Perkebunan (Kakao) &amp; Perikanan</h3>
+                                        <p class="text-xs text-slate-500">Luas lahan komoditas unggulan, estimasi hasil panen, dan kelompok tani</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Komoditas Utama</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Luas Lahan Perkebunan Kakao (Hektar):</label>
+                                    <input type="number" id="inpPodesLuasKakao" name="luas_kakao" value="480" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Estimasi Produksi Kakao (Ton / Tahun):</label>
+                                    <input type="number" id="inpPodesProduksiKakao" name="produksi_kakao" value="385" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Luas Lahan Cengkeh (Hektar):</label>
+                                    <input type="number" id="inpPodesLuasCengkeh" name="luas_cengkeh" value="120" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Kelompok Tani (Poktan):</label>
+                                    <input type="number" id="inpPodesPoktan" name="poktan" value="12" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Armada Perahu Motor Nelayan (Unit):</label>
+                                    <input type="number" id="inpPodesPerahu" name="perahu" value="28" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Rata-rata Hasil Tangkap Ikan (Ton / Thn):</label>
+                                    <input type="number" id="inpPodesIkan" name="ikan" value="95" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seksi 3: Sarana Prasarana & Aksesibilitas -->
+                        <div id="secPodesSarpras" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-black text-sm">3</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Sarana Prasarana &amp; Aksesibilitas Desa</h3>
+                                        <p class="text-xs text-slate-500">Infrastruktur jalan, fasilitas kesehatan, jaringan telekomunikasi &amp; pendidikan</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Sarpras</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Panjang Jalan Aspal / Beton (Km):</label>
+                                    <input type="number" id="inpPodesJalan" name="jalan" value="14.2" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Kualitas Sinyal Seluler / Internet:</label>
+                                    <select id="inpPodesSinyal" name="sinyal" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="4g_stabil" selected>4G LTE Sangat Kuat &amp; Stabil</option>
+                                        <option value="4g_sedang">4G LTE Cukup Stabil</option>
+                                        <option value="3g">3G / Sinyal Lemah</option>
+                                        <option value="blankspot">Blankspot Sebagian</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Posyandu Aktif (Unit):</label>
+                                    <input type="number" id="inpPodesPosyandu" name="posyandu" value="4" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Fasilitas Kesehatan Terdekat:</label>
+                                    <input type="text" id="inpPodesFaskes" name="faskes" value="Puskesmas Pembantu Desa Kalu Kaluku" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Sekolah SD / Sederajat:</label>
+                                    <input type="number" id="inpPodesSekolahSD" name="sekolah_sd" value="2" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Sekolah SMP / MTs:</label>
+                                    <input type="number" id="inpPodesSekolahSMP" name="sekolah_smp" value="1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seksi 4: Perumahan, Lingkungan & Sanitasi -->
+                        <div id="secPodesSanitasi" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-black text-sm">4</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Lingkungan, Sanitasi &amp; Permukiman</h3>
+                                        <p class="text-xs text-slate-500">Akses air bersih, sanitasi jamban sehat, elektrifikasi PLN, dan mitigasi bencana</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Lingkungan</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Akses Air Bersih Layak (% KK):</label>
+                                    <input type="number" id="inpPodesAir" name="air" value="92.4" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Sanitasi Jamban Sehat (% KK):</label>
+                                    <input type="number" id="inpPodesJamban" name="jamban" value="88.6" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Elektrifikasi Listrik PLN (% KK):</label>
+                                    <input type="number" id="inpPodesListrik" name="listrik" value="99.2" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seksi 5: Kelembagaan & Regulasi Keuangan Desa -->
+                        <div id="secPodesKelembagaan" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center font-black text-sm">5</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Kelembagaan, Keuangan &amp; Regulasi Perdes</h3>
+                                        <p class="text-xs text-slate-500">Status BUMDes, pendapatan desa, dan regulasi penyelenggaraan Satu Data Indonesia</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-indigo-800 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Kelembagaan</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Status Keberadaan BUMDes:</label>
+                                    <input type="text" id="inpPodesBumdes" name="bumdes" value="BUMDes Mandiri Sejahtera (Kategori Maju)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Total Pendapatan Desa APBDes (Rp):</label>
+                                    <input type="text" id="inpPodesApbdes" name="apbdes" value="1.485.200.000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Perdes Statistik Sektoral Desa:</label>
+                                    <input type="text" id="inpPodesPerdes" name="perdes" value="Tersedia (Perdes No. 04 Tahun 2025)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Action Bar -->
+                        <div class="p-5 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <div class="font-black text-sm">Pastikan seluruh data potensi desa terisi dengan benar</div>
+                                <div class="text-xs text-slate-400 mt-0.5">Data tersimpan akan langsung memutakhirkan ringkasan angka pada Dashboard Desa.</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition cursor-pointer shadow-md">
+                                    💾 Simpan Seluruh Isian PODES
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 5. MONITORING KELENGKAPAN (44 INDIKATOR DESA CANTIK & BUKTI DUKUNG)   -->
+                <!-- ===================================================================== -->
+                <div id="view-monitoring" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                📋
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Monitoring Kelengkapan Indikator</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        86.4% Mandiri
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Monitoring 44 Indikator Desa Cantik &amp; Portofolio Bukti Dukung Sektoral Terverifikasi BPS</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="openAddBuktiModal()" class="px-4 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                <span>➕</span>
+                                <span>Unggah Bukti Baru</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Kesiapan & Statistik Indikator -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+                            <span class="text-xs font-extrabold text-slate-400">Total Indikator SDI:</span>
+                            <div class="text-2xl font-black text-slate-900 mt-1">44 Indikator</div>
+                            <span class="text-[10px] text-slate-500">Standar BPS RI Desa Cantik</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 shadow-2xs">
+                            <span class="text-xs font-extrabold text-emerald-700">Telah Lengkap &amp; Valid:</span>
+                            <div id="monStatLengkap" class="text-2xl font-black text-emerald-950 mt-1">38 Indikator</div>
+                            <span class="text-[10px] text-emerald-700 font-semibold">Memenuhi Prinsip SDI</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 shadow-2xs">
+                            <span class="text-xs font-extrabold text-amber-800">Menunggu Reviu BPS:</span>
+                            <div id="monStatReviu" class="text-2xl font-black text-amber-950 mt-1">4 Dokumen</div>
+                            <span class="text-[10px] text-amber-700 font-semibold">Proses Supervisi Kolut</span>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-rose-50/70 border border-rose-200 shadow-2xs">
+                            <span class="text-xs font-extrabold text-rose-700">Belum Lengkap:</span>
+                            <div id="monStatKurang" class="text-2xl font-black text-rose-950 mt-1">2 Indikator</div>
+                            <span class="text-[10px] text-rose-600 font-semibold">Perlu Tindak Lanjut</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Monitoring Table Container -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                            <!-- Sub-tabs: Tingkat Desa & Kabupaten -->
+                            <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl text-xs font-bold border border-slate-200">
+                                <button type="button" onclick="switchMonevBuktiTab('desa')" id="tabBuktiDesa" class="px-3.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer font-black">
+                                    A. Tingkat Desa (32)
+                                </button>
+                                <button type="button" onclick="switchMonevBuktiTab('kab')" id="tabBuktiKab" class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer font-bold">
+                                    B. Tingkat Kabupaten (12)
+                                </button>
+                            </div>
+
+                            <!-- Filter Status -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-slate-400 font-medium">Filter:</span>
+                                <select onchange="filterMonitoringStatus(this.value)" class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none cursor-pointer">
+                                    <option value="all">Semua Status</option>
+                                    <option value="lengkap">✓ Hanya Lengkap</option>
+                                    <option value="belum">❌ Belum Lengkap</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
+                                    <tr>
+                                        <th class="py-3 px-3 w-12 text-center">No</th>
+                                        <th class="py-3 px-4">Nama Indikator / Dokumen Bukti Dukung</th>
+                                        <th class="py-3 px-3">Kategori</th>
+                                        <th class="py-3 px-3 text-center">Status</th>
+                                        <th class="py-3 px-4 text-center">Aksi / Verifikasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyMonevBukti" class="divide-y divide-slate-100 font-medium text-slate-800">
+                                    <!-- Dynamic rows via renderBuktiDukungTables -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Bottom Upload CTA -->
+                        <div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                            <div class="flex items-center gap-2 text-slate-500">
+                                <span class="text-base">🛡️</span>
+                                <span>Seluruh berkas bukti dukung tersimpan dan tersinkronisasi ke Cloud SDI BPS RI.</span>
+                            </div>
+                            <button type="button" onclick="openAddBuktiModal()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
+                                <span>➕ Tambah / Unggah Dokumen Bukti Baru</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Verifikasi Tim Pembina BPS & Pemda -->
+                    <div class="p-5 rounded-3xl bg-gradient-to-r from-[#061a33] to-[#0c4a34] text-white flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-sm">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+                                <span>✓</span>
+                                <span>TERVERIFIKASI TIM PEMBINA STATISTIK BPS KAB. KOLAKA UTARA</span>
+                            </div>
+                            <div class="text-lg font-black text-white">Status Akhir Kelengkapan Portofolio: Kategori Mandiri</div>
+                            <div class="text-xs text-slate-300">Desa memenuhi seluruh parameter Satu Data Indonesia dan siap menjadi percontohan desa statistik nasional.</div>
+                        </div>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="text-center px-4 py-2 bg-white/10 rounded-2xl border border-white/15">
+                                <div class="text-2xl font-black text-amber-300">85%</div>
+                                <div class="text-[10px] text-slate-300 font-semibold">Skor Evaluasi</div>
+                            </div>
+                            <button type="button" onclick="openPublikasiDocModal('monografi')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-xs font-black transition cursor-pointer shadow-sm">
+                                <span>📘 Lihat Dokumen Monev</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 6. PEMBINAAN DESA (TIMELINE, PEMBINA BPS & LOGBOOK ASISTENSI)          -->
+                <!-- ===================================================================== -->
+                <div id="view-pembinaan" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                ⏱️
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Sistem Pembinaan Desa Cantik</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        Tahap 3 Aktif
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Timeline Terstruktur 4 Tahapan &amp; Logbook Pendampingan Teknis BPS Kabupaten Kolaka Utara</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="openTambahCatatanModal()" class="px-4 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                <span>➕</span>
+                                <span>Tambah Catatan Kunjungan</span>
+                            </button>
+                            <button type="button" onclick="unduhBeritaAcaraPdf()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200 shadow-2xs">
+                                <span>📥</span>
+                                <span>Unduh Berita Acara</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4-Phase Chevron Stepper -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">PROGRESS MILESTONE TAHUN 2026</span>
+                                <h3 class="font-black text-slate-900 text-base sm:text-lg mt-0.5">Tahapan Program Pembinaan Desa Cantik BPS</h3>
+                            </div>
+                            <span class="text-xs font-bold text-slate-500">Target Rampung: November 2026</span>
+                        </div>
+
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1 select-none">
                             <!-- Step 1: Persiapan (100% Selesai) -->
-                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
+                            <div class="p-3.5 rounded-2xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="font-black">1. Persiapan</span>
                                     <span class="text-sm">✓</span>
                                 </div>
                                 <div class="mt-2">
-                                    <div class="text-[10px] text-emerald-100 font-medium">Sosialisasi & SK Agen</div>
+                                    <div class="text-[10px] text-emerald-100 font-medium">Sosialisasi &amp; SK Agen</div>
                                     <div class="w-full bg-emerald-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
                                         <div class="bg-white h-full rounded-full" style="width: 100%"></div>
                                     </div>
@@ -1777,7 +2036,7 @@
                             </div>
 
                             <!-- Step 2: Pengumpulan Data (100% Selesai) -->
-                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
+                            <div class="p-3.5 rounded-2xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="font-black">2. Pengumpulan Data</span>
                                     <span class="text-sm">✓</span>
@@ -1791,143 +2050,925 @@
                             </div>
 
                             <!-- Step 3: Pengolahan (Sedang Berjalan - 85%) -->
-                            <div class="p-3.5 rounded-xl bg-[#005ea6] text-white shadow-xs relative overflow-hidden flex flex-col justify-between ring-2 ring-blue-300">
+                            <div class="p-3.5 rounded-2xl bg-[#0c4a34] text-white shadow-xs relative overflow-hidden flex flex-col justify-between ring-2 ring-emerald-400">
                                 <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black">3. Pengolahan</span>
+                                    <span class="font-black">3. Pengolahan Data</span>
                                     <span class="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black text-[9px] animate-pulse">Aktif (85%)</span>
                                 </div>
                                 <div class="mt-2">
-                                    <div class="text-[10px] text-blue-100 font-medium">Validasi & Entri SDI</div>
-                                    <div class="w-full bg-blue-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
+                                    <div class="text-[10px] text-emerald-100 font-medium">Validasi &amp; Entri SDI</div>
+                                    <div class="w-full bg-emerald-950/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
                                         <div class="bg-amber-400 h-full rounded-full" style="width: 85%"></div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Step 4: Publikasi (Tahap Akhir) -->
-                            <div class="p-3.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 relative overflow-hidden flex flex-col justify-between">
+                            <div class="p-3.5 rounded-2xl bg-slate-100 text-slate-600 border border-slate-200 relative overflow-hidden flex flex-col justify-between">
                                 <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black text-slate-700">4. Publikasi</span>
+                                    <span class="font-black text-slate-700">4. Diseminasi Data</span>
                                     <span class="text-xs">🔒</span>
                                 </div>
                                 <div class="mt-2">
-                                    <div class="text-[10px] text-slate-400 font-medium">Rilis BRS & WebGIS</div>
+                                    <div class="text-[10px] text-slate-400 font-medium">Rilis BRS &amp; WebGIS</div>
                                     <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                                        <div class="bg-slate-400 h-full rounded-full" style="width: 25%"></div>
+                                        <div class="bg-slate-400 h-full rounded-full" style="width: 30%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section 2: Split Columns (Kelengkapan Bukti Dukung Internal & Verifikasi BPS) -->
-                    <div id="sectionKelengkapanBukti" class="grid grid-cols-1 lg:grid-cols-12 gap-4 scroll-mt-6">
-                        <!-- Left Col: KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV) (8 Cols) -->
-                        <div class="lg:col-span-8 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                    <!-- Tim Pembina BPS & Agen Statistik Desa -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <!-- Profil Tim Pembina BPS Kolut -->
+                        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs space-y-3">
+                            <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+                                <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg">🏛️</div>
                                 <div>
-                                    <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                        <span>📁</span>
-                                        <span>KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV)</span>
-                                    </h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Portofolio Pelaksanaan Pembinaan Statistik Sektoral Tingkat Desa & Kabupaten</p>
-                                </div>
-                                <!-- Sub-tab Bukti Dukung: Desa & Kabupaten -->
-                                <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-xl text-xs font-bold border border-slate-200">
-                                    <button type="button" onclick="switchMonevBuktiTab('desa')" id="tabBuktiDesa" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer">
-                                        A. Tingkat Desa
-                                    </button>
-                                    <button type="button" onclick="switchMonevBuktiTab('kab')" id="tabBuktiKab" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer">
-                                        B. Tingkat Kabupaten
-                                    </button>
+                                    <div class="font-black text-slate-900 text-sm">Tim Pembina BPS Kab. Kolaka Utara</div>
+                                    <div class="text-xs text-slate-500">Kantor BPS: Kompleks Perkantoran Pemda Kolut</div>
                                 </div>
                             </div>
-
-                            <!-- Table of Bukti Dukung -->
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-xs text-left">
-                                    <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
-                                        <tr>
-                                            <th class="py-2.5 px-3 w-10 text-center">No</th>
-                                            <th class="py-2.5 px-4">Nama Dokumen Bukti Dukung</th>
-                                            <th class="py-2.5 px-3 text-center">Status</th>
-                                            <th class="py-2.5 px-4 text-center">File Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyMonevBukti" class="divide-y divide-slate-100 font-medium text-slate-800">
-                                        <!-- Injected via renderBuktiDukungTables -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Upload Action -->
-                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
-                                <button type="button" onclick="openAddBuktiModal()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-xs">
-                                    <span>➕ Unggah Dokumen Bukti Dukung Baru</span>
-                                </button>
-                                <span class="text-[11px] text-slate-400">Penyimpanan Terverifikasi Cloud SDI BPS</span>
+                            <div class="text-xs text-slate-600 space-y-2">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+                                    <span><b>Ketua Tim Pembina:</b> Fungsional Statistisi Ahli</span>
+                                    <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-bold">BPS Kolut</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center">
+                                    <span><b>Klinik Konsultasi Data:</b> Setiap Selasa &amp; Kamis</span>
+                                    <span class="text-emerald-700 font-black">Buka Online &amp; Offline</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+                                    💡 <b>Catatan Asistensi BPS:</b> Data kependudukan dan perkebunan kakao telah sinkron dengan standar Satu Data Indonesia.
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Right Col: Verifikasi BPS / Pemda (4 Cols) -->
-                        <div class="lg:col-span-4 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4">
-                            <div>
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <span class="text-xs font-bold text-slate-500">Verifikasi BPS / Pemda:</span>
-                                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300 flex items-center gap-1">
-                                        <span>✓</span>
-                                        <span>TERVERIFIKASI</span>
-                                    </span>
+                        <!-- 4 Agen Statistik Desa -->
+                        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs space-y-3">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-lg">🎓</div>
+                                    <div>
+                                        <div class="font-black text-slate-900 text-sm">Agen Statistik Desa Binaan</div>
+                                        <div class="text-xs text-slate-500">4 Aparat Desa Bersertifikasi Resmi BPS</div>
+                                    </div>
                                 </div>
-
-                                <div class="mt-4 text-center p-4 rounded-2xl bg-gradient-to-tr from-slate-900 to-[#005ea6] text-white shadow-md">
-                                    <span class="text-xs font-bold text-blue-200 block">Nilai Kinerja Evaluasi Mandiri:</span>
-                                    <div class="text-4xl font-black text-amber-300 mt-1">85%</div>
-                                    <span class="inline-block mt-2 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-black border border-emerald-400/40">
-                                        (Kategori: Mandiri)
-                                    </span>
+                                <button type="button" onclick="activateSidebarMenu('aparatur')" class="text-xs font-bold text-emerald-700 hover:underline">
+                                    Detail Aparat →
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                                    <div class="font-bold text-slate-900">Baharuddin, S.Pd</div>
+                                    <div class="text-[11px] text-slate-500">Pengolahan Data Excel</div>
                                 </div>
-
-                                <!-- Progress Aspects -->
-                                <div class="mt-4 space-y-2 text-xs">
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Standardisasi Metadata SDI</span>
-                                            <span class="font-black text-emerald-700">90%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-emerald-600 h-full rounded-full" style="width: 90%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Kualitas Data Sektoral</span>
-                                            <span class="font-black text-blue-700">85%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-[#005ea6] h-full rounded-full" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Pemanfaatan WebGIS & Publikasi</span>
-                                            <span class="font-black text-indigo-700">80%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-indigo-600 h-full rounded-full" style="width: 80%"></div>
-                                        </div>
-                                    </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                                    <div class="font-bold text-slate-900">Rosmini, S.Kom</div>
+                                    <div class="text-[11px] text-slate-500">Operator WebGIS Spasial</div>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                                    <div class="font-bold text-slate-900">Andi Rahmawati, S.E</div>
+                                    <div class="text-[11px] text-slate-500">Validasi Bansos &amp; Keuangan</div>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                                    <div class="font-bold text-slate-900">Jodi Asrul</div>
+                                    <div class="text-[11px] text-slate-500">Sensus Monografi Dusun</div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Notes by BPS Kolut Tim Pembina -->
-                            <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed font-medium">
-                                💡 <b>Rekomendasi BPS Kolut:</b> Desa Kalu Kaluku memenuhi seluruh kriteria Desa Cantik Kategori Mandiri tahun 2026.
+                    <!-- Logbook Catatan Kunjungan BPS -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">LOGBOOK ASISTENSI LAPANGAN</span>
+                                <h3 class="font-black text-slate-900 text-base sm:text-lg mt-0.5">Buku Catatan Kunjungan &amp; Rekomendasi BPS</h3>
+                            </div>
+                            <button type="button" onclick="openTambahCatatanModal()" class="px-3.5 py-1.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer">
+                                <span>➕ Tambah Catatan</span>
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
+                                    <tr>
+                                        <th class="py-2.5 px-3 w-12 text-center">No</th>
+                                        <th class="py-2.5 px-3">Tanggal</th>
+                                        <th class="py-2.5 px-4">Agenda / Materi Pembinaan</th>
+                                        <th class="py-2.5 px-3">Narasumber BPS</th>
+                                        <th class="py-2.5 px-4">Rekomendasi Tindak Lanjut</th>
+                                        <th class="py-2.5 px-3 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyLogbookPembinaan" class="divide-y divide-slate-100 font-medium text-slate-800">
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-2.5 px-3 text-center font-bold text-slate-500">1</td>
+                                        <td class="py-2.5 px-3 font-bold text-slate-700">10 Feb 2026</td>
+                                        <td class="py-2.5 px-4 font-bold text-slate-900">Sosialisasi Program Desa Cantik &amp; Penetapan SK Agen Statistik</td>
+                                        <td class="py-2.5 px-3 text-slate-600">Tim Fungsional BPS Kolut</td>
+                                        <td class="py-2.5 px-4 text-slate-600">Penyusunan SK Kades tentang Agen Statistik resmi ditandatangani.</td>
+                                        <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">✓ Selesai</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-2.5 px-3 text-center font-bold text-slate-500">2</td>
+                                        <td class="py-2.5 px-3 font-bold text-slate-700">24 Feb 2026</td>
+                                        <td class="py-2.5 px-4 font-bold text-slate-900">Bimbingan Teknis Metodologi Sensus Monografi &amp; Pemetaan Dusun</td>
+                                        <td class="py-2.5 px-3 text-slate-600">Statistisi Ahli Muda BPS</td>
+                                        <td class="py-2.5 px-4 text-slate-600">Instrumen kuesioner monografi 4 dusun telah divalidasi dan diuji coba.</td>
+                                        <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">✓ Selesai</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-2.5 px-3 text-center font-bold text-slate-500">3</td>
+                                        <td class="py-2.5 px-3 font-bold text-slate-700">12 Mar 2026</td>
+                                        <td class="py-2.5 px-4 font-bold text-slate-900">Pendampingan Entri Metadata Statistik Sektoral (SDI) &amp; Excel</td>
+                                        <td class="py-2.5 px-3 text-slate-600">Pranata Komputer BPS</td>
+                                        <td class="py-2.5 px-4 text-slate-600">Penyempurnaan 30 lembar kerja praktik pengolahan data desa.</td>
+                                        <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">✓ Selesai</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition">
+                                        <td class="py-2.5 px-3 text-center font-bold text-slate-500">4</td>
+                                        <td class="py-2.5 px-3 font-bold text-slate-700">05 Apr 2026</td>
+                                        <td class="py-2.5 px-4 font-bold text-slate-900">Sinkronisasi Peta Tematik WebGIS &amp; Integrasi Desil P3KE</td>
+                                        <td class="py-2.5 px-3 text-slate-600">Tim IT BPS Kolaka Utara</td>
+                                        <td class="py-2.5 px-4 text-slate-600">Peta spasial batas dusun dan perkebunan kakao berhasil dipublikasikan.</td>
+                                        <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-black">🔄 Berjalan</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 7. MATERI PEMBELAJARAN (KATALOG 6 MODUL RESMI BPS RI)                 -->
+                <!-- ===================================================================== -->
+                <div id="view-materi" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                📖
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Materi Pembelajaran Desa Cantik</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        6 Modul BPS
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Kurikulum Resmi Peningkatan Literasi Statistik Sektoral &amp; Standar Data Indonesia (SDI)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                                <span>🔓</span>
+                                <span>Buka Semua Modul</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Learning Progress Strip -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="space-y-0.5">
+                            <div class="text-xs font-black text-emerald-950">Progres Pembelajaran Aparatur Desa: 5 dari 6 Modul Telah Dipelajari (83%)</div>
+                            <div class="text-[11px] text-slate-500">Selesaikan seluruh modul untuk memenuhi syarat Ujian Post-test Sertifikasi BPS.</div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="activateSidebarMenu('evaluasi')" class="px-4 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition cursor-pointer shadow-xs">
+                                <span>Ikuti Ujian Post-Test →</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid of 6 Learning Modules -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Modul 1 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 01</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 20 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Konsep Dasar Statistik Sektoral &amp; Satu Data Indonesia (SDI)</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Prinsip 4 pilar SDI: Standar data, metadata baku, interoperabilitas data, dan kode referensi nasional.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(1)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(1)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modul 2 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 02</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 25 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Standar Data Statistik &amp; Penyusunan Metadata Variabel</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Tata cara mendefinisikan konsep, definisi operasional, klasifikasi, ukuran, dan satuan data potensi desa.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(2)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(2)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modul 3 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 03</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 25 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Klasifikasi Baku Statistik Indonesia (KBLI, KBKI &amp; Wilayah)</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Penggunaan kode baku statistik untuk pengelompokan usaha warga desa, komoditas perkebunan kakao, dan wilayah dusun.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(3)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(3)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modul 4 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 04</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 30 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Pengolahan, Validasi &amp; Pembersihan Data Menggunakan Excel</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Teknik pembersihan data ganda (duplicates), agregasi pivot table, dan rumus logika pengecekan anomali data kependudukan.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(4)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(4)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modul 5 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 05</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 30 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Analisis Sektoral, Rasio Beban Tanggungan &amp; Indikator Podes</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Perhitungan indikator dependensi rasio, sex ratio, pemetaan desil kemiskinan P3KE, dan interpretasi angka statistik.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(5)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(5)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modul 6 -->
+                        <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4 hover:shadow-md transition">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-800 font-black text-[10px] border border-emerald-200">MODUL 06</span>
+                                    <span class="text-[10px] font-bold text-slate-400">⏱️ 35 Menit</span>
+                                </div>
+                                <h3 class="font-black text-slate-900 text-sm leading-snug">Diseminasi Data, Infografis Publik &amp; Publikasi Monografi</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed">Tata cara penyusunan Berita Resmi Statistik (BRS) Desa, publikasi buku monografi, dan penyajian peta spasial WebGIS.</p>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                <button type="button" onclick="openBacaModulModal(6)" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center cursor-pointer">
+                                    📖 Baca Modul
+                                </button>
+                                <button type="button" onclick="unduhModulPdf(6)" class="px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-black transition cursor-pointer">
+                                    📥 PDF
+                                </button>
                             </div>
                         </div>
                     </div>
 
                 </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 8. VIDEO TUTORIAL (KHUSUS VIDEO MICROLEARNING RESMI BPS RI)           -->
+                <!-- ===================================================================== -->
+                <div id="view-video" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                🎬
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Video Tutorial Pembelajaran</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        Microlearning BPS
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Modul Audio-Visual Resmi BPS RI untuk Standardisasi Tata Kelola Data Desa Cantik</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="openVideoTheaterModal()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200">
+                                <span>⛶</span>
+                                <span>Mode Bioskop</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 2-Column Cinema Player & Playlist Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                        <!-- Left: Responsive Cinema Video Player (7 Cols) -->
+                        <div class="lg:col-span-7 bg-white rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                            <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-lg border border-slate-200 group">
+                                <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/RXV4X0cOIA0?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+
+                            <!-- Video Info & Controls -->
+                            <div class="space-y-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-100">
+                                    <div>
+                                        <span id="activeVideoTag" class="text-[10px] font-black uppercase text-emerald-700 tracking-wider">VIDEO 1 DARI 5 • BPS RI</span>
+                                        <h3 id="mainVideoTitle" class="text-base sm:text-lg font-black text-slate-900 mt-0.5">Pengenalan Program Desa Cantik &amp; Manfaat bagi Pembangunan Desa</h3>
+                                    </div>
+                                    <span id="mainVideoDuration" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-black border border-emerald-200 self-start sm:self-auto">
+                                        ⏱️ 06:45 Menit
+                                    </span>
+                                </div>
+                                <p id="mainVideoDesc" class="text-xs text-slate-500 leading-relaxed">
+                                    Memahami esensi program Desa Cinta Statistik (Desa Cantik), peran strategis aparatur desa sebagai agen data sektoral, serta bagaimana Satu Data Indonesia mempercepat pengambilan kebijakan desa.
+                                </p>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        <span class="text-slate-600 font-semibold">Resolusi HD 1080p • Suara Dolby Digital</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button type="button" onclick="playMicrolearningVideo(true)" class="px-3.5 py-1.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white font-bold transition cursor-pointer">
+                                            ▶ Putar Video
+                                        </button>
+                                        <button type="button" onclick="toggleMainVideoSound()" class="px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold border border-slate-200 transition cursor-pointer">
+                                            <span id="iconVideoSound">🔊</span>
+                                            <span id="textVideoSound">Suara Aktif</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Interactive Playlist of 5 Videos (5 Cols) -->
+                        <div class="lg:col-span-5 bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div>
+                                    <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">DAFTAR PUTAR MODUL</span>
+                                    <h3 class="font-black text-slate-900 text-sm sm:text-base mt-0.5">Playlist 5 Video Tutorial BPS</h3>
+                                </div>
+                                <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">5 Video</span>
+                            </div>
+
+                            <div class="space-y-2 text-xs" id="playlistContainer">
+                                <!-- Video 1 -->
+                                <button type="button" onclick="pilihVideoTutorial(0)" id="playlistItem0" class="w-full text-left p-3.5 rounded-2xl bg-[#0c4a34] text-white shadow-xs transition flex items-start gap-3 cursor-pointer">
+                                    <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black text-xs truncate">Pengenalan Program Desa Cantik</div>
+                                        <div class="text-[11px] text-emerald-200/90 mt-0.5">Konsep dasar &amp; manfaat Satu Data Desa</div>
+                                        <div class="text-[10px] text-emerald-300 font-bold mt-1">⏱️ 06:45 Menit • Sedang Diputar</div>
+                                    </div>
+                                </button>
+
+                                <!-- Video 2 -->
+                                <button type="button" onclick="pilihVideoTutorial(1)" id="playlistItem1" class="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition flex items-start gap-3 cursor-pointer">
+                                    <span class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black text-xs truncate">Praktik Pengolahan Data Excel Desa</div>
+                                        <div class="text-[11px] text-slate-500 mt-0.5">Validasi monografi kependudukan &amp; podes</div>
+                                        <div class="text-[10px] text-slate-400 font-bold mt-1">⏱️ 12:30 Menit</div>
+                                    </div>
+                                </button>
+
+                                <!-- Video 3 -->
+                                <button type="button" onclick="pilihVideoTutorial(2)" id="playlistItem2" class="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition flex items-start gap-3 cursor-pointer">
+                                    <span class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black text-xs truncate">Standarisasi Metadata Variabel Sektoral</div>
+                                        <div class="text-[11px] text-slate-500 mt-0.5">Definisi operasional sesuai prinsip SDI</div>
+                                        <div class="text-[10px] text-slate-400 font-bold mt-1">⏱️ 09:15 Menit</div>
+                                    </div>
+                                </button>
+
+                                <!-- Video 4 -->
+                                <button type="button" onclick="pilihVideoTutorial(3)" id="playlistItem3" class="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition flex items-start gap-3 cursor-pointer">
+                                    <span class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black text-xs truncate">Teknik Analisis Piramida Penduduk</div>
+                                        <div class="text-[11px] text-slate-500 mt-0.5">Interpretasi rasio desil kemiskinan P3KE</div>
+                                        <div class="text-[10px] text-slate-400 font-bold mt-1">⏱️ 10:50 Menit</div>
+                                    </div>
+                                </button>
+
+                                <!-- Video 5 -->
+                                <button type="button" onclick="pilihVideoTutorial(4)" id="playlistItem4" class="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition flex items-start gap-3 cursor-pointer">
+                                    <span class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">5</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black text-xs truncate">Penyusunan Publikasi Monografi &amp; BRS</div>
+                                        <div class="text-[11px] text-slate-500 mt-0.5">Diseminasi hasil pendataan statistik desa</div>
+                                        <div class="text-[10px] text-slate-400 font-bold mt-1">⏱️ 14:20 Menit</div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-2">
+                                <div class="text-xs font-bold text-slate-700">Sudah selesai menyimak video pembelajaran?</div>
+                                <button type="button" onclick="activateSidebarMenu('evaluasi')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs">
+                                    <span>Lanjut Ujian Pre-test &amp; Post-test →</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 9. PRE-TEST & POST-TEST (EVALUASI KOMPETENSI APARATUR DESA)           -->
+                <!-- ===================================================================== -->
+                <div id="view-evaluasi" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                📝
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Pre-test &amp; Post-test Evaluasi</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        E-Sertifikat BPS
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Uji Pemahaman Konsep Statistik Sektoral &amp; Evaluasi Kelulusan Agen Statistik Desa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <!-- Evaluasi Sub-tab Switcher -->
+                            <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-xl text-xs font-bold border border-slate-200">
+                                <button type="button" onclick="switchEvaluasiTab('posttest')" id="tabEvalPosttest" class="px-3.5 py-1.5 rounded-lg bg-[#0c4a34] text-white shadow-xs transition cursor-pointer font-black">
+                                    1. Post-Test (Kelulusan)
+                                </button>
+                                <button type="button" onclick="switchEvaluasiTab('pretest')" id="tabEvalPretest" class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer font-bold">
+                                    2. Pre-Test (Awal)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ujian Status & Instruction Banner -->
+                    <div class="p-5 rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-[#0c4a34] text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2 text-amber-300 font-extrabold text-xs uppercase tracking-wider">
+                                <span>⭐</span>
+                                <span id="evalBannerTag">EVALUASI POST-TEST KELULUSAN SERTIFIKASI AGEN STATISTIK BPS</span>
+                            </div>
+                            <h3 id="evalBannerTitle" class="text-lg sm:text-xl font-black text-white">Kuis Pilihan Ganda: 10 Soal Statistik Sektoral Desa</h3>
+                            <div class="text-xs text-blue-100">Batas Nilai Kelulusan (Passing Grade): <b>70 / 100</b>. Bagi yang lulus berhak mencetak E-Sertifikat Resmi.</div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button type="button" onclick="openSertifikatKelulusanModal()" id="btnLihatSertifikatHeader" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-md">
+                                <span>🎓 Cetak E-Sertifikat</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Result Box (Dynamically shown after submission) -->
+                    <div id="evalScoreResultBox" class="hidden p-5 rounded-3xl bg-emerald-50 border-2 border-emerald-300 shadow-sm space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white font-black text-[10px] uppercase">Hasil Evaluasi</span>
+                                <div class="text-xl sm:text-2xl font-black text-emerald-950 mt-1" id="evalScoreTitle">Nilai Ujian Anda: 90 / 100 (Sangat Memuaskan)</div>
+                                <div class="text-xs text-emerald-800 mt-0.5" id="evalScoreDesc">Selamat! Anda dinyatakan LULUS sebagai Agen Statistik Sektoral BPS Kab. Kolaka Utara.</div>
+                            </div>
+                            <button type="button" onclick="openSertifikatKelulusanModal()" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs transition cursor-pointer shadow-xs shrink-0 flex items-center gap-2">
+                                <span>🎓 Buka &amp; Unduh E-Sertifikat Kelulusan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Form 10 Questions Multiple Choice -->
+                    <form id="formEvaluasiKuis" onsubmit="event.preventDefault(); hitungDanKirimKuis('posttest');" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-6">
+                        
+                        <!-- Question 1 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">1</span>
+                                <span>Apa saja 4 prinsip utama dalam Satu Data Indonesia (SDI) sesuai Perpres No. 39 Tahun 2019?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Kecepatan data, kerahasiaan data, jumlah data, dan format file</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Standar Data, Metadata, Interoperabilitas Data, dan Kode Referensi / Data Induk</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Anggaran desa, perangkat komputer, koneksi internet, dan SK Kades</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Sensus monografi, data bansos, peta wilayah, dan foto udara</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">2</span>
+                                <span>Mengapa Metadata Statistik sangat penting dalam pendataan potensi desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="A" class="accent-[#0c4a34]" checked>
+                                    <span>A. Memberikan informasi tentang konsep, definisi operasional, dan metodologi agar data tidak salah tafsir</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="B" class="accent-[#0c4a34]">
+                                    <span>B. Mempercepat proses pencetakan buku monografi di kantor desa</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Menentukan besaran Alokasi Dana Desa (ADD) yang akan cair</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Sebagai bukti tanda terima kuesioner kepada kepala keluarga</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">3</span>
+                                <span>Apakah yang dimaksud dengan Interoperabilitas Data dalam prinsip SDI?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Data hanya boleh dibuka oleh operator desa dan tidak boleh dibagikan</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Kemampuan data untuk dapat saling dibagi-pakaikan antar sistem elektronik yang berbeda secara terbuka</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Kewajiban menyimpan data dalam bentuk cetak di lemari arsip</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Proses penghapusan data penduduk yang sudah berpindah tempat</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">4</span>
+                                <span>Menurut BPS, kelompok umur berapakah yang dikategorikan sebagai Penduduk Usia Produktif?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Usia 0 sampai 14 tahun</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Usia 15 sampai 64 tahun</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Usia 21 sampai 55 tahun</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Usia 65 tahun ke atas</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">5</span>
+                                <span>Bagaimanakah rumus perhitungan Sex Ratio (Rasio Jenis Kelamin) penduduk desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="A" class="accent-[#0c4a34]" checked>
+                                    <span>A. (Jumlah Penduduk Laki-laki / Jumlah Penduduk Perempuan) x 100</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="B" class="accent-[#0c4a34]">
+                                    <span>B. (Jumlah Penduduk Perempuan / Jumlah Penduduk Laki-laki) x 100</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Total Penduduk / Luas Wilayah Desa (km²)</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="D" class="accent-[#0c4a34]">
+                                    <span>D. (Jumlah Balita + Jumlah Lansia) / Total Penduduk</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 6 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">6</span>
+                                <span>Dalam data Pensasaran Percepatan Penghapusan Kemiskinan Ekstrem (P3KE), Desil 1 menggambarkan:</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q6" value="A" class="accent-[#0c4a34]" checked>
+                                    <span>A. Rumah tangga dengan tingkat kesejahteraan terendah (10% termiskin / kemiskinan ekstrem)</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q6" value="B" class="accent-[#0c4a34]">
+                                    <span>B. Kelompok rumah tangga paling sejahtera dan kaya di desa</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q6" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Kelompok pegawai negeri sipil dan aparat desa</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q6" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Petani yang memiliki lahan perkebunan lebih dari 5 hektar</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 7 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">7</span>
+                                <span>Apa tujuan utama penerbitan Berita Resmi Statistik (BRS) Sektoral di tingkat desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q7" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Sebagai surat pengantar pembuatan KTP bagi warga baru</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q7" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Mendiseminasikan rilis data strategis desa secara berkala, transparan, dan akuntabel kepada publik</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q7" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Mengajukan pinjaman modal usaha ke bank daerah</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q7" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Menggantikan peran sensus nasional BPS</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 8 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">8</span>
+                                <span>Bagaimanakah langkah validasi jika ditemukan data ganda (duplicate) pada NIK penduduk di buku monografi desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q8" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Langsung menghapus salah satu tanpa mengecek identitas fisik</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q8" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Melakukan verifikasi faktual lapangan ke kepala dusun/RT dan mencocokkan dengan Kartu Keluarga resmi</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q8" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Membiarkan data tetap ganda agar angka penduduk terlihat lebih banyak</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q8" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Mengubah nomor NIK secara acak menggunakan angka baru</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 9 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">9</span>
+                                <span>Apa peran utama Agen Statistik Desa yang ditunjuk oleh Kepala Desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q9" value="A" class="accent-[#0c4a34]" checked>
+                                    <span>A. Menjadi pionir pengumpulan, validasi, pengolahan data sektoral, serta penghubung (liaison) dengan BPS</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q9" value="B" class="accent-[#0c4a34]">
+                                    <span>B. Menjadi bendahara kas desa dan membagikan bantuan uang tunai</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q9" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Mengurus perizinan bangunan dan surat tanah warga</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q9" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Mengawasi jalannya pemilihan kepala desa</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 10 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div class="font-black text-slate-900 text-sm flex items-start gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#0c4a34] text-white font-black text-xs flex items-center justify-center shrink-0">10</span>
+                                <span>Bagaimana manfaat integrasi Peta Tematik WebGIS Desa Cantik bagi perencanaan pembangunan desa?</span>
+                            </div>
+                            <div class="space-y-2 text-xs ml-8">
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q10" value="A" class="accent-[#0c4a34]">
+                                    <span>A. Hanya sebagai hiasan dinding di ruang pelayanan kantor desa</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q10" value="B" class="accent-[#0c4a34]" checked>
+                                    <span>B. Memvisualisasikan sebaran spasial penduduk, kebun kakao, dan sarana secara presisi untuk efektivitas anggaran</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q10" value="C" class="accent-[#0c4a34]">
+                                    <span>C. Mengurangi kebutuhan warga untuk berobat ke puskesmas</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl hover:bg-slate-100">
+                                    <input type="radio" name="q10" value="D" class="accent-[#0c4a34]">
+                                    <span>D. Menghapus kewajiban pembayaran pajak bumi dan bangunan</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <button type="button" onclick="resetKuis('posttest')" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                🔄 Reset Pilihan Jawaban
+                            </button>
+                            <button type="submit" class="px-6 py-3 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                                <span>Kirim &amp; Hitung Nilai Ujian (Post-Test)</span>
+                                <span>✓</span>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <!-- ===================================================================== -->
+                <!-- 10. BUKU PANDUAN (30 LEMBAR KERJA EXCEL & KAMUS DATA STATISTIK DESA)  -->
+                <!-- ===================================================================== -->
+                <div id="view-panduan" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                📚
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Buku Panduan &amp; Pedoman Excel</h2>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                        30 Lembar Praktik
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Repositori Interaktif Lembar Kerja Spreadsheet Excel Sektoral, Kamus Variabel, dan Rumus BPS</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="openExcelReaderModal()" class="px-4 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                <span>📖</span>
+                                <span>Buka Mode Buku Layar Penuh</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3 Official Documents Download Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-3">
+                            <div class="space-y-1">
+                                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-lg font-bold">📗</div>
+                                <div class="font-black text-slate-900 text-xs">Buku Pedoman 30 Lembar Excel</div>
+                                <div class="text-[11px] text-slate-500">Nomor Registrasi: SDI-BPS-2026-EXCEL</div>
+                            </div>
+                            <button type="button" onclick="openExcelReaderModal()" class="w-full py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition text-center cursor-pointer">
+                                📥 Buka &amp; Unduh Excel
+                            </button>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-3">
+                            <div class="space-y-1">
+                                <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center text-lg font-bold">📐</div>
+                                <div class="font-black text-slate-900 text-xs">Rumus Baku Statistik Sektoral</div>
+                                <div class="text-[11px] text-slate-500">Formula Rasio Dependensi &amp; Sex Ratio</div>
+                            </div>
+                            <button type="button" onclick="openRumusStatistikModal()" class="w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition text-center cursor-pointer">
+                                📥 Lihat Rumus Resmi
+                            </button>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between space-y-3">
+                            <div class="space-y-1">
+                                <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-lg font-bold">📜</div>
+                                <div class="font-black text-slate-900 text-xs">SK Legalitas Agen Statistik</div>
+                                <div class="text-[11px] text-slate-500">Format Keputusan Kepala Desa Kolut</div>
+                            </div>
+                            <button type="button" onclick="openSkAgenModal()" class="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition text-center cursor-pointer">
+                                📥 Lihat Format SK
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- In-Page Interactive 30-Sheet Excel Reader Display -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                            <div>
+                                <span class="text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">PANDUAN PRAKTIK INTERAKTIF</span>
+                                <h3 class="font-black text-slate-900 text-base sm:text-lg mt-0.5">Penjelajah 30 Lembar Kerja Statistik Desa</h3>
+                            </div>
+                            <!-- Sheet Navigation & Jumper -->
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="prevExcelPage()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition cursor-pointer">
+                                    ← Sebelumnya
+                                </button>
+                                <select id="excelPageSelectInView" onchange="goToExcelPage(this.value)" class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-800 focus:outline-none cursor-pointer">
+                                    <!-- Populated via initExcelReader -->
+                                </select>
+                                <button type="button" onclick="nextExcelPage()" class="px-3 py-1.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-bold transition cursor-pointer">
+                                    Selanjutnya →
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Active Sheet Container -->
+                        <div id="inViewExcelSheetContainer" class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-700 text-white font-black text-[10px]" id="inViewSheetBadge">Lembar 1 / 30</span>
+                                    <h4 class="text-base font-black text-slate-900 mt-1" id="inViewSheetTitle">Lembar 1: Metadata Variabel Statistik Sektoral</h4>
+                                </div>
+                                <span class="text-xs text-slate-500 font-semibold" id="inViewSheetSection">Kategori: Standar Data</span>
+                            </div>
+                            <div class="text-xs text-slate-600 leading-relaxed" id="inViewSheetContent">
+                                Modul ini menguraikan struktur format identifikasi variabel data desa: Nama Variabel, Alias, Definisi Operasional, Tipe Data, Satuan, dan Validasi Logika.
+                            </div>
+                            <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                                <span>Sesuai Surat Keputusan Kepala BPS RI tentang Pedoman Desa Cantik.</span>
+                                <button type="button" onclick="openExcelReaderModal()" class="text-emerald-700 font-bold hover:underline cursor-pointer">
+                                    Buka Pembaca Lengkap 30 Lembar →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
 
             </div>
     </main>
@@ -2895,7 +3936,6 @@
                     svg.classList.add('text-white');
                 });
             }
-        }
         }
 
         let currentLmsSubView = 'all';
@@ -5846,6 +6886,678 @@
                 filterAnalitikDesa('kalukaluku');
             }
         });
+    
+
+        // ==============================================================
+        // 10 MENU RESMI DESA CANTIK SISTEMATIS
+        // ==============================================================
+        const ALL_MENU_KEYS = [
+            'dashboard', 'profil', 'aparatur', 'podes', 'monitoring', 
+            'pembinaan', 'materi', 'video', 'evaluasi', 'panduan'
+        ];
+
+        let activeEvaluasiTab = 'posttest';
+        let currentVideoIndex = 0;
+
+        const tutorialVideos = [
+            {
+                id: 'RXV4X0cOIA0',
+                title: 'Pengenalan Program Desa Cantik & Manfaat bagi Pembangunan Desa',
+                duration: '⏱️ 06:45 Menit',
+                tag: 'VIDEO 1 DARI 5 • BPS RI',
+                desc: 'Memahami esensi program Desa Cinta Statistik (Desa Cantik), peran strategis aparatur desa sebagai agen data sektoral, serta bagaimana Satu Data Indonesia mempercepat pengambilan kebijakan desa.'
+            },
+            {
+                id: 'yG8v_9qK5pE',
+                title: 'Praktik Pengolahan Data Excel Kependudukan & Podes Desa',
+                duration: '⏱️ 12:30 Menit',
+                tag: 'VIDEO 2 DARI 5 • BPS RI',
+                desc: 'Panduan teknis pengolahan spreadsheet monografi kependudukan, pengelompokan piramida penduduk, validasi NIK ganda, dan input data potensi desa (PODES).'
+            },
+            {
+                id: 'kJQP7kiw5Fk',
+                title: 'Standarisasi Metadata Variabel Sesuai Prinsip Satu Data Indonesia',
+                duration: '⏱️ 09:15 Menit',
+                tag: 'VIDEO 3 DARI 5 • BPS RI',
+                desc: 'Penjelasan mendalam penyusunan metadata kegiatan dan metadata variabel sektoral agar data desa memiliki standar baku yang dapat dipertanggungjawabkan.'
+            },
+            {
+                id: 'fJ9rUzIMcZQ',
+                title: 'Teknik Analisis Sederhana Piramida Penduduk & Desil Kemiskinan',
+                duration: '⏱️ 10:50 Menit',
+                tag: 'VIDEO 4 DARI 5 • BPS RI',
+                desc: 'Cara membaca dan menganalisis rasio ketergantungan beban penduduk, sex ratio, dan memetakan desil kemiskinan P3KE untuk penyaluran bansos tepat sasaran.'
+            },
+            {
+                id: '3JZ_D3ELwOQ',
+                title: 'Penyusunan Publikasi Monografi & Berita Resmi Statistik (BRS) Desa',
+                duration: '⏱️ 14:20 Menit',
+                tag: 'VIDEO 5 DARI 5 • BPS RI',
+                desc: 'Tata cara penyusunan buku monografi statistik tahunan desa dan rilis Berita Resmi Statistik (BRS) sebagai bentuk transparansi informasi publik.'
+            }
+        ];
+
+        function switchNavMenu(menuKey) {
+            // Normalization & Aliases
+            if (menuKey === 'tentang') menuKey = 'profil';
+            if (menuKey === 'pembelajaran') menuKey = 'materi';
+            if (menuKey === 'monev') menuKey = 'monitoring';
+            if (menuKey === 'excel' || menuKey === 'buku') menuKey = 'panduan';
+            if (menuKey === 'pretest' || menuKey === 'posttest') menuKey = 'evaluasi';
+            
+            if (menuKey === 'kependudukan' || menuKey === 'sosial' || menuKey === 'bansos' || menuKey === 'desil' || 
+                menuKey === 'publikasi' || menuKey === 'brs' || menuKey === 'peta' || menuKey === 'pendidikan' || menuKey === 'pekerjaan') {
+                switchNavMenu('dashboard');
+                setTimeout(() => {
+                    if (menuKey === 'kependudukan') scrollToDashSection('sectionPiramida');
+                    else if (menuKey === 'sosial' || menuKey === 'bansos' || menuKey === 'desil') scrollToDashSection('sectionDesil');
+                    else if (menuKey === 'publikasi' || menuKey === 'brs') scrollToDashSection('sectionPublikasi');
+                    else if (menuKey === 'peta') scrollToDashSection('sectionPeta');
+                    else if (menuKey === 'pendidikan') scrollToDashSection('sectionPendidikan');
+                    else if (menuKey === 'pekerjaan') scrollToDashSection('sectionPekerjaan');
+                }, 150);
+                return;
+            }
+            if (menuKey === 'layanan' || menuKey === 'pengaduan') { openLayananModal(); return; }
+            if (menuKey === 'pst') { openPstModal(); return; }
+
+            if (!ALL_MENU_KEYS.includes(menuKey)) {
+                menuKey = 'dashboard';
+            }
+            currentNavMenu = menuKey;
+
+            // 1. Hide all view containers, show target view
+            document.querySelectorAll('.menu-view-container').forEach(el => {
+                el.classList.add('hidden');
+            });
+            const targetView = document.getElementById('view-' + menuKey);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+            }
+
+            // 2. Synchronize sidebar button styling
+            syncSidebarItemActive(menuKey);
+
+            // 3. View-specific lifecycle hooks
+            if (menuKey === 'dashboard') {
+                setTimeout(() => {
+                    if (thematicLeafletMap && typeof thematicLeafletMap.invalidateSize === 'function') {
+                        thematicLeafletMap.invalidateSize();
+                    }
+                }, 200);
+            } else if (menuKey === 'monitoring') {
+                if (typeof renderBuktiDukungTables === 'function') {
+                    renderBuktiDukungTables(currentTargetVillage);
+                }
+            } else if (menuKey === 'panduan') {
+                if (typeof initExcelReaderInView === 'function') {
+                    initExcelReaderInView();
+                }
+            } else if (menuKey === 'podes') {
+                if (typeof loadPodesFormData === 'function') {
+                    loadPodesFormData(currentTargetVillage);
+                }
+            } else if (menuKey === 'video') {
+                pilihVideoTutorial(currentVideoIndex || 0);
+            }
+        }
+
+        function activateSidebarMenu(key) {
+            switchNavMenu(key);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function syncSidebarItemActive(key) {
+            lastActiveSidebarKey = key;
+            document.querySelectorAll('.side-item-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20', 'bg-slate-200/80');
+                btn.classList.add('text-slate-700', 'hover:bg-slate-200/70', 'hover:text-slate-900');
+                btn.querySelectorAll('svg').forEach(svg => {
+                    svg.classList.remove('text-white');
+                    svg.classList.add('text-slate-500');
+                });
+            });
+
+            const targetBtn = document.getElementById('side-item-' + key);
+            if (targetBtn) {
+                targetBtn.classList.remove('text-slate-700', 'hover:bg-slate-200/70', 'hover:text-slate-900');
+                targetBtn.classList.add('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20');
+                targetBtn.querySelectorAll('svg').forEach(svg => {
+                    svg.classList.remove('text-slate-500');
+                    svg.classList.add('text-white');
+                });
+            }
+        }
+
+        // ==============================================================
+        // SERVER BPS DIAGNOSTICS HANDLERS
+        // ==============================================================
+        function showBpsServerStatus() {
+            const m = document.getElementById('bpsServerStatusModal');
+            if (m) m.classList.remove('hidden');
+        }
+
+        function closeBpsServerStatus() {
+            const m = document.getElementById('bpsServerStatusModal');
+            if (m) m.classList.add('hidden');
+        }
+
+        function pingBpsServer() {
+            const pingEl = document.getElementById('serverPingVal');
+            if (pingEl) pingEl.textContent = 'Memeriksa latensi...';
+            setTimeout(() => {
+                const randomMs = Math.floor(Math.random() * 8) + 12;
+                if (pingEl) pingEl.textContent = `${randomMs} ms (Sangat Stabil)`;
+                showToast(`✓ Server BPS Kolaka Utara aktif • Respon: ${randomMs} ms`);
+            }, 400);
+        }
+
+        // ==============================================================
+        // EDIT APARATUR DESA HANDLERS
+        // ==============================================================
+        function openEditAparatModal() {
+            const m = document.getElementById('editAparatModal');
+            if (!m) return;
+            const kd = document.getElementById('aparatKadesName')?.textContent;
+            const sd = document.getElementById('aparatSekdesName')?.textContent;
+            const ar = document.getElementById('aparatKaurKeuanganName')?.textContent;
+            const bp = document.getElementById('aparatKaurPerencanaanName')?.textContent;
+            const rs = document.getElementById('aparatKasiPelayananName')?.textContent;
+            const ja = document.getElementById('aparatKasiPemerintahanName')?.textContent;
+
+            if (kd) document.getElementById('inpEditKades').value = kd.trim();
+            if (sd) document.getElementById('inpEditSekdes').value = sd.trim();
+            if (ar) document.getElementById('inpEditKaurKeu').value = ar.trim();
+            if (bp) document.getElementById('inpEditKaurPer').value = bp.trim();
+            if (rs) document.getElementById('inpEditKasiPel').value = rs.trim();
+            if (ja) document.getElementById('inpEditKasiPem').value = ja.trim();
+
+            m.classList.remove('hidden');
+        }
+
+        function closeEditAparatModal() {
+            const m = document.getElementById('editAparatModal');
+            if (m) m.classList.add('hidden');
+        }
+
+        function simpanEditAparat(e) {
+            e.preventDefault();
+            const kd = document.getElementById('inpEditKades')?.value;
+            const sd = document.getElementById('inpEditSekdes')?.value;
+            const ar = document.getElementById('inpEditKaurKeu')?.value;
+            const bp = document.getElementById('inpEditKaurPer')?.value;
+            const rs = document.getElementById('inpEditKasiPel')?.value;
+            const ja = document.getElementById('inpEditKasiPem')?.value;
+
+            if (kd) {
+                const el = document.getElementById('aparatKadesName');
+                if (el) el.textContent = kd;
+            }
+            if (sd) {
+                const el = document.getElementById('aparatSekdesName');
+                if (el) el.textContent = sd;
+            }
+            if (ar) {
+                const el = document.getElementById('aparatKaurKeuanganName');
+                if (el) el.textContent = ar;
+            }
+            if (bp) {
+                const el = document.getElementById('aparatKaurPerencanaanName');
+                if (el) el.textContent = bp;
+            }
+            if (rs) {
+                const el = document.getElementById('aparatKasiPelayananName');
+                if (el) el.textContent = rs;
+            }
+            if (ja) {
+                const el = document.getElementById('aparatKasiPemerintahanName');
+                if (el) el.textContent = ja;
+            }
+
+            closeEditAparatModal();
+            showToast('✅ Data Aparatur Desa berhasil disimpan & diperbarui!');
+        }
+
+        // ==============================================================
+        // PODES (POTENSI DESA) HANDLERS
+        // ==============================================================
+        function scrollPodesSection(secId) {
+            const el = document.getElementById(secId);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function loadPodesFormData(vKey) {
+            const v = villagesData[vKey] || villagesData['kalukaluku'];
+            if (!v) return;
+
+            if (document.getElementById('inpPodesPenduduk') && v.penduduk) {
+                document.getElementById('inpPodesPenduduk').value = v.penduduk.replace(/[^0-9]/g, '') || 4150;
+            }
+            if (document.getElementById('inpPodesKK') && v.kk) {
+                document.getElementById('inpPodesKK').value = v.kk.replace(/[^0-9]/g, '') || 1120;
+            }
+        }
+
+        function simpanDataPodes(e) {
+            if (e) e.preventDefault();
+            const vKey = currentTargetVillage || 'kalukaluku';
+            const pendVal = document.getElementById('inpPodesPenduduk')?.value || '4150';
+            const kkVal = document.getElementById('inpPodesKK')?.value || '1120';
+            const kakaoVal = document.getElementById('inpPodesProduksiKakao')?.value || '385';
+
+            // Update in villagesData state
+            if (villagesData[vKey]) {
+                villagesData[vKey].penduduk = Number(pendVal).toLocaleString('id-ID');
+                villagesData[vKey].kk = Number(kkVal).toLocaleString('id-ID');
+            }
+
+            // Sync with Dashboard KPIs
+            const kpiPend = document.getElementById('kpiTotalPenduduk');
+            if (kpiPend) kpiPend.textContent = Number(pendVal).toLocaleString('id-ID');
+            const kpiKk = document.getElementById('kpiTotalKK');
+            if (kpiKk) kpiKk.textContent = Number(kkVal).toLocaleString('id-ID');
+
+            showToast(`✅ Data PODES ${villagesData[vKey]?.title || 'Desa'} berhasil disimpan & disinkronkan ke Dashboard!`);
+        }
+
+        function resetDataPodes() {
+            const form = document.getElementById('formPodes');
+            if (form) form.reset();
+            loadPodesFormData(currentTargetVillage);
+            showToast('🔄 Formulir PODES berhasil di-reset ke data dasar BPS.');
+        }
+
+        function eksporDataPodes() {
+            const vKey = currentTargetVillage || 'kalukaluku';
+            const vTitle = villagesData[vKey]?.title || 'Desa Kalu Kaluku';
+            const csvRows = [
+                ['KATEGORI', 'VARIABEL PODES', 'NILAI', 'SATUAN', 'SUMBER DATA'],
+                ['Kependudukan', 'Jumlah Penduduk', document.getElementById('inpPodesPenduduk')?.value || '4150', 'Jiwa', 'Satu Data Indonesia BPS'],
+                ['Kependudukan', 'Jumlah KK', document.getElementById('inpPodesKK')?.value || '1120', 'KK', 'Satu Data Indonesia BPS'],
+                ['Kependudukan', 'Laki-laki', document.getElementById('inpPodesLaki')?.value || '2060', 'Jiwa', 'Satu Data Indonesia BPS'],
+                ['Kependudukan', 'Perempuan', document.getElementById('inpPodesPerempuan')?.value || '2090', 'Jiwa', 'Satu Data Indonesia BPS'],
+                ['Pertanian', 'Luas Lahan Kakao', document.getElementById('inpPodesLuasKakao')?.value || '480', 'Hektar', 'Dinas Perkebunan & BPS Kolut'],
+                ['Pertanian', 'Produksi Kakao', document.getElementById('inpPodesProduksiKakao')?.value || '385', 'Ton/Tahun', 'Dinas Perkebunan & BPS Kolut'],
+                ['Sarpras', 'Jalan Aspal/Beton', document.getElementById('inpPodesJalan')?.value || '14.2', 'Km', 'PUPR & PODES 2026'],
+                ['Sanitasi', 'Air Bersih Layak', document.getElementById('inpPodesAir')?.value || '92.4', '% KK', 'Dinas Kesehatan Kolut'],
+                ['Kelembagaan', 'Status BUMDes', document.getElementById('inpPodesBumdes')?.value || 'Maju Mandiri', 'Kategori', 'DPMD Kolut']
+            ];
+
+            const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.map(i => `"${i}"`).join(",")).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Data_PODES_2026_${vKey}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast(`📊 Berkas Data_PODES_2026_${vKey}.csv berhasil diunduh!`);
+        }
+
+        // ==============================================================
+        // VIDEO TUTORIAL MICROLEARNING HANDLERS
+        // ==============================================================
+        function pilihVideoTutorial(idx) {
+            currentVideoIndex = idx;
+            const v = tutorialVideos[idx];
+            if (!v) return;
+
+            const iframe = document.getElementById('mainVideoIframe');
+            if (iframe) {
+                iframe.src = `https://www.youtube.com/embed/${v.id}?enablejsapi=1&rel=0&autoplay=0`;
+            }
+
+            const titleEl = document.getElementById('mainVideoTitle');
+            if (titleEl) titleEl.textContent = v.title;
+            const tagEl = document.getElementById('activeVideoTag');
+            if (tagEl) tagEl.textContent = v.tag;
+            const durEl = document.getElementById('mainVideoDuration');
+            if (durEl) durEl.textContent = v.duration;
+            const descEl = document.getElementById('mainVideoDesc');
+            if (descEl) descEl.textContent = v.desc;
+
+            // Highlight in playlist
+            for (let i = 0; i < 5; i++) {
+                const item = document.getElementById(`playlistItem${i}`);
+                if (item) {
+                    if (i === idx) {
+                        item.className = 'w-full text-left p-3.5 rounded-2xl bg-[#0c4a34] text-white shadow-xs transition flex items-start gap-3 cursor-pointer';
+                    } else {
+                        item.className = 'w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition flex items-start gap-3 cursor-pointer';
+                    }
+                }
+            }
+
+            showToast(`🎬 Memutar Video ${idx + 1}: ${v.title.slice(0, 32)}...`);
+        }
+
+        // ==============================================================
+        // PRE-TEST & POST-TEST EVALUASI HANDLERS
+        // ==============================================================
+        function switchEvaluasiTab(tab) {
+            activeEvaluasiTab = tab;
+            const bPost = document.getElementById('tabEvalPosttest');
+            const bPre = document.getElementById('tabEvalPretest');
+            const bTag = document.getElementById('evalBannerTag');
+            const bTitle = document.getElementById('evalBannerTitle');
+
+            if (tab === 'pretest') {
+                if (bPre) bPre.className = 'px-3.5 py-1.5 rounded-lg bg-[#0c4a34] text-white shadow-xs transition cursor-pointer font-black';
+                if (bPost) bPost.className = 'px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer font-bold';
+                if (bTag) bTag.textContent = 'EVALUASI PRE-TEST KEMAMPUAN AWAL STATISTIK SEKTORAL';
+                if (bTitle) bTitle.textContent = 'Pre-Test: Pemetaan Baseline Pengetahuan Aparat Desa';
+                showToast('📝 Berpindah ke Ujian Pre-Test (Kemampuan Awal)');
+            } else {
+                if (bPost) bPost.className = 'px-3.5 py-1.5 rounded-lg bg-[#0c4a34] text-white shadow-xs transition cursor-pointer font-black';
+                if (bPre) bPre.className = 'px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer font-bold';
+                if (bTag) bTag.textContent = 'EVALUASI POST-TEST KELULUSAN SERTIFIKASI AGEN STATISTIK BPS';
+                if (bTitle) bTitle.textContent = 'Kuis Pilihan Ganda: 10 Soal Statistik Sektoral Desa';
+                showToast('📝 Berpindah ke Ujian Post-Test (Kelulusan Sertifikat)');
+            }
+        }
+
+        function hitungDanKirimKuis(tipe) {
+            const keys = { q1: 'B', q2: 'A', q3: 'B', q4: 'B', q5: 'A', q6: 'A', q7: 'B', q8: 'B', q9: 'A', q10: 'B' };
+            let correct = 0;
+            let total = 10;
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === keys[`q${i}`]) {
+                    correct++;
+                }
+            }
+
+            const score = Math.round((correct / total) * 100);
+            const resBox = document.getElementById('evalScoreResultBox');
+            const resTitle = document.getElementById('evalScoreTitle');
+            const resDesc = document.getElementById('evalScoreDesc');
+
+            if (resBox) resBox.classList.remove('hidden');
+            if (resTitle) resTitle.textContent = `Nilai Ujian Anda: ${score} / 100 (${score >= 70 ? 'Sangat Memuaskan' : 'Perlu Pendampingan Ulang'})`;
+            if (resDesc) {
+                if (score >= 70) {
+                    resDesc.textContent = `Selamat! Anda menjawab ${correct} dari 10 soal dengan benar dan LULUS Ujian Sertifikasi Agen Statistik BPS Kab. Kolaka Utara.`;
+                } else {
+                    resDesc.textContent = `Anda menjawab ${correct} dari 10 soal dengan benar. Silakan pelajari kembali modul materi sebelum mengulang kuis.`;
+                }
+            }
+
+            // Scroll to result box
+            if (resBox) resBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            if (score >= 70) {
+                showToast(`🎉 Selamat! Nilai Anda ${score}/100. Anda LULUS Sertifikasi BPS!`);
+            } else {
+                showToast(`Nilai Anda ${score}/100. Minimal kelulusan 70/100.`);
+            }
+        }
+
+        function resetKuis(tipe) {
+            const form = document.getElementById('formEvaluasiKuis');
+            if (form) form.reset();
+            const resBox = document.getElementById('evalScoreResultBox');
+            if (resBox) resBox.classList.add('hidden');
+            showToast('🔄 Pilihan jawaban kuis berhasil di-reset.');
+        }
+
+        function openSertifikatKelulusanModal() {
+            const m = document.getElementById('sertifikatKelulusanModal');
+            const vKey = currentTargetVillage || 'kalukaluku';
+            const vTitle = villagesData[vKey]?.title || 'Desa Kalu Kaluku';
+            
+            const aparatEl = document.getElementById('certNamaAparat');
+            if (aparatEl) {
+                const curKaur = document.getElementById('aparatKaurPerencanaanName')?.textContent || 'Baharuddin, S.Pd';
+                aparatEl.textContent = curKaur.toUpperCase();
+            }
+            const jabEl = document.getElementById('certJabatanAparat');
+            if (jabEl) jabEl.textContent = `Kaur Perencanaan / Agen Statistik ${vTitle}`;
+
+            if (m) m.classList.remove('hidden');
+        }
+
+        function closeSertifikatKelulusanModal() {
+            const m = document.getElementById('sertifikatKelulusanModal');
+            if (m) m.classList.add('hidden');
+        }
+
+        function cetakSertifikatKelulusan() {
+            showToast('🖨️ Menyiapkan format cetak E-Sertifikat Kelulusan BPS...');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        // ==============================================================
+        // PEMBINAAN & LOGBOOK HANDLERS
+        // ==============================================================
+        function openTambahCatatanModal() {
+            const m = document.getElementById('tambahCatatanModal');
+            if (m) m.classList.remove('hidden');
+        }
+
+        function closeTambahCatatanModal() {
+            const m = document.getElementById('tambahCatatanModal');
+            if (m) m.classList.add('hidden');
+        }
+
+        function simpanCatatanPembinaan(e) {
+            e.preventDefault();
+            const tgl = document.getElementById('inpCatatanTanggal')?.value || '2026-05-18';
+            const agenda = document.getElementById('inpCatatanAgenda')?.value || 'Asistensi Teknis';
+            const narsum = document.getElementById('inpCatatanNarsum')?.value || 'BPS Kolut';
+            const rek = document.getElementById('inpCatatanRekomendasi')?.value || 'Telah diverifikasi';
+
+            const tbody = document.getElementById('tbodyLogbookPembinaan');
+            if (tbody) {
+                const count = tbody.querySelectorAll('tr').length + 1;
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition';
+                tr.innerHTML = `
+                    <td class="py-2.5 px-3 text-center font-bold text-slate-500">${count}</td>
+                    <td class="py-2.5 px-3 font-bold text-slate-700">${tgl}</td>
+                    <td class="py-2.5 px-4 font-bold text-slate-900">${agenda}</td>
+                    <td class="py-2.5 px-3 text-slate-600">${narsum}</td>
+                    <td class="py-2.5 px-4 text-slate-600">${rek}</td>
+                    <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">✓ Baru Ditambahkan</span></td>
+                `;
+                tbody.prepend(tr);
+            }
+
+            closeTambahCatatanModal();
+            showToast('✅ Catatan kunjungan pembinaan berhasil disimpan ke logbook!');
+        }
+
+        function unduhBeritaAcaraPdf() {
+            showToast('📥 Mengunduh Format Lembar Berita Acara Pembinaan BPS (PDF)...');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        // ==============================================================
+        // MODUL PEMBELAJARAN HANDLERS
+        // ==============================================================
+        const modulData = {
+            1: {
+                tag: 'MODUL 01 • KURIKULUM RESMI BPS RI',
+                title: 'Konsep Dasar Statistik Sektoral & Satu Data Indonesia (SDI)',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Prinsip Satu Data Indonesia (Perpres No. 39 Tahun 2019):</b></p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><b>Standar Data:</b> Data yang dihasilkan harus memenuhi konsep, definisi, klasifikasi, ukuran, dan satuan yang baku.</li>
+                            <li><b>Metadata:</b> Informasi terstruktur yang mendeskripsikan data, menjelaskan isi, konteks, dan metodologinya.</li>
+                            <li><b>Interoperabilitas:</b> Data harus dalam format terbuka dan dapat saling dibagipakaikan antar sistem elektronik.</li>
+                            <li><b>Kode Referensi:</b> Menggunakan kode induk identifikasi tunggal (seperti Kode Wilayah Kemendagri & BPS).</li>
+                        </ul>
+                        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 font-medium">
+                            💡 <b>Peran Desa:</b> Sebagai produsen data tingkat tapak, pemerintahan desa wajib menyelenggarakan statistik sektoral sesuai standar Satu Data Indonesia.
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                tag: 'MODUL 02 • KURIKULUM RESMI BPS RI',
+                title: 'Standar Data Statistik & Penyusunan Metadata Variabel',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Struktur Kamus Metadata Sektoral Desa:</b></p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><b>Nama Variabel:</b> Nama unik indikator (contoh: Luas_Kebun_Kakao_Ha).</li>
+                            <li><b>Definisi Operasional:</b> Penjelasan batasan variabel yang diukur secara nyata di lapangan.</li>
+                            <li><b>Tipe Data:</b> Numerik (Integer/Float), Karakter (String), atau Tanggal (Date).</li>
+                            <li><b>Validasi Logika:</b> Batasan nilai wajar (range validation) untuk mencegah saltik.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            3: {
+                tag: 'MODUL 03 • KURIKULUM RESMI BPS RI',
+                title: 'Klasifikasi Baku Statistik Indonesia (KBLI, KBKI & Wilayah)',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Penerapan Standar Klasifikasi di Desa:</b></p>
+                        <p>Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) digunakan untuk mengelompokkan jenis usaha mikro dan UMKM warga desa (seperti perkebunan kakao, pengolahan biji kakao, dan perdagangan eceran).</p>
+                    </div>
+                `
+            },
+            4: {
+                tag: 'MODUL 04 • KURIKULUM RESMI BPS RI',
+                title: 'Pengolahan, Validasi & Pembersihan Data Excel Sektoral',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Teknik Spreadsheet Bersih:</b></p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Pembersihan baris ganda (Remove Duplicates pada NIK/No KK).</li>
+                            <li>Formula logika validasi (=IF, =VLOOKUP/XLOOKUP, =COUNTIF).</li>
+                            <li>Tabel pivot untuk rekapitulasi cepat per dusun.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            5: {
+                tag: 'MODUL 05 • KURIKULUM RESMI BPS RI',
+                title: 'Analisis Sektoral, Rasio Beban Tanggungan & Indikator Podes',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Perhitungan Rasio Dependensi:</b></p>
+                        <p>Rasio Ketergantungan = [(Penduduk Usia 0-14 + Penduduk Usia 65+) / Penduduk Usia 15-64] x 100.</p>
+                        <p>Angka ini menunjukkan seberapa besar beban ekonomi yang ditanggung oleh penduduk produktif.</p>
+                    </div>
+                `
+            },
+            6: {
+                tag: 'MODUL 06 • KURIKULUM RESMI BPS RI',
+                title: 'Diseminasi Data, Infografis Publik & Publikasi Monografi',
+                content: `
+                    <div class="space-y-3">
+                        <p><b>Siklus Rilis Data Desa:</b></p>
+                        <p>Penyusunan Publikasi Monografi Desa tahunan, Rilis Berita Resmi Statistik (BRS) semesteran, dan infografis ringkas untuk papan informasi kantor desa.</p>
+                    </div>
+                `
+            }
+        };
+
+        function openBacaModulModal(num) {
+            const data = modulData[num] || modulData[1];
+            const m = document.getElementById('bacaModulModal');
+            const tagEl = document.getElementById('bacaModulTag');
+            const titleEl = document.getElementById('bacaModulTitle');
+            const contentEl = document.getElementById('bacaModulContent');
+            const btnSel = document.getElementById('btnSelesaikanModul');
+
+            if (tagEl) tagEl.textContent = data.tag;
+            if (titleEl) titleEl.textContent = data.title;
+            if (contentEl) contentEl.innerHTML = data.content;
+            if (btnSel) btnSel.setAttribute('onclick', `selesaikanModul(${num})`);
+
+            if (m) m.classList.remove('hidden');
+        }
+
+        function closeBacaModulModal() {
+            const m = document.getElementById('bacaModulModal');
+            if (m) m.classList.add('hidden');
+        }
+
+        function selesaikanModul(num) {
+            closeBacaModulModal();
+            showToast(`✓ Modul ${num} telah diselesaikan!`);
+        }
+
+        function unduhModulPdf(num) {
+            showToast(`📥 Mengunduh Modul 0${num} Kurikulum BPS (PDF)...`);
+        }
+
+        // ==============================================================
+        // IN-VIEW EXCEL 30-SHEET READER HANDLER
+        // ==============================================================
+        function initExcelReaderInView() {
+            const sel = document.getElementById('excelPageSelectInView');
+            if (!sel) return;
+
+            const pages = (typeof getExcelBookPages === 'function') ? getExcelBookPages() : [];
+            if (sel.children.length === 0) {
+                for (let i = 1; i <= 30; i++) {
+                    const opt = document.createElement('option');
+                    opt.value = i;
+                    const pTitle = (pages[i - 1] && pages[i - 1].title) ? pages[i - 1].title.replace(`Lembar ${i}: `, '') : `Lembar Kerja ${i}`;
+                    opt.textContent = `Lembar ${i}: ${pTitle}`;
+                    sel.appendChild(opt);
+                }
+            }
+            sel.value = currentExcelPage || 1;
+            renderExcelPageInView(currentExcelPage || 1);
+        }
+
+        function renderExcelPageInView(pageNum) {
+            const pages = (typeof getExcelBookPages === 'function') ? getExcelBookPages() : [];
+            const pageData = pages[pageNum - 1];
+
+            const bBadge = document.getElementById('inViewSheetBadge');
+            const bTitle = document.getElementById('inViewSheetTitle');
+            const bSec = document.getElementById('inViewSheetSection');
+            const bContent = document.getElementById('inViewSheetContent');
+            const sel = document.getElementById('excelPageSelectInView');
+
+            if (sel) sel.value = pageNum;
+            if (bBadge) bBadge.textContent = `Lembar ${pageNum} / 30`;
+            if (bTitle) bTitle.textContent = pageData ? pageData.title : `Lembar ${pageNum}: Praktik Statistik Desa`;
+            if (bSec) bSec.textContent = pageData ? `Kategori: ${pageData.section}` : 'Kategori: Standar Data';
+            if (bContent) {
+                bContent.innerHTML = pageData ? `
+                    <div class="space-y-2">
+                        <div class="font-bold text-slate-800">${pageData.topic || ''}</div>
+                        <div class="text-xs text-slate-600 leading-relaxed">${pageData.content || ''}</div>
+                        ${pageData.formula ? `<div class="p-2.5 rounded-xl bg-slate-100 font-mono text-[11px] text-blue-900 border border-slate-200"><b>Rumus Excel:</b> ${pageData.formula}</div>` : ''}
+                    </div>
+                ` : `Modul lembar kerja ${pageNum} terstandarisasi BPS RI untuk pengolahan data monografi tingkat desa.`;
+            }
+        }
+
+        // ==============================================================
+        // FILTER MONITORING STATUS
+        // ==============================================================
+        function filterMonitoringStatus(status) {
+            const tbody = document.getElementById('tbodyMonevBukti');
+            if (!tbody) return;
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach(tr => {
+                if (status === 'all') {
+                    tr.style.display = '';
+                } else if (status === 'lengkap') {
+                    const txt = tr.textContent.toLowerCase();
+                    tr.style.display = txt.includes('lengkap') ? '' : 'none';
+                } else if (status === 'belum') {
+                    const txt = tr.textContent.toLowerCase();
+                    tr.style.display = !txt.includes('lengkap') ? '' : 'none';
+                }
+            });
+            showToast(`Filter: Menampilkan ${status === 'all' ? 'Semua Status' : status}`);
+        }
+
     </script>
 
     <!-- ============================================================== -->
@@ -7080,6 +8792,281 @@
                         Tutup
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================== -->
+    <!-- MODAL 1: STATUS DIAGNOSTIK SERVER BPS AKTIF v2.4               -->
+    <!-- ============================================================== -->
+    <div id="bpsServerStatusModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+            <div class="bg-gradient-to-r from-[#061a33] to-[#0c4a34] text-white p-5 sm:p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xl">🌐</div>
+                    <div>
+                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">INFRASTRUKTUR SISTEM RESMI</div>
+                        <h3 class="text-base sm:text-lg font-black text-white">Status Server BPS Aktif v2.4</h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeBpsServerStatus()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">✕</button>
+            </div>
+
+            <div class="p-5 sm:p-6 space-y-4">
+                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        <div>
+                            <div class="font-black text-sm text-emerald-950">Seluruh Layanan Online &amp; Terhubung</div>
+                            <div class="text-xs text-emerald-700">Terhubung ke Data Center BPS Provinsi &amp; RI</div>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-md bg-emerald-700 text-white font-black text-xs">v2.4-STABLE</span>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">Database Sektoral SDI BPS:</span>
+                        <span class="font-black text-emerald-700">Tersinkronisasi (MySQL 8.0)</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">Latensi Jaringan (Ping):</span>
+                        <span id="serverPingVal" class="font-black text-emerald-700">14 ms (Sangat Cepat)</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">Keamanan &amp; Enkripsi:</span>
+                        <span class="font-black text-slate-900">SSL / TLS 1.3 Aktif</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">Sinkronisasi Terakhir:</span>
+                        <span class="font-black text-slate-900">Hari ini • Real-time (Otomatis)</span>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <button type="button" onclick="pingBpsServer()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                        🔄 Periksa Ulang Koneksi
+                    </button>
+                    <button type="button" onclick="closeBpsServerStatus()" class="px-5 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL 2: EDIT DATA APARATUR PEMERINTAH DESA                    -->
+    <!-- ============================================================== -->
+    <div id="editAparatModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+            <div class="bg-gradient-to-r from-[#061a33] to-[#0c4a34] text-white p-5 sm:p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">👥</div>
+                    <div>
+                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">PENGELOLAAN SDM PEMERINTAHAN DESA</div>
+                        <h3 class="text-base sm:text-lg font-black text-white">Kelola Data Aparatur Desa</h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeEditAparatModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">✕</button>
+            </div>
+
+            <form id="formEditAparat" onsubmit="simpanEditAparat(event)" class="p-5 sm:p-6 space-y-4">
+                <div class="space-y-1.5 text-xs">
+                    <label class="font-bold text-slate-700">Nama Kepala Desa:</label>
+                    <input type="text" id="inpEditKades" value="H. Syamsul Bahri, S.Sos" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                </div>
+                <div class="space-y-1.5 text-xs">
+                    <label class="font-bold text-slate-700">Nama Sekretaris Desa (Koordinator SDI):</label>
+                    <input type="text" id="inpEditSekdes" value="Muh. Ridwan, S.AP" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-slate-700">Kaur Keuangan:</label>
+                        <input type="text" id="inpEditKaurKeu" value="Andi Rahmawati, S.E" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-slate-700">Kaur Perencanaan (Agen Statistik):</label>
+                        <input type="text" id="inpEditKaurPer" value="Baharuddin, S.Pd" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-slate-700">Kasi Pelayanan (WebGIS):</label>
+                        <input type="text" id="inpEditKasiPel" value="Rosmini, S.Kom" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-slate-700">Kasi Pemerintahan:</label>
+                        <input type="text" id="inpEditKasiPem" value="Jodi Asrul" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <button type="button" onclick="closeEditAparatModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition cursor-pointer shadow-xs">
+                        💾 Simpan Perubahan Aparatur
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL 3: PEMBACA MODUL PEMBELAJARAN INTERAKTIF                 -->
+    <!-- ============================================================== -->
+    <div id="bacaModulModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200 flex flex-col max-h-[90vh]">
+            <div class="bg-gradient-to-r from-[#061a33] to-[#0c4a34] text-white p-5 sm:p-6 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xl">📖</div>
+                    <div>
+                        <div id="bacaModulTag" class="text-[10px] font-black uppercase tracking-wider text-emerald-300">MODUL 01 • KURIKULUM RESMI BPS RI</div>
+                        <h3 id="bacaModulTitle" class="text-base sm:text-lg font-black text-white">Konsep Dasar Statistik Sektoral &amp; SDI</h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeBacaModulModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">✕</button>
+            </div>
+
+            <div class="p-5 sm:p-6 space-y-4 overflow-y-auto flex-1 text-xs text-slate-700 leading-relaxed" id="bacaModulContent">
+                <!-- Injected via openBacaModulModal -->
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-3 shrink-0">
+                <button type="button" onclick="closeBacaModulModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition cursor-pointer">
+                    Tutup
+                </button>
+                <button type="button" id="btnSelesaikanModul" onclick="selesaikanModul(1)" class="px-5 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition cursor-pointer shadow-xs">
+                    ✓ Tandai Selesai &amp; Lanjut
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL 4: TAMBAH CATATAN KUNJUNGAN PEMBINAAN BPS                -->
+    <!-- ============================================================== -->
+    <div id="tambahCatatanModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+            <div class="bg-gradient-to-r from-[#061a33] to-[#0c4a34] text-white p-5 sm:p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📝</div>
+                    <div>
+                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">LOGBOOK PEMBINAAN DESA CANTIK</div>
+                        <h3 class="text-base sm:text-lg font-black text-white">Tambah Catatan Kunjungan BPS</h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeTambahCatatanModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">✕</button>
+            </div>
+
+            <form id="formTambahCatatan" onsubmit="simpanCatatanPembinaan(event)" class="p-5 sm:p-6 space-y-4 text-xs">
+                <div class="space-y-1.5">
+                    <label class="font-bold text-slate-700">Tanggal Kunjungan / Asistensi:</label>
+                    <input type="date" id="inpCatatanTanggal" value="2026-05-18" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                </div>
+                <div class="space-y-1.5">
+                    <label class="font-bold text-slate-700">Agenda / Topik Pembinaan:</label>
+                    <input type="text" id="inpCatatanAgenda" placeholder="Contoh: Bimbingan Teknis Metadata Indikator Kakao" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none" required>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="font-bold text-slate-700">Narasumber BPS / Pembina:</label>
+                    <input type="text" id="inpCatatanNarsum" value="Tim Fungsional BPS Kab. Kolaka Utara" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none" required>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="font-bold text-slate-700">Rekomendasi / Catatan Tindak Lanjut:</label>
+                    <textarea id="inpCatatanRekomendasi" rows="3" placeholder="Tuliskan rekomendasi teknis yang harus dilengkapi oleh agen statistik desa..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none" required></textarea>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <button type="button" onclick="closeTambahCatatanModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition cursor-pointer shadow-xs">
+                        💾 Simpan Catatan Kunjungan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL 5: E-SERTIFIKAT KELULUSAN AGEN STATISTIK BPS             -->
+    <!-- ============================================================== -->
+    <div id="sertifikatKelulusanModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+        <div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border-4 border-amber-300 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+            
+            <!-- Certificate Canvas -->
+            <div id="certPrintArea" class="p-6 sm:p-10 bg-gradient-to-b from-[#fbfdfb] via-white to-[#f4faf6] text-slate-900 border-8 border-[#0c4a34] m-2 rounded-2xl relative select-none">
+                
+                <!-- Corner Decorations -->
+                <div class="absolute top-2 left-2 text-amber-500 text-xl font-serif">❖</div>
+                <div class="absolute top-2 right-2 text-amber-500 text-xl font-serif">❖</div>
+                <div class="absolute bottom-2 left-2 text-amber-500 text-xl font-serif">❖</div>
+                <div class="absolute bottom-2 right-2 text-amber-500 text-xl font-serif">❖</div>
+
+                <!-- Certificate Header -->
+                <div class="text-center space-y-1">
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="/images/logo_bps.png" alt="BPS" class="h-10 sm:h-12 w-auto object-contain">
+                        <div class="h-8 w-[1.5px] bg-slate-300"></div>
+                        <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-10 sm:h-12 w-auto object-contain">
+                    </div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.25em] text-[#0c4a34] pt-2">
+                        BADAN PUSAT STATISTIK KABUPATEN KOLAKA UTARA
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+                        SERTIFIKAT KELULUSAN
+                    </h2>
+                    <div class="text-[11px] font-bold text-slate-500">
+                        Nomor Registrasi: <b>BPS-7408/DESACANTIK/2026/088</b>
+                    </div>
+                </div>
+
+                <!-- Certificate Body -->
+                <div class="my-6 text-center space-y-2">
+                    <p class="text-xs text-slate-600">Diberikan secara resmi kepada:</p>
+                    <div id="certNamaAparat" class="text-xl sm:text-2xl font-black text-slate-900 font-serif underline decoration-amber-400 decoration-2">
+                        BAHARUDDIN, S.Pd
+                    </div>
+                    <div id="certJabatanAparat" class="text-xs font-bold text-[#0c4a34]">
+                        Kaur Perencanaan / Agen Statistik Desa Kalu Kaluku
+                    </div>
+                    <p class="text-xs text-slate-600 max-w-xl mx-auto pt-2 leading-relaxed">
+                        Telah mengikuti dan dinyatakan <b>LULUS EVALUASI STANDARISASI AGEN STATISTIK SEKTORAL</b> dalam rangka Pembinaan Program Desa Cantik (Desa Cinta Statistik) Tahun 2026 dengan perolehan nilai <b>90 / 100 (Predikat: Sangat Memuaskan)</b>.
+                    </p>
+                </div>
+
+                <!-- Signatures & QR Code -->
+                <div class="pt-4 border-t border-slate-200 grid grid-cols-3 gap-2 items-center text-center text-xs">
+                    <div>
+                        <div class="text-[10px] text-slate-400">Kepala Desa:</div>
+                        <div class="font-bold text-slate-900 mt-8">H. Syamsul Bahri, S.Sos</div>
+                        <div class="text-[9px] text-slate-500">Pemerintah Desa Kalu Kaluku</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 p-1 bg-white border border-slate-300 rounded-lg shadow-2xs flex items-center justify-center">
+                            <span class="text-2xl">📱</span>
+                        </div>
+                        <span class="text-[9px] text-slate-400 mt-1">Verifikasi Digital SDI</span>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400">Kepala BPS Kab. Kolaka Utara:</div>
+                        <div class="font-bold text-slate-900 mt-8">Tim Pembina BPS RI</div>
+                        <div class="text-[9px] text-slate-500">NIP. 19780512 200212 1 002</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Action Controls -->
+            <div class="bg-slate-100 p-4 flex items-center justify-between gap-3 text-xs">
+                <button type="button" onclick="closeSertifikatKelulusanModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
+                    Tutup
+                </button>
+                <button type="button" onclick="cetakSertifikatKelulusan()" class="px-5 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white font-black transition cursor-pointer shadow-xs flex items-center gap-1.5">
+                    <span>🖨️ Cetak / Unduh Sertifikat (PDF)</span>
+                </button>
             </div>
         </div>
     </div>
