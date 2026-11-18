@@ -70,6 +70,17 @@
     <script src="/js/desa_presisi_engine.js?v=20261117_02"></script>
 
     <style>
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: #F7F7F5;
@@ -317,59 +328,58 @@
 
     </style>
 </head>
-<body class="min-h-screen bg-[#F7F7F5] text-slate-800 antialiased flex flex-col">
+<body class="min-h-screen bg-[#F7F7F5] text-slate-800 antialiased flex flex-col overflow-x-hidden w-full max-w-full">
 
-        <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME -->
-    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[68px] flex items-center">
-        <div class="w-full px-4 lg:px-10 py-3 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
+        <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME (WIDTH-SAFE & NO OVERFLOW) -->
+    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[64px] sm:min-h-[68px] flex items-center w-full max-w-full overflow-hidden">
+        <div class="w-full px-3 sm:px-4 lg:px-6 xl:px-8 py-2.5 flex items-center justify-between gap-2 sm:gap-3 lg:gap-4 max-w-[1720px] mx-auto">
             <!-- Left: Logo Kolaka Utara bersampingan dengan Logo BPS Kolut & Desa Madani Brand (Tombol Login) -->
-            <div class="flex items-center gap-3 shrink-0">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                 <button type="button" 
                         id="btnBrandLoginTrigger" 
                         onclick="openLoginModal()" 
-                        class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
+                        class="flex items-center gap-2 sm:gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
                         title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
-                    <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/80 px-2 py-1 rounded-xl">
-                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain drop-shadow-xs">
-                        <div class="h-5 w-[1.5px] bg-slate-300"></div>
-                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain drop-shadow-xs">
+                    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 bg-slate-50 border border-slate-200/80 px-1.5 sm:px-2 py-1 rounded-xl">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 sm:h-8 w-auto object-contain drop-shadow-xs">
+                        <div class="h-4 sm:h-5 w-[1.5px] bg-slate-300"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 sm:h-7 w-auto object-contain drop-shadow-xs">
                     </div>
                     <div>
-                        <div class="text-xl sm:text-2xl font-black text-[#0b2545] leading-none tracking-tight">
+                        <div class="text-lg sm:text-xl xl:text-2xl font-black text-[#0b2545] leading-none tracking-tight whitespace-nowrap">
                             Desa <span class="text-[#0D6E5B]">Madani</span>
                         </div>
-                        <div data-i18n="nav_brand_sub" class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5 whitespace-nowrap">
+                        <div data-i18n="nav_brand_sub" class="hidden 2xl:block text-[10px] text-slate-500 font-medium tracking-wide mt-0.5 truncate max-w-[280px]">
                             Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
                         </div>
                     </div>
                 </button>
                 <!-- Institutional BPS Partner Link -->
-                <a href="/" class="hidden sm:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition shrink-0" title="Kembali ke Beranda">
+                <a href="/" class="hidden 2xl:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition shrink-0" title="Kembali ke Beranda">
                     <span class="text-[11px] font-black text-[#005ea6] whitespace-nowrap">BPS Kolut</span>
                 </a>
             </div>
 
-            <!-- Center/Right: Navigation Menu Links -->
-            <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-[13px] font-semibold text-slate-700 whitespace-nowrap">
+            <!-- Center: Navigation Menu Links (Responsive Gaps & Sizes) -->
+            <nav class="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 text-[12px] xl:text-[13px] font-semibold text-slate-700 whitespace-nowrap shrink-0">
                 <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition">Beranda</a>
                 <a href="#sectionAgregatKecamatan" data-i18n="nav_agregat" class="hover:text-[#0D6E5B] transition flex items-center gap-1 text-slate-700"><span>Agregat 15 Kecamatan</span></a>
-                <a href="#sectionPeta" class="text-[#0D6E5B] font-black border-b-2 border-[#0D6E5B] pb-0.5 flex items-center gap-1.5 shrink-0">
-                    <svg class="w-4 h-4 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <a href="#sectionPeta" class="text-[#0D6E5B] font-black border-b-2 border-[#0D6E5B] pb-0.5 flex items-center gap-1 shrink-0">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                     <span data-i18n="nav_gis">WebGIS Peta Spasial</span>
                 </a>
-
                 <a href="/descan" data-i18n="nav_descan" class="hover:text-[#059669] transition">Desa Cantik (DESCAN)</a>
                 <a href="#sectionAbout" data-i18n="nav_about" class="hover:text-[#059669] transition">Tentang Madani</a>
             </nav>
 
-            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
-            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-                <button id="btnOpenKecamatanModal" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap">
+            <!-- Right Controls: 15 Kecamatan (xl+), Admin Portal, Language Switcher -->
+            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap">
                     <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                     <span data-i18n="btn_15_kec">15 Kecamatan</span>
                 </button>
 
-                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-full shadow-sm hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap" title="Buka Portal Admin Input & Kelola Data Desa">
+                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap" title="Buka Portal Admin Input & Kelola Data Desa">
                     <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     <span data-i18n="btn_kelola_data">Kelola Data</span>
                     <span id="badgeAdminCustomCount" class="bg-slate-950 text-amber-300 text-[10px] px-1.5 py-0.2 rounded-full font-black hidden">0 Baru</span>
@@ -377,15 +387,15 @@
 
                 <!-- Language Switcher Pill (ID | EN) -->
                 <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
-                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2.5 py-1 rounded-full bg-[#0D6E5B] text-white shadow-xs transition-all cursor-pointer font-bold">ID</button>
-                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2.5 py-1 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold">EN</button>
+                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 sm:px-2.5 py-1 rounded-full bg-[#0D6E5B] text-white shadow-xs transition-all cursor-pointer font-bold text-xs">ID</button>
+                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 sm:px-2.5 py-1 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-xs">EN</button>
                 </div>
             </div>
         </div>
     </header>
 
         <!-- HERO SECTION: DESA MADANI KOLAKA UTARA (TAMPILAN AWAL DIPERTAHANKAN) -->
-    <section class="relative bg-white text-slate-900 pt-12 pb-16 px-4 lg:px-10 overflow-hidden border-b border-slate-200/80">
+    <section class="relative bg-white text-slate-900 pt-10 sm:pt-12 pb-14 sm:pb-16 px-4 lg:px-8 xl:px-10 overflow-hidden border-b border-slate-200/80 w-full max-w-full">
         <!-- Floating Animated Background Glow & Ambient Mesh -->
         <div class="absolute -top-32 -left-20 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
         <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
@@ -582,20 +592,20 @@
                             </div>
                         </div>
 
-                        <!-- FLOATING GLASSMORPHIC BADGES -->
-                        <div class="absolute -top-3.5 -right-3 sm:-right-4 z-30 bg-white/95 backdrop-blur-md border border-emerald-200 px-3.5 py-1.5 rounded-full shadow-[0_8px_20px_rgba(5,150,105,0.15)] flex items-center gap-2 text-xs font-bold text-[#0b2545] animate-float-slow">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <!-- FLOATING GLASSMORPHIC BADGES (INSET CONSTRAINED FOR ZERO OVERFLOW) -->
+                        <div class="absolute -top-3 -right-1 sm:-right-2 z-30 bg-white/95 backdrop-blur-md border border-emerald-200 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full shadow-[0_8px_20px_rgba(5,150,105,0.15)] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-[#0b2545] animate-float-slow">
+                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                             <span data-i18n="hero_badge_spasial">100% Spasial Podes</span>
                         </div>
-                        <div class="absolute -bottom-3.5 -left-3 sm:-left-4 z-30 bg-white/95 backdrop-blur-md border border-blue-200 px-3.5 py-1.5 rounded-full shadow-[0_8px_20px_rgba(2,132,199,0.15)] flex items-center gap-2 text-xs font-bold text-[#0b2545] animate-float-delayed">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#005ea6]"></span>
+                        <div class="absolute -bottom-3 -left-1 sm:-left-2 z-30 bg-white/95 backdrop-blur-md border border-blue-200 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full shadow-[0_8px_20px_rgba(2,132,199,0.15)] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-[#0b2545] animate-float-delayed">
+                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#005ea6]"></span>
                             <span data-i18n="hero_badge_desa">133 Desa Madani</span>
                         </div>
-                        <div class="absolute top-1/2 -right-5 sm:-right-8 z-30 bg-white/95 backdrop-blur-md border border-amber-200 px-3 py-1 rounded-full shadow-[0_8px_20px_rgba(245,158,11,0.18)] flex items-center gap-1.5 text-[11px] font-bold text-amber-900 animate-float-reverse">
-                            <svg class="w-3.5 h-3.5 text-amber-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <div class="absolute top-1/2 -right-1 sm:-right-3 z-30 bg-white/95 backdrop-blur-md border border-amber-200 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full shadow-[0_8px_20px_rgba(245,158,11,0.18)] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-bold text-amber-900 animate-float-reverse">
+                            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <span data-i18n="hero_badge_sejahtera">Kolaka Utara Sejahtera</span>
                         </div>
-                        <div class="absolute top-6 -left-4 sm:-left-6 z-30 hidden sm:flex bg-white/95 backdrop-blur-md border border-slate-200 px-3 py-1 rounded-full shadow-md items-center gap-1.5 text-[11px] font-bold text-slate-700 animate-float-slow">
+                        <div class="absolute top-6 -left-1 sm:-left-3 z-30 hidden sm:flex bg-white/95 backdrop-blur-md border border-slate-200 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full shadow-md items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-700 animate-float-slow">
                             <span class="w-2 h-2 rounded-full bg-teal-500"></span>
                             <span data-i18n="hero_badge_15kec">15 Kecamatan Spasial</span>
                         </div>
@@ -620,7 +630,7 @@
     <!-- SECTION BARU: AGREGAT 15 KECAMATAN SE-KABUPATEN KOLAKA UTARA (PODES BPS 2025) -->
     <!-- Ditempatkan tepat sebelum WebGIS Peta Spasial sesuai permintaan user     -->
     <!-- ========================================================================= -->
-    <section id="sectionAgregatKecamatan" class="w-full bg-gradient-to-b from-[#F7F7F5] via-white to-[#F7F7F5] border-b border-slate-200/90 py-10 lg:py-14 scroll-mt-20">
+    <section id="sectionAgregatKecamatan" class="w-full max-w-full overflow-x-hidden bg-gradient-to-b from-[#F7F7F5] via-white to-[#F7F7F5] border-b border-slate-200/90 py-8 sm:py-10 lg:py-14 scroll-mt-20">
         <div class="max-w-[1720px] mx-auto px-4 lg:px-8 space-y-8">
             
             <!-- HEADER SECTION -->
@@ -841,7 +851,7 @@
         </div>
     </section>
 
-<main class="flex-1 w-full px-4 lg:px-8 py-6 max-w-[1720px] mx-auto space-y-8">
+<main class="flex-1 w-full max-w-full overflow-x-hidden px-3 sm:px-4 lg:px-8 py-6 max-w-[1720px] mx-auto space-y-8">
 
         <!-- ========================================================================= -->
         <!-- MODUL UTAMA: DATA DESA PRESISI KABUPATEN KOLAKA UTARA                     -->
@@ -1320,7 +1330,7 @@
         <!-- ================================================================= -->
         <!-- SECTION: PROGRAM DESA CANTIK (DESA CINTA STATISTIK) BPS KOLUT    -->
         <!-- ================================================================= -->
-        <section id="sectionDesaCantik" class="scroll-mt-24 space-y-6">
+        <section id="sectionDesaCantik" class="scroll-mt-24 space-y-6 w-full max-w-full overflow-x-hidden">
             <!-- Header Section -->
             <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
                 <div class="space-y-1">
@@ -1517,7 +1527,7 @@
 
 
         <!-- SECTION: TENTANG DESA MADANI & 4 PILAR KEMANDIRIAN -->
-        <section id="sectionAbout" class="scroll-mt-24 space-y-6">
+        <section id="sectionAbout" class="scroll-mt-24 space-y-6 w-full max-w-full overflow-x-hidden">
             <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
                 <div>
                     <div class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 mb-1">
@@ -1651,7 +1661,7 @@
 
     
 <!-- FOOTER: DESA MADANI & BPS KOLAKA UTARA -->
-    <footer class="bg-gradient-to-r from-[#011c16] via-[#0b2545] to-[#011926] text-white py-10 border-t border-emerald-500/25 text-xs mt-12">
+    <footer class="bg-gradient-to-r from-[#011c16] via-[#0b2545] to-[#011926] text-white py-10 border-t border-emerald-500/25 text-xs mt-12 w-full max-w-full overflow-x-hidden">
         <div class="w-full px-4 lg:px-8 max-w-[1720px] mx-auto space-y-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10">
                 <div class="flex items-center gap-4">
