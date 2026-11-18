@@ -217,11 +217,11 @@
                 </a>
             </nav>
 
-            <!-- Action Button: Login Akun Desa -->
+            <!-- Action Button: Kembali ke Desa Madani -->
             <div class="flex items-center gap-3">
-                <a href="/descan/login" class="px-4 py-2 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5">
-                    <span>🔒</span>
-                    <span>Login Akun Desa</span>
+                <a href="/" class="px-4 py-2 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5" title="Kembali ke Portal Desa Madani">
+                    <span>←</span>
+                    <span>Kembali ke Desa Madani</span>
                 </a>
             </div>
         </div>
@@ -1360,7 +1360,7 @@
                     <a href="#dashboard" class="hover:text-emerald-400 transition">Dashboard & Grafik</a>
                     <a href="#desa" class="hover:text-emerald-400 transition">6 Desa Binaan</a>
                     <a href="#output" class="hover:text-emerald-400 transition">Output Program</a>
-                    <a href="/descan/login" class="text-emerald-400 hover:text-emerald-300 font-black">Login Akun Desa</a>
+                    <a href="/" class="text-emerald-400 hover:text-emerald-300 font-black">Kembali ke Desa Madani</a>
                 </div>
             </div>
 
