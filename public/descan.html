@@ -365,268 +365,545 @@
             </div>
         </div>
 
-        <!-- TAB 1: DASHBOARD MAKRO 6 DESA -->
+                <!-- TAB 1: DASHBOARD MAKRO 6 DESA (SESUAI SLIDE WORK REPORT GAMBAR ATAS) -->
         <div id="viewDashboard" class="space-y-6">
             
-            <!-- Dual Primary Charts: Progress Bars + Bar Chart -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                
-                <!-- Left: Progres Pendataan 44 Indikator per Desa -->
-                <div class="lg:col-span-6 card-surface p-5 sm:p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#0E7C5A]"></span>
-                                <span>Progres Pendataan per Desa</span>
+            <!-- EXECUTIVE WORK REPORT SLIDE 1 CONTAINER -->
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-emerald-900/15 shadow-xl relative overflow-hidden">
+                <!-- Top Slide Header (Sesuai Gambar User) -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-slate-200/80 gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+                        <div>
+                            <h3 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">
+                                Data Statistik: Capaian Indikator Makro 6 Desa Binaan
                             </h3>
-                            <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
-                                Standar SDI
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                                Data Report: General Macro Statistics • BPS Kabupaten Kolaka Utara
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-black tracking-widest uppercase text-emerald-800 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+                            WORK REPORT
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Main Content: Big Forest Green Card (Left) + 3 Stacked Metric Cards (Right) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-5">
+                    
+                    <!-- Left: Large Forest Green Card with Glow Gradient Bars & Peak Star (Sesuai Gambar) -->
+                    <div class="lg:col-span-8 bg-[#18462b] rounded-2xl p-5 sm:p-6 text-white border-2 border-emerald-600/30 shadow-lg flex flex-col justify-between relative overflow-hidden">
+                        
+                        <!-- Header inside Forest Green Card -->
+                        <div class="flex items-center justify-between z-10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-emerald-800 text-lg shadow-sm font-black">
+                                    📊
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-black text-base sm:text-lg leading-tight">
+                                        2026 Progres Pendataan 44 Indikator Desa (%)
+                                    </h4>
+                                    <span class="text-[10px] text-emerald-200/90 font-medium">
+                                        Standar BPS Satu Data Indonesia • Kecamatan Kodeoha
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-black text-amber-300 bg-white/10 px-2.5 py-1 rounded-full border border-white/15">
+                                ⭐ Desa Kamisi Tertinggi
                             </span>
                         </div>
-                        <p class="text-[11px] text-slate-500 mt-1">
-                            Dasar: 44 indikator makro per desa · persentase = indikator terisi ÷ 44
-                        </p>
+
+                        <!-- 6 Gradient Vertical Bars (CSS + HTML Styled exactly matching the image) -->
+                        <div class="pt-8 pb-3 z-10">
+                            <div class="grid grid-cols-6 gap-2 sm:gap-4 items-end h-64 sm:h-72 border-b-2 border-dashed border-emerald-400/40 pb-2">
+                                
+                                <!-- Bar 1: Kamisi (98% - Peak Bar with Gold Star!) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Kamisi: 98% (43 dari 44 indikator)">
+                                    <!-- Star Badge on Peak Bar -->
+                                    <div class="flex flex-col items-center mb-1 animate-bounce">
+                                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center shadow-md">⭐</span>
+                                        <span class="text-xs font-black text-amber-300 mt-0.5">98%</span>
+                                    </div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 43/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 98%;"></div>
+                                </div>
+
+                                <!-- Bar 2: Kalu Kaluku (93% - Pilot Utama) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Kalu Kaluku: 93% (41 dari 44 indikator)">
+                                    <div class="text-xs font-black text-lime-300 mb-1">93%</div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 41/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 93%;"></div>
+                                </div>
+
+                                <!-- Bar 3: Lametuna (86%) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Lametuna: 86% (38 dari 44 indikator)">
+                                    <div class="text-xs font-black text-lime-300 mb-1">86%</div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 38/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 86%;"></div>
+                                </div>
+
+                                <!-- Bar 4: Awo (82%) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Awo: 82% (36 dari 44 indikator)">
+                                    <div class="text-xs font-black text-lime-300 mb-1">82%</div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 36/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 82%;"></div>
+                                </div>
+
+                                <!-- Bar 5: Sawangaoha (77%) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Sawangaoha: 77% (34 dari 44 indikator)">
+                                    <div class="text-xs font-black text-lime-300 mb-1">77%</div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 34/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 77%;"></div>
+                                </div>
+
+                                <!-- Bar 6: Koroha (68%) -->
+                                <div class="flex flex-col items-center h-full justify-end group cursor-pointer" title="Desa Koroha: 68% (30 dari 44 indikator)">
+                                    <div class="text-xs font-black text-lime-300 mb-1">68%</div>
+                                    <div class="text-[9px] font-bold text-emerald-200 mb-0.5">▲ 30/44</div>
+                                    <div class="w-full max-w-[52px] bg-gradient-to-t from-emerald-700 via-emerald-400 to-lime-300 rounded-t-lg shadow-lg group-hover:brightness-110 transition duration-300" style="height: 68%;"></div>
+                                </div>
+
+                            </div>
+
+                            <!-- X-Axis Labels (Desa Names) -->
+                            <div class="grid grid-cols-6 gap-2 sm:gap-4 text-center pt-2.5 text-[11px] font-extrabold text-emerald-100">
+                                <div>Kamisi</div>
+                                <div>Kalu Kaluku</div>
+                                <div>Lametuna</div>
+                                <div>Awo</div>
+                                <div>Sawangaoha</div>
+                                <div>Koroha</div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer Subtext -->
+                        <div class="pt-3 border-t border-emerald-500/20 flex flex-wrap items-center justify-between text-[11px] text-emerald-200/80 font-medium z-10">
+                            <span>Total Capaian: <b class="text-white">223 dari 264 Indikator Terinput</b></span>
+                            <span class="text-amber-300 font-bold">Rata-rata: 84% Mandiri</span>
+                        </div>
                     </div>
 
-                    <!-- 6 Village Progress Bars -->
-                    <div class="space-y-3.5 py-4">
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">1. Desa Kalu Kaluku (Pilot Utama)</span>
-                                <span class="text-[#0E7C5A]">93% <span class="text-slate-400 font-normal">(41/44)</span></span>
-                            </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-[#0E7C5A]" style="width: 93%;"></div>
-                            </div>
+                    <!-- Right: Forest Green Card with 3 Stacked Metric Cards (NO.01, NO.02, NO.03) -->
+                    <div class="lg:col-span-4 bg-[#18462b] rounded-2xl p-5 text-white border-2 border-emerald-600/30 shadow-lg flex flex-col justify-between space-y-3">
+                        
+                        <!-- Right Card Header Banner -->
+                        <div class="text-center pb-2 border-b border-emerald-500/30">
+                            <h4 class="text-base font-black text-white">Capaian Indikator Prioritas</h4>
+                            <div class="text-[10px] text-emerald-200 font-medium">Proportion of Priority Sectoral Data</div>
                         </div>
 
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">2. Desa Kamisi (Pesisir Bahari)</span>
-                                <span class="text-emerald-600">98% <span class="text-slate-400 font-normal">(43/44)</span></span>
+                        <!-- 3 Stacked Cards (Exact match to image NO.01, NO.02, NO.03) -->
+                        <div class="space-y-3 flex-1 flex flex-col justify-around">
+                            
+                            <!-- Item 1: NO.01 -->
+                            <div class="bg-white rounded-xl p-3.5 flex items-center justify-between shadow-md border-l-4 border-emerald-500 hover:shadow-lg transition">
+                                <div class="space-y-0.5">
+                                    <span class="inline-block px-2 py-0.5 rounded-md bg-[#18462b] text-lime-300 font-black text-[9px] uppercase tracking-wider">
+                                        NO.01 Monografi KK
+                                    </span>
+                                    <div class="text-xs font-black text-slate-800">2.426 KK Terdata</div>
+                                    <div class="text-[10px] text-slate-500">100% Monografi Lengkap</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-3xl font-black text-emerald-700 leading-none">93%</div>
+                                    <div class="text-[9px] text-emerald-600 font-bold mt-0.5">Selesai</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-emerald-600" style="width: 98%;"></div>
+
+                            <!-- Item 2: NO.02 -->
+                            <div class="bg-white rounded-xl p-3.5 flex items-center justify-between shadow-md border-l-4 border-teal-500 hover:shadow-lg transition">
+                                <div class="space-y-0.5">
+                                    <span class="inline-block px-2 py-0.5 rounded-md bg-[#18462b] text-lime-300 font-black text-[9px] uppercase tracking-wider">
+                                        NO.02 Air & Sanitasi
+                                    </span>
+                                    <div class="text-xs font-black text-slate-800">1.965 Rumah Tangga</div>
+                                    <div class="text-[10px] text-slate-500">Akses Air Bersih Layak</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-3xl font-black text-teal-700 leading-none">81%</div>
+                                    <div class="text-[9px] text-teal-600 font-bold mt-0.5">Standar SDI</div>
+                                </div>
                             </div>
+
+                            <!-- Item 3: NO.03 -->
+                            <div class="bg-white rounded-xl p-3.5 flex items-center justify-between shadow-md border-l-4 border-lime-500 hover:shadow-lg transition">
+                                <div class="space-y-0.5">
+                                    <span class="inline-block px-2 py-0.5 rounded-md bg-[#18462b] text-lime-300 font-black text-[9px] uppercase tracking-wider">
+                                        NO.03 Listrik & Hunian
+                                    </span>
+                                    <div class="text-xs font-black text-slate-800">1.892 Rumah PLN</div>
+                                    <div class="text-[10px] text-slate-500">PLN Mandiri & Layak</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-3xl font-black text-lime-700 leading-none">78%</div>
+                                    <div class="text-[9px] text-lime-600 font-bold mt-0.5">Terlayani</div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">3. Desa Lametuna (Pertanian)</span>
-                                <span class="text-teal-600">86% <span class="text-slate-400 font-normal">(38/44)</span></span>
-                            </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-teal-600" style="width: 86%;"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">4. Desa Awo (Gula Aren & Nilam)</span>
-                                <span class="text-emerald-600">82% <span class="text-slate-400 font-normal">(36/44)</span></span>
-                            </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-emerald-500" style="width: 82%;"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">5. Desa Sawangaoha (Agroindustri)</span>
-                                <span class="text-cyan-700">77% <span class="text-slate-400 font-normal">(34/44)</span></span>
-                            </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-cyan-600" style="width: 77%;"></div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">6. Desa Koroha (Kakao & Laut)</span>
-                                <span class="text-amber-600">68% <span class="text-slate-400 font-normal">(30/44)</span></span>
-                            </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-amber-500" style="width: 68%;"></div>
-                            </div>
+                        <div class="pt-2 text-center text-[10px] text-emerald-200/90 font-medium border-t border-emerald-500/20">
+                            Terintegrasi Standar BPS Satu Data Indonesia
                         </div>
                     </div>
 
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                        <span>Total: <b>223</b> dari 264 Indikator</span>
-                        <span class="text-[#0E7C5A] font-bold">Rata-rata: 84% Mandiri</span>
+                </div>
+
+                <!-- Row 2: 3 Supporting Distribution Cards (Rumah, Air, Penghasilan) Styled with Clean Green Aesthetics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6 pt-6 border-t border-slate-100">
+                    <!-- Chart 1: Kepemilikan Rumah -->
+                    <div class="bg-emerald-50/50 rounded-2xl p-4 sm:p-5 border border-emerald-100 shadow-2xs">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-xs font-black text-slate-900">Kepemilikan Rumah</h4>
+                            <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">2.426 KK</span>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mb-3">Distribusi status hunian keluarga</p>
+                        <div class="relative w-full h-44">
+                            <canvas id="chartKepemilikanRumah"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Sumber Air Minum -->
+                    <div class="bg-emerald-50/50 rounded-2xl p-4 sm:p-5 border border-emerald-100 shadow-2xs">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-xs font-black text-slate-900">Sumber Air Minum</h4>
+                            <span class="text-[10px] font-black text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Sanitasi</span>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mb-3">Akses air bersih rumah tangga</p>
+                        <div class="relative w-full h-44">
+                            <canvas id="chartSumberAir"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3: Penghasilan Bulanan -->
+                    <div class="bg-emerald-50/50 rounded-2xl p-4 sm:p-5 border border-emerald-100 shadow-2xs">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-xs font-black text-slate-900">Penghasilan Keluarga</h4>
+                            <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Ekonomi</span>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mb-3">Sebaran pendapatan per bulan</p>
+                        <div class="relative w-full h-44">
+                            <canvas id="chartPenghasilan"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right: Chart Jumlah Keluarga per Desa -->
-                <div class="lg:col-span-6 card-surface p-5 sm:p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                                <span>Jumlah Keluarga per Desa (KK)</span>
-                            </h3>
-                            <span class="text-[10px] font-black text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">
-                                Total: 2.426 KK
-                            </span>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1">
-                            Perbandingan jumlah Kepala Keluarga di 6 Desa Binaan Kecamatan Kodeoha
-                        </p>
-                    </div>
-
-                    <div class="relative w-full h-64 sm:h-72 my-2">
-                        <canvas id="chartKeluargaPerDesa"></canvas>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                        <span>Rentang: <b>298 – 1.120 KK</b></span>
-                        <span class="text-slate-700 font-bold">Sumber: Monografi Desa 2026</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Row 2: 3 Distribusi Kunci (Rumah, Air, Penghasilan) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Chart 1: Kepemilikan Rumah -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Kepemilikan Rumah</h4>
-                        <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">2.426 KK</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Distribusi status hunian keluarga</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartKepemilikanRumah"></canvas>
-                    </div>
-                </div>
-
-                <!-- Chart 2: Sumber Air Minum -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Sumber Air Minum</h4>
-                        <span class="text-[10px] font-black text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Sanitasi</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Akses air bersih rumah tangga</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartSumberAir"></canvas>
-                    </div>
-                </div>
-
-                <!-- Chart 3: Penghasilan Bulanan -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Penghasilan Keluarga</h4>
-                        <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Ekonomi</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Sebaran pendapatan per bulan</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartPenghasilan"></canvas>
-                    </div>
-                </div>
             </div>
 
         </div>
 
-        <!-- TAB 2: ANALITIK SEKTOORAL & SOSIAL -->
+        <!-- TAB 2: ANALITIK SEKTOORAL & SOSIAL (SESUAI SLIDE ADMINISTRATIVE REPORT GAMBAR BAWAH) -->
         <div id="viewAnalytics" class="space-y-6 hidden">
             
-            <!-- Village Selector Pills -->
-            <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
-                <div class="text-[11px] font-black text-slate-500 uppercase tracking-wider">
-                    Pilih Desa untuk Analitik Spesifik:
-                </div>
-                <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs font-bold">
-                    <button type="button" onclick="filterAnalitikVillage('all')" id="pill-desa-all" class="pill-filter active px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Semua Desa (6)
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('kalukaluku')" id="pill-desa-kalukaluku" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Kalu Kaluku
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('awo')" id="pill-desa-awo" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Awo
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('kamisi')" id="pill-desa-kamisi" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Kamisi
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('koroha')" id="pill-desa-koroha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Koroha
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('lametuna')" id="pill-desa-lametuna" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Lametuna
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('sawangaoha')" id="pill-desa-sawangaoha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Sawangaoha
-                    </button>
-                </div>
-                <div id="analitikSubtext" class="text-[11px] text-slate-400 font-medium">
-                    Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.
-                </div>
-            </div>
-
-            <!-- 2 Dual Charts: Penerangan & Lantai -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Chart A: Sumber Penerangan -->
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Sumber Penerangan</h3>
-                        <span id="badgePeneranganTotal" class="text-xs font-black text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">
-                            2.426 Total KK
-                        </span>
+            <!-- EXECUTIVE WORK REPORT SLIDE 2 CONTAINER -->
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-emerald-900/15 shadow-xl relative overflow-hidden space-y-6">
+                
+                <!-- Slide Header (Sesuai Gambar User) -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-slate-200/80 gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+                        <div>
+                            <h3 class="font-black text-slate-900 text-base sm:text-lg tracking-tight">
+                                Data Statistik: Pelaporan Data Sektoral & Kesejahteraan
+                            </h3>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                                Data Report: Administrative & Sectoral Data Reporting • BPS Kolaka Utara
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Komposisi keluarga menurut sumber penerangan rumah tangga</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartPeneranganCanvas"></canvas>
+                    <div class="text-right">
+                        <span class="text-xs font-black tracking-widest uppercase text-emerald-800 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200">
+                            WORK REPORT
+                        </span>
                     </div>
                 </div>
 
-                <!-- Chart B: Jenis Lantai Terluas -->
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Jenis Lantai Terluas</h3>
-                        <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
-                            Fisik Rumah
-                        </span>
+                <!-- Village Selector Pills -->
+                <div class="flex items-center justify-between flex-wrap gap-2 pt-1">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs font-bold">
+                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-wider mr-1">Filter Desa:</span>
+                        <button type="button" onclick="filterAnalitikVillage('all')" id="pill-desa-all" class="pill-filter active px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Semua Desa (6)
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('kalukaluku')" id="pill-desa-kalukaluku" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Kalu Kaluku
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('awo')" id="pill-desa-awo" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Awo
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('kamisi')" id="pill-desa-kamisi" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Kamisi
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('koroha')" id="pill-desa-koroha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Koroha
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('lametuna')" id="pill-desa-lametuna" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Lametuna
+                        </button>
+                        <button type="button" onclick="filterAnalitikVillage('sawangaoha')" id="pill-desa-sawangaoha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
+                            Desa Sawangaoha
+                        </button>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Jumlah keluarga menurut jenis lantai terluas bangunan tinggal</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartLantaiCanvas"></canvas>
+                    <div id="analitikSubtext" class="text-[11px] text-slate-500 font-medium">
+                        Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha).
                     </div>
                 </div>
-            </div>
 
-            <!-- 2 Dual Charts: Bansos & BPJS -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Chart C: Penerima Bantuan Sosial -->
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Penerima Bantuan Pemerintah</h3>
-                        <span class="text-xs font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
-                            Bantuan Sosial
-                        </span>
+                <!-- TOP KPI STAT STRIP: 5 CONNECTED DARK GREEN BOXES (SESUAI GAMBAR USER!) -->
+                <div class="bg-[#18462b] rounded-2xl overflow-hidden text-white shadow-lg grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-emerald-700/60">
+                    <!-- Box 1 -->
+                    <div class="p-4 sm:p-5 text-center">
+                        <div class="text-[10px] text-emerald-200 font-bold uppercase tracking-wider">Desa Binaan BPS</div>
+                        <div class="text-2xl sm:text-3xl font-black text-white mt-1">6 <span class="text-xs text-lime-300 font-bold">Desa</span></div>
+                        <div class="text-[9px] text-emerald-300/80 mt-0.5">Kec. Kodeoha</div>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Sebaran keluarga penerima bansos (PKH, BPNT, BLT-DD, PIP)</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartBansosCanvas"></canvas>
+                    <!-- Box 2 -->
+                    <div class="p-4 sm:p-5 text-center">
+                        <div class="text-[10px] text-emerald-200 font-bold uppercase tracking-wider">Total Keluarga</div>
+                        <div id="statKpiKK" class="text-2xl sm:text-3xl font-black text-white mt-1">2.426 <span class="text-xs text-lime-300 font-bold">KK</span></div>
+                        <div class="text-[9px] text-emerald-300/80 mt-0.5">Kepala Keluarga</div>
+                    </div>
+                    <!-- Box 3 -->
+                    <div class="p-4 sm:p-5 text-center">
+                        <div class="text-[10px] text-emerald-200 font-bold uppercase tracking-wider">Total Penduduk</div>
+                        <div class="text-2xl sm:text-3xl font-black text-white mt-1">8.734 <span class="text-xs text-lime-300 font-bold">Jiwa</span></div>
+                        <div class="text-[9px] text-emerald-300/80 mt-0.5">100% Terdata</div>
+                    </div>
+                    <!-- Box 4 -->
+                    <div class="p-4 sm:p-5 text-center">
+                        <div class="text-[10px] text-emerald-200 font-bold uppercase tracking-wider">Tingkat Kemiskinan</div>
+                        <div class="text-2xl sm:text-3xl font-black text-amber-300 mt-1">3,2%</div>
+                        <div class="text-[9px] text-emerald-200 mt-0.5">Kategori Rendah</div>
+                    </div>
+                    <!-- Box 5 -->
+                    <div class="p-4 sm:p-5 text-center col-span-2 sm:col-span-1">
+                        <div class="text-[10px] text-emerald-200 font-bold uppercase tracking-wider">Capaian Indikator</div>
+                        <div class="text-2xl sm:text-3xl font-black text-lime-300 mt-1">84,5%</div>
+                        <div class="text-[9px] text-emerald-200 mt-0.5">223/264 Indikator</div>
                     </div>
                 </div>
 
-                <!-- Chart D: BPJS Kesehatan -->
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Jaminan Kesehatan (BPJS)</h3>
-                        <span class="text-xs font-black text-teal-700 bg-teal-100 px-2 py-0.5 rounded-md">
-                            Proteksi Kesehatan
-                        </span>
+                <!-- MIDDLE ROW: STATISTICAL TABLE (LEFT) + KPI/PIE CHARTS (RIGHT) (SESUAI GAMBAR) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    
+                    <!-- Left: Statistical Table (Sesuai Gambar User) -->
+                    <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-[#18462b] text-white font-black text-[11px] uppercase tracking-wider">
+                                    <tr>
+                                        <th class="py-3 px-3.5">Desa Binaan</th>
+                                        <th class="py-3 px-2 text-center">Jumlah KK</th>
+                                        <th class="py-3 px-2 text-center">Total Jiwa</th>
+                                        <th class="py-3 px-2 text-center">Terinput</th>
+                                        <th class="py-3 px-2 text-center">Progres</th>
+                                        <th class="py-3 px-3.5 text-center">Status BPS</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 font-semibold text-slate-800">
+                                    <tr class="hover:bg-emerald-50/50 transition">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Kalu Kaluku</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">1.120</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">4.150</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">41 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-emerald-700">93%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-extrabold">Pilot Utama</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-emerald-50/50 transition bg-slate-50/50">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Kamisi</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">1.050</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">3.940</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">43 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-emerald-700">98%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[10px] font-extrabold">⭐ Tertinggi</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-emerald-50/50 transition">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Lametuna</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">447</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">3.120</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">38 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-emerald-700">86%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-teal-100 text-teal-800 text-[10px] font-extrabold">Terbina</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-emerald-50/50 transition bg-slate-50/50">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Awo</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">356</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">3.250</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">36 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-emerald-700">82%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-teal-100 text-teal-800 text-[10px] font-extrabold">Terbina</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-emerald-50/50 transition">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Sawangaoha</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">385</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">2.570</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">34 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-emerald-700">77%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-extrabold">Cukup</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-emerald-50/50 transition bg-slate-50/50">
+                                        <td class="py-2.5 px-3.5 font-black text-emerald-900 flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                                            <span>Koroha</span>
+                                        </td>
+                                        <td class="py-2.5 px-2 text-center font-bold">298</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">2.890</td>
+                                        <td class="py-2.5 px-2 text-center text-slate-600">30 / 44</td>
+                                        <td class="py-2.5 px-2 text-center font-black text-amber-700">68%</td>
+                                        <td class="py-2.5 px-3.5 text-center"><span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[10px] font-extrabold">Pendampingan</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Proporsi kepemilikan kartu BPJS (PBI APBN/APBD vs Mandiri)</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartBPJSCanvas"></canvas>
+
+                    <!-- Right: KPI Box + Two Distribution Donut Charts (Sesuai Gambar User) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <!-- Down Arrow KPI Box (Sesuai Gambar) -->
+                        <div class="bg-[#18462b] rounded-2xl p-4 text-white flex items-center justify-between shadow-md">
+                            <div>
+                                <span class="text-[10px] font-black text-emerald-200 uppercase tracking-wider block">Indikator Kerawanan Sosial</span>
+                                <div class="text-sm font-black text-white mt-0.5">Penurunan Angka Kemiskinan</div>
+                                <div class="text-[10px] text-emerald-300/80">Regsosek Sektoral BPS 2026</div>
+                            </div>
+                            <div class="flex items-center gap-1 text-right">
+                                <span class="text-3xl font-black text-lime-400">-5%</span>
+                                <span class="text-2xl text-lime-300">▼</span>
+                            </div>
+                        </div>
+
+                        <!-- 2 Side-by-Side Mini Donut Charts -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white rounded-2xl p-3 border border-slate-200 shadow-2xs">
+                                <div class="text-[11px] font-black text-slate-800 text-center mb-1">Kepemilikan Rumah</div>
+                                <div class="relative w-full h-28">
+                                    <canvas id="chartKepemilikanRumahMini"></canvas>
+                                </div>
+                                <div class="text-[9px] text-center font-bold text-emerald-700 mt-1">81% Milik Sendiri</div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl p-3 border border-slate-200 shadow-2xs">
+                                <div class="text-[11px] font-black text-slate-800 text-center mb-1">Akses Air Bersih</div>
+                                <div class="relative w-full h-28">
+                                    <canvas id="chartSumberAirMini"></canvas>
+                                </div>
+                                <div class="text-[9px] text-center font-bold text-blue-700 mt-1">62% Sumur Lindung</div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+
+                <!-- BOTTOM ROW: 4 SECTORAL WIDGETS (BAR CHART, GAUGE DONUT, RING CHART, SUMMARY CARD - SESUAI GAMBAR) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                    
+                    <!-- Widget 1: Bar Chart Sumber Penerangan (Sesuai Gambar) -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <span class="text-xs font-black text-slate-800">Penerangan Listrik</span>
+                                <span id="badgePeneranganTotal" class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">2.426 KK</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 mt-1">Komposisi sambungan listrik</p>
+                            <div class="relative w-full h-36 mt-2">
+                                <canvas id="chartPeneranganCanvas"></canvas>
+                            </div>
+                        </div>
+                        <div class="pt-2 text-[10px] text-slate-500 font-bold border-t border-slate-100 text-center">
+                            78% PLN Ber-Meteran Resmi
+                        </div>
+                    </div>
+
+                    <!-- Widget 2: Semi-circle Gauge Donut 84% (Sesuai Gambar) -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-2xs flex flex-col justify-between text-center">
+                        <div>
+                            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <span class="text-xs font-black text-slate-800">Capaian Standar SDI</span>
+                                <span class="text-[10px] font-bold text-lime-800 bg-lime-100 px-2 py-0.5 rounded">Tinggi</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 mt-1">Realisasi 44 Indikator Desa</p>
+                            <!-- Gauge Canvas / Semicircle -->
+                            <div class="relative w-full h-36 flex items-center justify-center mt-2">
+                                <canvas id="chartGaugeSDI"></canvas>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center pt-6">
+                                    <span class="text-3xl font-black text-slate-900 leading-none">84.5%</span>
+                                    <span class="text-[9px] font-bold text-emerald-700 mt-1">223 / 264 Indikator</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-2 text-[10px] text-emerald-700 font-bold border-t border-slate-100">
+                            Terverifikasi Agen Statistik
+                        </div>
+                    </div>
+
+                    <!-- Widget 3: Ring Donut Jenis Lantai (Sesuai Gambar) -->
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <span class="text-xs font-black text-slate-800">Jenis Lantai Terluas</span>
+                                <span class="text-[10px] font-bold text-teal-800 bg-teal-100 px-2 py-0.5 rounded">Fisik</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 mt-1">Material lantai bangunan tinggal</p>
+                            <div class="relative w-full h-36 mt-2">
+                                <canvas id="chartLantaiCanvas"></canvas>
+                            </div>
+                        </div>
+                        <div class="pt-2 text-[10px] text-slate-500 font-bold border-t border-slate-100 text-center">
+                            Semen 75% • Keramik 51%
+                        </div>
+                    </div>
+
+                    <!-- Widget 4: Executive Notes Card (Sesuai Gambar) -->
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50/50 rounded-2xl p-4 border border-emerald-200 shadow-2xs flex flex-col justify-between text-xs">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-1.5 font-black text-emerald-950 pb-2 border-b border-emerald-200/60">
+                                <span>📋</span>
+                                <span>Catatan Evaluasi BPS</span>
+                            </div>
+                            <ul class="space-y-1.5 text-[11px] text-emerald-900 leading-relaxed font-medium">
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-emerald-600 font-bold">•</span>
+                                    <span><b>4 Prinsip SDI</b> diterapkan penuh di seluruh 6 desa binaan Kodeoha.</span>
+                                </li>
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-emerald-600 font-bold">•</span>
+                                    <span><b>Interoperabilitas:</b> Integrasi data monografi, SDGs Desa, dan Regsosek.</span>
+                                </li>
+                                <li class="flex items-start gap-1.5">
+                                    <span class="text-emerald-600 font-bold">•</span>
+                                    <span><b>Rekomendasi:</b> Perkuatan infrastruktur air bersih di Desa Koroha & Awo.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pt-2.5 mt-2 border-t border-emerald-200/60 text-[10px] text-emerald-800 font-bold flex items-center justify-between">
+                            <span>BPS Kolaka Utara</span>
+                            <span class="text-emerald-600 font-black">2026</span>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
-
     </section>
 
     <!-- ============================================================== -->
@@ -1166,49 +1443,7 @@
         function initDashboardCharts() {
             if (typeof Chart === 'undefined') return;
 
-            // 1. Chart Jumlah Keluarga per Desa (Bar Chart)
-            const ctxKeluarga = document.getElementById('chartKeluargaPerDesa');
-            if (ctxKeluarga) {
-                if (chartInstances.keluarga) chartInstances.keluarga.destroy();
-                chartInstances.keluarga = new Chart(ctxKeluarga.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Kalu Kaluku', 'Kamisi', 'Sawangaoha', 'Lametuna', 'Awo', 'Koroha'],
-                        datasets: [{
-                            label: 'Jumlah Keluarga (KK)',
-                            data: [1120, 1050, 730, 447, 356, 298],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#8b5cf6', '#0d9488', '#f59e0b', '#f97316'],
-                            borderRadius: 8,
-                            barThickness: 28
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: (ctx) => ` ${ctx.parsed.y} Kepala Keluarga (KK)`
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: { color: '#f1f5f9' },
-                                ticks: { font: { size: 11 } }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { font: { size: 10, weight: 'bold' } }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // 2. Chart Status Kepemilikan Rumah (Donut Chart)
+            // 1. Chart Status Kepemilikan Rumah (Donut Chart)
             const ctxRumah = document.getElementById('chartKepemilikanRumah');
             if (ctxRumah) {
                 if (chartInstances.rumah) chartInstances.rumah.destroy();
@@ -1218,7 +1453,7 @@
                         labels: ['Milik Sendiri', 'Sewa / Kontrak', 'Bebas Sewa'],
                         datasets: [{
                             data: [81, 12, 7],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#f59e0b'],
+                            backgroundColor: ['#18462b', '#0284c7', '#f59e0b'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
                         }]
@@ -1234,7 +1469,7 @@
                 });
             }
 
-            // 3. Chart Sumber Air Minum Bersih (Donut Chart)
+            // 2. Chart Sumber Air Minum Bersih (Donut Chart)
             const ctxAir = document.getElementById('chartSumberAir');
             if (ctxAir) {
                 if (chartInstances.air) chartInstances.air.destroy();
@@ -1260,7 +1495,7 @@
                 });
             }
 
-            // 4. Chart Penghasilan Keluarga (Bar Chart)
+            // 3. Chart Penghasilan Keluarga (Bar Chart)
             const ctxPenghasilan = document.getElementById('chartPenghasilan');
             if (ctxPenghasilan) {
                 if (chartInstances.penghasilan) chartInstances.penghasilan.destroy();
@@ -1270,7 +1505,7 @@
                         labels: ['< 1,5 Jt', '1,5 - 3 Jt', '3 - 5 Jt', '> 5 Jt'],
                         datasets: [{
                             data: [320, 1140, 710, 256],
-                            backgroundColor: ['#f59e0b', '#0E7C5A', '#0284c7', '#6366f1'],
+                            backgroundColor: ['#f59e0b', '#18462b', '#0284c7', '#10b981'],
                             borderRadius: 6
                         }]
                     },
@@ -1287,7 +1522,7 @@
             }
         }
 
-        // Initialize Analytics Tab Charts
+        // Initialize Analytics Tab Charts (Sesuai Slide 2 Gambar User)
         function initAnalyticsCharts(selectedVillage = 'all') {
             if (typeof Chart === 'undefined') return;
 
@@ -1313,116 +1548,91 @@
                 const subtext = document.getElementById('analitikSubtext');
                 if (subtext) subtext.textContent = `Dasar perhitungan: ${totalKK} keluarga (${vm.name}). Seluruh nilai terintegrasi standar BPS.`;
                 const badge = document.getElementById('badgePeneranganTotal');
-                if (badge) badge.textContent = `${totalKK} Total KK (${vm.name})`;
+                if (badge) badge.textContent = `${totalKK} KK (${vm.name})`;
+                const statKpiKK = document.getElementById('statKpiKK');
+                if (statKpiKK) statKpiKK.innerHTML = `${totalKK.toLocaleString('id-ID')} <span class="text-xs text-lime-300 font-bold">KK</span>`;
             } else {
                 const subtext = document.getElementById('analitikSubtext');
-                if (subtext) subtext.textContent = `Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.`;
+                if (subtext) subtext.textContent = `Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha).`;
                 const badge = document.getElementById('badgePeneranganTotal');
                 if (badge) badge.textContent = `2.426 Total KK (6 Desa)`;
+                const statKpiKK = document.getElementById('statKpiKK');
+                if (statKpiKK) statKpiKK.innerHTML = `2.426 <span class="text-xs text-lime-300 font-bold">KK</span>`;
             }
 
-            // 1. Chart Penerangan (Donut)
+            // 1. Chart Penerangan (Bar Sesuai Widget 1 di Gambar)
             const ctxPenerangan = document.getElementById('chartPeneranganCanvas');
             if (ctxPenerangan) {
                 if (chartInstances.penerangan) chartInstances.penerangan.destroy();
                 chartInstances.penerangan = new Chart(ctxPenerangan.getContext('2d'), {
-                    type: 'doughnut',
+                    type: 'bar',
                     data: {
-                        labels: [
-                            `PLN dengan meteran ${pMeter} (${Math.round((pMeter/totalKK)*100)}%)`,
-                            `PLN tanpa meteran ${pTanpa} (${Math.round((pTanpa/totalKK)*100)}%)`,
-                            `Non-PLN ${pNon} (${Math.round((pNon/totalKK)*100)}%)`
-                        ],
+                        labels: ['PLN Meter', 'PLN Tanpa', 'Non-PLN'],
                         datasets: [{
                             data: [pMeter, pTanpa, pNon],
-                            backgroundColor: ['#0284c7', '#f97316', '#10b981'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
+                            backgroundColor: ['#18462b', '#10b981', '#f59e0b'],
+                            borderRadius: 6,
+                            barThickness: 24
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11, weight: 'bold' } } }
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => ` ${ctx.raw.toLocaleString('id-ID')} KK (${Math.round((ctx.raw/totalKK)*100)}%)`
+                                }
+                            }
                         },
-                        cutout: '60%'
+                        scales: {
+                            y: { display: false },
+                            x: { grid: { display: false }, ticks: { font: { size: 9, weight: 'bold' } } }
+                        }
                     }
                 });
             }
 
-            // 2. Chart Lantai (Bar)
+            // 2. Chart Gauge SDI (Semi-circle Gauge Sesuai Widget 2 di Gambar)
+            const ctxGauge = document.getElementById('chartGaugeSDI');
+            if (ctxGauge) {
+                if (chartInstances.gauge) chartInstances.gauge.destroy();
+                chartInstances.gauge = new Chart(ctxGauge.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Tercapai', 'Sisa'],
+                        datasets: [{
+                            data: [84.5, 15.5],
+                            backgroundColor: ['#10b981', '#e2e8f0'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        circumference: 180,
+                        rotation: 270,
+                        cutout: '76%',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { enabled: false }
+                        }
+                    }
+                });
+            }
+
+            // 3. Chart Lantai (Doughnut Ring Chart Sesuai Widget 3 di Gambar)
             const ctxLantai = document.getElementById('chartLantaiCanvas');
             if (ctxLantai) {
                 if (chartInstances.lantai) chartInstances.lantai.destroy();
                 chartInstances.lantai = new Chart(ctxLantai.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Semen/bata merah', 'Kayu/papan', 'Keramik', 'Marmer'],
-                        datasets: [{
-                            label: 'Jumlah Keluarga',
-                            data: [lSemen, lKayu, lKeramik, lMarmer],
-                            backgroundColor: ['#0284c7', '#ea580c', '#16a34a', '#1e293b'],
-                            borderRadius: 8,
-                            barThickness: 34
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
-                            x: { grid: { display: false }, ticks: { font: { size: 11, weight: 'bold' } } }
-                        }
-                    }
-                });
-            }
-
-            // 3. Chart Bansos (Bar)
-            const ctxBansos = document.getElementById('chartBansosCanvas');
-            if (ctxBansos) {
-                if (chartInstances.bansos) chartInstances.bansos.destroy();
-                chartInstances.bansos = new Chart(ctxBansos.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['PKH', 'BPNT / Sembako', 'BLT-Dana Desa', 'PIP Pendidikan', 'Non-Bansos'],
-                        datasets: [{
-                            label: 'Jumlah Penerima (KK)',
-                            data: [
-                                Math.round(totalKK * 0.16),
-                                Math.round(totalKK * 0.22),
-                                Math.round(totalKK * 0.18),
-                                Math.round(totalKK * 0.14),
-                                Math.round(totalKK * 0.42)
-                            ],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#f59e0b', '#8b5cf6', '#cbd5e1'],
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { grid: { color: '#f8fafc' } },
-                            x: { grid: { display: false }, ticks: { font: { size: 10, weight: 'bold' } } }
-                        }
-                    }
-                });
-            }
-
-            // 4. Chart BPJS (Donut)
-            const ctxBPJS = document.getElementById('chartBPJSCanvas');
-            if (ctxBPJS) {
-                if (chartInstances.bpjs) chartInstances.bpjs.destroy();
-                chartInstances.bpjs = new Chart(ctxBPJS.getContext('2d'), {
                     type: 'doughnut',
                     data: {
-                        labels: ['BPJS PBI 68%', 'BPJS Mandiri 22%', 'Belum BPJS 10%'],
+                        labels: ['Semen', 'Keramik', 'Kayu', 'Marmer'],
                         datasets: [{
-                            data: [68, 22, 10],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#ef4444'],
+                            data: [lSemen, lKeramik, lKayu, lMarmer],
+                            backgroundColor: ['#18462b', '#10b981', '#f59e0b', '#0284c7'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
                         }]
@@ -1431,9 +1641,54 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } }
+                            legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 9 } } }
                         },
                         cutout: '62%'
+                    }
+                });
+            }
+
+            // 4. Mini Charts di Samping Tabel (Rumah & Air Mini)
+            const ctxRumahMini = document.getElementById('chartKepemilikanRumahMini');
+            if (ctxRumahMini) {
+                if (chartInstances.rumahMini) chartInstances.rumahMini.destroy();
+                chartInstances.rumahMini = new Chart(ctxRumahMini.getContext('2d'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Milik Sendiri', 'Sewa', 'Lainnya'],
+                        datasets: [{
+                            data: [81, 12, 7],
+                            backgroundColor: ['#18462b', '#0284c7', '#f59e0b'],
+                            borderWidth: 1.5,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            const ctxAirMini = document.getElementById('chartSumberAirMini');
+            if (ctxAirMini) {
+                if (chartInstances.airMini) chartInstances.airMini.destroy();
+                chartInstances.airMini = new Chart(ctxAirMini.getContext('2d'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Sumur', 'Mata Air', 'PAM'],
+                        datasets: [{
+                            data: [62, 24, 14],
+                            backgroundColor: ['#0284c7', '#10b981', '#38bdf8'],
+                            borderWidth: 1.5,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }
                     }
                 });
             }
