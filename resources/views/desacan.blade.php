@@ -171,71 +171,53 @@
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-200 selection:text-emerald-950">
 
     <!-- ============================================================== -->
-    <!-- 1. TOP BAR BPS RESMI (Ringkas & Rapi)                           -->
+    <!-- NAVBAR DESCAN (IDENTIK DENGAN FORMAT NAVBAR DESA MADANI)       -->
     <!-- ============================================================== -->
-    <div class="topbar-bps">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-bold text-white tracking-wide">BPS Kabupaten Kolaka Utara</span>
-                <span class="opacity-40">•</span>
-                <span class="hidden sm:inline text-emerald-200">Program Desa Cinta Statistik (Desa Cantik) 2026</span>
-            </div>
-            <div class="flex items-center gap-3 text-[11px]">
-                <span class="hidden md:inline text-emerald-100 font-medium">Kecamatan Kodeoha</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold border border-emerald-400/30">
-                    Satu Data Indonesia
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- 2. NAVBAR (Tepat 4 Menu Bersih, Sesuai Format Desa Madani)      -->
-    <!-- ============================================================== -->
-    <header class="navbar-clean">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-            
-            <!-- Brand Logo -->
-            <a href="/descan" class="flex items-center gap-3 group">
-                <div class="flex items-center gap-2 bg-white px-2 py-1.5 rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition">
-                    <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
-                    <div class="h-5 w-[1.5px] bg-slate-200"></div>
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
-                </div>
-                <div>
-                    <div class="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none flex items-center gap-1.5">
-                        <span>DESCAN</span>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 text-[#064e3b] font-black">KODEOHA</span>
+    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[56px] sm:min-h-[60px] flex items-center w-full max-w-full">
+        <div class="w-full px-3 sm:px-4 lg:px-6 py-2 flex items-center justify-between gap-2 lg:gap-4 max-w-[1720px] mx-auto">
+            <!-- Left: Logo & Brand -->
+            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                <a href="/descan" class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" title="Desa Cantik (DESCAN) Kabupaten Kolaka Utara">
+                    <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-lg">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 sm:h-6 w-auto object-contain">
                     </div>
-                    <div class="text-[10px] text-slate-500 font-bold tracking-wide uppercase mt-0.5">
-                        Desa Cantik • Kolaka Utara
+                    <div>
+                        <div class="text-base sm:text-lg font-black text-[#0b2545] leading-none tracking-tight whitespace-nowrap">
+                            Desa <span class="text-[#0D6E5B]">Cantik</span>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
 
-            <!-- EXACTLY 4 MENUS (Minimal, Bersih, Sesuai Instruksi User) -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#beranda" class="nav-link">
-                    Beranda
+            <!-- Center: Navigation Menu Links (Compact, Responsive, No Horizontal Cutoff) -->
+            <nav class="hidden md:flex items-center gap-1.5 lg:gap-2.5 xl:gap-4 text-xs font-semibold text-slate-700 whitespace-nowrap shrink-0">
+                <a href="#beranda" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50">Beranda</a>
+                <a href="#dashboard" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50">Dashboard & Grafik</a>
+                <a href="#desa" class="text-[#0D6E5B] font-bold border-b-2 border-[#0D6E5B] pb-0.5 px-2 py-1 flex items-center gap-1 shrink-0">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    <span>6 Desa Binaan</span>
                 </a>
-                <a href="#dashboard" class="nav-link">
-                    Dashboard & Grafik
-                </a>
-                <a href="#desa" class="nav-link">
-                    6 Desa Binaan
-                </a>
-                <a href="#output" class="nav-link">
-                    Output Program
-                </a>
+                <a href="#output" class="hover:text-[#059669] transition px-2 py-1 rounded-lg hover:bg-slate-50">Output Program</a>
             </nav>
 
-            <!-- Action Button: Kembali ke Desa Madani (Pill Sesuai Tema Desa Madani) -->
-            <div class="flex items-center gap-3">
-                <a href="/" class="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-xs shadow-md shadow-emerald-700/20 transition flex items-center gap-2 transform hover:-translate-y-0.5" title="Kembali ke Portal Desa Madani">
-                    <span>←</span>
+            <!-- Right Controls: Kecamatan Kodeoha, Kembali ke Desa Madani, Language Switcher -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <a href="#desa" class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer hover:bg-slate-50">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                    <span>Kecamatan Kodeoha</span>
+                </a>
+
+                <a href="/" class="bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold px-3 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Kembali ke Portal Desa Madani">
+                    <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                     <span>Kembali ke Desa Madani</span>
                 </a>
+
+                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
+                    <span class="px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs font-bold text-[11px]">ID</span>
+                    <span class="px-2 py-0.5 rounded-full text-slate-600 font-bold text-[11px]">EN</span>
+                </div>
             </div>
         </div>
     </header>
