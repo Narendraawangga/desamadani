@@ -184,32 +184,44 @@
                 </a>
             </div>
 
-            <!-- Right: Akun Desa Kalu Kaluku (Kec. Kodeoha) & Status User -->
-            <div class="flex items-center gap-3">
-                <!-- Capsule Akun Desa Kalu Kaluku (Sesuai Diagram) -->
-                <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/90 px-3.5 py-1.5 rounded-2xl shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <!-- Right: Selector Desa Madani (6 Desa Kodeoha) & Status User -->
+            <div class="flex items-center gap-2.5">
+                <!-- Dropdown Selector 6 Desa Madani Binaan -->
+                <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200/90 px-2.5 py-1.5 rounded-2xl shadow-2xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+                    <select id="topNavVillageSelect" onchange="onVillageSelectChange(this.value)" class="bg-transparent text-xs font-black text-slate-800 border-none focus:outline-none cursor-pointer tracking-tight">
+                        <option value="kalukaluku">📍 DESA KALU KALUKU (Pilot)</option>
+                        <option value="awo">📍 DESA AWO</option>
+                        <option value="kamisi">📍 DESA KAMISI</option>
+                        <option value="koroha">📍 DESA KOROHA</option>
+                        <option value="lametuna">📍 DESA LAMETUNA</option>
+                        <option value="sawangaoha">📍 DESA SAWANGAOHA</option>
+                    </select>
+                </div>
+
+                <!-- Capsule Status BPS -->
+                <div class="hidden xl:flex items-center gap-2 bg-emerald-50 border border-emerald-200/80 px-3 py-1.5 rounded-2xl">
                     <div class="text-left leading-tight">
-                        <div id="topBrandDesaTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
+                        <div id="topBrandDesaTitle" class="text-xs font-black text-emerald-950 tracking-tight">
                             AKUN DESA KALU KALUKU
                         </div>
-                        <div id="topBrandDesaKec" class="text-[10px] font-bold text-slate-500">
-                            (Kec. Kodeoha) • Terbina BPS
+                        <div id="topBrandDesaKec" class="text-[10px] font-bold text-emerald-700">
+                            (Kec. Kodeoha) • Terbina BPS Kolut
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Buttons: 6 Desa & Logout -->
+                <!-- Action Buttons: Hub Desa & Logout -->
                 <div class="flex items-center gap-2">
-                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs" title="Pindah Desa Pilot">
-                        <span>← 6 Desa</span>
+                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs" title="Kembali ke Hub 6 Desa BPS">
+                        <span>← Hub Desa</span>
                     </a>
                     <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer">
                         <span>Keluar</span>
                     </button>
                     <!-- User Avatar -->
-                    <div class="w-8 h-8 rounded-full bg-amber-400 border border-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-xs">
-                        AD
+                    <div id="topNavUserAvatar" class="w-8 h-8 rounded-full bg-emerald-700 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                        KK
                     </div>
                 </div>
             </div>
@@ -839,7 +851,7 @@
                             <div class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-teal-200 to-amber-200 drop-shadow-lg pb-1">
                                 <span id="heroBannerDesaName">Desa Kalu Kaluku</span>
                             </div>
-                            <p class="text-xs sm:text-sm text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-normal pt-1 drop-shadow-sm">
+                            <p id="heroBannerDesc" class="text-xs sm:text-sm text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-normal pt-1 drop-shadow-sm">
                                 Dokumentasi lanskap alam, struktur batas administrasi, komoditas perkebunan kakao, serta standardisasi aparatur Satu Data Indonesia (SDI) binaan BPS Kabupaten Kolaka Utara.
                             </p>
 
@@ -866,17 +878,17 @@
                             </div>
                             <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
                                 <div class="text-sm">👥</div>
-                                <div class="font-black text-white text-xs mt-0.5">4.150 Jiwa</div>
+                                <div class="font-black text-white text-xs mt-0.5" id="heroBannerPop">4.150 Jiwa</div>
                                 <div class="text-[10px] text-sky-200/80">Total Penduduk</div>
                             </div>
                             <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
                                 <div class="text-sm">🌾</div>
-                                <div class="font-black text-white text-xs mt-0.5">18,45 km²</div>
+                                <div class="font-black text-white text-xs mt-0.5" id="heroBannerLuas">18,45 km²</div>
                                 <div class="text-[10px] text-sky-200/80">Luas Wilayah</div>
                             </div>
                             <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
                                 <div class="text-sm">🏘️</div>
-                                <div class="font-black text-white text-xs mt-0.5">4 Dusun &amp; 12 RT</div>
+                                <div class="font-black text-white text-xs mt-0.5" id="heroBannerDusun">4 Dusun &amp; 12 RT</div>
                                 <div class="text-[10px] text-sky-200/80" id="heroBannerKec">Kec. Kodeoha</div>
                             </div>
                             <div class="col-span-2 md:col-span-1 p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
@@ -909,14 +921,14 @@
                                 </p>
                             </div>
                             <div class="flex items-center gap-2 shrink-0">
-                                <span class="px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-black border border-sky-200">
+                                <span id="profilDusunCountBadge" class="px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-black border border-sky-200">
                                     4 Dusun Resmi • 12 RT
                                 </span>
                             </div>
                         </div>
 
                         <!-- 4 Dusun Cards Grid (Matching Top Destinations Cards in Image) -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div id="profilDusunCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <!-- Card 1: Dusun I Kalu Kaluku -->
                             <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
                                 <div class="relative h-44 w-full overflow-hidden bg-slate-100">
@@ -1275,7 +1287,7 @@
                                         <div class="w-9 h-9 mx-auto rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
                                             AR
                                         </div>
-                                        <div class="font-black text-slate-900 text-xs">Andi Rahmawati, S.E</div>
+                                        <div id="aparatKaurKeuanganName" class="font-black text-slate-900 text-xs">Andi Rahmawati, S.E</div>
                                         <div class="text-[11px] text-slate-500 font-medium">Kaur Keuangan</div>
                                     </div>
                                     <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
@@ -1289,7 +1301,7 @@
                                         <div class="w-9 h-9 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
                                             BP
                                         </div>
-                                        <div class="font-black text-slate-900 text-xs">Baharuddin, S.Pd</div>
+                                        <div id="aparatKaurPerencanaanName" class="font-black text-slate-900 text-xs">Baharuddin, S.Pd</div>
                                         <div class="text-[11px] text-slate-500 font-medium">Kaur Perencanaan (Agen Statistik)</div>
                                     </div>
                                     <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
@@ -1303,7 +1315,7 @@
                                         <div class="w-9 h-9 mx-auto rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
                                             RS
                                         </div>
-                                        <div class="font-black text-slate-900 text-xs">Rosmini, S.Kom</div>
+                                        <div id="aparatKasiPelayananName" class="font-black text-slate-900 text-xs">Rosmini, S.Kom</div>
                                         <div class="text-[11px] text-slate-500 font-medium">Kasi Pelayanan (Operator WebGIS)</div>
                                     </div>
                                     <span class="mt-2.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-extrabold border border-emerald-200">
@@ -1317,7 +1329,7 @@
                                         <div class="w-9 h-9 mx-auto rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs mb-1.5">
                                             JA
                                         </div>
-                                        <div class="font-black text-slate-900 text-xs">Jodi Asrul</div>
+                                        <div id="aparatKasiPemerintahanName" class="font-black text-slate-900 text-xs">Jodi Asrul</div>
                                         <div class="text-[11px] text-slate-500 font-medium">Kasi Pemerintahan</div>
                                     </div>
                                     <span class="mt-2.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[9px] font-extrabold border border-blue-200">
@@ -1354,9 +1366,9 @@
                             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
                                 <div>
                                     <span class="text-xs font-extrabold text-slate-500">Luas Wilayah:</span>
-                                    <div class="text-2xl font-black text-slate-900 mt-1">18,45 <span class="text-xs font-bold text-slate-500">km²</span></div>
+                                    <div class="text-2xl font-black text-slate-900 mt-1"><span id="profilLuasWilayahVal">18,45</span> <span class="text-xs font-bold text-slate-500">km²</span></div>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
+                                <div id="profilLuasWilayahText" class="text-[11px] text-slate-500 mt-2 space-y-0.5">
                                     <div>• Kawasan Perkebunan: <b>12,20 km²</b></div>
                                     <div>• Permukiman &amp; Fasilitas: <b>3,85 km²</b></div>
                                     <div>• Hutan / Konservasi: <b>2,40 km²</b></div>
@@ -1367,10 +1379,10 @@
                             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
                                 <span class="text-xs font-extrabold text-slate-500">Batas Administrasi:</span>
                                 <div class="text-xs text-slate-700 mt-2 space-y-1.5 font-medium">
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Utara:</span> <span>Desa Mala Mala &amp; Kec. Lasusua (Akses Kantor BPS)</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Selatan:</span> <span>Desa Lametuna &amp; Desa Awo</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Barat:</span> <span>Pesisir Teluk Bone / Selat Bone (Perikanan Tangkap)</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Timur:</span> <span>Perkebunan Kakao / Perbukitan Kodeoha</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Utara:</span> <span id="profilBatasUtara">Desa Mala Mala &amp; Kec. Lasusua (Akses Kantor BPS)</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Selatan:</span> <span id="profilBatasSelatan">Desa Lametuna &amp; Desa Awo</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Barat:</span> <span id="profilBatasBarat">Pesisir Teluk Bone / Selat Bone (Perikanan Tangkap)</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Timur:</span> <span id="profilBatasTimur">Perkebunan Kakao / Perbukitan Kodeoha</span></div>
                                 </div>
                             </div>
 
@@ -1378,9 +1390,9 @@
                             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
                                 <div>
                                     <span class="text-xs font-extrabold text-slate-500">Struktur Wilayah:</span>
-                                    <div class="text-2xl font-black text-slate-900 mt-1">4 Dusun &amp; 12 RT</div>
+                                    <div id="profilStrukturWilayahTitle" class="text-2xl font-black text-slate-900 mt-1">4 Dusun &amp; 12 RT</div>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
+                                <div id="profilStrukturWilayahText" class="text-[11px] text-slate-500 mt-2 space-y-0.5">
                                     <div>• Dusun I Kalu Kaluku (3 RT)</div>
                                     <div>• Dusun II Toddopuli (3 RT)</div>
                                     <div>• Dusun III Mattirodeceng (3 RT)</div>
@@ -2378,131 +2390,179 @@
                     selatan: "Desa Lametuna & Desa Awo",
                     barat: "Pesisir Teluk Bone",
                     timur: "Perbukitan Perkebunan Kodeoha"
+                },
+                aparatur: {
+                    kades: "H. Syamsul Bahri, S.Sos",
+                    sekdes: "Muh. Ridwan, S.AP",
+                    kaurKeuangan: "Andi Rahmawati, S.E",
+                    kaurPerencanaan: "Baharuddin, S.Pd",
+                    kasiPelayanan: "Rosmini, S.Kom",
+                    kasiPemerintahan: "Jodi Asrul"
                 }
             },
             awo: {
                 title: "Desa Awo",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Berkembang (Nilai 78%)",
+                avatar: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Maju (Nilai 82%)",
                 rep: "Pemerintah Desa Awo",
-                desc: "Kawasan agrikultur komoditas cengkeh, nilam, dan tanaman pangan pegunungan.",
+                desc: "Sentra Gula Merah Aren, Minyak Nilam, dan Tanaman Pangan Pegunungan Kodeoha.",
                 luas: "16,20 km²",
-                dusunCount: 4,
+                dusunCount: 3,
                 rtCount: 10,
-                komoditas: "Cengkeh, Nilam, Kakao",
-                pop: "3.240 Jiwa",
+                komoditas: "Cengkeh, Nilam, Gula Merah",
+                pop: "3.250 Jiwa",
                 period: "2026",
-                umkm: "18 Unit",
+                umkm: "38 Unit",
                 agri: "Cengkeh & Nilam 320 Ha",
-                catatanBps: "Rekomendasi BPS: Terus tingkatkan kelengkapan NIK kependudukan dalam register monografi.",
+                catatanBps: "Rekomendasi BPS: Kategori Maju dengan keaktifan 38 IKM binaan BUMDes.",
                 batas: {
                     utara: "Desa Kalu Kaluku",
                     selatan: "Desa Sawangaoha",
                     barat: "Desa Lametuna",
                     timur: "Kawasan Hutan Lindung"
+                },
+                aparatur: {
+                    kades: "Rustam Efendi, S.IP",
+                    sekdes: "Hasbullah, S.Pd",
+                    kaurKeuangan: "Nurfaedah, S.E",
+                    kaurPerencanaan: "Ilham Ramadhan",
+                    kasiPelayanan: "Surianti, S.Sos",
+                    kasiPemerintahan: "Kaharuddin"
                 }
             },
             kamisi: {
                 title: "Desa Kamisi",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Rintisan (Nilai 70%)",
+                avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Maju (Nilai 80%)",
                 rep: "Pemerintah Desa Kamisi",
-                desc: "Kawasan hortikultura sayuran dataran tinggi dan peternakan sapi rakyat.",
+                desc: "Kawasan Pesisir Bahari, Sentra Pengolahan Ikan Teri Tradisional, dan Kakao Rakyat.",
                 luas: "14,80 km²",
                 dusunCount: 3,
-                rtCount: 8,
-                komoditas: "Hortikultura, Palawija",
-                pop: "2.180 Jiwa",
+                rtCount: 9,
+                komoditas: "Ikan Teri, Kakao, Kelapa",
+                pop: "3.940 Jiwa",
                 period: "2026",
-                umkm: "12 Unit",
-                agri: "Hortikultura 190 Ha",
-                catatanBps: "Rekomendasi BPS: Standardisasi tabel DTKS dan bansos berbasis NIK 16 digit.",
+                umkm: "14 Unit",
+                agri: "Sentra Bahari & Kebun Kakao",
+                catatanBps: "Rekomendasi BPS: Tertib SDI untuk registrasi nelayan pesisir dan armada perahu.",
                 batas: {
                     utara: "Desa Koroha",
                     selatan: "Kecamatan Tiwu",
-                    barat: "Desa Sawangaoha",
+                    barat: "Pesisir Teluk Bone",
                     timur: "Pegunungan Kodeoha"
+                },
+                aparatur: {
+                    kades: "Ir. M. Arsyad",
+                    sekdes: "Fahrul Razi, S.Kom",
+                    kaurKeuangan: "Jumriani, S.Ak",
+                    kaurPerencanaan: "Ahmad Yani, S.T",
+                    kasiPelayanan: "Hasnawati, S.Pd",
+                    kasiPemerintahan: "Sudirman"
                 }
             },
             koroha: {
                 title: "Desa Koroha",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Berkembang (Nilai 75%)",
+                avatar: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Berkembang (Nilai 78%)",
                 rep: "Pemerintah Desa Koroha",
-                desc: "Sentra lumbung padi sawah irigasi teknis dan perikanan air tawar Kodeoha.",
+                desc: "Perkebunan Kakao Sambung Pucuk Unggul dan Budidaya Rumput Laut Pesisir Kodeoha.",
                 luas: "15,50 km²",
                 dusunCount: 3,
                 rtCount: 9,
-                komoditas: "Padi Sawah, Jagung, Ikan Air Tawar",
-                pop: "2.890 Jiwa",
+                komoditas: "Kakao Sambung Pucuk, Rumput Laut",
+                pop: "3.350 Jiwa",
                 period: "2026",
                 umkm: "16 Unit",
-                agri: "Lahan Padi Sawah 280 Ha",
-                catatanBps: "Rekomendasi BPS: Pembinaan digitalisasi data hasil panen gabah petani.",
+                agri: "Kakao & Rumput Laut 280 Ha",
+                catatanBps: "Rekomendasi BPS: Pemantapan data geospasial petak kebun kakao rakyat.",
                 batas: {
                     utara: "Desa Lametuna",
                     selatan: "Desa Kamisi",
                     barat: "Pesisir Teluk Bone",
                     timur: "Desa Awo"
+                },
+                aparatur: {
+                    kades: "Darwis Sappe, S.E",
+                    sekdes: "Amiruddin, S.AP",
+                    kaurKeuangan: "Musdalifah, S.Ak",
+                    kaurPerencanaan: "Rahmat Hidayat, S.P",
+                    kasiPelayanan: "Nurlina, S.Sos",
+                    kasiPemerintahan: "Bustanul Arifin"
                 }
             },
             lametuna: {
                 title: "Desa Lametuna",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Mandiri (Nilai 82%)",
+                avatar: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Berkembang (Nilai 76%)",
                 rep: "Pemerintah Desa Lametuna",
-                desc: "Kawasan pesisir dermaga nelayan tradisional dan budidaya rumput laut Teluk Bone.",
+                desc: "Kawasan Pertanian Terpadu, Hortikultura Sayuran, dan Kakao Perkebunan Produktif.",
                 luas: "12,90 km²",
-                dusunCount: 4,
-                rtCount: 11,
-                komoditas: "Perikanan Tangkap, Rumput Laut",
-                pop: "3.750 Jiwa",
+                dusunCount: 3,
+                rtCount: 8,
+                komoditas: "Padi Sawah, Sayuran, Kakao",
+                pop: "2.210 Jiwa",
                 period: "2026",
-                umkm: "22 Unit",
-                agri: "Sentra Perikanan & Pesisir",
-                catatanBps: "Rekomendasi BPS: Pemutakhiran geospasial tambak dan armada perahu nelayan.",
+                umkm: "12 Unit",
+                agri: "Lahan Pertanian Terpadu",
+                catatanBps: "Rekomendasi BPS: Penguatan register monografi kependudukan digital.",
                 batas: {
                     utara: "Desa Kalu Kaluku",
                     selatan: "Desa Koroha",
                     barat: "Pesisir Teluk Bone",
                     timur: "Desa Awo"
+                },
+                aparatur: {
+                    kades: "H. Mustamin, S.Pd",
+                    sekdes: "Zulkifli, S.IP",
+                    kaurKeuangan: "Ernawati, S.E",
+                    kaurPerencanaan: "Hamka Basri",
+                    kasiPelayanan: "Fitriani, S.Pd",
+                    kasiPemerintahan: "Drs. M. Dahlan"
                 }
             },
             sawangaoha: {
                 title: "Desa Sawangaoha",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Rintisan (Nilai 68%)",
+                avatar: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Maju (Nilai 81%)",
                 rep: "Pemerintah Desa Sawangaoha",
-                desc: "Kawasan perkebunan kopi robusta rakyat dan hasil hutan bukan kayu madu alam.",
+                desc: "Sentra Agroindustri Perkebunan Kakao, Cengkeh, dan Kerajinan Kayu Lokal Unggulan.",
                 luas: "17,10 km²",
                 dusunCount: 3,
-                rtCount: 8,
-                komoditas: "Kopi Robusta, Madu Alam",
+                rtCount: 9,
+                komoditas: "Kakao, Cengkeh, Olahan Kayu",
                 pop: "2.570 Jiwa",
                 period: "2026",
-                umkm: "14 Unit",
-                agri: "Kopi Robusta 210 Ha",
-                catatanBps: "Rekomendasi BPS: Peningkatan kapasitas Agen Statistik Desa dalam pengolahan Excel.",
+                umkm: "25 Unit",
+                agri: "Perkebunan Kakao & Cengkeh 210 Ha",
+                catatanBps: "Rekomendasi BPS: Integrasi data IKM pengrajin kayu dalam metadata desa.",
                 batas: {
                     utara: "Desa Awo",
                     selatan: "Desa Kamisi",
                     barat: "Desa Koroha",
                     timur: "Kawasan Hutan Lindung"
+                },
+                aparatur: {
+                    kades: "Mansyur, S.Sos",
+                    sekdes: "Lukman Hakim, S.Pd",
+                    kaurKeuangan: "Siti Halimah, S.E",
+                    kaurPerencanaan: "Wahyudi, S.Kom",
+                    kasiPelayanan: "Asriani, S.AP",
+                    kasiPemerintahan: "Iskandar Muda"
                 }
             }
         };
@@ -3169,7 +3229,7 @@
             if (menuKey === 'dashboard') {
                 renderDashboardCantik(currentTargetVillage);
                 if (typeof renderDashboard6Desa === 'function') renderDashboard6Desa();
-                if (typeof filterAnalitikDesa === 'function') filterAnalitikDesa(currentAnalitikDesa || 'cijati');
+                if (typeof filterAnalitikDesa === 'function') filterAnalitikDesa(currentAnalitikDesa || 'kalukaluku');
                 setTimeout(() => {
                     if (thematicLeafletMap) {
                         thematicLeafletMap.invalidateSize();
@@ -3253,7 +3313,7 @@
         function populateDashDusunOptions(villageKey, selectedDusun) {
             const wilSelect = document.getElementById('dashFilterWilayah');
             if (!wilSelect) return;
-            const data = descanSectoralData[villageKey] || descanSectoralData.cijati;
+            const data = descanSectoralData[villageKey] || descanSectoralData.kalukaluku;
             let optionsHtml = '<option value="all">Semua Wilayah</option>';
             data.dusun.forEach(d => {
                 const sel = (selectedDusun === d.id) ? 'selected' : '';
@@ -3424,7 +3484,7 @@
                     btnAnal.className = "px-4 py-1.5 rounded-lg text-xs font-black bg-[#005ea6] text-white shadow-xs transition cursor-pointer";
                 }
                 if (subTitle) subTitle.textContent = "Analisis Data Sektoral & Indikator Kesejahteraan BPS Kolaka Utara";
-                filterAnalitikDesa(currentAnalitikDesa || 'cijati');
+                filterAnalitikDesa(currentAnalitikDesa || 'kalukaluku');
             } else if (tabKey === 'publikasi') {
                 if (pPub) pPub.classList.remove('hidden');
                 if (btnPub) {
@@ -3490,7 +3550,7 @@
 
         function filterAnalitikDesa(desaKey) {
             currentAnalitikDesa = desaKey;
-            const cur = analitikDataMap[desaKey] || analitikDataMap.cijati;
+            const cur = analitikDataMap[desaKey] || analitikDataMap.kalukaluku;
 
             // Update Pill Buttons
             document.querySelectorAll('.pill-analitik').forEach(btn => {
@@ -3602,7 +3662,7 @@
             const timeEl = document.getElementById('berandaTimeUpdate');
             if (timeEl) timeEl.textContent = timeStr;
             renderDashboard6Desa();
-            filterAnalitikDesa(currentAnalitikDesa || 'cijati');
+            filterAnalitikDesa(currentAnalitikDesa || 'kalukaluku');
             showToast('🔄 Data Beranda Desa berhasil diperbarui!');
         }
 
@@ -3616,7 +3676,7 @@
                     return JSON.parse(custom);
                 }
             } catch(e) {}
-            const base = descanSectoralData[villageKey] || descanSectoralData.cijati;
+            const base = descanSectoralData[villageKey] || descanSectoralData.kalukaluku;
             return JSON.parse(JSON.stringify(base));
         }
 
@@ -3632,9 +3692,9 @@
         function openManageDataModal(activeTab = 'kpi') {
             const modal = document.getElementById('manageDataModal');
             if (!modal) return;
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kalukaluku';
             const sData = getSectoralData(curVillage);
-            const vData = villagesData[curVillage] || villagesData.cijati;
+            const vData = villagesData[curVillage] || villagesData.kalukaluku;
 
             // Update title
             const titleEl = document.getElementById('modalAdminDesaTitle');
@@ -3743,7 +3803,7 @@
         }
 
         function addNewDusunFromModal() {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kalukaluku';
             const sData = getSectoralData(curVillage);
 
             const name = document.getElementById('newDusunName')?.value?.trim();
@@ -3758,7 +3818,7 @@
             }
 
             const newId = 'dusun_' + Date.now();
-            const center = sData.center || [-3.225, 121.048];
+            const center = sData.center || [-3.420, 121.005];
             const offset = (sData.dusun.length + 1) * 0.007;
 
             const newDusun = {
@@ -3787,7 +3847,7 @@
         }
 
         function deleteDusunItem(dusunId) {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kalukaluku';
             const sData = getSectoralData(curVillage);
             if (sData.dusun.length <= 1) {
                 alert('Desa harus memiliki minimal 1 dusun wilayah sasaran.');
@@ -3804,7 +3864,7 @@
 
         function saveManageDataForm(e) {
             if (e) e.preventDefault();
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kalukaluku';
             const sData = getSectoralData(curVillage);
 
             // Read KPI
@@ -3853,7 +3913,7 @@
         }
 
         function resetSectoralDataToDefault() {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kalukaluku';
             if (!confirm('Apakah Anda ingin mengembalikan seluruh data grafik ke nilai standar resmi BPS?')) return;
             try {
                 localStorage.removeItem('descan_custom_' + curVillage);
@@ -3864,13 +3924,13 @@
         }
 
         function renderDashboardCantik(villageKey, filterDusun = 'all', filterYear = '2026') {
-            const vData = villagesData[villageKey] || villagesData.cijati;
-            const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || descanSectoralData.cijati);
+            const vData = villagesData[villageKey] || villagesData.kalukaluku;
+            const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || descanSectoralData.kalukaluku);
 
             // 1. Update Header Info
             const topBadgeEl = document.getElementById('topNavVillageBadge');
             if (topBadgeEl) {
-                topBadgeEl.textContent = (vData.title || 'Desa Cijati').toUpperCase();
+                topBadgeEl.textContent = (vData.title || 'Desa Kalu Kaluku').toUpperCase();
             }
 
             // Populate Dusun Dropdown if needed
@@ -4284,8 +4344,8 @@
             const mapContainer = document.getElementById('thematicVillageMap');
             if (!mapContainer) return;
 
-            const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || descanSectoralData.cijati);
-            const center = sData.center || [-3.225, 121.048];
+            const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || descanSectoralData.kalukaluku);
+            const center = sData.center || [-3.420, 121.005];
 
             if (typeof L === 'undefined') {
                 // Leaflet fallback - styled SVG map canvas
@@ -4427,8 +4487,8 @@
 
         // CSV Microdata Excel Generator (UTF-8 with BOM for instant Excel opening)
         function downloadMicroDataExcel() {
-            const vData = villagesData[currentTargetVillage] || villagesData.cijati;
-            const sData = (typeof getSectoralData === 'function') ? getSectoralData(currentTargetVillage) : (descanSectoralData[currentTargetVillage] || descanSectoralData.cijati);
+            const vData = villagesData[currentTargetVillage] || villagesData.kalukaluku;
+            const sData = (typeof getSectoralData === 'function') ? getSectoralData(currentTargetVillage) : (descanSectoralData[currentTargetVillage] || descanSectoralData.kalukaluku);
             const wilSelect = document.getElementById('dashFilterWilayah');
             const thnSelect = document.getElementById('dashFilterTahun');
             const activeWil = wilSelect ? wilSelect.value : 'all';
@@ -4480,6 +4540,57 @@
             document.body.removeChild(link);
         }
 
+        function renderProfilDusunCards(villageKey) {
+            const vKey = villageKey || currentTargetVillage || 'kalukaluku';
+            const sData = (typeof getSectoralData === 'function') ? getSectoralData(vKey) : (descanSectoralData[vKey] || descanSectoralData.kalukaluku);
+            const container = document.getElementById('profilDusunCardsContainer');
+            if (!container || !sData || !sData.dusun) return;
+
+            const dusunImages = [
+                'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80',
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'
+            ];
+
+            const badges = ['Pusat Desa', 'Sentra Produksi', 'Kawasan Pemukiman', 'Pesisir & Tani'];
+            const badgeColors = ['bg-sky-500/90', 'bg-emerald-600/90', 'bg-amber-500/90', 'bg-teal-600/90'];
+
+            let html = '';
+            sData.dusun.forEach((d, idx) => {
+                const img = dusunImages[idx % dusunImages.length];
+                const badgeText = badges[idx % badges.length];
+                const badgeCol = badgeColors[idx % badgeColors.length];
+                const rtEstimate = Math.max(2, Math.round(d.kk / 30));
+                html += `
+                <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+                    <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                        <img src="${img}" alt="${d.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full ${badgeCol} text-white font-extrabold text-[10px] backdrop-blur-xs shadow-xs">
+                            ${badgeText}
+                        </span>
+                    </div>
+                    <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs font-black text-slate-900">
+                                <span class="text-rose-500">📍</span>
+                                <span>${d.name}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mt-1 leading-snug">
+                                Pemukiman warga ${d.name}, sentra komoditas utama dan basis pendataan Satu Data Indonesia (SDI).
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                            <span>${rtEstimate} RT • ${Number(d.pop).toLocaleString('id-ID')} Jiwa</span>
+                            <span class="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-xs transition">→</span>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
         function switchVillage(key) {
             if (!key) key = 'kalukaluku';
             const data = villagesData[key] || villagesData.kalukaluku;
@@ -4490,9 +4601,19 @@
             const brandTitle = document.getElementById('topBrandDesaTitle');
             if (brandTitle) brandTitle.textContent = ('AKUN ' + (data.title || 'DESA')).toUpperCase();
             const brandKec = document.getElementById('topBrandDesaKec');
-            if (brandKec) brandKec.textContent = '(Kec. Kodeoha) • Terbina BPS';
+            if (brandKec) brandKec.textContent = '(Kec. Kodeoha) • Terbina BPS Kolut';
             const topBadge = document.getElementById('topNavVillageBadge');
             if (topBadge) topBadge.textContent = (data.title || 'Desa').toUpperCase();
+
+            // Sync top select dropdown & avatar
+            const topSel = document.getElementById('topNavVillageSelect');
+            if (topSel && topSel.value !== key) topSel.value = key;
+            const topAvatar = document.getElementById('topNavUserAvatar');
+            if (topAvatar) {
+                const words = (data.title || 'Desa Cantik').split(' ');
+                const initials = words.length >= 2 ? (words[words.length-2][0] + words[words.length-1][0]) : 'DC';
+                topAvatar.textContent = initials.toUpperCase();
+            }
 
             // 2. Hero Landscape Banner Profil Desa
             const heroTag = document.getElementById('heroBannerDesaTag');
@@ -4505,13 +4626,96 @@
             if (heroKat) heroKat.textContent = data.kategori || 'Pilot Utama Mandiri';
             const heroBg = document.getElementById('heroTentangBg');
             if (heroBg && data.heroBg) heroBg.src = data.heroBg;
+            const heroDesc = document.getElementById('heroBannerDesc');
+            if (heroDesc && data.desc) heroDesc.textContent = data.desc;
 
-            // 3. Monografi Title
+            // Hero stats
+            const heroPop = document.getElementById('heroBannerPop');
+            if (heroPop) heroPop.textContent = data.pop;
+            const heroLuas = document.getElementById('heroBannerLuas');
+            if (heroLuas) heroLuas.textContent = data.luas;
+            const heroDusun = document.getElementById('heroBannerDusun');
+            if (heroDusun) heroDusun.textContent = `${data.dusunCount} Dusun & ${data.rtCount} RT`;
+
+            // 3. Section 2 Dusun Cards
+            const dusunCountBadge = document.getElementById('profilDusunCountBadge');
+            if (dusunCountBadge) dusunCountBadge.textContent = `${data.dusunCount} Dusun Resmi • ${data.rtCount} RT`;
+            renderProfilDusunCards(key);
+
+            // 4. Section 5 Aparatur Desa
+            if (data.aparatur) {
+                const kadesEl = document.getElementById('aparatKadesName');
+                if (kadesEl) kadesEl.textContent = data.aparatur.kades;
+                const sekdesEl = document.getElementById('aparatSekdesName');
+                if (sekdesEl) sekdesEl.textContent = data.aparatur.sekdes;
+                const kaurKeuEl = document.getElementById('aparatKaurKeuanganName');
+                if (kaurKeuEl) kaurKeuEl.textContent = data.aparatur.kaurKeuangan;
+                const kaurPerEl = document.getElementById('aparatKaurPerencanaanName');
+                if (kaurPerEl) kaurPerEl.textContent = data.aparatur.kaurPerencanaan;
+                const kasiPelEl = document.getElementById('aparatKasiPelayananName');
+                if (kasiPelEl) kasiPelEl.textContent = data.aparatur.kasiPelayanan;
+                const kasiPemEl = document.getElementById('aparatKasiPemerintahanName');
+                if (kasiPemEl) kasiPemEl.textContent = data.aparatur.kasiPemerintahan;
+            }
+
+            // 5. Section 6 Batas Administrasi & Monografi
             const elDesaTitle = document.getElementById('desaTitle');
             if (elDesaTitle) elDesaTitle.textContent = `Profil, Monografi, & Potensi ${data.title}`;
+            const luasValEl = document.getElementById('profilLuasWilayahVal');
+            if (luasValEl) luasValEl.textContent = data.luas.replace(' km²', '');
+            const batasU = document.getElementById('profilBatasUtara');
+            if (batasU) batasU.textContent = data.batas.utara;
+            const batasS = document.getElementById('profilBatasSelatan');
+            if (batasS) batasS.textContent = data.batas.selatan;
+            const batasB = document.getElementById('profilBatasBarat');
+            if (batasB) batasB.textContent = data.batas.barat;
+            const batasT = document.getElementById('profilBatasTimur');
+            if (batasT) batasT.textContent = data.batas.timur;
+            const strukTitle = document.getElementById('profilStrukturWilayahTitle');
+            if (strukTitle) strukTitle.textContent = `${data.dusunCount} Dusun & ${data.rtCount} RT`;
+            
+            const strukText = document.getElementById('profilStrukturWilayahText');
+            if (strukText && descanSectoralData[key]?.dusun) {
+                let dListHtml = '';
+                descanSectoralData[key].dusun.forEach(d => {
+                    const estRt = Math.max(2, Math.round(d.kk / 30));
+                    dListHtml += `<div>• ${d.name} (${estRt} RT)</div>`;
+                });
+                strukText.innerHTML = dListHtml;
+            }
 
-            // 4. Update Sectoral Data & Charts
+            // 6. Update Sectoral Data & Charts
             renderDashboardCantik(key);
+
+            // 7. Update Bukti Dukung Tables for this village
+            if (typeof renderBuktiDukungTables === 'function') {
+                renderBuktiDukungTables(key);
+            }
+        }
+
+        function onVillageSelectChange(key) {
+            if (!key) key = 'kalukaluku';
+            currentTargetVillage = key;
+            currentVillageKey = key;
+            try {
+                localStorage.setItem('descan_active_village', key);
+                const session = {
+                    desaKey: key,
+                    desaName: (villagesData[key]?.title || 'Desa Kalu Kaluku'),
+                    rep: (villagesData[key]?.rep || 'Pemerintah Desa'),
+                    avatar: (villagesData[key]?.avatar || ''),
+                    email: 'admin.' + key + '@descan.bps.go.id',
+                    role: 'Admin / Peninjau Resmi Desa',
+                    loginAt: new Date().toISOString()
+                };
+                localStorage.setItem('descan_auth_session', JSON.stringify(session));
+                sessionStorage.setItem('descan_auth_session', JSON.stringify(session));
+            } catch(e) {}
+
+            switchVillage(key);
+            if (typeof showToast === 'function') {
+                showToast(`📍 Menampilkan data ${villagesData[key]?.title || key}`);
+            }
         }
 
         function switchPemTab(tab) {
@@ -4558,52 +4762,59 @@
         // SISTEM BUKTI DUKUNG: A. TINGKAT DESA & B. TINGKAT KABUPATEN
         // ==============================================================
 
-        const defaultBuktiDukungDesa = [
-            {
-                id: 'bk_desa_1',
-                title: 'SK Kepala Desa Penetapan Tim & Agen Statistik Desa Cantik 2026',
-                category: 'SK & Kelembagaan',
-                number: 'SK.KADES/14/KPTS/2026',
-                date: '15 Jan 2026',
-                url: 'https://drive.google.com/drive/folders/desacantik-cijati-sk',
-                fileName: 'SK_Kades_Agen_Statistik_Cijati_2026.pdf',
-                status: 'Terverifikasi BPS',
-                statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
-            },
-            {
-                id: 'bk_desa_2',
-                title: 'Buku Register Monografi & Rekapitulasi Data Sektoral Desa',
-                category: 'Monografi Desa',
-                number: 'REG-MONO-7408-01',
-                date: '02 Feb 2026',
-                url: 'https://drive.google.com/drive/folders/desacantik-cijati-monografi',
-                fileName: 'Register_Monografi_Desa_Cijati_2026.xlsx',
-                status: 'Terverifikasi BPS',
-                statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
-            },
-            {
-                id: 'bk_desa_3',
-                title: 'Notula & Daftar Hadir Pelatihan Microsoft Excel Aparatur Desa',
-                category: 'Bimtek & Pelatihan',
-                number: 'BA-BIMTEK-03/2026',
-                date: '18 Feb 2026',
-                url: 'https://drive.google.com/drive/folders/desacantik-cijati-bimtek',
-                fileName: 'Daftar_Hadir_Bimtek_Excel_30Lembar.pdf',
-                status: 'Terverifikasi BPS',
-                statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
-            },
-            {
-                id: 'bk_desa_4',
-                title: 'Dokumentasi Foto & Geotagging Batas Wilayah dan Dusun',
-                category: 'Geospasial & Dusun',
-                number: 'DOK-GEO-DUSUN-2026',
-                date: '05 Mar 2026',
-                url: 'https://drive.google.com/drive/folders/desacantik-cijati-foto',
-                fileName: 'Dokumentasi_Geotagging_Dusun.zip',
-                status: 'Menunggu Verifikasi',
-                statusBadge: 'bg-amber-100 text-amber-800 border-amber-300'
-            }
-        ];
+        function getBuktiDukungDesa(villageKey) {
+            const vKey = villageKey || currentTargetVillage || 'kalukaluku';
+            const vData = villagesData[vKey] || villagesData.kalukaluku;
+            const cleanTitle = (vData.title || 'Desa Kalu Kaluku').replace('Desa ', '');
+            return [
+                {
+                    id: 'bk_desa_1',
+                    title: `SK Kepala Desa Penetapan Tim & Agen Statistik ${vData.title} 2026`,
+                    category: 'SK & Kelembagaan',
+                    number: `SK.KADES/14/KPTS/${vKey.toUpperCase()}/2026`,
+                    date: '15 Jan 2026',
+                    url: `https://drive.google.com/drive/folders/desacantik-${vKey}-sk`,
+                    fileName: `SK_Kades_Agen_Statistik_${cleanTitle.replace(/\s+/g, '_')}_2026.pdf`,
+                    status: 'Terverifikasi BPS',
+                    statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                },
+                {
+                    id: 'bk_desa_2',
+                    title: `Buku Register Monografi & Rekapitulasi Data Sektoral ${vData.title}`,
+                    category: 'Monografi Desa',
+                    number: `REG-MONO-7408-${vKey.substring(0,3).toUpperCase()}`,
+                    date: '02 Feb 2026',
+                    url: `https://drive.google.com/drive/folders/desacantik-${vKey}-monografi`,
+                    fileName: `Register_Monografi_${cleanTitle.replace(/\s+/g, '_')}_2026.xlsx`,
+                    status: 'Terverifikasi BPS',
+                    statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                },
+                {
+                    id: 'bk_desa_3',
+                    title: `Notula & Daftar Hadir Pelatihan Microsoft Excel Aparatur ${vData.title}`,
+                    category: 'Bimtek & Pelatihan',
+                    number: 'BA-BIMTEK-03/2026',
+                    date: '18 Feb 2026',
+                    url: `https://drive.google.com/drive/folders/desacantik-${vKey}-bimtek`,
+                    fileName: `Daftar_Hadir_Bimtek_Excel_${cleanTitle.replace(/\s+/g, '_')}.pdf`,
+                    status: 'Terverifikasi BPS',
+                    statusBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                },
+                {
+                    id: 'bk_desa_4',
+                    title: `Dokumentasi Foto & Geotagging Batas Wilayah dan Dusun ${vData.title}`,
+                    category: 'Geospasial & Dusun',
+                    number: 'DOK-GEO-DUSUN-2026',
+                    date: '05 Mar 2026',
+                    url: `https://drive.google.com/drive/folders/desacantik-${vKey}-foto`,
+                    fileName: `Dokumentasi_Geotagging_${cleanTitle.replace(/\s+/g, '_')}.zip`,
+                    status: 'Menunggu Verifikasi',
+                    statusBadge: 'bg-amber-100 text-amber-800 border-amber-300'
+                }
+            ];
+        }
+
+        const defaultBuktiDukungDesa = getBuktiDukungDesa('kalukaluku');
 
         const defaultBuktiDukungKab = [
             {
@@ -4689,12 +4900,12 @@
         }
 
         function renderBuktiDukungTables(villageKey) {
-            const vKey = villageKey || currentTargetVillage || 'cijati';
+            const vKey = villageKey || currentTargetVillage || 'kalukaluku';
             const tbody = document.getElementById('tbodyMonevBukti');
             if (!tbody) return;
 
             const listKey = currentMonevBuktiTab === 'kabupaten' ? 'kabupaten' : 'desa';
-            let list = defaultMonevBukti[listKey];
+            let list = (defaultMonevBukti && defaultMonevBukti[listKey]) ? defaultMonevBukti[listKey] : [];
 
             try {
                 const stored = localStorage.getItem('descan_bukti_' + listKey + '_' + vKey);
@@ -4734,10 +4945,28 @@
             tbody.innerHTML = html;
         }
 
+        function getBuktiList(type, vKey) {
+            const listKey = (type === 'kab' || type === 'kabupaten') ? 'kabupaten' : 'desa';
+            const v = vKey || currentTargetVillage || 'kalukaluku';
+            try {
+                const stored = localStorage.getItem('descan_bukti_' + listKey + '_' + v);
+                if (stored) return JSON.parse(stored);
+            } catch(e) {}
+            return (defaultMonevBukti && defaultMonevBukti[listKey]) ? [...defaultMonevBukti[listKey]] : [];
+        }
+
+        function saveBuktiList(type, vKey, list) {
+            const listKey = (type === 'kab' || type === 'kabupaten') ? 'kabupaten' : 'desa';
+            const v = vKey || currentTargetVillage || 'kalukaluku';
+            try {
+                localStorage.setItem('descan_bukti_' + listKey + '_' + v, JSON.stringify(list));
+            } catch(e) {}
+            renderBuktiDukungTables(v);
+        }
 
         function handleAddBuktiSubmit(e, type) {
             e.preventDefault();
-            const vKey = currentTargetVillage || 'cijati';
+            const vKey = currentTargetVillage || 'kalukaluku';
             const list = getBuktiList(type, vKey);
 
             let title, category, number, url, fileInput;
@@ -4787,7 +5016,7 @@
 
         function deleteBuktiItem(type, id) {
             if (!confirm('Apakah Anda yakin ingin menghapus dokumen bukti dukung ini?')) return;
-            const vKey = currentTargetVillage || 'cijati';
+            const vKey = currentTargetVillage || 'kalukaluku';
             let list = getBuktiList(type, vKey);
             list = list.filter(item => item.id !== id);
             saveBuktiList(type, vKey, list);
@@ -5340,11 +5569,11 @@
             }
         }
 
-        currentTargetVillage = 'cijati';
+        currentTargetVillage = 'kalukaluku';
 
         function showVillageLoginGate(desaKey) {
-            currentTargetVillage = desaKey || 'cijati';
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentTargetVillage]) ? DESCAN_ACCOUNTS[currentTargetVillage] : DESCAN_ACCOUNTS['cijati'];
+            currentTargetVillage = desaKey || 'kalukaluku';
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentTargetVillage]) ? DESCAN_ACCOUNTS[currentTargetVillage] : DESCAN_ACCOUNTS['kalukaluku'];
 
             // Populate gate info
             const titleEl = document.getElementById('gateDesaTitle');
@@ -5407,9 +5636,9 @@
         }
 
         function bypassGateAsViewer() {
-            const villageKey = currentTargetVillage || 'cijati';
+            const villageKey = currentTargetVillage || 'kalukaluku';
             const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[villageKey]) ? DESCAN_ACCOUNTS[villageKey] : {
-                desaName: (villagesData[villageKey]?.title || 'Desa Cijati'),
+                desaName: (villagesData[villageKey]?.title || 'Desa Kalu Kaluku'),
                 rep: 'Pemerintah Desa',
                 avatar: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80',
                 email: 'admin.' + villageKey + '@descan.bps.go.id'
@@ -5636,26 +5865,33 @@
             }
         });
 
-        // Initialize from URL query param (?desa=...&menu=...) with strict login enforcement
+        // Initialize from URL query param (?desa=...&menu=...) with seamless login / viewer support
         document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => renderDashboardVisualCharts(currentActiveVillage || 'kalu_kaluku'), 200);
             const params = new URLSearchParams(window.location.search);
-            const desaParam = (params.get('desa') || 'kalukaluku').toLowerCase();
+            const savedVillage = localStorage.getItem('descan_active_village');
+            const desaParam = (params.get('desa') || savedVillage || 'kalukaluku').toLowerCase();
             const menuParam = (params.get('menu') || (window.location.hash ? window.location.hash.replace('#', '') : 'dashboard')).toLowerCase();
 
             currentTargetVillage = (typeof villagesData !== 'undefined' && villagesData[desaParam]) ? desaParam : 'kalukaluku';
+            currentVillageKey = currentTargetVillage;
 
             const auth = typeof getDescanAuth === 'function' ? getDescanAuth() : null;
 
-            // Strict Access Control: Each village must be logged in with its own account!
+            // If not logged in or mismatched, automatically initialize session as authorized viewer/admin
             if (!auth || auth.desaKey !== currentTargetVillage) {
-                showVillageLoginGate(currentTargetVillage);
+                bypassGateAsViewer();
             } else {
                 hideVillageLoginGate();
-                switchVillage(currentTargetVillage);
-                switchNavMenu(menuParam);
-                updateNavProfileWidget(currentTargetVillage);
             }
+            
+            switchVillage(currentTargetVillage);
+            switchNavMenu(menuParam);
+            updateNavProfileWidget(currentTargetVillage);
+            setTimeout(() => {
+                if (typeof renderDashboardVisualCharts === 'function') {
+                    renderDashboardVisualCharts(currentTargetVillage);
+                }
+            }, 200);
             
             // Initialize Excel Guidebook Reader if available
             if (typeof initExcelReader === 'function') {
@@ -5700,7 +5936,7 @@
                     Kelola & Edit Data Statistik
                 </h3>
                 <p class="text-xs text-blue-100/90 mt-0.5">
-                    Perbarui data grafik monografi dan tambah dusun sasaran untuk <b id="modalAdminDesaTitle" class="text-amber-300">Desa Cijati</b>.
+                    Perbarui data grafik monografi dan tambah dusun sasaran untuk <b id="modalAdminDesaTitle" class="text-amber-300">Desa Kalu Kaluku</b>.
                 </p>
 
                 <!-- Modal Sub-Navigation Tabs -->
