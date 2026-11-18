@@ -332,79 +332,161 @@
             <div class="flex flex-col lg:flex-row items-start gap-6">
 
                 <!-- ========================================================== -->
-                <!-- DEDICATED SIDEBAR NAVIGASI (4 MENU RESMI DESA CANTIK)     -->
+                <!-- DEDICATED SIDEBAR NAVIGASI SISTEMATIS BPS DESA CANTIK       -->
+                <!-- Sesuai Lampiran: Administrasi & Data | Kapasitas & Pembinaan-->
                 <!-- ========================================================== -->
-                <aside class="w-full lg:w-64 xl:w-72 shrink-0 lg:sticky lg:top-4 z-30">
-                    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 space-y-4">
+                <aside class="w-full lg:w-64 xl:w-72 shrink-0 lg:sticky lg:top-4 self-start z-30">
+                    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 flex flex-col justify-between min-h-[640px] select-none">
                         
-                        <!-- Village Identity Card in Sidebar -->
-                        <div class="p-3.5 rounded-xl bg-gradient-to-br from-[#072448] via-[#0b2545] to-[#005ea6] text-white shadow-xs space-y-1.5">
-                            <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span class="text-[10px] text-blue-200 font-extrabold uppercase tracking-wider">Desa Binaan BPS</span>
-                            </div>
-                            <div>
-                                <div id="topNavVillageBadge" class="font-black text-amber-300 text-sm uppercase tracking-wide">
-                                    DESA KALU KALUKU
+                        <!-- Top Navigations Groups -->
+                        <div class="space-y-4">
+                            
+                            <!-- GROUP 1: ADMINISTRASI & DATA -->
+                            <div class="space-y-1">
+                                <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 px-3 pb-1">
+                                    ADMINISTRASI &amp; DATA
                                 </div>
-                                <div class="text-[11px] text-blue-100/90 font-medium">
-                                    Kec. Kodeoha • Kolaka Utara
-                                </div>
+                                <nav class="space-y-1" aria-label="Administrasi dan Data">
+                                    <!-- 1. Dashboard Desa -->
+                                    <button type="button" id="side-item-dashboard" onclick="activateSidebarMenu('dashboard')" class="side-item-btn active w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition duration-150 cursor-pointer text-left bg-[#0c4a34] text-white shadow-xs ring-1 ring-emerald-950/20">
+                                        <svg class="w-4 h-4 shrink-0 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                                            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                        </svg>
+                                        <span class="tracking-tight">Dashboard Desa</span>
+                                    </button>
+
+                                    <!-- 2. Profil Desa -->
+                                    <button type="button" id="side-item-profil" onclick="activateSidebarMenu('profil')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 21h18"></path>
+                                            <path d="M5 21V7l7-4 7 4v14"></path>
+                                            <path d="M9 10h1"></path>
+                                            <path d="M14 10h1"></path>
+                                            <path d="M9 14h1"></path>
+                                            <path d="M14 14h1"></path>
+                                            <path d="M9 18h6v3H9v-3z"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Profil Desa</span>
+                                    </button>
+
+                                    <!-- 3. Data Aparatur Desa -->
+                                    <button type="button" id="side-item-aparatur" onclick="activateSidebarMenu('aparatur')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                            <circle cx="9" cy="10" r="2"></circle>
+                                            <path d="M15 8h2"></path>
+                                            <path d="M15 12h2"></path>
+                                            <path d="M7 16c0-1.5 1.5-2.5 3-2.5s3 1 3 2.5"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Data Aparatur Desa</span>
+                                    </button>
+
+                                    <!-- 4. Pengisian Data PODES -->
+                                    <button type="button" id="side-item-podes" onclick="activateSidebarMenu('podes')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Pengisian Data PODES</span>
+                                    </button>
+
+                                    <!-- 5. Monitoring Kelengkapan -->
+                                    <button type="button" id="side-item-monitoring" onclick="activateSidebarMenu('monitoring')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                            <rect x="8" y="2" width="8" height="4" rx="1"></rect>
+                                            <path d="m9 14 2 2 4-4"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Monitoring Kelengkapan</span>
+                                    </button>
+                                </nav>
                             </div>
+
+                            <!-- GROUP 2: KAPASITAS & PEMBINAAN -->
+                            <div class="space-y-1 pt-1">
+                                <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 px-3 pb-1">
+                                    KAPASITAS &amp; PEMBINAAN
+                                </div>
+                                <nav class="space-y-1" aria-label="Kapasitas dan Pembinaan">
+                                    <!-- 6. Pembinaan Desa -->
+                                    <button type="button" id="side-item-pembinaan" onclick="activateSidebarMenu('pembinaan')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="9" cy="7" r="4"></circle>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Pembinaan Desa</span>
+                                    </button>
+
+                                    <!-- 7. Materi Pembelajaran -->
+                                    <button type="button" id="side-item-materi" onclick="activateSidebarMenu('materi')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Materi Pembelajaran</span>
+                                    </button>
+
+                                    <!-- 8. Video Tutorial -->
+                                    <button type="button" id="side-item-video" onclick="activateSidebarMenu('video')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+                                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+                                        </svg>
+                                        <span class="tracking-tight">Video Tutorial</span>
+                                    </button>
+
+                                    <!-- 9. Pre-test & Post-test -->
+                                    <button type="button" id="side-item-evaluasi" onclick="activateSidebarMenu('evaluasi')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 11l3 3L22 4"></path>
+                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                        </svg>
+                                        <span class="tracking-tight">Pre-test &amp; Post-test</span>
+                                    </button>
+
+                                    <!-- 10. Buku Panduan -->
+                                    <button type="button" id="side-item-panduan" onclick="activateSidebarMenu('panduan')" class="side-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-100/90">
+                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                            <line x1="8" y1="6" x2="16" y2="6"></line>
+                                            <line x1="8" y1="10" x2="14" y2="10"></line>
+                                        </svg>
+                                        <span class="tracking-tight">Buku Panduan</span>
+                                    </button>
+                                </nav>
+                            </div>
+
                         </div>
 
-                        <!-- 4 Navigation Menus -->
-                        <div class="space-y-1.5">
-                            <div class="text-[11px] font-black uppercase tracking-wider text-slate-400 px-2 pb-1">
-                                Menu Utama
+                        <!-- Bottom Section: Server BPS Aktif v2.4 & Keluar Akun -->
+                        <div class="pt-4 border-t border-slate-100 space-y-2 mt-4">
+                            <!-- Server Status Pill -->
+                            <div class="flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-100/80 border border-slate-200/60 text-xs font-semibold text-slate-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="text-[11px] font-bold text-slate-700">Server BPS Aktif</span>
+                                </div>
+                                <span class="text-[11px] font-extrabold text-emerald-700">v2.4</span>
                             </div>
-                            <nav class="grid grid-cols-2 lg:grid-cols-1 gap-2 lg:gap-1.5" aria-label="Navigasi Menu Desa Cantik">
-                                <!-- 1. Beranda -->
-                                <button type="button" id="side-dashboard" onclick="switchNavMenu('dashboard')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left bg-[#005ea6] text-white shadow-sm ring-1 ring-blue-500/20">
-                                    <span class="text-base sm:text-lg">📊</span>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="font-black tracking-tight text-xs sm:text-sm">Beranda</div>
-                                        <div class="text-[10px] opacity-85 font-normal truncate">Dashboard & Potensi Desa</div>
-                                    </div>
-                                </button>
 
-                                <!-- 2. Profil Desa -->
-                                <button type="button" id="side-tentang" onclick="switchNavMenu('tentang')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
-                                    <span class="text-base sm:text-lg">🏛️</span>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="font-black tracking-tight text-xs sm:text-sm">Profil Desa</div>
-                                        <div class="text-[10px] opacity-85 font-normal truncate">Informasi & Profil Wilayah</div>
-                                    </div>
-                                </button>
-
-                                <!-- 3. Pembelajaran (LMS) -->
-                                <button type="button" id="side-pembelajaran" onclick="switchNavMenu('pembelajaran')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
-                                    <span class="text-base sm:text-lg">📖</span>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="font-black tracking-tight text-xs sm:text-sm">Pembelajaran (LMS)</div>
-                                        <div class="text-[10px] opacity-85 font-normal truncate">Modul, Video & Ujian</div>
-                                    </div>
-                                </button>
-
-                                <!-- 4. Monev (Evaluasi) -->
-                                <button type="button" id="side-monev" onclick="switchNavMenu('monev')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
-                                    <span class="text-base sm:text-lg">📈</span>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="font-black tracking-tight text-xs sm:text-sm">Monev (Evaluasi)</div>
-                                        <div class="text-[10px] opacity-85 font-normal truncate">Monitoring & Penilaian</div>
-                                    </div>
-                                </button>
-                            </nav>
-                        </div>
-
-                        <!-- Sidebar Quick Actions Footer -->
-                        <div class="pt-3 border-t border-slate-100 space-y-2">
-                            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition shadow-2xs">
-                                <span>← Pindah 6 Desa</span>
-                            </a>
-                            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 text-xs font-bold transition shadow-2xs cursor-pointer">
-                                <span>Keluar Akun Desa</span>
+                            <!-- Logout Button -->
+                            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-rose-700 hover:bg-rose-50 text-xs font-bold transition duration-150 cursor-pointer text-left">
+                                <svg class="w-4 h-4 shrink-0 text-rose-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span>Keluar Akun</span>
                             </button>
+
+                            <!-- Hidden helper for script compatibility -->
+                            <span id="topNavVillageBadge" class="hidden">DESA KALU KALUKU</span>
                         </div>
 
                     </div>
@@ -851,7 +933,7 @@
                     </div>
 
                     <!-- Section 2: Standardized SDM / Aparat Desa (Hierarchical Tree Organigram) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                    <div id="sectionAparaturDesa" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                             <div>
                                 <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
@@ -1042,7 +1124,7 @@
                     </div>
 
                     <!-- Section 1: TAHAPAN BELAJAR MANDIRI (Step 1 Pre-test, Step 2 Video, Step 3 Post-test) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                    <div id="sectionLmsSteps" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                             <div>
                                 <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
@@ -1086,7 +1168,7 @@
                             </div>
 
                             <!-- Step 2: TONTON VIDEO MICROLEARNING -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 flex flex-col justify-between space-y-4">
+                            <div id="sectionVideoMicrolearning" class="p-4 sm:p-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 flex flex-col justify-between space-y-4 scroll-mt-6">
                                 <div>
                                     <div class="flex items-center justify-between">
                                         <span class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white text-xs font-black">
@@ -1164,7 +1246,7 @@
                     </div>
 
                     <!-- Section 2: BUKU PEDOMAN & RUMUS DASAR (Table of Resources) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                    <div id="sectionBukuPanduan" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
                         <div class="pb-3 border-b border-slate-100">
                             <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
                                 <span>📚</span>
@@ -1270,7 +1352,7 @@
                     </div>
 
                     <!-- Section 1: TIMELINE PEMBINAAN DESA CANTIK (Chevron Stepper Progress Bar) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                    <div id="sectionPembinaanDesa" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
                         <div>
                             <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
                                 <span>⏱️</span>
@@ -1340,7 +1422,7 @@
                     </div>
 
                     <!-- Section 2: Split Columns (Kelengkapan Bukti Dukung Internal & Verifikasi BPS) -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                    <div id="sectionKelengkapanBukti" class="grid grid-cols-1 lg:grid-cols-12 gap-4 scroll-mt-6">
                         <!-- Left Col: KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV) (8 Cols) -->
                         <div class="lg:col-span-8 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
@@ -2293,6 +2375,98 @@
         descanSectoralData.lestari = descanSectoralData.sawangaoha;
 
 
+        let isActivatingFromSidebar = false;
+
+        function syncSidebarItemActive(key) {
+            document.querySelectorAll('.side-item-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100/90', 'hover:text-slate-900');
+                const svg = btn.querySelector('svg');
+                if (svg) {
+                    svg.classList.remove('text-white');
+                    svg.classList.add('text-slate-500');
+                }
+            });
+
+            const targetBtn = document.getElementById('side-item-' + key);
+            if (targetBtn) {
+                targetBtn.classList.remove('text-slate-600', 'hover:bg-slate-100/90', 'hover:text-slate-900');
+                targetBtn.classList.add('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20');
+                const svg = targetBtn.querySelector('svg');
+                if (svg) {
+                    svg.classList.remove('text-slate-500');
+                    svg.classList.add('text-white');
+                }
+            }
+        }
+
+        function activateSidebarMenu(key) {
+            isActivatingFromSidebar = true;
+            syncSidebarItemActive(key);
+
+            if (key === 'dashboard') {
+                switchNavMenu('dashboard');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (key === 'profil') {
+                switchNavMenu('tentang');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (key === 'aparatur') {
+                switchNavMenu('tentang');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionAparaturDesa');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            } else if (key === 'podes') {
+                switchNavMenu('dashboard');
+                setTimeout(() => {
+                    if (typeof openManageDataModal === 'function') openManageDataModal('kpi');
+                }, 160);
+            } else if (key === 'monitoring') {
+                switchNavMenu('monev');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionKelengkapanBukti');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            } else if (key === 'pembinaan') {
+                switchNavMenu('monev');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionPembinaanDesa');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            } else if (key === 'materi') {
+                switchNavMenu('pembelajaran');
+                if (typeof switchPemTab === 'function') switchPemTab('panduan-excel');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionLmsSteps');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            } else if (key === 'video') {
+                switchNavMenu('pembelajaran');
+                if (typeof switchPemTab === 'function') switchPemTab('video');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionVideoMicrolearning');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 160);
+            } else if (key === 'evaluasi') {
+                switchNavMenu('pembelajaran');
+                if (typeof switchPemTab === 'function') switchPemTab('evaluasi');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionLmsSteps');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            } else if (key === 'panduan') {
+                switchNavMenu('pembelajaran');
+                setTimeout(() => {
+                    const el = document.getElementById('sectionBukuPanduan');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 160);
+            }
+
+            setTimeout(() => {
+                isActivatingFromSidebar = false;
+            }, 300);
+        }
+
         function switchNavMenu(menuKey) {
             // Handle aliases & shortcuts
             if (menuKey === 'kependudukan') {
@@ -2365,6 +2539,12 @@
                 menuKey = 'dashboard';
             }
             currentNavMenu = menuKey;
+            if (!isActivatingFromSidebar) {
+                if (menuKey === 'dashboard') syncSidebarItemActive('dashboard');
+                else if (menuKey === 'tentang') syncSidebarItemActive('profil');
+                else if (menuKey === 'pembelajaran') syncSidebarItemActive('materi');
+                else if (menuKey === 'monev') syncSidebarItemActive('monitoring');
+            }
 
             // Update Top Nav Tabs (4 buttons)
             document.querySelectorAll('.nav-tab').forEach(el => {
