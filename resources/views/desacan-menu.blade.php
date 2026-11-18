@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -59,29 +62,55 @@
             background-color: #f1f6fa;
         }
         .nav-tab {
-            padding: 0.55rem 1.1rem !important;
-            border-radius: 0.75rem !important;
-            transition: all 0.18s ease-in-out !important;
+            padding: 0.5rem 1.15rem !important;
+            border-radius: 9999px !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
             border: 1px solid transparent !important;
             color: #cbd5e1 !important;
             font-weight: 700 !important;
             display: inline-flex !important;
             align-items: center !important;
-            gap: 0.5rem !important;
+            gap: 0.55rem !important;
             font-size: 0.8125rem !important;
             letter-spacing: -0.01em !important;
+            position: relative !important;
+        }
+        .nav-tab i {
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
         }
         .nav-tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.08) !important;
+            background: rgba(255, 255, 255, 0.09) !important;
             color: #ffffff !important;
+            transform: translateY(-1px);
+        }
+        .nav-tab:hover:not(.active) i {
+            color: #38bdf8;
+            transform: scale(1.1);
         }
         .nav-tab.active {
             color: #ffffff !important;
             font-weight: 800 !important;
-            background: rgba(255, 255, 255, 0.14) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25) !important;
-            border-bottom: 3px solid #f59e0b !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.28) !important;
+            box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        }
+        .nav-tab.active i {
+            color: #38bdf8 !important;
+            filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
+        }
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 3px;
+            background: #38bdf8;
+            border-radius: 9999px;
+            box-shadow: 0 0 10px #38bdf8;
         }
         .m-nav-tab.active {
             background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
@@ -201,10 +230,12 @@
 
                 <!-- Action Buttons: 6 Desa & Logout -->
                 <div class="flex items-center gap-2">
-                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs" title="Pindah Desa Pilot">
-                        <span>← 6 Desa</span>
+                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200/90 shadow-2xs group" title="Pindah Desa Pilot">
+                        <i class="bi bi-arrow-left text-xs text-slate-500 group-hover:-translate-x-0.5 transition-transform"></i>
+                        <span>6 Desa</span>
                     </a>
-                    <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer">
+                    <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer group">
+                        <i class="bi bi-box-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
                         <span>Keluar</span>
                     </button>
                     <!-- User Avatar -->
@@ -217,47 +248,50 @@
         </div>
     </div>
 
-    <!-- TOP DARK NAVY NAVIGATION BAR (ELEGAN, RAPI & 100% RESPONSIF) -->
-    <header class="w-full bg-[#072448] text-white border-b border-blue-900/60 sticky top-0 z-40 shadow-md">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-2 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
+    <!-- TOP DARK NAVY NAVIGATION BAR (MODERN, RAPI & BOOTSTRAP ICONS) -->
+    <header class="w-full bg-gradient-to-r from-[#071c35] via-[#0b2b54] to-[#071c35] text-white border-b border-blue-900/60 sticky top-0 z-40 shadow-sm backdrop-blur-md">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
             
-            <!-- Left Menu Items: 4 MENU UTAMA RAPI DENGAN IKON & LABEL -->
-            <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
-                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer">
-                    <span class="text-sm">📊</span>
+            <!-- Left Menu Items: 4 MENU UTAMA DENGAN BOOTSTRAP ICONS & EFISIENSI TINGGI -->
+            <nav class="flex items-center gap-1.5 sm:gap-2.5 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
+                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer group" title="Dashboard Utama & Potensi Desa">
+                    <i class="bi bi-speedometer2 text-base text-sky-400"></i>
                     <span>Beranda</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer">
-                    <span class="text-sm">🏛️</span>
+                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer group" title="Profil & Monografi Desa">
+                    <i class="bi bi-bank2 text-base"></i>
                     <span>Profil Desa</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📖</span>
+                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer group" title="Modul Pembelajaran & LMS Statistik">
+                    <i class="bi bi-mortarboard-fill text-base"></i>
                     <span>Pembelajaran (LMS)</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📈</span>
+                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer group" title="Monitoring & Evaluasi Penilaian">
+                    <i class="bi bi-graph-up-arrow text-base"></i>
                     <span>Monev (Evaluasi)</span>
                 </button>
             </nav>
 
             <!-- Right: Utility Actions & Status Desa Binaan Badge -->
-            <div class="flex items-center gap-2 shrink-0">
-                <button type="button" onclick="openMetadataModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📋</span>
+            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                <button type="button" onclick="openMetadataModal()" class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer group hover:border-sky-400/40">
+                    <i class="bi bi-file-earmark-spreadsheet text-sky-400 text-sm group-hover:scale-110 transition-transform"></i>
                     <span>Metadata SDI</span>
                 </button>
-                <button type="button" onclick="openAgenDesaModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>👤</span>
+                <button type="button" onclick="openAgenDesaModal()" class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer group hover:border-amber-400/40">
+                    <i class="bi bi-person-badge-fill text-amber-400 text-sm group-hover:scale-110 transition-transform"></i>
                     <span>Agen Statistik</span>
                 </button>
-                <button type="button" onclick="openPstModal()" class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📞</span>
+                <button type="button" onclick="openPstModal()" class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer group hover:border-emerald-400/40">
+                    <i class="bi bi-headset text-emerald-400 text-sm group-hover:scale-110 transition-transform"></i>
                     <span>Layanan PST</span>
                 </button>
-                <div class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-3 py-1.5 rounded-xl text-xs backdrop-blur-md transition shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan BPS:</span>
+
+                <!-- Status Desa Binaan Pill -->
+                <div class="flex items-center gap-2 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 px-3.5 py-1.5 rounded-full text-xs backdrop-blur-md transition shadow-2xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <i class="bi bi-geo-alt-fill text-emerald-400 text-xs"></i>
+                    <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan:</span>
                     <span id="topNavVillageBadge" class="font-black text-amber-300 uppercase tracking-wide text-xs">
                         DESA KALU KALUKU
                     </span>
@@ -308,11 +342,13 @@
 
                 <!-- 1-Click Fast Access & Direct Viewer Bypass Button -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs">
-                    <button type="button" onclick="autoFillGateTarget()" class="py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1">
-                        <span>⚡ Isi Sandi Resmi</span>
+                    <button type="button" onclick="autoFillGateTarget()" class="py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1.5">
+                        <i class="bi bi-lightning-charge-fill text-xs"></i>
+                        <span>Isi Sandi Resmi</span>
                     </button>
-                    <button type="button" onclick="bypassGateAsViewer()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1">
-                        <span>👁️ Buka Langsung (Tamu)</span>
+                    <button type="button" onclick="bypassGateAsViewer()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1.5">
+                        <i class="bi bi-eye-fill text-xs"></i>
+                        <span>Buka Langsung (Tamu)</span>
                     </button>
                 </div>
 
@@ -331,7 +367,7 @@
                         </label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
-                                ✉️
+                                <i class="bi bi-envelope"></i>
                             </span>
                             <input type="email" id="gateInputEmail" required placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white">
                         </div>
@@ -344,19 +380,19 @@
                         </label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
-                                🔒
+                                <i class="bi bi-lock"></i>
                             </span>
                             <input type="password" id="gateInputPassword" required placeholder="Masukkan kata sandi desa" class="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white">
-                            <button type="button" onclick="togglePasswordVisibility('gateInputPassword')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Lihat/Sembunyikan Sandi">
-                                👁️
+                            <button type="button" onclick="togglePasswordVisibility('gateInputPassword')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-sm" title="Lihat/Sembunyikan Sandi">
+                                <i class="bi bi-eye"></i>
                             </button>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#0b2545] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 transform active:scale-98">
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#0b2545] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 transform active:scale-98 group">
                         <span>Buka Dashboard Desa Sekarang</span>
-                        <span>→</span>
+                        <i class="bi bi-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </button>
                 </form>
 
@@ -385,82 +421,92 @@
                 <div id="view-dashboard" class="menu-view-container space-y-4 animate-in fade-in duration-200">
                     
                     <!-- Content Top Header: Title, Button Edit Data Dasar, Toggle Publik/Internal -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs space-y-3.5">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div>
-                                <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-2.5">
                                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                                     <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Dashboard Utama & Potensi Desa</h2>
                                 </div>
-                                <p class="text-xs text-slate-500 mt-0.5">Portal Satu Data Statistik Sektoral Desa Binaan BPS Kabupaten Kolaka Utara</p>
+                                <p class="text-xs text-slate-500 mt-1">Portal Satu Data Statistik Sektoral Desa Binaan BPS Kabupaten Kolaka Utara</p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button type="button" onclick="openManageDataModal('kpi')" class="px-4 py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
-                                    <span>✏️</span>
+                                <button type="button" onclick="openManageDataModal('kpi')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#0284c7] hover:from-[#004e8a] hover:to-[#0270a8] text-white font-bold text-xs shadow-xs hover:shadow transition-all flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0">
+                                    <i class="bi bi-pencil-square text-xs"></i>
                                     <span>Edit Data Dasar</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Checkbox Filter: Tampilkan ke Publik / Hanya Internal BPS & Pemda -->
-                        <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-700 select-none">
-                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#005ea6] transition">
+                        <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-bold text-slate-700 select-none">
+                            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100/80 cursor-pointer transition">
                                 <input type="checkbox" id="chkPublik" checked onchange="togglePublicFilter(this)" class="w-4 h-4 text-[#005ea6] rounded border-slate-300 focus:ring-[#005ea6] cursor-pointer">
-                                <span>☑️ Tampilkan ke Publik</span>
+                                <i class="bi bi-globe2 text-emerald-600 text-xs"></i>
+                                <span>Tampilkan ke Publik</span>
                             </label>
                             <span class="text-slate-300 hidden sm:inline">|</span>
-                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#005ea6] transition">
+                            <label class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-slate-100/80 cursor-pointer transition">
                                 <input type="checkbox" id="chkInternal" onchange="toggleInternalFilter(this)" class="w-4 h-4 text-amber-600 rounded border-slate-300 focus:ring-amber-500 cursor-pointer">
-                                <span class="text-slate-500">🔒 Hanya Internal BPS & Pemda (Seleksi Potensi & Data)</span>
+                                <i class="bi bi-shield-lock-fill text-amber-600 text-xs"></i>
+                                <span class="text-slate-600 font-semibold">Hanya Internal BPS & Pemda (Seleksi Potensi & Data)</span>
                             </label>
                         </div>
                     </div>
 
-                    <!-- 4 KPI Cards (Total Penduduk, Jumlah KK, Kemiskinan, Kasus Stunting) -->
+                    <!-- 4 KPI Cards (Total Penduduk, Jumlah KK, Kemiskinan, Kasus Stunting - BESPOKE BOOTSTRAP ICONS) -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                         <!-- Card 1: Total Penduduk -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Total Penduduk:</span>
-                                <span class="p-1.5 rounded-lg bg-blue-50 text-[#005ea6] text-sm">👥</span>
+                                <div class="w-8 h-8 rounded-xl bg-blue-50 text-[#005ea6] border border-blue-100 flex items-center justify-center group-hover:bg-[#005ea6] group-hover:text-white transition-colors duration-200 shadow-2xs">
+                                    <i class="bi bi-people-fill text-sm"></i>
+                                </div>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-2.5">
                                 <span id="dashKpiTotalPenduduk" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">4.150</span>
                                 <span class="text-xs font-bold text-slate-500 ml-1">Jiwa</span>
                             </div>
                         </div>
 
                         <!-- Card 2: Jumlah KK -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Jumlah KK:</span>
-                                <span class="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 text-sm">🏠</span>
+                                <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-200 shadow-2xs">
+                                    <i class="bi bi-houses-fill text-sm"></i>
+                                </div>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-2.5">
                                 <span id="dashKpiTotalKeluarga" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">1.120</span>
                                 <span class="text-xs font-bold text-slate-500 ml-1">KK</span>
                             </div>
                         </div>
 
                         <!-- Card 3: Kemiskinan -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Kemiskinan:</span>
-                                <span class="p-1.5 rounded-lg bg-amber-50 text-amber-600 text-sm">📈</span>
+                                <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors duration-200 shadow-2xs">
+                                    <i class="bi bi-graph-down-arrow text-sm"></i>
+                                </div>
                             </div>
-                            <div class="mt-2 flex items-baseline gap-1">
+                            <div class="mt-2.5 flex items-baseline gap-1.5">
                                 <span id="dashKpiPendudukMiskin" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">3,2%</span>
-                                <span class="text-xs font-bold text-emerald-600">(Rendah)</span>
+                                <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/70">Rendah</span>
                             </div>
                         </div>
 
                         <!-- Card 4: Kasus Stunting -->
-                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
+                        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Kasus Stunting:</span>
-                                <span class="p-1.5 rounded-lg bg-rose-50 text-rose-600 text-sm">👶</span>
+                                <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 border border-rose-100 flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors duration-200 shadow-2xs">
+                                    <i class="bi bi-heart-pulse-fill text-sm"></i>
+                                </div>
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-2.5">
                                 <span id="dashKpiStunting" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">3</span>
                                 <span class="text-xs font-bold text-slate-500 ml-1">Balita</span>
                             </div>
@@ -569,11 +615,13 @@
                                 <p class="text-xs text-slate-500 mt-0.5">Diseminasi Dokumen Resmi Statistik Sektoral, Monografi & Modul Pelatihan BPS</p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button type="button" onclick="openManageDataModal('kpi')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1 cursor-pointer">
-                                    <span>✏️ Edit Data Dasar</span>
+                                <button type="button" onclick="openManageDataModal('kpi')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-pencil-square text-xs text-slate-600"></i>
+                                    <span>Edit Data Dasar</span>
                                 </button>
-                                <button type="button" onclick="openManageDataModal('dusun')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer">
-                                    <span>➕ Tambah Dusun</span>
+                                <button type="button" onclick="openManageDataModal('dusun')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-plus-circle text-xs"></i>
+                                    <span>Tambah Dusun</span>
                                 </button>
                             </div>
                         </div>
@@ -599,8 +647,9 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Kompilasi kependudukan, perkebunan kakao, perikanan pesisir, dan ekonomi desa.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="openPublikasiDocModal('monografi')" class="w-full py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
-                                    <span>📥 Unduh PDF</span>
+                                <button type="button" onclick="openPublikasiDocModal('monografi')" class="w-full py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-file-earmark-pdf-fill text-xs"></i>
+                                    <span>Unduh PDF</span>
                                 </button>
                             </div>
 
@@ -623,8 +672,9 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Panduan teknis pengolahan spreadsheet data monografi aparat desa.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="switchNavMenu('pembelajaran')" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
-                                    <span>📖 Buka Modul Excel</span>
+                                <button type="button" onclick="switchNavMenu('pembelajaran')" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-file-earmark-excel-fill text-xs"></i>
+                                    <span>Buka Modul Excel</span>
                                 </button>
                             </div>
 
@@ -647,8 +697,9 @@
                                         <p class="text-[11px] text-slate-500 line-clamp-2">Ringkasan berkala indikator ketenagakerjaan, inflasi daerah & komoditas.</p>
                                     </div>
                                 </div>
-                                <button type="button" onclick="openPublikasiDocModal('brs')" class="w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-black transition flex items-center justify-center gap-1 cursor-pointer">
-                                    <span>📥 Unduh BRS</span>
+                                <button type="button" onclick="openPublikasiDocModal('brs')" class="w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-file-earmark-text-fill text-xs"></i>
+                                    <span>Unduh BRS</span>
                                 </button>
                             </div>
 
@@ -993,7 +1044,7 @@
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
-                                📖
+                                <i class="bi bi-mortarboard-fill"></i>
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
@@ -1012,13 +1063,13 @@
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                             <div>
                                 <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                    <span>🎯</span>
+                                    <i class="bi bi-bullseye text-emerald-600 text-base"></i>
                                     <span>TAHAPAN BELAJAR MANDIRI</span>
                                 </h4>
                                 <p class="text-xs text-slate-500 mt-0.5">Selesaikan tahapan secara berurutan untuk mendapatkan Sertifikat Kompetensi Agen Statistik</p>
                             </div>
                             <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
-                                <span>🔓</span>
+                                <i class="bi bi-unlock-fill text-xs"></i>
                                 <span>Unlock semua menu</span>
                             </button>
                         </div>
@@ -1221,7 +1272,7 @@
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
-                                📈
+                                <i class="bi bi-graph-up-arrow"></i>
                             </div>
                             <div>
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Sistem Monev & Kelengkapan Pembinaan</h2>
@@ -1239,7 +1290,7 @@
                     <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
                         <div>
                             <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>⏱️</span>
+                                <i class="bi bi-clock-history text-indigo-600 text-base"></i>
                                 <span>TIMELINE PEMBINAAN DESA CANTIK</span>
                             </h4>
                             <p class="text-xs text-slate-400 mt-0.5">(Persiapan -> Pengumpulan Data -> Pengolahan -> Publikasi)</p>
@@ -4948,17 +4999,21 @@
 
                 <!-- Modal Sub-Navigation Tabs -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pt-4 mt-3 border-t border-white/10 scrollbar-none text-xs font-extrabold">
-                    <button type="button" onclick="switchManageModalTab('kpi')" id="modal-tab-kpi" class="modal-tab-btn active px-3.5 py-1.5 rounded-xl bg-white text-slate-900 transition shadow-xs cursor-pointer">
-                        📊 Indikator Utama (KPI)
+                    <button type="button" onclick="switchManageModalTab('kpi')" id="modal-tab-kpi" class="modal-tab-btn active px-3.5 py-1.5 rounded-xl bg-white text-slate-900 transition shadow-xs cursor-pointer inline-flex items-center gap-1.5">
+                        <i class="bi bi-speedometer2 text-blue-600"></i>
+                        <span>Indikator Utama (KPI)</span>
                     </button>
-                    <button type="button" onclick="switchManageModalTab('bansos')" id="modal-tab-bansos" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        🏛️ Bantuan Sosial
+                    <button type="button" onclick="switchManageModalTab('bansos')" id="modal-tab-bansos" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer inline-flex items-center gap-1.5">
+                        <i class="bi bi-bank2"></i>
+                        <span>Bantuan Sosial</span>
                     </button>
-                    <button type="button" onclick="switchManageModalTab('dusun')" id="modal-tab-dusun" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        🏘️ Kelola & Tambah Dusun
+                    <button type="button" onclick="switchManageModalTab('dusun')" id="modal-tab-dusun" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer inline-flex items-center gap-1.5">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Kelola & Tambah Dusun</span>
                     </button>
-                    <button type="button" onclick="switchManageModalTab('sosial')" id="modal-tab-sosial" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        👥 Sosial & Pendidikan
+                    <button type="button" onclick="switchManageModalTab('sosial')" id="modal-tab-sosial" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer inline-flex items-center gap-1.5">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Sosial & Pendidikan</span>
                     </button>
                 </div>
             </div>
@@ -5168,8 +5223,8 @@
 
                 <!-- Modal Actions Footer -->
                 <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <button type="button" onclick="resetSectoralDataToDefault()" class="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1 cursor-pointer">
-                        <span>🔄</span>
+                    <button type="button" onclick="resetSectoralDataToDefault()" class="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1.5 cursor-pointer group">
+                        <i class="bi bi-arrow-counterclockwise text-sm group-hover:-rotate-90 transition-transform"></i>
                         <span>Reset ke Nilai Standar BPS</span>
                     </button>
 
@@ -5177,8 +5232,8 @@
                         <button type="button" onclick="closeManageDataModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
                             Batal
                         </button>
-                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#072448] hover:from-[#004e8a] hover:to-[#051c38] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center gap-1.5 cursor-pointer transform active:scale-95">
-                            <span>💾</span>
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#072448] hover:from-[#004e8a] hover:to-[#051c38] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer transform active:scale-95">
+                            <i class="bi bi-floppy-fill text-xs"></i>
                             <span>Simpan Perubahan Grafik</span>
                         </button>
                     </div>
@@ -5229,8 +5284,8 @@
             <!-- Modal Header -->
             <div class="bg-[#005ea6] text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">
-                        📊
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl text-sky-300">
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-black">Metadata Statistik Sektoral Desa</h3>
@@ -5303,8 +5358,8 @@
             <!-- Modal Header -->
             <div class="bg-[#0b2545] text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">
-                        👥
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl text-amber-300">
+                        <i class="bi bi-person-badge-fill"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-black">Informasi Agen Statistik Desa</h3>
@@ -5375,8 +5430,8 @@
             <!-- Modal Header -->
             <div class="bg-[#004077] text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">
-                        📞
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl text-emerald-300">
+                        <i class="bi bi-headset"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-black">Pelayanan Statistik Terpadu (PST)</h3>
