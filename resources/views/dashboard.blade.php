@@ -330,58 +330,87 @@
 </head>
 <body class="min-h-screen bg-[#F7F7F5] text-slate-800 antialiased flex flex-col overflow-x-hidden w-full max-w-full">
 
-        <!-- TOP NAVBAR: DESA MADANI RESPONSIVE FIT (100% ZOOM COMPATIBLE) -->
-    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[56px] sm:min-h-[60px] flex items-center w-full max-w-full">
-        <div class="w-full px-3 sm:px-4 lg:px-6 py-2 flex items-center justify-between gap-2 lg:gap-4 max-w-[1720px] mx-auto">
-            <!-- Left: Logo & Brand -->
-            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button type="button" 
-                        id="btnBrandLoginTrigger" 
-                        onclick="openLoginModal()" 
-                        class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
-                        title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
-                    <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-lg">
-                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
-                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
-                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 sm:h-6 w-auto object-contain">
-                    </div>
-                    <div>
-                        <div class="text-base sm:text-lg font-black text-[#0b2545] leading-none tracking-tight whitespace-nowrap">
-                            Desa <span class="text-[#0D6E5B]">Madani</span>
-                        </div>
-                    </div>
-                </button>
+    <!-- TOP NAVBAR: DESA MADANI DUAL-TIER LUXURY (MATCHING DESCAN STYLE) -->
+    <header class="sticky top-0 z-40 w-full shadow-xs">
+        <!-- Top Institutional & SDI Context Bar (Dark Green Palette matching Descan) -->
+        <div class="bg-gradient-to-r from-[#072422] via-[#093530] to-[#044e3f] text-white text-[11px] py-1.5 px-3 sm:px-4 lg:px-8 border-b border-white/10">
+            <div class="flex items-center justify-between gap-3 max-w-[1720px] mx-auto w-full">
+                <div class="flex items-center gap-2 min-w-0">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse"></span>
+                    <span class="font-bold text-white tracking-wide whitespace-nowrap">BPS Kabupaten Kolaka Utara</span>
+                    <span class="text-white/40">•</span>
+                    <span class="text-emerald-200/90 font-medium truncate hidden sm:inline">Program Satu Data Desa Madani (Desa Presisi) 2026</span>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <span class="text-slate-300 font-medium hidden md:inline">Kabupaten Kolaka Utara</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 font-bold text-[10.5px] tracking-wide shadow-2xs">Satu Data Indonesia</span>
+                </div>
             </div>
+        </div>
 
-            <!-- Center: Navigation Menu Links (Compact, Responsive, No Horizontal Cutoff) -->
-            <nav class="hidden md:flex items-center gap-1.5 lg:gap-2.5 xl:gap-4 text-xs font-semibold text-slate-700 whitespace-nowrap shrink-0">
-                <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50">Beranda</a>
-                <a href="#sectionAgregatKecamatan" data-i18n="nav_agregat" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50 flex items-center gap-1 text-slate-700">
-                    <span>Agregat</span><span class="hidden xl:inline"> 15 Kecamatan</span>
-                </a>
-                <a href="#sectionPeta" class="text-[#0D6E5B] font-bold border-b-2 border-[#0D6E5B] pb-0.5 px-2 py-1 flex items-center gap-1 shrink-0">
-                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                    <span data-i18n="nav_gis">WebGIS</span>
-                </a>
-                <a href="/descan" data-i18n="nav_descan" class="hover:text-[#059669] transition px-2 py-1 rounded-lg hover:bg-slate-50">Desa Cantik</a>
-                <a href="#sectionAbout" data-i18n="nav_about" class="hover:text-[#059669] transition px-2 py-1 rounded-lg hover:bg-slate-50">Tentang</a>
-            </nav>
+        <!-- Main Navigation Bar -->
+        <div class="bg-white/95 backdrop-blur-md text-slate-800 border-b border-slate-200/80 min-h-[58px] sm:min-h-[62px] flex items-center w-full">
+            <div class="w-full px-3 sm:px-4 lg:px-8 py-2 flex items-center justify-between gap-3 lg:gap-6 max-w-[1720px] mx-auto">
+                <!-- Left: Logo & Brand (Dual Logo, Badge, & Subtitle matching Descan) -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <button type="button" 
+                            id="btnBrandLoginTrigger" 
+                            onclick="openLoginModal()" 
+                            class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" 
+                            title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
+                        <!-- Dual Logo Box -->
+                        <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200/80 px-2 py-1 rounded-xl shadow-2xs">
+                            <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+                            <div class="h-4 w-[1px] bg-slate-300"></div>
+                            <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 sm:h-6 w-auto object-contain">
+                        </div>
+                        <!-- Brand Text with Pill Badge & Subtitle -->
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-base sm:text-lg font-black text-[#0b2545] leading-none tracking-tight">
+                                    DESA <span class="text-[#0D6E5B]">MADANI</span>
+                                </span>
+                                <span class="text-[9.5px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200/80 tracking-wider">
+                                    KOLUT
+                                </span>
+                            </div>
+                            <div class="text-[9px] font-bold text-slate-400 tracking-wider uppercase mt-1">
+                                PORTAL SATU DATA • DESA PRESISI
+                            </div>
+                        </div>
+                    </button>
+                </div>
 
-            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer">
-                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-                    <span data-i18n="btn_15_kec">15 Kecamatan</span>
-                </button>
+                <!-- Center: Navigation Menu Links (Preserved Menus as requested) -->
+                <nav class="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-5 text-xs font-semibold text-slate-700 whitespace-nowrap shrink-0">
+                    <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition px-2.5 py-1.5 rounded-lg hover:bg-slate-50">Beranda</a>
+                    <a href="#sectionAgregatKecamatan" data-i18n="nav_agregat" class="hover:text-[#0D6E5B] transition px-2.5 py-1.5 rounded-lg hover:bg-slate-50 flex items-center gap-1 text-slate-700">
+                        <span>Agregat 15 Kecamatan</span>
+                    </a>
+                    <a href="#sectionPeta" class="text-[#0D6E5B] font-bold border-b-2 border-[#0D6E5B] pb-1 px-2.5 py-1.5 flex items-center gap-1.5 shrink-0">
+                        <svg class="w-4 h-4 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        <span data-i18n="nav_gis">WebGIS Peta Spasial</span>
+                    </a>
+                    <a href="/descan" data-i18n="nav_descan" class="hover:text-[#059669] transition px-2.5 py-1.5 rounded-lg hover:bg-slate-50">Desa Cantik (DESCAN)</a>
+                    <a href="#sectionAbout" data-i18n="nav_about" class="hover:text-[#059669] transition px-2.5 py-1.5 rounded-lg hover:bg-slate-50">Tentang Madani</a>
+                </nav>
 
-                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-3 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Buka Portal Admin Input & Kelola Data Desa">
-                    <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                    <span data-i18n="btn_kelola_data">Kelola Data</span>
-                </button>
+                <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
+                <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                    <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer hover:bg-slate-50">
+                        <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                        <span data-i18n="btn_15_kec">15 Kecamatan</span>
+                    </button>
 
-                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
-                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
-                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+                    <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Buka Portal Admin Input & Kelola Data Desa">
+                        <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <span data-i18n="btn_kelola_data">Kelola Data</span>
+                    </button>
+
+                    <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
+                        <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                        <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+                    </div>
                 </div>
             </div>
         </div>
