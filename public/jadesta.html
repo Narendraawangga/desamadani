@@ -493,21 +493,7 @@
 
         <!-- Bottom Soft Floating Footer Pill with Parallax Layer -->
         <div id="videoBottomHud" class="relative z-30 w-full pb-6 sm:pb-8 px-4 sm:px-8 opacity-0 translate-y-4 pointer-events-none transition-all duration-1000 ease-out parallax-layer">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 pointer-events-auto">
-                
-                <!-- Quick Soft Badges -->
-                <div class="flex items-center gap-2 text-[11px] text-white flex-wrap justify-center sm:justify-start">
-                    <span class="bg-slate-900/60 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-white/20 shadow-xs flex items-center gap-1.5 transition-transform hover:scale-105">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 15 Kecamatan
-                    </span>
-                    <span class="bg-slate-900/60 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-white/20 shadow-xs flex items-center gap-1.5 transition-transform hover:scale-105">
-                        <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span> 133 Desa & Kelurahan
-                    </span>
-                    <span class="bg-slate-900/60 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-white/20 shadow-xs flex items-center gap-1.5 transition-transform hover:scale-105">
-                        <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span> Podes BPS 2024–2025
-                    </span>
-                </div>
-
+            <div class="max-w-7xl mx-auto flex items-center justify-center sm:justify-end pointer-events-auto">
                 <!-- Soft Scroll Invitation with Smooth Parallax Entrance -->
                 <button type="button" onclick="enterWebsiteWithParallax()" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-800 bg-white/80 hover:bg-white backdrop-blur-md px-4 py-2 rounded-full border border-slate-200/60 shadow-sm transition group">
                     <span class="tracking-wide">Jelajahi Data & Potensi</span>
@@ -515,7 +501,6 @@
                         ↓
                     </span>
                 </button>
-
             </div>
         </div>
 
