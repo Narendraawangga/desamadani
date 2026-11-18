@@ -162,7 +162,7 @@
 <body class="min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
 
         <!-- TOP WHITE BRAND BAR (SESUAI RANCANGAN WIREFRAME PORTAL DESA CANTIK) -->
-    <div class="w-full bg-white border-b border-slate-200/90 py-2.5 px-4 sm:px-8 shadow-xs">
+    <div class="w-full bg-white border-b border-slate-200/90 py-2 px-3 sm:px-4 lg:px-5 shadow-xs">
         <div class="w-full flex items-center justify-between gap-4">
             
             <!-- Left: Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
@@ -327,15 +327,15 @@
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
         <!-- MAIN CONTENT AREA DENGAN SIDEBAR NAVIGASI 4 MENU RESMI -->
-    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
-        <div class="w-full flex flex-col lg:flex-row items-start gap-6">
+    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-3 sm:py-4 pl-2 sm:pl-3 lg:pl-3 pr-3 sm:pr-4 lg:pr-5">
+        <div class="w-full flex flex-col lg:flex-row items-start gap-3.5 lg:gap-4">
 
                 <!-- ========================================================== -->
                 <!-- DEDICATED SIDEBAR NAVIGASI SISTEMATIS BPS DESA CANTIK       -->
                 <!-- Rata Kiri & Sesuai Persis Lampiran Screenshot Pengguna     -->
                 <!-- ========================================================== -->
-                <aside class="w-full lg:w-64 xl:w-72 shrink-0 lg:sticky lg:top-4 self-start z-30">
-                    <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xs p-4 sm:p-5 flex flex-col justify-between min-h-[640px] select-none text-left">
+                <aside class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30">
+                    <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs p-3 sm:p-3.5 flex flex-col justify-between min-h-[640px] select-none text-left">
                         
                         <!-- Top Navigations Groups -->
                         <div class="space-y-4">
