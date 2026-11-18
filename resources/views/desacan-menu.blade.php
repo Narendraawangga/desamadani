@@ -224,8 +224,12 @@
 
                 <!-- Action Buttons: Hub Desa & Logout -->
                 <div class="flex items-center gap-2">
+                    <a href="/" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition border border-emerald-200 shadow-2xs" title="Kembali ke Portal Utama Desa Madani">
+                        <i class="bi bi-house-door-fill text-emerald-700"></i>
+                        <span class="hidden sm:inline">Desa Madani</span>
+                    </a>
                     <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs" title="Kembali ke Hub 6 Desa BPS">
-                        <span>← Hub Desa</span>
+                        <span>← Hub 6 Desa</span>
                     </a>
                     <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer">
                         <span>Keluar</span>
@@ -5105,230 +5109,8 @@ const PODES_MASTER_BASELINE = {
             }
         });
 
-        function activateSidebarMenu(key) {
-            isActivatingFromSidebar = true;
-            syncSidebarItemActive(key);
-
-            // Tutup sidebar otomatis di layar mobile setelah memilih menu
-            if (window.innerWidth < 1024) {
-                toggleSidebar(false);
-            }
-
-            if (key === 'dashboard') {
-                switchNavMenu('dashboard');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (key === 'profil') {
-                switchNavMenu('tentang');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (key === 'aparatur') {
-                switchNavMenu('tentang');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionAparaturDesa');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
-            } else if (key === 'podes') {
-                switchNavMenu('dashboard');
-                setTimeout(() => {
-                    if (typeof openManageDataModal === 'function') {
-                        openManageDataModal('kpi');
-                    }
-                }, 180);
-            } else if (key === 'monitoring') {
-                switchNavMenu('monev');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionKelengkapanBukti');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
-            } else if (key === 'pembinaan') {
-                switchNavMenu('monev');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionPembinaanDesa');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
-            } else if (key === 'materi') {
-                switchNavMenu('pembelajaran');
-                filterLmsSubView('all');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (key === 'video') {
-                switchNavMenu('pembelajaran');
-                filterLmsSubView('video');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (key === 'evaluasi') {
-                switchNavMenu('pembelajaran');
-                filterLmsSubView('evaluasi');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (key === 'panduan') {
-                switchNavMenu('pembelajaran');
-                filterLmsSubView('panduan');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            setTimeout(() => {
-                isActivatingFromSidebar = false;
-            }, 350);
-        }
-
-                function scrollToAparaturDesa() {
-            if (currentNavMenu !== 'tentang') {
-                switchNavMenu('tentang');
-            }
-            setTimeout(() => {
-                const el = document.getElementById('sectionAparaturDesa');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 180);
-        }
-
-        function switchNavMenu(menuKey) {
-            // Handle aliases & shortcuts
-            if (menuKey === 'kependudukan') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPiramida'), 150);
-                return;
-            }
-            if (menuKey === 'sosial' || menuKey === 'bansos' || menuKey === 'desil') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionDesil'), 150);
-                return;
-            }
-            if (menuKey === 'publikasi' || menuKey === 'brs') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPublikasi'), 150);
-                return;
-            }
-            if (menuKey === 'peta') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPeta'), 150);
-                return;
-            }
-            if (menuKey === 'pendidikan') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPendidikan'), 150);
-                return;
-            }
-            if (menuKey === 'pekerjaan') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPekerjaan'), 150);
-                return;
-            }
-            if (menuKey === 'profil') {
-                menuKey = 'tentang';
-            }
-            if (menuKey === 'excel' || menuKey === 'buku' || menuKey === 'panduan') {
-                activateSidebarMenu('panduan');
-                return;
-            }
-            if (menuKey === 'video') {
-                activateSidebarMenu('video');
-                return;
-            }
-            if (menuKey === 'pretest' || menuKey === 'posttest' || menuKey === 'evaluasi') {
-                activateSidebarMenu('evaluasi');
-                return;
-            }
-            if (menuKey === 'layanan' || menuKey === 'pengaduan') {
-                openLayananModal();
-                return;
-            }
-            if (menuKey === 'pst') {
-                openPstModal();
-                return;
-            }
-
-            // HANYA 4 MENU RESMI
-            const validMenus = ['dashboard', 'tentang', 'pembelajaran', 'monev'];
-            if (!validMenus.includes(menuKey)) {
-                menuKey = 'dashboard';
-            }
-            currentNavMenu = menuKey;
-            if (!isActivatingFromSidebar) {
-                if (menuKey === 'dashboard') syncSidebarItemActive('dashboard');
-                else if (menuKey === 'tentang') syncSidebarItemActive('profil');
-                else if (menuKey === 'pembelajaran') syncSidebarItemActive('materi');
-                else if (menuKey === 'monev') syncSidebarItemActive('monitoring');
-            }
-
-            // Update Top Nav Tabs (4 buttons)
-            document.querySelectorAll('.nav-tab').forEach(el => {
-                el.classList.remove('active');
-            });
-            const dBtn = document.getElementById('nav-' + menuKey);
-            if (dBtn) {
-                dBtn.classList.add('active');
-            }
-
-            // Update Sidebar Buttons (4 buttons)
-            document.querySelectorAll('.side-nav-btn').forEach(el => {
-                el.classList.remove('bg-[#005ea6]', 'text-white', 'shadow-sm', 'ring-1', 'ring-blue-500/20');
-                el.classList.add('text-slate-700', 'hover:bg-slate-100', 'hover:text-[#005ea6]');
-            });
-            const sBtn = document.getElementById('side-' + menuKey);
-            if (sBtn) {
-                sBtn.classList.remove('text-slate-700', 'hover:bg-slate-100', 'hover:text-[#005ea6]');
-                sBtn.classList.add('bg-[#005ea6]', 'text-white', 'shadow-sm', 'ring-1', 'ring-blue-500/20');
-            }
-
-            // Update View Visibility (4 views)
-            document.querySelectorAll('.menu-view-container').forEach(el => {
-                el.classList.add('hidden');
-            });
-            const targetView = document.getElementById('view-' + menuKey);
-            if (targetView) {
-                targetView.classList.remove('hidden');
-            }
-
-            if (menuKey === 'dashboard') {
-                renderDashboardCantik(currentTargetVillage);
-                if (typeof renderDashboard6Desa === 'function') renderDashboard6Desa();
-                if (typeof filterAnalitikDesa === 'function') filterAnalitikDesa(currentAnalitikDesa || 'kalukaluku');
-                setTimeout(() => {
-                    if (thematicLeafletMap) {
-                        thematicLeafletMap.invalidateSize();
-                    }
-                }, 200);
-            }
-
-            if (menuKey === 'pembelajaran') {
-                if (!isActivatingFromSidebar) {
-                    filterLmsSubView(currentLmsSubView || 'all');
-                }
-            }
-
-            if (menuKey === 'monev') {
-                if (typeof renderBuktiDukungTables === 'function') {
-                    renderBuktiDukungTables(currentTargetVillage);
-                }
-            }
-
-            const videoIframe = document.getElementById('mainVideoIframe');
-            if (videoIframe) {
-                if (menuKey === 'pembelajaran' && currentPemTab === 'video') {
-                    try {
-                        videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                    } catch(e) {}
-                } else {
-                    try {
-                        videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                    } catch(e) {}
-                }
-            }
-
-            try {
-                const url = new URL(window.location.href);
-                url.searchParams.set('desa', currentVillageKey || currentTargetVillage);
-                url.searchParams.set('menu', menuKey);
-                window.history.replaceState(null, '', url.toString());
-            } catch(e) {}
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function scrollToAparaturDesa() {
+            activateSidebarMenu('aparatur');
         }
 
         let isMainVideoMuted = true;
@@ -8078,7 +7860,15 @@ const PODES_MASTER_BASELINE = {
             // 2. Synchronize sidebar button styling
             syncSidebarItemActive(menuKey);
 
-            // 3. View-specific lifecycle hooks
+            // 3. Keep browser URL in sync (?desa=...&menu=...)
+            try {
+                const url = new URL(window.location.href);
+                url.searchParams.set('desa', currentVillageKey || currentTargetVillage || 'kalukaluku');
+                url.searchParams.set('menu', menuKey);
+                window.history.replaceState(null, '', url.toString());
+            } catch(e) {}
+
+            // 4. View-specific lifecycle hooks
             if (menuKey === 'dashboard') {
                 setTimeout(() => {
                     if (thematicLeafletMap && typeof thematicLeafletMap.invalidateSize === 'function') {
@@ -8098,11 +7888,21 @@ const PODES_MASTER_BASELINE = {
                     loadPodesFormData(currentTargetVillage);
                 }
             } else if (menuKey === 'video') {
-                pilihVideoTutorial(currentVideoIndex || 0);
+                if (typeof pilihVideoTutorial === 'function') {
+                    pilihVideoTutorial(currentVideoIndex || 0);
+                }
+            } else if (menuKey === 'evaluasi') {
+                if (typeof switchEvaluasiTab === 'function') {
+                    switchEvaluasiTab(activeEvaluasiTab || 'posttest');
+                }
             }
         }
 
         function activateSidebarMenu(key) {
+            // Tutup sidebar otomatis di mobile setelah memilih menu
+            if (window.innerWidth < 1024) {
+                if (typeof toggleSidebar === 'function') toggleSidebar(false);
+            }
             switchNavMenu(key);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -8997,7 +8797,7 @@ const PODES_MASTER_BASELINE = {
             if (!sel) return;
 
             const pages = (typeof getExcelBookPages === 'function') ? getExcelBookPages() : [];
-            if (sel.children.length === 0) {
+            if (!sel.options || sel.options.length === 0 || (sel.children && sel.children.length === 0)) {
                 for (let i = 1; i <= 30; i++) {
                     const opt = document.createElement('option');
                     opt.value = i;
