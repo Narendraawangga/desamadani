@@ -2802,6 +2802,35 @@ window.PresisiEngine = (function() {
     }
   }
 
+    function closeRaporDesa() {
+    const container = document.getElementById('presisiContainerRaporDesa');
+    if (container) container.classList.add('hidden');
+    const ws = document.getElementById('presisiWorkspaceGrid');
+    if (ws) ws.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function filterRaporCluster(clusterName, btnEl) {
+    const cards = document.querySelectorAll('.rapor-card-item');
+    cards.forEach(c => {
+      if (clusterName === 'all' || c.dataset.cluster === clusterName) {
+        c.classList.remove('hidden');
+      } else {
+        c.classList.add('hidden');
+      }
+    });
+
+    const tabBtns = document.querySelectorAll('.rapor-tab-btn');
+    tabBtns.forEach(b => {
+      b.classList.remove('active', 'bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+      b.classList.add('text-slate-600', 'hover:text-slate-900');
+    });
+
+    if (btnEl) {
+      btnEl.classList.remove('text-slate-600', 'hover:text-slate-900');
+      btnEl.classList.add('active', 'bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+    }
+  }
+
   function renderRaporDesa(desaName) {
     const d = db.desaList.find(x => x.nama.toLowerCase() === desaName.toLowerCase());
     if (!d) return;
@@ -2809,62 +2838,96 @@ window.PresisiEngine = (function() {
     const container = document.getElementById('presisiContainerRaporDesa');
     if (!container) return;
 
+    // Ensure container is unhidden
+    container.classList.remove('hidden');
+
     // Safe formatting helpers
     const fmt = (num) => (typeof num === 'number' && !isNaN(num)) ? num.toLocaleString('id-ID') : (num || '0');
     const safeStr = (val, fb = '-') => (val && val !== 'None' && val !== 'null') ? val : fb;
 
     container.innerHTML = `
-      <!-- Village Profile Master Card Header -->
-      <div class="p-5 rounded-2xl bg-gradient-to-r from-[#0b2545] via-[#10325c] to-[#059669] text-white shadow-md">
-        <div class="flex items-center justify-between flex-wrap gap-2 text-xs mb-2">
-          <div class="flex items-center gap-2">
-            <span class="px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider ${d.status === 'Kelurahan' ? 'bg-amber-400 text-slate-950' : 'bg-emerald-400 text-slate-950'}">
+      <!-- Village Profile Master Card Header (Full-Width Luxurious Executive Design) -->
+      <div class="p-6 sm:p-7 rounded-3xl bg-gradient-to-r from-[#0b2545] via-[#10325c] to-[#059669] text-white shadow-lg border border-white/10 space-y-4">
+        <div class="flex items-center justify-between flex-wrap gap-3 text-xs">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider ${d.status === 'Kelurahan' ? 'bg-amber-400 text-slate-950' : 'bg-emerald-400 text-slate-950'} shadow-xs">
               ${d.status}
             </span>
             <span class="text-xs font-bold text-emerald-200">Kecamatan ${d.kecamatan}</span>
-            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/20 text-white font-bold flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+            <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-white/15 text-white font-bold flex items-center gap-1.5 backdrop-blur-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
               <span>12 Klaster PODES 2025 Lengkap</span>
             </span>
           </div>
+
           <div class="flex items-center gap-2">
-            <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${d.kecamatan}')" class="px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-sm cursor-pointer">
+            <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${d.kecamatan}')" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-sm cursor-pointer shadow-xs" title="Tinjauan Kecamatan">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-              <span>← Tutup / Tinjauan Kecamatan</span>
+              <span>Kec. ${d.kecamatan}</span>
             </button>
-            <button type="button" onclick="window.PresisiEngine.setViewMode('tabel'); window.PresisiEngine.onTableSearch('${d.nama}')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+            <button type="button" onclick="window.PresisiEngine.setViewMode('tabel'); window.PresisiEngine.onTableSearch('${d.nama}')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
               <span>Buka di Tabel Data →</span>
+            </button>
+            <button type="button" onclick="window.PresisiEngine.closeRaporDesa()" class="px-3 py-2 rounded-xl bg-rose-500/80 hover:bg-rose-600 text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer shadow-xs" title="Tutup Rapor">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Tutup Rapor</span>
             </button>
           </div>
         </div>
 
-        <div class="flex items-baseline justify-between flex-wrap gap-3 pt-2 border-t border-white/15">
-          <div>
-            <h2 class="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+        <div class="flex items-baseline justify-between flex-wrap gap-4 pt-3 border-t border-white/15">
+          <div class="space-y-1.5">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-2.5">
               <span>${d.status} ${d.nama}</span>
             </h2>
-            <div class="text-xs text-slate-200 mt-1 flex items-center gap-2 flex-wrap">
-              <span>Topografi: <b>${d.topografi || (d.umum && d.umum.topografi) || 'Dataran'}</b></span>
-              <span>•</span>
-              <span>Wilayah Laut: <b>${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</b></span>
-              <span>•</span>
-              <span>Kawasan Hutan: <b>${safeStr(d.umum && d.umum.hutan, 'Di luar hutan')}</b></span>
-              <span>•</span>
+            <div class="text-xs text-slate-200 flex items-center gap-2.5 flex-wrap">
+              <span>Topografi: <b class="text-white">${d.topografi || (d.umum && d.umum.topografi) || 'Dataran'}</b></span>
+              <span class="text-white/40">•</span>
+              <span>Wilayah Laut: <b class="text-white">${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</b></span>
+              <span class="text-white/40">•</span>
+              <span>Kawasan Hutan: <b class="text-white">${safeStr(d.umum && d.umum.hutan, 'Di luar hutan')}</b></span>
+              <span class="text-white/40">•</span>
               <span>Komoditas Utama: <b class="text-amber-300 font-bold">${safeStr((d.umum && d.umum.komoditas), 'Kakao / Cengkeh')}</b></span>
             </div>
           </div>
           <div class="text-right">
-            <div class="text-xl font-black text-amber-300">${fmt(d.penduduk)} <span class="text-xs font-medium text-white/80">Jiwa Est.</span></div>
-            <div class="text-[11px] text-emerald-200 font-bold">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK Berlistrik PLN</div>
+            <div class="text-2xl sm:text-3xl font-black text-amber-300">${fmt(d.penduduk)} <span class="text-xs font-medium text-white/80">Jiwa Est.</span></div>
+            <div class="text-xs text-emerald-200 font-bold mt-0.5">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK Berlistrik PLN (100%)</div>
           </div>
         </div>
       </div>
 
-      <!-- 12 Sectors Balanced Grid Cards (4 Cols on 2XL, 3 Cols on Desktop, 2 on Tablet, 1 on Mobile) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-xs text-slate-700">
+      <!-- Interactive Tab Klaster Filter Bar -->
+      <div class="flex items-center justify-between gap-3 flex-wrap pt-1 pb-1 border-b border-slate-200/90">
+        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200/80 overflow-x-auto scrollbar-none" id="raporTabClusterBar">
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('all', this)" class="rapor-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-white text-slate-900 shadow-xs cursor-pointer">
+            <span>✨ Semua Klaster (12 Data)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('wilayah', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>🏛️ Wilayah & Penduduk (2)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('infrastruktur', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>⚡ Infrastruktur & Lingkungan (3)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('sosial', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>🏥 Pendidikan & Kesehatan (2)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('ekonomi', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>💼 Ekonomi & Tata Kelola (5)</span>
+          </button>
+        </div>
+
+        <div class="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>12 Klaster PODES BPS 2025 Terintegrasi</span>
+        </div>
+      </div>
+
+      <!-- 12 Sectors Balanced Grid Cards (Full Width: 4 Cols on Large Displays, 3 Cols on Laptop, 2 on Tablet, 1 on Mobile) -->
+      <div id="raporCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4.5 text-xs text-slate-700">
 
         <!-- 1. Keterangan Umum & Wilayah -->
-        <div class="p-4 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="wilayah" class="rapor-card-item p-4.5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2 border-b border-teal-200/60">
               <span class="flex items-center gap-2">
@@ -2907,7 +2970,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 2. Kependudukan & Demografi -->
-        <div class="p-4 bg-sky-50/50 rounded-2xl border border-sky-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="wilayah" class="rapor-card-item p-4.5 bg-sky-50/50 rounded-2xl border border-sky-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#0369a1] pb-2 border-b border-sky-200/60">
               <span class="flex items-center gap-2">
@@ -2950,7 +3013,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 3. Perumahan & Energi Listrik -->
-        <div class="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#065f46] pb-2 border-b border-emerald-200/60">
               <span class="flex items-center gap-2">
@@ -2993,7 +3056,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 4. Kesehatan Lingkungan & Sanitasi -->
-        <div class="p-4 bg-green-50/50 rounded-2xl border border-green-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-green-50/50 rounded-2xl border border-green-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#15803d] pb-2 border-b border-green-200/60">
               <span class="flex items-center gap-2">
@@ -3036,7 +3099,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 5. Mitigasi Bencana Alam & Keamanan -->
-        <div class="p-4 bg-rose-50/50 rounded-2xl border border-rose-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-rose-50/50 rounded-2xl border border-rose-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#be123c] pb-2 border-b border-rose-200/60">
               <span class="flex items-center gap-2">
@@ -3079,7 +3142,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 6. Sarana & Akses Pendidikan -->
-        <div class="p-4 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="sosial" class="rapor-card-item p-4.5 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#1d4ed8] pb-2 border-b border-blue-200/60">
               <span class="flex items-center gap-2">
@@ -3122,7 +3185,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 7. Sarana Kesehatan & UKBM -->
-        <div class="p-4 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="sosial" class="rapor-card-item p-4.5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2 border-b border-teal-200/60">
               <span class="flex items-center gap-2">
@@ -3165,7 +3228,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 8. Industri & Usaha Mikro (IMK) -->
-        <div class="p-4 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#b45309] pb-2 border-b border-amber-200/60">
               <span class="flex items-center gap-2">
@@ -3208,7 +3271,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 9. Infrastruktur Perdagangan & Pasar -->
-        <div class="p-4 bg-orange-50/50 rounded-2xl border border-orange-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-orange-50/50 rounded-2xl border border-orange-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#c2410c] pb-2 border-b border-orange-200/60">
               <span class="flex items-center gap-2">
@@ -3251,7 +3314,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 10. Lembaga Keuangan & Koperasi -->
-        <div class="p-4 bg-violet-50/50 rounded-2xl border border-violet-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-violet-50/50 rounded-2xl border border-violet-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#7c3aed] pb-2 border-b border-violet-200/60">
               <span class="flex items-center gap-2">
@@ -3294,7 +3357,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 11. Transportasi & Komunikasi (Internet) -->
-        <div class="p-4 bg-cyan-50/50 rounded-2xl border border-cyan-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-cyan-50/50 rounded-2xl border border-cyan-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#0e7490] pb-2 border-b border-cyan-200/60">
               <span class="flex items-center gap-2">
@@ -3337,7 +3400,7 @@ window.PresisiEngine = (function() {
         </div>
 
         <!-- 12. Keuangan, Aset & Aparatur Desa -->
-        <div class="p-4 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
             <div class="flex items-center justify-between font-extrabold text-[#6b21a8] pb-2 border-b border-purple-200/60">
               <span class="flex items-center gap-2">
@@ -3381,9 +3444,11 @@ window.PresisiEngine = (function() {
 
       </div>
     `;
-// Smooth scroll down to the village report
-    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Smooth scroll down to the village report
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
 
 
   function renderExecutiveSummary() {
@@ -4193,7 +4258,9 @@ let agregatSector = 'all';
     onSortKecamatanCard: onSortKecamatanCard,
     goToKecamatanSlide: goToKecamatanSlide,
     prevKecamatanSlide: prevKecamatanSlide,
-    nextKecamatanSlide: nextKecamatanSlide
+    nextKecamatanSlide: nextKecamatanSlide,
+    closeRaporDesa: closeRaporDesa,
+    filterRaporCluster: filterRaporCluster
   };
 })();
 

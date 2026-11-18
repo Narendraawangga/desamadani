@@ -1014,7 +1014,7 @@
                 <!-- ============================================== -->
                 <!-- LEFT CONTROL SIDEBAR (lg:col-span-4 xl:col-span-3) -->
                 <!-- ============================================== -->
-                <div class="lg:col-span-4 xl:col-span-3 space-y-4">
+                <div class="lg:col-span-4 xl:col-span-3 space-y-4 lg:sticky lg:top-24">
                     
                     <!-- CARD 1: FILTER WILAYAH (EXACT DESA PRESISI STYLE) -->
                     <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 space-y-3.5">
@@ -1326,15 +1326,15 @@
                         </div>
                     </div>
 
-                    <!-- ========================================================================= -->
-                    <!-- MASTER COMPONENT: RAPOR LENGKAP PROFIL DESA PRESISI (6 SEKTOR LENGKAP)    -->
-                    <!-- ========================================================================= -->
-                    <div id="presisiContainerRaporDesa" class="hidden bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 sm:p-6 space-y-5 transition-all duration-300">
-                        <!-- Populated dynamically via PresisiEngine with 6 rich, balanced sector cards -->
-                    </div>
-
                 </div>
 
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- MASTER COMPONENT: RAPOR LENGKAP PROFIL DESA PRESISI (FULL-WIDTH 12 KLASTER) -->
+            <!-- ========================================================================= -->
+            <div id="presisiContainerRaporDesa" class="hidden w-full bg-white rounded-3xl border border-slate-200/90 shadow-md p-5 sm:p-7 space-y-6 transition-all duration-300 scroll-mt-24">
+                <!-- Populated dynamically via PresisiEngine with full-width balanced 12 sector cards & cluster tabs -->
             </div>
 
             <!-- 4. FULL TABEL DATA 133 DESA (SHOWN WHEN 'TABEL' MODE IS ACTIVE) -->
