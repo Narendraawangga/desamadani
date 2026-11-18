@@ -327,15 +327,15 @@
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
         <!-- MAIN CONTENT AREA DENGAN SIDEBAR NAVIGASI 4 MENU RESMI -->
-    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-3 sm:py-4 pl-2 sm:pl-3 lg:pl-3 pr-3 sm:pr-4 lg:pr-5">
-        <div class="w-full flex flex-col lg:flex-row items-start gap-3.5 lg:gap-4">
+    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-3 sm:py-4 pl-1.5 sm:pl-2 lg:pl-2.5 pr-2.5 sm:pr-4 lg:pr-5">
+        <div class="w-full flex flex-col lg:flex-row items-start gap-3 sm:gap-4 lg:gap-5">
 
                 <!-- ========================================================== -->
                 <!-- DEDICATED SIDEBAR NAVIGASI SISTEMATIS BPS DESA CANTIK       -->
                 <!-- Rata Kiri & Sesuai Persis Lampiran Screenshot Pengguna     -->
                 <!-- ========================================================== -->
                 <aside class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30">
-                    <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs p-3 sm:p-3.5 flex flex-col justify-between min-h-[640px] select-none text-left">
+                    <div class="p-1 sm:p-1.5 flex flex-col justify-between min-h-[620px] select-none text-left">
                         
                         <!-- Top Navigations Groups -->
                         <div class="space-y-4">
@@ -358,7 +358,7 @@
                                     </button>
 
                                     <!-- 2. Profil Desa -->
-                                    <button type="button" id="side-item-profil" onclick="activateSidebarMenu('profil')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-profil" onclick="activateSidebarMenu('profil')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M3 21h18"></path>
                                             <path d="M5 21V7l7-4 7 4v14"></path>
@@ -372,7 +372,7 @@
                                     </button>
 
                                     <!-- 3. Data Aparatur Desa -->
-                                    <button type="button" id="side-item-aparatur" onclick="activateSidebarMenu('aparatur')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-aparatur" onclick="activateSidebarMenu('aparatur')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <rect x="3" y="4" width="18" height="16" rx="2"></rect>
                                             <circle cx="9" cy="10" r="2"></circle>
@@ -384,7 +384,7 @@
                                     </button>
 
                                     <!-- 4. Pengisian Data PODES -->
-                                    <button type="button" id="side-item-podes" onclick="activateSidebarMenu('podes')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-podes" onclick="activateSidebarMenu('podes')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
@@ -393,7 +393,7 @@
                                     </button>
 
                                     <!-- 5. Monitoring Kelengkapan -->
-                                    <button type="button" id="side-item-monitoring" onclick="activateSidebarMenu('monitoring')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-monitoring" onclick="activateSidebarMenu('monitoring')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                                             <rect x="8" y="2" width="8" height="4" rx="1"></rect>
@@ -411,7 +411,7 @@
                                 </div>
                                 <nav class="space-y-1" aria-label="Kapasitas dan Pembinaan">
                                     <!-- 6. Pembinaan Desa -->
-                                    <button type="button" id="side-item-pembinaan" onclick="activateSidebarMenu('pembinaan')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-pembinaan" onclick="activateSidebarMenu('pembinaan')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="9" cy="7" r="4"></circle>
@@ -422,7 +422,7 @@
                                     </button>
 
                                     <!-- 7. Materi Pembelajaran -->
-                                    <button type="button" id="side-item-materi" onclick="activateSidebarMenu('materi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-materi" onclick="activateSidebarMenu('materi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
@@ -431,7 +431,7 @@
                                     </button>
 
                                     <!-- 8. Video Tutorial -->
-                                    <button type="button" id="side-item-video" onclick="activateSidebarMenu('video')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-video" onclick="activateSidebarMenu('video')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
                                             <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
@@ -440,7 +440,7 @@
                                     </button>
 
                                     <!-- 9. Pre-test & Post-test -->
-                                    <button type="button" id="side-item-evaluasi" onclick="activateSidebarMenu('evaluasi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-evaluasi" onclick="activateSidebarMenu('evaluasi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M9 11l3 3L22 4"></path>
                                             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
@@ -449,7 +449,7 @@
                                     </button>
 
                                     <!-- 10. Buku Panduan -->
-                                    <button type="button" id="side-item-panduan" onclick="activateSidebarMenu('panduan')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-100/90">
+                                    <button type="button" id="side-item-panduan" onclick="activateSidebarMenu('panduan')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
                                         <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
@@ -2676,7 +2676,7 @@
         function syncSidebarItemActive(key) {
             document.querySelectorAll('.side-item-btn').forEach(btn => {
                 btn.classList.remove('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20');
-                btn.classList.add('text-slate-700', 'hover:bg-slate-100/90', 'hover:text-slate-900');
+                btn.classList.add('text-slate-700', 'hover:bg-slate-200/70', 'hover:text-slate-900');
                 const svg = btn.querySelector('svg');
                 if (svg) {
                     svg.classList.remove('text-white');
@@ -2686,7 +2686,7 @@
 
             const targetBtn = document.getElementById('side-item-' + key);
             if (targetBtn) {
-                targetBtn.classList.remove('text-slate-700', 'hover:bg-slate-100/90', 'hover:text-slate-900');
+                targetBtn.classList.remove('text-slate-700', 'hover:bg-slate-200/70', 'hover:text-slate-900');
                 targetBtn.classList.add('active', 'bg-[#0c4a34]', 'text-white', 'shadow-xs', 'ring-1', 'ring-emerald-950/20');
                 const svg = targetBtn.querySelector('svg');
                 if (svg) {
