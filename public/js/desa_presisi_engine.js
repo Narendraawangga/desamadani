@@ -760,6 +760,10 @@ window.PresisiEngine = (function() {
       event.stopPropagation();
     }
 
+    if (currentCategory !== catKey) {
+      setCategory(catKey);
+    }
+
     const dropEl = document.getElementById(`dropdown-cat-${catKey}`);
     const chevEl = document.getElementById(`pill-chev-${catKey}`);
     const isCurrentlyOpen = dropEl && !dropEl.classList.contains('hidden');
@@ -770,9 +774,6 @@ window.PresisiEngine = (function() {
       dropEl.classList.remove('hidden');
       if (chevEl) chevEl.classList.add('rotate-180');
       activeDropdownCat = catKey;
-      if (currentCategory !== catKey) {
-        setCategory(catKey);
-      }
     }
   }
 
@@ -833,6 +834,10 @@ window.PresisiEngine = (function() {
     renderSubTablesHorizontalBar();
     renderCategoryDropdowns();
 
+    // Sync Analisis Header & Panels
+    updateAnalisisHeader(currentCategory);
+    updateAnalysisPanels(currentCategory);
+
     // Fetch real PODES data
     loadRealPodesTable(moduleFile, tableSheet);
   }
@@ -878,6 +883,10 @@ window.PresisiEngine = (function() {
     const b1 = document.getElementById('labelChart1Badge');
     if (t1) t1.textContent = `Tabel ${data.table}: ${cleanSubTableTitle(data.title)}`;
     if (b1) b1.textContent = `TABEL ${data.table}`;
+
+    // Sync Analisis Header & Panels
+    updateAnalisisHeader(currentCategory);
+    updateAnalysisPanels(currentCategory);
 
     // Update Presisi Charts with real table metrics
     updatePresisiCharts();
@@ -1006,6 +1015,10 @@ window.PresisiEngine = (function() {
     const cfg = CATEGORY_CONFIG[catKey];
     const metricInd = document.getElementById('presisiMapMetricIndicator');
     if (metricInd) metricInd.textContent = `Metrik: ${cfg.metricLabel}`;
+
+    // Update Analisis Header & Panels immediately
+    updateAnalisisHeader(catKey);
+    updateAnalysisPanels(catKey);
 
     // Update Map
     updateThematicMap();
@@ -1857,7 +1870,37 @@ window.PresisiEngine = (function() {
     updateAnalysisPanels(currentCategory);
   }
 
+  function updateAnalisisHeader(cat) {
+    const cfg = CATEGORY_CONFIG[cat] || {};
+    const titleAnalisis = document.getElementById('presisiAnalisisTitle');
+    const badgeAnalisis = document.getElementById('presisiAnalisisBadge');
+    const subAnalisis = document.getElementById('presisiAnalisisSubtitle');
+
+    if (titleAnalisis) {
+      if (currentActiveSubTable && currentActiveSubTable.sheet) {
+        titleAnalisis.innerHTML = `Visualisasi Analisis: ${cfg.label || 'Statistik Sektoral'} <span class="text-xs font-bold text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-full ml-1 sm:ml-2 align-middle border border-emerald-300">Tabel ${currentActiveSubTable.sheet}</span>`;
+      } else {
+        titleAnalisis.textContent = `Visualisasi Analisis: ${cfg.label || 'Statistik Sektoral'}`;
+      }
+    }
+
+    if (badgeAnalisis) {
+      badgeAnalisis.textContent = cfg.badge || `Sheet ${cfg.label}`;
+    }
+
+    if (subAnalisis) {
+      if (currentActiveSubTable && currentActiveSubTable.title) {
+        const cleanTitle = cleanSubTableTitle(currentActiveSubTable.title);
+        const modName = (currentActiveSubTable.module || '').replace('.xlsx', '');
+        subAnalisis.textContent = `Telaah komparatif data Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara • Tabel ${currentActiveSubTable.sheet}: ${cleanTitle} (${modName})`;
+      } else {
+        subAnalisis.textContent = `Telaah komparatif berbasis tabel statistik Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara`;
+      }
+    }
+  }
+
   function updateAnalysisPanels(cat) {
+    updateAnalisisHeader(cat);
     const kab = db.kabupatenOverview || db.kabupaten || {};
     const fmt = (n) => (typeof n === 'number' && !isNaN(n)) ? n.toLocaleString('id-ID') : (n || '0');
 

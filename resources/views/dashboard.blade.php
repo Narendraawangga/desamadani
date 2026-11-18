@@ -1174,7 +1174,7 @@
                                 <h3 id="presisiAnalisisTitle" class="text-lg sm:text-xl font-extrabold text-[#0D6E5B]">
                                     Visualisasi Analisis: Sarana Ekonomi & Industri
                                 </h3>
-                                <p class="text-xs text-[#5A6B65]">
+                                <p id="presisiAnalisisSubtitle" class="text-xs text-[#5A6B65]">
                                     Telaah komparatif berbasis 41 tabel statistik Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara
                                 </p>
                             </div>
