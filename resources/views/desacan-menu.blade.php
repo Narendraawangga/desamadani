@@ -213,34 +213,59 @@
                 </a>
             </div>
 
-            <!-- Right: Akun Desa Kalu Kaluku (Kec. Kodeoha) & Status User -->
-            <div class="flex items-center gap-3">
-                <!-- Capsule Akun Desa Kalu Kaluku (Sesuai Diagram) -->
-                <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/90 px-3.5 py-1.5 rounded-2xl shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <div class="text-left leading-tight">
-                        <div id="topBrandDesaTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
-                            AKUN DESA KALU KALUKU
+            <!-- Right: Profil Akun Desa & Interactive Dropdown Trigger -->
+            <div class="relative" id="userProfileDropdownWrapper">
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                    <!-- Capsule Akun Desa (Clickable trigger) -->
+                    <button type="button" onclick="toggleUserProfileMenu(event)" class="hidden sm:flex items-center gap-2.5 bg-slate-50 hover:bg-slate-100/90 border border-slate-200/90 px-3.5 py-1.5 rounded-2xl shadow-2xs transition cursor-pointer text-left group" title="Klik untuk opsi 6 desa & keluar">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <div class="leading-tight">
+                            <div id="topBrandDesaTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight group-hover:text-[#005ea6] transition-colors">
+                                AKUN DESA KALU KALUKU
+                            </div>
+                            <div id="topBrandDesaKec" class="text-[10px] font-bold text-slate-500">
+                                (Kec. Kodeoha) • Terbina BPS
+                            </div>
                         </div>
-                        <div id="topBrandDesaKec" class="text-[10px] font-bold text-slate-500">
-                            (Kec. Kodeoha) • Terbina BPS
+                    </button>
+
+                    <!-- Avatar Button Trigger (AD) -->
+                    <button type="button" id="userProfileBtn" onclick="toggleUserProfileMenu(event)" class="flex items-center gap-1.5 p-1 pl-1 rounded-full hover:bg-slate-100 border border-slate-200/80 transition cursor-pointer shadow-2xs group" title="Klik profil untuk membuka menu">
+                        <div class="w-8 h-8 rounded-full bg-amber-400 border border-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                            AD
                         </div>
-                    </div>
+                        <i id="userProfileChevron" class="bi bi-chevron-down text-slate-400 text-[10px] pr-1.5 group-hover:text-slate-700 transition-transform duration-200"></i>
+                    </button>
                 </div>
 
-                <!-- Action Buttons: 6 Desa & Logout -->
-                <div class="flex items-center gap-2">
-                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200/90 shadow-2xs group" title="Pindah Desa Pilot">
-                        <i class="bi bi-arrow-left text-xs text-slate-500 group-hover:-translate-x-0.5 transition-transform"></i>
-                        <span>6 Desa</span>
-                    </a>
-                    <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer group">
-                        <i class="bi bi-box-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-                        <span>Keluar</span>
-                    </button>
-                    <!-- User Avatar -->
-                    <div class="w-8 h-8 rounded-full bg-amber-400 border border-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-xs">
-                        AD
+                <!-- Floating Dropdown Menu (Muncul ketika profil di-klik) -->
+                <div id="userProfileDropdown" class="hidden absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200/90 p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <!-- Header Info -->
+                    <div class="flex items-center gap-2.5 pb-2.5 mb-2.5 border-b border-slate-100">
+                        <div class="w-9 h-9 rounded-full bg-amber-400 border border-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-xs shrink-0">
+                            AD
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="text-xs font-black text-slate-900 leading-tight">Admin Desa (AD)</div>
+                            <div id="dropdownDesaTitle" class="text-[11px] font-bold text-[#005ea6] truncate">Desa Kalu Kaluku</div>
+                            <div class="text-[9px] text-emerald-600 font-bold flex items-center gap-1 mt-0.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Terbina BPS Kolaka Utara</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons: 6 Desa & Logout -->
+                    <div class="space-y-1.5">
+                        <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-2.5 w-full px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-[#005ea6] text-xs font-bold transition border border-slate-200/80 shadow-2xs group" title="Pindah Desa Pilot">
+                            <i class="bi bi-arrow-left text-xs text-slate-500 group-hover:text-[#005ea6] group-hover:-translate-x-0.5 transition-all"></i>
+                            <span>← 6 Desa Pilot</span>
+                        </a>
+
+                        <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-2.5 w-full px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold transition border border-rose-200/80 shadow-2xs cursor-pointer group">
+                            <i class="bi bi-box-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                            <span>Keluar dari Sesi</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -3768,6 +3793,8 @@
             // 1. Top Navigation & Brand Bars
             const brandTitle = document.getElementById('topBrandDesaTitle');
             if (brandTitle) brandTitle.textContent = ('AKUN ' + (data.title || 'DESA')).toUpperCase();
+            const dropTitle = document.getElementById('dropdownDesaTitle');
+            if (dropTitle) dropTitle.textContent = data.title || 'Desa Kalu Kaluku';
             const brandKec = document.getElementById('topBrandDesaKec');
             if (brandKec) brandKec.textContent = '(Kec. Kodeoha) • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
@@ -4947,6 +4974,31 @@
             window.location.href = '/descan';
         }
 
+        function toggleUserProfileMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const drop = document.getElementById('userProfileDropdown');
+            const chev = document.getElementById('userProfileChevron');
+            if (!drop) return;
+            const isHidden = drop.classList.contains('hidden');
+            if (isHidden) {
+                drop.classList.remove('hidden');
+                if (chev) chev.classList.add('rotate-180');
+            } else {
+                drop.classList.add('hidden');
+                if (chev) chev.classList.remove('rotate-180');
+            }
+        }
+
+        function closeUserProfileMenu() {
+            const drop = document.getElementById('userProfileDropdown');
+            const chev = document.getElementById('userProfileChevron');
+            if (drop) drop.classList.add('hidden');
+            if (chev) chev.classList.remove('rotate-180');
+        }
+
         function exitToDescanDashboard(e) {
             if (e) {
                 e.preventDefault();
@@ -4957,10 +5009,10 @@
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
-            const badgeEl = document.getElementById('menuNavUserBadge');
+            const wrapper = document.getElementById('userProfileDropdownWrapper');
             const drop = document.getElementById('userProfileDropdown');
-            if (badgeEl && drop && !badgeEl.contains(e.target)) {
-                drop.classList.add('hidden');
+            if (wrapper && drop && !wrapper.contains(e.target)) {
+                closeUserProfileMenu();
             }
         });
 
