@@ -37,6 +37,10 @@ Route::get('/home', function () {
     return view('jadesta');
 });
 
+// Public PODES API Routes (Integrated with Portal & Admin)
+Route::get('/portal/podes/table-data', [AdminController::class, 'getPodesTableData'])->name('portal.podes.table-data');
+Route::get('/portal/podes/catalog', [AdminController::class, 'getPodesCatalog'])->name('portal.podes.catalog');
+
 // Web Utama: Portal Satu Data, WebGIS & Analitik Kemandirian Desa Madani Kolaka Utara
 Route::get('/portal', function () {
     return view('dashboard');

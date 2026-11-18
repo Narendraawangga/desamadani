@@ -192,6 +192,697 @@ window.PresisiEngine = (function() {
     }
   };
 
+  const PODES_CATEGORY_MAP = {
+  "ekonomi": {
+    "key": "ekonomi",
+    "label": "Sarana Ekonomi",
+    "pillId": "pill-cat-ekonomi",
+    "dropdownId": "dropdown-cat-ekonomi",
+    "dotColor": "bg-amber-400",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+    "defaultTable": "5.6",
+    "modules": [
+      "SARANA EKONOMI DAN INDUSTRI.xlsx",
+      "INFRASTRUKTUR EKONOMI.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.1",
+        "title": "Tabel 5.1: Jumlah Sarana Perdagangan dan Akomodasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.2",
+        "title": "Tabel 5.2: Jumlah Kelompok Pertokoan dan Pasar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.3",
+        "title": "Tabel 5.3: Jumlah Bank Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.4",
+        "title": "Tabel 5.4: Jumlah Koperasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.5",
+        "title": "Tabel 5.5: Keberadaan Fasilitas Perkreditan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.6",
+        "title": "Tabel 5.6: Jumlah Industri Mikro dan Kecil dan Sentra Industri Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.7",
+        "title": "Tabel 5.7: Keberadaan Produk Barang Unggulan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.1",
+        "title": "BANYAKNYA KELOMPOK PERTOKOAN DAN PASAR MENURUT DESA/KELURAHAN",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.2",
+        "title": "BANYAKNYA SARANA PERDAGANGAN  MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.3",
+        "title": "BANYAKNYA SARANA AKOMODASI MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.4",
+        "title": "BANYAKNYA LEMBAGA KEUANGAN BANK MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      }
+    ]
+  },
+  "lingkungan": {
+    "key": "lingkungan",
+    "label": "Perumahan & Lingkungan",
+    "pillId": "pill-cat-lingkungan",
+    "dropdownId": "dropdown-cat-lingkungan",
+    "dotColor": "bg-emerald-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+    "defaultTable": "2.1",
+    "modules": [
+      "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+      "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.1",
+        "title": "Tabel 2.1: Jumlah Keluarga Pengguna Listrik dan Bukan Pengguna Listrik Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.2",
+        "title": "Tabel 2.2: Keberadaan dan Sumber Penerangan Jalan Utama Desa Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.3",
+        "title": "Tabel 2.3: Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.4",
+        "title": "Tabel 2.4: Keberadaan Agen/Penjual Bahan Bakar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.5",
+        "title": "Tabel 2.5: Keberadaan Kejadian Pencemaran Lingkungan Hidup Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.6",
+        "title": "Tabel 2.6: Pencemaran Lingkungan Hidup dan Sumber Utama Pencemaran Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.7",
+        "title": "Tabel 2.7: Keberadaan Kegiatan Pengelolaan dan Pelestarian Lingkungan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.8",
+        "title": "Tabel 2.8: Keberadaan Kegiatan Adaptasi dan Mitigasi Perubahan Iklim Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA ANTISIPASI/MITIGASI BENCANA ALAM  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS BENCANA ALAM  DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN AKTIVITAS YANG BERPOTENSI MENINGKATKAN EMISI GAS RUMAH KACA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN KEJADIAN YANG DIRASAKAN PENDUDUK AKIBAT PERUBAHAN IKLIM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN KEJADIAN PERKELAHIAN MASSAL DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN KEBARADAAN KORBAN MENINGGAL DAN LUKA-LUKA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.7",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN INISIATOR PENYELESAIANNYA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.8",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA WARGA MENJAGA KEAMANAN LINGKUNGAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ]
+  },
+  "sosial": {
+    "key": "sosial",
+    "label": "Pendidikan & Kesehatan",
+    "pillId": "pill-cat-sosial",
+    "dropdownId": "dropdown-cat-sosial",
+    "dotColor": "bg-blue-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "PENDIDIKAN DAN KESEHATAN.xlsx",
+    "defaultTable": "3.1",
+    "modules": [
+      "PENDIDIKAN DAN KESEHATAN.xlsx",
+      "INFRASTRUKTUR PENDIDIKAN.xlsx",
+      "INFRASTRUKTUR KESEHATAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.1",
+        "title": "Tabel 3.1: Keberadaan Sarana Pendidikan dan Jenis Sarana Pendidikan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.2",
+        "title": "Tabel 3.2: Keberadaan Sarana Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.3",
+        "title": "Tabel 3.3: Jumlah Upaya Kesehatan Bersumberdaya Masyarakat (UKBM) Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.1",
+        "title": "Tabel 9.1: Jumlah SD/MI Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.2",
+        "title": "Tabel 9.2: Jumlah SMP/MTs Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.3",
+        "title": "Tabel 9.3: Jumlah SMA/MA Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.4",
+        "title": "Tabel 9.4: Jumlah SMK Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.5",
+        "title": "Tabel 9.5: Jumlah Akademi/Perguruan Tinggi Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.1",
+        "title": "Tabel 10.1: Jumlah Rumah Sakit, Klinik Utama, dan Balai Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.2",
+        "title": "Tabel 10.2: Jumlah Puskesmas Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.3",
+        "title": "Tabel 10.3: Jumlah Klinik Pratama, Tempat Praktik Dokter, Tempat Praktik Bidan, dan Apotek Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ]
+  },
+  "keuangan": {
+    "key": "keuangan",
+    "label": "Keuangan & Aset Desa",
+    "pillId": "pill-cat-keuangan",
+    "dropdownId": "dropdown-cat-keuangan",
+    "dotColor": "bg-purple-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KEUANGAN DAN ASET DESA 2025.xlsx",
+    "defaultTable": "6.3",
+    "modules": [
+      "KEUANGAN DAN ASET DESA 2025.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.1",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.2",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "Sambungan 6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.4",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN PERATURAN DESA TAHUN 2024 DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      }
+    ]
+  },
+  "umum": {
+    "key": "umum",
+    "label": "Keterangan Umum",
+    "pillId": "pill-cat-umum",
+    "dropdownId": "dropdown-cat-umum",
+    "dotColor": "bg-teal-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KETERANGAN UMUM DESA.xlsx",
+    "defaultTable": "1.1",
+    "modules": [
+      "KETERANGAN UMUM DESA.xlsx",
+      "KEPENDUDUKAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.1",
+        "title": "Tabel 1.1: Status Pemerintahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.2",
+        "title": "Tabel 1.2: Lokasi Desa Terhadap Kawasan Hutan dan Fungsi Kawasan Hutan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.3",
+        "title": "Tabel 1.3: Lokasi Desa Terhadap Laut Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.4",
+        "title": "Tabel 1.4: Sumber Penghasilan Utama Sebagian Besar Penduduk dan Persentase Keluarga Menurut Sumber Penghasilan Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.5",
+        "title": "Tabel 1.5: Sebagian Besar Penduduknya Bekerja pada Sektor Pertanian Menurut Desa/Kelurahan dan Jenis Sub Sektor Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KEPENDUDUKAN.xlsx",
+        "sheet": "2.1",
+        "title": "2.1 Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KEPENDUDUKAN.xlsx",
+        "sheet": "2.2",
+        "title": "2.2   Jumlah Penduduk Menurut Kelompok Umur dan Jenis Kelamin, 2025",
+        "total_rows": 259
+      }
+    ]
+  },
+  "pemerintah": {
+    "key": "pemerintah",
+    "label": "Pemerintah Desa",
+    "pillId": "pill-cat-pemerintah",
+    "dropdownId": "dropdown-cat-pemerintah",
+    "dotColor": "bg-indigo-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+    "defaultTable": "7.1",
+    "modules": [
+      "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+      "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.1",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN APARAT PEMERINTAH DESA/KELURAHAN  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.2",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH DAN/ATAU SEKRETARIS DESA/KELURAHAN MENURUT JENIS KELAMIN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.5",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS PRASARANA  TRANSPORTASI  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KETERSEDIAAN ANGKUTAN UMUM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.3",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUTU KETERSEDIAAN ANGKUTAN ONLINE DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.4",
+        "title": "BANYAKNYA DESA/KELURAHAN YANG MENGGUNAKAN PRASARANA  TRANSPORTASI DARAT ATAU DARAT DAN AIR MENURUT JENIS  PERMUKAAN JALAN DARAT TERLUAS DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN BASE  TRANSCEIVER STATION (BTS) DAN KEKUATAN SINYAL TELEPON SELULER DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.6",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEKUATAN SINYAL  INTERNET DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.7",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN SARANA  KOMUNIKASI DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ]
+  }
+};
+
+  // =========================================================================
+  // INTEGRATED PODES 2025 SUB-TABLES ENGINE (12 Modules, 63 Sub-Tables)
+  // Direct synchronization with Admin Desa Madani database
+  // =========================================================================
+  let currentActiveSubTable = {
+    category: 'ekonomi',
+    module: 'SARANA EKONOMI DAN INDUSTRI.xlsx',
+    sheet: '5.6',
+    title: 'Tabel 5.6: Jumlah Industri Mikro dan Kecil dan Sentra Industri Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025'
+  };
+  let currentRealTableData = null;
+  let activeDropdownCat = null;
+  const podesTableCache = {};
+
+  function cleanSubTableTitle(raw) {
+    if (!raw) return '';
+    let t = raw.replace(/^Tabel\s+[0-9.]+\s*:\s*/i, '');
+    t = t.replace(/^BANYAKNYA\s+DESA\/KELURAHAN\s+(MENURUT|DENGAN)\s+/i, '');
+    t = t.replace(/^BANYAKNYA\s+DESA\s+(MENURUT|DENGAN)\s+/i, '');
+    t = t.replace(/^BANYAKNYA\s+/i, '');
+    t = t.replace(/\s+DI\s+KABUPATEN\s+KOLAKA\s+UTARA.*$/i, '');
+    t = t.replace(/\s+MENURUT\s+DESA\/KELURAHAN.*$/i, '');
+    t = t.replace(/,\s*202[0-9]/i, '');
+    return t.trim();
+  }
+
+  function renderCategoryDropdowns() {
+    Object.keys(PODES_CATEGORY_MAP).forEach(catKey => {
+      const dropEl = document.getElementById(`dropdown-cat-${catKey}`);
+      if (!dropEl) return;
+      const catCfg = PODES_CATEGORY_MAP[catKey];
+      const subTables = catCfg.subTables || [];
+
+      // Group sub-tables by module file
+      const grouped = {};
+      subTables.forEach(st => {
+        if (!grouped[st.module]) grouped[st.module] = [];
+        grouped[st.module].push(st);
+      });
+
+      let html = `
+        <div class="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
+          <div>
+            <div class="font-extrabold text-xs text-slate-800 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full ${catCfg.dotColor}"></span>
+              <span>${catCfg.label}</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Pilih lembar data untuk eksplorasi spesifik</div>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">${subTables.length} Tabel</span>
+        </div>
+        <div class="py-1 max-h-72 overflow-y-auto space-y-2">
+      `;
+
+      Object.keys(grouped).forEach(modName => {
+        const shortMod = modName.replace('.xlsx', '');
+        html += `
+          <div>
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1 bg-slate-50/70">
+              <i class="bi bi-file-earmark-spreadsheet text-emerald-600"></i>
+              <span class="truncate">${shortMod}</span>
+            </div>
+            <div class="px-1 py-0.5 space-y-0.5">
+        `;
+        grouped[modName].forEach(st => {
+          const isActive = currentActiveSubTable && currentActiveSubTable.module === st.module && currentActiveSubTable.sheet === st.sheet;
+          const displayTitle = cleanSubTableTitle(st.title) || st.title;
+          html += `
+            <button type="button" onclick="window.PresisiEngine.selectSubTable('${catKey}', '${st.module}', '${st.sheet}')" class="w-full text-left px-2.5 py-1.5 rounded-xl text-xs transition flex items-start gap-2 hover:bg-emerald-50/70 group cursor-pointer ${isActive ? 'bg-emerald-50 text-emerald-900 font-bold border border-emerald-300 shadow-2xs' : 'text-slate-700'}">
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-black shrink-0 ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-200 group-hover:bg-emerald-200 text-slate-700'}">${st.sheet}</span>
+              <span class="line-clamp-2 text-[11px] leading-tight text-slate-700 group-hover:text-emerald-950">${displayTitle}</span>
+            </button>
+          `;
+        });
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      dropEl.innerHTML = html;
+    });
+  }
+
+  function toggleCategoryDropdown(catKey, event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const dropEl = document.getElementById(`dropdown-cat-${catKey}`);
+    const chevEl = document.getElementById(`pill-chev-${catKey}`);
+    const isCurrentlyOpen = dropEl && !dropEl.classList.contains('hidden');
+
+    closeAllCategoryDropdowns();
+
+    if (!isCurrentlyOpen && dropEl) {
+      dropEl.classList.remove('hidden');
+      if (chevEl) chevEl.classList.add('rotate-180');
+      activeDropdownCat = catKey;
+      if (currentCategory !== catKey) {
+        setCategory(catKey);
+      }
+    }
+  }
+
+  function closeAllCategoryDropdowns() {
+    document.querySelectorAll('.category-podes-dropdown').forEach(d => {
+      d.classList.add('hidden');
+    });
+    document.querySelectorAll('[id^="pill-chev-"]').forEach(c => {
+      c.classList.remove('rotate-180');
+    });
+    activeDropdownCat = null;
+  }
+
+  function renderSubTablesHorizontalBar() {
+    const bar = document.getElementById('portalSubTablesBar');
+    if (!bar) return;
+
+    const catCfg = PODES_CATEGORY_MAP[currentCategory];
+    if (!catCfg) return;
+    const subTables = catCfg.subTables || [];
+
+    bar.innerHTML = subTables.map(st => {
+      const isActive = currentActiveSubTable && currentActiveSubTable.module === st.module && currentActiveSubTable.sheet === st.sheet;
+      const cleanTitle = cleanSubTableTitle(st.title) || st.title;
+      return `
+        <button type="button" onclick="window.PresisiEngine.selectSubTable('${currentCategory}', '${st.module}', '${st.sheet}')" class="px-3 py-1.5 rounded-full text-xs font-bold shrink-0 transition flex items-center gap-1.5 cursor-pointer ${isActive ? 'bg-[#0D6E5B] text-white shadow-xs' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80'}" title="${st.title}">
+          <span class="text-[10px] px-1.5 py-0.5 rounded font-black ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}">${st.sheet}</span>
+          <span class="max-w-[150px] truncate text-[11px]">${cleanTitle}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function selectSubTable(catKey, moduleFile, tableSheet) {
+    closeAllCategoryDropdowns();
+
+    if (catKey && catKey !== currentCategory) {
+      setCategory(catKey);
+    }
+
+    const catCfg = PODES_CATEGORY_MAP[currentCategory];
+    const subTable = (catCfg && catCfg.subTables) ? catCfg.subTables.find(t => t.module === moduleFile && t.sheet === tableSheet) : null;
+
+    currentActiveSubTable = {
+      category: currentCategory,
+      module: moduleFile,
+      sheet: tableSheet,
+      title: subTable ? subTable.title : `Tabel ${tableSheet}`
+    };
+
+    // Update active badges & labels
+    const titleEl = document.getElementById('portalActiveTableTitle');
+    const modEl = document.getElementById('portalActiveModuleFile');
+    if (titleEl) titleEl.textContent = `Tabel ${tableSheet}: ${cleanSubTableTitle(currentActiveSubTable.title)}`;
+    if (modEl) modEl.textContent = moduleFile;
+
+    // Refresh sub-tables horizontal bar & dropdowns
+    renderSubTablesHorizontalBar();
+    renderCategoryDropdowns();
+
+    // Fetch real PODES data
+    loadRealPodesTable(moduleFile, tableSheet);
+  }
+
+  function loadRealPodesTable(moduleFile, tableSheet) {
+    const cacheKey = `${moduleFile}::${tableSheet}`;
+    if (podesTableCache[cacheKey]) {
+      applyRealTableData(podesTableCache[cacheKey]);
+      return;
+    }
+
+    const url = `/portal/podes/table-data?module=${encodeURIComponent(moduleFile)}&table=${encodeURIComponent(tableSheet)}&kecamatan=ALL`;
+    
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error('Network error: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        if (data && data.success) {
+          podesTableCache[cacheKey] = data;
+          applyRealTableData(data);
+        }
+      })
+      .catch(err => {
+        console.warn('Real PODES fetch error:', err);
+      });
+  }
+
+  function applyRealTableData(data) {
+    currentRealTableData = data;
+
+    // Update row count
+    const villageRows = (data.kecamatan_rows || []).filter(r => r.desa && !r.is_total);
+    const countEl = document.getElementById('portalActiveRowCount');
+    if (countEl) countEl.textContent = `${villageRows.length} Desa`;
+
+    // Re-render table
+    renderPresisiTable();
+
+    // Update Chart 1 title and data
+    const t1 = document.getElementById('titleChart1');
+    const b1 = document.getElementById('labelChart1Badge');
+    if (t1) t1.textContent = `Tabel ${data.table}: ${cleanSubTableTitle(data.title)}`;
+    if (b1) b1.textContent = `TABEL ${data.table}`;
+
+    // Update Presisi Charts with real table metrics
+    updatePresisiCharts();
+  }
+
   // INITIALIZATION
   function init() {
     if (typeof window.PODES_2025_DATABASE === 'undefined' || typeof L === 'undefined' || !document.getElementById('mapPresisi')) {
@@ -209,6 +900,9 @@ window.PresisiEngine = (function() {
     renderExecutiveSummary();
     renderPresisiTable();
     renderAgregatKecamatanSection();
+    renderCategoryDropdowns();
+    renderSubTablesHorizontalBar();
+    loadRealPodesTable(currentActiveSubTable.module, currentActiveSubTable.sheet);
     setupEventListeners();
     setViewMode('peta');
   }
@@ -248,6 +942,13 @@ window.PresisiEngine = (function() {
       if (map) map.invalidateSize();
     });
 
+    // Close category dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.category-podes-wrapper')) {
+        closeAllCategoryDropdowns();
+      }
+    });
+
     // Keyboard arrow navigation for Storytelling Carousel
     document.addEventListener('keydown', (e) => {
       if (e.target && ['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
@@ -269,12 +970,35 @@ window.PresisiEngine = (function() {
     if (!CATEGORY_CONFIG[catKey]) return;
     currentCategory = catKey;
 
+    closeAllCategoryDropdowns();
+
+    // If sub-table is not in this category, set to category default
+    const catCfg = PODES_CATEGORY_MAP[catKey];
+    if (catCfg && (!currentActiveSubTable || currentActiveSubTable.category !== catKey)) {
+      const defTable = (catCfg.subTables && catCfg.subTables.length > 0) ? catCfg.subTables[0] : null;
+      if (defTable) {
+        currentActiveSubTable = {
+          category: catKey,
+          module: defTable.module,
+          sheet: defTable.sheet,
+          title: defTable.title
+        };
+        const titleEl = document.getElementById('portalActiveTableTitle');
+        const modEl = document.getElementById('portalActiveModuleFile');
+        if (titleEl) titleEl.textContent = `Tabel ${defTable.sheet}: ${cleanSubTableTitle(defTable.title)}`;
+        if (modEl) modEl.textContent = defTable.module;
+        loadRealPodesTable(defTable.module, defTable.sheet);
+      }
+    }
+    renderSubTablesHorizontalBar();
+    renderCategoryDropdowns();
+
     // Update Category Pills
     document.querySelectorAll('.presisi-cat-pill').forEach(btn => {
       if (btn.getAttribute('data-category') === catKey) {
-        btn.className = "presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0b2545] text-white shadow-xs";
+        btn.className = "presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0D6E5B] text-white shadow-xs cursor-pointer select-none";
       } else {
-        btn.className = "presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60";
+        btn.className = "presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none";
       }
     });
 
@@ -1288,21 +2012,48 @@ window.PresisiEngine = (function() {
     let labels1 = [];
     let data1 = [];
 
-    if (isMacro) {
-      labels1 = db.kecamatanList.map(k => k.nama);
-      data1 = db.kecamatanList.map(k => getFeatureMetricValue(k.nama, cat));
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const firstCol = currentRealTableData.columns[0].col;
+      if (isMacro) {
+        const kecVals = {};
+        db.kecamatanList.forEach(k => { kecVals[k.nama.toUpperCase()] = 0; });
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const kname = (r.kecamatan || '').toUpperCase();
+          const num = parseFloat(r.values ? r.values[firstCol] : 0) || 0;
+          if (r.is_total && num > 0) {
+            kecVals[kname] = num;
+          } else if (r.desa) {
+            if (!kecVals[kname] || kecVals[kname] === 0) {
+              kecVals[kname] = (kecVals[kname] || 0) + num;
+            }
+          }
+        });
+        labels1 = db.kecamatanList.map(k => k.nama);
+        data1 = db.kecamatanList.map(k => kecVals[k.nama.toUpperCase()] || 0);
+      } else {
+        const vRows = (currentRealTableData.kecamatan_rows || []).filter(r => 
+          r.desa && !r.is_total && (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase()
+        );
+        labels1 = vRows.map(r => r.desa);
+        data1 = vRows.map(r => parseFloat(r.values ? r.values[firstCol] : 0) || 0);
+      }
     } else {
-      const vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase());
-      labels1 = vList.map(v => v.nama);
-      data1 = vList.map(v => {
-        if (cat === 'ekonomi') return v.ekonomi.ikm;
-        if (cat === 'lingkungan') return v.lingkungan.pln;
-        if (cat === 'sosial') return v.sosial.sdNeg + v.sosial.sdSwa + v.sosial.miNeg + v.sosial.miSwa;
-        if (cat === 'keuangan') return v.keuangan.bumdes;
-        if (cat === 'umum') return v.umum.luas || 0;
-        if (cat === 'pemerintah') return v.pemerintah.totalAparat;
-        return 0;
-      });
+      if (isMacro) {
+        labels1 = db.kecamatanList.map(k => k.nama);
+        data1 = db.kecamatanList.map(k => getFeatureMetricValue(k.nama, cat));
+      } else {
+        const vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase());
+        labels1 = vList.map(v => v.nama);
+        data1 = vList.map(v => {
+          if (cat === 'ekonomi') return v.ekonomi.ikm;
+          if (cat === 'lingkungan') return v.lingkungan.pln;
+          if (cat === 'sosial') return v.sosial.sdNeg + v.sosial.sdSwa + v.sosial.miNeg + v.sosial.miSwa;
+          if (cat === 'keuangan') return v.keuangan.bumdes;
+          if (cat === 'umum') return v.umum.luas || 0;
+          if (cat === 'pemerintah') return v.pemerintah.totalAparat;
+          return 0;
+        });
+      }
     }
 
     // Sort kecamatan list for Top 5 vs Bottom 5 in Chart 3 (Descending order with rank labels)
@@ -2088,7 +2839,9 @@ window.PresisiEngine = (function() {
     }
   }
 
-  // TABLE TABULATION & CSV EXPORT
+  // =========================================================================
+  // TABLE TABULATION & CSV EXPORT (INTEGRATED REAL PODES 2025 TABLES)
+  // =========================================================================
   let currentTableData = [];
   let tableSearchQuery = '';
 
@@ -2097,77 +2850,99 @@ window.PresisiEngine = (function() {
     const tbody = document.getElementById('tbodyPresisi');
     if (!thead || !tbody) return;
 
-    const cfg = CATEGORY_CONFIG[currentCategory];
-    thead.innerHTML = `
-      <tr>
-        ${cfg.tableColumns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap">${col.label}</th>`).join('')}
-      </tr>
-    `;
+    // DYNAMIC RENDERING FROM REAL PODES 2025 SUB-TABLE IF AVAILABLE
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      thead.innerHTML = `
+        <tr class="bg-slate-100/90 text-slate-700 text-xs">
+          <th class="p-2.5 font-bold whitespace-nowrap text-center w-12 border-b border-slate-200">No</th>
+          <th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">Desa / Kelurahan</th>
+          <th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">Kecamatan</th>
+          ${currentRealTableData.columns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap text-right border-b border-slate-200" title="${col.label}">${col.label}</th>`).join('')}
+        </tr>
+      `;
 
-    currentTableData = db.desaList.map((d, idx) => {
-      let row = {
+      const villageRows = (currentRealTableData.kecamatan_rows || []).filter(r => r.desa && !r.is_total);
+      currentTableData = villageRows.map((r, idx) => ({
         no: idx + 1,
-        nama: d.nama,
-        status: d.status,
-        kecamatan: d.kecamatan
-      };
+        nama: r.desa,
+        status: (r.desa.toLowerCase().includes('kelurahan') || r.desa.toLowerCase() === 'lasusua') ? 'Kelurahan' : 'Desa',
+        kecamatan: r.kecamatan,
+        values: r.values || {}
+      }));
+    } else {
+      // FALLBACK TO STATIC CATEGORY CONFIG
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      thead.innerHTML = `
+        <tr class="bg-slate-100/90 text-slate-700 text-xs">
+          ${cfg.tableColumns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">${col.label}</th>`).join('')}
+        </tr>
+      `;
 
-      if (currentCategory === 'ekonomi') {
-        row.ikm = d.ekonomi.ikm;
-        row.minimarket = d.ekonomi.minimarket;
-        row.resto = d.ekonomi.resto;
-        row.hotelPenginapan = d.ekonomi.hotel + d.ekonomi.penginapan;
-        row.pasar = d.ekonomi.pasarPerm + d.ekonomi.pasarSemi;
-        row.bank = d.ekonomi.bank;
-        row.ksp = d.ekonomi.ksp;
-        row.kur = d.ekonomi.kur ? 'Ada' : '-';
-        row.prodUnggulan = d.ekonomi.prodUnggulan || d.umum.komoditas || '-';
-      } else if (currentCategory === 'lingkungan') {
-        row.pln = d.lingkungan.pln;
-        row.nonPln = d.lingkungan.nonPln;
-        row.pencemaran = d.lingkungan.bebasPencemaran ? 'Bebas' : 'Ada';
-        row.sampah = d.lingkungan.sampah ? 'Ada' : '-';
-        row.pupuk = d.lingkungan.pupukOrganik ? 'Ada' : '-';
-        row.energi = d.lingkungan.energiTerbarukan ? 'Ada' : '-';
-        row.polaTanam = d.lingkungan.polaTanam ? 'Ada' : '-';
-        row.panenHujan = d.lingkungan.panenHujan ? 'Ada' : '-';
-      } else if (currentCategory === 'sosial') {
-        row.tk = d.sosial.tk;
-        row.sd = d.sosial.sdNeg + d.sosial.sdSwa + d.sosial.miNeg + d.sosial.miSwa;
-        row.smp = d.sosial.smpNeg + d.sosial.smpSwa + d.sosial.mtsNeg + d.sosial.mtsSwa;
-        row.sma = d.sosial.smaNeg + d.sosial.smaSwa + d.sosial.smk;
-        row.puskesmas = d.sosial.puskesmasRI + d.sosial.puskesmasNonRI;
-        row.pustu = d.sosial.pustu;
-        row.poskesdes = d.sosial.poskesdes;
-        row.bidan = d.sosial.bidan;
-        row.dokter = d.sosial.dokter;
-      } else if (currentCategory === 'keuangan') {
-        row.bumdes = d.keuangan.bumdes > 0 ? d.keuangan.bumdes : '-';
-        row.kendaraanDinas = d.keuangan.kendaraanDinas || '-';
-        row.tanahKas = d.keuangan.tanahKas ? 'Ada' : '-';
-        row.pades = d.keuangan.pades ? 'Ada' : '-';
-        row.danaDesa = d.keuangan.danaDesa ? 'Terserap' : 'Ada';
-        row.bankDesa = d.keuangan.bankDesa ? 'Ada' : '-';
-        row.kiosDesa = d.keuangan.kiosDesa ? 'Ada' : '-';
-      } else if (currentCategory === 'umum') {
-        row.topografi = d.umum.topografi || '-';
-        row.luas = d.umum.luas ? d.umum.luas + ' km²' : '-';
-        row.statusHutan = d.umum.statusHutan || '-';
-        row.pesisir = d.umum.pesisir ? 'Pesisir' : 'Bukan';
-        row.komoditas = d.umum.komoditas || '-';
-        row.lokasiKantor = d.umum.lokasiKantor || 'Di Desa';
-      } else if (currentCategory === 'pemerintah') {
-        row.totalAparat = d.pemerintah.totalAparat;
-        row.kadesGender = d.pemerintah.kadesGender || '-';
-        row.kadesPendidikan = d.pemerintah.kadesPendidikan || '-';
-        row.sekdesGender = d.pemerintah.sekdesGender || '-';
-        row.bpd = d.pemerintah.bpd ? 'Ada' : '-';
-        row.musdes = d.pemerintah.musdes ? 'Ada' : '-';
-        row.kantorDesa = d.pemerintah.kantorDesa ? 'Ada' : '-';
-      }
+      currentTableData = db.desaList.map((d, idx) => {
+        let row = {
+          no: idx + 1,
+          nama: d.nama,
+          status: d.status,
+          kecamatan: d.kecamatan
+        };
 
-      return row;
-    });
+        if (currentCategory === 'ekonomi') {
+          row.ikm = d.ekonomi.ikm;
+          row.minimarket = d.ekonomi.minimarket;
+          row.resto = d.ekonomi.resto;
+          row.hotelPenginapan = d.ekonomi.hotel + d.ekonomi.penginapan;
+          row.pasar = d.ekonomi.pasarPerm + d.ekonomi.pasarSemi;
+          row.bank = d.ekonomi.bank;
+          row.ksp = d.ekonomi.ksp;
+          row.kur = d.ekonomi.kur ? 'Ada' : '-';
+          row.prodUnggulan = d.ekonomi.prodUnggulan || d.umum.komoditas || '-';
+        } else if (currentCategory === 'lingkungan') {
+          row.pln = d.lingkungan.pln;
+          row.nonPln = d.lingkungan.nonPln;
+          row.pencemaran = d.lingkungan.bebasPencemaran ? 'Bebas' : 'Ada';
+          row.sampah = d.lingkungan.sampah ? 'Ada' : '-';
+          row.pupuk = d.lingkungan.pupukOrganik ? 'Ada' : '-';
+          row.energi = d.lingkungan.energiTerbarukan ? 'Ada' : '-';
+          row.polaTanam = d.lingkungan.polaTanam ? 'Ada' : '-';
+          row.panenHujan = d.lingkungan.panenHujan ? 'Ada' : '-';
+        } else if (currentCategory === 'sosial') {
+          row.tk = d.sosial.tk;
+          row.sd = d.sosial.sdNeg + d.sosial.sdSwa + d.sosial.miNeg + d.sosial.miSwa;
+          row.smp = d.sosial.smpNeg + d.sosial.smpSwa + d.sosial.mtsNeg + d.sosial.mtsSwa;
+          row.sma = d.sosial.smaNeg + d.sosial.smaSwa + d.sosial.smk;
+          row.puskesmas = d.sosial.puskesmasRI + d.sosial.puskesmasNonRI;
+          row.pustu = d.sosial.pustu;
+          row.poskesdes = d.sosial.poskesdes;
+          row.bidan = d.sosial.bidan;
+          row.dokter = d.sosial.dokter;
+        } else if (currentCategory === 'keuangan') {
+          row.bumdes = d.keuangan.bumdes > 0 ? d.keuangan.bumdes : '-';
+          row.kendaraanDinas = d.keuangan.kendaraanDinas || '-';
+          row.tanahKas = d.keuangan.tanahKas ? 'Ada' : '-';
+          row.pades = d.keuangan.pades ? 'Ada' : '-';
+          row.danaDesa = d.keuangan.danaDesa ? 'Terserap' : 'Ada';
+          row.bankDesa = d.keuangan.bankDesa ? 'Ada' : '-';
+          row.kiosDesa = d.keuangan.kiosDesa ? 'Ada' : '-';
+        } else if (currentCategory === 'umum') {
+          row.topografi = d.umum.topografi || '-';
+          row.luas = d.umum.luas ? d.umum.luas + ' km²' : '-';
+          row.statusHutan = d.umum.statusHutan || '-';
+          row.pesisir = d.umum.pesisir ? 'Pesisir' : 'Bukan';
+          row.komoditas = d.umum.komoditas || '-';
+          row.lokasiKantor = d.umum.lokasiKantor || 'Di Desa';
+        } else if (currentCategory === 'pemerintah') {
+          row.totalAparat = d.pemerintah.totalAparat;
+          row.kadesGender = d.pemerintah.kadesGender || '-';
+          row.kadesPendidikan = d.pemerintah.kadesPendidikan || '-';
+          row.sekdesGender = d.pemerintah.sekdesGender || '-';
+          row.bpd = d.pemerintah.bpd ? 'Ada' : '-';
+          row.musdes = d.pemerintah.musdes ? 'Ada' : '-';
+          row.kantorDesa = d.pemerintah.kantorDesa ? 'Ada' : '-';
+        }
+
+        return row;
+      });
+    }
 
     renderTableRows();
   }
@@ -2178,24 +2953,60 @@ window.PresisiEngine = (function() {
     if (!tbody) return;
 
     let filtered = currentTableData;
-    if (tableSearchQuery) {
-      const q = tableSearchQuery.toLowerCase();
-      filtered = filtered.filter(r => 
-        (r.nama || '').toLowerCase().includes(q) ||
-        (r.kecamatan || '').toLowerCase().includes(q) ||
-        (r.prodUnggulan || '').toLowerCase().includes(q) ||
-        (r.komoditas || '').toLowerCase().includes(q)
-      );
+
+    // Filter by Kecamatan if active
+    if (currentKecamatan && currentKecamatan !== 'ALL') {
+      filtered = filtered.filter(r => (r.kecamatan || '').toUpperCase() === currentKecamatan.toUpperCase());
     }
 
-    if (badgeCount) badgeCount.textContent = `Menampilkan ${filtered.length} dari ${currentTableData.length} Desa`;
+    // Filter by Search Query
+    if (tableSearchQuery) {
+      const q = tableSearchQuery.toLowerCase();
+      filtered = filtered.filter(r => {
+        if ((r.nama || '').toLowerCase().includes(q)) return true;
+        if ((r.kecamatan || '').toLowerCase().includes(q)) return true;
+        if (r.values) {
+          for (const k in r.values) {
+            if (String(r.values[k]).toLowerCase().includes(q)) return true;
+          }
+        }
+        return false;
+      });
+    }
 
-    const cfg = CATEGORY_CONFIG[currentCategory];
-    tbody.innerHTML = filtered.map(row => `
-      <tr class="hover:bg-slate-50 transition cursor-pointer" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
-        ${cfg.tableColumns.map(col => `<td class="p-2.5 whitespace-nowrap">${row[col.key] !== undefined ? row[col.key] : '-'}</td>`).join('')}
-      </tr>
-    `).join('');
+    if (badgeCount) {
+      const sheetName = currentRealTableData ? ` (Tabel ${currentRealTableData.table})` : '';
+      badgeCount.textContent = `Menampilkan ${filtered.length} dari ${currentTableData.length} Desa${sheetName}`;
+    }
+
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="hover:bg-emerald-50/50 transition cursor-pointer border-b border-slate-100 group" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
+          <td class="p-2.5 whitespace-nowrap text-center text-slate-500 text-xs">${row.no}</td>
+          <td class="p-2.5 whitespace-nowrap font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+            <span>${row.nama}</span>
+          </td>
+          <td class="p-2.5 whitespace-nowrap text-slate-600 text-xs font-medium">${row.kecamatan}</td>
+          ${currentRealTableData.columns.map(col => {
+            let val = (row.values && row.values[col.col] !== undefined) ? row.values[col.col] : '-';
+            let isNum = typeof val === 'number' || (!isNaN(val) && val !== '' && val !== null);
+            let displayVal = val;
+            if (isNum && val !== '-') {
+              displayVal = Number(val).toLocaleString('id-ID');
+            }
+            return `<td class="p-2.5 whitespace-nowrap text-right text-slate-800 text-xs font-semibold ${isNum && Number(val) > 0 ? 'text-emerald-800 font-bold' : ''}">${displayVal}</td>`;
+          }).join('')}
+        </tr>
+      `).join('');
+    } else {
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="hover:bg-slate-50 transition cursor-pointer" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
+          ${cfg.tableColumns.map(col => `<td class="p-2.5 whitespace-nowrap">${row[col.key] !== undefined ? row[col.key] : '-'}</td>`).join('')}
+        </tr>
+      `).join('');
+    }
   }
 
   function onTableSearch(query) {
@@ -2209,22 +3020,46 @@ window.PresisiEngine = (function() {
 
   function exportCSV() {
     if (!currentTableData || !currentTableData.length) return;
-    const cfg = CATEGORY_CONFIG[currentCategory];
 
-    let csv = cfg.tableColumns.map(c => `"${c.label}"`).join(',') + '\n';
-    currentTableData.forEach(row => {
-      let line = cfg.tableColumns.map(c => {
-        let val = row[c.key] !== undefined ? row[c.key] : '';
-        return `"${String(val).replace(/"/g, '""')}"`;
-      }).join(',');
-      csv += line + '\n';
-    });
+    let csv = '';
+    let filename = '';
+
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      let headers = ['"No"', '"Desa / Kelurahan"', '"Kecamatan"'];
+      currentRealTableData.columns.forEach(col => {
+        headers.push(`"${String(col.label).replace(/"/g, '""')}"`);
+      });
+      csv = headers.join(',') + '\n';
+
+      currentTableData.forEach(row => {
+        let line = [row.no, `"${String(row.nama).replace(/"/g, '""')}"`, `"${String(row.kecamatan).replace(/"/g, '""')}"`];
+        currentRealTableData.columns.forEach(col => {
+          let val = (row.values && row.values[col.col] !== undefined) ? row.values[col.col] : '';
+          line.push(`"${String(val).replace(/"/g, '""')}"`);
+        });
+        csv += line.join(',') + '\n';
+      });
+
+      const cleanSheet = (currentRealTableData.table || 'tabel').replace(/[^a-zA-Z0-9]/g, '_');
+      filename = `PODES_2025_Kolaka_Utara_Tabel_${cleanSheet}.csv`;
+    } else {
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      csv = cfg.tableColumns.map(c => `"${c.label}"`).join(',') + '\n';
+      currentTableData.forEach(row => {
+        let line = cfg.tableColumns.map(c => {
+          let val = row[c.key] !== undefined ? row[c.key] : '';
+          return `"${String(val).replace(/"/g, '""')}"`;
+        }).join(',');
+        csv += line + '\n';
+      });
+      filename = `PODES_2025_Kolaka_Utara_${currentCategory}.csv`;
+    }
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `PODES_2025_Kolaka_Utara_${currentCategory}.csv`;
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -2762,6 +3597,11 @@ let agregatSector = 'all';
   return {
     init: init,
     setCategory: setCategory,
+    toggleCategoryDropdown: toggleCategoryDropdown,
+    closeAllCategoryDropdowns: closeAllCategoryDropdowns,
+    selectSubTable: selectSubTable,
+    loadRealPodesTable: loadRealPodesTable,
+    renderSubTablesHorizontalBar: renderSubTablesHorizontalBar,
     setViewMode: setViewMode,
     toggleSplitView: toggleSplitView,
     setAdminLevel: setAdminLevel,

@@ -865,50 +865,68 @@
             <!-- Row 1: Kapsul Klaster Data Sheet Excel • Row 2: View Switcher (Peta/Analisis) -->
             <!-- ========================================================================= -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-3 space-y-3">
-                <!-- ROW 1: 6 Kapsul Klaster Data Sheet Excel Sesuai Permintaan -->
+                <!-- ROW 1: 6 Kapsul Klaster Data Sheet Excel Sesuai Permintaan (With Integrated Sub-Table Dropdowns) -->
                 <div class="flex items-center justify-between gap-3 flex-wrap pb-2 border-b border-slate-100">
-                    <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none flex-1">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none flex-1" id="portalCategoryPillsRow">
                         <!-- Pill 1: Sarana Ekonomi (Active Default) -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('ekonomi')" id="pill-cat-ekonomi" class="presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0D6E5B] text-white shadow-xs" data-category="ekonomi">
-                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                            <span data-i18n="pill_cat_ekonomi">Sarana Ekonomi</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-ekonomi">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('ekonomi', event)" id="pill-cat-ekonomi" class="presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0D6E5B] text-white shadow-xs cursor-pointer select-none" data-category="ekonomi">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                <span data-i18n="pill_cat_ekonomi" id="pill-text-ekonomi">Sarana Ekonomi</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-ekonomi" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-ekonomi" class="category-podes-dropdown hidden absolute left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
 
                         <!-- Pill 2: Perumahan & Lingkungan -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('lingkungan')" id="pill-cat-lingkungan" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60" data-category="lingkungan">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span data-i18n="pill_cat_lingkungan">Perumahan & Lingkungan</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-lingkungan">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('lingkungan', event)" id="pill-cat-lingkungan" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none" data-category="lingkungan">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span data-i18n="pill_cat_lingkungan" id="pill-text-lingkungan">Perumahan & Lingkungan</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-lingkungan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-lingkungan" class="category-podes-dropdown hidden absolute left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
 
                         <!-- Pill 3: Pendidikan & Kesehatan -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('sosial')" id="pill-cat-sosial" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60" data-category="sosial">
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                            <span data-i18n="pill_cat_sosial">Pendidikan & Kesehatan</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-sosial">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('sosial', event)" id="pill-cat-sosial" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none" data-category="sosial">
+                                <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                <span data-i18n="pill_cat_sosial" id="pill-text-sosial">Pendidikan & Kesehatan</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-sosial" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-sosial" class="category-podes-dropdown hidden absolute left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
 
                         <!-- Pill 4: Keuangan & Aset Desa -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('keuangan')" id="pill-cat-keuangan" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60" data-category="keuangan">
-                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            <span data-i18n="pill_cat_keuangan">Keuangan & Aset Desa</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-keuangan">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('keuangan', event)" id="pill-cat-keuangan" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none" data-category="keuangan">
+                                <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                <span data-i18n="pill_cat_keuangan" id="pill-text-keuangan">Keuangan & Aset Desa</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-keuangan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-keuangan" class="category-podes-dropdown hidden absolute left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
 
                         <!-- Pill 5: Keterangan Umum -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('umum')" id="pill-cat-umum" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60" data-category="umum">
-                            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                            <span data-i18n="pill_cat_umum">Keterangan Umum</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-umum">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('umum', event)" id="pill-cat-umum" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none" data-category="umum">
+                                <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                                <span data-i18n="pill_cat_umum" id="pill-text-umum">Keterangan Umum</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-umum" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-umum" class="category-podes-dropdown hidden absolute left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
 
                         <!-- Pill 6: Pemerintah Desa -->
-                        <button type="button" onclick="window.PresisiEngine.setCategory('pemerintah')" id="pill-cat-pemerintah" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60" data-category="pemerintah">
-                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                            <span data-i18n="pill_cat_pemerintah">Pemerintah Desa</span>
-                            <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
+                        <div class="relative inline-block category-podes-wrapper" id="catWrapper-pemerintah">
+                            <button type="button" onclick="window.PresisiEngine.toggleCategoryDropdown('pemerintah', event)" id="pill-cat-pemerintah" class="presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none" data-category="pemerintah">
+                                <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                                <span data-i18n="pill_cat_pemerintah" id="pill-text-pemerintah">Pemerintah Desa</span>
+                                <svg class="w-3 h-3 opacity-70 transition-transform duration-200" id="pill-chev-pemerintah" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div id="dropdown-cat-pemerintah" class="category-podes-dropdown hidden absolute right-0 sm:left-0 top-full mt-2 w-80 sm:w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"></div>
+                        </div>
                     </div>
 
                     <!-- Right Side: Peta Tematik Toggle -->
@@ -918,6 +936,46 @@
                             <input type="checkbox" id="presisiToggleTematik" checked onchange="window.PresisiEngine.toggleTematik(this.checked)" class="sr-only peer">
                             <div class="w-10 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0D6E5B]"></div>
                         </label>
+                    </div>
+                </div>
+
+                <!-- ROW 1.5: SUB-TABLES HORIZONTAL CHIPS & ACTIVE METRIC STRIP -->
+                <div class="pt-1.5 pb-1 space-y-2.5 border-b border-slate-100" id="portalSubTablesSection">
+                    <div class="flex items-center justify-between gap-2 text-xs flex-wrap">
+                        <div class="flex items-center gap-1.5 text-slate-600 font-bold text-[11px]">
+                            <i class="bi bi-file-earmark-spreadsheet-fill text-emerald-600"></i>
+                            <span>Lembar / Tabel Excel Podes 2025:</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-black text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-2xs flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Terintegrasi Admin Desa Madani</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Scrolling Chips Bar -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none" id="portalSubTablesBar">
+                        <!-- Chips rendered here dynamically -->
+                    </div>
+
+                    <!-- Active Table Title Card -->
+                    <div class="flex items-center justify-between gap-3 text-xs bg-slate-50/90 border border-slate-200/80 rounded-xl px-3 py-2 flex-wrap sm:flex-nowrap">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                            <div class="truncate">
+                                <span class="font-extrabold text-slate-900" id="portalActiveTableTitle">Tabel 5.6: Industri Mikro & Kecil (IMK)</span>
+                                <span class="text-slate-400 mx-1">•</span>
+                                <span class="text-slate-500 text-[11px]" id="portalActiveModuleFile">SARANA EKONOMI DAN INDUSTRI.xlsx</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span id="portalActiveRowCount" class="text-[11px] font-bold text-slate-500">133 Desa</span>
+                            <button type="button" onclick="window.PresisiEngine.exportCSV()" class="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold text-[11px] flex items-center gap-1.5 transition shadow-2xs cursor-pointer group">
+                                <i class="bi bi-download text-[10px] text-emerald-600 group-hover:scale-110 transition-transform"></i>
+                                <span>Export CSV</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
