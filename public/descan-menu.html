@@ -165,8 +165,17 @@
     <div class="w-full bg-white border-b border-slate-200/90 py-2 px-3 sm:px-4 lg:px-5 shadow-xs">
         <div class="w-full flex items-center justify-between gap-4">
             
-            <!-- Left: Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
-            <div class="flex items-center gap-3">
+            <!-- Left: Toggle Sidebar Button + Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Tombol Buka/Tutup Sidebar (Collapsible) -->
+                <button type="button" id="btnToggleSidebar" onclick="toggleSidebar()" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 hover:bg-[#0c4a34] hover:text-white text-slate-700 transition duration-150 flex items-center gap-2 border border-slate-200 shadow-2xs cursor-pointer group active:scale-95" title="Buka / Tutup Sidebar Navigasi (Ctrl+B)">
+                    <svg id="iconSidebarToggle" class="w-4 h-4 transition duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span id="textToggleSidebar" class="hidden sm:inline text-xs font-black tracking-tight">Sidebar</span>
+                </button>
                 <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-3 group" title="Kembali ke Dashboard Utama 6 Desa Binaan">
                     <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/90 px-2 py-1 rounded-xl shadow-2xs">
                         <img src="/images/logo_bps.png" alt="BPS" class="h-8 sm:h-9 w-auto object-contain drop-shadow-xs">
@@ -346,7 +355,7 @@
                 <!-- DEDICATED SIDEBAR NAVIGASI SISTEMATIS BPS DESA CANTIK       -->
                 <!-- Rata Kiri & Sesuai Persis Lampiran Screenshot Pengguna     -->
                 <!-- ========================================================== -->
-                <aside class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30">
+                <aside id="mainAppSidebar" class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30 transition-all duration-300">
                     <div class="p-1 sm:p-1.5 flex flex-col justify-between min-h-[620px] select-none text-left">
                         
                         <!-- Top Navigations Groups -->
@@ -354,8 +363,15 @@
                             
                             <!-- GROUP 1: ADMINISTRASI & DATA -->
                             <div class="space-y-1">
-                                <div class="text-[11px] font-black uppercase tracking-wider text-slate-400 px-3 pb-2 text-left">
-                                    ADMINISTRASI &amp; DATA
+                                <div class="flex items-center justify-between px-3 pb-2 text-left">
+                                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-400">ADMINISTRASI &amp; DATA</span>
+                                    <!-- Tombol Tutup Sidebar Cepat -->
+                                    <button type="button" onclick="toggleSidebar(false)" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-200 transition cursor-pointer" title="Tutup Sidebar (Ctrl+B)">
+                                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                    </button>
                                 </div>
                                 <nav class="space-y-1" aria-label="Administrasi dan Data">
                                     <!-- 1. Dashboard Desa -->
@@ -525,7 +541,7 @@
                 </aside>
 
                 <!-- RIGHT MAIN CONTENT (CONTAINER 4 TAMPILAN RESMI) -->
-                <div class="flex-1 min-w-0 space-y-6">
+                <div id="mainContentWrapper" class="flex-1 min-w-0 space-y-6 w-full transition-all duration-300">
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
@@ -3590,6 +3606,20 @@
                 
 
             </div>
+        </div>
+
+        <!-- Floating Re-open Sidebar Button (Tampil saat sidebar ditutup) -->
+        <button type="button" id="btnFloatingSidebarOpen" onclick="toggleSidebar(true)" class="hidden fixed left-4 bottom-6 z-40 px-4 py-2.5 rounded-2xl bg-[#0c4a34] hover:bg-[#083324] text-white shadow-xl font-black text-xs flex items-center gap-2.5 border border-emerald-500/40 transition active:scale-95 cursor-pointer animate-in fade-in slide-in-from-left duration-200">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <span>Buka Menu Navigasi</span>
+        </button>
+
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div id="sidebarMobileBackdrop" onclick="toggleSidebar(false)" class="hidden fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-25 lg:hidden transition-opacity"></div>
     </main>
 
     <div id="toastNotification" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl border border-slate-700 hidden">
@@ -5053,9 +5083,61 @@ for (const k in PODES_MASTER_BASELINE) {
             }
         }
 
+        // ==============================================================
+        // SIDEBAR TOGGLE (COLLAPSIBLE / BISA DITUTUP BUKA) HANDLERS
+        // ==============================================================
+        function toggleSidebar(forceState) {
+            const sidebar = document.getElementById('mainAppSidebar');
+            const toggleBtn = document.getElementById('btnToggleSidebar');
+            const toggleText = document.getElementById('textToggleSidebar');
+            const floatingBtn = document.getElementById('btnFloatingSidebarOpen');
+            const backdrop = document.getElementById('sidebarMobileBackdrop');
+            if (!sidebar) return;
+
+            const isCurrentlyOpen = !sidebar.classList.contains('hidden');
+            const willOpen = (typeof forceState === 'boolean') ? forceState : !isCurrentlyOpen;
+
+            if (willOpen) {
+                sidebar.classList.remove('hidden');
+                if (floatingBtn) floatingBtn.classList.add('hidden');
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+                    toggleBtn.classList.add('bg-slate-100', 'text-slate-700');
+                }
+                if (toggleText) toggleText.textContent = 'Sidebar';
+                if (backdrop && window.innerWidth < 1024) {
+                    backdrop.classList.remove('hidden');
+                }
+                try { localStorage.setItem('descan_sidebar_state', 'open'); } catch(e) {}
+            } else {
+                sidebar.classList.add('hidden');
+                if (floatingBtn) floatingBtn.classList.remove('hidden');
+                if (toggleBtn) {
+                    toggleBtn.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+                    toggleBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                }
+                if (toggleText) toggleText.textContent = 'Buka Menu';
+                if (backdrop) backdrop.classList.add('hidden');
+                try { localStorage.setItem('descan_sidebar_state', 'closed'); } catch(e) {}
+            }
+        }
+
+        // Shortcut keyboard Ctrl+B untuk buka/tutup sidebar
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'b' || e.key === 'B')) {
+                e.preventDefault();
+                toggleSidebar();
+            }
+        });
+
         function activateSidebarMenu(key) {
             isActivatingFromSidebar = true;
             syncSidebarItemActive(key);
+
+            // Tutup sidebar otomatis di layar mobile setelah memilih menu
+            if (window.innerWidth < 1024) {
+                toggleSidebar(false);
+            }
 
             if (key === 'dashboard') {
                 switchNavMenu('dashboard');
@@ -7880,6 +7962,18 @@ for (const k in PODES_MASTER_BASELINE) {
             const menuParam = (params.get('menu') || (window.location.hash ? window.location.hash.replace('#', '') : 'dashboard')).toLowerCase();
 
             currentTargetVillage = (typeof villagesData !== 'undefined' && villagesData[desaParam]) ? desaParam : 'kalukaluku';
+
+            // Pulihkan preferensi buka/tutup sidebar
+            try {
+                const savedSidebarState = localStorage.getItem('descan_sidebar_state');
+                if (savedSidebarState === 'closed') {
+                    toggleSidebar(false);
+                } else if (window.innerWidth < 1024) {
+                    toggleSidebar(false);
+                } else {
+                    toggleSidebar(true);
+                }
+            } catch(e) {}
             currentVillageKey = currentTargetVillage;
 
             const auth = typeof getDescanAuth === 'function' ? getDescanAuth() : null;
