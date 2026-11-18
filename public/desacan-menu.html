@@ -797,152 +797,426 @@
                 </div>
 
                 <!-- ===================================================================== -->
-                <!-- 2. PROFIL DESA (MONOGRAFI, SDM APARAT & POTENSI UNGGULAN)             -->
+                <!-- 2. PROFIL DESA (DESAIN MODERN LUXURY TRAVEL-SHOWCASE SESUAI GAMBAR)   -->
                 <!-- ===================================================================== -->
-                <div id="view-tentang" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
+                <div id="view-tentang" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
                     
-                    <!-- HERO BANNER TENTANG DESA (SESUAI GAMBAR LAMPIRAN USER: KEDAULATAN DATA & KEASRIAN WILAYAH) -->
-                    <div class="relative w-full rounded-3xl overflow-hidden shadow-xl border border-slate-700/60 bg-slate-950 text-white min-h-[300px] sm:min-h-[340px] flex flex-col justify-between p-6 sm:p-10 select-none">
-                        <!-- Nature Background Image with Rich Dark Gradient -->
+                    <!-- ============================================================== -->
+                    <!-- 1. HERO SECTION: EXPLORE DESA CANTIK (Sesuai Bagian Atas Gambar)-->
+                    <!-- ============================================================== -->
+                    <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-blue-950/40 bg-[#072448] text-white min-h-[380px] sm:min-h-[440px] flex flex-col justify-between p-6 sm:p-10 select-none">
+                        
+                        <!-- Panoramic Background Image with Deep Blue Luxury Gradient Overlay -->
                         <div class="absolute inset-0 z-0">
-                            <img id="heroTentangBg" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85" alt="Pesona Alam Desa Kalu Kaluku" class="w-full h-full object-cover object-center filter brightness-[0.45]">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent"></div>
+                            <img id="heroTentangBg" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=85" alt="Pesona Alam Desa Kalu Kaluku" class="w-full h-full object-cover object-center filter brightness-[0.38] scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#072448] via-[#072448]/75 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#072448]/90 via-transparent to-[#072448]/70"></div>
                         </div>
 
-                        <!-- Decorative Corner Foliage Graphic / Leaves Shapes (Sesuai Lampiran) -->
-                        <div class="absolute top-2 left-2 z-10 pointer-events-none opacity-85 animate-float-leaf">
-                            <svg class="w-20 h-20 sm:w-28 sm:h-28 text-emerald-400" viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M10 20 Q50 0 80 40 Q40 80 10 20 Z" opacity="0.6"/>
-                                <path d="M0 35 Q40 10 70 60 Q30 90 0 35 Z" opacity="0.8"/>
-                                <path d="M25 10 Q60 5 85 50 Q45 85 25 10 Z" opacity="0.4"/>
-                            </svg>
-                        </div>
-                        <div class="absolute top-2 right-2 z-10 pointer-events-none opacity-85 scale-x-[-1] animate-float-leaf" style="animation-delay: -3s;">
-                            <svg class="w-20 h-20 sm:w-28 sm:h-28 text-emerald-400" viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M10 20 Q50 0 80 40 Q40 80 10 20 Z" opacity="0.6"/>
-                                <path d="M0 35 Q40 10 70 60 Q30 90 0 35 Z" opacity="0.8"/>
-                                <path d="M25 10 Q60 5 85 50 Q45 85 25 10 Z" opacity="0.4"/>
-                            </svg>
-                        </div>
-
-                        <!-- Top Pills -->
-                        <div class="relative z-10 flex flex-col items-center gap-2 text-center">
-                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-xs font-bold text-slate-200 shadow-md">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span>• Sesi Aktif Terverifikasi BPS •</span>
-                                <span id="heroBannerDesaTag" class="text-amber-400 font-extrabold">Dashboard & Profil Desa Kalu Kaluku</span>
-                            </div>
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 backdrop-blur-md border border-emerald-500/40 text-[11px] font-black uppercase tracking-wider text-emerald-300 shadow-sm mt-1">
-                                <span>🌿</span>
-                                <span>KEDAULATAN DATA & KEASRIAN WILAYAH</span>
+                        <!-- Top Pre-Title Tagline with Decorative Lines (Sesuai Gambar) -->
+                        <div class="relative z-10 flex flex-col items-center gap-2 text-center pt-2">
+                            <div class="flex items-center justify-center gap-2.5 sm:gap-3 text-sky-400 font-extrabold text-[10px] sm:text-xs uppercase tracking-[0.25em]">
+                                <span class="w-6 sm:w-10 h-[1.5px] bg-sky-400/70"></span>
+                                <span id="heroBannerDesaTag">PORTAL SATU DATA • PROFIL RESMI DESA CANTIK</span>
+                                <span class="w-6 sm:w-10 h-[1.5px] bg-sky-400/70"></span>
                             </div>
                         </div>
 
-                        <!-- Center Hero Typography (Sesuai Persis Lampiran Media) -->
-                        <div class="relative z-10 my-4 text-center max-w-3xl mx-auto space-y-2">
+                        <!-- Center Typography: Explore the Village (Sesuai Header Gambar) -->
+                        <div class="relative z-10 my-4 text-center max-w-4xl mx-auto space-y-3">
                             <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-md">
-                                Jelajahi Pesona Alam & Data Resmi
+                                Jelajahi Potensi &amp; Pesona Alam
                             </h1>
-                            <div id="heroBannerDesaName" class="text-3xl sm:text-5xl lg:text-6xl font-serif italic font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 drop-shadow-lg pb-1">
-                                Desa Kalu Kaluku
+                            <div class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-teal-200 to-amber-200 drop-shadow-lg pb-1">
+                                <span id="heroBannerDesaName">Desa Kalu Kaluku</span>
                             </div>
-                            <p class="text-xs sm:text-sm text-slate-200/90 max-w-2xl mx-auto leading-relaxed font-medium pt-1 drop-shadow-sm">
-                                Dokumentasi visual lanskap alam, potensi agrikultur, kearifan lokal, serta transformasi statistik sektoral desa mandiri binaan BPS.
+                            <p class="text-xs sm:text-sm text-blue-100/90 max-w-2xl mx-auto leading-relaxed font-normal pt-1 drop-shadow-sm">
+                                Dokumentasi lanskap alam, struktur batas administrasi, komoditas perkebunan kakao, serta standardisasi aparatur Satu Data Indonesia (SDI) binaan BPS Kabupaten Kolaka Utara.
                             </p>
+
+                            <!-- Call to Action Buttons (Sesuai Tombol Biru Pill & Glass di Gambar) -->
+                            <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+                                <button type="button" onclick="downloadProfilDesaPdf()" class="px-5 py-2.5 rounded-full bg-sky-500 hover:bg-sky-400 text-white font-extrabold text-xs shadow-lg shadow-sky-500/30 transition flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+                                    <span>📥</span>
+                                    <span>Unduh Profil Desa (PDF)</span>
+                                    <span class="text-sky-200">→</span>
+                                </button>
+                                <button type="button" onclick="scrollToAparaturDesa()" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs backdrop-blur-md border border-white/25 transition flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+                                    <span>👥</span>
+                                    <span>Struktur Aparatur Desa</span>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Bottom Metadata Indicators inside Banner -->
-                        <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/15 text-xs text-slate-300">
-                            <div class="flex items-center gap-3">
-                                <span class="flex items-center gap-1">📍 <span id="heroBannerKec">Kec. Kodeoha, Kab. Kolaka Utara</span></span>
-                                <span class="hidden sm:inline">•</span>
-                                <span class="flex items-center gap-1">📊 <span id="heroBannerKategori">Pilot Utama Mandiri (Nilai 85%)</span></span>
+                        <!-- Bottom Stats / Trust Bar (Matching 5 Badges in Image) -->
+                        <div class="relative z-10 pt-4 border-t border-white/15 grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
+                            <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
+                                <div class="text-sm">🛡️</div>
+                                <div class="font-black text-white text-xs mt-0.5" id="heroBannerKategori">Pilot Utama Mandiri</div>
+                                <div class="text-[10px] text-sky-200/80">Kategori BPS 2026</div>
                             </div>
-                            <button type="button" onclick="downloadProfilDesaPdf()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition shadow-md flex items-center gap-1.5 cursor-pointer">
-                                <span>📥 Unduh Profil PDF</span>
-                            </button>
+                            <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
+                                <div class="text-sm">👥</div>
+                                <div class="font-black text-white text-xs mt-0.5">4.150 Jiwa</div>
+                                <div class="text-[10px] text-sky-200/80">Total Penduduk</div>
+                            </div>
+                            <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
+                                <div class="text-sm">🌾</div>
+                                <div class="font-black text-white text-xs mt-0.5">18,45 km²</div>
+                                <div class="text-[10px] text-sky-200/80">Luas Wilayah</div>
+                            </div>
+                            <div class="p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
+                                <div class="text-sm">🏘️</div>
+                                <div class="font-black text-white text-xs mt-0.5">4 Dusun &amp; 12 RT</div>
+                                <div class="text-[10px] text-sky-200/80" id="heroBannerKec">Kec. Kodeoha</div>
+                            </div>
+                            <div class="col-span-2 md:col-span-1 p-2 rounded-xl bg-white/5 backdrop-blur-xs border border-white/10">
+                                <div class="text-sm">⭐</div>
+                                <div class="font-black text-white text-xs mt-0.5">100% Terverifikasi</div>
+                                <div class="text-[10px] text-sky-200/80">Standar SDI BPS</div>
+                            </div>
                         </div>
+
                     </div>
 
-                    <!-- Content Top Header: Title & Download Action -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xl">🏛️</span>
-                                <h2 id="desaTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Profil, Monografi, & Potensi Desa Kalu Kaluku</h2>
+                    <!-- ============================================================== -->
+                    <!-- 2. SECTION 2: TOP DESTINATIONS / DUSUN & WILAYAH PEMUKIMAN     -->
+                    <!-- Sesuai Bagian "Top Destinations" pada Gambar Lampiran         -->
+                    <!-- ============================================================== -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm space-y-5">
+                        
+                        <!-- Header with Pre-Title and Link on Right -->
+                        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-2 border-b border-slate-100">
+                            <div>
+                                <div class="flex items-center gap-2 text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
+                                    <span>—</span>
+                                    <span>STRUKTUR WILAYAH DUSUN BINAAN</span>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-1">
+                                    Wilayah Dusun &amp; Pemukiman Warga
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-0.5">
+                                    Pusat permukiman, sentra perkebunan kakao, dan wilayah pesisir binaan BPS Kabupaten Kolaka Utara.
+                                </p>
                             </div>
-                            <p class="text-xs text-slate-500 mt-0.5">Dokumentasi Batas Administrasi Wilayah, Standarisasi Aparatur Desa & Potensi Sektoral Unggulan</p>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <span class="px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-black border border-sky-200">
+                                    4 Dusun Resmi • 12 RT
+                                </span>
+                            </div>
                         </div>
-                        <button type="button" onclick="downloadProfilDesaPdf()" class="px-4 py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs shadow-xs transition flex items-center gap-2 cursor-pointer shrink-0">
-                            <span>📥</span>
-                            <span>UNDUH / DOWNLOAD PROFIL DESA (PDF)</span>
-                        </button>
+
+                        <!-- 4 Dusun Cards Grid (Matching Top Destinations Cards in Image) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <!-- Card 1: Dusun I Kalu Kaluku -->
+                            <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Dusun I Kalu Kaluku" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-sky-500/90 text-white font-extrabold text-[10px] backdrop-blur-xs shadow-xs">
+                                        Pusat Desa
+                                    </span>
+                                </div>
+                                <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-1.5 text-xs font-black text-slate-900">
+                                            <span class="text-rose-500">📍</span>
+                                            <span>Dusun I Kalu Kaluku</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">
+                                            Pusat pemerintahan, kantor desa, sarana ibadah, dan fasilitas pelayanan administrasi SDI.
+                                        </p>
+                                    </div>
+                                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                                        <span>3 RT • 1.120 Jiwa</span>
+                                        <span class="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-xs transition">→</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Dusun II Toddopuli -->
+                            <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Dusun II Toddopuli" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-emerald-600/90 text-white font-extrabold text-[10px] backdrop-blur-xs shadow-xs">
+                                        Sentra Kakao
+                                    </span>
+                                </div>
+                                <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-1.5 text-xs font-black text-slate-900">
+                                            <span class="text-rose-500">📍</span>
+                                            <span>Dusun II Toddopuli</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">
+                                            Hamparan perkebunan kakao rakyat, komoditas unggulan desa dengan produktivitas tinggi.
+                                        </p>
+                                    </div>
+                                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                                        <span>3 RT • 1.050 Jiwa</span>
+                                        <span class="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-xs transition">→</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Dusun III Mattirodeceng -->
+                            <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Dusun III Mattirodeceng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-amber-500/90 text-white font-extrabold text-[10px] backdrop-blur-xs shadow-xs">
+                                        Agrowisata
+                                    </span>
+                                </div>
+                                <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-1.5 text-xs font-black text-slate-900">
+                                            <span class="text-rose-500">📍</span>
+                                            <span>Dusun III Mattirodeceng</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">
+                                            Lembah pertanian holtikultura, kebun cengkeh, dan peternakan terintegrasi warga.
+                                        </p>
+                                    </div>
+                                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                                        <span>3 RT • 980 Jiwa</span>
+                                        <span class="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-xs transition">→</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Dusun IV Bunga Eja -->
+                            <div class="rounded-2xl border border-slate-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative h-44 w-full overflow-hidden bg-slate-100">
+                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Dusun IV Bunga Eja" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-teal-600/90 text-white font-extrabold text-[10px] backdrop-blur-xs shadow-xs">
+                                        Pesisir &amp; Nelayan
+                                    </span>
+                                </div>
+                                <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center gap-1.5 text-xs font-black text-slate-900">
+                                            <span class="text-rose-500">📍</span>
+                                            <span>Dusun IV Bunga Eja</span>
+                                        </div>
+                                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">
+                                            Pesisir Teluk Bone, sentra perikanan tangkap, dan tambak budidaya air payau nelayan.
+                                        </p>
+                                    </div>
+                                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                                        <span>3 RT • 1.000 Jiwa</span>
+                                        <span class="w-6 h-6 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white flex items-center justify-center text-xs transition">→</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Section 1: Luas Wilayah & Batas Administrasi Card (Matching Wireframe) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>📍</span>
-                                <span>Luas Wilayah & Batas Administrasi Desa</span>
-                            </h4>
-                            <span class="px-2.5 py-1 rounded-full bg-blue-50 text-[#005ea6] text-[11px] font-black border border-blue-200">
-                                Data Resmi BPS & Kemendagri
-                            </span>
-                        </div>
+                    <!-- ============================================================== -->
+                    <!-- 3. SECTION 3: STORY & KEUNGGULAN DATA (Split Layout Sesuai Gambar)-->
+                    <!-- Sesuai Bagian "More Than Just a Trip..." pada Gambar Lampiran  -->
+                    <!-- ============================================================== -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                            
+                            <!-- Left: Beautiful Scenic Photo (Matching Coastal Traveler Photo in Image) -->
+                            <div class="lg:col-span-4 relative h-72 lg:h-[380px] rounded-2xl overflow-hidden shadow-md group">
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=85" alt="Pesona Alam & Data Desa" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <span class="px-2.5 py-1 rounded-md bg-sky-500 text-white font-black text-[10px] uppercase">
+                                        Desa Cantik BPS
+                                    </span>
+                                    <h4 class="font-black text-sm sm:text-base mt-1.5 leading-snug">
+                                        Kedaulatan Data &amp; Keasrian Alam Kolaka Utara
+                                    </h4>
+                                    <p class="text-[11px] text-blue-100/80 mt-0.5">
+                                        Harmonisasi keasrian alam dan tertib administrasi statistik desa.
+                                    </p>
+                                </div>
+                            </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <!-- Col 1: Luas Wilayah -->
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                            <!-- Middle & Right: Headline, Description & 4 Feature Bullets -->
+                            <div class="lg:col-span-8 space-y-4">
                                 <div>
-                                    <span class="text-xs font-extrabold text-slate-500">Luas Wilayah:</span>
-                                    <div class="text-2xl font-black text-slate-900 mt-1">18,45 <span class="text-xs font-bold text-slate-500">km²</span></div>
+                                    <div class="flex items-center gap-2 text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
+                                        <span>—</span>
+                                        <span>INTEGRITAS &amp; POTENSI SEKTORAL</span>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight mt-1 leading-snug">
+                                        Lebih dari Sekadar Angka, Membangun Kemandirian Desa Berbasis Data
+                                    </h3>
+                                    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
+                                        Di bawah bimbingan teknis Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara, kami mengimplementasikan standar Satu Data Indonesia (SDI) untuk memastikan perencanaan pembangunan desa, pengentasan kemiskinan, dan intervensi stunting berdasar pada data faktual yang presisi.
+                                    </p>
+                                    <div class="pt-2">
+                                        <button type="button" onclick="activateSidebarMenu('pembinaan')" class="px-5 py-2.5 rounded-full bg-[#005ea6] hover:bg-[#004e8a] text-white font-extrabold text-xs shadow-md transition flex items-center gap-2 cursor-pointer">
+                                            <span>📖</span>
+                                            <span>Pelajari Pembinaan Desa Cantik</span>
+                                            <span>→</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
-                                    <div>• Kawasan Perkebunan: <b>12,20 km²</b></div>
-                                    <div>• Permukiman & Fasilitas: <b>3,85 km²</b></div>
-                                    <div>• Hutan / Konservasi: <b>2,40 km²</b></div>
+
+                                <!-- 4 Feature Items with Circular Icons (Matching Right Column in Image) -->
+                                <div class="pt-3 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <!-- Feature 1 -->
+                                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <div class="w-9 h-9 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center font-black text-sm shrink-0">
+                                            🎯
+                                        </div>
+                                        <div>
+                                            <h5 class="text-xs font-black text-slate-900">Standarisasi Metadata SDI</h5>
+                                            <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Variabel monografi &amp; kode referensi terstandar resmi BPS.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feature 2 -->
+                                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-sm shrink-0">
+                                        <div class="w-9 h-9 rounded-full bg-emerald-200 text-emerald-800 flex items-center justify-center font-black text-sm shrink-0">
+                                            🍫
+                                        </div>
+                                        <div>
+                                            <h5 class="text-xs font-black text-slate-900">Sentra Kakao 385 Ton/Thn</h5>
+                                            <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">480 Ha lahan produktif dikelola 8 kelompok tani mandiri.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feature 3 -->
+                                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <div class="w-9 h-9 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-black text-sm shrink-0">
+                                            🏞️
+                                        </div>
+                                        <div>
+                                            <h5 class="text-xs font-black text-slate-900">Ekowisata Agro Petik Kakao</h5>
+                                            <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">1.547 jiwa terkoneksi dalam rantai ekonomi agrowisata lokal.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Feature 4 -->
+                                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-black text-sm shrink-0">
+                                            💻
+                                        </div>
+                                        <div>
+                                            <h5 class="text-xs font-black text-slate-900">Sistem WebGIS Spasial</h5>
+                                            <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Visualisasi tematik peta batas dusun &amp; monografi keluarga.</p>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
 
-                            <!-- Col 2: Batas Administrasi -->
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-                                <span class="text-xs font-extrabold text-slate-500">Batas Administrasi:</span>
-                                <div class="text-xs text-slate-700 mt-2 space-y-1.5 font-medium">
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Utara:</span> <span>Desa Mala Mala & Kec. Lasusua (Akses Kantor BPS)</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Selatan:</span> <span>Desa Lametuna & Desa Awo</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Barat:</span> <span>Pesisir Teluk Bone / Selat Bone (Perikanan Tangkap)</span></div>
-                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Timur:</span> <span>Perkebunan Kakao / Perbukitan Kodeoha</span></div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================== -->
+                    <!-- 4. SECTION 4: LAYANAN PUBLIK DESA (Sesuai "Travel Services")   -->
+                    <!-- Sesuai Bagian "Travel Services We Offer" pada Gambar Lampiran  -->
+                    <!-- ============================================================== -->
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-blue-950/30 bg-[#072448] text-white p-6 sm:p-8 select-none">
+                        <!-- Dark Mountains / Scenic Background Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" alt="Lanskap Alam" class="w-full h-full object-cover object-center filter brightness-[0.25]">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#072448]/95 via-[#072448]/90 to-[#072448]/95"></div>
+                        </div>
+
+                        <div class="relative z-10 space-y-6">
+                            <!-- Section Title -->
+                            <div class="text-center max-w-2xl mx-auto space-y-1">
+                                <div class="flex items-center justify-center gap-2 text-sky-400 font-extrabold text-[10px] uppercase tracking-[0.25em]">
+                                    <span>—</span>
+                                    <span>LAYANAN &amp; FASILITAS MASYARAKAT</span>
+                                    <span>—</span>
                                 </div>
+                                <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">
+                                    Layanan Publik Terpadu Desa
+                                </h3>
+                                <p class="text-xs text-blue-200/80 font-normal">
+                                    Dari administrasi kependudukan hingga pembinaan statistik, aparatur desa melayani sepenuh hati.
+                                </p>
                             </div>
 
-                            <!-- Col 3: Dusun & RT -->
-                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-xs font-extrabold text-slate-500">Struktur Wilayah:</span>
-                                    <div class="text-2xl font-black text-slate-900 mt-1">4 Dusun & 12 RT</div>
+                            <!-- 6 Glassmorphism Cards (Matching 6 Service Cards in Image) -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                                <!-- Service 1 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        📋
+                                    </div>
+                                    <div class="font-black text-xs text-white">Administrasi Warga</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Surat pengantar KK, KTP, dan legalisir cepat.</div>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
-                                    <div>• Dusun I Kalu Kaluku (3 RT)</div>
-                                    <div>• Dusun II Toddopuli (3 RT)</div>
-                                    <div>• Dusun III Mattirodeceng (3 RT)</div>
-                                    <div>• Dusun IV Bunga Eja (3 RT)</div>
+
+                                <!-- Service 2 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        🩺
+                                    </div>
+                                    <div class="font-black text-xs text-white">Posyandu &amp; Gizi</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Pemeriksaan rutin balita, cegah stunting.</div>
+                                </div>
+
+                                <!-- Service 3 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        🌾
+                                    </div>
+                                    <div class="font-black text-xs text-white">Penyuluhan Tani</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Bibit kakao unggul &amp; pendampingan poktan.</div>
+                                </div>
+
+                                <!-- Service 4 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        📚
+                                    </div>
+                                    <div class="font-black text-xs text-white">Pojok Literasi</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Perpustakaan desa &amp; modul monografi.</div>
+                                </div>
+
+                                <!-- Service 5 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        📊
+                                    </div>
+                                    <div class="font-black text-xs text-white">Layanan PST BPS</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Konsultasi data statistik resmi &amp; SDI.</div>
+                                </div>
+
+                                <!-- Service 6 -->
+                                <div class="p-4 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 transition text-center space-y-2 group">
+                                    <div class="w-10 h-10 mx-auto rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                                        🛡️
+                                    </div>
+                                    <div class="font-black text-xs text-white">Linmas &amp; Kamtib</div>
+                                    <div class="text-[10px] text-blue-200/80 line-clamp-2">Keamanan terpadu 24 jam bersama Babinsa.</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section 2: Standardized SDM / Aparat Desa (Hierarchical Tree Organigram) -->
-                    <div id="sectionAparaturDesa" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                    <!-- ============================================================== -->
+                    <!-- 5. SECTION 5: STANDARDIZED SDM / APARATUR DESA (ORGANIGRAM)    -->
+                    <!-- Struktur Organisasi Lengkap & Validasi BPS Kolut             -->
+                    <!-- ============================================================== -->
+                    <div id="sectionAparaturDesa" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm space-y-5 scroll-mt-6">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                             <div>
-                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                <div class="flex items-center gap-2 text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
+                                    <span>—</span>
+                                    <span>STRUKTUR TATA KELOLA PEMERINTAHAN</span>
+                                </div>
+                                <h4 class="font-black text-slate-900 text-base sm:text-xl flex items-center gap-2 mt-1">
                                     <span>👥</span>
-                                    <span>Standardized SDM / Aparat Desa</span>
+                                    <span>Standardized SDM &amp; Aparatur Desa</span>
                                 </h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Struktur Organisasi Pemerintahan Desa & Status Sertifikasi Pengelolaan Data Statistik SDI</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Struktur Organisasi Pemerintahan Desa &amp; Status Sertifikasi Pengelolaan Data Statistik SDI</p>
                             </div>
-                            <button type="button" onclick="openEditAparatModal()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                            <button type="button" onclick="openEditAparatModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
                                 <span>✏️</span>
                                 <span>Edit Aparat Desa</span>
                             </button>
@@ -952,7 +1226,7 @@
                         <div class="space-y-4">
                             <!-- Top: Kepala Desa (Center) -->
                             <div class="flex justify-center">
-                                <div class="w-full max-w-sm p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-center shadow-xs">
+                                <div class="w-full max-w-sm p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 text-center shadow-xs">
                                     <div class="w-12 h-12 mx-auto rounded-full bg-[#005ea6] text-white flex items-center justify-center font-black text-base shadow-xs mb-1.5">
                                         KD
                                     </div>
@@ -969,7 +1243,7 @@
 
                             <!-- Level 2: Sekretaris Desa (Center) -->
                             <div class="flex justify-center">
-                                <div class="w-full max-w-sm p-3.5 rounded-2xl bg-white border border-slate-300 text-center shadow-xs">
+                                <div class="w-full max-w-sm p-4 rounded-2xl bg-white border border-slate-300 text-center shadow-xs">
                                     <div class="w-10 h-10 mx-auto rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-xs shadow-xs mb-1.5">
                                         SD
                                     </div>
@@ -1045,55 +1319,71 @@
                         </div>
                     </div>
 
-                    <!-- Section 3: Potensi Unggulan Desa (Kakao & UMKM) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                    <!-- ============================================================== -->
+                    <!-- 6. SECTION 6: LUAS WILAYAH & BATAS ADMINISTRASI DESA           -->
+                    <!-- Data Akurat Kemendagri & BPS                                   -->
+                    <!-- ============================================================== -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-sm space-y-4">
                         <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>🌟</span>
-                                <span>Potensi Unggulan Desa</span>
-                            </h4>
-                            <span class="text-xs font-bold text-slate-500">Sektor Basis & Komoditas Ekspor Kolaka Utara</span>
+                            <div>
+                                <div class="flex items-center gap-2 text-sky-600 font-extrabold text-[10px] sm:text-[11px] uppercase tracking-[0.2em]">
+                                    <span>—</span>
+                                    <span>GEOGRAFIS &amp; DEMOGRAFI WILAYAH</span>
+                                </div>
+                                <h4 id="desaTitle" class="font-black text-slate-900 text-base sm:text-xl flex items-center gap-2 mt-1">
+                                    <span>📍</span>
+                                    <span>Luas Wilayah &amp; Batas Administrasi Desa</span>
+                                </h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-blue-50 text-[#005ea6] text-xs font-black border border-blue-200">
+                                Data Resmi BPS &amp; Kemendagri
+                            </span>
                         </div>
 
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            <!-- Potensi 1: Pertanian & Perkebunan (Sentra Kakao) -->
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:shadow-md transition flex flex-col sm:flex-row gap-4 items-center">
-                                <div class="w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 shadow-inner bg-slate-200">
-                                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" alt="Kakao" class="w-full h-full object-cover">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Col 1: Luas Wilayah -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-xs font-extrabold text-slate-500">Luas Wilayah:</span>
+                                    <div class="text-2xl font-black text-slate-900 mt-1">18,45 <span class="text-xs font-bold text-slate-500">km²</span></div>
                                 </div>
-                                <div class="space-y-1.5 flex-1">
-                                    <span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-black uppercase">Sentra Kakao</span>
-                                    <h5 class="font-black text-slate-900 text-sm leading-snug">Pertanian & Perkebunan (Sentra Kakao)</h5>
-                                    <div class="text-xs text-slate-600 space-y-1">
-                                        <div>• <b>Sentra: Kakao Rakyat</b></div>
-                                        <div>• Luas Lahan: <b>480 Hektar</b></div>
-                                        <div>• Produksi: <b>385 Ton / Tahun</b></div>
-                                        <div>• Kelompok Tani: <b>8 Poktan Mandiri</b></div>
-                                    </div>
+                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
+                                    <div>• Kawasan Perkebunan: <b>12,20 km²</b></div>
+                                    <div>• Permukiman &amp; Fasilitas: <b>3,85 km²</b></div>
+                                    <div>• Hutan / Konservasi: <b>2,40 km²</b></div>
                                 </div>
                             </div>
 
-                            <!-- Potensi 2: UMKM & Ekowisata -->
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:shadow-md transition flex flex-col sm:flex-row gap-4 items-center">
-                                <div class="w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 shadow-inner bg-slate-200">
-                                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=400&q=80" alt="Ekowisata" class="w-full h-full object-cover">
+                            <!-- Col 2: Batas Administrasi -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                                <span class="text-xs font-extrabold text-slate-500">Batas Administrasi:</span>
+                                <div class="text-xs text-slate-700 mt-2 space-y-1.5 font-medium">
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Utara:</span> <span>Desa Mala Mala &amp; Kec. Lasusua (Akses Kantor BPS)</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Selatan:</span> <span>Desa Lametuna &amp; Desa Awo</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Barat:</span> <span>Pesisir Teluk Bone / Selat Bone (Perikanan Tangkap)</span></div>
+                                    <div class="flex items-start gap-1.5"><span class="font-black text-[#005ea6] w-12 shrink-0">Timur:</span> <span>Perkebunan Kakao / Perbukitan Kodeoha</span></div>
                                 </div>
-                                <div class="space-y-1.5 flex-1">
-                                    <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 text-[10px] font-black uppercase">UMKM & Wisata</span>
-                                    <h5 class="font-black text-slate-900 text-sm leading-snug">UMKM & Ekowisata Alam Desa</h5>
-                                    <div class="text-xs text-slate-600 space-y-1">
-                                        <div>• <b>Sentra: 1.547 Jiwa Terkoneksi</b></div>
-                                        <div>• <b>UMKM: 5 Unit Usaha Unggulan / KWT</b></div>
-                                        <div>• Olahan Cokelat & Kopi Robusta Kolut</div>
-                                        <div>• Destinasi Ekowisata Agro Petik Kakao</div>
-                                    </div>
+                            </div>
+
+                            <!-- Col 3: Dusun & RT -->
+                            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-xs font-extrabold text-slate-500">Struktur Wilayah:</span>
+                                    <div class="text-2xl font-black text-slate-900 mt-1">4 Dusun &amp; 12 RT</div>
+                                </div>
+                                <div class="text-[11px] text-slate-500 mt-2 space-y-0.5">
+                                    <div>• Dusun I Kalu Kaluku (3 RT)</div>
+                                    <div>• Dusun II Toddopuli (3 RT)</div>
+                                    <div>• Dusun III Mattirodeceng (3 RT)</div>
+                                    <div>• Dusun IV Bunga Eja (3 RT)</div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Download Action -->
                         <div class="pt-2 flex justify-center">
                             <button type="button" onclick="downloadProfilDesaPdf()" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs shadow-md transition flex items-center gap-2 cursor-pointer">
-                                <span>[ UNDUH / DOWNLOAD PROFIL DESA (PDF) ]</span>
+                                <span>📥 UNDUH / DOWNLOAD DOKUMEN PROFIL DESA (PDF)</span>
                             </button>
                         </div>
                     </div>
@@ -2465,6 +2755,16 @@
             setTimeout(() => {
                 isActivatingFromSidebar = false;
             }, 300);
+        }
+
+                function scrollToAparaturDesa() {
+            if (currentNavMenu !== 'tentang') {
+                switchNavMenu('tentang');
+            }
+            setTimeout(() => {
+                const el = document.getElementById('sectionAparaturDesa');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 180);
         }
 
         function switchNavMenu(menuKey) {
