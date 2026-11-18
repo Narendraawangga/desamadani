@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::get('/login', function () {
-    return redirect('/portal?login=1');
-})->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/auth/status', [AuthController::class, 'checkAuth'])->name('auth.status');
 
@@ -70,7 +67,7 @@ Route::get('/descan/login', function () {
 
 Route::get('/login', function () {
     return view('desacan-login');
-});
+})->name('login');
 
 Route::get('/desacan/login', function () {
     return view('desacan-login');
