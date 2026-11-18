@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Desa Madani Kabupaten Kolaka Utara - Portal Data & Analitik Kemandirian Desa</title>
     
-    <!-- Google Fonts: DM Sans & Plus Jakarta Sans -->
+    <!-- Google Fonts: Caveat, Oswald, DM Sans & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Oswald:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -358,6 +358,44 @@
         #klasifikasiModalOverlay.active #klasifikasiModalDialog {
             transform: scale(1) translateY(0px) !important;
             opacity: 1 !important;
+        }
+
+        /* ========================================================
+           EDITORIAL VERTICAL STORYTELLING: DESA UNGGULAN
+           Feathered edge watercolor/cloud mask, typography & watermarks
+           ======================================================== */
+        .font-handwriting {
+            font-family: 'Caveat', cursive, sans-serif;
+        }
+
+        .font-condensed {
+            font-family: 'Oswald', 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* Organic Watercolor / Cloud Mask */
+        .feathered-organic-mask-1 {
+            -webkit-mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            border-radius: 46% 54% 65% 35% / 44% 42% 58% 56%;
+        }
+
+        .feathered-organic-mask-2 {
+            -webkit-mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            border-radius: 56% 44% 42% 58% / 54% 62% 38% 46%;
+        }
+
+        .feathered-organic-mask-3 {
+            -webkit-mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            border-radius: 44% 56% 58% 42% / 42% 54% 46% 58%;
+        }
+
+        .feathered-organic-mask-4 {
+            -webkit-mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            mask-image: radial-gradient(ellipse 82% 76% at 50% 50%, #000 42%, rgba(0,0,0,0.85) 62%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            border-radius: 52% 48% 44% 56% / 58% 44% 56% 42%;
         }
 
         /* Custom scrollbar */
@@ -1106,157 +1144,331 @@
     </section>
 
     <!-- SECTION 3: SOROTAN DESA UNGGULAN KOLAKA UTARA (EDITORIAL NATURE TRAVEL FRAMING) -->
-    <section id="potensi" class="py-20 bg-[#F7F7F5] scroll-mt-20 relative overflow-hidden">
-        <!-- Parallax Ambient Blobs -->
-        <div data-parallax-speed="0.16" class="parallax-float absolute -top-16 -left-20 w-80 h-80 bg-teal-100/40 rounded-full blur-3xl pointer-events-none"></div>
-        <div data-parallax-speed="-0.14" class="parallax-float absolute -bottom-16 -right-20 w-80 h-80 bg-amber-100/30 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12 relative z-10">
-            <div class="flex flex-wrap items-end justify-between gap-4 border-b border-[#5A6B65]/20 pb-6">
-                <div class="space-y-2">
-                    <div class="w-8 h-1 bg-[#0D6E5B] rounded-full mb-1"></div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-[#0D6E5B] block scroll-anim">Sorotan Wilayah Berprestasi</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0D6E5B] tracking-tight scroll-anim delay-75">
-                        Desa Unggulan Kabupaten Kolaka Utara
+    <section id="potensi" class="py-24 bg-white scroll-mt-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-16 sm:space-y-24 relative z-10">
+            <!-- Editorial Header -->
+            <div class="flex flex-wrap items-end justify-between gap-6 border-b border-slate-200/80 pb-8">
+                <div class="space-y-2 max-w-2xl">
+                    <div class="w-10 h-1 bg-[#0D6E5B] rounded-full mb-1"></div>
+                    <span class="text-xs font-black uppercase tracking-widest text-[#0D6E5B] block scroll-anim">Sorotan Wilayah Berprestasi</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-heading scroll-anim delay-75">
+                        Desa Unggulan Kolaka Utara
                     </h2>
-                    <p class="text-[#5A6B65] text-xs sm:text-sm scroll-anim delay-150">
-                        Karakteristik desa dengan capaian indeks perkembangan tertinggi dan potensi komoditas menonjol
+                    <p class="text-slate-500 text-xs sm:text-sm leading-relaxed scroll-anim delay-150">
+                        Eksplorasi narasi 4 desa percontohan dengan capaian indeks perkembangan tertinggi, karakteristik lanskap alam pesisir karst, dan sentra komoditas unggulan daerah.
                     </p>
                 </div>
                 <div class="scroll-anim delay-150">
-                    <a href="/portal#sectionPeta" class="px-5 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-xs shadow-md transition transform hover:scale-105 active:scale-95 flex items-center gap-2 group">
+                    <a href="/portal#sectionPeta" class="px-6 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white font-black text-xs uppercase tracking-wider shadow-md transition transform hover:scale-105 active:scale-95 flex items-center gap-2.5 group">
                         <span>Buka Peta WebGIS Lengkap</span>
-                        <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px] group-hover:translate-x-0.5 transition">
-                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </span>
+                        <svg class="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
             </div>
 
-            <!-- 4 Desa Unggulan Grid with High-Class Editorial Travel Framing -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Desa 1: Pitulua (Lasusua) -->
-                <div class="scroll-anim delay-75 h-full">
-                    <div data-parallax-speed="-0.03" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
-                        <div>
-                            <div class="h-44 bg-gradient-to-br from-[#0D6E5B] to-[#148972] relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/pantai_berova_pitulua.webp');"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Desa Mandiri</span>
-                                <div class="absolute bottom-3 left-3 right-3 text-white">
-                                    <span class="text-[10px] text-teal-200 block">Kecamatan Lasusua</span>
-                                    <h4 class="font-extrabold text-sm text-white">Desa Pitulua (Pantai Berova)</h4>
-                                </div>
-                            </div>
-                            <div class="p-5 space-y-2 text-xs">
-                                <p class="text-[#5A6B65] text-xs leading-relaxed line-clamp-2">
-                                    Sentra Wisata Bahari Pantai Berova, BUMDes pengelola tiket & kios kuliner, perikanan tangkap, dan perkebunan kakao.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="px-5 pb-5">
-                            <div class="pt-3 border-t border-[#5A6B65]/10 flex items-center justify-between text-xs">
-                                <span class="font-extrabold text-[#0D6E5B] bg-[#0D6E5B]/10 px-2.5 py-0.5 rounded-full">IPD: 86.4</span>
-                                <a href="/portal#sectionPeta" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D6E5B] hover:text-[#095244] bg-[#0D6E5B]/8 hover:bg-[#0D6E5B]/15 px-3 py-1 rounded-full transition group/btn">
-                                    <span>Lihat di Peta</span>
-                                    <span class="w-4 h-4 rounded-full bg-[#0D6E5B] text-white flex items-center justify-center text-[9px] group-hover/btn:translate-x-0.5 transition">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Vertical Storytelling with Organic Zig-Zag Flow & Route Trail -->
+            <div class="relative">
+                <!-- Garis Jalur Rute (Curved SVG Line) Berkelanjutan dari Item 1 hingga 4 di Desktop -->
+                <svg class="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-0" 
+                     viewBox="0 0 1000 1000" 
+                     preserveAspectRatio="none" 
+                     fill="none">
+                    <!-- Curved Path Berwarna Abu-Abu Tua -->
+                    <path d="M 680 115 
+                             C 680 235, 320 235, 320 370 
+                             C 320 500, 680 500, 680 635 
+                             C 680 770, 320 770, 320 890" 
+                          stroke="#475569" 
+                          stroke-width="1.75" 
+                          stroke-dasharray="5 5" 
+                          stroke-linecap="round" 
+                          opacity="0.65" />
+                    
+                    <!-- Titik Merah Kecil (Waypoint Dots pada Jalur SVG) -->
+                    <circle cx="680" cy="115" r="4.5" fill="#e11d48" stroke="#ffffff" stroke-width="2" />
+                    <circle cx="320" cy="370" r="4.5" fill="#e11d48" stroke="#ffffff" stroke-width="2" />
+                    <circle cx="680" cy="635" r="4.5" fill="#e11d48" stroke="#ffffff" stroke-width="2" />
+                    <circle cx="320" cy="890" r="4.5" fill="#e11d48" stroke="#ffffff" stroke-width="2" />
+                </svg>
 
-                <!-- Desa 2: Kelurahan Lasusua -->
-                <div class="scroll-anim delay-150 h-full">
-                    <div data-parallax-speed="0.04" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
-                        <div>
-                            <div class="h-44 bg-gradient-to-br from-blue-700 to-indigo-900 relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/kelurahan_lasusua.jpg');"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Ibukota Kabupaten</span>
-                                <div class="absolute bottom-3 left-3 right-3 text-white">
-                                    <span class="text-[10px] text-blue-200 block">Kecamatan Lasusua</span>
-                                    <h4 class="font-extrabold text-sm text-white">Kelurahan Lasusua</h4>
-                                </div>
-                            </div>
-                            <div class="p-5 space-y-2 text-xs">
-                                <p class="text-[#5A6B65] text-xs leading-relaxed line-clamp-2">
-                                    Pusat perkantoran Pemkab, layanan RSUD Djafar Harun, perbankan, sentra kuliner olahan cokelat, dan perdagangan.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="px-5 pb-5">
-                            <div class="pt-3 border-t border-[#5A6B65]/10 flex items-center justify-between text-xs">
-                                <span class="font-extrabold text-[#0D6E5B] bg-[#0D6E5B]/10 px-2.5 py-0.5 rounded-full">IPD: 89.2</span>
-                                <a href="/portal#sectionPeta" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D6E5B] hover:text-[#095244] bg-[#0D6E5B]/8 hover:bg-[#0D6E5B]/15 px-3 py-1 rounded-full transition group/btn">
-                                    <span>Lihat di Peta</span>
-                                    <span class="w-4 h-4 rounded-full bg-[#0D6E5B] text-white flex items-center justify-center text-[9px] group-hover/btn:translate-x-0.5 transition">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Mobile Vertical Route Line -->
+                <div class="lg:hidden absolute left-4 sm:left-6 top-8 bottom-8 w-0.5 border-l-2 border-dashed border-slate-300 pointer-events-none z-0"></div>
 
-                <!-- Desa 3: Walasiho (Wawo) -->
-                <div class="scroll-anim delay-225 h-full">
-                    <div data-parallax-speed="-0.03" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
-                        <div>
-                            <div class="h-44 bg-gradient-to-br from-[#0D6E5B] to-[#043328] relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('/images/jadesta/danau_biru_walasiho.jpg');"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-[#0D6E5B] text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Desa Maju</span>
-                                <div class="absolute bottom-3 left-3 right-3 text-white">
-                                    <span class="text-[10px] text-teal-200 block">Kecamatan Wawo</span>
-                                    <h4 class="font-extrabold text-sm text-white">Desa Walasiho (Danau Biru)</h4>
-                                </div>
-                            </div>
-                            <div class="p-5 space-y-2 text-xs">
-                                <p class="text-[#5A6B65] text-xs leading-relaxed line-clamp-2">
-                                    Danau alami air jernih biru toska, tebing karst megah, hutan lindung tropis, dan perkebunan kakao rakyat.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="px-5 pb-5">
-                            <div class="pt-3 border-t border-[#5A6B65]/10 flex items-center justify-between text-xs">
-                                <span class="font-extrabold text-[#0D6E5B] bg-[#0D6E5B]/10 px-2.5 py-0.5 rounded-full">IPD: 77.8</span>
-                                <a href="/portal#sectionPeta" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D6E5B] hover:text-[#095244] bg-[#0D6E5B]/8 hover:bg-[#0D6E5B]/15 px-3 py-1 rounded-full transition group/btn">
-                                    <span>Lihat di Peta</span>
-                                    <span class="w-4 h-4 rounded-full bg-[#0D6E5B] text-white flex items-center justify-center text-[9px] group-hover/btn:translate-x-0.5 transition">→</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- 4 Baris Storytelling Vertikal (Selang-Seling Zig-Zag) -->
+                <div class="relative z-10 space-y-24 sm:space-y-32 lg:space-y-36">
 
-                <!-- Desa 4: Totallang (Lasusua) -->
-                <div class="scroll-anim delay-300 h-full">
-                    <div data-parallax-speed="0.04" class="parallax-float bg-[#FDFDFB] hover:bg-white rounded-3xl overflow-hidden border border-[#5A6B65]/20 shadow-[0_4px_20px_rgba(13,110,91,0.04)] hover:shadow-[0_12px_32px_rgba(13,110,91,0.12)] hover:border-[#0D6E5B]/60 transition-all duration-300 group h-full flex flex-col justify-between">
-                        <div>
-                            <div class="h-44 bg-gradient-to-br from-amber-700 to-orange-900 relative overflow-hidden flex items-center justify-center text-white">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-85 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80');"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-amber-800 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs border border-[#5A6B65]/20">Sentra Kakao & Nilam</span>
-                                <div class="absolute bottom-3 left-3 right-3 text-white">
-                                    <span class="text-[10px] text-amber-200 block">Kecamatan Lasusua</span>
-                                    <h4 class="font-extrabold text-sm text-white">Desa Totallang</h4>
+                    <!-- ==========================================
+                         BARIS 1 (GANJIL): FOTO KIRI, TEKS KANAN
+                         DESA PITULUA (PANTAI BEROVA)
+                         ========================================== -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                        <!-- Foto Organik (Feathered Edge Masking) - Kolom Kiri -->
+                        <div class="lg:col-span-6 order-1 scroll-anim">
+                            <div class="relative flex items-center justify-center">
+                                <!-- Ambient Watercolor Glow (Behind Photo) -->
+                                <div class="absolute inset-4 bg-teal-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+                                <!-- Organic Masked Photo (No card border/shadow) -->
+                                <div class="relative w-full max-w-lg mx-auto aspect-[4/3] overflow-hidden feathered-organic-mask-1 group">
+                                    <img src="/images/jadesta/pantai_berova_pitulua.webp" 
+                                         alt="Desa Pitulua (Pantai Berova)" 
+                                         class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                                         loading="lazy">
                                 </div>
                             </div>
-                            <div class="p-5 space-y-2 text-xs">
-                                <p class="text-[#5A6B65] text-xs leading-relaxed line-clamp-2">
-                                    Perkebunan kakao berkelanjutan, penyulingan minyak atsiri nilam, dan tanaman cengkeh bernilai ekspor tinggi.
-                                </p>
-                            </div>
                         </div>
-                        <div class="px-5 pb-5">
-                            <div class="pt-3 border-t border-[#5A6B65]/10 flex items-center justify-between text-xs">
-                                <span class="font-extrabold text-amber-800 bg-amber-500/10 px-2.5 py-0.5 rounded-full">IPD: 78.1</span>
-                                <a href="/portal#sectionPeta" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D6E5B] hover:text-[#095244] bg-[#0D6E5B]/8 hover:bg-[#0D6E5B]/15 px-3 py-1 rounded-full transition group/btn">
-                                    <span>Lihat di Peta</span>
-                                    <span class="w-4 h-4 rounded-full bg-[#0D6E5B] text-white flex items-center justify-center text-[9px] group-hover/btn:translate-x-0.5 transition">→</span>
+
+                        <!-- Teks Informasi - Kolom Kanan -->
+                        <div class="lg:col-span-6 order-2 space-y-4 scroll-anim delay-75 pl-6 lg:pl-0">
+                            <!-- Waypoint Dot (Titik Merah Kecil) -->
+                            <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600 ring-2 ring-white"></span>
+                                </span>
+                                <span>Waypoint 01 • Kec. Lasusua</span>
+                            </div>
+
+                            <!-- Tipografi & Aksen Watermark Handwriting Dekoratif -->
+                            <div class="relative pt-3 sm:pt-5 pb-1">
+                                <span class="absolute -top-3 sm:-top-4 left-0 select-none pointer-events-none font-handwriting text-5xl sm:text-6xl lg:text-7xl text-slate-300/35 tracking-wider whitespace-nowrap z-0 -rotate-2">
+                                    Kecamatan Lasusua
+                                </span>
+                                <h3 class="relative z-10 font-condensed text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+                                    Desa Pitulua (Pantai Berova)
+                                </h3>
+                            </div>
+
+                            <!-- Status & IPD Chips -->
+                            <div class="flex items-center gap-3 pt-1 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    <span>Desa Mandiri</span>
+                                </span>
+                                <span class="font-mono text-xs font-black text-emerald-800 bg-emerald-500/15 px-2.5 py-0.5 rounded-full border border-emerald-500/25">
+                                    IPD: 86.4
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi Desa -->
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">
+                                Sentra Wisata Bahari Pantai Berova, BUMDes pengelola tiket &amp; kios kuliner, perikanan tangkap, dan perkebunan kakao.
+                            </p>
+
+                            <!-- Tombol Link Bergaris Bawah -->
+                            <div class="pt-3">
+                                <a href="/portal#sectionPeta" 
+                                   class="group/link inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-widest text-[#0D6E5B] uppercase underline underline-offset-8 decoration-2 decoration-[#0D6E5B] hover:text-[#095244] hover:decoration-[#095244] transition-all">
+                                    <span>LIHAT DI PETA</span>
+                                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                 </a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- ==========================================
+                         BARIS 2 (GENAP): TEKS KIRI, FOTO KANAN
+                         KELURAHAN LASUSUA
+                         ========================================== -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                        <!-- Teks Informasi - Kolom Kiri -->
+                        <div class="lg:col-span-6 order-2 lg:order-1 space-y-4 scroll-anim pl-6 lg:pl-0">
+                            <!-- Waypoint Dot (Titik Merah Kecil) -->
+                            <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600 ring-2 ring-white"></span>
+                                </span>
+                                <span>Rute 02 • Kec. Lasusua</span>
+                            </div>
+
+                            <!-- Tipografi & Aksen Watermark Handwriting Dekoratif -->
+                            <div class="relative pt-3 sm:pt-5 pb-1">
+                                <span class="absolute -top-3 sm:-top-4 left-0 select-none pointer-events-none font-handwriting text-5xl sm:text-6xl lg:text-7xl text-slate-300/35 tracking-wider whitespace-nowrap z-0 -rotate-2">
+                                    Ibukota Kabupaten
+                                </span>
+                                <h3 class="relative z-10 font-condensed text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+                                    Kelurahan Lasusua
+                                </h3>
+                            </div>
+
+                            <!-- Status & IPD Chips -->
+                            <div class="flex items-center gap-3 pt-1 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                    <span>Ibukota Kabupaten</span>
+                                </span>
+                                <span class="font-mono text-xs font-black text-blue-800 bg-blue-500/15 px-2.5 py-0.5 rounded-full border border-blue-500/25">
+                                    IPD: 89.2
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi Desa -->
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">
+                                Pusat perkantoran Pemkab, layanan RSUD Djafar Harun, perbankan, sentra kuliner olahan cokelat, dan perdagangan.
+                            </p>
+
+                            <!-- Tombol Link Bergaris Bawah -->
+                            <div class="pt-3">
+                                <a href="/portal#sectionPeta" 
+                                   class="group/link inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-widest text-[#0D6E5B] uppercase underline underline-offset-8 decoration-2 decoration-[#0D6E5B] hover:text-[#095244] hover:decoration-[#095244] transition-all">
+                                    <span>LIHAT DI PETA</span>
+                                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Foto Organik (Feathered Edge Masking) - Kolom Kanan -->
+                        <div class="lg:col-span-6 order-1 lg:order-2 scroll-anim delay-75">
+                            <div class="relative flex items-center justify-center">
+                                <!-- Ambient Watercolor Glow (Behind Photo) -->
+                                <div class="absolute inset-4 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+                                <!-- Organic Masked Photo (No card border/shadow) -->
+                                <div class="relative w-full max-w-lg mx-auto aspect-[4/3] overflow-hidden feathered-organic-mask-2 group">
+                                    <img src="/images/jadesta/kelurahan_lasusua.jpg" 
+                                         alt="Kelurahan Lasusua" 
+                                         class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         BARIS 3 (GANJIL): FOTO KIRI, TEKS KANAN
+                         DESA WALASIHO (DANAU BIRU)
+                         ========================================== -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                        <!-- Foto Organik (Feathered Edge Masking) - Kolom Kiri -->
+                        <div class="lg:col-span-6 order-1 scroll-anim">
+                            <div class="relative flex items-center justify-center">
+                                <!-- Ambient Watercolor Glow (Behind Photo) -->
+                                <div class="absolute inset-4 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+                                <!-- Organic Masked Photo (No card border/shadow) -->
+                                <div class="relative w-full max-w-lg mx-auto aspect-[4/3] overflow-hidden feathered-organic-mask-3 group">
+                                    <img src="/images/jadesta/danau_biru_walasiho.jpg" 
+                                         alt="Desa Walasiho (Danau Biru)" 
+                                         class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Teks Informasi - Kolom Kanan -->
+                        <div class="lg:col-span-6 order-2 space-y-4 scroll-anim delay-75 pl-6 lg:pl-0">
+                            <!-- Waypoint Dot (Titik Merah Kecil) -->
+                            <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600 ring-2 ring-white"></span>
+                                </span>
+                                <span>Rute 03 • Kec. Wawo</span>
+                            </div>
+
+                            <!-- Tipografi & Aksen Watermark Handwriting Dekoratif -->
+                            <div class="relative pt-3 sm:pt-5 pb-1">
+                                <span class="absolute -top-3 sm:-top-4 left-0 select-none pointer-events-none font-handwriting text-5xl sm:text-6xl lg:text-7xl text-slate-300/35 tracking-wider whitespace-nowrap z-0 -rotate-2">
+                                    Kecamatan Wawo
+                                </span>
+                                <h3 class="relative z-10 font-condensed text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+                                    Desa Walasiho (Danau Biru)
+                                </h3>
+                            </div>
+
+                            <!-- Status & IPD Chips -->
+                            <div class="flex items-center gap-3 pt-1 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                                    <span>Desa Maju</span>
+                                </span>
+                                <span class="font-mono text-xs font-black text-teal-800 bg-teal-500/15 px-2.5 py-0.5 rounded-full border border-teal-500/25">
+                                    IPD: 77.8
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi Desa -->
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">
+                                Danau alami air jernih biru toska, tebing karst megah, hutan lindung tropis, dan perkebunan kakao rakyat.
+                            </p>
+
+                            <!-- Tombol Link Bergaris Bawah -->
+                            <div class="pt-3">
+                                <a href="/portal#sectionPeta" 
+                                   class="group/link inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-widest text-[#0D6E5B] uppercase underline underline-offset-8 decoration-2 decoration-[#0D6E5B] hover:text-[#095244] hover:decoration-[#095244] transition-all">
+                                    <span>LIHAT DI PETA</span>
+                                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         BARIS 4 (GENAP): TEKS KIRI, FOTO KANAN
+                         DESA TOTALLANG
+                         ========================================== -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                        <!-- Teks Informasi - Kolom Kiri -->
+                        <div class="lg:col-span-6 order-2 lg:order-1 space-y-4 scroll-anim pl-6 lg:pl-0">
+                            <!-- Waypoint Dot (Titik Merah Kecil) -->
+                            <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-slate-100/90 border border-slate-200/80 text-slate-700 text-xs font-bold uppercase tracking-wider">
+                                <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600 ring-2 ring-white"></span>
+                                </span>
+                                <span>Rute 04 • Kec. Lasusua</span>
+                            </div>
+
+                            <!-- Tipografi & Aksen Watermark Handwriting Dekoratif -->
+                            <div class="relative pt-3 sm:pt-5 pb-1">
+                                <span class="absolute -top-3 sm:-top-4 left-0 select-none pointer-events-none font-handwriting text-5xl sm:text-6xl lg:text-7xl text-slate-300/35 tracking-wider whitespace-nowrap z-0 -rotate-2">
+                                    Sentra Kakao &amp; Nilam
+                                </span>
+                                <h3 class="relative z-10 font-condensed text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+                                    Desa Totallang
+                                </h3>
+                            </div>
+
+                            <!-- Status & IPD Chips -->
+                            <div class="flex items-center gap-3 pt-1 flex-wrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                    <span>Sentra Kakao &amp; Nilam</span>
+                                </span>
+                                <span class="font-mono text-xs font-black text-amber-800 bg-amber-500/15 px-2.5 py-0.5 rounded-full border border-amber-500/25">
+                                    IPD: 78.1
+                                </span>
+                            </div>
+
+                            <!-- Deskripsi Desa -->
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">
+                                Perkebunan kakao berkelanjutan, penyulingan minyak atsiri nilam, dan tanaman cengkeh bernilai ekspor tinggi.
+                            </p>
+
+                            <!-- Tombol Link Bergaris Bawah -->
+                            <div class="pt-3">
+                                <a href="/portal#sectionPeta" 
+                                   class="group/link inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-widest text-[#0D6E5B] uppercase underline underline-offset-8 decoration-2 decoration-[#0D6E5B] hover:text-[#095244] hover:decoration-[#095244] transition-all">
+                                    <span>LIHAT DI PETA</span>
+                                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Foto Organik (Feathered Edge Masking) - Kolom Kanan -->
+                        <div class="lg:col-span-6 order-1 lg:order-2 scroll-anim delay-75">
+                            <div class="relative flex items-center justify-center">
+                                <!-- Ambient Watercolor Glow (Behind Photo) -->
+                                <div class="absolute inset-4 bg-amber-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+                                <!-- Organic Masked Photo (No card border/shadow) -->
+                                <div class="relative w-full max-w-lg mx-auto aspect-[4/3] overflow-hidden feathered-organic-mask-4 group">
+                                    <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" 
+                                         alt="Desa Totallang" 
+                                         class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
