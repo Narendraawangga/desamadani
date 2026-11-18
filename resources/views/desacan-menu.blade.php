@@ -217,56 +217,7 @@
         </div>
     </div>
 
-    <!-- TOP DARK NAVY NAVIGATION BAR (ELEGAN, RAPI & 100% RESPONSIF) -->
-    <header class="w-full bg-[#072448] text-white border-b border-blue-900/60 sticky top-0 z-40 shadow-md">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-2 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
-            
-            <!-- Left Menu Items: 4 MENU UTAMA RAPI DENGAN IKON & LABEL -->
-            <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
-                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer">
-                    <span class="text-sm">📊</span>
-                    <span>Beranda</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer">
-                    <span class="text-sm">🏛️</span>
-                    <span>Profil Desa</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📖</span>
-                    <span>Pembelajaran (LMS)</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📈</span>
-                    <span>Monev (Evaluasi)</span>
-                </button>
-            </nav>
-
-            <!-- Right: Utility Actions & Status Desa Binaan Badge -->
-            <div class="flex items-center gap-2 shrink-0">
-                <button type="button" onclick="openMetadataModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📋</span>
-                    <span>Metadata SDI</span>
-                </button>
-                <button type="button" onclick="openAgenDesaModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>👤</span>
-                    <span>Agen Statistik</span>
-                </button>
-                <button type="button" onclick="openPstModal()" class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📞</span>
-                    <span>Layanan PST</span>
-                </button>
-                <div class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-3 py-1.5 rounded-xl text-xs backdrop-blur-md transition shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan BPS:</span>
-                    <span id="topNavVillageBadge" class="font-black text-amber-300 uppercase tracking-wide text-xs">
-                        DESA KALU KALUKU
-                    </span>
-                    <span class="text-[10px] text-slate-300/80 font-semibold hidden lg:inline">• Kodeoha</span>
-                </div>
-            </div>
-
-        </div>
-    </header>
+    <!-- TOP DARK NAVY NAVIGATION BAR REMOVED - MOVED TO DEDICATED SIDEBAR -->
     <!-- ============================================================== -->
     <!-- DEDICATED LOGIN GATE PER DESA                                  -->
     <!-- Setiap desa memiliki akun login terpisah (email & sandi unik)  -->
@@ -375,9 +326,92 @@
     </div>
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
-        <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
+        <!-- MAIN CONTENT AREA DENGAN SIDEBAR NAVIGASI 4 MENU RESMI -->
     <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-start gap-6">
+
+                <!-- ========================================================== -->
+                <!-- DEDICATED SIDEBAR NAVIGASI (4 MENU RESMI DESA CANTIK)     -->
+                <!-- ========================================================== -->
+                <aside class="w-full lg:w-64 xl:w-72 shrink-0 lg:sticky lg:top-4 z-30">
+                    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 space-y-4">
+                        
+                        <!-- Village Identity Card in Sidebar -->
+                        <div class="p-3.5 rounded-xl bg-gradient-to-br from-[#072448] via-[#0b2545] to-[#005ea6] text-white shadow-xs space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="text-[10px] text-blue-200 font-extrabold uppercase tracking-wider">Desa Binaan BPS</span>
+                            </div>
+                            <div>
+                                <div id="topNavVillageBadge" class="font-black text-amber-300 text-sm uppercase tracking-wide">
+                                    DESA KALU KALUKU
+                                </div>
+                                <div class="text-[11px] text-blue-100/90 font-medium">
+                                    Kec. Kodeoha • Kolaka Utara
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 Navigation Menus -->
+                        <div class="space-y-1.5">
+                            <div class="text-[11px] font-black uppercase tracking-wider text-slate-400 px-2 pb-1">
+                                Menu Utama
+                            </div>
+                            <nav class="grid grid-cols-2 lg:grid-cols-1 gap-2 lg:gap-1.5" aria-label="Navigasi Menu Desa Cantik">
+                                <!-- 1. Beranda -->
+                                <button type="button" id="side-dashboard" onclick="switchNavMenu('dashboard')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left bg-[#005ea6] text-white shadow-sm ring-1 ring-blue-500/20">
+                                    <span class="text-base sm:text-lg">📊</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black tracking-tight text-xs sm:text-sm">Beranda</div>
+                                        <div class="text-[10px] opacity-85 font-normal truncate">Dashboard & Potensi Desa</div>
+                                    </div>
+                                </button>
+
+                                <!-- 2. Profil Desa -->
+                                <button type="button" id="side-tentang" onclick="switchNavMenu('tentang')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
+                                    <span class="text-base sm:text-lg">🏛️</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black tracking-tight text-xs sm:text-sm">Profil Desa</div>
+                                        <div class="text-[10px] opacity-85 font-normal truncate">Informasi & Profil Wilayah</div>
+                                    </div>
+                                </button>
+
+                                <!-- 3. Pembelajaran (LMS) -->
+                                <button type="button" id="side-pembelajaran" onclick="switchNavMenu('pembelajaran')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
+                                    <span class="text-base sm:text-lg">📖</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black tracking-tight text-xs sm:text-sm">Pembelajaran (LMS)</div>
+                                        <div class="text-[10px] opacity-85 font-normal truncate">Modul, Video & Ujian</div>
+                                    </div>
+                                </button>
+
+                                <!-- 4. Monev (Evaluasi) -->
+                                <button type="button" id="side-monev" onclick="switchNavMenu('monev')" class="side-nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl font-bold text-xs transition duration-150 cursor-pointer text-left text-slate-700 hover:bg-slate-100 hover:text-[#005ea6]">
+                                    <span class="text-base sm:text-lg">📈</span>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-black tracking-tight text-xs sm:text-sm">Monev (Evaluasi)</div>
+                                        <div class="text-[10px] opacity-85 font-normal truncate">Monitoring & Penilaian</div>
+                                    </div>
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Sidebar Quick Actions Footer -->
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition shadow-2xs">
+                                <span>← Pindah 6 Desa</span>
+                            </a>
+                            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <span>Keluar Akun Desa</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </aside>
+
+                <!-- RIGHT MAIN CONTENT (CONTAINER 4 TAMPILAN RESMI) -->
+                <div class="flex-1 min-w-0 space-y-6">
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
@@ -1414,6 +1448,7 @@
 
                 </div>
 
+            </div>
         </div>
     </main>
 
@@ -2342,13 +2377,13 @@
 
             // Update Sidebar Buttons (4 buttons)
             document.querySelectorAll('.side-nav-btn').forEach(el => {
-                el.classList.remove('bg-[#005ea6]', 'text-white', 'shadow-sm');
-                el.classList.add('text-blue-100');
+                el.classList.remove('bg-[#005ea6]', 'text-white', 'shadow-sm', 'ring-1', 'ring-blue-500/20');
+                el.classList.add('text-slate-700', 'hover:bg-slate-100', 'hover:text-[#005ea6]');
             });
             const sBtn = document.getElementById('side-' + menuKey);
             if (sBtn) {
-                sBtn.classList.remove('text-blue-100');
-                sBtn.classList.add('bg-[#005ea6]', 'text-white', 'shadow-sm');
+                sBtn.classList.remove('text-slate-700', 'hover:bg-slate-100', 'hover:text-[#005ea6]');
+                sBtn.classList.add('bg-[#005ea6]', 'text-white', 'shadow-sm', 'ring-1', 'ring-blue-500/20');
             }
 
             // Update View Visibility (4 views)
