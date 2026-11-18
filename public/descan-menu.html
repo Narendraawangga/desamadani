@@ -1400,228 +1400,326 @@
                 </div>
 
                 <!-- ===================================================================== -->
-                <!-- 3. PEMBELAJARAN (LMS DESA CANTIK - STANDARDISASI SDM)                 -->
+                <!-- 3. PEMBELAJARAN (LMS DESA CANTIK - TAMPILAN TERSTRUKTUR & TERSISTEMATIS)-->
+                <!-- Masing-masing menu mengarahkan pada tampilan khususnya masing-masing:   -->
+                <!-- - Khusus Video Pembelajaran                                           -->
+                <!-- - Khusus Pre-test & Post-test                                         -->
+                <!-- - Khusus Buku Panduan                                                 -->
                 <!-- ===================================================================== -->
                 <div id="view-pembelajaran" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
                     
-                    <!-- Content Top Header: Title & BPS Badge -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
+                    <!-- Content Top Header: Title, BPS Badge & In-Page View Switcher Tabs -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div id="lmsHeaderIcon" class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
                                 📖
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
-                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">LMS - Pembelajaran Aparat Desa (Standardisasi SDM)</h2>
-                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
+                                    <h2 id="lmsHeaderTitle" class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">LMS - Pembelajaran Aparat Desa</h2>
+                                    <span id="lmsHeaderBadge" class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
                                         BPS Verified
                                     </span>
                                 </div>
-                                <p class="text-xs text-slate-500 mt-0.5">Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI</p>
+                                <p id="lmsHeaderDesc" class="text-xs text-slate-500 mt-0.5">Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI</p>
                             </div>
+                        </div>
+
+                        <!-- In-Page Tab Navigation (Sistematis & Sinkron Penuh dengan Sidebar) -->
+                        <div class="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200 text-xs font-bold self-start md:self-auto">
+                            <button type="button" onclick="filterLmsSubView('video')" id="tabLmsVideo" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <span>🎬</span>
+                                <span>Video Pembelajaran</span>
+                            </button>
+                            <button type="button" onclick="filterLmsSubView('evaluasi')" id="tabLmsEvaluasi" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <span>📝</span>
+                                <span>Pre-test &amp; Post-test</span>
+                            </button>
+                            <button type="button" onclick="filterLmsSubView('panduan')" id="tabLmsPanduan" class="tab-lms-btn px-3.5 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <span>📚</span>
+                                <span>Buku Panduan</span>
+                            </button>
+                            <button type="button" onclick="filterLmsSubView('all')" id="tabLmsAll" class="tab-lms-btn px-3 py-2 rounded-xl transition cursor-pointer flex items-center gap-1 text-slate-500 hover:text-slate-800">
+                                <span>📋</span>
+                                <span>Semua</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Section 1: TAHAPAN BELAJAR MANDIRI (Step 1 Pre-test, Step 2 Video, Step 3 Post-test) -->
-                    <div id="sectionLmsSteps" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                            <div>
-                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                    <span>🎯</span>
-                                    <span>TAHAPAN BELAJAR MANDIRI</span>
-                                </h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Selesaikan tahapan secara berurutan untuk mendapatkan Sertifikat Kompetensi Agen Statistik</p>
-                            </div>
-                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
-                                <span>🔓</span>
-                                <span>Unlock semua menu</span>
-                            </button>
-                        </div>
-
-                        <!-- 3 Sequential Step Cards Grid -->
-                        <div id="sectionPretestPosttest" class="grid grid-cols-1 lg:grid-cols-3 gap-4 scroll-mt-6">
-                            <!-- Step 1: PRE-TEST -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4">
+                    <!-- ================================================================= -->
+                    <!-- 1. TAMPILAN KHUSUS: VIDEO PEMBELAJARAN (MICROLEARNING)            -->
+                    <!-- ================================================================= -->
+                    <div id="lmsContainerVideo" class="space-y-4">
+                        <div id="sectionVideoMicrolearning" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-5 scroll-mt-6">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                                 <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
-                                            [1. PRE-TEST] 🔒
-                                        </span>
-                                        <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
-                                            Siap Dikerjakan
-                                        </span>
-                                    </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Tes Kemampuan Awal Aparatur</h5>
-                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                        Wajib diisi sebelum materi video dan pengolahan data untuk mengukur pemahaman awal konsep statistik sektoral.
-                                    </p>
-                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600">
-                                        <div>• Soal: <b>10 Pertanyaan Pilihan Ganda</b></div>
-                                        <div>• Waktu: <b>15 Menit</b></div>
-                                        <div>• Standar: <b>BPS Satu Data Indonesia</b></div>
-                                    </div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#0c4a34] text-white text-[11px] font-black inline-block mb-1.5">
+                                        MODUL AUDIO-VISUAL MICROLEARNING DESA CANTIK
+                                    </span>
+                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Video Edukasi Tata Kelola Data &amp; Statistik Sektoral</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Panduan resmi Badan Pusat Statistik untuk standarisasi SDM dan agen statistik desa</p>
                                 </div>
-                                <button type="button" onclick="openPretestModal()" class="w-full py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                    <span>📝 Mulai Pre-Test</span>
-                                </button>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                                        ⏱️ Durasi: 5-7 Menit
+                                    </span>
+                                    <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-200">
+                                        HD 1080p
+                                    </span>
+                                </div>
                             </div>
 
-                            <!-- Step 2: TONTON VIDEO MICROLEARNING -->
-                            <div id="sectionVideoMicrolearning" class="p-4 sm:p-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 flex flex-col justify-between space-y-4 scroll-mt-6">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white text-xs font-black">
-                                            [2. TONTON VIDEO MICROLEARNING]
-                                        </span>
-                                        <span class="text-[10px] font-black text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded-md">
-                                            Durasi: 5-7 Menit
-                                        </span>
-                                    </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Video Edukasi Desa Cantik BPS</h5>
-                                    
-                                    <!-- Video Embed Player Container with Click-to-Play Overlay -->
-                                    <div class="mt-2 relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 shadow-md border border-slate-200 group">
+                            <!-- Video Player & Curriculum Grid -->
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                                <!-- Left: Responsive Cinematic Player (7 Cols) -->
+                                <div class="lg:col-span-7 space-y-3">
+                                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-lg border border-slate-200 group">
                                         <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/RXV4X0cOIA0?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         
-                                        <!-- Quick Click to Play Overlay (Langsung Berputar Otomatis Saat Diklik) -->
+                                        <!-- Quick Click to Play Overlay -->
                                         <div id="videoPlayOverlay" onclick="playMicrolearningVideo(true)" class="absolute inset-0 bg-slate-950/45 hover:bg-slate-950/25 flex flex-col items-center justify-center cursor-pointer transition z-10">
-                                            <div class="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-xl shadow-xl transition transform group-hover:scale-110">
+                                            <div class="w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-xl transition transform group-hover:scale-110">
                                                 ▶
                                             </div>
-                                            <span class="text-[11px] font-black text-white mt-2 drop-shadow-md tracking-wide">Klik untuk Putar Otomatis</span>
+                                            <span class="text-xs font-black text-white mt-3 drop-shadow-md tracking-wide">Klik untuk Putar Video Otomatis</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="space-y-2">
-                                    <button type="button" onclick="playMicrolearningVideo(true)" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                        <span>▶ Putar Video Sekarang (Otomatis)</span>
-                                    </button>
-                                    <div class="flex items-center justify-between text-xs text-slate-600 pt-1">
-                                        <span class="font-bold">Kurikulum: BPS Kolaka Utara</span>
+
+                                    <!-- Video Control Bar -->
+                                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                                        <button type="button" onclick="playMicrolearningVideo(true)" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition flex items-center gap-2 cursor-pointer shadow-xs">
+                                            <span>▶ Putar Video Sekarang</span>
+                                        </button>
                                         <div class="flex items-center gap-3">
-                                            <button type="button" onclick="openVideoTheaterModal()" class="font-extrabold text-[#005ea6] hover:underline cursor-pointer flex items-center gap-1">
+                                            <button type="button" onclick="openVideoTheaterModal()" class="font-extrabold text-[#005ea6] hover:underline cursor-pointer flex items-center gap-1.5">
                                                 <span>⛶</span>
-                                                <span>Full Layar</span>
+                                                <span>Layar Penuh (Bioskop)</span>
                                             </button>
-                                            <button type="button" onclick="toggleMainVideoSound()" class="font-extrabold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1">
+                                            <span class="text-slate-300">|</span>
+                                            <button type="button" onclick="toggleMainVideoSound()" class="font-extrabold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1.5">
                                                 <span id="iconVideoSound">🔊</span>
                                                 <span id="textVideoSound">Suara Aktif</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Step 3: POST-TEST / KUIS EVALUASI -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50/40 flex flex-col justify-between space-y-4">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-indigo-700 text-white text-xs font-black">
-                                            [3. POST-TEST / KUIS EVALUASI] 🔒
-                                        </span>
-                                        <span id="badgePosttestStatus" class="text-[10px] font-black text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">
-                                            Kelulusan
-                                        </span>
+                                <!-- Right: Kurikulum Video & Poin Pembelajaran (5 Cols) -->
+                                <div class="lg:col-span-5 space-y-3">
+                                    <div class="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 space-y-3">
+                                        <div class="font-black text-xs uppercase tracking-wider text-emerald-900 flex items-center gap-2">
+                                            <span>📑</span>
+                                            <span>Silabus Materi Video Edukasi:</span>
+                                        </div>
+                                        <div class="space-y-2 text-xs">
+                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
+                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">1</span>
+                                                <div>
+                                                    <div class="font-bold text-slate-900">Prinsip Satu Data Indonesia (SDI)</div>
+                                                    <div class="text-[11px] text-slate-500">Standar data desa, interoperabilitas, kode referensi, dan metadata statistik.</div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
+                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">2</span>
+                                                <div>
+                                                    <div class="font-bold text-slate-900">Teknik Pengumpulan Data Monografi Dusun</div>
+                                                    <div class="text-[11px] text-slate-500">Metodologi sensus data tingkat dusun, validasi kepala keluarga, dan verifikasi lapangan.</div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2.5 rounded-xl bg-white border border-emerald-100 flex items-start gap-2.5 shadow-2xs">
+                                                <span class="w-5 h-5 rounded-md bg-[#0c4a34] text-white text-[10px] font-black flex items-center justify-center shrink-0">3</span>
+                                                <div>
+                                                    <div class="font-bold text-slate-900">Validasi &amp; Entri Data ke Portal Desa</div>
+                                                    <div class="text-[11px] text-slate-500">Praktik verifikasi lapangan data potensi desa dan visualisasi analitik sektoral.</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Kuis Evaluasi Akhir & Sertifikat</h5>
-                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                        Kuis evaluasi pemahaman pasca pelatihan untuk mencetak Sertifikat Kompetensi Agen Statistik Desa.
-                                    </p>
-                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1">
-                                        <div class="flex justify-between"><span>Passing Grade:</span> <b class="text-indigo-700">70 / 100</b></div>
-                                        <div class="flex justify-between"><span>Nilai Terakhir:</span> <b id="valLastPostScore" class="text-emerald-700">85 (Lulus)</b></div>
+
+                                    <!-- Action Card to Proceed -->
+                                    <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-200 space-y-2.5">
+                                        <div class="text-xs font-bold text-slate-700">Sudah selesai menyimak video pembelajaran?</div>
+                                        <button type="button" onclick="activateSidebarMenu('evaluasi')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                                            <span>Lanjut ke Pre-test &amp; Post-test</span>
+                                            <span>→</span>
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="space-y-2">
-                                    <button type="button" onclick="openPosttestModal()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                        <span>📝 Mulai Post-Test</span>
-                                    </button>
-                                    <button type="button" onclick="openSertifikatModal()" class="w-full py-2 rounded-xl bg-white hover:bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                        <span>👁️ Lihat Nilai & Status Sertifikat</span>
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section 2: BUKU PEDOMAN & RUMUS DASAR (Table of Resources) -->
-                    <div id="sectionBukuPanduan" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                        <div class="pb-3 border-b border-slate-100">
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>📚</span>
-                                <span>BUKU PEDOMAN & RUMUS DASAR (Mendukung Pembelajaran Independen) — Menu Tambahan</span>
-                            </h4>
-                            <p class="text-xs text-slate-500 mt-0.5">Daftar Modul, Rumus Resmi Statistik Sektoral, dan Surat Keputusan Agen Statistik Desa</p>
+                    <!-- ================================================================= -->
+                    <!-- 2. TAMPILAN KHUSUS: PRE-TEST & POST-TEST (EVALUASI SDM)          -->
+                    <!-- ================================================================= -->
+                    <div id="lmsContainerEvaluasi" class="space-y-4">
+                        <div id="sectionLmsSteps" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-5 scroll-mt-6">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                                <div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-indigo-700 text-white text-[11px] font-black inline-block mb-1.5">
+                                        EVALUASI KOMPETENSI APARATUR DESA
+                                    </span>
+                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Ujian Kemampuan Pre-Test &amp; Post-Test Terstandarisasi BPS</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Pengukuran kompetensi awal dan evaluasi kelulusan akhir penerbitan Sertifikat Agen Statistik</p>
+                                </div>
+                                <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer self-start sm:self-auto">
+                                    <span>🔓</span>
+                                    <span>Unlock semua menu</span>
+                                </button>
+                            </div>
+
+                            <!-- 2 Big Dedicated Cards Grid -->
+                            <div id="sectionPretestPosttest" class="grid grid-cols-1 md:grid-cols-2 gap-5 scroll-mt-6">
+                                <!-- Card 1: PRE-TEST -->
+                                <div class="p-5 sm:p-6 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4 hover:border-blue-300 transition">
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="px-3 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
+                                                [1. PRE-TEST AWAL] 🔒
+                                            </span>
+                                            <span id="badgePretestStatus" class="text-xs font-black text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-md border border-emerald-300">
+                                                Siap Dikerjakan
+                                            </span>
+                                        </div>
+                                        <h4 class="font-black text-slate-900 text-base mt-3">Tes Kemampuan Awal Aparatur Desa</h4>
+                                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                            Wajib dikerjakan sebelum materi pembelajaran untuk memetakan baseline pemahaman konsep statistik sektoral dan Satu Data Indonesia.
+                                        </p>
+                                        <div class="mt-4 p-3.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600 space-y-1.5">
+                                            <div class="flex items-center justify-between"><span>Jumlah Soal:</span> <b class="text-slate-900">10 Pertanyaan Pilihan Ganda</b></div>
+                                            <div class="flex items-center justify-between"><span>Alokasi Waktu:</span> <b class="text-slate-900">15 Menit</b></div>
+                                            <div class="flex items-center justify-between"><span>Standar Penilaian:</span> <b class="text-[#005ea6]">BPS Satu Data Indonesia</b></div>
+                                        </div>
+                                    </div>
+                                    <button type="button" onclick="openPretestModal()" class="w-full py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                                        <span>📝 Mulai Pengerjaan Pre-Test</span>
+                                    </button>
+                                </div>
+
+                                <!-- Card 2: POST-TEST -->
+                                <div class="p-5 sm:p-6 rounded-2xl border-2 border-indigo-200 bg-indigo-50/40 flex flex-col justify-between space-y-4 hover:border-indigo-300 transition">
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="px-3 py-1 rounded-lg bg-indigo-700 text-white text-xs font-black">
+                                                [2. POST-TEST KELULUSAN] 🔒
+                                            </span>
+                                            <span id="badgePosttestStatus" class="text-xs font-black text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-md border border-indigo-300">
+                                                Kelulusan
+                                            </span>
+                                        </div>
+                                        <h4 class="font-black text-slate-900 text-base mt-3">Kuis Evaluasi Akhir &amp; Cetak Sertifikat</h4>
+                                        <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                            Kuis evaluasi pemahaman pasca pelatihan untuk kelulusan dan penerbitan Sertifikat Resmi Agen Statistik Sektoral Desa BPS.
+                                        </p>
+                                        <div class="mt-4 p-3.5 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1.5">
+                                            <div class="flex items-center justify-between"><span>Batas Kelulusan (Passing Grade):</span> <b class="text-indigo-700">70 / 100</b></div>
+                                            <div class="flex items-center justify-between"><span>Nilai Ujian Terakhir:</span> <b id="valLastPostScore" class="text-emerald-700">85 (Lulus)</b></div>
+                                            <div class="flex items-center justify-between"><span>Status Sertifikasi:</span> <b class="text-emerald-700">Terverifikasi BPS</b></div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <button type="button" onclick="openPosttestModal()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                                            <span>📝 Mulai Pengerjaan Post-Test</span>
+                                        </button>
+                                        <button type="button" onclick="openSertifikatModal()" class="w-full py-2.5 rounded-xl bg-white hover:bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <span>👁️ Lihat &amp; Cetak Sertifikat Kelulusan</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-xs text-left">
-                                <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
-                                    <tr>
-                                        <th class="py-3 px-4">Nama Dokumen Pembelajaran</th>
-                                        <th class="py-3 px-4">Nomor Referensi BPS / Kode</th>
-                                        <th class="py-3 px-4 text-center">Aksi Unduh / Baca</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100 font-medium text-slate-800">
-                                    <!-- Row 1: Buku Pedoman Excel -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📗</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Buku Pedoman Excel Desa (30 Lembar Praktik)</div>
-                                                    <div class="text-[11px] text-slate-400">Modul terstandarisasi pengolahan data monografi & agregasi Excel</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SDI-BPS-2026-EXCEL</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openExcelReaderModal()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
+                    <!-- ================================================================= -->
+                    <!-- 3. TAMPILAN KHUSUS: BUKU PANDUAN & MODUL PRAKTIK STATISTIK       -->
+                    <!-- ================================================================= -->
+                    <div id="lmsContainerPanduan" class="space-y-4">
+                        <div id="sectionBukuPanduan" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                                <div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#0c4a34] text-white text-[11px] font-black inline-block mb-1.5">
+                                        MODUL &amp; PEDOMAN RESMI
+                                    </span>
+                                    <h3 class="text-base sm:text-xl font-black text-slate-900">Buku Pedoman, Modul Praktik &amp; Rumus Dasar Statistik</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Daftar Modul, Rumus Resmi Statistik Sektoral, dan Surat Keputusan Agen Statistik Desa BPS RI</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                                        3 Dokumen Terverifikasi BPS
+                                    </span>
+                                </div>
+                            </div>
 
-                                    <!-- Row 2: Rumus Dasar Statistik -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📐</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Rumus Dasar Statistik Sektoral Desa</div>
-                                                    <div class="text-[11px] text-slate-400">Formula Rasio Beban Tanggungan, Desil Kemiskinan, & Sex Ratio</div>
+                            <!-- Document Table -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs text-left">
+                                    <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
+                                        <tr>
+                                            <th class="py-3 px-4">Nama Dokumen Pembelajaran</th>
+                                            <th class="py-3 px-4">Nomor Referensi BPS / Kode</th>
+                                            <th class="py-3 px-4 text-center">Aksi Unduh / Baca</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 font-medium text-slate-800">
+                                        <!-- Row 1: Buku Pedoman Excel -->
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="py-3.5 px-4">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl">📗</span>
+                                                    <div>
+                                                        <div class="font-black text-slate-900 text-sm">Buku Pedoman Excel Desa (30 Lembar Praktik)</div>
+                                                        <div class="text-[11px] text-slate-500">Modul terstandarisasi pengolahan data monografi &amp; agregasi Excel tingkat desa</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Excel: FORMULA-BPS-STAT-01</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openRumusStatistikModal()" class="px-4 py-1.5 rounded-lg bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SDI-BPS-2026-EXCEL</td>
+                                            <td class="py-3.5 px-4 text-center">
+                                                <button type="button" onclick="openExcelReaderModal()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs cursor-pointer">
+                                                    📥 UNDUH / BACA BUKU
+                                                </button>
+                                            </td>
+                                        </tr>
 
-                                    <!-- Row 3: SK Agen Statistik -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📜</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Surat Keputusan (SK) Agen Statistik Desa</div>
-                                                    <div class="text-[11px] text-slate-400">Legalitas pembentukan Agen Statistik Sektoral Desa Binaan BPS</div>
+                                        <!-- Row 2: Rumus Dasar Statistik -->
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="py-3.5 px-4">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl">📐</span>
+                                                    <div>
+                                                        <div class="font-black text-slate-900 text-sm">Rumus Dasar Statistik Sektoral Desa</div>
+                                                        <div class="text-[11px] text-slate-500">Formula Rasio Beban Tanggungan, Desil Kemiskinan, Sex Ratio, dan Indeks Desa</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SK-BPS-KOLUT-008</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openSkAgenModal()" class="px-4 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Excel: FORMULA-BPS-STAT-01</td>
+                                            <td class="py-3.5 px-4 text-center">
+                                                <button type="button" onclick="openRumusStatistikModal()" class="px-4 py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs transition shadow-2xs cursor-pointer">
+                                                    📥 UNDUH / LIHAT RUMUS
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 3: SK Agen Statistik -->
+                                        <tr class="hover:bg-slate-50 transition">
+                                            <td class="py-3.5 px-4">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl">📜</span>
+                                                    <div>
+                                                        <div class="font-black text-slate-900 text-sm">Surat Keputusan (SK) Agen Statistik Desa</div>
+                                                        <div class="text-[11px] text-slate-500">Legalitas resmi pembentukan Agen Statistik Sektoral Desa Binaan BPS</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SK-BPS-KOLUT-008</td>
+                                            <td class="py-3.5 px-4 text-center">
+                                                <button type="button" onclick="openSkAgenModal()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition shadow-2xs cursor-pointer">
+                                                    📥 UNDUH / LIHAT SK
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -2804,6 +2902,95 @@
             }
         }
 
+        let currentLmsSubView = 'all';
+
+        function filterLmsSubView(subKey) {
+            currentLmsSubView = subKey;
+            const cVideo = document.getElementById('lmsContainerVideo');
+            const cEvaluasi = document.getElementById('lmsContainerEvaluasi');
+            const cPanduan = document.getElementById('lmsContainerPanduan');
+
+            const hIcon = document.getElementById('lmsHeaderIcon');
+            const hTitle = document.getElementById('lmsHeaderTitle');
+            const hDesc = document.getElementById('lmsHeaderDesc');
+
+            // Reset tab styling
+            document.querySelectorAll('.tab-lms-btn').forEach(btn => {
+                btn.classList.remove('bg-[#0c4a34]', 'text-white', 'shadow-xs', 'font-black');
+                btn.classList.add('text-slate-600', 'hover:text-slate-900', 'font-semibold');
+            });
+
+            // Pause main video if moving away from video view
+            if (subKey !== 'video' && subKey !== 'all') {
+                const videoIframe = document.getElementById('mainVideoIframe');
+                if (videoIframe) {
+                    try { videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch(e) {}
+                }
+            }
+
+            if (subKey === 'video') {
+                if (cVideo) cVideo.classList.remove('hidden');
+                if (cEvaluasi) cEvaluasi.classList.add('hidden');
+                if (cPanduan) cPanduan.classList.add('hidden');
+
+                if (hIcon) hIcon.textContent = '🎬';
+                if (hTitle) hTitle.textContent = 'Video Pembelajaran (Microlearning)';
+                if (hDesc) hDesc.textContent = 'Modul Audio-Visual Resmi BPS RI Standardisasi Tata Kelola Data Desa Cantik';
+
+                const tBtn = document.getElementById('tabLmsVideo');
+                if (tBtn) {
+                    tBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'font-semibold');
+                    tBtn.classList.add('bg-[#0c4a34]', 'text-white', 'shadow-xs', 'font-black');
+                }
+                syncSidebarItemActive('video');
+            } else if (subKey === 'evaluasi') {
+                if (cVideo) cVideo.classList.add('hidden');
+                if (cEvaluasi) cEvaluasi.classList.remove('hidden');
+                if (cPanduan) cPanduan.classList.add('hidden');
+
+                if (hIcon) hIcon.textContent = '📝';
+                if (hTitle) hTitle.textContent = 'Pre-test & Post-test (Evaluasi SDM)';
+                if (hDesc) hDesc.textContent = 'Ujian Kemampuan Awal & Evaluasi Akhir Kelulusan Sertifikat Agen Statistik';
+
+                const tBtn = document.getElementById('tabLmsEvaluasi');
+                if (tBtn) {
+                    tBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'font-semibold');
+                    tBtn.classList.add('bg-[#0c4a34]', 'text-white', 'shadow-xs', 'font-black');
+                }
+                syncSidebarItemActive('evaluasi');
+            } else if (subKey === 'panduan') {
+                if (cVideo) cVideo.classList.add('hidden');
+                if (cEvaluasi) cEvaluasi.classList.add('hidden');
+                if (cPanduan) cPanduan.classList.remove('hidden');
+
+                if (hIcon) hIcon.textContent = '📚';
+                if (hTitle) hTitle.textContent = 'Buku Panduan & Modul Praktik';
+                if (hDesc) hDesc.textContent = 'Repositori Pedoman Excel 30 Lembar Praktik, Rumus Statistik, dan SK Agen';
+
+                const tBtn = document.getElementById('tabLmsPanduan');
+                if (tBtn) {
+                    tBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'font-semibold');
+                    tBtn.classList.add('bg-[#0c4a34]', 'text-white', 'shadow-xs', 'font-black');
+                }
+                syncSidebarItemActive('panduan');
+            } else { // 'all'
+                if (cVideo) cVideo.classList.remove('hidden');
+                if (cEvaluasi) cEvaluasi.classList.remove('hidden');
+                if (cPanduan) cPanduan.classList.remove('hidden');
+
+                if (hIcon) hIcon.textContent = '📖';
+                if (hTitle) hTitle.textContent = 'LMS - Pembelajaran Aparat Desa';
+                if (hDesc) hDesc.textContent = 'Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI';
+
+                const tBtn = document.getElementById('tabLmsAll');
+                if (tBtn) {
+                    tBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'font-semibold');
+                    tBtn.classList.add('bg-[#0c4a34]', 'text-white', 'shadow-xs', 'font-black');
+                }
+                syncSidebarItemActive('materi');
+            }
+        }
+
         function activateSidebarMenu(key) {
             isActivatingFromSidebar = true;
             syncSidebarItemActive(key);
@@ -2850,40 +3037,20 @@
                 }, 180);
             } else if (key === 'materi') {
                 switchNavMenu('pembelajaran');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionLmsSteps');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
+                filterLmsSubView('all');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (key === 'video') {
                 switchNavMenu('pembelajaran');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionVideoMicrolearning');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
+                filterLmsSubView('video');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (key === 'evaluasi') {
                 switchNavMenu('pembelajaran');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionPretestPosttest') || document.getElementById('sectionLmsSteps');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
+                filterLmsSubView('evaluasi');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (key === 'panduan') {
                 switchNavMenu('pembelajaran');
-                setTimeout(() => {
-                    const el = document.getElementById('sectionBukuPanduan');
-                    if (el) {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        highlightNavSection(el);
-                    }
-                }, 180);
+                filterLmsSubView('panduan');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             setTimeout(() => {
@@ -2936,26 +3103,16 @@
             if (menuKey === 'profil') {
                 menuKey = 'tentang';
             }
-            if (menuKey === 'excel' || menuKey === 'buku') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('panduan-excel');
+            if (menuKey === 'excel' || menuKey === 'buku' || menuKey === 'panduan') {
+                activateSidebarMenu('panduan');
                 return;
             }
             if (menuKey === 'video') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('video');
+                activateSidebarMenu('video');
                 return;
             }
-            if (menuKey === 'pretest') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('evaluasi');
-                if (typeof switchEvalSubTab === 'function') switchEvalSubTab('pretest');
-                return;
-            }
-            if (menuKey === 'posttest') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('evaluasi');
-                if (typeof switchEvalSubTab === 'function') switchEvalSubTab('posttest');
+            if (menuKey === 'pretest' || menuKey === 'posttest' || menuKey === 'evaluasi') {
+                activateSidebarMenu('evaluasi');
                 return;
             }
             if (menuKey === 'layanan' || menuKey === 'pengaduan') {
@@ -3021,8 +3178,8 @@
             }
 
             if (menuKey === 'pembelajaran') {
-                if (typeof switchPemTab === 'function') {
-                    switchPemTab('panduan-excel');
+                if (!isActivatingFromSidebar) {
+                    filterLmsSubView(currentLmsSubView || 'all');
                 }
             }
 
@@ -4359,63 +4516,14 @@
 
         function switchPemTab(tab) {
             currentPemTab = tab;
-            const kur = document.getElementById('pemContent-kurikulum');
-            const mat = document.getElementById('pemContent-materi');
-            const pan = document.getElementById('pemContent-panduan-excel');
-            const vid = document.getElementById('pemContent-video');
-            const eva = document.getElementById('pemContent-evaluasi');
-
-            const btnPan = document.getElementById('pemTab-panduan-excel');
-            const btnVid = document.getElementById('pemTab-video');
-            const btnKur = document.getElementById('pemTab-kurikulum');
-            const btnEva = document.getElementById('pemTab-evaluasi');
-
-            if (kur) kur.classList.add('hidden');
-            if (mat) mat.classList.add('hidden');
-            if (pan) pan.classList.add('hidden');
-            if (vid) vid.classList.add('hidden');
-            if (eva) eva.classList.add('hidden');
-
-            const inactiveClass = 'px-4 py-2.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition flex items-center gap-2 cursor-pointer shrink-0';
-
-            if (btnPan) btnPan.className = inactiveClass;
-            if (btnVid) btnVid.className = inactiveClass;
-            if (btnKur) btnKur.className = inactiveClass;
-            if (btnEva) btnEva.className = inactiveClass;
-
-            const videoIframe = document.getElementById('mainVideoIframe');
-
-            if (tab === 'panduan-excel') {
-                if (pan) pan.classList.remove('hidden');
-                if (btnPan) btnPan.className = 'px-4 py-2.5 rounded-xl font-black text-xs bg-emerald-600 text-white shadow-md transition flex items-center gap-2 border border-emerald-500 cursor-pointer shrink-0';
-                const sel = document.getElementById('excelPageSelect');
-                if (sel && !sel.hasChildNodes()) {
-                    initExcelReader();
-                } else {
-                    renderExcelPage(currentExcelPage);
-                }
-                if (videoIframe) {
-                    try { videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch(e) {}
-                }
-            } else if (tab === 'video') {
-                if (vid) vid.classList.remove('hidden');
-                if (btnVid) btnVid.className = 'px-4 py-2.5 rounded-xl font-black text-xs bg-red-600 text-white shadow-md transition flex items-center gap-2 border border-red-500 cursor-pointer shrink-0';
-                if (videoIframe) {
-                    try { videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*'); } catch(e) {}
-                }
-            } else if (tab === 'kurikulum' || tab === 'materi') {
-                if (kur) kur.classList.remove('hidden');
-                if (mat) mat.classList.remove('hidden');
-                if (btnKur) btnKur.className = 'px-4 py-2.5 rounded-xl font-black text-xs bg-[#005ea6] text-white shadow-md transition flex items-center gap-2 border border-blue-500 cursor-pointer shrink-0';
-                if (videoIframe) {
-                    try { videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch(e) {}
-                }
-            } else if (tab === 'evaluasi') {
-                if (eva) eva.classList.remove('hidden');
-                if (btnEva) btnEva.className = 'px-4 py-2.5 rounded-xl font-black text-xs bg-amber-500 text-slate-950 shadow-md transition flex items-center gap-2 border border-amber-400 cursor-pointer shrink-0';
-                if (videoIframe) {
-                    try { videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); } catch(e) {}
-                }
+            if (tab === 'video') {
+                filterLmsSubView('video');
+            } else if (tab === 'evaluasi' || tab === 'pretest' || tab === 'posttest') {
+                filterLmsSubView('evaluasi');
+            } else if (tab === 'panduan-excel' || tab === 'panduan' || tab === 'buku') {
+                filterLmsSubView('panduan');
+            } else {
+                filterLmsSubView('all');
             }
         }
 
