@@ -433,43 +433,64 @@
                                         <span class="tracking-tight">Pembinaan Desa</span>
                                     </button>
 
-                                    <!-- 7. Materi Pembelajaran -->
-                                    <button type="button" id="side-item-materi" onclick="activateSidebarMenu('materi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
-                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                                        </svg>
-                                        <span class="tracking-tight">Materi Pembelajaran</span>
-                                    </button>
+                                    <!-- 7. Pembelajaran (Menu Induk dengan Submenu Opsional) -->
+                                    <div class="space-y-1">
+                                        <button type="button" id="side-item-materi" onclick="handleMateriMenuClick(event)" class="side-item-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70 group">
+                                            <div class="flex items-center gap-3.5 min-w-0">
+                                                <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                                </svg>
+                                                <span class="tracking-tight truncate">Pembelajaran</span>
+                                            </div>
+                                            <svg id="chevronPembelajaran" class="w-3.5 h-3.5 shrink-0 text-slate-400 group-hover:text-slate-700 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
 
-                                    <!-- 8. Video Tutorial -->
-                                    <button type="button" id="side-item-video" onclick="activateSidebarMenu('video')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
-                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
-                                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
-                                        </svg>
-                                        <span class="tracking-tight">Video Tutorial</span>
-                                    </button>
+                                        <!-- Submenu Pembelajaran (Bersifat Opsional / Collapsible) -->
+                                        <div id="subnavPembelajaran" class="hidden space-y-1 pl-3.5 ml-4 border-l-2 border-slate-200/90 my-1">
+                                            <!-- 7a. Katalog Modul -->
+                                            <button type="button" id="side-item-materi-sub" onclick="activateSidebarMenu('materi')" class="side-item-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-200/60">
+                                                <svg class="w-3.5 h-3.5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                                </svg>
+                                                <span class="tracking-tight">Katalog Modul</span>
+                                            </button>
 
-                                    <!-- 9. Pre-test & Post-test -->
-                                    <button type="button" id="side-item-evaluasi" onclick="activateSidebarMenu('evaluasi')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
-                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M9 11l3 3L22 4"></path>
-                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                                        </svg>
-                                        <span class="tracking-tight">Pre-test &amp; Post-test</span>
-                                    </button>
+                                            <!-- 8. Video Pembelajaran -->
+                                            <button type="button" id="side-item-video" onclick="activateSidebarMenu('video')" class="side-item-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-200/60">
+                                                <svg class="w-3.5 h-3.5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+                                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+                                                </svg>
+                                                <span class="tracking-tight">Video Pembelajaran</span>
+                                            </button>
 
-                                    <!-- 10. Buku Panduan -->
-                                    <button type="button" id="side-item-panduan" onclick="activateSidebarMenu('panduan')" class="side-item-btn w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-700 hover:text-slate-900 hover:bg-slate-200/70">
-                                        <svg class="w-4 h-4 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                            <line x1="8" y1="6" x2="16" y2="6"></line>
-                                            <line x1="8" y1="10" x2="14" y2="10"></line>
-                                        </svg>
-                                        <span class="tracking-tight">Buku Panduan</span>
-                                    </button>
+                                            <!-- 9. Pre-test & Post-test -->
+                                            <button type="button" id="side-item-evaluasi" onclick="activateSidebarMenu('evaluasi')" class="side-item-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-200/60">
+                                                <svg class="w-3.5 h-3.5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M9 11l3 3L22 4"></path>
+                                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                                </svg>
+                                                <span class="tracking-tight">Pre-test &amp; Post-test</span>
+                                            </button>
+
+                                            <!-- 10. Buku Panduan -->
+                                            <button type="button" id="side-item-panduan" onclick="activateSidebarMenu('panduan')" class="side-item-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition duration-150 cursor-pointer text-left text-slate-600 hover:text-slate-900 hover:bg-slate-200/60">
+                                                <svg class="w-3.5 h-3.5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                                    <line x1="8" y1="6" x2="16" y2="6"></line>
+                                                    <line x1="8" y1="10" x2="14" y2="10"></line>
+                                                </svg>
+                                                <span class="tracking-tight">Buku Panduan</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </nav>
                             </div>
 
@@ -7018,6 +7039,11 @@
                 });
             });
 
+            // If navigating to learning sub-items, ensure the optional submenu is open
+            if (key === 'materi' || key === 'video' || key === 'evaluasi' || key === 'panduan') {
+                togglePembelajaranSubmenu(true);
+            }
+
             const targetBtn = document.getElementById('side-item-' + key);
             if (targetBtn) {
                 targetBtn.classList.remove('text-slate-700', 'hover:bg-slate-200/70', 'hover:text-slate-900');
@@ -7026,6 +7052,23 @@
                     svg.classList.remove('text-slate-500');
                     svg.classList.add('text-white');
                 });
+            }
+
+            // Sub-item active styling: highlight parent Pembelajaran subtly if sub-item is active
+            if (key === 'video' || key === 'evaluasi' || key === 'panduan') {
+                const parentBtn = document.getElementById('side-item-materi');
+                if (parentBtn && !parentBtn.classList.contains('active')) {
+                    parentBtn.classList.add('bg-slate-200/80', 'text-slate-900', 'font-black');
+                }
+            } else if (key === 'materi') {
+                const subMateri = document.getElementById('side-item-materi-sub');
+                if (subMateri) {
+                    subMateri.classList.add('active', 'bg-[#0c4a34]', 'text-white');
+                    subMateri.querySelectorAll('svg').forEach(svg => {
+                        svg.classList.remove('text-slate-500');
+                        svg.classList.add('text-white');
+                    });
+                }
             }
         }
 
