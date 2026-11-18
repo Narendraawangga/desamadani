@@ -683,6 +683,33 @@ window.PresisiEngine = (function() {
   let activeDropdownCat = null;
   const podesTableCache = {};
 
+  function getActiveTablePrimaryColumn() {
+    if (!currentRealTableData || !currentRealTableData.columns || !currentRealTableData.columns.length) {
+      return null;
+    }
+    const numCols = currentRealTableData.columns.filter(c => !c.label.toLowerCase().includes('persen') && !c.label.includes('%'));
+    const colsToSearch = numCols.length > 0 ? numCols : currentRealTableData.columns;
+
+    // Pick column with largest sum across villages (or first if 0)
+    let bestCol = colsToSearch[0];
+    let maxTotal = -1;
+
+    colsToSearch.forEach(c => {
+      let sum = 0;
+      (currentRealTableData.kecamatan_rows || []).forEach(r => {
+        if (r.desa && !r.is_total && r.values) {
+          sum += (parseFloat(r.values[c.col] || 0) || 0);
+        }
+      });
+      if (sum > maxTotal) {
+        maxTotal = sum;
+        bestCol = c;
+      }
+    });
+
+    return bestCol;
+  }
+
   function cleanSubTableTitle(raw) {
     if (!raw) return '';
     let t = raw.replace(/^Tabel\s+[0-9.]+\s*:\s*/i, '');
@@ -1245,6 +1272,26 @@ window.PresisiEngine = (function() {
   }
 
   function getFeatureMetricValue(kecNama, cat) {
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const cleanKec = (kecNama || '').replace(/\s+/g, '').toLowerCase();
+      const primCol = getActiveTablePrimaryColumn();
+      if (primCol) {
+        let val = 0;
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const rKec = (r.kecamatan || '').replace(/\s+/g, '').toLowerCase();
+          if (rKec === cleanKec) {
+            if (r.is_total) {
+              const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+              if (num > 0) val = num;
+            } else if (r.desa && val === 0) {
+              const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+              val += num;
+            }
+          }
+        });
+        return val;
+      }
+    }
     const cleanKec = (kecNama || '').replace(/\s+/g, '').toLowerCase();
     const kData = db.kecamatanList.find(k => k.nama.replace(/\s+/g, '').toLowerCase() === cleanKec);
     if (!kData) return 0;
@@ -1845,13 +1892,47 @@ window.PresisiEngine = (function() {
     const t4 = document.getElementById('titleChart4');
     const b4 = document.getElementById('labelChart4Badge');
 
-    if (t1) t1.textContent = currentKecamatan === 'ALL' ? cfg.chartTitle : `${cfg.metricLabel} di Kec. ${currentKecamatan}`;
-    if (b1) b1.textContent = cfg.chartBadge || 'TABEL BPS';
-    if (t2) t2.textContent = cfg.distTitle || 'Komposisi Sektor';
+    const primCol = (currentRealTableData && currentRealTableData.columns) ? getActiveTablePrimaryColumn() : null;
+    const secCol = (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 1) ? currentRealTableData.columns[1] : null;
+
+    if (t1) {
+      if (primCol) {
+        t1.textContent = currentKecamatan === 'ALL'
+          ? `Sebaran: ${primCol.label} per Kecamatan`
+          : `Sebaran: ${primCol.label} di Kec. ${currentKecamatan}`;
+      } else {
+        t1.textContent = currentKecamatan === 'ALL' ? cfg.chartTitle : `${cfg.metricLabel} di Kec. ${currentKecamatan}`;
+      }
+    }
+    if (b1) {
+      b1.textContent = currentRealTableData ? `TABEL ${currentRealTableData.table}` : (cfg.chartBadge || 'TABEL BPS');
+    }
+
+    if (t2) {
+      if (currentRealTableData) {
+        t2.textContent = `Komposisi Sektor: ${cleanSubTableTitle(currentRealTableData.title)}`;
+      } else {
+        t2.textContent = cfg.distTitle || 'Komposisi Sektor';
+      }
+    }
     if (b2) b2.textContent = cfg.distBadge || 'KOMPOSISI';
-    if (t3) t3.textContent = cfg.chart3Title || 'Top 5 vs Bottom 5 Kecamatan';
+
+    if (t3) {
+      if (primCol) {
+        t3.textContent = `Top 5 vs Bottom 5: ${primCol.label}`;
+      } else {
+        t3.textContent = cfg.chart3Title || 'Top 5 vs Bottom 5 Kecamatan';
+      }
+    }
     if (b3) b3.textContent = cfg.chart3Badge || 'DISPARITAS';
-    if (t4) t4.textContent = cfg.chart4Title || 'Struktur Sub-Sektor Pendukung';
+
+    if (t4) {
+      if (secCol) {
+        t4.textContent = `Sebaran: ${secCol.label} per Wilayah`;
+      } else {
+        t4.textContent = cfg.chart4Title || 'Struktur Sub-Sektor Pendukung';
+      }
+    }
     if (b4) b4.textContent = cfg.chart4Badge || 'SUB-SEKTOR';
 
     // Destroy existing instances
@@ -1923,6 +2004,61 @@ window.PresisiEngine = (function() {
     const pDinamika = document.getElementById('policyTextDinamika');
     const pDisparitas = document.getElementById('policyTextDisparitas');
     const pRekomendasi = document.getElementById('policyTextRekomendasi');
+
+    // DYNAMIC REAL PODES 2025 KPI STRIP GENERATOR
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const primCol = getActiveTablePrimaryColumn() || currentRealTableData.columns[0];
+      const isMacro = currentKecamatan === 'ALL';
+
+      const vRows = (currentRealTableData.kecamatan_rows || []).filter(r => {
+        if (!r.desa || r.is_total) return false;
+        if (!isMacro) {
+          return (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase();
+        }
+        return true;
+      });
+
+      let totalVal = 0;
+      let villagesWithVal = 0;
+      const kecMap = {};
+
+      vRows.forEach(r => {
+        const kname = r.kecamatan || 'LAINNYA';
+        const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+        totalVal += num;
+        if (num > 0) villagesWithVal++;
+        kecMap[kname] = (kecMap[kname] || 0) + num;
+      });
+
+      const sortedKecs = Object.keys(kecMap).map(k => ({ nama: k, val: kecMap[k] })).sort((a, b) => b.val - a.val);
+      const topKec = sortedKecs[0] || { nama: '-', val: 0 };
+      const botKec = sortedKecs[sortedKecs.length - 1] || { nama: '-', val: 0 };
+      const avgVal = sortedKecs.length > 0 ? Math.round(totalVal / sortedKecs.length) : 0;
+      const pctTop = totalVal > 0 ? ((topKec.val / totalVal) * 100).toFixed(1) : 0;
+      const coveragePct = vRows.length > 0 ? ((villagesWithVal / vRows.length) * 100).toFixed(1) : 0;
+
+      if (l1) l1.textContent = `Total ${primCol.label}`;
+      if (v1) v1.textContent = totalVal.toLocaleString('id-ID');
+      if (s1) s1.textContent = isMacro ? 'Akumulasi 15 Kecamatan' : `Total di Kec. ${currentKecamatan}`;
+
+      if (l2) l2.textContent = isMacro ? 'Wilayah Tertinggi' : 'Desa Tertinggi';
+      if (v2) v2.textContent = isMacro ? `Kec. ${topKec.nama}` : `${topKec.nama}`;
+      if (s2) s2.textContent = `${topKec.val.toLocaleString('id-ID')} (${pctTop}% Total)`;
+
+      if (l3) l3.textContent = 'Rata-Rata per Wilayah';
+      if (v3) v3.textContent = avgVal.toLocaleString('id-ID');
+      if (s3) s3.textContent = isMacro ? 'Baseline per Kecamatan' : 'Rata-rata per Desa';
+
+      if (l4) l4.textContent = 'Ketersebaran Desa';
+      if (v4) v4.textContent = `${villagesWithVal} Desa (${coveragePct}%)`;
+      if (s4) s4.textContent = `Dari ${vRows.length} Desa Terdata`;
+
+      const cleanTbl = cleanSubTableTitle(currentRealTableData.title || '');
+      if (pDinamika) pDinamika.textContent = `Analisis data ${cleanTbl} (Tabel ${currentRealTableData.table}) mencatat total akumulasi ${totalVal.toLocaleString('id-ID')} pada indikator ${primCol.label}. Konsentrasi tertinggi berada di ${topKec.nama} dengan kontribusi ${pctTop}% terhadap total daerah.`;
+      if (pDisparitas) pDisparitas.textContent = `Disparitas antar-wilayah: Wilayah ${topKec.nama} mencatat angka tertinggi (${topKec.val.toLocaleString('id-ID')}), sedangkan wilayah terendah mencatat ${botKec.val.toLocaleString('id-ID')}.`;
+      if (pRekomendasi) pRekomendasi.textContent = `Diperlukan pemerataan fasilitas dan alokasi program sektoral berbasis bukti (evidence-based) untuk mendukung percepatan kemandirian desa pada indikator ${primCol.label}.`;
+      return;
+    }
 
     if (cat === 'sosial') {
       if (l1) l1.textContent = 'Total Fasilitas Sosial';
@@ -2052,17 +2188,30 @@ window.PresisiEngine = (function() {
     const kab = db.kabupatenOverview || db.kabupaten || {};
     const isMacro = currentKecamatan === 'ALL';
 
-    let labels1 = [];
-    let data1 = [];
-
+    // DYNAMIC REAL PODES 2025 CHART GENERATOR
     if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
-      const firstCol = currentRealTableData.columns[0].col;
+      const primCol = getActiveTablePrimaryColumn() || currentRealTableData.columns[0];
+      const numCols = currentRealTableData.columns.filter(c => !c.label.toLowerCase().includes('persen') && !c.label.includes('%'));
+      const activeCols = numCols.length > 0 ? numCols : currentRealTableData.columns;
+
+      const targetRows = (currentRealTableData.kecamatan_rows || []).filter(r => {
+        if (!r.desa || r.is_total) return false;
+        if (!isMacro) {
+          return (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase();
+        }
+        return true;
+      });
+
+      // 1. CHART 1: Sebaran per Wilayah
+      let labels1 = [];
+      let data1 = [];
+
       if (isMacro) {
         const kecVals = {};
         db.kecamatanList.forEach(k => { kecVals[k.nama.toUpperCase()] = 0; });
         (currentRealTableData.kecamatan_rows || []).forEach(r => {
           const kname = (r.kecamatan || '').toUpperCase();
-          const num = parseFloat(r.values ? r.values[firstCol] : 0) || 0;
+          const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
           if (r.is_total && num > 0) {
             kecVals[kname] = num;
           } else if (r.desa) {
@@ -2074,35 +2223,183 @@ window.PresisiEngine = (function() {
         labels1 = db.kecamatanList.map(k => k.nama);
         data1 = db.kecamatanList.map(k => kecVals[k.nama.toUpperCase()] || 0);
       } else {
-        const vRows = (currentRealTableData.kecamatan_rows || []).filter(r => 
-          r.desa && !r.is_total && (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase()
-        );
-        labels1 = vRows.map(r => r.desa);
-        data1 = vRows.map(r => parseFloat(r.values ? r.values[firstCol] : 0) || 0);
+        labels1 = targetRows.map(r => r.desa);
+        data1 = targetRows.map(r => parseFloat(r.values ? r.values[primCol.col] : 0) || 0);
       }
-    } else {
+
+      // 2. CHART 2: Komposisi Kolom Sektor (Doughnut)
+      const colTotals = {};
+      activeCols.forEach(c => { colTotals[c.col] = 0; });
+      targetRows.forEach(r => {
+        if (r.values) {
+          activeCols.forEach(c => {
+            colTotals[c.col] += (parseFloat(r.values[c.col] || 0) || 0);
+          });
+        }
+      });
+
+      // Take up to 7 most prominent columns
+      const sortedCols = [...activeCols].sort((a, b) => (colTotals[b.col] || 0) - (colTotals[a.col] || 0)).slice(0, 7);
+      const c2Labels = sortedCols.map(c => `${c.label} (${(colTotals[c.col] || 0).toLocaleString('id-ID')})`);
+      const c2Data = sortedCols.map(c => colTotals[c.col] || 0);
+      const c2Palette = ['#0D6E5B', '#10b981', '#06b6d4', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'];
+
+      // 3. CHART 3: Top 5 vs Bottom 5 Wilayah (Horizontal Bar)
+      let rankingList = [];
       if (isMacro) {
-        labels1 = db.kecamatanList.map(k => k.nama);
-        data1 = db.kecamatanList.map(k => getFeatureMetricValue(k.nama, cat));
+        rankingList = db.kecamatanList.map(k => ({
+          nama: k.nama,
+          val: getFeatureMetricValue(k.nama, cat)
+        }));
       } else {
-        const vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase());
-        labels1 = vList.map(v => v.nama);
-        data1 = vList.map(v => {
-          if (cat === 'ekonomi') return v.ekonomi.ikm;
-          if (cat === 'lingkungan') return v.lingkungan.pln;
-          if (cat === 'sosial') return v.sosial.sdNeg + v.sosial.sdSwa + v.sosial.miNeg + v.sosial.miSwa;
-          if (cat === 'keuangan') return v.keuangan.bumdes;
-          if (cat === 'umum') return v.umum.luas || 0;
-          if (cat === 'pemerintah') return v.pemerintah.totalAparat;
-          return 0;
-        });
+        rankingList = targetRows.map(r => ({
+          nama: r.desa,
+          val: parseFloat(r.values ? r.values[primCol.col] : 0) || 0
+        }));
       }
+      rankingList.sort((a, b) => b.val - a.val);
+
+      const topCount = Math.min(5, rankingList.length);
+      const top5 = rankingList.slice(0, topCount);
+      const bot5 = rankingList.slice(-topCount);
+      const combined3 = [...top5, ...bot5];
+
+      const labels3 = combined3.map((item, idx) => {
+        if (idx < topCount) {
+          return `[Top ${idx + 1}] ${item.nama} (${item.val.toLocaleString('id-ID')})`;
+        } else {
+          const rank = rankingList.length - topCount + (idx - topCount) + 1;
+          return `[#${rank}] ${item.nama} (${item.val.toLocaleString('id-ID')})`;
+        }
+      });
+      const data3 = combined3.map(i => i.val);
+      const colors3 = combined3.map((i, idx) => idx < topCount ? '#0D6E5B' : '#ea580c');
+
+      // 4. CHART 4: Kolom Sekunder atau Sebaran Pendukung
+      const secCol = (activeCols.length > 1 && activeCols[1] !== primCol) ? activeCols[1] : (activeCols[2] || primCol);
+      let secData = [];
+      if (isMacro) {
+        const secKecVals = {};
+        db.kecamatanList.forEach(k => { secKecVals[k.nama.toUpperCase()] = 0; });
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const kname = (r.kecamatan || '').toUpperCase();
+          const num = parseFloat(r.values ? r.values[secCol.col] : 0) || 0;
+          if (r.is_total && num > 0) {
+            secKecVals[kname] = num;
+          } else if (r.desa) {
+            if (!secKecVals[kname] || secKecVals[kname] === 0) {
+              secKecVals[kname] = (secKecVals[kname] || 0) + num;
+            }
+          }
+        });
+        secData = db.kecamatanList.map(k => secKecVals[k.nama.toUpperCase()] || 0);
+      } else {
+        secData = targetRows.map(r => parseFloat(r.values ? r.values[secCol.col] : 0) || 0);
+      }
+
+      return {
+        chart1: {
+          type: 'bar',
+          data: {
+            labels: labels1,
+            datasets: [{
+              label: primCol.label,
+              data: data1,
+              backgroundColor: '#0D6E5B',
+              borderRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { ticks: { font: { size: 10 } } } }
+          }
+        },
+        chart2: {
+          type: 'doughnut',
+          data: {
+            labels: c2Labels,
+            datasets: [{
+              data: c2Data,
+              backgroundColor: c2Palette.slice(0, c2Labels.length)
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: { boxWidth: 12, font: { size: 10 } }
+              }
+            }
+          }
+        },
+        chart3: {
+          type: 'bar',
+          data: {
+            labels: labels3,
+            datasets: [{
+              label: `${primCol.label} (Top 5 Hijau vs Bottom 5 Oranye)`,
+              data: data3,
+              backgroundColor: colors3,
+              borderRadius: 4
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true } }
+          }
+        },
+        chart4: {
+          type: 'bar',
+          data: {
+            labels: labels1,
+            datasets: [{
+              label: secCol.label,
+              data: secData,
+              backgroundColor: '#3b82f6',
+              borderRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { ticks: { font: { size: 10 } } } }
+          }
+        }
+      };
     }
 
-    // Sort kecamatan list for Top 5 vs Bottom 5 in Chart 3 (Descending order with rank labels)
+    // STATIC FALLBACK IF NO REAL PODES DATA LOADED
+    let labels1 = [];
+    let data1 = [];
+
+    if (isMacro) {
+      labels1 = db.kecamatanList.map(k => k.nama);
+      data1 = db.kecamatanList.map(k => getFeatureMetricValue(k.nama, cat));
+    } else {
+      const vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase());
+      labels1 = vList.map(v => v.nama);
+      data1 = vList.map(v => {
+        if (cat === 'ekonomi') return v.ekonomi.ikm;
+        if (cat === 'lingkungan') return v.lingkungan.pln;
+        if (cat === 'sosial') return v.sosial.sdNeg + v.sosial.sdSwa + v.sosial.miNeg + v.sosial.miSwa;
+        if (cat === 'keuangan') return v.keuangan.bumdes;
+        if (cat === 'umum') return v.umum.luas || 0;
+        if (cat === 'pemerintah') return v.pemerintah.totalAparat;
+        return 0;
+      });
+    }
+
     const sortedKec = [...db.kecamatanList].sort((a, b) => getFeatureMetricValue(b.nama, cat) - getFeatureMetricValue(a.nama, cat));
     const top5 = sortedKec.slice(0, 5);
-    const bottom5 = sortedKec.slice(-5); // Keep descending so bars decrease smoothly (10 -> 9)
+    const bottom5 = sortedKec.slice(-5);
     const combined3 = [...top5, ...bottom5];
     const labels3 = combined3.map((k, idx) => {
       const val = getFeatureMetricValue(k.nama, cat);
@@ -2216,7 +2513,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Pelanggan PLN (Top 5 vs Bottom 5)',
+                label: 'Top 5 Rasio Elektrifikasi Tertinggi',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -2233,10 +2530,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Bebas Pencemaran (133 Desa)', 'Pengolahan Sampah (24 Desa)', 'Pupuk Organik (88 Desa)'],
+              labels: ['Bebas Pencemaran (133 Desa)', 'Pengolahan Sampah (24 Desa)', 'Pupuk Organik (58 Desa)'],
               datasets: [{
-                data: [kab.lingkungan.bebasPencemaran || 133, 24, 88],
-                backgroundColor: ['#10b981', '#06b6d4', '#f59e0b']
+                data: [kab.lingkungan.bebasPencemaran, kab.lingkungan.sampah, kab.lingkungan.pupukOrganik],
+                backgroundColor: ['#0D6E5B', '#06b6d4', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2250,7 +2547,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Fasilitas Pendidikan Formal',
+                label: 'Total Sarana Pendidikan (Unit)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -2263,21 +2560,13 @@ window.PresisiEngine = (function() {
               scales: { x: { ticks: { font: { size: 10 } } } }
             }
           },
-          // CHART 2: MURNI 100% FASILITAS KESEHATAN (NO SMA / SEKOLAH!)
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['RSUD (1)', 'Puskesmas (16)', 'Pustu (28)', 'Poskesdes (27)', 'Polindes (71)', 'Apotek (31)'],
+              labels: ['SD / MI (124)', 'SMP / MTs (54)', 'SMA / MA (21)', 'SMK (5)'],
               datasets: [{
-                data: [
-                  kab.sosial.rs || 1, 
-                  kab.sosial.puskesmas || 16, 
-                  kab.sosial.pustu || 28, 
-                  kab.sosial.poskesdes || 27, 
-                  kab.sosial.polindes || 71, 
-                  kab.sosial.apotek || 31
-                ],
-                backgroundColor: ['#0284c7', '#0d9488', '#10b981', '#14b8a6', '#06b6d4', '#8b5cf6']
+                data: [kab.sosial.totalSDMI, kab.sosial.totalSMPMTs, kab.sosial.totalSMAMA, kab.sosial.smk],
+                backgroundColor: ['#0D6E5B', '#3b82f6', '#f59e0b', '#ec4899']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2287,7 +2576,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Sarana Pendidikan (Top 5 vs Bottom 5)',
+                label: 'Fasilitas Pendidikan (Top 5 vs Bottom 5)',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -2301,20 +2590,13 @@ window.PresisiEngine = (function() {
               scales: { x: { beginAtZero: true } }
             }
           },
-          // CHART 4: MURNI 100% SATUAN PENDIDIKAN FORMAL (DI SINI TEMPAT SMA & SMK!)
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['SD / MI (124)', 'SMP / MTs (54)', 'SMA / MA (21)', 'SMK (5)', 'Perguruan Tinggi (1)'],
+              labels: ['Puskesmas (16)', 'Pustu (28)', 'Poskesdes (38)', 'Polindes (71)', 'Posyandu (133)'],
               datasets: [{
-                data: [
-                  kab.sosial.totalSDMI || 124, 
-                  kab.sosial.totalSMPMTs || 54, 
-                  kab.sosial.totalSMAMA || 21, 
-                  kab.sosial.smk || 5, 
-                  kab.sosial.pt || 1
-                ],
-                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6']
+                data: [kab.sosial.puskesmasRI + kab.sosial.puskesmasNonRI, kab.sosial.pustu, kab.sosial.poskesdes, kab.sosial.polindes, kab.sosial.posyandu],
+                backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2344,9 +2626,9 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Ada Tanah Kas (112 Desa)', 'Belum Ada (21 Desa)'],
+              labels: ['Tanah Kas Desa (112)', 'Tanpa Tanah Kas (21)'],
               datasets: [{
-                data: [kab.keuangan.tanahKas || 112, 133 - (kab.keuangan.tanahKas || 112)],
+                data: [kab.keuangan.tanahKas, 133 - kab.keuangan.tanahKas],
                 backgroundColor: ['#0D6E5B', '#f59e0b']
               }]
             },
@@ -2357,7 +2639,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'BUMDes Aktif (Top 5 vs Bottom 5)',
+                label: 'BUMDes (Top 5 vs Bottom 5)',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -2374,10 +2656,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Perdes Disahkan (133 Desa)', 'Kendaraan Dinas (98 Desa)', 'Kios/Pasar BUMDes (35 Desa)'],
+              labels: ['Siskeudes Online (133 Desa)', 'Regulasi Perdes Definitif (133 Desa)'],
               datasets: [{
-                data: [kab.keuangan.perdes || 133, 98, 35],
-                backgroundColor: ['#10b981', '#3b82f6', '#f59e0b']
+                data: [133, 133],
+                backgroundColor: ['#0D6E5B', '#3b82f6']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2391,7 +2673,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Desa / Kelurahan',
+                label: 'Luas Wilayah (km²)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -2407,10 +2689,10 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Lereng / Pegunungan (98 Desa)', 'Dataran / Pesisir (35 Desa)'],
+              labels: ['Desa (130)', 'Kelurahan (3)'],
               datasets: [{
-                data: [98, 35],
-                backgroundColor: ['#0D6E5B', '#06b6d4']
+                data: [kab.umum.desa, kab.umum.kelurahan],
+                backgroundColor: ['#0D6E5B', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2420,7 +2702,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Desa per Kecamatan (Top 5 vs Bottom 5)',
+                label: 'Wilayah Terluas vs Terkecil',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -2437,10 +2719,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Di Dalam Hutan (12 Desa)', 'Di Tepi Hutan (70 Desa)', 'Di Luar Hutan (51 Desa)'],
+              labels: ['Pesisir Laut (60 Desa)', 'Bukan Pesisir (73 Desa)'],
               datasets: [{
-                data: [12, 70, 51],
-                backgroundColor: ['#065f46', '#10b981', '#f59e0b']
+                data: [kab.umum.pesisirLaut, 133 - kab.umum.pesisirLaut],
+                backgroundColor: ['#06b6d4', '#0D6E5B']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2454,7 +2736,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Aparatur Desa',
+                label: 'Aparatur Pemerintahan Desa (Orang)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -2470,9 +2752,9 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Kepala Desa (133)', 'Sekretaris Desa (133)', 'Kaur / Kasi (399)', 'Kepala Dusun (499)'],
+              labels: ['Kepala Desa/Lurah (130)', 'Sekdes (133)', 'Kadus (439)', 'Kaur/Kasi (509)'],
               datasets: [{
-                data: [kab.pemerintah.kades || 133, kab.pemerintah.sekdes || 133, 399, 499],
+                data: [kab.pemerintah.kades, kab.pemerintah.sekdes, kab.pemerintah.kadus, kab.pemerintah.kaur],
                 backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b']
               }]
             },
