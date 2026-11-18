@@ -165,8 +165,17 @@
     <div class="w-full bg-white border-b border-slate-200/90 py-2 px-3 sm:px-4 lg:px-5 shadow-xs">
         <div class="w-full flex items-center justify-between gap-4">
             
-            <!-- Left: Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
-            <div class="flex items-center gap-3">
+            <!-- Left: Toggle Sidebar Button + Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <!-- Tombol Buka/Tutup Sidebar (Collapsible) -->
+                <button type="button" id="btnToggleSidebar" onclick="toggleSidebar()" class="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 hover:bg-[#0c4a34] hover:text-white text-slate-700 transition duration-150 flex items-center gap-2 border border-slate-200 shadow-2xs cursor-pointer group active:scale-95" title="Buka / Tutup Sidebar Navigasi (Ctrl+B)">
+                    <svg id="iconSidebarToggle" class="w-4 h-4 transition duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span id="textToggleSidebar" class="hidden sm:inline text-xs font-black tracking-tight">Sidebar</span>
+                </button>
                 <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-3 group" title="Kembali ke Dashboard Utama 6 Desa Binaan">
                     <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/90 px-2 py-1 rounded-xl shadow-2xs">
                         <img src="/images/logo_bps.png" alt="BPS" class="h-8 sm:h-9 w-auto object-contain drop-shadow-xs">
@@ -346,7 +355,7 @@
                 <!-- DEDICATED SIDEBAR NAVIGASI SISTEMATIS BPS DESA CANTIK       -->
                 <!-- Rata Kiri & Sesuai Persis Lampiran Screenshot Pengguna     -->
                 <!-- ========================================================== -->
-                <aside class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30">
+                <aside id="mainAppSidebar" class="w-full lg:w-60 xl:w-64 shrink-0 lg:sticky lg:top-3 self-start z-30 transition-all duration-300">
                     <div class="p-1 sm:p-1.5 flex flex-col justify-between min-h-[620px] select-none text-left">
                         
                         <!-- Top Navigations Groups -->
@@ -354,8 +363,15 @@
                             
                             <!-- GROUP 1: ADMINISTRASI & DATA -->
                             <div class="space-y-1">
-                                <div class="text-[11px] font-black uppercase tracking-wider text-slate-400 px-3 pb-2 text-left">
-                                    ADMINISTRASI &amp; DATA
+                                <div class="flex items-center justify-between px-3 pb-2 text-left">
+                                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-400">ADMINISTRASI &amp; DATA</span>
+                                    <!-- Tombol Tutup Sidebar Cepat -->
+                                    <button type="button" onclick="toggleSidebar(false)" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-200 transition cursor-pointer" title="Tutup Sidebar (Ctrl+B)">
+                                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                    </button>
                                 </div>
                                 <nav class="space-y-1" aria-label="Administrasi dan Data">
                                     <!-- 1. Dashboard Desa -->
@@ -525,7 +541,7 @@
                 </aside>
 
                 <!-- RIGHT MAIN CONTENT (CONTAINER 4 TAMPILAN RESMI) -->
-                <div class="flex-1 min-w-0 space-y-6">
+                <div id="mainContentWrapper" class="flex-1 min-w-0 space-y-6 w-full transition-all duration-300">
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
@@ -1723,279 +1739,745 @@
                 </div>
 
 
-                <!-- ===================================================================== -->
-                <!-- 4. PENGISIAN DATA PODES (POTENSI DESA) 2026                           -->
+                                <!-- ===================================================================== -->
+                <!-- 4. PENGISIAN DATA PODES (POTENSI DESA) 2024-2025                      -->
                 <!-- ===================================================================== -->
                 <div id="view-podes" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
                     
                     <!-- Content Top Header -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3.5">
-                            <div class="w-11 h-11 rounded-2xl bg-[#0c4a34] text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0c4a34] to-emerald-800 text-white flex items-center justify-center font-black text-2xl shadow-sm shrink-0 border border-emerald-600/30">
                                 📝
                             </div>
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <h2 class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">Pengisian Data PODES 2026</h2>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pengisian Data Potensi Desa (PODES)</h2>
                                     <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
-                                        Semester I Aktif
+                                        PODES BPS 2024–2025 Terintegrasi
+                                    </span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold text-xs border border-blue-300">
+                                        41 Tabel Statistik Resmi
                                     </span>
                                 </div>
-                                <p class="text-xs text-slate-500 mt-0.5">Instrumen Resmi Pendataan Potensi Desa Sektoral BPS RI • Berbasis Prinsip Satu Data Indonesia (SDI)</p>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    Instrumen Resmi Pendataan Potensi Desa Sektoral BPS RI • Sentra Kakao, Perikanan & Infrastruktur Desa Madani • Berbasis Prinsip Satu Data Indonesia (SDI)
+                                </p>
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center gap-2">
-                            <button type="button" onclick="simpanDataPodes(event)" class="px-4 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition flex items-center gap-2 cursor-pointer shadow-xs">
+                            <button type="button" onclick="simpanDataPodes(event)" class="px-4 py-2.5 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white text-xs font-black transition flex items-center gap-2 cursor-pointer shadow-xs active:scale-95">
                                 <span>💾</span>
                                 <span>Simpan Data PODES</span>
                             </button>
-                            <button type="button" onclick="resetDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200">
+                            <button type="button" onclick="resetDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border border-slate-200 active:scale-95">
                                 <span>🔄</span>
-                                <span>Reset</span>
+                                <span>Reset Master BPS</span>
                             </button>
-                            <button type="button" onclick="eksporDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs">
+                            <button type="button" onclick="eksporDataPodes()" class="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95">
                                 <span>📊</span>
                                 <span>Ekspor (CSV/Excel)</span>
+                            </button>
+                            <button type="button" onclick="bukaRekapPodesModal()" class="px-3.5 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95">
+                                <span>🖨️</span>
+                                <span>Cetak Berita Acara</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Quick Navigation Tabs for 5 PODES Sections -->
+                    <!-- Active Village Context Strip & Quick Switcher -->
+                    <div class="bg-gradient-to-r from-emerald-900 via-slate-900 to-[#0c4a34] rounded-3xl p-5 text-white shadow-md border border-emerald-800/40 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-xs flex items-center justify-center text-xl border border-white/20 shrink-0">
+                                    🏛️
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="text-xs font-bold text-emerald-300 uppercase tracking-wider">Desa Binaan Terpilih:</span>
+                                        <span id="podesActiveDesaName" class="text-base sm:text-lg font-black text-white">Desa Kalu Kaluku</span>
+                                        <span id="podesActiveTopografiBadge" class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-400/30">
+                                            Pesisir & Dataran Rendah Kakao
+                                        </span>
+                                    </div>
+                                    <p id="podesActiveDesaKec" class="text-xs text-slate-300 mt-0.5">
+                                        Kecamatan Kodeoha • Kabupaten Kolaka Utara • Sentra Kakao Rakyat Binaan BPS
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Village Switcher Dropdown in PODES -->
+                            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3.5 py-2 rounded-2xl border border-white/15">
+                                <label for="podesVillageSelect" class="text-xs font-bold text-slate-200 shrink-0">Ganti Desa:</label>
+                                <select id="podesVillageSelect" onchange="onPodesVillageSelectChange(this.value)" class="bg-slate-900/90 text-white font-bold text-xs rounded-xl px-3 py-1.5 border border-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer">
+                                    <option value="kalukaluku">Desa Kalu Kaluku (Pilot Utama)</option>
+                                    <option value="awo">Desa Awo (Sentra Aren & Cengkeh)</option>
+                                    <option value="kamisi">Desa Kamisi (Sentra Bahari & Teri)</option>
+                                    <option value="koroha">Desa Koroha (Sambung Pucuk Kakao)</option>
+                                    <option value="lametuna">Desa Lametuna (Pertanian Terpadu)</option>
+                                    <option value="sawangaoha">Desa Sawangaoha (Agroindustri Kayu)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 4 Highlight Metric Cards -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+                            <div class="bg-white/10 backdrop-blur-xs p-3.5 rounded-2xl border border-white/10 hover:border-emerald-400/40 transition">
+                                <div class="text-[11px] font-bold text-emerald-300 flex items-center justify-between">
+                                    <span>Skor IPD PODES</span>
+                                    <span class="text-xs">📈</span>
+                                </div>
+                                <div class="flex items-baseline gap-2 mt-1">
+                                    <span id="kpiPodesIpdVal" class="text-xl sm:text-2xl font-black text-white">85.4</span>
+                                    <span id="kpiPodesIpdStatus" class="text-[11px] font-extrabold text-emerald-300 px-2 py-0.5 rounded-full bg-emerald-500/30">Mandiri</span>
+                                </div>
+                                <div class="text-[10px] text-slate-300 mt-1">Standar BPS Kolaka Utara 2025</div>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-xs p-3.5 rounded-2xl border border-white/10 hover:border-amber-400/40 transition">
+                                <div class="text-[11px] font-bold text-amber-300 flex items-center justify-between">
+                                    <span>Sentra Kakao Madani</span>
+                                    <span class="text-xs">🍫</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span id="kpiPodesKakaoVal" class="text-lg sm:text-xl font-black text-white">480 Ha • 385 Ton</span>
+                                </div>
+                                <div id="kpiPodesKakaoSub" class="text-[10px] text-amber-200 mt-1">Produktivitas 802 Kg/Ha/Thn</div>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-xs p-3.5 rounded-2xl border border-white/10 hover:border-cyan-400/40 transition">
+                                <div class="text-[11px] font-bold text-cyan-300 flex items-center justify-between">
+                                    <span>Elektrifikasi & Akses</span>
+                                    <span class="text-xs">⚡</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span id="kpiPodesInfraVal" class="text-lg sm:text-xl font-black text-white">99.2% PLN • 4G</span>
+                                </div>
+                                <div id="kpiPodesInfraSub" class="text-[10px] text-cyan-200 mt-1">Jalan Usaha Tani 14.2 Km</div>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-xs p-3.5 rounded-2xl border border-white/10 hover:border-indigo-400/40 transition">
+                                <div class="text-[11px] font-bold text-indigo-300 flex items-center justify-between">
+                                    <span>BUMDes & Regulasi</span>
+                                    <span class="text-xs">⚖️</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mt-1">
+                                    <span id="kpiPodesBumdesVal" class="text-base sm:text-lg font-black text-white truncate" title="BUMDes Mandiri Sejahtera">BUMDes Mandiri</span>
+                                </div>
+                                <div id="kpiPodesBumdesSub" class="text-[10px] text-indigo-200 mt-1">Perdes No. 04/2025 Aktif</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Navigation Tabs for 7 PODES Sections -->
                     <div class="flex flex-wrap items-center gap-2 p-2 bg-slate-100/90 rounded-2xl border border-slate-200 text-xs font-bold">
-                        <button type="button" onclick="scrollPodesSection('secPodesDemografi')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                        <button type="button" onclick="scrollPodesSection('secPodesWilayah')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
+                            <span>🗺️</span>
+                            <span>1. Wilayah &amp; Topografi</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesDemografi')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
                             <span>👥</span>
-                            <span>1. Kependudukan &amp; Bansos</span>
+                            <span>2. Demografi &amp; P3KE</span>
                         </button>
-                        <button type="button" onclick="scrollPodesSection('secPodesPertanian')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                        <button type="button" onclick="scrollPodesSection('secPodesPertanian')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
                             <span>🌾</span>
-                            <span>2. Pertanian, Kakao &amp; Nelayan</span>
+                            <span>3. Kakao &amp; Nelayan</span>
                         </button>
-                        <button type="button" onclick="scrollPodesSection('secPodesSarpras')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
+                        <button type="button" onclick="scrollPodesSection('secPodesSarpras')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
+                            <span>🛣️</span>
+                            <span>4. Sarpras &amp; Sinyal</span>
+                        </button>
+                        <button type="button" onclick="scrollPodesSection('secPodesSosial')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
                             <span>🏥</span>
-                            <span>3. Sarpras &amp; Aksesibilitas</span>
+                            <span>5. Pendidikan &amp; Faskes</span>
                         </button>
-                        <button type="button" onclick="scrollPodesSection('secPodesSanitasi')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
-                            <span>🚰</span>
-                            <span>4. Lingkungan &amp; Sanitasi</span>
+                        <button type="button" onclick="scrollPodesSection('secPodesSanitasi')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
+                            <span>🏡</span>
+                            <span>6. Sanitasi &amp; Lingkungan</span>
                         </button>
-                        <button type="button" onclick="scrollPodesSection('secPodesKelembagaan')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-900 border border-slate-200/80 shadow-2xs transition cursor-pointer flex items-center gap-1.5">
-                            <span>🏛️</span>
-                            <span>5. BUMDes &amp; APBDes</span>
+                        <button type="button" onclick="scrollPodesSection('secPodesKelembagaan')" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs transition cursor-pointer flex items-center gap-1.5 active:scale-95">
+                            <span>⚖️</span>
+                            <span>7. BUMDes &amp; APBDes</span>
                         </button>
                     </div>
 
+                    <!-- THE PODES FORM -->
                     <form id="formPodes" onsubmit="simpanDataPodes(event)" class="space-y-6">
-                        <!-- Seksi 1: Kependudukan & Ketenagakerjaan -->
-                        <div id="secPodesDemografi" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+
+                        <!-- SEKSI 1: WILAYAH ADMINISTRASI, TOPOGRAFI & KAWASAN DESA -->
+                        <div id="secPodesWilayah" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-sm">1</span>
+                                    <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-black text-sm">1</span>
                                     <div>
-                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Kependudukan, Ketenagakerjaan &amp; Kesejahteraan Sosial</h3>
-                                        <p class="text-xs text-slate-500">Agregat kependudukan, desil P3KE, dan profil mata pencaharian warga desa</p>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Wilayah Administrasi, Topografi &amp; Kawasan Hutan</h3>
+                                        <p class="text-xs text-slate-500">Keterangan Umum Wilayah Desa sesuai Tabel 1.1 – 1.3 PODES BPS Kolaka Utara 2025</p>
                                     </div>
                                 </div>
-                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">SDI Kependudukan</span>
+                                <span class="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Keterangan Umum</span>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Penduduk (Jiwa):</label>
-                                    <input type="number" id="inpPodesPenduduk" name="penduduk" value="4150" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                    <span class="text-[10px] text-slate-400">Total laki-laki dan perempuan</span>
+                                    <label class="font-bold text-slate-700">Topografi Wilayah Desa:</label>
+                                    <select id="inpPodesTopografi" name="topografi" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Pesisir Pantai / Teluk Bone & Perkebunan">Pesisir Pantai / Teluk Bone & Perkebunan</option>
+                                        <option value="Perbukitan & Tepi Kawasan Hutan">Perbukitan & Tepi Kawasan Hutan</option>
+                                        <option value="Dataran Rendah Pertanian Terpadu">Dataran Rendah Pertanian Terpadu</option>
+                                        <option value="Pesisir & Dataran Luar Hutan">Pesisir & Dataran Luar Hutan</option>
+                                        <option value="Dataran Rendah & Perbukitan Agroindustri">Dataran Rendah & Perbukitan Agroindustri</option>
+                                    </select>
+                                    <span class="text-[10px] text-slate-400">Klasifikasi bentang alam dominan</span>
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Kepala Keluarga (KK):</label>
-                                    <input type="number" id="inpPodesKK" name="kk" value="1120" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                    <span class="text-[10px] text-slate-400">Berdasarkan KK terdaftar</span>
+                                    <label class="font-bold text-slate-700">Posisi Terhadap Kawasan Hutan (Tabel 1.2):</label>
+                                    <select id="inpPodesHutan" name="hutan" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Di luar kawasan hutan (Tabel 1.2 PODES)">Di luar kawasan hutan</option>
+                                        <option value="Di tepi/sekitar kawasan hutan (Tabel 1.2 PODES)">Di tepi/sekitar kawasan hutan</option>
+                                        <option value="Di dalam kawasan hutan">Di dalam kawasan hutan</option>
+                                    </select>
+                                    <span class="text-[10px] text-slate-400">BPS Kolut Tabel 1.2</span>
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Laki-laki (Jiwa):</label>
-                                    <input type="number" id="inpPodesLaki" name="laki" value="2060" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Keterkaitan Wilayah Laut (Tabel 1.3):</label>
+                                    <select id="inpPodesLaut" name="laut" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Berbatasan langsung dengan laut (Teluk Bone)">Berbatasan Langsung (Teluk Bone)</option>
+                                        <option value="Bukan wilayah pesisir/laut">Bukan wilayah pesisir/laut</option>
+                                    </select>
+                                    <span class="text-[10px] text-slate-400">Pemanfaatan: Perikanan & Pelabuhan</span>
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Perempuan (Jiwa):</label>
-                                    <input type="number" id="inpPodesPerempuan" name="perempuan" value="2090" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-black text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Luas Wilayah Administrasi (Km²):</label>
+                                    <input type="text" id="inpPodesLuasWilayah" name="luas_wilayah" value="18.45" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <span class="text-[10px] text-slate-400">Batas Kemendagri & Penetapan Pemkab</span>
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Petani Perkebunan Kakao (Orang):</label>
-                                    <input type="number" id="inpPodesPetani" name="petani" value="820" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Jumlah Dusun Resmi:</label>
+                                    <input type="number" id="inpPodesDusunCount" name="dusun_count" value="4" min="1" max="10" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Nelayan / Sektor Pesisir (Orang):</label>
-                                    <input type="number" id="inpPodesNelayan" name="nelayan" value="140" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Jumlah Rukun Tetangga (RT):</label>
+                                    <input type="number" id="inpPodesRtCount" name="rt_count" value="12" min="1" max="50" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Keluarga Penerima Bansos (KK):</label>
-                                    <input type="number" id="inpPodesBansos" name="bansos" value="280" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                    <span class="text-[10px] text-slate-400">PKH, BPNT, BLT Dana Desa</span>
+                                    <label class="font-bold text-slate-700">Skor IPD (Indeks Perkembangan Desa):</label>
+                                    <input type="text" id="inpPodesIpdSkor" name="ipd_skor" value="85.4" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
+
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Penyandang Disabilitas (Jiwa):</label>
-                                    <input type="number" id="inpPodesDisabilitas" name="disabilitas" value="14" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Status Klasifikasi IPD Desa:</label>
+                                    <select id="inpPodesIpdStatus" name="ipd_status" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Desa Mandiri" selected>Desa Mandiri (IPD &gt; 75)</option>
+                                        <option value="Desa Maju">Desa Maju (IPD 60 - 75)</option>
+                                        <option value="Desa Berkembang">Desa Berkembang (IPD &lt; 60)</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Seksi 2: Pertanian, Perkebunan (Kakao) & Perikanan -->
-                        <div id="secPodesPertanian" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                        <!-- SEKSI 2: DEMOGRAFI, KETENAGAKERJAAN & BANSOS P3KE -->
+                        <div id="secPodesDemografi" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">2</span>
+                                    <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-sm">2</span>
                                     <div>
-                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Pertanian, Perkebunan (Kakao) &amp; Perikanan</h3>
-                                        <p class="text-xs text-slate-500">Luas lahan komoditas unggulan, estimasi hasil panen, dan kelompok tani</p>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Demografi Penduduk &amp; Kemiskinan Ekstrem (P3KE)</h3>
+                                        <p class="text-xs text-slate-500">Jumlah warga, kepala keluarga, distribusi gender, mata pencaharian, dan penerima bansos</p>
                                     </div>
                                 </div>
-                                <span class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Komoditas Utama</span>
+                                <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Kependudukan</span>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Luas Lahan Perkebunan Kakao (Hektar):</label>
+                                    <label class="font-bold text-slate-700">Jumlah Penduduk Total (Jiwa):</label>
+                                    <input type="number" id="inpPodesPenduduk" name="penduduk" value="4150" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Kepala Keluarga (KK):</label>
+                                    <input type="number" id="inpPodesKK" name="kk" value="1120" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Penduduk Laki-laki (Jiwa):</label>
+                                    <input type="number" id="inpPodesLaki" name="laki" value="2060" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Penduduk Perempuan (Jiwa):</label>
+                                    <input type="number" id="inpPodesPerempuan" name="perempuan" value="2090" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Angkatan Kerja Petani Kakao / Perkebunan (Jiwa):</label>
+                                    <input type="number" id="inpPodesPetani" name="petani" value="680" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Angkatan Kerja Nelayan &amp; Pesisir (Jiwa):</label>
+                                    <input type="number" id="inpPodesNelayan" name="nelayan" value="145" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Rumah Tangga Desil 1–4 P3KE (KK):</label>
+                                    <input type="number" id="inpPodesDesilP3ke" name="desil_p3ke" value="42" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Penerima Program Bansos (PKH / BPNT / BLT-DD):</label>
+                                    <input type="number" id="inpPodesBansos" name="bansos" value="118" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Warga Penyandang Disabilitas (Jiwa):</label>
+                                    <input type="number" id="inpPodesDisabilitas" name="disabilitas" value="6" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEKSI 3: PERTANIAN, PERKEBUNAN KAKAO & PERIKANAN TELUK BONE -->
+                        <div id="secPodesPertanian" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-sm">3</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Sentra Pertanian, Perkebunan Kakao &amp; Perikanan Pesisir</h3>
+                                        <p class="text-xs text-slate-500">Komoditas unggulan Kolaka Utara, luas kebun kakao rakyat, produksi perahu nelayan</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Komoditas Utama Madani</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Luas Lahan Kebun Kakao Rakyat (Hektar):</label>
                                     <input type="number" id="inpPodesLuasKakao" name="luas_kakao" value="480" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Estimasi Produksi Kakao (Ton / Tahun):</label>
+                                    <label class="font-bold text-slate-700">Estimasi Produksi Biji Kakao (Ton / Tahun):</label>
                                     <input type="number" id="inpPodesProduksiKakao" name="produksi_kakao" value="385" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Produktivitas Kakao Rata-rata (Kg / Ha / Thn):</label>
+                                    <input type="number" id="inpPodesProduktivitasKakao" name="produktivitas_kakao" value="802" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
                                     <label class="font-bold text-slate-700">Luas Lahan Cengkeh (Hektar):</label>
                                     <input type="number" id="inpPodesLuasCengkeh" name="luas_cengkeh" value="120" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Kelompok Tani (Poktan):</label>
+                                    <label class="font-bold text-slate-700">Luas Lahan Kelapa Dalam / Kopra (Hektar):</label>
+                                    <input type="number" id="inpPodesLuasKelapa" name="luas_kelapa" value="85" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Kelompok Tani (Poktan &amp; Gapoktan):</label>
                                     <input type="number" id="inpPodesPoktan" name="poktan" value="12" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Fasilitas Fermentasi &amp; Penjemuran Solar Kakao:</label>
+                                    <select id="inpPodesFermentasiKakao" name="fermentasi_kakao" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Tersedia & Sentra Bersertifikasi Madani" selected>Tersedia &amp; Bersertifikasi Madani</option>
+                                        <option value="Tersedia Sentra Tradisional & Gula Aren">Tersedia Sentra Tradisional</option>
+                                        <option value="Tersedia Rumah Pengeringan Kakao Rakyat">Rumah Pengeringan Rakyat</option>
+                                        <option value="Belum Ada">Belum Ada Fasilitas Khusus</option>
+                                    </select>
                                 </div>
                                 <div class="space-y-1.5">
                                     <label class="font-bold text-slate-700">Armada Perahu Motor Nelayan (Unit):</label>
                                     <input type="number" id="inpPodesPerahu" name="perahu" value="28" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Rata-rata Hasil Tangkap Ikan (Ton / Thn):</label>
+                                    <label class="font-bold text-slate-700">Hasil Tangkap Ikan Laut (Ton / Tahun):</label>
                                     <input type="number" id="inpPodesIkan" name="ikan" value="95" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Rumah Tangga Perikanan (RTP Nelayan):</label>
+                                    <input type="number" id="inpPodesRtp" name="rtp" value="34" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Seksi 3: Sarana Prasarana & Aksesibilitas -->
+                        <!-- SEKSI 4: SARANA PRASARANA, TRANSPORTASI & KONEKTIVITAS DIGITAL -->
                         <div id="secPodesSarpras" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-black text-sm">3</span>
+                                    <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-black text-sm">4</span>
                                     <div>
-                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Sarana Prasarana &amp; Aksesibilitas Desa</h3>
-                                        <p class="text-xs text-slate-500">Infrastruktur jalan, fasilitas kesehatan, jaringan telekomunikasi &amp; pendidikan</p>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Sarana Prasarana, Akses Jalan &amp; Telekomunikasi</h3>
+                                        <p class="text-xs text-slate-500">Infrastruktur transportasi darat &amp; menara BTS seluler (Tabel 4.1 – 4.7 PODES 2025)</p>
                                     </div>
                                 </div>
-                                <span class="text-xs font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Sarpras</span>
+                                <span class="text-xs font-bold text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Sarpras &amp; Sinyal</span>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Panjang Jalan Aspal / Beton (Km):</label>
+                                    <label class="font-bold text-slate-700">Panjang Jalan Usaha Tani / Poros (Km):</label>
                                     <input type="number" id="inpPodesJalan" name="jalan" value="14.2" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Kualitas Sinyal Seluler / Internet:</label>
+                                    <label class="font-bold text-slate-700">Jenis Permukaan Jalan Terluas (Tabel 4.4):</label>
+                                    <select id="inpPodesJalanJenis" name="jalan_jenis" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Aspal & Beton Terhubung Poros Kecamatan" selected>Aspal / Beton (Kualitas Baik)</option>
+                                        <option value="Aspal & Pengerasan Rabat Beton">Aspal &amp; Rabat Beton Diperkeras</option>
+                                        <option value="Rabat Beton & Aspal Sambungan JUT">Rabat Beton JUT</option>
+                                        <option value="Kerikil / Batu dan Tanah Terawat">Kerikil / Batu Terawat</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Ketersediaan Angkutan Hasil Tani (Tabel 4.2):</label>
+                                    <select id="inpPodesAngkutan" name="angkutan" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Ada Angkutan Pick-up Hasil Bumi & Roda 4" selected>Ada Angkutan Barang/Pick-up Hasil Tani</option>
+                                        <option value="Ada Angkutan Sewa / Pick-up Panen">Ada Angkutan Sewa Panen</option>
+                                        <option value="Ada Trayek Tetap Angkutan Umum">Ada Trayek Angkutan Pedesaan</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Keberadaan Menara BTS (Tabel 4.5):</label>
+                                    <select id="inpPodesBts" name="bts" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Ada Menara BTS Telekomunikasi di Desa" selected>Ada Menara BTS di Desa</option>
+                                        <option value="Menginduk ke BTS Sinyal Terdekat">Menginduk ke BTS Desa Tetangga</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Kekuatan Sinyal Internet HP (Tabel 4.6):</label>
                                     <select id="inpPodesSinyal" name="sinyal" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
                                         <option value="4g_stabil" selected>4G LTE Sangat Kuat &amp; Stabil</option>
                                         <option value="4g_sedang">4G LTE Cukup Stabil</option>
-                                        <option value="3g">3G / Sinyal Lemah</option>
-                                        <option value="blankspot">Blankspot Sebagian</option>
+                                        <option value="3g">3G / Lemah</option>
                                     </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jarak ke Ibukota Kecamatan Kodeoha (Km):</label>
+                                    <input type="number" id="inpPodesJarakKec" name="jarak_kec" value="3.5" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jarak ke Ibukota Kabupaten (Lasusua) (Km):</label>
+                                    <input type="number" id="inpPodesJarakKab" name="jarak_kab" value="18.0" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEKSI 5: PENDIDIKAN & KESEHATAN (FASKES) -->
+                        <div id="secPodesSosial" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center font-black text-sm">5</span>
+                                    <div>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Fasilitas Pendidikan, Kesehatan &amp; Layanan Masyarakat</h3>
+                                        <p class="text-xs text-slate-500">Sarana pendidikan SD/SMP, faskes pustu, bidan desa &amp; posyandu (Tabel 3.1 – 3.3 &amp; 10.1 – 10.3 PODES)</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-rose-800 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Sosial &amp; Kesehatan</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah PAUD / TK (Unit):</label>
+                                    <input type="number" id="inpPodesSekolahPaud" name="sekolah_paud" value="2" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Sekolah SD / MI (Unit):</label>
+                                    <input type="number" id="inpPodesSekolahSD" name="sekolah_sd" value="2" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Sekolah SMP / MTs (Unit):</label>
+                                    <input type="number" id="inpPodesSekolahSMP" name="sekolah_smp" value="1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Sekolah SMA / SMK (Unit):</label>
+                                    <input type="number" id="inpPodesSekolahSMA" name="sekolah_sma" value="0" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="sm:col-span-2 space-y-1.5">
+                                    <label class="font-bold text-slate-700">Fasilitas Kesehatan di Desa (Faskes):</label>
+                                    <input type="text" id="inpPodesFaskes" name="faskes" value="Puskesmas Pembantu (Pustu) Kalu Kaluku" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="sm:col-span-2 space-y-1.5">
+                                    <label class="font-bold text-slate-700">Tenaga Kesehatan Siap Siaga (Nakes):</label>
+                                    <input type="text" id="inpPodesNakes" name="nakes" value="1 Bidan Desa & 1 Perawat Siap Siaga" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
                                     <label class="font-bold text-slate-700">Jumlah Posyandu Aktif (Unit):</label>
                                     <input type="number" id="inpPodesPosyandu" name="posyandu" value="4" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Fasilitas Kesehatan Terdekat:</label>
-                                    <input type="text" id="inpPodesFaskes" name="faskes" value="Puskesmas Pembantu Desa Kalu Kaluku" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Sekolah SD / Sederajat:</label>
-                                    <input type="number" id="inpPodesSekolahSD" name="sekolah_sd" value="2" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Jumlah Sekolah SMP / MTs:</label>
-                                    <input type="number" id="inpPodesSekolahSMP" name="sekolah_smp" value="1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Posbindu PTM (Penyakit Tidak Menular):</label>
+                                    <input type="number" id="inpPodesPosbindu" name="posbindu" value="1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Seksi 4: Perumahan, Lingkungan & Sanitasi -->
+                        <!-- SEKSI 6: PERUMAHAN, SANITASI, ENERGI & LINGKUNGAN HIDUP -->
                         <div id="secPodesSanitasi" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-black text-sm">4</span>
+                                    <span class="w-8 h-8 rounded-xl bg-cyan-100 text-cyan-800 flex items-center justify-center font-black text-sm">6</span>
                                     <div>
-                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Lingkungan, Sanitasi &amp; Permukiman</h3>
-                                        <p class="text-xs text-slate-500">Akses air bersih, sanitasi jamban sehat, elektrifikasi PLN, dan mitigasi bencana</p>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Perumahan, Sanitasi, Energi &amp; Mitigasi Kebencanaan</h3>
+                                        <p class="text-xs text-slate-500">Keluarga pengguna listrik, sumber air bersih, sanitasi ODF, dan mitigasi risiko iklim (Tabel 2.1 – 2.3 &amp; 8.1 – 8.8)</p>
                                     </div>
                                 </div>
-                                <span class="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Lingkungan</span>
+                                <span class="text-xs font-bold text-cyan-800 bg-cyan-50 px-3 py-1 rounded-full border border-cyan-200">Sanitasi &amp; Lingkungan</span>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Akses Air Bersih Layak (% KK):</label>
-                                    <input type="number" id="inpPodesAir" name="air" value="92.4" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Sanitasi Jamban Sehat (% KK):</label>
-                                    <input type="number" id="inpPodesJamban" name="jamban" value="88.6" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Elektrifikasi Listrik PLN (% KK):</label>
+                                    <label class="font-bold text-slate-700">Elektrifikasi Listrik PLN (% KK Terlayani):</label>
                                     <input type="number" id="inpPodesListrik" name="listrik" value="99.2" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Penerangan Jalan Utama Desa (Tabel 2.2):</label>
+                                    <select id="inpPodesPjuts" name="pjuts" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Tersedia 24 Titik Lampu Solar Cell PJUTS" selected>Tersedia Lampu Surya PJUTS di Jalan Poros</option>
+                                        <option value="Tersedia 18 Titik Lampu PJUTS Solar Cell">Tersedia Lampu Listrik PLN Terjadwal</option>
+                                        <option value="Sebagian Penerangan Mandiri Warga">Penerangan Swadaya Warga</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Akses Air Minum Bersih Layak (% KK):</label>
+                                    <input type="number" id="inpPodesAir" name="air" value="94.5" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jamban Keluarga Sehat &amp; ODF (% KK):</label>
+                                    <input type="number" id="inpPodesJamban" name="jamban" value="96.8" step="0.1" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Pengelolaan Persampahan Desa (Tabel 8.3):</label>
+                                    <select id="inpPodesSampah" name="sampah" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Ada, Pengangkutan Terjadwal & Bank Sampah" selected>Ada, Pengangkutan Terjadwal &amp; Bank Sampah</option>
+                                        <option value="Ada, Pengolahan Kompos & Warga Terlibat">Ada, Pengolahan Kompos Pertanian</option>
+                                        <option value="Ada, Gerakan Pesisir Bebas Sampah Plastik">Gerakan Pesisir Bebas Sampah</option>
+                                        <option value="Dikelola Swadaya">Dikelola Swadaya di Halaman</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Antisipasi &amp; Mitigasi Bencana Alam (Tabel 8.1):</label>
+                                    <select id="inpPodesBencana" name="bencana" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none cursor-pointer">
+                                        <option value="Sistem Peringatan Dini Banjir Sungai & Jalur Evakuasi" selected>Sistem Peringatan Dini Banjir &amp; Jalur Evakuasi</option>
+                                        <option value="Mitigasi Longsor Lereng Perkebunan & Patroli Hutan">Mitigasi Longsor Perkebunan &amp; Patroli Hutan</option>
+                                        <option value="Sistem Peringatan Dini Cuaca Ekstrem Laut & Rambu Tsunami">Peringatan Cuaca Ekstrem Laut &amp; Jalur Tsunami</option>
+                                        <option value="Mitigasi Pasang Air Laut (Rob) & Rambu Evakuasi">Mitigasi Rob Pesisir &amp; Evakuasi</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Seksi 5: Kelembagaan & Regulasi Keuangan Desa -->
+                        <!-- SEKSI 7: KELEMBAGAAN, BUMDES, ASET & KEUANGAN APBDES -->
                         <div id="secPodesKelembagaan" class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-2xs space-y-4 scroll-mt-6">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center font-black text-sm">5</span>
+                                    <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center font-black text-sm">7</span>
                                     <div>
-                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Kelembagaan, Keuangan &amp; Regulasi Perdes</h3>
-                                        <p class="text-xs text-slate-500">Status BUMDes, pendapatan desa, dan regulasi penyelenggaraan Satu Data Indonesia</p>
+                                        <h3 class="font-black text-slate-900 text-base sm:text-lg">Kelembagaan BUMDes, IKM Olahan, Aset &amp; APBDes Madani</h3>
+                                        <p class="text-xs text-slate-500">Legalitas BUMDes, usaha mikro kecil, perdes statistik sektoral desa &amp; transparansi anggaran desa</p>
                                     </div>
                                 </div>
-                                <span class="text-xs font-bold text-indigo-800 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Kelembagaan</span>
+                                <span class="text-xs font-bold text-indigo-800 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Kelembagaan &amp; APBDes</span>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Status Keberadaan BUMDes:</label>
-                                    <input type="text" id="inpPodesBumdes" name="bumdes" value="BUMDes Mandiri Sejahtera (Kategori Maju)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Nama BUMDes &amp; Status:</label>
+                                    <input type="text" id="inpPodesBumdes" name="bumdes" value="BUMDes Mandiri Sejahtera" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Unit Usaha BUMDes Unggulan:</label>
+                                    <input type="text" id="inpPodesBumdesUnit" name="bumdes_unit" value="Unit Pengeringan/Fermentasi Biji Kakao & Simpan Pinjam" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Jumlah Industri Kecil &amp; Menengah (IKM BPS):</label>
+                                    <input type="number" id="inpPodesIkm" name="ikm" value="24" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Akses Kredit Usaha Rakyat (KUR) / Lembaga Keuangan:</label>
+                                    <input type="text" id="inpPodesKur" name="kur" value="Ada Akses KUR BRI & BPD Sultra" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Kepemilikan Tanah Kas Desa &amp; Aset:</label>
+                                    <input type="text" id="inpPodesTanahKas" name="tanah_kas" value="Ada (3 Bidang Tanah Kas Terdaftar)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Peraturan Desa (Perdes) Statistik Sektoral SDI:</label>
+                                    <input type="text" id="inpPodesPerdes" name="perdes" value="Perdes No. 04/2025 ttg Statistik Sektoral Desa Cantik" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
                                     <label class="font-bold text-slate-700">Total Pendapatan Desa APBDes (Rp):</label>
                                     <input type="text" id="inpPodesApbdes" name="apbdes" value="1.485.200.000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                                 <div class="space-y-1.5">
-                                    <label class="font-bold text-slate-700">Perdes Statistik Sektoral Desa:</label>
-                                    <input type="text" id="inpPodesPerdes" name="perdes" value="Tersedia (Perdes No. 04 Tahun 2025)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                    <label class="font-bold text-slate-700">Alokasi Dana Desa (DD Kemendes) (Rp):</label>
+                                    <input type="text" id="inpPodesDanaDesa" name="dana_desa" value="892.400.000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Alokasi Dana Desa (ADD Pemkab) (Rp):</label>
+                                    <input type="text" id="inpPodesAddDesa" name="add_desa" value="482.800.000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="font-bold text-slate-700">Pendapatan Asli Desa (PADes BUMDes) (Rp):</label>
+                                    <input type="text" id="inpPodesPades" name="pades" value="110.000.000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-[#0c4a34] focus:outline-none">
                                 </div>
                             </div>
                         </div>
 
                         <!-- Bottom Action Bar -->
-                        <div class="p-5 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="p-6 rounded-3xl bg-slate-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl border border-slate-800">
                             <div>
-                                <div class="font-black text-sm">Pastikan seluruh data potensi desa terisi dengan benar</div>
-                                <div class="text-xs text-slate-400 mt-0.5">Data tersimpan akan langsung memutakhirkan ringkasan angka pada Dashboard Desa.</div>
+                                <div class="font-black text-sm sm:text-base flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                    <span>Pastikan data potensi desa terisi sesuai fakta lapangan &amp; monografi Desa Madani</span>
+                                </div>
+                                <div class="text-xs text-slate-400 mt-1">
+                                    Data tersimpan langsung memutakhirkan ringkasan angka pada Dashboard Desa, Geospasial Kakao, dan Berita Acara BPS.
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <button type="submit" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition cursor-pointer shadow-md">
-                                    💾 Simpan Seluruh Isian PODES
+                            <div class="flex items-center gap-2.5 flex-wrap">
+                                <button type="button" onclick="bukaRekapPodesModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition cursor-pointer border border-slate-700 active:scale-95">
+                                    🖨️ Cetak Berita Acara
+                                </button>
+                                <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition cursor-pointer shadow-md active:scale-95 flex items-center gap-2">
+                                    <span>💾</span>
+                                    <span>Simpan Seluruh Isian PODES</span>
                                 </button>
                             </div>
                         </div>
                     </form>
 
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- MODAL BERITA ACARA REKAPITULASI PODES DESA MADANI BPS                 -->
+                <!-- ===================================================================== -->
+                <div id="modalRekapPodes" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+                    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                        <!-- Modal Header -->
+                        <div class="px-6 py-4 bg-[#0c4a34] text-white flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📑</span>
+                                <div>
+                                    <h3 class="text-base sm:text-lg font-black tracking-tight">Berita Acara Rekapitulasi Data PODES 2024–2025</h3>
+                                    <p class="text-xs text-emerald-200">Penyelenggaraan Statistik Sektoral Desa Cantik • BPS Kabupaten Kolaka Utara</p>
+                                </div>
+                            </div>
+                            <button type="button" onclick="tutupRekapPodesModal()" class="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition text-sm">
+                                ✕
+                            </button>
+                        </div>
+
+                        <!-- Modal Printable Content Body -->
+                        <div id="printableRekapPodesContent" class="p-6 overflow-y-auto space-y-5 text-xs text-slate-800 leading-relaxed font-sans">
+                            <!-- Official Kop Surat -->
+                            <div class="text-center pb-4 border-b-2 border-slate-900 space-y-1">
+                                <div class="text-xs font-bold uppercase tracking-widest text-slate-600">Pemerintah Kabupaten Kolaka Utara • Kecamatan Kodeoha</div>
+                                <div class="text-base font-black uppercase text-slate-900 tracking-tight" id="modalKopDesaTitle">PEMERINTAH DESA KALU KALUKU</div>
+                                <div class="text-[11px] text-slate-500">Sekretariat Desa • Bekerjasama dengan Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara</div>
+                            </div>
+
+                            <div class="text-center py-1">
+                                <div class="font-black text-sm uppercase underline decoration-2 underline-offset-4 text-slate-900">
+                                    BERITA ACARA VERIFIKASI PENDATAAN POTENSI DESA (PODES)
+                                </div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">Nomor: BA.PODES/DESACAN/2026/04</div>
+                            </div>
+
+                            <p class="text-justify text-xs">
+                                Pada hari ini, berdasarkan hasil pemutakhiran data instrumen Potensi Desa (PODES) 2024–2025 yang diselenggarakan dalam kerangka Program Desa Cantik (Cinta Statistik) Desa Madani Kecamatan Kodeoha, Kabupaten Kolaka Utara, dengan ini menyatakan data sektoral telah diverifikasi dan disinkronkan dengan data lapangan:
+                            </p>
+
+                            <!-- Table of Core Verified Indicators -->
+                            <table class="w-full text-xs border border-slate-300 rounded-xl overflow-hidden text-left">
+                                <thead class="bg-slate-100 font-black text-slate-900 border-b border-slate-300">
+                                    <tr>
+                                        <th class="p-2.5">Sektor / Variabel Utama</th>
+                                        <th class="p-2.5">Indikator Terverifikasi</th>
+                                        <th class="p-2.5">Satuan</th>
+                                        <th class="p-2.5">Status Validasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200" id="modalTablePodesBody">
+                                    <tr>
+                                        <td class="p-2.5 font-bold">1. Wilayah &amp; Topografi</td>
+                                        <td class="p-2.5" id="mbTopografi">Pesisir & Dataran Luar Hutan (18.45 Km²)</td>
+                                        <td class="p-2.5">Km² / Dusun</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Sah BPS</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">2. Kependudukan (SDI)</td>
+                                        <td class="p-2.5" id="mbPenduduk">4.150 Jiwa (1.120 KK)</td>
+                                        <td class="p-2.5">Jiwa</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Sesuai Monografi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">3. Sentra Kakao Madani</td>
+                                        <td class="p-2.5" id="mbKakao">480 Ha • 385 Ton/Thn (802 Kg/Ha)</td>
+                                        <td class="p-2.5">Hektar / Ton</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Sentra Utama</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">4. Sarpras &amp; JUT</td>
+                                        <td class="p-2.5" id="mbJalan">14.2 Km Jalan Aspal/Beton • 4G LTE</td>
+                                        <td class="p-2.5">Km / BTS</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Akses Terbuka</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">5. Faskes &amp; Pendidikan</td>
+                                        <td class="p-2.5" id="mbSosial">Pustu Aktif, Bidan Siaga, 2 SD & 1 SMP</td>
+                                        <td class="p-2.5">Unit</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Terlayani Baik</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">6. Sanitasi &amp; Lingkungan</td>
+                                        <td class="p-2.5" id="mbSanitasi">99.2% Listrik PLN • 96.8% Jamban ODF</td>
+                                        <td class="p-2.5">% KK</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Bebas ODF</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-bold">7. BUMDes &amp; APBDes</td>
+                                        <td class="p-2.5" id="mbBumdes">BUMDes Mandiri • Rp 1.485.200.000</td>
+                                        <td class="p-2.5">Kategori / Rp</td>
+                                        <td class="p-2.5 font-bold text-emerald-700">✓ Perdes No. 04</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 font-medium">
+                                Demikian berita acara rekapitulasi data PODES ini disusun sebagai instrumen acuan perencanaan pembangunan berbasis data sektoral (SDI) dan publikasi resmi Portal Desa Cantik Kolaka Utara.
+                            </div>
+
+                            <!-- Signatures Block -->
+                            <div class="grid grid-cols-2 gap-6 pt-4 text-center text-xs">
+                                <div>
+                                    <div class="text-slate-500">Mengetahui,</div>
+                                    <div class="font-bold text-slate-900 mt-0.5" id="modalSignKadesTitle">Kepala Desa Kalu Kaluku</div>
+                                    <div class="h-16 flex items-center justify-center font-serif italic text-slate-400">
+                                        (Tanda Tangan & Cap Sah)
+                                    </div>
+                                    <div class="font-black text-slate-900 underline" id="modalSignKadesName">H. Syamsul Bahri, S.Sos</div>
+                                    <div class="text-[10px] text-slate-500">NIPD / Aparat Pemerintahan Desa</div>
+                                </div>
+                                <div>
+                                    <div class="text-slate-500">Disahkan oleh,</div>
+                                    <div class="font-bold text-slate-900 mt-0.5">Pembina Desa Cantik BPS Kolaka Utara</div>
+                                    <div class="h-16 flex items-center justify-center font-serif italic text-emerald-700 font-bold">
+                                        [ TERVERIFIKASI BPS ]
+                                    </div>
+                                    <div class="font-black text-slate-900 underline">Koordinator Statistik Kec. Kodeoha</div>
+                                    <div class="text-[10px] text-slate-500">Badan Pusat Statistik Kab. Kolaka Utara</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer Action -->
+                        <div class="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
+                            <span class="text-xs text-slate-500">Format Resmi Standar BPS RI & Satu Data Indonesia</span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="tutupRekapPodesModal()" class="px-4 py-2 rounded-xl bg-white border border-slate-300 text-slate-700 font-bold text-xs hover:bg-slate-50 transition cursor-pointer">
+                                    Tutup
+                                </button>
+                                <button type="button" onclick="cetakRekapPodes()" class="px-5 py-2 rounded-xl bg-[#0c4a34] hover:bg-[#083324] text-white font-black text-xs transition cursor-pointer flex items-center gap-1.5 shadow-sm">
+                                    <span>🖨️</span>
+                                    <span>Cetak Lembar Berita Acara</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -3124,6 +3606,20 @@
                 
 
             </div>
+        </div>
+
+        <!-- Floating Re-open Sidebar Button (Tampil saat sidebar ditutup) -->
+        <button type="button" id="btnFloatingSidebarOpen" onclick="toggleSidebar(true)" class="hidden fixed left-4 bottom-6 z-40 px-4 py-2.5 rounded-2xl bg-[#0c4a34] hover:bg-[#083324] text-white shadow-xl font-black text-xs flex items-center gap-2.5 border border-emerald-500/40 transition active:scale-95 cursor-pointer animate-in fade-in slide-in-from-left duration-200">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <span>Buka Menu Navigasi</span>
+        </button>
+
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div id="sidebarMobileBackdrop" onclick="toggleSidebar(false)" class="hidden fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-25 lg:hidden transition-opacity"></div>
     </main>
 
     <div id="toastNotification" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl border border-slate-700 hidden">
@@ -3550,6 +4046,413 @@
         // ==============================================================
         // MASTER DATA 6 DESA BINAAN KECAMATAN KODEOHA (BPS KOLAKA UTARA)
         // ==============================================================
+        
+const PODES_MASTER_BASELINE = {
+    kalukaluku: {
+        topografi: "Pesisir Pantai / Teluk Bone & Perkebunan",
+        hutan: "Di luar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "18.45",
+        dusunCount: 4,
+        rtCount: 12,
+        ipdSkor: "85.4",
+        ipdStatus: "Desa Mandiri",
+        
+        penduduk: 4150,
+        kk: 1120,
+        laki: 2060,
+        perempuan: 2090,
+        petani: 680,
+        nelayan: 145,
+        desilP3ke: 42,
+        bansos: 118,
+        disabilitas: 6,
+        
+        luasKakao: 480.0,
+        produksiKakao: 385.0,
+        produktivitasKakao: 802,
+        luasCengkeh: 120.0,
+        luasKelapa: 85.0,
+        poktan: 12,
+        fermentasiKakao: "Tersedia & Sentra Bersertifikasi Madani",
+        perahu: 28,
+        ikan: 95.0,
+        rtp: 34,
+        
+        jalan: 14.2,
+        jalanJenis: "Aspal & Beton Terhubung Poros Kecamatan",
+        angkutan: "Ada Angkutan Pick-up Hasil Bumi & Roda 4",
+        bts: "Ada Menara BTS Telekomunikasi di Desa",
+        sinyal: "4g_stabil",
+        jarakKec: 3.5,
+        jarakKab: 18.0,
+        
+        sekolahPaud: 2,
+        sekolahSD: 2,
+        sekolahSMP: 1,
+        sekolahSMA: 0,
+        faskes: "Puskesmas Pembantu (Pustu) Kalu Kaluku",
+        nakes: "1 Bidan Desa & 1 Perawat Siap Siaga",
+        posyandu: 4,
+        posbindu: 1,
+        
+        listrik: 99.2,
+        pjuts: "Tersedia 24 Titik Lampu Solar Cell PJUTS",
+        air: 94.5,
+        jamban: 96.8,
+        sampah: "Ada, Pengangkutan Terjadwal & Bank Sampah",
+        bencana: "Sistem Peringatan Dini Banjir Sungai & Jalur Evakuasi",
+        
+        bumdes: "BUMDes Mandiri Sejahtera",
+        bumdesUnit: "Unit Pengeringan/Fermentasi Biji Kakao & Simpan Pinjam",
+        ikm: 24,
+        kur: "Ada Akses KUR BRI & BPD Sultra",
+        tanahKas: "Ada (3 Bidang Tanah Kas Terdaftar)",
+        perdes: "Perdes No. 04/2025 ttg Statistik Sektoral Desa Cantik",
+        apbdes: "1.485.200.000",
+        danaDesa: "892.400.000",
+        addDesa: "482.800.000",
+        pades: "110.000.000"
+    },
+    awo: {
+        topografi: "Perbukitan & Tepi Kawasan Hutan",
+        hutan: "Di tepi/sekitar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "16.20",
+        dusunCount: 3,
+        rtCount: 10,
+        ipdSkor: "82.1",
+        ipdStatus: "Desa Maju",
+        
+        penduduk: 3250,
+        kk: 812,
+        laki: 1650,
+        perempuan: 1600,
+        petani: 510,
+        nelayan: 40,
+        desilP3ke: 38,
+        bansos: 94,
+        disabilitas: 4,
+        
+        luasKakao: 320.0,
+        produksiKakao: 245.0,
+        produktivitasKakao: 765,
+        luasCengkeh: 180.0,
+        luasKelapa: 60.0,
+        poktan: 10,
+        fermentasiKakao: "Tersedia Sentra Tradisional & Gula Aren",
+        perahu: 12,
+        ikan: 35.0,
+        rtp: 15,
+        
+        jalan: 11.5,
+        jalanJenis: "Aspal & Pengerasan Rabat Beton",
+        angkutan: "Ada Angkutan Sewa / Pick-up Panen",
+        bts: "Menginduk ke BTS Sinyal Terdekat",
+        sinyal: "4g_stabil",
+        jarakKec: 5.0,
+        jarakKab: 20.5,
+        
+        sekolahPaud: 1,
+        sekolahSD: 1,
+        sekolahSMP: 0,
+        sekolahSMA: 0,
+        faskes: "Poskesdes Awo (Bidan Desa Siap Siaga)",
+        nakes: "1 Bidan Desa & 1 Perawat Desa",
+        posyandu: 3,
+        posbindu: 1,
+        
+        listrik: 98.5,
+        pjuts: "Tersedia 18 Titik Lampu PJUTS Solar Cell",
+        air: 92.0,
+        jamban: 94.2,
+        sampah: "Ada, Pengolahan Kompos & Warga Terlibat",
+        bencana: "Mitigasi Longsor Lereng Perkebunan & Patroli Hutan",
+        
+        bumdes: "BUMDes Awo Baroqah",
+        bumdesUnit: "Penyulingan Nilam, Gula Aren & Pengering Kakao",
+        ikm: 38,
+        kur: "Ada Akses KUR Mikro BPD Sultra",
+        tanahKas: "Ada (2 Bidang Tanah Kas Desa)",
+        perdes: "Perdes No. 02/2025 ttg Data Presisi Desa Awo",
+        apbdes: "1.290.450.000",
+        danaDesa: "810.000.000",
+        addDesa: "415.450.000",
+        pades: "65.000.000"
+    },
+    kamisi: {
+        topografi: "Pesisir Teluk Bone & Sentra Bahari",
+        hutan: "Di luar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "14.80",
+        dusunCount: 3,
+        rtCount: 9,
+        ipdSkor: "80.8",
+        ipdStatus: "Desa Maju",
+        
+        penduduk: 3940,
+        kk: 985,
+        laki: 2010,
+        perempuan: 1930,
+        petani: 420,
+        nelayan: 220,
+        desilP3ke: 32,
+        bansos: 105,
+        disabilitas: 5,
+        
+        luasKakao: 240.0,
+        produksiKakao: 190.0,
+        produktivitasKakao: 791,
+        luasCengkeh: 65.0,
+        luasKelapa: 140.0,
+        poktan: 8,
+        fermentasiKakao: "Tersedia Rumah Pengeringan Kakao Rakyat",
+        perahu: 45,
+        ikan: 160.0,
+        rtp: 52,
+        
+        jalan: 12.0,
+        jalanJenis: "Aspal Mulus Menghubungkan Dermaga",
+        angkutan: "Ada Angkutan Ikan & Pick-up Komoditas",
+        bts: "Ada Menara BTS Telekomunikasi di Desa",
+        sinyal: "4g_stabil",
+        jarakKec: 2.0,
+        jarakKab: 16.0,
+        
+        sekolahPaud: 2,
+        sekolahSD: 1,
+        sekolahSMP: 0,
+        sekolahSMA: 0,
+        faskes: "Puskesmas Pembantu (Pustu) Kamisi & Apotek",
+        nakes: "1 Bidan Desa & 1 Tenaga Farmasi",
+        posyandu: 4,
+        posbindu: 1,
+        
+        listrik: 99.5,
+        pjuts: "Tersedia 26 Titik PJUTS Dermaga & Pesisir",
+        air: 95.0,
+        jamban: 97.2,
+        sampah: "Ada, Gerakan Pesisir Bebas Sampah Plastik",
+        bencana: "Sistem Peringatan Dini Cuaca Ekstrem Laut & Rambu Tsunami",
+        
+        bumdes: "BUMDes Bahari Madani",
+        bumdesUnit: "Pengeringan Ikan Teri Higienis & Es Balok",
+        ikm: 14,
+        kur: "Ada Akses KUR Nelayan & Petani",
+        tanahKas: "Ada (2 Bidang & Tambatan Perahu Desa)",
+        perdes: "Perdes No. 05/2025 ttg Integrasi Statistik Maritim",
+        apbdes: "1.380.500.000",
+        danaDesa: "860.000.000",
+        addDesa: "435.500.000",
+        pades: "85.000.000"
+    },
+    koroha: {
+        topografi: "Pesisir & Dataran Luar Hutan",
+        hutan: "Di luar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "15.50",
+        dusunCount: 3,
+        rtCount: 9,
+        ipdSkor: "78.2",
+        ipdStatus: "Desa Berkembang Menuju Maju",
+        
+        penduduk: 3350,
+        kk: 837,
+        laki: 1710,
+        perempuan: 1640,
+        petani: 480,
+        nelayan: 90,
+        desilP3ke: 35,
+        bansos: 88,
+        disabilitas: 3,
+        
+        luasKakao: 280.0,
+        produksiKakao: 215.0,
+        produktivitasKakao: 768,
+        luasCengkeh: 90.0,
+        luasKelapa: 110.0,
+        poktan: 9,
+        fermentasiKakao: "Tersedia Sentra Sambung Pucuk Kakao",
+        perahu: 22,
+        ikan: 68.0,
+        rtp: 26,
+        
+        jalan: 9.8,
+        jalanJenis: "Aspal & Rabat Beton JUT",
+        angkutan: "Ada Angkutan Angkudes & Pick-up Panen",
+        bts: "Menginduk ke Sinyal BTS Terdekat",
+        sinyal: "4g_stabil",
+        jarakKec: 2.8,
+        jarakKab: 17.0,
+        
+        sekolahPaud: 1,
+        sekolahSD: 1,
+        sekolahSMP: 1,
+        sekolahSMA: 0,
+        faskes: "Polindes Koroha & 1 Bidan Desa",
+        nakes: "1 Bidan Desa Aktif",
+        posyandu: 3,
+        posbindu: 1,
+        
+        listrik: 99.1,
+        pjuts: "Tersedia 16 Titik Lampu PJUTS",
+        air: 93.2,
+        jamban: 95.0,
+        sampah: "Ada, Partisipasi Komunitas Pesisir Bersih",
+        bencana: "Mitigasi Pasang Air Laut (Rob) & Rambu Evakuasi",
+        
+        bumdes: "BUMDes Koroha Jaya",
+        bumdesUnit: "Bibit Kakao Sambung Pucuk & Rumput Laut",
+        ikm: 16,
+        kur: "Ada Akses KUR Mikro Perbankan",
+        tanahKas: "Ada (2 Bidang Terdaftar)",
+        perdes: "Perdes No. 01/2025 ttg Tata Kelola Statistik Koroha",
+        apbdes: "1.230.800.000",
+        danaDesa: "790.000.000",
+        addDesa: "385.800.000",
+        pades: "55.000.000"
+    },
+    lametuna: {
+        topografi: "Dataran Rendah Pertanian Terpadu",
+        hutan: "Di luar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "12.90",
+        dusunCount: 3,
+        rtCount: 8,
+        ipdSkor: "76.5",
+        ipdStatus: "Desa Berkembang",
+        
+        penduduk: 2210,
+        kk: 552,
+        laki: 1130,
+        perempuan: 1080,
+        petani: 340,
+        nelayan: 25,
+        desilP3ke: 31,
+        bansos: 68,
+        disabilitas: 2,
+        
+        luasKakao: 210.0,
+        produksiKakao: 160.0,
+        produktivitasKakao: 762,
+        luasCengkeh: 75.0,
+        luasKelapa: 45.0,
+        poktan: 7,
+        fermentasiKakao: "Tersedia Pengeringan Bersama Poktan",
+        perahu: 8,
+        ikan: 22.0,
+        rtp: 10,
+        
+        jalan: 8.4,
+        jalanJenis: "Rabat Beton & Aspal Sambungan JUT",
+        angkutan: "Ada Angkutan Sewa / Pick-up Panen",
+        bts: "Menginduk ke Sinyal BTS Terdekat",
+        sinyal: "4g_stabil",
+        jarakKec: 4.2,
+        jarakKab: 19.0,
+        
+        sekolahPaud: 1,
+        sekolahSD: 1,
+        sekolahSMP: 1,
+        sekolahSMA: 0,
+        faskes: "Polindes Lametuna",
+        nakes: "1 Bidan Desa Siap Siaga",
+        posyandu: 2,
+        posbindu: 1,
+        
+        listrik: 99.0,
+        pjuts: "Tersedia 12 Titik Lampu PJUTS Solar Cell",
+        air: 91.5,
+        jamban: 93.0,
+        sampah: "Ada, TPS Desa & Pembakaran Terkendali",
+        bencana: "Pencegahan Luapan Air Saluran Irigasi Sawah",
+        
+        bumdes: "BUMDes Lametuna Makmur",
+        bumdesUnit: "Saprotan Pertanian, Pengolahan Padi & Kakao",
+        ikm: 7,
+        kur: "Ada Akses KUR Mikro",
+        tanahKas: "Ada (1 Bidang Tanah Kas Desa)",
+        perdes: "Perdes No. 03/2025 ttg Penyelenggaraan SDI Lametuna",
+        apbdes: "1.120.300.000",
+        danaDesa: "745.000.000",
+        addDesa: "330.300.000",
+        pades: "45.000.000"
+    },
+    sawangaoha: {
+        topografi: "Dataran Rendah & Perbukitan Agroindustri",
+        hutan: "Di luar kawasan hutan (Tabel 1.2 PODES)",
+        laut: "Berbatasan langsung dengan laut (Teluk Bone)",
+        luasWilayah: "17.10",
+        dusunCount: 3,
+        rtCount: 9,
+        ipdSkor: "81.3",
+        ipdStatus: "Desa Maju",
+        
+        penduduk: 2570,
+        kk: 642,
+        laki: 1310,
+        perempuan: 1260,
+        petani: 410,
+        nelayan: 30,
+        desilP3ke: 26,
+        bansos: 72,
+        disabilitas: 3,
+        
+        luasKakao: 210.0,
+        produksiKakao: 175.0,
+        produktivitasKakao: 833,
+        luasCengkeh: 115.0,
+        luasKelapa: 70.0,
+        poktan: 8,
+        fermentasiKakao: "Tersedia Sentra Kayu & Pengering Kakao",
+        perahu: 10,
+        ikan: 28.0,
+        rtp: 12,
+        
+        jalan: 10.2,
+        jalanJenis: "Aspal & Rabat Beton JUT Kuat",
+        angkutan: "Ada Angkutan Truk Kayu & Pick-up Panen",
+        bts: "Ada Menara BTS Sinyal Stabil",
+        sinyal: "4g_stabil",
+        jarakKec: 6.0,
+        jarakKab: 22.0,
+        
+        sekolahPaud: 1,
+        sekolahSD: 1,
+        sekolahSMP: 1,
+        sekolahSMA: 1,
+        faskes: "Polindes Sawangaoha",
+        nakes: "1 Bidan Desa Aktif",
+        posyandu: 3,
+        posbindu: 1,
+        
+        listrik: 98.8,
+        pjuts: "Tersedia 15 Titik Lampu Solar Cell PJUTS",
+        air: 93.8,
+        jamban: 95.5,
+        sampah: "Ada, Daur Ulang Limbah Kayu & Bank Sampah",
+        bencana: "Mitigasi Kebakaran Lahan Kebun & Pohon Tumbang",
+        
+        bumdes: "BUMDes Sawangaoha Berkah",
+        bumdesUnit: "Pengolahan Kayu Lestari, Mebel & Pupuk Organik",
+        ikm: 25,
+        kur: "Ada Akses KUR Mikro",
+        tanahKas: "Ada (2 Bidang Tanah Kas Desa)",
+        perdes: "Perdes No. 02/2025 ttg Desa Cantik Sawangaoha",
+        apbdes: "1.265.000.000",
+        danaDesa: "805.000.000",
+        addDesa: "395.000.000",
+        pades: "65.000.000"
+    }
+};
+
+// Initialize podes property on each village if not already present
+for (const k in PODES_MASTER_BASELINE) {
+    if (villagesData[k] && !villagesData[k].podes) {
+        villagesData[k].podes = Object.assign({}, PODES_MASTER_BASELINE[k]);
+    }
+}
+
         const villagesData = {
             kalukaluku: {
                 title: "Desa Kalu Kaluku",
@@ -4180,9 +5083,61 @@
             }
         }
 
+        // ==============================================================
+        // SIDEBAR TOGGLE (COLLAPSIBLE / BISA DITUTUP BUKA) HANDLERS
+        // ==============================================================
+        function toggleSidebar(forceState) {
+            const sidebar = document.getElementById('mainAppSidebar');
+            const toggleBtn = document.getElementById('btnToggleSidebar');
+            const toggleText = document.getElementById('textToggleSidebar');
+            const floatingBtn = document.getElementById('btnFloatingSidebarOpen');
+            const backdrop = document.getElementById('sidebarMobileBackdrop');
+            if (!sidebar) return;
+
+            const isCurrentlyOpen = !sidebar.classList.contains('hidden');
+            const willOpen = (typeof forceState === 'boolean') ? forceState : !isCurrentlyOpen;
+
+            if (willOpen) {
+                sidebar.classList.remove('hidden');
+                if (floatingBtn) floatingBtn.classList.add('hidden');
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+                    toggleBtn.classList.add('bg-slate-100', 'text-slate-700');
+                }
+                if (toggleText) toggleText.textContent = 'Sidebar';
+                if (backdrop && window.innerWidth < 1024) {
+                    backdrop.classList.remove('hidden');
+                }
+                try { localStorage.setItem('descan_sidebar_state', 'open'); } catch(e) {}
+            } else {
+                sidebar.classList.add('hidden');
+                if (floatingBtn) floatingBtn.classList.remove('hidden');
+                if (toggleBtn) {
+                    toggleBtn.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+                    toggleBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                }
+                if (toggleText) toggleText.textContent = 'Buka Menu';
+                if (backdrop) backdrop.classList.add('hidden');
+                try { localStorage.setItem('descan_sidebar_state', 'closed'); } catch(e) {}
+            }
+        }
+
+        // Shortcut keyboard Ctrl+B untuk buka/tutup sidebar
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'b' || e.key === 'B')) {
+                e.preventDefault();
+                toggleSidebar();
+            }
+        });
+
         function activateSidebarMenu(key) {
             isActivatingFromSidebar = true;
             syncSidebarItemActive(key);
+
+            // Tutup sidebar otomatis di layar mobile setelah memilih menu
+            if (window.innerWidth < 1024) {
+                toggleSidebar(false);
+            }
 
             if (key === 'dashboard') {
                 switchNavMenu('dashboard');
@@ -5820,6 +6775,11 @@
             if (typeof renderBuktiDukungTables === 'function') {
                 renderBuktiDukungTables(key);
             }
+
+            // 8. Update PODES Form Data for this village
+            if (typeof loadPodesFormData === 'function') {
+                loadPodesFormData(key);
+            }
         }
 
         function onVillageSelectChange(key) {
@@ -7002,6 +7962,18 @@
             const menuParam = (params.get('menu') || (window.location.hash ? window.location.hash.replace('#', '') : 'dashboard')).toLowerCase();
 
             currentTargetVillage = (typeof villagesData !== 'undefined' && villagesData[desaParam]) ? desaParam : 'kalukaluku';
+
+            // Pulihkan preferensi buka/tutup sidebar
+            try {
+                const savedSidebarState = localStorage.getItem('descan_sidebar_state');
+                if (savedSidebarState === 'closed') {
+                    toggleSidebar(false);
+                } else if (window.innerWidth < 1024) {
+                    toggleSidebar(false);
+                } else {
+                    toggleSidebar(true);
+                }
+            } catch(e) {}
             currentVillageKey = currentTargetVillage;
 
             const auth = typeof getDescanAuth === 'function' ? getDescanAuth() : null;
@@ -7294,37 +8266,242 @@
         }
 
         // ==============================================================
-        // PODES (POTENSI DESA) HANDLERS
+        // PODES (POTENSI DESA) 2024-2025 HANDLERS & DATA ENGINE
         // ==============================================================
         function scrollPodesSection(secId) {
             const el = document.getElementById(secId);
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
+        function onPodesVillageSelectChange(vKey) {
+            if (!vKey) return;
+            switchVillage(vKey);
+            loadPodesFormData(vKey);
+            showToast(`🏛️ Memuat Data PODES BPS ${villagesData[vKey]?.title || vKey}...`);
+        }
+
         function loadPodesFormData(vKey) {
+            if (!vKey) vKey = currentTargetVillage || 'kalukaluku';
             const v = villagesData[vKey] || villagesData['kalukaluku'];
             if (!v) return;
 
-            if (document.getElementById('inpPodesPenduduk') && v.penduduk) {
-                document.getElementById('inpPodesPenduduk').value = v.penduduk.replace(/[^0-9]/g, '') || 4150;
+            // Ensure podes object exists
+            if (!v.podes && typeof PODES_MASTER_BASELINE !== 'undefined' && PODES_MASTER_BASELINE[vKey]) {
+                v.podes = Object.assign({}, PODES_MASTER_BASELINE[vKey]);
             }
-            if (document.getElementById('inpPodesKK') && v.kk) {
-                document.getElementById('inpPodesKK').value = v.kk.replace(/[^0-9]/g, '') || 1120;
-            }
+            const p = v.podes || (typeof PODES_MASTER_BASELINE !== 'undefined' ? PODES_MASTER_BASELINE['kalukaluku'] : {});
+
+            // 1. Context Strip & Header Badges
+            const selEl = document.getElementById('podesVillageSelect');
+            if (selEl && selEl.value !== vKey) selEl.value = vKey;
+
+            const nameEl = document.getElementById('podesActiveDesaName');
+            if (nameEl) nameEl.textContent = v.title || 'Desa Kalu Kaluku';
+
+            const kecEl = document.getElementById('podesActiveDesaKec');
+            if (kecEl) kecEl.textContent = `${v.sub || 'Kecamatan Kodeoha • Kabupaten Kolaka Utara'} • Binaan BPS SDI`;
+
+            const topoEl = document.getElementById('podesActiveTopografiBadge');
+            if (topoEl && p.topografi) topoEl.textContent = p.topografi;
+
+            // 2. 4 Top Metric Cards
+            const kpiIpdVal = document.getElementById('kpiPodesIpdVal');
+            if (kpiIpdVal) kpiIpdVal.textContent = p.ipdSkor || '85.4';
+
+            const kpiIpdStatus = document.getElementById('kpiPodesIpdStatus');
+            if (kpiIpdStatus) kpiIpdStatus.textContent = (p.ipdStatus || 'Desa Mandiri').replace('Desa ', '');
+
+            const kpiKakaoVal = document.getElementById('kpiPodesKakaoVal');
+            if (kpiKakaoVal) kpiKakaoVal.textContent = `${p.luasKakao || 480} Ha • ${p.produksiKakao || 385} Ton`;
+
+            const kpiKakaoSub = document.getElementById('kpiPodesKakaoSub');
+            if (kpiKakaoSub) kpiKakaoSub.textContent = `Produktivitas ${p.produktivitasKakao || 802} Kg/Ha/Thn`;
+
+            const kpiInfraVal = document.getElementById('kpiPodesInfraVal');
+            if (kpiInfraVal) kpiInfraVal.textContent = `${p.listrik || 99.2}% PLN • 4G`;
+
+            const kpiInfraSub = document.getElementById('kpiPodesInfraSub');
+            if (kpiInfraSub) kpiInfraSub.textContent = `Jalan Usaha Tani ${p.jalan || 14.2} Km`;
+
+            const kpiBumdesVal = document.getElementById('kpiPodesBumdesVal');
+            if (kpiBumdesVal) kpiBumdesVal.textContent = p.bumdes || 'BUMDes Mandiri';
+
+            const kpiBumdesSub = document.getElementById('kpiPodesBumdesSub');
+            if (kpiBumdesSub) kpiBumdesSub.textContent = `${p.ikm || 24} Unit IKM • Perdes SDI Aktif`;
+
+            // 3. Section 1: Wilayah Administrasi & Topografi
+            const setVal = (id, val) => {
+                const el = document.getElementById(id);
+                if (el && val !== undefined && val !== null) el.value = val;
+            };
+
+            setVal('inpPodesTopografi', p.topografi);
+            setVal('inpPodesHutan', p.hutan);
+            setVal('inpPodesLaut', p.laut);
+            setVal('inpPodesLuasWilayah', p.luasWilayah || (v.luas ? v.luas.replace(/[^0-9.]/g, '') : '18.45'));
+            setVal('inpPodesDusunCount', p.dusunCount || v.dusunCount || 4);
+            setVal('inpPodesRtCount', p.rtCount || v.rtCount || 12);
+            setVal('inpPodesIpdSkor', p.ipdSkor || '85.4');
+            setVal('inpPodesIpdStatus', p.ipdStatus || 'Desa Mandiri');
+
+            // 4. Section 2: Demografi & P3KE
+            setVal('inpPodesPenduduk', p.penduduk || (v.penduduk ? v.penduduk.replace(/[^0-9]/g, '') : 4150));
+            setVal('inpPodesKK', p.kk || (v.kk ? v.kk.replace(/[^0-9]/g, '') : 1120));
+            setVal('inpPodesLaki', p.laki || 2060);
+            setVal('inpPodesPerempuan', p.perempuan || 2090);
+            setVal('inpPodesPetani', p.petani || 680);
+            setVal('inpPodesNelayan', p.nelayan || 145);
+            setVal('inpPodesDesilP3ke', p.desilP3ke || 42);
+            setVal('inpPodesBansos', p.bansos || 118);
+            setVal('inpPodesDisabilitas', p.disabilitas || 6);
+
+            // 5. Section 3: Pertanian Kakao & Nelayan
+            setVal('inpPodesLuasKakao', p.luasKakao || 480);
+            setVal('inpPodesProduksiKakao', p.produksiKakao || 385);
+            setVal('inpPodesProduktivitasKakao', p.produktivitasKakao || 802);
+            setVal('inpPodesLuasCengkeh', p.luasCengkeh || 120);
+            setVal('inpPodesLuasKelapa', p.luasKelapa || 85);
+            setVal('inpPodesPoktan', p.poktan || 12);
+            setVal('inpPodesFermentasiKakao', p.fermentasiKakao);
+            setVal('inpPodesPerahu', p.perahu || 28);
+            setVal('inpPodesIkan', p.ikan || 95);
+            setVal('inpPodesRtp', p.rtp || 34);
+
+            // 6. Section 4: Sarpras & Telekomunikasi
+            setVal('inpPodesJalan', p.jalan || 14.2);
+            setVal('inpPodesJalanJenis', p.jalanJenis);
+            setVal('inpPodesAngkutan', p.angkutan);
+            setVal('inpPodesBts', p.bts);
+            setVal('inpPodesSinyal', p.sinyal || '4g_stabil');
+            setVal('inpPodesJarakKec', p.jarakKec || 3.5);
+            setVal('inpPodesJarakKab', p.jarakKab || 18.0);
+
+            // 7. Section 5: Pendidikan & Faskes
+            setVal('inpPodesSekolahPaud', p.sekolahPaud || 2);
+            setVal('inpPodesSekolahSD', p.sekolahSD || 2);
+            setVal('inpPodesSekolahSMP', p.sekolahSMP || 1);
+            setVal('inpPodesSekolahSMA', p.sekolahSMA || 0);
+            setVal('inpPodesFaskes', p.faskes || 'Puskesmas Pembantu Kalu Kaluku');
+            setVal('inpPodesNakes', p.nakes || '1 Bidan Desa & 1 Perawat');
+            setVal('inpPodesPosyandu', p.posyandu || 4);
+            setVal('inpPodesPosbindu', p.posbindu || 1);
+
+            // 8. Section 6: Sanitasi & Lingkungan
+            setVal('inpPodesListrik', p.listrik || 99.2);
+            setVal('inpPodesPjuts', p.pjuts);
+            setVal('inpPodesAir', p.air || 94.5);
+            setVal('inpPodesJamban', p.jamban || 96.8);
+            setVal('inpPodesSampah', p.sampah);
+            setVal('inpPodesBencana', p.bencana);
+
+            // 9. Section 7: BUMDes & APBDes
+            setVal('inpPodesBumdes', p.bumdes || 'BUMDes Mandiri Sejahtera');
+            setVal('inpPodesBumdesUnit', p.bumdesUnit || 'Unit Fermentasi Kakao & Simpan Pinjam');
+            setVal('inpPodesIkm', p.ikm || 24);
+            setVal('inpPodesKur', p.kur || 'Ada Akses KUR BRI & BPD Sultra');
+            setVal('inpPodesTanahKas', p.tanahKas || 'Ada (3 Bidang Tanah Kas Terdaftar)');
+            setVal('inpPodesPerdes', p.perdes || 'Perdes No. 04/2025 ttg Statistik Sektoral Desa Cantik');
+            setVal('inpPodesApbdes', p.apbdes || '1.485.200.000');
+            setVal('inpPodesDanaDesa', p.danaDesa || '892.400.000');
+            setVal('inpPodesAddDesa', p.addDesa || '482.800.000');
+            setVal('inpPodesPades', p.pades || '110.000.000');
         }
 
         function simpanDataPodes(e) {
             if (e) e.preventDefault();
             const vKey = currentTargetVillage || 'kalukaluku';
-            const pendVal = document.getElementById('inpPodesPenduduk')?.value || '4150';
-            const kkVal = document.getElementById('inpPodesKK')?.value || '1120';
-            const kakaoVal = document.getElementById('inpPodesProduksiKakao')?.value || '385';
+            const v = villagesData[vKey] || villagesData['kalukaluku'];
+            if (!v) return;
 
-            // Update in villagesData state
-            if (villagesData[vKey]) {
-                villagesData[vKey].penduduk = Number(pendVal).toLocaleString('id-ID');
-                villagesData[vKey].kk = Number(kkVal).toLocaleString('id-ID');
-            }
+            const getVal = (id, fallback) => {
+                const el = document.getElementById(id);
+                return el ? el.value : fallback;
+            };
+
+            const pendVal = getVal('inpPodesPenduduk', '4150');
+            const kkVal = getVal('inpPodesKK', '1120');
+            const luasVal = getVal('inpPodesLuasWilayah', '18.45');
+            const luasKakaoVal = getVal('inpPodesLuasKakao', '480');
+            const prodKakaoVal = getVal('inpPodesProduksiKakao', '385');
+            const ipdSkorVal = getVal('inpPodesIpdSkor', '85.4');
+            const ipdStatusVal = getVal('inpPodesIpdStatus', 'Desa Mandiri');
+            const listrikVal = getVal('inpPodesListrik', '99.2');
+            const bumdesVal = getVal('inpPodesBumdes', 'BUMDes Mandiri Sejahtera');
+
+            // Save all fields to villagesData[vKey].podes
+            if (!v.podes) v.podes = {};
+            v.podes.topografi = getVal('inpPodesTopografi', 'Pesisir Pantai / Teluk Bone & Perkebunan');
+            v.podes.hutan = getVal('inpPodesHutan', 'Di luar kawasan hutan (Tabel 1.2 PODES)');
+            v.podes.laut = getVal('inpPodesLaut', 'Berbatasan langsung dengan laut (Teluk Bone)');
+            v.podes.luasWilayah = luasVal;
+            v.podes.dusunCount = Number(getVal('inpPodesDusunCount', '4')) || 4;
+            v.podes.rtCount = Number(getVal('inpPodesRtCount', '12')) || 12;
+            v.podes.ipdSkor = ipdSkorVal;
+            v.podes.ipdStatus = ipdStatusVal;
+
+            v.podes.penduduk = Number(pendVal) || 4150;
+            v.podes.kk = Number(kkVal) || 1120;
+            v.podes.laki = Number(getVal('inpPodesLaki', '2060')) || 2060;
+            v.podes.perempuan = Number(getVal('inpPodesPerempuan', '2090')) || 2090;
+            v.podes.petani = Number(getVal('inpPodesPetani', '680')) || 680;
+            v.podes.nelayan = Number(getVal('inpPodesNelayan', '145')) || 145;
+            v.podes.desilP3ke = Number(getVal('inpPodesDesilP3ke', '42')) || 42;
+            v.podes.bansos = Number(getVal('inpPodesBansos', '118')) || 118;
+            v.podes.disabilitas = Number(getVal('inpPodesDisabilitas', '6')) || 6;
+
+            v.podes.luasKakao = parseFloat(luasKakaoVal) || 480;
+            v.podes.produksiKakao = parseFloat(prodKakaoVal) || 385;
+            v.podes.produktivitasKakao = Number(getVal('inpPodesProduktivitasKakao', '802')) || 802;
+            v.podes.luasCengkeh = parseFloat(getVal('inpPodesLuasCengkeh', '120')) || 120;
+            v.podes.luasKelapa = parseFloat(getVal('inpPodesLuasKelapa', '85')) || 85;
+            v.podes.poktan = Number(getVal('inpPodesPoktan', '12')) || 12;
+            v.podes.fermentasiKakao = getVal('inpPodesFermentasiKakao', 'Tersedia & Sentra Bersertifikasi Madani');
+            v.podes.perahu = Number(getVal('inpPodesPerahu', '28')) || 28;
+            v.podes.ikan = parseFloat(getVal('inpPodesIkan', '95')) || 95;
+            v.podes.rtp = Number(getVal('inpPodesRtp', '34')) || 34;
+
+            v.podes.jalan = parseFloat(getVal('inpPodesJalan', '14.2')) || 14.2;
+            v.podes.jalanJenis = getVal('inpPodesJalanJenis', 'Aspal & Beton Terhubung Poros Kecamatan');
+            v.podes.angkutan = getVal('inpPodesAngkutan', 'Ada Angkutan Pick-up Hasil Bumi & Roda 4');
+            v.podes.bts = getVal('inpPodesBts', 'Ada Menara BTS Telekomunikasi di Desa');
+            v.podes.sinyal = getVal('inpPodesSinyal', '4g_stabil');
+            v.podes.jarakKec = parseFloat(getVal('inpPodesJarakKec', '3.5')) || 3.5;
+            v.podes.jarakKab = parseFloat(getVal('inpPodesJarakKab', '18.0')) || 18.0;
+
+            v.podes.sekolahPaud = Number(getVal('inpPodesSekolahPaud', '2')) || 2;
+            v.podes.sekolahSD = Number(getVal('inpPodesSekolahSD', '2')) || 2;
+            v.podes.sekolahSMP = Number(getVal('inpPodesSekolahSMP', '1')) || 1;
+            v.podes.sekolahSMA = Number(getVal('inpPodesSekolahSMA', '0')) || 0;
+            v.podes.faskes = getVal('inpPodesFaskes', 'Puskesmas Pembantu Kalu Kaluku');
+            v.podes.nakes = getVal('inpPodesNakes', '1 Bidan Desa & 1 Perawat');
+            v.podes.posyandu = Number(getVal('inpPodesPosyandu', '4')) || 4;
+            v.podes.posbindu = Number(getVal('inpPodesPosbindu', '1')) || 1;
+
+            v.podes.listrik = parseFloat(listrikVal) || 99.2;
+            v.podes.pjuts = getVal('inpPodesPjuts', 'Tersedia 24 Titik Lampu Solar Cell PJUTS');
+            v.podes.air = parseFloat(getVal('inpPodesAir', '94.5')) || 94.5;
+            v.podes.jamban = parseFloat(getVal('inpPodesJamban', '96.8')) || 96.8;
+            v.podes.sampah = getVal('inpPodesSampah', 'Ada, Pengangkutan Terjadwal & Bank Sampah');
+            v.podes.bencana = getVal('inpPodesBencana', 'Sistem Peringatan Dini Banjir Sungai & Jalur Evakuasi');
+
+            v.podes.bumdes = bumdesVal;
+            v.podes.bumdesUnit = getVal('inpPodesBumdesUnit', 'Unit Pengeringan/Fermentasi Biji Kakao');
+            v.podes.ikm = Number(getVal('inpPodesIkm', '24')) || 24;
+            v.podes.kur = getVal('inpPodesKur', 'Ada Akses KUR BRI & BPD Sultra');
+            v.podes.tanahKas = getVal('inpPodesTanahKas', 'Ada (3 Bidang Tanah Kas Terdaftar)');
+            v.podes.perdes = getVal('inpPodesPerdes', 'Perdes No. 04/2025 ttg Statistik Sektoral Desa Cantik');
+            v.podes.apbdes = getVal('inpPodesApbdes', '1.485.200.000');
+            v.podes.danaDesa = getVal('inpPodesDanaDesa', '892.400.000');
+            v.podes.addDesa = getVal('inpPodesAddDesa', '482.800.000');
+            v.podes.pades = getVal('inpPodesPades', '110.000.000');
+
+            // Sync with village top-level metadata
+            v.penduduk = Number(pendVal).toLocaleString('id-ID') + ' Jiwa';
+            v.pop = v.penduduk;
+            v.kk = Number(kkVal).toLocaleString('id-ID') + ' KK';
+            v.luas = luasVal + ' km²';
+            v.dusunCount = v.podes.dusunCount;
+            v.rtCount = v.podes.rtCount;
 
             // Sync with Dashboard KPIs
             const kpiPend = document.getElementById('kpiTotalPenduduk');
@@ -7332,42 +8509,213 @@
             const kpiKk = document.getElementById('kpiTotalKK');
             if (kpiKk) kpiKk.textContent = Number(kkVal).toLocaleString('id-ID');
 
-            showToast(`✅ Data PODES ${villagesData[vKey]?.title || 'Desa'} berhasil disimpan & disinkronkan ke Dashboard!`);
+            // Refresh PODES Top Metric Cards
+            loadPodesFormData(vKey);
+
+            showToast(`✅ Data PODES ${v.title || 'Desa'} berhasil disimpan & disinkronkan ke Desa Madani!`);
         }
 
         function resetDataPodes() {
+            const vKey = currentTargetVillage || 'kalukaluku';
+            if (typeof PODES_MASTER_BASELINE !== 'undefined' && PODES_MASTER_BASELINE[vKey]) {
+                if (villagesData[vKey]) {
+                    villagesData[vKey].podes = Object.assign({}, PODES_MASTER_BASELINE[vKey]);
+                }
+            }
             const form = document.getElementById('formPodes');
             if (form) form.reset();
-            loadPodesFormData(currentTargetVillage);
-            showToast('🔄 Formulir PODES berhasil di-reset ke data dasar BPS.');
+            loadPodesFormData(vKey);
+            showToast('🔄 Formulir PODES berhasil di-reset ke data dasar BPS Kolaka Utara.');
         }
 
         function eksporDataPodes() {
             const vKey = currentTargetVillage || 'kalukaluku';
-            const vTitle = villagesData[vKey]?.title || 'Desa Kalu Kaluku';
+            const v = villagesData[vKey] || villagesData['kalukaluku'];
+            const p = v?.podes || (typeof PODES_MASTER_BASELINE !== 'undefined' ? PODES_MASTER_BASELINE[vKey] : {});
+            const vTitle = v?.title || 'Desa Kalu Kaluku';
+
             const csvRows = [
-                ['KATEGORI', 'VARIABEL PODES', 'NILAI', 'SATUAN', 'SUMBER DATA'],
-                ['Kependudukan', 'Jumlah Penduduk', document.getElementById('inpPodesPenduduk')?.value || '4150', 'Jiwa', 'Satu Data Indonesia BPS'],
-                ['Kependudukan', 'Jumlah KK', document.getElementById('inpPodesKK')?.value || '1120', 'KK', 'Satu Data Indonesia BPS'],
-                ['Kependudukan', 'Laki-laki', document.getElementById('inpPodesLaki')?.value || '2060', 'Jiwa', 'Satu Data Indonesia BPS'],
-                ['Kependudukan', 'Perempuan', document.getElementById('inpPodesPerempuan')?.value || '2090', 'Jiwa', 'Satu Data Indonesia BPS'],
-                ['Pertanian', 'Luas Lahan Kakao', document.getElementById('inpPodesLuasKakao')?.value || '480', 'Hektar', 'Dinas Perkebunan & BPS Kolut'],
-                ['Pertanian', 'Produksi Kakao', document.getElementById('inpPodesProduksiKakao')?.value || '385', 'Ton/Tahun', 'Dinas Perkebunan & BPS Kolut'],
-                ['Sarpras', 'Jalan Aspal/Beton', document.getElementById('inpPodesJalan')?.value || '14.2', 'Km', 'PUPR & PODES 2026'],
-                ['Sanitasi', 'Air Bersih Layak', document.getElementById('inpPodesAir')?.value || '92.4', '% KK', 'Dinas Kesehatan Kolut'],
-                ['Kelembagaan', 'Status BUMDes', document.getElementById('inpPodesBumdes')?.value || 'Maju Mandiri', 'Kategori', 'DPMD Kolut']
+                ['PEMERINTAH KABUPATEN KOLAKA UTARA - KECAMATAN KODEOHA'],
+                ['PORTAL DESA CANTIK (CINTA STATISTIK) DESA MADANI'],
+                ['TABULASI LENGKAP PENDATAAN POTENSI DESA (PODES BPS 2024-2025)'],
+                ['DESA:', vTitle],
+                ['TANGGAL EKSPOR:', new Date().toLocaleString('id-ID')],
+                [''],
+                ['KATEGORI SEKTORAL', 'VARIABEL PODES RESMI', 'NILAI DATA', 'SATUAN', 'SUMBER DATA / DASAR HUKUM'],
+                
+                // Wilayah
+                ['1. Wilayah & Topografi', 'Topografi Wilayah Dominan', p.topografi || '-', 'Kategori', 'BPS Kolut Tabel 1.1'],
+                ['1. Wilayah & Topografi', 'Posisi Terhadap Kawasan Hutan', p.hutan || '-', 'Status', 'BPS Kolut Tabel 1.2'],
+                ['1. Wilayah & Topografi', 'Keterkaitan Wilayah Laut', p.laut || '-', 'Status', 'BPS Kolut Tabel 1.3'],
+                ['1. Wilayah & Topografi', 'Luas Wilayah Administrasi', p.luasWilayah || '18.45', 'Km²', 'Kemendagri & Pemkab Kolut'],
+                ['1. Wilayah & Topografi', 'Jumlah Dusun Resmi', p.dusunCount || 4, 'Dusun', 'Pemerintah Desa'],
+                ['1. Wilayah & Topografi', 'Jumlah Rukun Tetangga (RT)', p.rtCount || 12, 'RT', 'Pemerintah Desa'],
+                ['1. Wilayah & Topografi', 'Skor Indeks Perkembangan Desa (IPD)', p.ipdSkor || '85.4', 'Skor', 'BPS RI 2025'],
+                ['1. Wilayah & Topografi', 'Klasifikasi Status IPD', p.ipdStatus || 'Desa Mandiri', 'Kategori', 'BPS RI 2025'],
+                
+                // Demografi
+                ['2. Kependudukan & P3KE', 'Jumlah Penduduk Total', p.penduduk || 4150, 'Jiwa', 'Satu Data Indonesia (SDI)'],
+                ['2. Kependudukan & P3KE', 'Jumlah Kepala Keluarga (KK)', p.kk || 1120, 'KK', 'Satu Data Indonesia (SDI)'],
+                ['2. Kependudukan & P3KE', 'Penduduk Laki-laki', p.laki || 2060, 'Jiwa', 'Satu Data Indonesia (SDI)'],
+                ['2. Kependudukan & P3KE', 'Penduduk Perempuan', p.perempuan || 2090, 'Jiwa', 'Satu Data Indonesia (SDI)'],
+                ['2. Kependudukan & P3KE', 'Angkatan Kerja Petani Kakao', p.petani || 680, 'Jiwa', 'Disbun & Poktan Kolut'],
+                ['2. Kependudukan & P3KE', 'Angkatan Kerja Nelayan & Pesisir', p.nelayan || 145, 'Jiwa', 'DKP Kolut'],
+                ['2. Kependudukan & P3KE', 'Rumah Tangga Desil 1-4 P3KE', p.desilP3ke || 42, 'KK', 'Kemenko PMK P3KE'],
+                ['2. Kependudukan & P3KE', 'Penerima Program Bansos (PKH/BPNT/DD)', p.bansos || 118, 'KPM', 'Kemensos & Pemdes'],
+                ['2. Kependudukan & P3KE', 'Penyandang Disabilitas', p.disabilitas || 6, 'Jiwa', 'Dinsos Kolut'],
+
+                // Pertanian & Kakao
+                ['3. Pertanian & Kakao', 'Luas Kebun Kakao Rakyat', p.luasKakao || 480, 'Hektar', 'Sentra Kakao Desa Madani'],
+                ['3. Pertanian & Kakao', 'Estimasi Produksi Biji Kakao Kering', p.produksiKakao || 385, 'Ton / Tahun', 'Sentra Kakao Desa Madani'],
+                ['3. Pertanian & Kakao', 'Produktivitas Kakao Rata-rata', p.produktivitasKakao || 802, 'Kg / Ha / Thn', 'Sentra Kakao Desa Madani'],
+                ['3. Pertanian & Kakao', 'Luas Lahan Cengkeh', p.luasCengkeh || 120, 'Hektar', 'Disbun Kolut'],
+                ['3. Pertanian & Kakao', 'Luas Lahan Kelapa / Kopra', p.luasKelapa || 85, 'Hektar', 'Disbun Kolut'],
+                ['3. Pertanian & Kakao', 'Kelompok Tani (Poktan & Gapoktan)', p.poktan || 12, 'Kelompok', 'Distan & Pemdes'],
+                ['3. Pertanian & Kakao', 'Fasilitas Fermentasi & Surya Kakao', p.fermentasiKakao || '-', 'Fasilitas', 'Desa Madani BPS'],
+                ['3. Pertanian & Kakao', 'Armada Perahu Motor Nelayan', p.perahu || 28, 'Unit', 'DKP Kolut & PODES'],
+                ['3. Pertanian & Kakao', 'Produksi Hasil Tangkap Laut', p.ikan || 95, 'Ton / Tahun', 'DKP Kolut & PODES'],
+                ['3. Pertanian & Kakao', 'Rumah Tangga Perikanan (RTP)', p.rtp || 34, 'KK', 'DKP Kolut'],
+
+                // Sarpras
+                ['4. Sarpras & Konektivitas', 'Panjang Jalan Usaha Tani / Poros', p.jalan || 14.2, 'Km', 'PUPR & PODES Tabel 4.4'],
+                ['4. Sarpras & Konektivitas', 'Jenis Permukaan Jalan Terluas', p.jalanJenis || '-', 'Kategori', 'BPS Kolut Tabel 4.4'],
+                ['4. Sarpras & Konektivitas', 'Ketersediaan Angkutan Panen', p.angkutan || '-', 'Kategori', 'BPS Kolut Tabel 4.2'],
+                ['4. Sarpras & Konektivitas', 'Keberadaan Menara BTS', p.bts || '-', 'Kategori', 'BPS Kolut Tabel 4.5'],
+                ['4. Sarpras & Konektivitas', 'Kekuatan Sinyal Internet 4G LTE', p.sinyal || '4g_stabil', 'Sinyal', 'BPS Kolut Tabel 4.6'],
+                ['4. Sarpras & Konektivitas', 'Jarak ke Ibukota Kecamatan', p.jarakKec || 3.5, 'Km', 'PODES 2025'],
+                ['4. Sarpras & Konektivitas', 'Jarak ke Ibukota Kabupaten (Lasusua)', p.jarakKab || 18.0, 'Km', 'PODES 2025'],
+
+                // Pendidikan & Kesehatan
+                ['5. Pendidikan & Kesehatan', 'Jumlah Sarana PAUD/TK', p.sekolahPaud || 2, 'Unit', 'BPS Kolut Tabel 9.1'],
+                ['5. Pendidikan & Kesehatan', 'Jumlah Sekolah SD/MI', p.sekolahSD || 2, 'Unit', 'BPS Kolut Tabel 9.1'],
+                ['5. Pendidikan & Kesehatan', 'Jumlah Sekolah SMP/MTs', p.sekolahSMP || 1, 'Unit', 'BPS Kolut Tabel 9.2'],
+                ['5. Pendidikan & Kesehatan', 'Jumlah Sekolah SMA/SMK', p.sekolahSMA || 0, 'Unit', 'BPS Kolut Tabel 9.3'],
+                ['5. Pendidikan & Kesehatan', 'Fasilitas Kesehatan di Desa', p.faskes || '-', 'Faskes', 'BPS Kolut Tabel 10.2'],
+                ['5. Pendidikan & Kesehatan', 'Tenaga Kesehatan Siaga', p.nakes || '-', 'Nakes', 'Dinkes Kolut'],
+                ['5. Pendidikan & Kesehatan', 'Jumlah Posyandu Aktif', p.posyandu || 4, 'Unit', 'BPS Kolut Tabel 3.3'],
+                ['5. Pendidikan & Kesehatan', 'Posbindu PTM', p.posbindu || 1, 'Unit', 'BPS Kolut Tabel 3.3'],
+
+                // Sanitasi & Lingkungan
+                ['6. Sanitasi & Lingkungan', 'Elektrifikasi Listrik PLN', p.listrik || 99.2, '% KK', 'BPS Kolut Tabel 2.1'],
+                ['6. Sanitasi & Lingkungan', 'Penerangan Jalan Utama Desa (PJUTS)', p.pjuts || '-', 'Kategori', 'BPS Kolut Tabel 2.2'],
+                ['6. Sanitasi & Lingkungan', 'Akses Air Minum Bersih Layak', p.air || 94.5, '% KK', 'Dinkes & PODES'],
+                ['6. Sanitasi & Lingkungan', 'Jamban Sehat & Bebas ODF', p.jamban || 96.8, '% KK', 'Dinkes & PODES'],
+                ['6. Sanitasi & Lingkungan', 'Pengelolaan Sampah Desa', p.sampah || '-', 'Kategori', 'BPS Kolut Tabel 8.3'],
+                ['6. Sanitasi & Lingkungan', 'Mitigasi Bencana Alam', p.bencana || '-', 'Kategori', 'BPS Kolut Tabel 8.1'],
+
+                // Kelembagaan & APBDes
+                ['7. Kelembagaan & APBDes', 'Nama BUMDes & Legalitas', p.bumdes || '-', 'Lembaga', 'DPMD Kolut'],
+                ['7. Kelembagaan & APBDes', 'Unit Usaha BUMDes Unggulan', p.bumdesUnit || '-', 'Unit Usaha', 'DPMD Kolut'],
+                ['7. Kelembagaan & APBDes', 'Jumlah IKM Hasil Bumi (Tabel 11.2)', p.ikm || 24, 'Unit', 'BPS Kolut Tabel 11.2'],
+                ['7. Kelembagaan & APBDes', 'Akses Kredit Usaha Rakyat (KUR)', p.kur || '-', 'Akses', 'BPS Kolut Tabel 11.4'],
+                ['7. Kelembagaan & APBDes', 'Tanah Kas Desa / Aset Desa', p.tanahKas || '-', 'Aset', 'Pemerintah Desa'],
+                ['7. Kelembagaan & APBDes', 'Perdes Statistik Sektoral SDI', p.perdes || '-', 'Regulasi', 'JDIH Desa Madani'],
+                ['7. Kelembagaan & APBDes', 'Total Pendapatan APBDes', 'Rp ' + (p.apbdes || '1.485.200.000'), 'Rupiah', 'APBDes 2026'],
+                ['7. Kelembagaan & APBDes', 'Alokasi Dana Desa (DD Kemendes)', 'Rp ' + (p.danaDesa || '892.400.000'), 'Rupiah', 'APBDes 2026'],
+                ['7. Kelembagaan & APBDes', 'Alokasi Dana Desa (ADD Pemkab)', 'Rp ' + (p.addDesa || '482.800.000'), 'Rupiah', 'APBDes 2026'],
+                ['7. Kelembagaan & APBDes', 'Pendapatan Asli Desa (PADes)', 'Rp ' + (p.pades || '110.000.000'), 'Rupiah', 'APBDes 2026']
             ];
 
-            const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.map(i => `"${i}"`).join(",")).join("\n");
-            const encodedUri = encodeURI(csvContent);
+            const csvContent = "\uFEFF" + csvRows.map(e => e.map(i => `"${String(i).replace(/"/g, '""')}"`).join(",")).join("\n");
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `Data_PODES_2026_${vKey}.csv`);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Data_PODES_2025_BPS_${vKey}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            URL.revokeObjectURL(url);
 
-            showToast(`📊 Berkas Data_PODES_2026_${vKey}.csv berhasil diunduh!`);
+            showToast(`📊 Tabulasi PODES 2025 ${vTitle} berhasil diekspor (CSV/Excel)!`);
+        }
+
+        // ==============================================================
+        // MODAL REKAPITULASI BERITA ACARA PODES BPS HANDLERS
+        // ==============================================================
+        function bukaRekapPodesModal() {
+            const vKey = currentTargetVillage || 'kalukaluku';
+            const v = villagesData[vKey] || villagesData['kalukaluku'];
+            const p = v?.podes || (typeof PODES_MASTER_BASELINE !== 'undefined' ? PODES_MASTER_BASELINE[vKey] : {});
+            const vTitle = v?.title || 'Desa Kalu Kaluku';
+
+            // Fill header & signatures
+            const kopEl = document.getElementById('modalKopDesaTitle');
+            if (kopEl) kopEl.textContent = `PEMERINTAH ${(vTitle || 'DESA').toUpperCase()}`;
+
+            const signTitle = document.getElementById('modalSignKadesTitle');
+            if (signTitle) signTitle.textContent = `Kepala ${vTitle}`;
+
+            const signName = document.getElementById('modalSignKadesName');
+            if (signName) signName.textContent = v?.aparatur?.kades || 'H. Syamsul Bahri, S.Sos';
+
+            // Fill summary table rows
+            const elTopografi = document.getElementById('mbTopografi');
+            if (elTopografi) elTopografi.textContent = `${p.topografi || 'Pesisir & Dataran'} (${p.luasWilayah || '18.45'} Km²)`;
+
+            const elPend = document.getElementById('mbPenduduk');
+            if (elPend) elPend.textContent = `${Number(p.penduduk || 4150).toLocaleString('id-ID')} Jiwa (${Number(p.kk || 1120).toLocaleString('id-ID')} KK)`;
+
+            const elKakao = document.getElementById('mbKakao');
+            if (elKakao) elKakao.textContent = `${p.luasKakao || 480} Ha • ${p.produksiKakao || 385} Ton (${p.produktivitasKakao || 802} Kg/Ha)`;
+
+            const elJalan = document.getElementById('mbJalan');
+            if (elJalan) elJalan.textContent = `${p.jalan || 14.2} Km JUT • 4G LTE`;
+
+            const elSosial = document.getElementById('mbSosial');
+            if (elSosial) elSosial.textContent = `${p.faskes || 'Pustu Aktif'}, ${p.sekolahSD || 2} SD & ${p.sekolahSMP || 1} SMP`;
+
+            const elSanitasi = document.getElementById('mbSanitasi');
+            if (elSanitasi) elSanitasi.textContent = `${p.listrik || 99.2}% Listrik • ${p.jamban || 96.8}% Jamban ODF`;
+
+            const elBumdes = document.getElementById('mbBumdes');
+            if (elBumdes) elBumdes.textContent = `${p.bumdes || 'BUMDes'} • Rp ${p.apbdes || '1.485.200.000'}`;
+
+            // Show modal
+            const modal = document.getElementById('modalRekapPodes');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function tutupRekapPodesModal() {
+            const modal = document.getElementById('modalRekapPodes');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        function cetakRekapPodes() {
+            const printContent = document.getElementById('printableRekapPodesContent');
+            if (!printContent) return;
+
+            const printWindow = window.open('', '_blank', 'width=850,height=900');
+            const tailwindTag = '<' + 'script src="https://cdn.tailwindcss.com">' + '<' + '/script>';
+            const printScript = '<' + 'script>window.onload = function() { window.focus(); window.print(); };<' + '/script>';
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Berita Acara Rekapitulasi PODES BPS 2025</title>
+                    ${tailwindTag}
+                    <style>
+                        body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+                        @media print {
+                            body { padding: 0; margin: 0; }
+                            @page { margin: 1.5cm; }
+                        }
+                    </style>
+                </head>
+                <body class="p-8 text-slate-900 bg-white">
+                    ${printContent.innerHTML}
+                    ${printScript}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
         }
 
         // ==============================================================

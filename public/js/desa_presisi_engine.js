@@ -2924,519 +2924,519 @@ window.PresisiEngine = (function() {
       </div>
 
       <!-- 12 Sectors Balanced Grid Cards (Full Width: 4 Cols on Large Displays, 3 Cols on Laptop, 2 on Tablet, 1 on Mobile) -->
-      <div id="raporCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4.5 text-xs text-slate-700">
+      <div id="raporCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 text-xs text-slate-700">
 
         <!-- 1. Keterangan Umum & Wilayah -->
-        <div data-cluster="wilayah" class="rapor-card-item p-4.5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="wilayah" class="rapor-card-item p-4 sm:p-5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2 border-b border-teal-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
-                <span class="text-sm font-bold">1. Keterangan Umum</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2.5 border-b border-teal-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">1. Keterangan Umum</span>
               </span>
-              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black">${d.status}</span>
+              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${d.status}</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Status Pemerintahan</span>
-                <b class="text-slate-800">${d.status} Definitif</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Status Pemerintahan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${d.status} Definitif</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Topografi Lanskap</span>
-                <b class="text-slate-800 text-right">${safeStr(d.topografi || (d.umum && d.umum.topografi), 'Dataran')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Topografi Lanskap</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.topografi || (d.umum && d.umum.topografi), 'Dataran')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Kawasan Hutan</span>
-                <b class="text-slate-800">${safeStr(d.umum && d.umum.hutan, 'Di luar kawasan hutan')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kawasan Hutan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.hutan, 'Di luar kawasan hutan')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Wilayah Pesisir / Laut</span>
-                <b class="text-slate-800">${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Wilayah Pesisir / Laut</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Lokasi Kantor Desa</span>
-                <b class="text-slate-800">${safeStr(d.umum && d.umum.lokasiKantor, 'Di Dalam Desa')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Lokasi Kantor Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.lokasiKantor, 'Di Dalam Desa')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Sektor Pekerjaan Utama</span>
-                <b class="text-slate-800">Pertanian & Perkebunan</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sektor Pekerjaan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Pertanian & Kebun</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Komoditas Unggulan</span>
-                <b class="text-emerald-800 font-bold">${safeStr(d.umum && d.umum.komoditas, 'Kakao / Cengkeh')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Komoditas Unggulan</span>
+                <span class="font-bold text-emerald-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.komoditas, 'Kakao / Cengkeh')}</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 2. Kependudukan & Demografi -->
-        <div data-cluster="wilayah" class="rapor-card-item p-4.5 bg-sky-50/50 rounded-2xl border border-sky-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="wilayah" class="rapor-card-item p-4 sm:p-5 bg-sky-50/50 rounded-2xl border border-sky-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#0369a1] pb-2 border-b border-sky-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
-                <span class="text-sm font-bold">2. Kependudukan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0369a1] pb-2.5 border-b border-sky-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">2. Kependudukan</span>
               </span>
-              <span class="text-[11px] bg-sky-200/80 text-sky-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.penduduk)} Jiwa</span>
+              <span class="text-[11px] bg-sky-200/80 text-sky-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.penduduk)} Jiwa</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Estimasi Jumlah Penduduk</span>
-                <b class="text-slate-800">${fmt(d.penduduk)} Jiwa</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Estimasi Penduduk</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.penduduk)} Jiwa</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Estimasi Kepala Keluarga (KK)</span>
-                <b class="text-slate-800">${fmt(d.lingkungan && d.lingkungan.pln ? d.lingkungan.pln : Math.round(d.penduduk / 3.8))} KK</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kepala Keluarga (KK)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan && d.lingkungan.pln ? d.lingkungan.pln : Math.round(d.penduduk / 3.8))} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Rata-rata Anggota / KK</span>
-                <b class="text-slate-800">~3-4 Jiwa per KK</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Rata-rata Jiwa / KK</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">~3-4 Jiwa per KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Komposisi Gender</span>
-                <b class="text-slate-800">Laki-laki 51% | Perempuan 49%</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Komposisi Gender</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">51% Laki | 49% Pr</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Penduduk Usia Produktif</span>
-                <b class="text-emerald-700 font-bold">Dominan (68,4%)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Usia Produktif</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Dominan (68,4%)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-sky-100">
-                <span class="text-slate-500">Tingkat Kepadatan</span>
-                <b class="text-slate-800">Sedang & Seimbang</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Tingkat Kepadatan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Sedang & Seimbang</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Karakteristik Mobilitas</span>
-                <b class="text-slate-800">Menetap / Rendah</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Karakter Mobilitas</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Menetap / Rendah</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 3. Perumahan & Energi Listrik -->
-        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#065f46] pb-2 border-b border-emerald-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span class="text-sm font-bold">3. Perumahan & Energi</span>
+            <div class="flex items-center justify-between font-extrabold text-[#065f46] pb-2.5 border-b border-emerald-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">3. Perumahan & Energi</span>
               </span>
-              <span class="text-[11px] bg-emerald-200/80 text-emerald-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK PLN</span>
+              <span class="text-[11px] bg-emerald-200/80 text-emerald-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK PLN</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Pengguna Listrik PLN</span>
-                <b class="text-emerald-800 font-bold">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK (100% Teraliri)</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pengguna Listrik PLN</span>
+                <span class="font-bold text-emerald-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK (100%)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Listrik Non-PLN (Surya/Genset)</span>
-                <b class="text-slate-800">${fmt(d.lingkungan ? d.lingkungan.nonPln : 0)} KK</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Listrik Non-PLN</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.nonPln : 0)} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Bukan Pengguna Listrik</span>
-                <b class="text-slate-800">${fmt(d.lingkungan ? d.lingkungan.bukanListrik : 0)} KK</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bukan Listrik</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.bukanListrik : 0)} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Penerangan Jalan Utama</span>
-                <b class="text-slate-800">${safeStr(d.lingkungan && d.lingkungan.penerangan, 'Ada, Sebagian Besar')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Penerangan Jalan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.penerangan, 'Ada, Sebagian Besar')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Sumber Lampu Penerangan</span>
-                <b class="text-slate-800">Listrik Pemerintah</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sumber Lampu</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Listrik Pemerintah</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Bahan Bakar Memasak</span>
-                <b class="text-slate-800">Gas Elpiji 3 kg / Kayu Bakar</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bahan Bakar Masak</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Gas Elpiji 3 kg / Kayu</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Pangkalan LPG / Minyak</span>
-                <b class="text-emerald-700">Tersedia di Desa</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pangkalan LPG / Minyak</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tersedia di Desa</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 4. Kesehatan Lingkungan & Sanitasi -->
-        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-green-50/50 rounded-2xl border border-green-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-green-50/50 rounded-2xl border border-green-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#15803d] pb-2 border-b border-green-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                <span class="text-sm font-bold">4. Lingkungan & Sanitasi</span>
+            <div class="flex items-center justify-between font-extrabold text-[#15803d] pb-2.5 border-b border-green-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">4. Lingkungan & Sanitasi</span>
               </span>
-              <span class="text-[11px] bg-green-200/80 text-green-950 px-2.5 py-0.5 rounded-full font-black">Bebas Pencemaran</span>
+              <span class="text-[11px] bg-green-200/80 text-green-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Bebas Pencemaran</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Status Bebas Pencemaran</span>
-                <b class="text-emerald-700 font-bold">${safeStr(d.lingkungan && d.lingkungan.bebasPencemaran, 'Ya, Bebas')}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bebas Pencemaran</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.bebasPencemaran, 'Ya, Bebas')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Pencemaran Air/Tanah/Udara</span>
-                <b class="text-slate-800">Air: - | Tanah: - | Udara: -</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pencemaran Lingkungan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Nihil / Bebas Polusi</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Pengolahan Daur Sampah</span>
-                <b class="text-slate-800">${safeStr(d.lingkungan && d.lingkungan.sampah, 'Ada, warga terlibat')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pengolahan Daur Sampah</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.sampah, 'Ada, Swadaya Warga')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Penggalakan Pupuk Organik</span>
-                <b class="text-slate-800">Ada, Swadaya Petani</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Penggalakan Pupuk Organik</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Ada, Swadaya Petani</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Adaptasi Pola Tanam & Iklim</span>
-                <b class="text-slate-800">${safeStr(d.lingkungan && d.lingkungan.polaTanam, 'Ada, ramah iklim')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Adaptasi Pola Tanam</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.polaTanam, 'Ada, Ramah Iklim')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-green-100">
-                <span class="text-slate-500">Konservasi Sumber Air</span>
-                <b class="text-slate-800">Mata Air Alami Terjaga</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Konservasi Air</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Mata Air Terjaga</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Fasilitas Jamban Keluarga</span>
-                <b class="text-emerald-700">Mayoritas Jamban Sehat</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sanitasi / Jamban</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Mayoritas Jamban Sehat</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 5. Mitigasi Bencana Alam & Keamanan -->
-        <div data-cluster="infrastruktur" class="rapor-card-item p-4.5 bg-rose-50/50 rounded-2xl border border-rose-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-rose-50/50 rounded-2xl border border-rose-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#be123c] pb-2 border-b border-rose-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                <span class="text-sm font-bold">5. Bencana & Keamanan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#be123c] pb-2.5 border-b border-rose-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">5. Bencana & Keamanan</span>
               </span>
-              <span class="text-[11px] bg-rose-200/80 text-rose-950 px-2.5 py-0.5 rounded-full font-black">Siaga Bencana</span>
+              <span class="text-[11px] bg-rose-200/80 text-rose-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Siaga Bencana</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Kerawanan Banjir</span>
-                <b class="text-slate-800">Aman / Bebas Genangan</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kerawanan Banjir</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Aman / Bebas Banjir</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Kerawanan Tanah Longsor</span>
-                <b class="text-slate-800">Potensi Rendah / Aman</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Potensi Tanah Longsor</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Potensi Rendah / Aman</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Sistem Peringatan Dini (EWS)</span>
-                <b class="text-slate-800">Kentongan, Sirene & Masjid</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Peringatan Dini (EWS)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Kentongan, Sirene & Masjid</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Jalur & Tempat Evakuasi</span>
-                <b class="text-slate-800">Tersedia di Dataran Aman</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Jalur & Tempat Evakuasi</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Tersedia di Titik Aman</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Pos Keamanan / Poskamling</span>
-                <b class="text-slate-800">Ada, Ronda Swakarsa Warga</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pos Keamanan / Kamling</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Ada, Ronda Swakarsa</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-rose-100">
-                <span class="text-slate-500">Babinsa & Bhabinkamtibmas</span>
-                <b class="text-emerald-700">Ada, Pembinaan Teratur</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Babinsa / Kamtibmas</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Ada, Pembinaan Teratur</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Situasi Ketertiban Warga</span>
-                <b class="text-emerald-700 font-bold">Kondusif & Harmonis</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Ketertiban Warga</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Kondusif & Harmonis</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 6. Sarana & Akses Pendidikan -->
-        <div data-cluster="sosial" class="rapor-card-item p-4.5 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="sosial" class="rapor-card-item p-4 sm:p-5 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#1d4ed8] pb-2 border-b border-blue-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                <span class="text-sm font-bold">6. Sarana Pendidikan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#1d4ed8] pb-2.5 border-b border-blue-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">6. Sarana Pendidikan</span>
               </span>
-              <span class="text-[11px] bg-blue-200/80 text-blue-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.sosial ? d.sosial.totalSaranaPendidikan : 0)} Sekolah</span>
+              <span class="text-[11px] bg-blue-200/80 text-blue-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.sosial ? d.sosial.totalSaranaPendidikan : 0)} Sekolah</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">TK / PAUD / RA / BA</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.tk : 0)} Unit</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">TK / PAUD / RA / BA</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.tk : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SD / MI Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.totalSDMI : 0)} Unit (${fmt(d.sosial ? d.sosial.sdNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.sdSwa : 0)} Swa)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SD / MI Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSDMI : 0)} Unit (${fmt(d.sosial ? d.sosial.sdNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.sdSwa : 0)} Swa)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMP / MTs Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.totalSMPMTs : 0)} Unit (${fmt(d.sosial ? d.sosial.smpNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.smpSwa : 0)} Swa)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMP / MTs Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSMPMTs : 0)} Unit (${fmt(d.sosial ? d.sosial.smpNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.smpSwa : 0)} Swa)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMA / MA Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.totalSMAMA : 0)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMA / MA Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSMAMA : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMK Negeri & Swasta</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.smk : 0)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMK Negeri & Swasta</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.smk : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">Akademi / Perguruan Tinggi</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.pt : 0)} Kampus</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Perguruan Tinggi</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.pt : 0)} Kampus</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Aksesibilitas Pendidikan</span>
-                <b class="text-emerald-700">Jangkauan Mudah (&lt; 3 km)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses Pendidikan</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Jangkauan Mudah (&lt; 3 km)</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 7. Sarana Kesehatan & UKBM -->
-        <div data-cluster="sosial" class="rapor-card-item p-4.5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="sosial" class="rapor-card-item p-4 sm:p-5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2 border-b border-teal-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
-                <span class="text-sm font-bold">7. Sarana Kesehatan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2.5 border-b border-teal-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">7. Sarana Kesehatan</span>
               </span>
-              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.sosial ? d.sosial.totalSaranaKesehatan : 0)} Faskes</span>
+              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.sosial ? d.sosial.totalSaranaKesehatan : 0)} Faskes</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Rumah Sakit / Balai Kes</span>
-                <b class="text-slate-800">${(d.sosial && d.sosial.rs > 0) ? fmt(d.sosial.rs) + ' Unit' : 'Rujukan RSUD Lasusua'}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Rumah Sakit / Balai Kes</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.sosial && d.sosial.rs > 0) ? fmt(d.sosial.rs) + ' Unit' : 'RSUD Lasusua'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Puskesmas (RI / Non-RI)</span>
-                <b class="text-slate-800">${(d.sosial && (d.sosial.puskesmasRI + d.sosial.puskesmasNonRI) > 0) ? 'Puskesmas Kecamatan' : 'Puskesmas Terdekat'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Puskesmas (RI/Non-RI)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.sosial && (d.sosial.puskesmasRI + d.sosial.puskesmasNonRI) > 0) ? 'Puskesmas Kecamatan' : 'Puskesmas Terdekat'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Puskesmas Pembantu (Pustu)</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.pustu : 0)} Unit Pustu</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Puskesmas Pembantu (Pustu)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.pustu : 0)} Unit Pustu</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Poskesdes / Polindes</span>
-                <b class="text-slate-800">${fmt(d.sosial ? (d.sosial.poskesdes + d.sosial.polindes) : 0)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Poskesdes / Polindes</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? (d.sosial.poskesdes + d.sosial.polindes) : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Posyandu Aktif & Posbindu</span>
-                <b class="text-slate-800">${fmt(d.sosial ? d.sosial.posyandu : 0)} Posyandu, ${fmt(d.sosial ? d.sosial.posbindu : 0)} Posbindu</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Posyandu & Posbindu</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.posyandu : 0)} Posyandu, ${fmt(d.sosial ? d.sosial.posbindu : 0)} Posbindu</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Tenaga Medis (Bidan & Dokter)</span>
-                <b class="text-emerald-700 font-bold">${fmt(d.sosial ? d.sosial.bidan : 0)} Bidan, ${fmt(d.sosial ? d.sosial.dokter : 0)} Dokter</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Tenaga Medis</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.bidan : 0)} Bidan, ${fmt(d.sosial ? d.sosial.dokter : 0)} Dokter</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Layanan Stunting & Imunisasi</span>
-                <b class="text-emerald-700 font-bold">Aktif Terfasilitasi</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Layanan Stunting</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Aktif & Terfasilitasi</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 8. Industri & Usaha Mikro (IMK) -->
-        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#b45309] pb-2 border-b border-amber-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                <span class="text-sm font-bold">8. Industri Mikro (IMK)</span>
+            <div class="flex items-center justify-between font-extrabold text-[#b45309] pb-2.5 border-b border-amber-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">8. Industri Mikro (IMK)</span>
               </span>
-              <span class="text-[11px] bg-amber-200/80 text-amber-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} IMK</span>
+              <span class="text-[11px] bg-amber-200/80 text-amber-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} IMK</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Jumlah Industri Mikro & Kecil</span>
-                <b class="text-amber-900 font-bold">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} Unit Usaha</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Jumlah Industri Mikro</span>
+                <span class="font-bold text-amber-900 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} Unit Usaha</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Sentra Industri / Kerajinan</span>
-                <b class="text-slate-800">${(d.ekonomi && d.ekonomi.sentra > 0) ? d.ekonomi.sentra + ' Sentra' : ((d.ekonomi && d.ekonomi.ikm > 3) ? 'Tersebar di Dusun' : 'Usaha Mandiri')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sentra Kerajinan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.sentra > 0) ? d.ekonomi.sentra + ' Sentra' : ((d.ekonomi && d.ekonomi.ikm > 3) ? 'Tersebar di Dusun' : 'Usaha Mandiri')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Produk Olahan Makanan</span>
-                <b class="text-slate-800">${safeStr(d.ekonomi && d.ekonomi.prodMakanan, 'Olahan Kripik / Gula Aren')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Olahan Makanan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.prodMakanan, 'Kripik / Gula Aren')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Produk Kerajinan Non-Makanan</span>
-                <b class="text-slate-800">${safeStr(d.ekonomi && d.ekonomi.prodNonMakanan, 'Kerajinan Anyaman Lokal')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Kerajinan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.prodNonMakanan, 'Anyaman & Kayu')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Produk Unggulan Desa</span>
-                <b class="text-slate-800">${safeStr((d.ekonomi && d.ekonomi.prodUnggulan) || (d.umum && d.umum.komoditas), 'Kakao & Cengkeh')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Unggulan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr((d.ekonomi && d.ekonomi.prodUnggulan) || (d.umum && d.umum.komoditas), 'Kakao & Cengkeh')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Bahan Baku Usaha</span>
-                <b class="text-slate-800">Tersedia Melimpah di Desa</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bahan Baku Usaha</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Melimpah di Desa</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Kemitraan Pemasaran</span>
-                <b class="text-emerald-700">Pengepul & Pasar Lokal</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kemitraan Pemasaran</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Pengepul & Pasar Lokal</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 9. Infrastruktur Perdagangan & Pasar -->
-        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-orange-50/50 rounded-2xl border border-orange-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-orange-50/50 rounded-2xl border border-orange-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#c2410c] pb-2 border-b border-orange-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                <span class="text-sm font-bold">9. Perdagangan & Pasar</span>
+            <div class="flex items-center justify-between font-extrabold text-[#c2410c] pb-2.5 border-b border-orange-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">9. Perdagangan & Pasar</span>
               </span>
-              <span class="text-[11px] bg-orange-200/80 text-orange-950 px-2.5 py-0.5 rounded-full font-black">Perdagangan</span>
+              <span class="text-[11px] bg-orange-200/80 text-orange-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Perdagangan</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Kelompok Pertokoan / Ruko</span>
-                <b class="text-slate-800">${(d.ekonomi && d.ekonomi.pertokoan > 0) ? fmt(d.ekonomi.pertokoan) + ' Unit' : 'Deretan Warung Warga'}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kelompok Pertokoan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.pertokoan > 0) ? fmt(d.ekonomi.pertokoan) + ' Unit' : 'Deretan Warung Warga'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Pasar Desa (Permanen/Semi)</span>
-                <b class="text-slate-800">${(d.ekonomi && d.ekonomi.pasarPerm > 0) ? d.ekonomi.pasarPerm + ' Permanen' : ((d.ekonomi && d.ekonomi.pasarSemi > 0) ? d.ekonomi.pasarSemi + ' Semi' : 'Pasar Terdekat')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pasar Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.pasarPerm > 0) ? d.ekonomi.pasarPerm + ' Pasar Permanen' : ((d.ekonomi && d.ekonomi.pasarSemi > 0) ? d.ekonomi.pasarSemi + ' Pasar Semi' : 'Pasar Terdekat')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Minimarket / Swalayan</span>
-                <b class="text-slate-800">${fmt(d.ekonomi ? d.ekonomi.minimarket : 0)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Minimarket / Swalayan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.minimarket : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Restoran / Rumah Makan</span>
-                <b class="text-slate-800">${fmt(d.ekonomi ? d.ekonomi.resto : 0)} Restoran / RM</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Restoran / Rumah Makan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.resto : 0)} Unit Resto/RM</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Warung & Kedai Makanan</span>
-                <b class="text-slate-800">${(d.ekonomi && d.ekonomi.warung) ? d.ekonomi.warung : '12'} Warung Sembako</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Warung & Kedai</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.warung) ? d.ekonomi.warung : '12'} Warung Sembako</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-orange-100">
-                <span class="text-slate-500">Hotel & Penginapan</span>
-                <b class="text-slate-800">${fmt(d.ekonomi ? ((d.ekonomi.hotel||0) + (d.ekonomi.penginapan||0)) : 0)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Hotel & Penginapan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? ((d.ekonomi.hotel||0) + (d.ekonomi.penginapan||0)) : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Kelancaran Pasokan Logistik</span>
-                <b class="text-emerald-700 font-bold">Lancar Setiap Hari</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pasokan Logistik</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Lancar Setiap Hari</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 10. Lembaga Keuangan & Koperasi -->
-        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-violet-50/50 rounded-2xl border border-violet-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-violet-50/50 rounded-2xl border border-violet-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#7c3aed] pb-2 border-b border-violet-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-                <span class="text-sm font-bold">10. Lembaga Keuangan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#7c3aed] pb-2.5 border-b border-violet-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-violet-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">10. Lembaga Keuangan</span>
               </span>
-              <span class="text-[11px] bg-violet-200/80 text-violet-950 px-2.5 py-0.5 rounded-full font-black">Akses Kredit</span>
+              <span class="text-[11px] bg-violet-200/80 text-violet-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Akses Kredit</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Kantor Bank Umum & BPR</span>
-                <b class="text-slate-800">${fmt(d.ekonomi ? (d.ekonomi.bankTotal || d.ekonomi.bank) : 0)} Bank</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bank Umum & BPR</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? (d.ekonomi.bankTotal || d.ekonomi.bank) : 0)} Bank</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Koperasi Simpan Pinjam (KSP)</span>
-                <b class="text-slate-800">${fmt(d.ekonomi ? (d.ekonomi.koperasiTotal || d.ekonomi.ksp) : 0)} Koperasi</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Koperasi (KSP/KSU)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? (d.ekonomi.koperasiTotal || d.ekonomi.ksp) : 0)} Koperasi</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Fasilitas Kredit Usaha (KUR)</span>
-                <b class="text-emerald-700 font-bold">${(d.ekonomi && (d.ekonomi.kur === 'Ada' || d.ekonomi.kur > 0)) ? 'Ada Penyaluran' : 'Tersedia di Kecamatan'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Fasilitas Kredit (KUR)</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${(d.ekonomi && (d.ekonomi.kur === 'Ada' || d.ekonomi.kur > 0)) ? 'Ada Penyaluran' : 'Tersedia di Kecamatan'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Akses Kredit Usaha Kecil (KUK)</span>
-                <b class="text-slate-800">${safeStr(d.ekonomi && d.ekonomi.kuk, 'Ada Fasilitasi')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kredit Usaha Kecil (KUK)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.kuk, 'Ada Fasilitasi')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Agen Bank Digital (BRILink dsb)</span>
-                <b class="text-emerald-700">Tersedia di Desa (1-2 Titik)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Agen Bank Digital</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tersedia di Desa (1-2 Titik)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-violet-100">
-                <span class="text-slate-500">Akses Mesin Tarik Tunai ATM</span>
-                <b class="text-slate-800">Tersedia di Ibukota Kecamatan</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Mesin Tarik Tunai ATM</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Tersedia di Ibukota Kec.</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Tingkat Inklusi Perbankan</span>
-                <b class="text-emerald-700 font-bold">Tinggi (Mayoritas Memiliki Rek.)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Inklusi Perbankan</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tinggi (Mayoritas Ada Rek.)</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 11. Transportasi & Komunikasi (Internet) -->
-        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-cyan-50/50 rounded-2xl border border-cyan-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-cyan-50/50 rounded-2xl border border-cyan-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#0e7490] pb-2 border-b border-cyan-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
-                <span class="text-sm font-bold">11. Transportasi & Sinyal</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0e7490] pb-2.5 border-b border-cyan-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">11. Transportasi & Sinyal</span>
               </span>
-              <span class="text-[11px] bg-cyan-200/80 text-cyan-950 px-2.5 py-0.5 rounded-full font-black">4G Kuat</span>
+              <span class="text-[11px] bg-cyan-200/80 text-cyan-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">4G Kuat</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Jenis Prasarana Jalan Utama</span>
-                <b class="text-slate-800">Darat (Aspal / Rabat Beton)</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Prasarana Jalan Utama</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Darat (Aspal / Rabat)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Ketersediaan Angkutan Umum</span>
-                <b class="text-slate-800">Angkutan Pedesaan & Ojek</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Angkutan Umum Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Mobil Pedesaan & Ojek</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Akses Angkutan Logistik/Paket</span>
-                <b class="text-emerald-700">Terjangkau (J&T, SiCepat, Pos)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses Kurir / Logistik</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Terjangkau (J&T, SiCepat, Pos)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Menara BTS Telekomunikasi</span>
-                <b class="text-slate-800">${(d.komunikasi && d.komunikasi.bts) ? 'Ada Menara BTS' : 'Terjangkau BTS Terdekat'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Menara BTS Seluler</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.komunikasi && d.komunikasi.bts) ? 'Ada Menara BTS' : 'Terjangkau BTS Terdekat'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Kekuatan Sinyal Internet HP</span>
-                <b class="text-emerald-700 font-bold">4G/LTE Kuat (Telkomsel/Indosat)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kekuatan Sinyal HP</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">4G/LTE Kuat & Stabil</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-cyan-100">
-                <span class="text-slate-500">Akses TV & Media Digital</span>
-                <b class="text-slate-800">TV Digital & Saluran Satelit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses TV & Media</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">TV Digital & Satelit</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Fasilitas Internet Kantor Desa</span>
-                <b class="text-emerald-700 font-bold">Online & Aktif</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Internet Kantor Desa</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Online & Aktif</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 12. Keuangan, Aset & Aparatur Desa -->
-        <div data-cluster="ekonomi" class="rapor-card-item p-4.5 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#6b21a8] pb-2 border-b border-purple-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                <span class="text-sm font-bold">12. Keuangan & Aparatur</span>
+            <div class="flex items-center justify-between font-extrabold text-[#6b21a8] pb-2.5 border-b border-purple-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">12. Keuangan & Aparatur</span>
               </span>
-              <span class="text-[11px] bg-purple-200/80 text-purple-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.pemerintah ? d.pemerintah.totalAparat : 2)} Aparat</span>
+              <span class="text-[11px] bg-purple-200/80 text-purple-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.pemerintah ? d.pemerintah.totalAparat : 2)} Aparat</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">BUMDes Aktif</span>
-                <b class="text-emerald-700 font-bold">${(d.keuangan && d.keuangan.bumdes > 0) ? d.keuangan.bumdes + ' Unit (Aktif)' : '1 Unit BUMDes'}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">BUMDes Aktif</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${(d.keuangan && d.keuangan.bumdes > 0) ? d.keuangan.bumdes + ' Unit (Aktif)' : '1 Unit BUMDes'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Sistem Keuangan Desa</span>
-                <b class="text-emerald-700">${safeStr(d.keuangan && d.keuangan.siskeudes, 'Siskeudes Online')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sistem Keuangan Desa</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${safeStr(d.keuangan && d.keuangan.siskeudes, 'Siskeudes Online')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Sistem Informasi Desa (SID)</span>
-                <b class="text-slate-800">${safeStr(d.keuangan && d.keuangan.sid, 'Tersedia / Aktif')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sistem Informasi (SID)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.keuangan && d.keuangan.sid, 'Tersedia / Aktif')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Kepala Desa / Lurah</span>
-                <b class="text-slate-800">${safeStr(d.pemerintah && d.pemerintah.kadesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.kadesPend, 'Diploma IV/S1')})</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kepala Desa / Lurah</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.pemerintah && d.pemerintah.kadesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.kadesPend, 'Diploma IV/S1')})</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Sekretaris Desa / Kelurahan</span>
-                <b class="text-slate-800">${safeStr(d.pemerintah && d.pemerintah.sekdesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.sekdesPend, 'Diploma IV/S1')})</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sekretaris Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.pemerintah && d.pemerintah.sekdesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.sekdesPend, 'Diploma IV/S1')})</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Pelaksana Kewilayahan (Kadus)</span>
-                <b class="text-slate-800">${fmt(d.pemerintah ? d.pemerintah.kadus : 2)} Orang</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pelaksana Dusun (Kadus)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.pemerintah ? d.pemerintah.kadus : 2)} Orang Kadus</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Regulasi Peraturan Desa</span>
-                <b class="text-emerald-700 font-bold">Perdes Definitif (2024)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Regulasi Perdes</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Perdes Definitif (2024)</span>
               </div>
             </div>
           </div>
