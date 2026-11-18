@@ -1460,7 +1460,7 @@
                                 <div class="absolute inset-4 bg-amber-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
                                 <!-- Organic Masked Photo (No card border/shadow) -->
                                 <div class="relative w-full max-w-lg mx-auto aspect-[4/3] overflow-hidden feathered-organic-mask-4 group">
-                                    <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" 
+                                    <img src="/images/jadesta/kebun_kakao_totallang.jpg" 
                                          alt="Desa Totallang" 
                                          class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                                          loading="lazy">
