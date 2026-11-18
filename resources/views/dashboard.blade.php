@@ -330,151 +330,117 @@
 </head>
 <body class="min-h-screen bg-[#F7F7F5] text-slate-800 antialiased flex flex-col overflow-x-hidden w-full max-w-full">
 
-        <!-- TOP NAVBAR: DESA MADANI CLEAN & MODERN THEME (WIDTH-SAFE & NO OVERFLOW) -->
-    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[64px] sm:min-h-[68px] flex items-center w-full max-w-full overflow-hidden">
-        <div class="w-full px-3 sm:px-4 lg:px-6 xl:px-8 py-2.5 flex items-center justify-between gap-2 sm:gap-3 lg:gap-4 max-w-[1720px] mx-auto">
-            <!-- Left: Logo Kolaka Utara bersampingan dengan Logo BPS Kolut & Desa Madani Brand (Tombol Login) -->
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- TOP NAVBAR: DESA MADANI RESPONSIVE FIT (100% ZOOM COMPATIBLE) -->
+    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-xs border-b border-slate-200/80 sticky top-0 z-40 transition-all min-h-[56px] sm:min-h-[60px] flex items-center w-full max-w-full">
+        <div class="w-full px-3 sm:px-4 lg:px-6 py-2 flex items-center justify-between gap-2 lg:gap-4 max-w-[1720px] mx-auto">
+            <!-- Left: Logo & Brand -->
+            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
                 <button type="button" 
                         id="btnBrandLoginTrigger" 
                         onclick="openLoginModal()" 
-                        class="flex items-center gap-2 sm:gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
+                        class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
                         title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
-                    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0 bg-slate-50 border border-slate-200/80 px-1.5 sm:px-2 py-1 rounded-xl">
-                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 sm:h-8 w-auto object-contain drop-shadow-xs">
-                        <div class="h-4 sm:h-5 w-[1.5px] bg-slate-300"></div>
-                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 sm:h-7 w-auto object-contain drop-shadow-xs">
+                    <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200/80 px-1.5 py-0.5 rounded-lg">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 sm:h-6 w-auto object-contain">
                     </div>
                     <div>
-                        <div class="text-lg sm:text-xl xl:text-2xl font-black text-[#0b2545] leading-none tracking-tight whitespace-nowrap">
+                        <div class="text-base sm:text-lg font-black text-[#0b2545] leading-none tracking-tight whitespace-nowrap">
                             Desa <span class="text-[#0D6E5B]">Madani</span>
-                        </div>
-                        <div data-i18n="nav_brand_sub" class="hidden 2xl:block text-[10px] text-slate-500 font-medium tracking-wide mt-0.5 truncate max-w-[280px]">
-                            Portal Data & Analitik Kemandirian Desa • Kab. Kolaka Utara
                         </div>
                     </div>
                 </button>
-                <!-- Institutional BPS Partner Link -->
-                <a href="/" class="hidden 2xl:flex items-center pl-3 ml-1 border-l border-slate-200 hover:opacity-80 transition shrink-0" title="Kembali ke Beranda">
-                    <span class="text-[11px] font-black text-[#005ea6] whitespace-nowrap">BPS Kolut</span>
-                </a>
             </div>
 
-            <!-- Center: Navigation Menu Links (Responsive Gaps & Sizes) -->
-            <nav class="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 text-[12px] xl:text-[13px] font-semibold text-slate-700 whitespace-nowrap shrink-0">
-                <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition">Beranda</a>
-                <a href="#sectionAgregatKecamatan" data-i18n="nav_agregat" class="hover:text-[#0D6E5B] transition flex items-center gap-1 text-slate-700"><span>Agregat 15 Kecamatan</span></a>
-                <a href="#sectionPeta" class="text-[#0D6E5B] font-black border-b-2 border-[#0D6E5B] pb-0.5 flex items-center gap-1 shrink-0">
-                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                    <span data-i18n="nav_gis">WebGIS Peta Spasial</span>
+            <!-- Center: Navigation Menu Links (Compact, Responsive, No Horizontal Cutoff) -->
+            <nav class="hidden md:flex items-center gap-1.5 lg:gap-2.5 xl:gap-4 text-xs font-semibold text-slate-700 whitespace-nowrap shrink-0">
+                <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50">Beranda</a>
+                <a href="#sectionAgregatKecamatan" data-i18n="nav_agregat" class="hover:text-[#0D6E5B] transition px-2 py-1 rounded-lg hover:bg-slate-50 flex items-center gap-1 text-slate-700">
+                    <span>Agregat</span><span class="hidden xl:inline"> 15 Kecamatan</span>
                 </a>
-                <a href="/descan" data-i18n="nav_descan" class="hover:text-[#059669] transition">Desa Cantik (DESCAN)</a>
-                <a href="#sectionAbout" data-i18n="nav_about" class="hover:text-[#059669] transition">Tentang Madani</a>
+                <a href="#sectionPeta" class="text-[#0D6E5B] font-bold border-b-2 border-[#0D6E5B] pb-0.5 px-2 py-1 flex items-center gap-1 shrink-0">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                    <span data-i18n="nav_gis">WebGIS</span>
+                </a>
+                <a href="/descan" data-i18n="nav_descan" class="hover:text-[#059669] transition px-2 py-1 rounded-lg hover:bg-slate-50">Desa Cantik</a>
+                <a href="#sectionAbout" data-i18n="nav_about" class="hover:text-[#059669] transition px-2 py-1 rounded-lg hover:bg-slate-50">Tentang</a>
             </nav>
 
-            <!-- Right Controls: 15 Kecamatan (xl+), Admin Portal, Language Switcher -->
-            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap">
+            <!-- Right Controls: 15 Kecamatan, Admin Portal, Language Switcher -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer">
                     <svg class="w-3.5 h-3.5 text-[#0D6E5B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                     <span data-i18n="btn_15_kec">15 Kecamatan</span>
                 </button>
 
-                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black px-3 sm:px-3.5 py-1.5 rounded-full shadow-sm hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap" title="Buka Portal Admin Input & Kelola Data Desa">
+                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-3 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Buka Portal Admin Input & Kelola Data Desa">
                     <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     <span data-i18n="btn_kelola_data">Kelola Data</span>
-                    <span id="badgeAdminCustomCount" class="bg-slate-950 text-amber-300 text-[10px] px-1.5 py-0.2 rounded-full font-black hidden">0 Baru</span>
                 </button>
 
-                <!-- Language Switcher Pill (ID | EN) -->
                 <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
-                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 sm:px-2.5 py-1 rounded-full bg-[#0D6E5B] text-white shadow-xs transition-all cursor-pointer font-bold text-xs">ID</button>
-                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 sm:px-2.5 py-1 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-xs">EN</button>
+                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
                 </div>
             </div>
         </div>
     </header>
 
-        <!-- HERO SECTION: DESA MADANI KOLAKA UTARA (TAMPILAN AWAL DIPERTAHANKAN) -->
-    <section class="relative bg-white text-slate-900 pt-10 sm:pt-12 pb-14 sm:pb-16 px-4 lg:px-8 xl:px-10 overflow-hidden border-b border-slate-200/80 w-full max-w-full">
+    <!-- HERO SECTION: DESA MADANI KOLAKA UTARA (COMPACT & PERFECT AT 100% ZOOM) -->
+    <section class="relative bg-white text-slate-900 py-6 sm:py-8 lg:py-10 px-4 lg:px-8 xl:px-10 overflow-hidden border-b border-slate-200/80 w-full max-w-full">
         <!-- Floating Animated Background Glow & Ambient Mesh -->
-        <div class="absolute -top-32 -left-20 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
-        <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
-
-        <!-- Indonesian Archipelago / Regional Watermark with Animated Trajectory Arc -->
-        <div class="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center overflow-hidden">
-            <svg class="w-full max-w-6xl h-auto" viewBox="0 0 1200 480" fill="none" stroke="#94a3b8" stroke-width="1.5">
-                <!-- Sumatra -->
-                <path d="M 80 160 Q 140 220 220 300 Q 240 330 270 350 Q 230 360 200 320 Q 140 250 70 170 Z" fill="#f1f5f9"/>
-                <!-- Java -->
-                <path d="M 280 370 Q 380 375 480 380 Q 520 380 500 395 Q 400 395 280 385 Z" fill="#f1f5f9"/>
-                <!-- Kalimantan -->
-                <path d="M 330 180 Q 420 160 460 210 Q 470 270 410 300 Q 350 290 320 230 Z" fill="#f1f5f9"/>
-                <!-- Sulawesi (Kolaka Utara Highlight in Emerald) -->
-                <path d="M 540 180 Q 590 190 570 240 Q 610 260 620 310 Q 580 300 560 260 Q 530 250 540 210 Z" fill="#d1fae5" stroke="#059669" stroke-width="2.5"/>
-                <!-- Papua -->
-                <path d="M 780 230 Q 880 220 950 260 Q 940 330 860 340 Q 820 300 770 270 Z" fill="#f1f5f9"/>
-                <!-- Animated Trajectory Arc -->
-                <path d="M 120 200 C 350 80, 650 40, 850 180 C 950 250, 750 350, 560 260" stroke="#059669" stroke-width="2" stroke-dasharray="6,6" class="animate-dash-orbit" fill="none"/>
-            </svg>
-        </div>
+        <div class="absolute -top-32 -left-20 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+        <div class="absolute top-20 right-0 w-[420px] h-[420px] bg-blue-100/30 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
 
         <div class="max-w-[1720px] mx-auto relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[460px]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                 <!-- Left Column: Typography & Action Buttons -->
-                <div class="lg:col-span-7 space-y-5">
+                <div class="lg:col-span-7 space-y-3.5 sm:space-y-4">
                     <!-- Eyebrow text with live pulsing indicator -->
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-black tracking-widest uppercase shadow-xs">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-black tracking-widest uppercase shadow-2xs">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
                         <span data-i18n="hero_eyebrow">PORTAL SATU DATA & KEDAULATAN DESA MANDIRI</span>
                     </div>
 
-                    <!-- Massive Bold Typography: DESA MADANI KOLAKA UTARA -->
-                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-[#0D6E5B] tracking-tight leading-[0.92] uppercase font-sans">
+                    <!-- Clean Proportional Typography: DESA MADANI KOLAKA UTARA -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#0D6E5B] tracking-tight leading-[1.05] uppercase font-sans">
                         <span data-i18n="hero_title_1">DESA MADANI</span><br>
-                        <span data-i18n="hero_title_2" class="text-[#0D6E5B]">KOLAKA UTARA</span>
+                        <span data-i18n="hero_title_2" class="text-[#0b2545]">KOLAKA UTARA</span>
                     </h1>
 
-                    <p data-i18n="hero_desc" class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-normal pt-1">
+                    <p data-i18n="hero_desc" class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xl font-normal pt-0.5">
                         Mewujudkan <b>Desa Mandiri, Maju, dan Sejahtera</b> melalui integrasi data geospasial tematik resolusi tinggi, statistik potensi desa (Podes BPS 2024–2025), dan sistem analitik perencanaan pembangunan berbasis bukti (*evidence-based policy*).
                     </p>
 
-                    <!-- CTA Buttons: Emerald Pill + Navy Pill (Width-locked with min-w-[190px] for zero shift) -->
-                    <div class="flex flex-wrap items-center gap-4 pt-3">
+                    <!-- CTA Buttons: Compact Responsive Pills -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
                         <!-- Emerald Pill Button: Portal Data WebGIS -->
-                        <a href="#sectionPeta" class="min-w-[190px] justify-center px-8 py-3.5 rounded-full bg-gradient-to-r from-[#059669] to-[#047857] hover:from-[#047857] hover:to-[#065f46] text-white font-bold text-sm shadow-lg shadow-emerald-700/25 hover:shadow-xl transition flex items-center gap-2.5 transform hover:-translate-y-1 active:translate-y-0 whitespace-nowrap">
+                        <a href="#sectionPeta" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#059669] to-[#047857] hover:from-[#047857] hover:to-[#065f46] text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-700/20 hover:shadow-lg transition flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer">
                             <span data-i18n="hero_btn_webgis">Portal Data WebGIS</span>
-                            <svg class="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                            <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
                         </a>
 
                         <!-- Dark Navy Pill Button: Jelajahi Potensi Desa -->
-                        <a href="#sectionDesaPresisi" class="min-w-[190px] justify-center px-8 py-3.5 rounded-full bg-[#0D6E5B] hover:bg-[#162d4a] text-white font-bold text-sm shadow-lg shadow-slate-900/20 hover:shadow-xl transition flex items-center gap-2.5 transform hover:-translate-y-1 active:translate-y-0 whitespace-nowrap">
-                            <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 3.5l11 6.5-11 6.5v-13z"/></svg>
+                        <a href="#sectionDesaPresisi" class="px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#162d4a] text-white font-bold text-xs sm:text-sm shadow-md shadow-slate-900/15 hover:shadow-lg transition flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer">
+                            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 3.5l11 6.5-11 6.5v-13z"/></svg>
                             <span data-i18n="hero_btn_explore">Jelajahi Potensi Desa</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Column: Stylized 3D Vector Map of Kabupaten Kolaka Utara with Indonesia Backdrop -->
+                <!-- Right Column: Stylized 3D Vector Map of Kabupaten Kolaka Utara -->
                 <div class="lg:col-span-5 flex items-center justify-center relative select-none">
-                    <!-- Dotted Orbit Trajectory Arc Looping Behind with Dash Animation -->
-                    <svg class="absolute -top-10 -right-6 w-80 sm:w-96 h-80 sm:h-96 pointer-events-none opacity-45 z-0 animate-dash-orbit" viewBox="0 0 200 200">
-                        <path d="M 175 35 C 190 90, 165 165, 95 185 C 40 195, 10 145, 35 90 C 55 40, 120 15, 175 35" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="6,6"/>
-                    </svg>
-
                     <!-- Glowing Ambient Aura Mesh -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-teal-400/15 to-blue-600/20 rounded-full blur-3xl animate-glow-pulse pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/15 via-teal-400/10 to-blue-600/15 rounded-full blur-2xl animate-glow-pulse pointer-events-none"></div>
 
-                    <!-- Main Interactive 3D Relief Card Container -->
-                    <div class="relative w-full max-w-[390px] sm:max-w-[430px] z-10 transition-transform duration-500 hover:scale-[1.02]">
-
+                    <!-- Main Interactive 3D Relief Card Container (Proportional Scale) -->
+                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[380px] z-10 transition-transform duration-500 hover:scale-[1.01]">
                         <!-- Background Glassmorphic Relief Card Plate -->
-                        <div class="relative bg-white/80 backdrop-blur-xl rounded-[36px] border border-white/80 shadow-[0_20px_50px_rgba(11,37,69,0.08)] p-4 sm:p-6 overflow-hidden">
-                            <!-- Subtle Grid Pattern & Sea Contour -->
-                            <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0b2545_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-
+                        <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/90 shadow-xl p-3.5 sm:p-5 overflow-hidden">
                             <!-- Header Micro Bar Inside Card -->
-                            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100/80 relative z-20 text-[11px]">
-                                <div class="flex items-center gap-2">
+                            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100/90 text-[10px] sm:text-[11px]">
+                                <div class="flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                     <span data-i18n="hero_card_head" class="font-extrabold text-[#0D6E5B] tracking-tight">KABUPATEN KOLAKA UTARA</span>
                                 </div>
@@ -592,22 +558,21 @@
                             </div>
                         </div>
 
-                        <!-- FLOATING GLASSMORPHIC BADGES (INSET CONSTRAINED FOR ZERO OVERFLOW) -->
-                        <div class="absolute -top-3 -right-1 sm:-right-2 z-30 bg-white/95 backdrop-blur-md border border-emerald-200 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full shadow-[0_8px_20px_rgba(5,150,105,0.15)] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-[#0b2545] animate-float-slow">
-                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span data-i18n="hero_badge_spasial">100% Spasial Podes</span>
-                        </div>
-                        <div class="absolute -bottom-3 -left-1 sm:-left-2 z-30 bg-white/95 backdrop-blur-md border border-blue-200 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full shadow-[0_8px_20px_rgba(2,132,199,0.15)] flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold text-[#0b2545] animate-float-delayed">
-                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#005ea6]"></span>
-                            <span data-i18n="hero_badge_desa">133 Desa Madani</span>
-                        </div>
-                        <div class="absolute top-1/2 -right-1 sm:-right-3 z-30 bg-white/95 backdrop-blur-md border border-amber-200 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full shadow-[0_8px_20px_rgba(245,158,11,0.18)] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-bold text-amber-900 animate-float-reverse">
-                            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <span data-i18n="hero_badge_sejahtera">Kolaka Utara Sejahtera</span>
-                        </div>
-                        <div class="absolute top-6 -left-1 sm:-left-3 z-30 hidden sm:flex bg-white/95 backdrop-blur-md border border-slate-200 px-2.5 py-1 sm:px-3 sm:py-1 rounded-full shadow-md items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-slate-700 animate-float-slow">
-                            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                            <span data-i18n="hero_badge_15kec">15 Kecamatan Spasial</span>
+                        
+
+                            <!-- FLOATING GLASSMORPHIC BADGES (COMPACT PROPORTIONAL SCALE) -->
+                            <div class="absolute -top-2.5 -right-1 z-30 bg-white/95 backdrop-blur-md border border-emerald-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-[#0b2545] animate-float-slow">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span data-i18n="hero_badge_spasial">100% Spasial Podes</span>
+                            </div>
+                            <div class="absolute -bottom-2.5 -left-1 z-30 bg-white/95 backdrop-blur-md border border-blue-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-[#0b2545] animate-float-delayed">
+                                <span class="w-2 h-2 rounded-full bg-[#005ea6]"></span>
+                                <span data-i18n="hero_badge_desa">133 Desa Madani</span>
+                            </div>
+                            <div class="absolute top-1/2 -right-1 z-30 bg-white/95 backdrop-blur-md border border-amber-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1 text-[9px] font-bold text-amber-900 animate-float-reverse">
+                                <svg class="w-3 h-3 text-amber-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span data-i18n="hero_badge_sejahtera">Kolaka Utara Sejahtera</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1148,8 +1113,8 @@
                         </div>
 
                         <!-- Leaflet Map Container -->
-                        <div id="presisiMapContainer" class="relative w-full rounded-xl overflow-hidden border border-slate-200 shadow-inner" style="height: 640px; min-height: 640px; background-color: #0b192c;">
-                            <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 640px;"></div>
+                        <div id="presisiMapContainer" class="relative w-full rounded-xl overflow-hidden border border-slate-200 shadow-inner" style="height: 520px; min-height: 520px; background-color: #0b192c;">
+                            <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 520px;"></div>
                         </div>
 
                         <!-- Interactive Guide Caption -->
