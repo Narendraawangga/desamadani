@@ -11,7 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Chart.js 4.4 CDN for Visual Analytics -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/vendor/chart.umd.min.js"></script>
+    <script>
+        // Cadangan: bila berkas lokal tidak ada di server, muat dari CDN
+        if (typeof Chart === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"><\/script>');
+        }
+    </script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -148,6 +154,17 @@
             background: #f8fafc;
             color: #0f172a;
         }
+
+        /* ===== Dashboard grafik ===== */
+        .panel-title { display:flex; align-items:center; gap:.5rem; font-size:14px; font-weight:800; color:#0f172a; }
+        .panel-title .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+        .panel-sub { font-size:11.5px; color:#64748b; margin-top:.2rem; }
+        .panel-pill { font-size:10px; font-weight:800; padding:.2rem .55rem; border-radius:.45rem; white-space:nowrap; }
+        .chart-box { position:relative; width:100%; }
+        .rank-row .bar { height:10px; border-radius:99px; background:#eef2f6; overflow:hidden; }
+        .rank-row .bar > span { display:block; height:100%; border-radius:99px; }
+        .insight { display:flex; gap:.75rem; align-items:flex-start; padding:.85rem; border-radius:.9rem; border:1px solid #e2e8f0; background:#f8fafc; }
+        .insight .ic { width:34px; height:34px; border-radius:.6rem; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
 
         /* Toast Popup */
         #toastBox {
@@ -336,295 +353,241 @@
     <!-- ============================================================== -->
     <!-- 5. MENU 2: DASHBOARD & GRAFIK VISUAL (Paling Menonjol)         -->
     <!-- ============================================================== -->
-    <section id="dashboard" class="max-w-[1240px] mx-auto px-4 sm:px-6 pt-12 pb-14 space-y-6">
-        
-        <!-- Header Section + Tab Switcher Rapi -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-slate-200">
+    <section id="dashboard" class="max-w-[1240px] mx-auto px-4 sm:px-6 pt-14 pb-16 space-y-7">
+
+        <!-- Header + tab -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-                <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
-                    📊 Visualisasi Statistik Sektoral
-                </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1.5">
-                    Dashboard Data & Analitik 6 Desa
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
-                    Grafik visual interaktif kondisi demografi, perumahan, sanitasi, dan ekonomi desa.
-                </p>
+                <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">📊 Visualisasi Statistik Sektoral</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">Dashboard Data &amp; Analitik 6 Desa</h2>
+                <p class="text-sm text-slate-500 mt-1 max-w-2xl">Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.</p>
             </div>
-
-            <!-- 2 Pilihan Tab Sederhana & Jelas -->
-            <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start md:self-auto">
-                <button type="button" onclick="switchVisualTab('dashboard')" id="btnTabDashboard" class="tab-btn active px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5">
-                    <span>📊</span>
-                    <span>Dashboard Makro</span>
-                </button>
-                <button type="button" onclick="switchVisualTab('analytics')" id="btnTabAnalytics" class="tab-btn px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5">
-                    <span>📈</span>
-                    <span>Analitik Sektoral</span>
-                </button>
+            <div class="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-slate-200 shadow-sm self-start md:self-auto">
+                <button type="button" onclick="switchVisualTab('dashboard')" id="btnTabDashboard" class="tab-btn active px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📊</span><span>Dashboard Makro</span></button>
+                <button type="button" onclick="switchVisualTab('analytics')" id="btnTabAnalytics" class="tab-btn px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📈</span><span>Analitik Sektoral</span></button>
             </div>
         </div>
 
-        <!-- TAB 1: DASHBOARD MAKRO 6 DESA -->
+        <!-- ============ TAB 1: DASHBOARD MAKRO ============ -->
         <div id="viewDashboard" class="space-y-6">
-            
-            <!-- Dual Primary Charts: Progress Bars + Bar Chart -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                
-                <!-- Left: Progres Pendataan 44 Indikator per Desa -->
-                <div class="lg:col-span-6 card-surface p-5 sm:p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#0E7C5A]"></span>
-                                <span>Progres Pendataan per Desa</span>
-                            </h3>
-                            <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
-                                Standar SDI
-                            </span>
+
+            <!-- Baris 1: progres + keluarga -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-5 card-surface p-5 sm:p-6 flex flex-col">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <h3 class="panel-title"><span class="dot bg-[#0E7C5A]"></span>Progres Pendataan per Desa</h3>
+                            <p class="panel-sub">Indikator terisi dari 44 indikator makro per desa</p>
                         </div>
-                        <p class="text-[11px] text-slate-500 mt-1">
-                            Dasar: 44 indikator makro per desa · persentase = indikator terisi ÷ 44
-                        </p>
+                        <span class="panel-pill text-emerald-800 bg-emerald-100">Standar SDI</span>
                     </div>
-
-                    <!-- 6 Village Progress Bars -->
-                    <div class="space-y-3.5 py-4">
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">1. Desa Kalu Kaluku (Pilot Utama)</span>
-                                <span class="text-[#0E7C5A]">93% <span class="text-slate-400 font-normal">(41/44)</span></span>
+                    <div class="space-y-4 py-5 flex-1">
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">1</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Kamisi</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pesisir Bahari</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#0E7C5A;">98%</div>
+                                    <div class="text-[10px] text-slate-400">43/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-[#0E7C5A]" style="width: 93%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:98%;background:#0E7C5A;"></span></div>
                         </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">2. Desa Kamisi (Pesisir Bahari)</span>
-                                <span class="text-emerald-600">98% <span class="text-slate-400 font-normal">(43/44)</span></span>
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">2</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Kalu Kaluku</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pilot Utama</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#0E7C5A;">93%</div>
+                                    <div class="text-[10px] text-slate-400">41/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-emerald-600" style="width: 98%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:93%;background:#0E7C5A;"></span></div>
                         </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">3. Desa Lametuna (Pertanian)</span>
-                                <span class="text-teal-600">86% <span class="text-slate-400 font-normal">(38/44)</span></span>
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">3</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Lametuna</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pertanian</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#10b981;">86%</div>
+                                    <div class="text-[10px] text-slate-400">38/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-teal-600" style="width: 86%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:86%;background:#10b981;"></span></div>
                         </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">4. Desa Awo (Gula Aren & Nilam)</span>
-                                <span class="text-emerald-600">82% <span class="text-slate-400 font-normal">(36/44)</span></span>
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">4</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Awo</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Gula Aren & Nilam</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#10b981;">82%</div>
+                                    <div class="text-[10px] text-slate-400">36/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-emerald-500" style="width: 82%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:82%;background:#10b981;"></span></div>
                         </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">5. Desa Sawangaoha (Agroindustri)</span>
-                                <span class="text-cyan-700">77% <span class="text-slate-400 font-normal">(34/44)</span></span>
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0ea5e91a;color:#0ea5e9;">5</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Sawangaoha</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Agroindustri</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#0ea5e9;">77%</div>
+                                    <div class="text-[10px] text-slate-400">34/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-cyan-600" style="width: 77%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:77%;background:#0ea5e9;"></span></div>
                         </div>
-
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-xs font-black">
-                                <span class="text-slate-800">6. Desa Koroha (Kakao & Laut)</span>
-                                <span class="text-amber-600">68% <span class="text-slate-400 font-normal">(30/44)</span></span>
+                        <div class="rank-row">
+                            <div class="flex items-center justify-between gap-3 mb-1.5">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#f59e0b1a;color:#f59e0b;">6</span>
+                                    <div class="min-w-0 leading-tight">
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Koroha</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Kakao & Laut</div>
+                                    </div>
+                                </div>
+                                <div class="text-right shrink-0 leading-tight">
+                                    <div class="text-sm font-black" style="color:#f59e0b;">68%</div>
+                                    <div class="text-[10px] text-slate-400">30/44</div>
+                                </div>
                             </div>
-                            <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
-                                <div class="h-full rounded-full bg-amber-500" style="width: 68%;"></div>
-                            </div>
+                            <div class="bar"><span style="width:68%;background:#f59e0b;"></span></div>
                         </div>
                     </div>
-
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                        <span>Total: <b>223</b> dari 264 Indikator</span>
-                        <span class="text-[#0E7C5A] font-bold">Rata-rata: 84% Mandiri</span>
-                    </div>
-                </div>
-
-                <!-- Right: Chart Jumlah Keluarga per Desa -->
-                <div class="lg:col-span-6 card-surface p-5 sm:p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                                <span>Jumlah Keluarga per Desa (KK)</span>
-                            </h3>
-                            <span class="text-[10px] font-black text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">
-                                Total: 2.426 KK
-                            </span>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1">
-                            Perbandingan jumlah Kepala Keluarga di 6 Desa Binaan Kecamatan Kodeoha
-                        </p>
-                    </div>
-
-                    <div class="relative w-full h-64 sm:h-72 my-2">
-                        <canvas id="chartKeluargaPerDesa"></canvas>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                        <span>Rentang: <b>298 – 1.120 KK</b></span>
-                        <span class="text-slate-700 font-bold">Sumber: Monografi Desa 2026</span>
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+                        <span>Total: <b class="text-slate-800">223</b> dari 264 indikator</span>
+                        <span class="text-[#0E7C5A] font-extrabold">Rata-rata 84%</span>
                     </div>
                 </div>
 
+                <div class="lg:col-span-7 card-surface p-5 sm:p-6 flex flex-col">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <h3 class="panel-title"><span class="dot bg-blue-600"></span>Penduduk &amp; Keluarga per Desa</h3>
+                            <p class="panel-sub">Perbandingan jumlah jiwa dan kepala keluarga (KK) di 6 desa binaan</p>
+                        </div>
+                        <span class="panel-pill text-blue-700 bg-blue-100">Monografi 2026</span>
+                    </div>
+                    <div class="chart-box flex-1 mt-4" style="min-height:330px;"><canvas id="chartKeluargaPerDesa"></canvas></div>
+                </div>
             </div>
 
-            <!-- Row 2: 3 Distribusi Kunci (Rumah, Air, Penghasilan) -->
+            <!-- Baris 2: 3 distribusi -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Chart 1: Kepemilikan Rumah -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Kepemilikan Rumah</h4>
-                        <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">2.426 KK</span>
+                <div class="card-surface p-5 sm:p-6">
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h4 class="panel-title"><span class="dot bg-[#0E7C5A]"></span>Kepemilikan Rumah</h4><p class="panel-sub">Status hunian keluarga</p></div>
+                        <span class="panel-pill text-emerald-800 bg-emerald-100">Perumahan</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Distribusi status hunian keluarga</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartKepemilikanRumah"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartKepemilikanRumah"></canvas></div>
                 </div>
-
-                <!-- Chart 2: Sumber Air Minum -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Sumber Air Minum</h4>
-                        <span class="text-[10px] font-black text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Sanitasi</span>
+                <div class="card-surface p-5 sm:p-6">
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h4 class="panel-title"><span class="dot bg-sky-600"></span>Sumber Air Minum</h4><p class="panel-sub">Akses air bersih rumah tangga</p></div>
+                        <span class="panel-pill text-sky-800 bg-sky-100">Sanitasi</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Akses air bersih rumah tangga</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartSumberAir"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartSumberAir"></canvas></div>
                 </div>
-
-                <!-- Chart 3: Penghasilan Bulanan -->
-                <div class="card-surface p-5">
-                    <div class="flex items-center justify-between mb-1">
-                        <h4 class="text-xs font-black text-slate-900">Penghasilan Keluarga</h4>
-                        <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Ekonomi</span>
+                <div class="card-surface p-5 sm:p-6">
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h4 class="panel-title"><span class="dot bg-amber-500"></span>Penghasilan Keluarga</h4><p class="panel-sub">Sebaran pendapatan per bulan</p></div>
+                        <span class="panel-pill text-amber-800 bg-amber-100">Ekonomi</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-3">Sebaran pendapatan per bulan</p>
-                    <div class="relative w-full h-44">
-                        <canvas id="chartPenghasilan"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartPenghasilan"></canvas></div>
                 </div>
             </div>
 
+            <!-- Baris 3: sorotan -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div class="insight" style="background:#f0fdf6;border-color:#bbf0d4;">
+                    <span class="ic bg-emerald-100 text-emerald-700">🏆</span>
+                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Progres Tertinggi</div><div class="text-sm font-black text-slate-900 mt-0.5">Desa Kamisi · 98%</div><div class="text-[11px] text-slate-500 mt-0.5">43 dari 44 indikator terisi</div></div>
+                </div>
+                <div class="insight" style="background:#eff6ff;border-color:#bfdbfe;">
+                    <span class="ic bg-blue-100 text-blue-700">⭐</span>
+                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Pilot Utama</div><div class="text-sm font-black text-slate-900 mt-0.5">Desa Kalu Kaluku · 93%</div><div class="text-[11px] text-slate-500 mt-0.5">Desa dengan KK terbanyak (1.120 KK)</div></div>
+                </div>
+                <div class="insight" style="background:#fffbeb;border-color:#fde68a;">
+                    <span class="ic bg-amber-100 text-amber-700">🤝</span>
+                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Perlu Pendampingan</div><div class="text-sm font-black text-slate-900 mt-0.5">Desa Koroha · 68%</div><div class="text-[11px] text-slate-500 mt-0.5">14 indikator belum terisi</div></div>
+                </div>
+            </div>
         </div>
 
-        <!-- TAB 2: ANALITIK SEKTOORAL & SOSIAL -->
+        <!-- ============ TAB 2: ANALITIK SEKTORAL ============ -->
         <div id="viewAnalytics" class="space-y-6 hidden">
-            
-            <!-- Village Selector Pills -->
-            <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
-                <div class="text-[11px] font-black text-slate-500 uppercase tracking-wider">
-                    Pilih Desa untuk Analitik Spesifik:
+
+            <div class="card-surface p-4 sm:p-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div class="text-[11px] font-black text-slate-500 uppercase tracking-wider">Pilih desa</div>
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 text-xs font-bold">
+                        <button type="button" onclick="filterAnalitikVillage('all')" id="pill-desa-all" class="pill-filter active px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Semua Desa (6)</button>
+                    <button type="button" onclick="filterAnalitikVillage('kalukaluku')" id="pill-desa-kalukaluku" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Kalu Kaluku</button>
+                    <button type="button" onclick="filterAnalitikVillage('awo')" id="pill-desa-awo" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Awo</button>
+                    <button type="button" onclick="filterAnalitikVillage('kamisi')" id="pill-desa-kamisi" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Kamisi</button>
+                    <button type="button" onclick="filterAnalitikVillage('koroha')" id="pill-desa-koroha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Koroha</button>
+                    <button type="button" onclick="filterAnalitikVillage('lametuna')" id="pill-desa-lametuna" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Lametuna</button>
+                    <button type="button" onclick="filterAnalitikVillage('sawangaoha')" id="pill-desa-sawangaoha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Sawangaoha</button>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs font-bold">
-                    <button type="button" onclick="filterAnalitikVillage('all')" id="pill-desa-all" class="pill-filter active px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Semua Desa (6)
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('kalukaluku')" id="pill-desa-kalukaluku" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Kalu Kaluku
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('awo')" id="pill-desa-awo" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Awo
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('kamisi')" id="pill-desa-kamisi" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Kamisi
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('koroha')" id="pill-desa-koroha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Koroha
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('lametuna')" id="pill-desa-lametuna" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Lametuna
-                    </button>
-                    <button type="button" onclick="filterAnalitikVillage('sawangaoha')" id="pill-desa-sawangaoha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">
-                        Desa Sawangaoha
-                    </button>
-                </div>
-                <div id="analitikSubtext" class="text-[11px] text-slate-400 font-medium">
-                    Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.
-                </div>
+                <div id="analitikSubtext" class="text-[11px] text-slate-400 font-medium mt-2">Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.</div>
             </div>
 
-            <!-- 2 Dual Charts: Penerangan & Lantai -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Chart A: Sumber Penerangan -->
                 <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Sumber Penerangan</h3>
-                        <span id="badgePeneranganTotal" class="text-xs font-black text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">
-                            2.426 Total KK
-                        </span>
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h3 class="panel-title"><span class="dot bg-sky-600"></span>Sumber Penerangan</h3><p class="panel-sub">Komposisi keluarga menurut sumber penerangan</p></div>
+                        <span id="badgePeneranganTotal" class="panel-pill text-blue-700 bg-blue-100">2.426 Total KK</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Komposisi keluarga menurut sumber penerangan rumah tangga</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartPeneranganCanvas"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartPeneranganCanvas"></canvas></div>
                 </div>
-
-                <!-- Chart B: Jenis Lantai Terluas -->
                 <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Jenis Lantai Terluas</h3>
-                        <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
-                            Fisik Rumah
-                        </span>
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h3 class="panel-title"><span class="dot bg-emerald-600"></span>Jenis Lantai Terluas</h3><p class="panel-sub">Jumlah keluarga menurut jenis lantai bangunan</p></div>
+                        <span class="panel-pill text-emerald-800 bg-emerald-100">Fisik Rumah</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Jumlah keluarga menurut jenis lantai terluas bangunan tinggal</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartLantaiCanvas"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartLantaiCanvas"></canvas></div>
                 </div>
-            </div>
-
-            <!-- 2 Dual Charts: Bansos & BPJS -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Chart C: Penerima Bantuan Sosial -->
                 <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Penerima Bantuan Pemerintah</h3>
-                        <span class="text-xs font-black text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
-                            Bantuan Sosial
-                        </span>
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h3 class="panel-title"><span class="dot bg-amber-500"></span>Penerima Bantuan Pemerintah</h3><p class="panel-sub">Keluarga penerima PKH, BPNT, BLT-DD, dan PIP</p></div>
+                        <span class="panel-pill text-amber-800 bg-amber-100">Bantuan Sosial</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Sebaran keluarga penerima bansos (PKH, BPNT, BLT-DD, PIP)</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartBansosCanvas"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartBansosCanvas"></canvas></div>
                 </div>
-
-                <!-- Chart D: BPJS Kesehatan -->
                 <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-sm font-black text-slate-900">Jaminan Kesehatan (BPJS)</h3>
-                        <span class="text-xs font-black text-teal-700 bg-teal-100 px-2 py-0.5 rounded-md">
-                            Proteksi Kesehatan
-                        </span>
+                    <div class="flex items-start justify-between gap-2">
+                        <div><h3 class="panel-title"><span class="dot bg-teal-600"></span>Jaminan Kesehatan (BPJS)</h3><p class="panel-sub">Kepemilikan kartu BPJS: PBI, Mandiri, atau belum</p></div>
+                        <span class="panel-pill text-teal-800 bg-teal-100">Proteksi Kesehatan</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Proporsi kepemilikan kartu BPJS (PBI APBN/APBD vs Mandiri)</p>
-                    <div class="relative w-full h-64">
-                        <canvas id="chartBPJSCanvas"></canvas>
-                    </div>
+                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartBPJSCanvas"></canvas></div>
                 </div>
             </div>
-
         </div>
 
     </section>
@@ -1162,132 +1125,120 @@
             }
         }
 
-        // Initialize Dashboard Tab Charts
-        function initDashboardCharts() {
-            if (typeof Chart === 'undefined') return;
+        // ===== Tema & plugin grafik =====
+        const fmt = (n) => Number(n).toLocaleString('id-ID');
+        if (typeof Chart !== 'undefined') {
+            Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+            Chart.defaults.font.size = 11;
+            Chart.defaults.color = '#64748b';
+            Chart.defaults.animation.duration = 700;
+            Chart.defaults.plugins.tooltip.backgroundColor = '#0f172a';
+            Chart.defaults.plugins.tooltip.padding = 10;
+            Chart.defaults.plugins.tooltip.cornerRadius = 10;
+            Chart.defaults.plugins.tooltip.titleFont = { weight: '800' };
+            Chart.defaults.plugins.tooltip.boxPadding = 4;
+            Chart.defaults.plugins.legend.labels.usePointStyle = true;
+            Chart.defaults.plugins.legend.labels.boxWidth = 8;
+            Chart.defaults.plugins.legend.labels.padding = 14;
 
-            // 1. Chart Jumlah Keluarga per Desa (Bar Chart)
-            const ctxKeluarga = document.getElementById('chartKeluargaPerDesa');
-            if (ctxKeluarga) {
-                if (chartInstances.keluarga) chartInstances.keluarga.destroy();
-                chartInstances.keluarga = new Chart(ctxKeluarga.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Kalu Kaluku', 'Kamisi', 'Sawangaoha', 'Lametuna', 'Awo', 'Koroha'],
-                        datasets: [{
-                            label: 'Jumlah Keluarga (KK)',
-                            data: [1120, 1050, 730, 447, 356, 298],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#8b5cf6', '#0d9488', '#f59e0b', '#f97316'],
-                            borderRadius: 8,
-                            barThickness: 28
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: (ctx) => ` ${ctx.parsed.y} Kepala Keluarga (KK)`
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: { color: '#f1f5f9' },
-                                ticks: { font: { size: 11 } }
-                            },
-                            x: {
-                                grid: { display: false },
-                                ticks: { font: { size: 10, weight: 'bold' } }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // 2. Chart Status Kepemilikan Rumah (Donut Chart)
-            const ctxRumah = document.getElementById('chartKepemilikanRumah');
-            if (ctxRumah) {
-                if (chartInstances.rumah) chartInstances.rumah.destroy();
-                chartInstances.rumah = new Chart(ctxRumah.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Milik Sendiri', 'Sewa / Kontrak', 'Bebas Sewa'],
-                        datasets: [{
-                            data: [81, 12, 7],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#f59e0b'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9.5 } } }
-                        },
-                        cutout: '68%'
-                    }
-                });
-            }
-
-            // 3. Chart Sumber Air Minum Bersih (Donut Chart)
-            const ctxAir = document.getElementById('chartSumberAir');
-            if (ctxAir) {
-                if (chartInstances.air) chartInstances.air.destroy();
-                chartInstances.air = new Chart(ctxAir.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Sumur Terlindung', 'Mata Air', 'PAM / BPSPAM'],
-                        datasets: [{
-                            data: [62, 24, 14],
-                            backgroundColor: ['#0284c7', '#0d9488', '#38bdf8'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9.5 } } }
-                        },
-                        cutout: '68%'
-                    }
-                });
-            }
-
-            // 4. Chart Penghasilan Keluarga (Bar Chart)
-            const ctxPenghasilan = document.getElementById('chartPenghasilan');
-            if (ctxPenghasilan) {
-                if (chartInstances.penghasilan) chartInstances.penghasilan.destroy();
-                chartInstances.penghasilan = new Chart(ctxPenghasilan.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['< 1,5 Jt', '1,5 - 3 Jt', '3 - 5 Jt', '> 5 Jt'],
-                        datasets: [{
-                            data: [320, 1140, 710, 256],
-                            backgroundColor: ['#f59e0b', '#0E7C5A', '#0284c7', '#6366f1'],
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { grid: { color: '#f8fafc' }, ticks: { font: { size: 9 } } },
-                            x: { grid: { display: false }, ticks: { font: { size: 9 } } }
-                        }
-                    }
-                });
-            }
+            // Teks di tengah donat
+            Chart.register({
+                id: 'centerText',
+                afterDraw(chart, args, opts) {
+                    if (!opts || !opts.text) return;
+                    const { ctx, chartArea: { left, right, top, bottom } } = chart;
+                    const x = (left + right) / 2, y = (top + bottom) / 2;
+                    ctx.save();
+                    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                    ctx.fillStyle = '#0f172a'; ctx.font = '800 24px "Plus Jakarta Sans", sans-serif';
+                    ctx.fillText(opts.text, x, y - (opts.sub ? 7 : 0));
+                    if (opts.sub) { ctx.fillStyle = '#64748b'; ctx.font = '600 10.5px "Plus Jakarta Sans", sans-serif'; ctx.fillText(opts.sub, x, y + 14); }
+                    ctx.restore();
+                }
+            });
+            // Angka di ujung batang
+            Chart.register({
+                id: 'valueLabel',
+                afterDatasetsDraw(chart, args, opts) {
+                    if (!opts || !opts.show) return;
+                    const { ctx } = chart;
+                    const horizontal = chart.options.indexAxis === 'y';
+                    ctx.save();
+                    ctx.fillStyle = '#334155'; ctx.font = '800 10.5px "Plus Jakarta Sans", sans-serif';
+                    chart.data.datasets.forEach((ds, i) => {
+                        chart.getDatasetMeta(i).data.forEach((bar, j) => {
+                            const v = ds.data[j]; if (v == null) return;
+                            if (horizontal) { ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(fmt(v), bar.x + 6, bar.y); }
+                            else { ctx.textAlign = 'center'; ctx.textBaseline = 'bottom'; ctx.fillText(fmt(v), bar.x, bar.y - 5); }
+                        });
+                    });
+                    ctx.restore();
+                }
+            });
         }
 
-        // Initialize Analytics Tab Charts
+        const GRID = { color: '#eef2f6', drawBorder: false };
+        const legendBottom = { position: 'bottom', labels: { font: { size: 10.5, weight: '600' } } };
+        function mk(key, id, cfg) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (chartInstances[key]) chartInstances[key].destroy();
+            chartInstances[key] = new Chart(el.getContext('2d'), cfg);
+        }
+        function donut(key, id, labels, data, colors, center, cutout = '70%') {
+            mk(key, id, {
+                type: 'doughnut',
+                data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 3, borderColor: '#ffffff', hoverOffset: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false, cutout,
+                    layout: { padding: 4 },
+                    plugins: { legend: legendBottom, centerText: center } }
+            });
+        }
+
+        // ===== Tab 1: Dashboard Makro =====
+        function initDashboardCharts() {
+            if (typeof Chart === 'undefined') return;
+            const order = ['kalukaluku', 'kamisi', 'sawangaoha', 'lametuna', 'awo', 'koroha'];
+            const vm = order.map(k => villagesMeta[k]);
+
+            mk('keluarga', 'chartKeluargaPerDesa', {
+                type: 'bar',
+                data: {
+                    labels: vm.map(v => v.name),
+                    datasets: [
+                        { label: 'Penduduk (jiwa)', data: vm.map(v => v.pop), backgroundColor: '#0E7C5A', borderRadius: 6, maxBarThickness: 26 },
+                        { label: 'Keluarga (KK)', data: vm.map(v => v.kk), backgroundColor: '#38bdf8', borderRadius: 6, maxBarThickness: 26 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    layout: { padding: { top: 18 } },
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top', align: 'end', labels: { font: { size: 11, weight: '700' } } },
+                               valueLabel: { show: true },
+                               tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${fmt(c.parsed.y)}` } } },
+                    scales: { y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
+                              x: { grid: { display: false }, ticks: { font: { weight: '700' } } } }
+                }
+            });
+
+            donut('rumah', 'chartKepemilikanRumah', ['Milik Sendiri · 81%', 'Sewa / Kontrak · 12%', 'Bebas Sewa · 7%'], [81, 12, 7],
+                ['#0E7C5A', '#38bdf8', '#f59e0b'], { text: '81%', sub: 'milik sendiri' });
+            donut('air', 'chartSumberAir', ['Sumur Terlindung · 62%', 'Mata Air · 24%', 'PAM / BPSPAM · 14%'], [62, 24, 14],
+                ['#0284c7', '#0d9488', '#7dd3fc'], { text: '62%', sub: 'sumur terlindung' });
+
+            mk('penghasilan', 'chartPenghasilan', {
+                type: 'bar',
+                data: { labels: ['< 1,5 Jt', '1,5 – 3 Jt', '3 – 5 Jt', '> 5 Jt'],
+                        datasets: [{ label: 'Keluarga', data: [320, 1140, 710, 256], backgroundColor: ['#f59e0b', '#0E7C5A', '#0284c7', '#6366f1'], borderRadius: 6, maxBarThickness: 34 }] },
+                options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 16 } },
+                    plugins: { legend: { display: false }, valueLabel: { show: true } },
+                    scales: { y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
+                              x: { grid: { display: false }, ticks: { font: { weight: '700' } } } } }
+            });
+        }
+
+        // ===== Tab 2: Analitik Sektoral =====
         function initAnalyticsCharts(selectedVillage = 'all') {
             if (typeof Chart === 'undefined') return;
 
@@ -1298,145 +1249,50 @@
             let totalKK = 2426;
             let pMeter = 1892, pTanpa = 339, pNon = 195;
             let lSemen = 1261, lKeramik = 873, lKayu = 242, lMarmer = 50;
+            let wilayah = '6 Desa';
 
             if (selectedVillage !== 'all' && villagesMeta[selectedVillage]) {
                 const vm = villagesMeta[selectedVillage];
-                totalKK = vm.kk;
-                pMeter = vm.penerangan.plnMeter;
-                pTanpa = vm.penerangan.plnTanpa;
-                pNon = vm.penerangan.nonPln;
-                lSemen = vm.lantai.semen;
-                lKeramik = vm.lantai.keramik;
-                lKayu = vm.lantai.kayu;
-                lMarmer = vm.lantai.marmer;
-
-                const subtext = document.getElementById('analitikSubtext');
-                if (subtext) subtext.textContent = `Dasar perhitungan: ${totalKK} keluarga (${vm.name}). Seluruh nilai terintegrasi standar BPS.`;
-                const badge = document.getElementById('badgePeneranganTotal');
-                if (badge) badge.textContent = `${totalKK} Total KK (${vm.name})`;
-            } else {
-                const subtext = document.getElementById('analitikSubtext');
-                if (subtext) subtext.textContent = `Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.`;
-                const badge = document.getElementById('badgePeneranganTotal');
-                if (badge) badge.textContent = `2.426 Total KK (6 Desa)`;
+                totalKK = vm.kk; wilayah = vm.name;
+                pMeter = vm.penerangan.plnMeter; pTanpa = vm.penerangan.plnTanpa; pNon = vm.penerangan.nonPln;
+                lSemen = vm.lantai.semen; lKeramik = vm.lantai.keramik; lKayu = vm.lantai.kayu; lMarmer = vm.lantai.marmer;
             }
+            const subtext = document.getElementById('analitikSubtext');
+            if (subtext) subtext.textContent = selectedVillage === 'all'
+                ? 'Dasar perhitungan: 2.426 keluarga (6 Desa Binaan Kecamatan Kodeoha). Seluruh nilai terintegrasi standar BPS.'
+                : `Dasar perhitungan: ${fmt(totalKK)} keluarga (Desa ${wilayah}). Seluruh nilai terintegrasi standar BPS.`;
+            const badge = document.getElementById('badgePeneranganTotal');
+            if (badge) badge.textContent = `${fmt(totalKK)} KK · ${wilayah}`;
 
-            // 1. Chart Penerangan (Donut)
-            const ctxPenerangan = document.getElementById('chartPeneranganCanvas');
-            if (ctxPenerangan) {
-                if (chartInstances.penerangan) chartInstances.penerangan.destroy();
-                chartInstances.penerangan = new Chart(ctxPenerangan.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: [
-                            `PLN dengan meteran ${pMeter} (${Math.round((pMeter/totalKK)*100)}%)`,
-                            `PLN tanpa meteran ${pTanpa} (${Math.round((pTanpa/totalKK)*100)}%)`,
-                            `Non-PLN ${pNon} (${Math.round((pNon/totalKK)*100)}%)`
-                        ],
-                        datasets: [{
-                            data: [pMeter, pTanpa, pNon],
-                            backgroundColor: ['#0284c7', '#f97316', '#10b981'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11, weight: 'bold' } } }
-                        },
-                        cutout: '60%'
-                    }
-                });
-            }
+            const pct = (v) => Math.round((v / totalKK) * 100);
+            donut('penerangan', 'chartPeneranganCanvas',
+                [`PLN meteran · ${pct(pMeter)}%`, `PLN tanpa meteran · ${pct(pTanpa)}%`, `Non-PLN · ${pct(pNon)}%`],
+                [pMeter, pTanpa, pNon], ['#0284c7', '#f97316', '#10b981'],
+                { text: fmt(totalKK), sub: 'total KK' }, '66%');
 
-            // 2. Chart Lantai (Bar)
-            const ctxLantai = document.getElementById('chartLantaiCanvas');
-            if (ctxLantai) {
-                if (chartInstances.lantai) chartInstances.lantai.destroy();
-                chartInstances.lantai = new Chart(ctxLantai.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Semen/bata merah', 'Kayu/papan', 'Keramik', 'Marmer'],
-                        datasets: [{
-                            label: 'Jumlah Keluarga',
-                            data: [lSemen, lKayu, lKeramik, lMarmer],
-                            backgroundColor: ['#0284c7', '#ea580c', '#16a34a', '#1e293b'],
-                            borderRadius: 8,
-                            barThickness: 34
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
-                            x: { grid: { display: false }, ticks: { font: { size: 11, weight: 'bold' } } }
-                        }
-                    }
-                });
-            }
+            mk('lantai', 'chartLantaiCanvas', {
+                type: 'bar',
+                data: { labels: ['Semen/bata', 'Keramik', 'Kayu/papan', 'Marmer'],
+                        datasets: [{ label: 'Jumlah Keluarga', data: [lSemen, lKeramik, lKayu, lMarmer], backgroundColor: ['#0284c7', '#16a34a', '#ea580c', '#475569'], borderRadius: 8, maxBarThickness: 44 }] },
+                options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 18 } },
+                    plugins: { legend: { display: false }, valueLabel: { show: true } },
+                    scales: { y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
+                              x: { grid: { display: false }, ticks: { font: { weight: '700' } } } } }
+            });
 
-            // 3. Chart Bansos (Bar)
-            const ctxBansos = document.getElementById('chartBansosCanvas');
-            if (ctxBansos) {
-                if (chartInstances.bansos) chartInstances.bansos.destroy();
-                chartInstances.bansos = new Chart(ctxBansos.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['PKH', 'BPNT / Sembako', 'BLT-Dana Desa', 'PIP Pendidikan', 'Non-Bansos'],
-                        datasets: [{
-                            label: 'Jumlah Penerima (KK)',
-                            data: [
-                                Math.round(totalKK * 0.16),
-                                Math.round(totalKK * 0.22),
-                                Math.round(totalKK * 0.18),
-                                Math.round(totalKK * 0.14),
-                                Math.round(totalKK * 0.42)
-                            ],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#f59e0b', '#8b5cf6', '#cbd5e1'],
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { grid: { color: '#f8fafc' } },
-                            x: { grid: { display: false }, ticks: { font: { size: 10, weight: 'bold' } } }
-                        }
-                    }
-                });
-            }
+            const bs = [0.16, 0.22, 0.18, 0.14, 0.42].map(f => Math.round(totalKK * f));
+            mk('bansos', 'chartBansosCanvas', {
+                type: 'bar',
+                data: { labels: ['PKH', 'BPNT / Sembako', 'BLT-Dana Desa', 'PIP Pendidikan', 'Non-Bansos'],
+                        datasets: [{ label: 'Penerima (KK)', data: bs, backgroundColor: ['#0E7C5A', '#0284c7', '#f59e0b', '#8b5cf6', '#cbd5e1'], borderRadius: 6, maxBarThickness: 24 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, layout: { padding: { right: 40 } },
+                    plugins: { legend: { display: false }, valueLabel: { show: true } },
+                    scales: { x: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
+                              y: { grid: { display: false }, ticks: { font: { weight: '700' } } } } }
+            });
 
-            // 4. Chart BPJS (Donut)
-            const ctxBPJS = document.getElementById('chartBPJSCanvas');
-            if (ctxBPJS) {
-                if (chartInstances.bpjs) chartInstances.bpjs.destroy();
-                chartInstances.bpjs = new Chart(ctxBPJS.getContext('2d'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['BPJS PBI 68%', 'BPJS Mandiri 22%', 'Belum BPJS 10%'],
-                        datasets: [{
-                            data: [68, 22, 10],
-                            backgroundColor: ['#0E7C5A', '#0284c7', '#ef4444'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } }
-                        },
-                        cutout: '62%'
-                    }
-                });
-            }
+            donut('bpjs', 'chartBPJSCanvas', ['BPJS PBI · 68%', 'BPJS Mandiri · 22%', 'Belum BPJS · 10%'], [68, 22, 10],
+                ['#0E7C5A', '#0284c7', '#ef4444'], { text: '90%', sub: 'terlindungi' }, '66%');
         }
 
         function filterAnalitikVillage(vKey) {
@@ -1487,7 +1343,7 @@
                 showToast(`✅ Berkas ${fileName} berhasil diunduh!`, '✓');
             }, 1200);
         }
-
+ 
         // Run on Page Load
         document.addEventListener('DOMContentLoaded', () => {
             initDashboardCharts();

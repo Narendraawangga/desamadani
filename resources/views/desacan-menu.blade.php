@@ -58,31 +58,71 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f1f6fa;
         }
-        .nav-tab {
-            padding: 0.55rem 1.1rem !important;
-            border-radius: 0.75rem !important;
-            transition: all 0.18s ease-in-out !important;
-            border: 1px solid transparent !important;
-            color: #cbd5e1 !important;
-            font-weight: 700 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 0.5rem !important;
-            font-size: 0.8125rem !important;
-            letter-spacing: -0.01em !important;
+        /* ===== DESCAN SIDEBAR THEME ===== */
+        :root { --dc-green:#0f6b4a; --dc-green-dark:#0a4d36; --dc-mint:#6ee7b7; --dc-mint-bg:#ecfdf5; --dc-line:#e5e9e7; --dc-ink:#0f1f1a; --dc-muted:#6b7a74; }
+        body { background-color:#f4f7f5; }
+        @media (min-width: 1024px) { body.dc-shell { padding-left: 240px; } }
+        #dcSidebar { position:fixed; top:0; bottom:0; left:0; width:240px; background:#fff; border-right:1px solid var(--dc-line); z-index:50; display:flex; flex-direction:column; transition:transform .25s ease; }
+        @media (max-width: 1023px) { #dcSidebar { transform:translateX(-100%); } #dcSidebar.open { transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.25); } }
+        .dc-nav-label { display:flex; align-items:center; gap:.45rem; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#8a9a93; padding:0 .5rem; margin:1.2rem 0 .5rem; }
+        .dc-nav-label::before { content:""; width:14px; height:3px; border-radius:99px; background:linear-gradient(90deg,#0f6b4a,#6ee7b7); }
+        .nav-tab, .dc-nav-item {
+            --c:#0f6b4a; --c2:#17a06d; --cbg:#e3f6ec;
+            display:flex !important; align-items:center; gap:.7rem; width:100%; text-align:left;
+            padding:.45rem .6rem !important; border-radius:.8rem !important; margin-bottom:.2rem;
+            font-size:.8125rem !important; font-weight:600 !important; color:#34443d !important;
+            background:transparent !important; border:1px solid transparent !important; cursor:pointer; transition:all .18s ease;
         }
-        .nav-tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.08) !important;
-            color: #ffffff !important;
-        }
-        .nav-tab.active {
-            color: #ffffff !important;
-            font-weight: 800 !important;
-            background: rgba(255, 255, 255, 0.14) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25) !important;
-            border-bottom: 3px solid #f59e0b !important;
-        }
+        .dc-ico { width:30px; height:30px; border-radius:.6rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--cbg); color:var(--c); transition:all .18s ease; }
+        .dc-ico svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .nav-tab:hover:not(.active), .dc-nav-item:hover { background:color-mix(in srgb, var(--c) 8%, #fff) !important; }
+        .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { background:var(--c); color:#fff; }
+        .nav-tab.active { background:linear-gradient(135deg, var(--c), var(--c2)) !important; color:#fff !important; font-weight:700 !important; box-shadow:0 8px 16px -8px var(--c) !important; border-bottom:1px solid transparent !important; }
+        .nav-tab.active .dc-ico { background:rgba(255,255,255,.22); color:#fff; }
+        .nav-tab.has-active { background:color-mix(in srgb, var(--c) 9%, #fff) !important; color:var(--c) !important; }
+        .nav-tab.has-active .dc-ico { background:var(--c); color:#fff; }
+        .dc-caret { margin-left:auto; font-size:.7rem; opacity:.7; transition:transform .2s; }
+        .dc-caret.open { transform:rotate(180deg); }
+        .dc-sub { margin:0 0 .35rem 1.35rem; padding-left:.6rem; border-left:2px solid #e1e8e4; }
+        .dc-sub-item { --c:#059669; display:flex; align-items:center; gap:.55rem; width:100%; text-align:left; padding:.42rem .65rem; border-radius:.55rem; font-size:.78rem; font-weight:600; color:#4b5b54; background:transparent; border:0; cursor:pointer; margin-bottom:.1rem; transition:all .15s; }
+        .dc-sub-item::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--c); opacity:.5; flex-shrink:0; }
+        .dc-sub-item:hover { background:color-mix(in srgb, var(--c) 8%, #fff); }
+        .dc-sub-item.active { background:color-mix(in srgb, var(--c) 13%, #fff); color:var(--c); font-weight:800; }
+        .dc-sub-item.active::before { opacity:1; box-shadow:0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent); }
+        .dc-topbar { background:#fff; border-bottom:1px solid var(--dc-line); position:sticky; top:0; z-index:40; }
+        .dc-pill { display:inline-flex; align-items:center; gap:.4rem; background:var(--dc-mint-bg); color:var(--dc-green); border:1px solid #b7e8d0; border-radius:999px; padding:.3rem .8rem; font-size:12px; font-weight:600; }
+        .dc-hero { background:linear-gradient(135deg,#0a4d36 0%,#0f6b4a 55%,#0c5a3f 100%); color:#fff; border-radius:1rem; padding:2rem; position:relative; overflow:hidden; }
+        .dc-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:rgba(110,231,183,.08); }
+        .dc-chip { display:inline-flex; align-items:center; gap:.4rem; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius:999px; padding:.25rem .7rem; }
+        .dc-status-card { background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); border-radius:.9rem; padding:1.1rem 1.25rem; position:relative; z-index:1; }
+        .dc-btn-mint { background:#6ee7b7; color:#053b28; font-weight:700; border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; border:0; }
+        .dc-btn-mint:hover { background:#86efc5; }
+        .dc-btn-ghost { background:rgba(255,255,255,.12); color:#fff; font-weight:600; border:1px solid rgba(255,255,255,.2); border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; }
+        .dc-btn-ghost:hover { background:rgba(255,255,255,.2); }
+        .dc-card { background:#fff; border:1px solid var(--dc-line); border-radius:1rem; padding:1.1rem 1.25rem; }
+        .dc-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:var(--dc-mint-bg); color:var(--dc-green); font-size:1rem; flex-shrink:0; }
+        .dc-tag { font-size:10px; font-weight:700; padding:.15rem .55rem; border-radius:999px; background:var(--dc-mint-bg); color:var(--dc-green); }
+        .dc-kpi-label { font-size:12px; color:var(--dc-muted); margin-top:.9rem; }
+        .dc-kpi-value { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; line-height:1.2; }
+        .dc-kpi-foot { font-size:11px; color:var(--dc-muted); display:flex; justify-content:space-between; margin-top:.6rem; }
+        .dc-progress { height:5px; background:#e7ece9; border-radius:99px; overflow:hidden; }
+        .dc-progress > span { display:block; height:100%; border-radius:99px; }
+        .dc-eyebrow { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--dc-green); }
+        .dc-pilar-no { font-size:10px; font-weight:700; letter-spacing:.06em; color:var(--dc-muted); margin-top:.9rem; }
+        .dc-pilar-title { font-size:.95rem; font-weight:700; margin:.15rem 0 .4rem; }
+        .dc-pilar-desc { font-size:11.5px; color:var(--dc-muted); line-height:1.55; }
+        .dc-link { font-size:11px; font-weight:600; color:var(--dc-green); cursor:pointer; }
+        .dc-quick { display:block; width:100%; text-align:left; background:#f6f9f7; border:1px solid transparent; border-radius:.8rem; padding:.8rem; color:var(--dc-ink); transition:.15s; cursor:pointer; }
+        .dc-quick:hover { border-color:#b7e8d0; background:#eff8f3; }
+        .dc-quick .dc-icon { background:var(--dc-green-dark); color:#fff; margin-bottom:.6rem; }
+        .dc-quick b { font-size:12.5px; display:block; line-height:1.3; }
+        .dc-quick small { font-size:11px; color:var(--dc-muted); }
+        .dc-agenda { border-left:3px solid var(--dc-green); background:#f6f9f7; border-radius:.6rem; padding:.7rem .9rem; margin-bottom:.6rem; }
+        .dc-agenda.biru { border-left-color:#3b82f6; } .dc-agenda.amber { border-left-color:#f59e0b; }
+        .dc-agenda .jenis { font-size:10px; font-weight:700; letter-spacing:.05em; color:var(--dc-muted); display:flex; justify-content:space-between; }
+        .dc-agenda b { font-size:12.5px; display:block; margin:.15rem 0; } .dc-agenda small { font-size:11px; color:var(--dc-muted); }
+        .dc-help { background:linear-gradient(135deg,#0a4d36,#0f6b4a); color:#fff; border-radius:1rem; padding:1.1rem 1.25rem; }
+        .dc-avatar { width:34px; height:34px; border-radius:50%; background:#dff3e8; color:var(--dc-green-dark); font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .m-nav-tab.active {
             background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
             color: #ffffff !important;
@@ -159,112 +199,76 @@
     <!-- Chart.js for Interactive Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
+<body class="dc-shell min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
 
-        <!-- TOP WHITE BRAND BAR (SESUAI RANCANGAN WIREFRAME PORTAL DESA CANTIK) -->
-    <div class="w-full bg-white border-b border-slate-200/90 py-2.5 px-4 sm:px-8 shadow-xs">
-        <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-4">
-            
-            <!-- Left: Logo BPS & Logo Kolaka Utara bersampingan + DESA CANTIK - BPS KAB. KOLAKA UTARA -->
-            <div class="flex items-center gap-3">
-                <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-3 group" title="Kembali ke Dashboard Utama 6 Desa Binaan">
-                    <div class="flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/90 px-2 py-1 rounded-xl shadow-2xs">
-                        <img src="/images/logo_bps.png" alt="BPS" class="h-8 sm:h-9 w-auto object-contain drop-shadow-xs">
-                        <div class="h-6 w-[1.5px] bg-slate-300"></div>
-                        <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-8 sm:h-9 w-auto object-contain drop-shadow-xs">
-                    </div>
-                    <div class="leading-tight">
-                        <span class="text-xs sm:text-sm font-black tracking-wide text-[#005ea6] block uppercase">
-                            DESA CANTIK - BPS KAB. KOLAKA UTARA
-                        </span>
-                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-500 block tracking-wider uppercase">
-                            PORTAL SATU DATA DESA MADANI TERINTEGRASI
-                        </span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Right: Akun Desa Kalu Kaluku (Kec. Kodeoha) & Status User -->
-            <div class="flex items-center gap-3">
-                <!-- Capsule Akun Desa Kalu Kaluku (Sesuai Diagram) -->
-                <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/90 px-3.5 py-1.5 rounded-2xl shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <div class="text-left leading-tight">
-                        <div id="topBrandDesaTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
-                            AKUN DESA KALU KALUKU
-                        </div>
-                        <div id="topBrandDesaKec" class="text-[10px] font-bold text-slate-500">
-                            (Kec. Kodeoha) • Terbina BPS
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons: 6 Desa & Logout -->
-                <div class="flex items-center gap-2">
-                    <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-200 shadow-2xs" title="Pindah Desa Pilot">
-                        <span>← 6 Desa</span>
-                    </a>
-                    <button type="button" onclick="logoutFromMenu()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-2xs cursor-pointer">
-                        <span>Keluar</span>
-                    </button>
-                    <!-- User Avatar -->
-                    <div class="w-8 h-8 rounded-full bg-amber-400 border border-amber-300 text-slate-950 font-black text-xs flex items-center justify-center shadow-xs">
-                        AD
-                    </div>
-                </div>
-            </div>
-
+    <!-- ===== SIDEBAR DESCAN ===== -->
+    <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+    <aside id="dcSidebar">
+        <div class="px-4 py-3.5 flex items-center justify-between" style="background:linear-gradient(180deg,#eaf8f0 0%,#ffffff 100%);">
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-2" title="Kembali ke 6 Desa Binaan">
+                <span class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#0f6b4a] to-[#17a06d] text-white shadow-md flex items-center justify-center text-base">📊</span>
+                <span class="leading-tight">
+                    <span class="flex items-center gap-1.5"><b class="text-[15px] tracking-wide text-[#0f1f1a]">DESCAN</b><span class="dc-tag" style="background:#0f6b4a;color:#fff;">KODEOHA</span></span>
+                    <span class="text-[10px] text-slate-500">BPS Kolaka Utara</span>
+                </span>
+            </a>
+            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden text-slate-400 text-lg">✕</button>
         </div>
-    </div>
 
-    <!-- TOP DARK NAVY NAVIGATION BAR (ELEGAN, RAPI & 100% RESPONSIF) -->
-    <header class="w-full bg-[#072448] text-white border-b border-blue-900/60 sticky top-0 z-40 shadow-md">
-        <div class="max-w-[1720px] mx-auto px-4 sm:px-8 py-2 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
-            
-            <!-- Left Menu Items: 4 MENU UTAMA RAPI DENGAN IKON & LABEL -->
-            <nav class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold whitespace-nowrap" aria-label="Navigasi Utama Desa Cantik">
-                <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active cursor-pointer">
-                    <span class="text-sm">📊</span>
-                    <span>Beranda</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab cursor-pointer">
-                    <span class="text-sm">🏛️</span>
-                    <span>Profil Desa</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('pembelajaran')" id="nav-pembelajaran" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📖</span>
-                    <span>Pembelajaran (LMS)</span>
-                </button>
-                <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab cursor-pointer">
-                    <span class="text-sm">📈</span>
-                    <span>Monev (Evaluasi)</span>
-                </button>
-            </nav>
+        <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 pb-3">
+            <div class="dc-nav-label" style="margin-top:.2rem;">Administrasi &amp; Data</div>
+            <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active" style="--c:#0f6b4a;--c2:#17a06d;--cbg:#e3f6ec;"><span class="dc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span><span>Dashboard Desa</span></button>
+            <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab" style="--c:#2563eb;--c2:#4f8cff;--cbg:#e6eefe;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>Profil Desa</span></button>
+            <button type="button" onclick="openAgenDesaModal()" class="dc-nav-item" style="--c:#7c3aed;--c2:#a06bff;--cbg:#efe8fd;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>Data Aparatur Desa</span></button>
+            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item" style="--c:#d97706;--c2:#f5a524;--cbg:#fdf0d9;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><span>Pengisian Data PODES</span></button>
+            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg></span><span>Monitoring Kelengkapan</span></button>
+            <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab" style="--c:#e11d48;--c2:#fb5577;--cbg:#fde4ea;"><span class="dc-ico"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span>Monev (Evaluasi)</span></button>
 
-            <!-- Right: Utility Actions & Status Desa Binaan Badge -->
-            <div class="flex items-center gap-2 shrink-0">
-                <button type="button" onclick="openMetadataModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📋</span>
-                    <span>Metadata SDI</span>
-                </button>
-                <button type="button" onclick="openAgenDesaModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>👤</span>
-                    <span>Agen Statistik</span>
-                </button>
-                <button type="button" onclick="openPstModal()" class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15 shadow-2xs cursor-pointer">
-                    <span>📞</span>
-                    <span>Layanan PST</span>
-                </button>
-                <div class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-3 py-1.5 rounded-xl text-xs backdrop-blur-md transition shadow-2xs">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-[10px] text-blue-200 font-bold uppercase tracking-wider hidden md:inline">Desa Binaan BPS:</span>
-                    <span id="topNavVillageBadge" class="font-black text-amber-300 uppercase tracking-wide text-xs">
-                        DESA KALU KALUKU
-                    </span>
-                    <span class="text-[10px] text-slate-300/80 font-semibold hidden lg:inline">• Kodeoha</span>
-                </div>
+            <div class="dc-nav-label">Kapasitas &amp; Pembinaan</div>
+            <button type="button" onclick="switchNavMenu('pembinaan')" id="nav-pembinaan" class="nav-tab" style="--c:#ea580c;--c2:#fb8a3c;--cbg:#feeadc;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span><span>Pembinaan Desa</span></button>
+            <button type="button" onclick="toggleMateriMenu()" id="nav-pembelajaran" class="nav-tab" style="--c:#4f46e5;--c2:#7c74f5;--cbg:#e8e7fd;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span>Materi Pembelajaran</span><b id="dcMateriCaret" class="dc-caret">▾</b></button>
+            <div id="dcMateriSub" class="dc-sub hidden">
+                <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item" style="--c:#dc2626;"><span>Video Tutorial</span></button>
+                <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item" style="--c:#0284c7;"><span>Pre-test &amp; Post-test</span></button>
+                <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item" style="--c:#059669;"><span>Buku Panduan</span></button>
             </div>
 
+            <div class="dc-nav-label">Layanan</div>
+            <button type="button" onclick="openMetadataModal()" class="dc-nav-item" style="--c:#0891b2;--c2:#2cc3e0;--cbg:#dcf3f9;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Metadata SDI</span></button>
+            <button type="button" onclick="openPstModal()" class="dc-nav-item" style="--c:#db2777;--c2:#f56fae;--cbg:#fce3ef;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>Layanan PST</span></button>
+        </div>
+
+        <div class="p-3 border-t border-[#e5e9e7]">
+            <div class="flex items-center justify-between rounded-lg px-2 py-1 mb-2 text-[10px] bg-[#eef6f1]">
+                <span class="flex items-center gap-1 font-semibold text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Server BPS Aktif</span>
+                <span class="text-slate-500">v2.4</span>
+            </div>
+            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12.5px] font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-100 rounded-xl py-2 cursor-pointer transition"><span class="dc-ico" style="--c:#e11d48;--cbg:transparent;width:18px;height:18px;"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>Keluar Akun</button>
+        </div>
+    </aside>
+
+    <!-- ===== TOPBAR ===== -->
+    <header class="dc-topbar px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden px-2.5 py-1.5 rounded-lg border border-slate-200 text-lg leading-none">☰</button>
+            <span class="dc-pill">✓ Operator Desa</span>
+            <div class="hidden md:block border-l border-slate-200 pl-3 leading-tight min-w-0">
+                <div id="topBrandDesaTitle" class="text-xs font-bold text-slate-900 truncate">AKUN DESA KALU KALUKU</div>
+                <div id="topBrandDesaKec" class="text-[10px] text-slate-500 truncate">(Kec. Kodeoha) • Terbina BPS</div>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+            <div class="hidden xl:flex items-center gap-2 bg-[#f1f7f4] border border-[#dbeee3] px-3 py-1.5 rounded-xl text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Desa Binaan BPS:</span>
+                <span id="topNavVillageBadge" class="font-extrabold text-[#0f6b4a] uppercase text-xs">DESA KALU KALUKU</span>
+            </div>
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">← 6 Desa</a>
+            <span class="relative text-slate-500">🔔<span class="absolute top-0 -right-0.5 w-[7px] h-[7px] rounded-full bg-red-500"></span></span>
+            <div class="flex items-center gap-2">
+                <div class="hidden sm:block text-right leading-tight"><div class="text-xs font-semibold">Operator Desa</div><div class="text-[10.5px] text-slate-500">Operator Data</div></div>
+                <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center">AD</div>
+            </div>
         </div>
     </header>
     <!-- ============================================================== -->
@@ -383,6 +387,106 @@
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
                 <!-- ===================================================================== -->
                 <div id="view-dashboard" class="menu-view-container space-y-4 animate-in fade-in duration-200">
+
+                <!-- =============== BERANDA BARU (DESCAN) =============== -->
+                <div id="dcHome" class="space-y-5">
+
+                    <!-- HERO -->
+                    <div class="dc-hero">
+                        <div class="grid lg:grid-cols-3 gap-6 items-center">
+                            <div class="lg:col-span-2 relative z-[1]">
+                                <span class="dc-chip mb-3"><span style="color:#6ee7b7;font-size:8px;">●</span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2" style="letter-spacing:-.02em;">Selamat Datang di Desa Cantik</h2>
+                                <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video tutorial, buku panduan, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint">✎ Lanjutkan Data PODES</button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost">📘 Unduh Buku Panduan</button>
+                                </div>
+                            </div>
+                            <div class="dc-status-card">
+                                <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold tracking-wider opacity-70">STATUS BINAAN</span><span class="dc-tag" style="background:#6ee7b7;color:#053b28;">Terdaftar</span></div>
+                                <div id="dcHeroDesaName" class="text-[2rem] font-extrabold leading-[1.05]" style="letter-spacing:-.02em;">Desa Kalu Kaluku</div>
+                                <div class="text-[11px] opacity-65 mt-1.5 mb-4">Pilot Utama Kec. Kodeoha</div>
+                                <div class="flex justify-between items-center pt-3 border-t border-white/15"><span class="text-xs">🛡 Validasi BPS RI</span><b class="text-xl" style="color:#6ee7b7;">100%</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI -->
+                    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                        <div class="dc-card">
+                            <div class="flex justify-between items-center"><span class="dc-icon">📋</span><span class="dc-tag">93% Selesai</span></div>
+                            <div class="dc-kpi-label">Pengisian PODES</div>
+                            <div class="dc-kpi-value">41 / 44 Indikator</div>
+                            <div class="dc-progress mt-3"><span style="width:93%;background:var(--dc-green);"></span></div>
+                            <div class="dc-kpi-foot"><span>Kurang 3 variabel</span><b>Standar SDI</b></div>
+                        </div>
+                        <div class="dc-card">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eaf1fb;color:#2563eb;">✔</span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Tahap 3</span></div>
+                            <div class="dc-kpi-label">Verifikasi BPS Kolut</div>
+                            <div class="dc-kpi-value" style="color:var(--dc-green);">Terverifikasi</div>
+                            <div class="dc-kpi-foot mt-4"><span>✓ Metadata Sah</span><span>Rev. 12 Okt 2026</span></div>
+                        </div>
+                        <div class="dc-card">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eef2f6;color:#334155;">👥</span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Monografi 2026</span></div>
+                            <div class="dc-kpi-label">Cakupan Kependudukan</div>
+                            <div class="dc-kpi-value"><span id="dcKpiKK">1.120</span> KK</div>
+                            <div class="dc-kpi-foot mt-4"><span><span id="dcKpiJiwa">3.840</span> Jiwa terdata</span><b><span id="dcKpiDusun">4</span> Dusun</b></div>
+                        </div>
+                        <div class="dc-card">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#fdf3e1;color:#d97706;">🏅</span><span class="dc-tag" style="background:#fdf3e1;color:#b45309;">Grade A</span></div>
+                            <div class="dc-kpi-label">Skor Rata-rata Evaluasi</div>
+                            <div class="dc-kpi-value">88.5 / 100</div>
+                            <div class="dc-kpi-foot mt-4"><span>Pre-test &amp; Post-test</span><b>5 Operator</b></div>
+                        </div>
+                    </div>
+
+                    <!-- GRAFIK -->
+                    <div>
+                        <div class="dc-eyebrow mb-2">📊 Visualisasi Data Desa</div>
+                        <div class="grid lg:grid-cols-12 gap-4">
+                            <div class="dc-card lg:col-span-4">
+                                <h6 class="font-bold text-sm">Komposisi Kesejahteraan (Desil)</h6>
+                                <p class="text-[11px] text-slate-500">Sebaran rumah tangga menurut desil</p>
+                                <div class="relative mt-3" style="height:230px;"><canvas id="dcChartDesil"></canvas></div>
+                            </div>
+                            <div class="dc-card lg:col-span-8">
+                                <h6 class="font-bold text-sm">Penduduk &amp; KK per Dusun</h6>
+                                <p class="text-[11px] text-slate-500">Jumlah jiwa dan kepala keluarga tiap dusun</p>
+                                <div class="relative mt-3" style="height:230px;"><canvas id="dcChartDusun"></canvas></div>
+                            </div>
+                            <div class="dc-card lg:col-span-12">
+                                <h6 class="font-bold text-sm">Tren Skor Pre-test &amp; Post-test</h6>
+                                <p class="text-[11px] text-slate-500">Rata-rata skor operator desa per sesi</p>
+                                <div class="relative mt-3" style="height:230px;"><canvas id="dcChartSkor"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AKSI CEPAT -->
+                    <div class="dc-card">
+                                <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm">⚡ Aksi Cepat Operator Desa</h6><small class="text-slate-500 text-[11px]">Pintasan Fitur Pembinaan</small></div>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-quick"><span class="dc-icon">＋</span><b>Input Data PODES</b><small>41/44 terverifikasi</small></button>
+                                    <button type="button" onclick="switchNavMenu('pembelajaran')" class="dc-quick"><span class="dc-icon">📖</span><b>Materi Belajar</b><small>8 Modul Statistik</small></button>
+                                    <button type="button" onclick="switchNavMenu('posttest')" class="dc-quick"><span class="dc-icon">☑</span><b>Ikuti Post-test</b><small>Uji Kompetensi Sesi 2</small></button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-quick"><span class="dc-icon" style="background:#e8f4ee;color:var(--dc-green);">⬇</span><b>Panduan Teknis</b><small>PDF Panduan Desa</small></button>
+                                </div>
+                            </div>
+
+                    <!-- PUSAT BANTUAN -->
+                    <div class="dc-help flex flex-col md:flex-row md:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="dc-icon" style="background:rgba(255,255,255,.14);color:#fff;">?</span>
+                            <div><div class="font-bold text-sm">Pusat Bantuan Desa Cantik</div><div class="text-xs opacity-80">Ada kendala pengisian variabel atau login? Hubungi narahubung pembina BPS Kolaka Utara.</div></div>
+                        </div>
+                        <button type="button" onclick="openPstModal()" class="dc-btn-ghost">💬 WhatsApp Helpdesk</button>
+                    </div>
+
+                    <div class="dc-eyebrow pt-2">📈 Statistik Sektoral &amp; Potensi Desa (Data Lengkap)</div>
+                </div>
+                <!-- =============== /BERANDA BARU =============== -->
+
                     
                     <!-- Content Top Header: Title, Button Edit Data Dasar, Toggle Publik/Internal -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3">
@@ -678,6 +782,144 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- PEMBINAAN DESA (5 Pilar, Agenda, Tutorial, Tim Agen)                  -->
+                <!-- ===================================================================== -->
+                <div id="view-pembinaan" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex items-center gap-3">
+                        <div class="dc-icon" style="width:42px;height:42px;">⚑</div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pembinaan Desa</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Pilar program, agenda pembinaan, tutorial pilihan, dan tim agen statistik Desa Cantik</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                    <!-- 5 PILAR -->
+                    <div id="dcPilar">
+                        <div class="dc-eyebrow mb-1">⚑ Kerangka Program Nasional BPS RI</div>
+                        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-2 mb-3">
+                            <h3 class="text-2xl font-extrabold" style="letter-spacing:-.02em;">5 Pilar Utama Tujuan Desa Cantik</h3>
+                            <p class="text-xs text-slate-500 max-w-[420px]">Arah strategis pembinaan statistik terintegrasi untuk memperkuat kemandirian dan tata kelola data di Desa Kalu Kaluku.</p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <div class="dc-card flex flex-col">
+                            <span class="dc-icon">📍</span>
+                            <div class="dc-pilar-no">PILAR 01</div>
+                            <div class="dc-pilar-title">Literasi Statistik</div>
+                            <div class="dc-pilar-desc flex-1">Meningkatkan literasi statistik aparatur desa melalui pelatihan konsep, definisi, dan interpretasi indikator makro.</div>
+                            <span class="dc-link mt-3">Pelatihan Berkelanjutan →</span>
+                        </div>
+                        <div class="dc-card flex flex-col">
+                            <span class="dc-icon">🗄</span>
+                            <div class="dc-pilar-no">PILAR 02</div>
+                            <div class="dc-pilar-title">Pengumpulan & Pengelolaan</div>
+                            <div class="dc-pilar-desc flex-1">Meningkatkan kemampuan pengumpulan dan pengelolaan data desa secara digital, sistematis, dan tersirsip rapi.</div>
+                            <span class="dc-link mt-3">Standarisasi Kuesioner →</span>
+                        </div>
+                        <div class="dc-card flex flex-col">
+                            <span class="dc-icon">⚙</span>
+                            <div class="dc-pilar-no">PILAR 03</div>
+                            <div class="dc-pilar-title">Data Akurat & Berkualitas</div>
+                            <div class="dc-pilar-desc flex-1">Mendorong tersedianya data desa yang akurat, mutakhir, valid, dan dapat dipertanggungjawabkan sesuai kaidah SDI.</div>
+                            <span class="dc-link mt-3">Satu Data Indonesia →</span>
+                        </div>
+                        <div class="dc-card flex flex-col">
+                            <span class="dc-icon">📈</span>
+                            <div class="dc-pilar-no">PILAR 04</div>
+                            <div class="dc-pilar-title">Perencanaan Pembangunan</div>
+                            <div class="dc-pilar-desc flex-1">Meningkatkan pemanfaatan data riil dalam penyusunan RKPDes, APBDes, dan alokasi bantuan sosial yang tepat sasaran.</div>
+                            <span class="dc-link mt-3">Kebijakan Berbasis Bukti →</span>
+                        </div>
+                        <div class="dc-card flex flex-col">
+                            <span class="dc-icon">🏛</span>
+                            <div class="dc-pilar-no">PILAR 05</div>
+                            <div class="dc-pilar-title">Tata Kelola Statistik</div>
+                            <div class="dc-pilar-desc flex-1">Mendorong terwujudnya tata kelola dan kelembagaan statistik desa yang berkelanjutan bersama pembina BPS Kolaka Utara.</div>
+                            <span class="dc-link mt-3">SOP & Agen Statistik →</span>
+                        </div>
+                        </div>
+                    </div>
+
+
+                        <div class="grid lg:grid-cols-3 gap-4">
+                            <div class="lg:col-span-2">
+                                <div class="dc-card">
+                        <div class="flex justify-between items-start mb-3">
+                            <div><h6 class="font-bold text-sm">Tim Agen Statistik Desa</h6><p class="text-[11px] text-slate-500">Aparatur yang telah ditugaskan dan mengikuti bimbingan teknis BPS</p></div>
+                            <span onclick="openAgenDesaModal()" class="dc-link">Kelola Tim</span>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-2">
+                        <div class="flex items-center gap-2 p-2 rounded-xl bg-[#f6f9f7]"><span class="dc-avatar">MK</span><div class="leading-tight min-w-0"><div class="font-semibold text-[12.5px] truncate">Muh. Kamil, S.IP</div><div class="text-[11px] text-slate-500 truncate">Sekretaris Desa</div><div class="text-[10.5px] font-semibold text-emerald-700">● Lulus Sertifikasi</div></div></div>
+                        <div class="flex items-center gap-2 p-2 rounded-xl bg-[#f6f9f7]"><span class="dc-avatar">RN</span><div class="leading-tight min-w-0"><div class="font-semibold text-[12.5px] truncate">Rini Novitasari</div><div class="text-[11px] text-slate-500 truncate">Kasi Pemerintahan</div><div class="text-[10.5px] font-semibold text-emerald-700">● Skor Post-test 94</div></div></div>
+                        <div class="flex items-center gap-2 p-2 rounded-xl bg-[#f6f9f7]"><span class="dc-avatar">AS</span><div class="leading-tight min-w-0"><div class="font-semibold text-[12.5px] truncate">Agus Salim</div><div class="text-[11px] text-slate-500 truncate">Kaur Perencanaan</div><div class="text-[10.5px] font-semibold text-emerald-700">● Skor Post-test 88</div></div></div>
+                        </div>
+                    </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="dc-card">
+                                <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm">🗓 Agenda Pembinaan</h6><span class="dc-tag">BPS Kolut</span></div>
+                        <div class="dc-agenda "><div class="jenis"><span>KUNJUNGAN LAPANGAN</span><span>24 Okt 2026</span></div><b>Rekonsiliasi & Uji Petik Monografi Desa</b><small>📍 Kantor Desa Kalu Kaluku</small></div>
+                        <div class="dc-agenda biru"><div class="jenis"><span>DARING / ZOOM</span><span>02 Nov 2026</span></div><b>Webinar Pemanfaatan Data PODES untuk RKPDes</b><small>📍 BPS Kab. Kolaka Utara</small></div>
+                        <div class="dc-agenda amber"><div class="jenis"><span>EVALUASI AKHIR</span><span>15 Nov 2026</span></div><b>Penganugerahan Desa Cinta Statistik Teladan</b><small>📍 Aula Bappeda Kolaka Utara</small></div>
+                                <button type="button" class="w-full rounded-xl py-2 text-xs bg-[#eef3f8] hover:bg-[#e3ebf3]">Lihat Kalender Lengkap</button>
+                            </div>
+                                <div id="dcTutorial" class="dc-card">
+                                <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm">Tutorial Pilihan</h6><span onclick="switchNavMenu('video')" class="dc-link">Semua Video</span></div>
+                                <div onclick="switchNavMenu('video')" class="relative rounded-xl text-white mb-3 cursor-pointer overflow-hidden" style="height:120px;background:linear-gradient(135deg,#0a4d36,#2f8f6a);">
+                                    <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 text-[#0f6b4a] flex items-center justify-center">▶</span>
+                                    <span class="absolute bottom-0 left-0 p-2 text-[11px]"><b>Tutorial 04: Pengisian Kuesioner PODES</b><br><span class="opacity-80">Durasi: 14 menit • Tim Teknis BPS</span></span>
+                                </div>
+                                <div class="flex justify-between text-xs mb-2"><span>▶ Memahami Standar Data Indonesia</span><span class="text-slate-500">08:20</span></div>
+                                <div class="flex justify-between text-xs"><span>▶ Pengolahan Data Monografi Desa</span><span class="text-slate-500">11:45</span></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- MONITORING KELENGKAPAN PODES                                          -->
+                <!-- ===================================================================== -->
+                <div id="view-monitoring" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex items-center gap-3">
+                        <div class="dc-icon" style="width:42px;height:42px;">▤</div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Monitoring Kelengkapan PODES</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Pantau pengisian variabel PODES per klaster dan tindak lanjut yang masih tersisa</p>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-4">
+                        <div id="dcMonitoring" class="dc-card">
+                                <h6 class="font-bold text-sm">Monitoring Kelengkapan PODES <span id="dcMonDesa">Desa Kalu Kaluku</span></h6>
+                                <p class="text-[11px] text-slate-500 mb-3">Evaluasi pengisian 44 variabel inti statistik potensi desa tahun 2026</p>
+                        <div class="mb-3">
+                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#0f6b4a;font-size:8px;">●</span> 1. Data Kependudukan & Ketenagakerjaan</span><b style="font-size:11px;color:#0f6b4a;">100% (12/12)</b></div>
+                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#0f6b4a;font-size:8px;">●</span> 2. Perumahan, Sanitasi & Lingkungan Hidup</span><b style="font-size:11px;color:#0f6b4a;">100% (10/10)</b></div>
+                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#dc2626;font-size:8px;">●</span> 3. Pertanian, Perkebunan & Perikanan Bahari</span><b style="font-size:11px;color:#dc2626;">85% (11/13)</b></div>
+                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:85%;background:#dc2626;"></span></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#dc2626;font-size:8px;">●</span> 4. Akses Transportasi & Sarana Komunikasi</span><b style="font-size:11px;color:#dc2626;">67% (6/9)</b></div>
+                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:67%;background:#dc2626;"></span></div>
+                        </div>
+                                <div class="rounded-xl p-2.5 px-3 flex gap-2 text-[11.5px] text-slate-500 bg-[#f6f9f7] border border-[#e5e9e7]">ⓘ <span>Tersisa 3 indikator komoditas perkebunan kakao dan cengkeh yang belum dilengkapi lampiran survei lapangan. Batas akhir konfirmasi rekonsiliasi data: 28 Oktober 2026.</span></div>
+                            </div>
+                        <div class="dc-card ">
+                                <h6 class="font-bold text-sm">Kelengkapan PODES per Klaster</h6>
+                                <p class="text-[11px] text-slate-500">Variabel terisi vs belum terisi</p>
+                                <div class="relative mt-3" style="height:230px;"><canvas id="dcChartKelengkapan"></canvas></div>
+                            </div>
+                    </div>
                 </div>
 
                 <!-- ===================================================================== -->
@@ -987,70 +1229,57 @@
                 <!-- ===================================================================== -->
                 <!-- 3. PEMBELAJARAN (LMS DESA CANTIK - STANDARDISASI SDM)                 -->
                 <!-- ===================================================================== -->
-                <div id="view-pembelajaran" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
-                    
-                    <!-- Content Top Header: Title & BPS Badge -->
+                <!-- ===================================================================== -->
+                <!-- MATERI PEMBELAJARAN (HUB)                                             -->
+                <!-- ===================================================================== -->
+                <div id="view-pembelajaran" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
-                                📖
-                            </div>
+                            <div class="dc-ico" style="--c:#4f46e5;--cbg:#e8e7fd;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#4f46e5,#7c74f5);color:#fff;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
                             <div>
-                                <div class="flex items-center gap-2">
-                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">LMS - Pembelajaran Aparat Desa (Standardisasi SDM)</h2>
-                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300">
-                                        BPS Verified
-                                    </span>
-                                </div>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Materi Pembelajaran</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section 1: TAHAPAN BELAJAR MANDIRI (Step 1 Pre-test, Step 2 Video, Step 3 Post-test) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <button type="button" onclick="switchNavMenu('video')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #dc2626;">
+                            <span class="dc-ico" style="--c:#dc2626;--cbg:#fde8e8;width:42px;height:42px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+                            <div class="font-extrabold text-base mt-3">Video Tutorial</div>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Video edukasi microlearning Desa Cantik BPS berdurasi singkat.</p>
+                            <span class="dc-link mt-3 inline-block" style="color:#dc2626;">Buka Video →</span>
+                        </button>
+                        <button type="button" onclick="switchNavMenu('pretest')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #0284c7;">
+                            <span class="dc-ico" style="--c:#0284c7;--cbg:#e0f2fe;width:42px;height:42px;"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+                            <div class="font-extrabold text-base mt-3">Pre-test &amp; Post-test</div>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Ukur pemahaman awal dan akhir, lalu raih sertifikat kompetensi.</p>
+                            <span class="dc-link mt-3 inline-block" style="color:#0284c7;">Mulai Evaluasi →</span>
+                        </button>
+                        <button type="button" onclick="switchNavMenu('buku')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #059669;">
+                            <span class="dc-ico" style="--c:#059669;--cbg:#dcf5ea;width:42px;height:42px;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                            <div class="font-extrabold text-base mt-3">Buku Panduan</div>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Buku pedoman Excel, rumus dasar statistik, dan SK Agen Statistik.</p>
+                            <span class="dc-link mt-3 inline-block" style="color:#059669;">Buka Panduan →</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- VIDEO TUTORIAL                                                        -->
+                <!-- ===================================================================== -->
+                <div id="view-video" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="dc-ico" style="--c:#dc2626;--cbg:#fde8e8;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#dc2626,#f4676a);color:#fff;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
                             <div>
-                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                    <span>🎯</span>
-                                    <span>TAHAPAN BELAJAR MANDIRI</span>
-                                </h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Selesaikan tahapan secara berurutan untuk mendapatkan Sertifikat Kompetensi Agen Statistik</p>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Tutorial</h2>
+                                <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
                             </div>
-                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
-                                <span>🔓</span>
-                                <span>Unlock semua menu</span>
-                            </button>
                         </div>
+                    </div>
 
-                        <!-- 3 Sequential Step Cards Grid -->
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                            <!-- Step 1: PRE-TEST -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
-                                            [1. PRE-TEST] 🔒
-                                        </span>
-                                        <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
-                                            Siap Dikerjakan
-                                        </span>
-                                    </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Tes Kemampuan Awal Aparatur</h5>
-                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                        Wajib diisi sebelum materi video dan pengolahan data untuk mengukur pemahaman awal konsep statistik sektoral.
-                                    </p>
-                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600">
-                                        <div>• Soal: <b>10 Pertanyaan Pilihan Ganda</b></div>
-                                        <div>• Waktu: <b>15 Menit</b></div>
-                                        <div>• Standar: <b>BPS Satu Data Indonesia</b></div>
-                                    </div>
-                                </div>
-                                <button type="button" onclick="openPretestModal()" class="w-full py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                    <span>📝 Mulai Pre-Test</span>
-                                </button>
-                            </div>
-
+                    <div class="max-w-4xl w-full">
                             <!-- Step 2: TONTON VIDEO MICROLEARNING -->
                             <div class="p-4 sm:p-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 flex flex-col justify-between space-y-4">
                                 <div>
@@ -1096,7 +1325,50 @@
                                     </div>
                                 </div>
                             </div>
+                    </div>
+                </div>
 
+                <!-- ===================================================================== -->
+                <!-- PRE-TEST & POST-TEST                                                  -->
+                <!-- ===================================================================== -->
+                <div id="view-pretest" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="dc-ico" style="--c:#0284c7;--cbg:#e0f2fe;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#0284c7,#38b6ee);color:#fff;"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pre-test &amp; Post-test</h2>
+                                <p class="text-xs text-slate-500 mt-0.5">Evaluasi kompetensi aparatur desa dan sertifikat Agen Statistik</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 self-start cursor-pointer"><span>🔓</span><span>Unlock semua menu</span></button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                            <!-- Step 1: PRE-TEST -->
+                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2.5 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
+                                            [1. PRE-TEST] 🔒
+                                        </span>
+                                        <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
+                                            Siap Dikerjakan
+                                        </span>
+                                    </div>
+                                    <h5 class="font-black text-slate-900 text-sm mt-3">Tes Kemampuan Awal Aparatur</h5>
+                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                        Wajib diisi sebelum materi video dan pengolahan data untuk mengukur pemahaman awal konsep statistik sektoral.
+                                    </p>
+                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600">
+                                        <div>• Soal: <b>10 Pertanyaan Pilihan Ganda</b></div>
+                                        <div>• Waktu: <b>15 Menit</b></div>
+                                        <div>• Standar: <b>BPS Satu Data Indonesia</b></div>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="openPretestModal()" class="w-full py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
+                                    <span>📝 Mulai Pre-Test</span>
+                                </button>
+                            </div>
                             <!-- Step 3: POST-TEST / KUIS EVALUASI -->
                             <div class="p-4 sm:p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50/40 flex flex-col justify-between space-y-4">
                                 <div>
@@ -1125,6 +1397,20 @@
                                         <span>👁️ Lihat Nilai & Status Sertifikat</span>
                                     </button>
                                 </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- BUKU PANDUAN                                                          -->
+                <!-- ===================================================================== -->
+                <div id="view-buku" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="dc-ico" style="--c:#059669;--cbg:#dcf5ea;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#059669,#2ec08f);color:#fff;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buku Panduan</h2>
+                                <p class="text-xs text-slate-500 mt-0.5">Buku pedoman Excel, rumus dasar statistik sektoral, dan SK Agen Statistik</p>
                             </div>
                         </div>
                     </div>
@@ -1209,7 +1495,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- ===================================================================== -->
@@ -2293,28 +2578,8 @@
             if (menuKey === 'profil') {
                 menuKey = 'tentang';
             }
-            if (menuKey === 'excel' || menuKey === 'buku') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('panduan-excel');
-                return;
-            }
-            if (menuKey === 'video') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('video');
-                return;
-            }
-            if (menuKey === 'pretest') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('evaluasi');
-                if (typeof switchEvalSubTab === 'function') switchEvalSubTab('pretest');
-                return;
-            }
-            if (menuKey === 'posttest') {
-                switchNavMenu('pembelajaran');
-                if (typeof switchPemTab === 'function') switchPemTab('evaluasi');
-                if (typeof switchEvalSubTab === 'function') switchEvalSubTab('posttest');
-                return;
-            }
+            if (menuKey === 'excel') menuKey = 'buku';
+            if (menuKey === 'posttest') menuKey = 'pretest';
             if (menuKey === 'layanan' || menuKey === 'pengaduan') {
                 openLayananModal();
                 return;
@@ -2325,7 +2590,7 @@
             }
 
             // HANYA 4 MENU RESMI
-            const validMenus = ['dashboard', 'tentang', 'pembelajaran', 'monev'];
+            const validMenus = ['dashboard', 'tentang', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'monitoring'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
@@ -2359,6 +2624,7 @@
             if (targetView) {
                 targetView.classList.remove('hidden');
             }
+            dcOnMenuChange(menuKey);
 
             if (menuKey === 'dashboard') {
                 renderDashboardCantik(currentTargetVillage);
@@ -2371,12 +2637,6 @@
                 }, 200);
             }
 
-            if (menuKey === 'pembelajaran') {
-                if (typeof switchPemTab === 'function') {
-                    switchPemTab('panduan-excel');
-                }
-            }
-
             if (menuKey === 'monev') {
                 if (typeof renderBuktiDukungTables === 'function') {
                     renderBuktiDukungTables(currentTargetVillage);
@@ -2385,7 +2645,7 @@
 
             const videoIframe = document.getElementById('mainVideoIframe');
             if (videoIframe) {
-                if (menuKey === 'pembelajaran' && currentPemTab === 'video') {
+                if (menuKey === 'video') {
                     try {
                         videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                     } catch(e) {}
@@ -3057,7 +3317,115 @@
             showToast('🔄 Seluruh data statistik dikembalikan ke standar awal BPS.');
         }
 
+        // ===== DESCAN HOME: sidebar, navigasi, grafik =====
+        // ===== DESCAN SIDEBAR: submenu Materi Pembelajaran =====
+        function dcSetSub(key) {
+            document.querySelectorAll('.dc-sub-item').forEach(el => el.classList.remove('active'));
+            const el = document.getElementById('sub-' + key);
+            if (el) el.classList.add('active');
+        }
+        function dcShowMateri(show) {
+            const sub = document.getElementById('dcMateriSub');
+            const caret = document.getElementById('dcMateriCaret');
+            if (sub) sub.classList.toggle('hidden', !show);
+            if (caret) caret.classList.toggle('open', show);
+        }
+        function toggleMateriMenu() {
+            const sub = document.getElementById('dcMateriSub');
+            dcShowMateri(sub ? sub.classList.contains('hidden') : true);
+        }
+        const DC_MATERI_CHILD = ['video', 'pretest', 'buku'];
+        function dcOnMenuChange(menuKey) {
+            const isChild = DC_MATERI_CHILD.includes(menuKey);
+            const parent = document.getElementById('nav-pembelajaran');
+            if (parent) {
+                parent.classList.remove('has-active');
+                if (isChild) { parent.classList.remove('active'); parent.classList.add('has-active'); }
+            }
+            dcShowMateri(isChild || menuKey === 'pembelajaran');
+            dcSetSub(isChild ? menuKey : '');
+            const sb = document.getElementById('dcSidebar');
+            if (sb && sb.classList.contains('open')) toggleDcSidebar();
+            window.scrollTo({ top: 0 });
+            setTimeout(() => { Object.values(dcCharts).forEach(c => { try { c.resize(); } catch (e) {} }); }, 60);
+        }
+
+        function toggleDcSidebar() {
+            const sb = document.getElementById('dcSidebar');
+            const bd = document.getElementById('dcBackdrop');
+            if (!sb) return;
+            sb.classList.toggle('open');
+            if (bd) bd.classList.toggle('hidden', !sb.classList.contains('open'));
+        }
+        const dcCharts = {};
+        function dcMake(id, cfg) {
+            const el = document.getElementById(id);
+            if (!el || typeof Chart === 'undefined') return;
+            if (dcCharts[id]) dcCharts[id].destroy();
+            dcCharts[id] = new Chart(el, cfg);
+        }
+        function renderDescanHome(villageKey) {
+            try {
+                const vData = (typeof villagesData !== 'undefined' && villagesData[villageKey]) || {};
+                const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || {});
+                const nama = vData.title || 'Desa';
+                const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+                set('dcHeroDesaName', nama);
+                set('dcMonDesa', nama);
+                if (sData.kpi) { set('dcKpiKK', sData.kpi.kk); set('dcKpiJiwa', sData.kpi.pop); }
+                if (sData.dusun) set('dcKpiDusun', sData.dusun.length);
+
+                if (typeof Chart === 'undefined') return;
+                Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+                Chart.defaults.font.size = 11;
+                Chart.defaults.color = '#6b7a74';
+                const grid = { color: '#eef2f0' };
+                const hijau = '#0f6b4a', mint = '#6ee7b7', amber = '#f59e0b';
+                const legend = { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } };
+
+                if (sData.desil) dcMake('dcChartDesil', {
+                    type: 'doughnut',
+                    data: { labels: ['Desil 1', 'Desil 2', 'Desil 3', 'Desil 4'],
+                        datasets: [{ data: [sData.desil.d1, sData.desil.d2, sData.desil.d3, sData.desil.d4],
+                            backgroundColor: ['#dc2626', amber, mint, hijau], borderWidth: 2, borderColor: '#fff' }] },
+                    options: { maintainAspectRatio: false, cutout: '62%', plugins: { legend } }
+                });
+
+                if (sData.dusun) dcMake('dcChartDusun', {
+                    type: 'bar',
+                    data: { labels: sData.dusun.map(d => d.name),
+                        datasets: [
+                            { label: 'Penduduk (jiwa)', data: sData.dusun.map(d => d.pop), backgroundColor: hijau, borderRadius: 4, maxBarThickness: 34 },
+                            { label: 'Kepala Keluarga', data: sData.dusun.map(d => d.kk), backgroundColor: mint, borderRadius: 4, maxBarThickness: 34 } ] },
+                    options: { maintainAspectRatio: false, plugins: { legend },
+                        scales: { x: { grid: { display: false } }, y: { grid, beginAtZero: true } } }
+                });
+
+                // Data contoh (ganti dengan data pengisian PODES sesungguhnya)
+                const klaster = [['Kependudukan & Tenaga Kerja', 12, 12], ['Perumahan & Lingkungan', 10, 10], ['Pertanian & Perikanan', 11, 13], ['Transportasi & Komunikasi', 6, 9]];
+                dcMake('dcChartKelengkapan', {
+                    type: 'bar',
+                    data: { labels: klaster.map(k => k[0]),
+                        datasets: [
+                            { label: 'Terisi', data: klaster.map(k => k[1]), backgroundColor: hijau, borderRadius: 4 },
+                            { label: 'Belum', data: klaster.map(k => k[2] - k[1]), backgroundColor: '#e3e9e6', borderRadius: 4 } ] },
+                    options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend },
+                        scales: { x: { stacked: true, grid, beginAtZero: true }, y: { stacked: true, grid: { display: false } } } }
+                });
+                dcMake('dcChartSkor', {
+                    type: 'line',
+                    data: { labels: ['Sesi 1', 'Sesi 2', 'Sesi 3', 'Sesi 4', 'Sesi 5'],
+                        datasets: [
+                            { label: 'Pre-test', data: [62, 68, 71, 74, 78], borderColor: amber, backgroundColor: amber, tension: .35, pointRadius: 3 },
+                            { label: 'Post-test', data: [74, 80, 84, 86, 88.5], borderColor: hijau, backgroundColor: 'rgba(15,107,74,.10)', fill: true, tension: .35, pointRadius: 3 } ] },
+                    options: { maintainAspectRatio: false, plugins: { legend },
+                        scales: { x: { grid: { display: false } }, y: { grid, min: 50, max: 100 } } }
+                });
+            } catch (e) { console.warn('renderDescanHome:', e); }
+        }
+
         function renderDashboardCantik(villageKey, filterDusun = 'all', filterYear = '2026') {
+            if (typeof renderDescanHome === 'function') renderDescanHome(villageKey);
             const vData = villagesData[villageKey] || villagesData.cijati;
             const sData = (typeof getSectoralData === 'function') ? getSectoralData(villageKey) : (descanSectoralData[villageKey] || descanSectoralData.cijati);
 

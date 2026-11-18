@@ -72,13 +72,17 @@ class AdminController extends Controller
         // 3. Load System Users
         $users = User::latest()->get();
 
+        // 4. Data dashboard Desa Cantik (DESCAN)
+        $descan = $this->buildDescanData($admin, $kecamatanList);
+
         return view('admin.dashboard', compact(
             'admin',
             'stats',
             'kecamatanList',
             'flatDesaList',
             'podesCatalog',
-            'users'
+            'users',
+            'descan'
         ));
     }
 
@@ -508,5 +512,44 @@ class AdminController extends Controller
         $user->delete();
 
         return back()->with('success', "Akun {$userName} berhasil dihapus.");
+    }
+
+    /**
+     * Data tampilan dashboard Desa Cantik (DESCAN).
+     * Nilai kelengkapan, skor, agenda dan tim masih data contoh; ganti dengan
+     * query database/tabel sendiri saat modulnya sudah tersedia.
+     */
+    private function buildDescanData($admin, array $kecamatanList): array
+    {
+        $desa = ($admin && $admin->isOperatorDesa() && $admin->desa) ? $admin->desa : 'Kalu Kaluku';
+        $kecamatan = ($admin && $admin->isOperatorDesa() && $admin->kecamatan) ? $admin->kecamatan : 'Kodeoha';
+
+        // IPD rata-rata per kecamatan (dari podes_master.json)
+        $ipdKec = [];
+        foreach ($kecamatanList as $kec) {
+            $ipdKec[] = [
+                'nama' => ucwords(strtolower($kec['nama'] ?? '-')),
+                'ipd' => round((float) ($kec['ipd'] ?? 0), 2),
+            ];
+        }
+
+        return [
+            'desa' => $desa,
+            'kecamatan' => $kecamatan,
+            'indikator_terisi' => 41,
+            'indikator_total' => 44,
+            'kelengkapan' => [
+                ['label' => 'Data Kependudukan & Ketenagakerjaan', 'terisi' => 12, 'total' => 12],
+                ['label' => 'Perumahan, Sanitasi & Lingkungan Hidup', 'terisi' => 10, 'total' => 10],
+                ['label' => 'Pertanian, Perkebunan & Perikanan Bahari', 'terisi' => 11, 'total' => 13],
+                ['label' => 'Akses Transportasi & Sarana Komunikasi', 'terisi' => 6, 'total' => 9],
+            ],
+            'skor_tren' => [
+                'labels' => ['Sesi 1', 'Sesi 2', 'Sesi 3', 'Sesi 4', 'Sesi 5'],
+                'pretest' => [62, 68, 71, 74, 78],
+                'posttest' => [74, 80, 84, 86, 88.5],
+            ],
+            'ipd_kecamatan' => $ipdKec,
+        ];
     }
 }

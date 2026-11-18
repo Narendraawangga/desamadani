@@ -117,20 +117,9 @@
                         </div>
                     </div>
 
-                    <!-- Village Details Box -->
-                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 backdrop-blur-sm text-xs">
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Lembaga:</span>
-                            <span id="sideDesaLembaga" class="font-bold text-white">Pemerintah Desa Kalu Kaluku</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Status Pembinaan:</span>
-                            <span id="sideDesaStatusBadge" class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS (Mandiri)</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Akses Modul:</span>
-                            <span class="text-amber-300 text-[11px] font-bold font-mono">Buku Excel 30 Lembar & Monev</span>
-                        </div>
+                    <!-- Status pembinaan -->
+                    <div class="flex items-center gap-2 text-xs">
+                        <span id="sideDesaStatusBadge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS (Mandiri)</span>
                     </div>
 
                     <!-- Explanation text specifically for this village -->
@@ -141,149 +130,80 @@
                     </div>
                 </div>
 
-                <div class="relative z-10 pt-4 mt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                    <a href="/descan" class="text-slate-300 hover:text-amber-400 font-bold flex items-center gap-1.5 transition">
-                        <span>←</span>
-                        <span>Dashboard 6 Desa</span>
-                    </a>
-                    <span class="text-[10px] text-slate-500 font-medium">BPS Kolaka Utara 2026</span>
+                <div class="relative z-10 pt-4 mt-4 border-t border-slate-800 text-[10px] text-slate-500 font-medium">
+                    BPS Kolaka Utara 2026
                 </div>
             </div>
 
-            <!-- RIGHT PANEL: FORM LOGIN RESMI KHUSUS DESA INI -->
-            <div class="lg:col-span-7 flex flex-col justify-between bg-white">
-                
-                <!-- Top Gradient Accent Line -->
+            <!-- RIGHT PANEL: FORM LOGIN -->
+            <div class="lg:col-span-7 flex flex-col bg-white">
                 <div class="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-[#005ea6] to-amber-500"></div>
 
-                <div class="p-6 sm:p-8 space-y-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        
-                        <!-- 6 VILLAGES SELECTOR CHIPS (Kecamatan Kodeoha - Kolaka Utara) -->
-                        <div class="space-y-1.5 mb-4">
-                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
-                                <span>PILIH DESA BINAAN (KEC. KODEOHA):</span>
-                                <span class="text-emerald-700 font-extrabold">6 Desa Pilot</span>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5" id="desaSelectorChips">
-                                <button type="button" onclick="selectLoginDesa('kalukaluku')" id="btnChip-kalukaluku" class="desa-pill-btn active px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-bold transition flex items-center gap-1 cursor-pointer">
-                                    <span>🌟</span>
-                                    <span>Kalu Kaluku</span>
-                                    <span class="text-[9px] px-1 py-0.2 rounded bg-amber-400 text-slate-900 font-black">Utama</span>
-                                </button>
-                                <button type="button" onclick="selectLoginDesa('awo')" id="btnChip-awo" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                    Awo
-                                </button>
-                                <button type="button" onclick="selectLoginDesa('kamisi')" id="btnChip-kamisi" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                    Kamisi
-                                </button>
-                                <button type="button" onclick="selectLoginDesa('koroha')" id="btnChip-koroha" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                    Koroha
-                                </button>
-                                <button type="button" onclick="selectLoginDesa('lametuna')" id="btnChip-lametuna" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                    Lametuna
-                                </button>
-                                <button type="button" onclick="selectLoginDesa('sawangaoha')" id="btnChip-sawangaoha" class="desa-pill-btn px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                    Sawangaoha
-                                </button>
-                            </div>
-                        </div>
+                <div class="p-6 sm:p-10 flex-1 flex flex-col justify-center">
+                    <div class="max-w-md w-full mx-auto">
 
-                        <!-- Active Village Header Context Card -->
-                        <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-emerald-50/60 to-slate-50 border border-slate-200 flex items-center justify-between gap-3 shadow-2xs">
-                            <div class="flex items-center gap-3.5">
-                                <img id="activeDesaAvatar" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80" alt="Foto Desa" class="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-500 shadow-sm shrink-0">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h2 id="activeDesaName" class="text-lg font-black text-slate-900 leading-tight">Desa Kalu Kaluku</h2>
-                                        <span id="activeDesaBadge" class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">Terbina BPS</span>
-                                    </div>
-                                    <p id="activeDesaRep" class="text-xs font-semibold text-slate-600 mt-0.5">
-                                        Pemerintah Desa Kalu Kaluku • Admin Resmi
-                                    </p>
-                                    <p id="activeDesaWilayah" class="text-[10px] text-slate-400 font-medium">
-                                        Kec. Kodeoha • Kab. Kolaka Utara
-                                    </p>
-                                </div>
-                            </div>
+                        <h1 class="text-2xl font-black text-slate-900 tracking-tight">Masuk ke Dashboard Desa</h1>
+                        <p class="text-sm text-slate-500 mt-1">Gunakan akun resmi desa binaan untuk melanjutkan.</p>
 
-                            <!-- 1-Click Fast Fill Button -->
-                            <button type="button" onclick="autoFillActiveCredentials()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs shadow-xs hover:shadow transition cursor-pointer" title="Isi email dan sandi resmi desa ini otomatis">
-                                <span>⚡ Isi Sandi</span>
-                            </button>
-                        </div>
+                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-7">
 
-                        <!-- 1-Click Fast Fill & Direct Viewer Mobile Buttons -->
-                        <div class="sm:hidden mt-2 grid grid-cols-2 gap-2">
-                            <button type="button" onclick="autoFillActiveCredentials()" class="w-full py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
-                                <span>⚡ Isi Sandi</span>
-                            </button>
-                            <button type="button" onclick="loginAsGuestViewer()" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs transition flex items-center justify-center gap-1">
-                                <span>👁️ Buka Langsung</span>
-                            </button>
-                        </div>
-            
-                        <!-- FORM LOGIN -->
-                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-5">
-                            
-                            <!-- Error Alert Banner -->
-                            <div id="loginErrorAlert" class="hidden p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 shadow-xs">
-                                <svg class="w-5 h-5 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                            <div id="loginErrorAlert" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5">
+                                <svg class="w-4 h-4 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                                 <span id="loginErrorText" class="font-medium">Email atau kata sandi tidak cocok.</span>
                             </div>
 
-                            <!-- Email Input -->
+                            <!-- Pilih desa -->
                             <div>
-                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1">
-                                    Email Akun Resmi Desa
-                                </label>
+                                <label for="selDesa" class="block text-xs font-bold text-slate-700 mb-1.5">Desa Binaan</label>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
-                                        ✉️
-                                    </span>
-                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.kalukaluku@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">📍</span>
+                                    <select id="selDesa" onchange="selectLoginDesa(this.value)" class="w-full appearance-none pl-10 pr-10 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 cursor-pointer">
+                                        <option value="kalukaluku">Kalu Kaluku (Pilot Utama)</option>
+                                        <option value="awo">Awo</option>
+                                        <option value="kamisi">Kamisi</option>
+                                        <option value="koroha">Koroha</option>
+                                        <option value="lametuna">Lametuna</option>
+                                        <option value="sawangaoha">Sawangaoha</option>
+                                    </select>
+                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400 text-xs">▾</span>
                                 </div>
                             </div>
 
-                            <!-- Password Input -->
+                            <!-- Email -->
                             <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label for="inpPassword" class="block text-xs font-bold text-slate-700">
-                                        Kata Sandi (Password)
-                                    </label>
-                                    <span id="hintPasswordDisplay" class="text-[11px] font-mono text-slate-500 font-bold"></span>
-                                </div>
+                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
-                                        🔒
-                                    </span>
-                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi desa" class="w-full pl-10 pr-12 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
-                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi">
-                                        👁️
-                                    </button>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">✉️</span>
+                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
                                 </div>
                             </div>
 
-                            <!-- Submit Button -->
-                            <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#005ea6] via-[#0b2545] to-[#005ea6] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 transform active:scale-98 cursor-pointer">
-                                <span id="btnSubmitText">Masuk ke Dashboard Desa Kalu Kaluku</span>
-                                <span class="text-base">→</span>
+                            <!-- Password -->
+                            <div>
+                                <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata Sandi</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">🔒</span>
+                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi">👁️</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0f6b4a] to-[#0a4d36] hover:from-[#0d5c40] hover:to-[#083b2a] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 cursor-pointer">
+                                <span id="btnSubmitText">Masuk ke Dashboard</span>
+                                <span>→</span>
                             </button>
                         </form>
-                    </div>
 
-                    <!-- BOTTOM: Kredensial Khusus Desa Ini Saja -->
-                    <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-slate-400">Akun:</span>
-                            <span id="hintCurrentEmail" class="font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-lg text-[11px] border border-slate-200">admin.kalukaluku@descan.bps.go.id</span>
+                        <div class="flex items-center gap-3 my-5 text-[11px] text-slate-400 font-semibold">
+                            <span class="flex-1 h-px bg-slate-200"></span>atau<span class="flex-1 h-px bg-slate-200"></span>
                         </div>
-                        <button type="button" onclick="autoFillActiveCredentials()" class="text-[#005ea6] hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer">
-                            <span>⚡ Isi Sandi Otomatis</span>
-                        </button>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-bold text-xs transition cursor-pointer">⚡ Isi Sandi Otomatis</button>
+                            <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-xs transition cursor-pointer">👁️ Masuk sebagai Tamu</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -313,16 +233,9 @@
             currentSelectedDesa = key;
             const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['kalukaluku'];
 
-            // Update Chip UI active classes
-            document.querySelectorAll('.desa-pill-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-[#005ea6]', 'text-white');
-                btn.classList.add('bg-slate-50', 'text-slate-700');
-            });
-            const activeBtn = document.getElementById(`btnChip-${key}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-slate-50', 'text-slate-700');
-                activeBtn.classList.add('active', 'bg-[#005ea6]', 'text-white');
-            }
+            // Sinkronkan dropdown desa
+            const selDesa = document.getElementById('selDesa');
+            if (selDesa) selDesa.value = key;
 
             // Update Left Hero Panel specifically for this village
             const sideHeroPhoto = document.getElementById('sideDesaHeroPhoto');
@@ -359,7 +272,6 @@
             if (emailInp) emailInp.value = acc.email;
             if (passInp) passInp.value = '';
             if (errEl) errEl.classList.add('hidden');
-            if (btnSubmitText) btnSubmitText.textContent = `Masuk ke Dashboard ${acc.desaName}`;
             if (hintEmail) hintEmail.textContent = acc.email;
 
             const hintEl = document.getElementById('hintPasswordDisplay');
