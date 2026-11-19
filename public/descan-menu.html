@@ -83,13 +83,13 @@
         /* ===== DESCAN SIDEBAR THEME ===== */
         :root { --dc-green:#0f6b4a; --dc-green-dark:#0a4d36; --dc-mint:#6ee7b7; --dc-mint-bg:#ecfdf5; --dc-line:#e5e9e7; --dc-ink:#0f1f1a; --dc-muted:#6b7a74; }
         body { background-color:#f4f7f5; }
+        :root { --dc-sidebar-w: 260px; }
         @media (min-width: 1024px) {
-            body.dc-shell { padding-left: 240px; transition: padding-left .25s ease; }
-            body.dc-shell.dc-sidebar-collapsed { padding-left: 0 !important; }
-            body.dc-shell.dc-sidebar-collapsed #dcSidebar { transform: translateX(-100%); }
+            body.dc-shell { padding-left: var(--dc-sidebar-w) !important; }
+            #dcSidebar { transform: translateX(0) !important; width: var(--dc-sidebar-w) !important; display: flex !important; }
         }
-        #dcSidebar { position:fixed; top:0; bottom:0; left:0; width:240px; background:#fff; border-right:1px solid var(--dc-line); z-index:50; display:flex; flex-direction:column; transition:transform .25s ease; }
-        @media (max-width: 1023px) { #dcSidebar { transform:translateX(-100%); } #dcSidebar.open { transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.25); } }
+        #dcSidebar { position:fixed; top:0; bottom:0; left:0; width:var(--dc-sidebar-w); background:#fff; border-right:1px solid var(--dc-line); z-index:50; display:flex; flex-direction:column; }
+        @media (max-width: 1023px) { #dcSidebar { transform:translateX(-100%); transition:transform .25s ease; } #dcSidebar.open { transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.25); } }
         .dc-nav-label { display:flex; align-items:center; gap:.45rem; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#8a9a93; padding:0 .5rem; margin:1.2rem 0 .5rem; }
         .dc-nav-label::before { content:""; width:14px; height:3px; border-radius:99px; background:linear-gradient(90deg,#0f6b4a,#6ee7b7); }
         .nav-tab, .dc-nav-item {
@@ -233,17 +233,17 @@
     <!-- ===== SIDEBAR DESCAN ===== -->
     <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
     <aside id="dcSidebar">
-        <!-- 1. Header Sidebar: Penempatan Logo Resmi BPS & Pemkab Kolaka Utara -->
+        <!-- 1. Header Sidebar: Penempatan Resmi Logo BPS & Kolaka Utara -->
         <div class="px-4 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white">
             <div class="flex items-center gap-2.5">
-                <div class="flex items-center gap-1.5 bg-slate-50 px-2 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs">
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 w-auto object-contain">
-                    <div class="h-4 w-[1px] bg-slate-300"></div>
-                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 w-auto object-contain">
+                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs">
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                    <div class="h-5 w-[1px] bg-slate-300"></div>
+                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                 </div>
                 <div class="leading-tight">
                     <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
-                    <div class="text-[9.5px] font-bold text-emerald-700 uppercase tracking-wide">BPS Kolaka Utara</div>
+                    <div class="text-[9.5px] font-bold text-slate-500 uppercase tracking-wide">BPS KOLAKA UTARA</div>
                 </div>
             </div>
             <button type="button" onclick="toggleDcSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Tutup Sidebar">
@@ -345,33 +345,28 @@
 
     <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
     <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
-        <!-- Sisi Kiri: Buka/Tutup Sidebar, Beranda, & Logo Resmi -->
+        <!-- Sisi Kiri: Tombol Toggle Mobile & Tombol Beranda (Bersih Tanpa Gambar) -->
         <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-            <!-- Tombol Buka/Tutup Sidebar (Tersedia Desktop & Mobile) -->
-            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka / Tutup Sidebar Navigasi">
+            <!-- Tombol Buka Sidebar (Hanya Tampil di Layar Mobile/Tablet) -->
+            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="lg:hidden px-2.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka Sidebar Navigasi">
                 <i class="bi bi-list text-xl leading-none"></i>
             </button>
 
             <!-- Tombol Beranda (Halaman Utama Dashboard Desa) -->
-            <button type="button" id="btnTopBeranda" onclick="switchNavMenu('dashboard')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0f6b4a] border border-emerald-200 text-xs font-bold transition shadow-2xs cursor-pointer active:scale-95 shrink-0" title="Kembali ke Beranda Dashboard Desa">
+            <button type="button" id="btnTopBeranda" onclick="switchNavMenu('dashboard')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0f6b4a] border border-emerald-200 text-xs font-bold transition shadow-2xs cursor-pointer active:scale-95 shrink-0" title="Kembali ke Beranda Dashboard Desa">
                 <i class="bi bi-house-door-fill text-sm"></i>
                 <span class="font-extrabold tracking-tight">Beranda</span>
             </button>
 
-            <!-- Brand Logo Resmi BPS & Pemkab Kolaka Utara di Header -->
-            <div class="flex items-center gap-2.5 shrink-0 bg-slate-50/90 border border-slate-200/90 px-2.5 py-1 rounded-xl shadow-2xs">
-                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 sm:h-7 w-auto object-contain">
-                <div class="h-4 sm:h-5 w-[1px] bg-slate-300"></div>
-                <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
-                <div class="h-4 sm:h-5 w-[1px] bg-slate-300 hidden md:block"></div>
-                <div class="hidden md:block leading-none">
-                    <div class="text-[11px] font-black tracking-tight text-slate-900">DESA CANTIK</div>
-                    <div class="text-[9px] font-bold text-slate-500 uppercase">BPS Kolaka Utara</div>
-                </div>
+            <!-- Teks Navigasi Ringkas (Tanpa Gambar/Logo) -->
+            <div class="hidden sm:flex items-center gap-2 border-l border-slate-200 pl-3">
+                <span class="text-xs font-bold text-slate-800">Portal Desa Binaan</span>
+                <span class="text-[10px] text-slate-400">•</span>
+                <span class="text-[10px] font-semibold text-slate-500">Satu Data Indonesia</span>
             </div>
         </div>
 
-        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator (Bersih & Rapi Tanpa Elemen Duplikat) -->
+        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <!-- Indikator Status Satu Data Indonesia -->
             <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
@@ -3673,7 +3668,8 @@
             const sb = document.getElementById('dcSidebar');
             const bd = document.getElementById('dcBackdrop');
             if (isDesktop) {
-                document.body.classList.toggle('dc-sidebar-collapsed');
+                // Desktop: Sidebar tampil terus secara permanen
+                return;
             } else {
                 if (!sb) return;
                 sb.classList.toggle('open');
