@@ -268,8 +268,8 @@
         <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 pb-3">
             <div class="dc-nav-label" style="margin-top:.4rem;">Administrasi &amp; Data</div>
             <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active" style="--c:#0f6b4a;--c2:#17a06d;--cbg:#e3f6ec;">
-                <span class="dc-ico"><i class="bi bi-grid-1x2-fill"></i></span>
-                <span>Dashboard Desa</span>
+                <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
+                <span>Beranda</span>
             </button>
             <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab" style="--c:#2563eb;--c2:#4f8cff;--cbg:#e6eefe;">
                 <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
@@ -352,17 +352,11 @@
                 <i class="bi bi-list text-xl leading-none"></i>
             </button>
 
-            <!-- Tombol Beranda (Halaman Utama Dashboard Desa) -->
-            <button type="button" id="btnTopBeranda" onclick="switchNavMenu('dashboard')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0f6b4a] border border-emerald-200 text-xs font-bold transition shadow-2xs cursor-pointer active:scale-95 shrink-0" title="Kembali ke Beranda Dashboard Desa">
-                <i class="bi bi-house-door-fill text-sm"></i>
-                <span class="font-extrabold tracking-tight">Beranda</span>
-            </button>
-
-            <!-- Teks Navigasi Ringkas (Tanpa Gambar/Logo) -->
-            <div class="hidden sm:flex items-center gap-2 border-l border-slate-200 pl-3">
-                <span class="text-xs font-bold text-slate-800">Portal Desa Binaan</span>
-                <span class="text-[10px] text-slate-400">•</span>
-                <span class="text-[10px] font-semibold text-slate-500">Satu Data Indonesia</span>
+            <!-- Identitas Portal Desa di Header (Tanpa Tombol Beranda Dobel) -->
+            <div class="flex items-center gap-2">
+                <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">Portal Satu Data Desa</span>
+                <span class="text-slate-300 hidden sm:inline">•</span>
+                <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 hidden sm:inline">Desa Cantik 2026</span>
             </div>
         </div>
 
