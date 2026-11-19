@@ -152,23 +152,6 @@
                                 <span id="loginErrorText" class="font-medium">Email atau kata sandi tidak cocok.</span>
                             </div>
 
-                            <!-- Pilih desa -->
-                            <div>
-                                <label for="selDesa" class="block text-xs font-bold text-slate-700 mb-1.5">Desa Binaan</label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">📍</span>
-                                    <select id="selDesa" onchange="selectLoginDesa(this.value)" class="w-full appearance-none pl-10 pr-10 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 cursor-pointer">
-                                        <option value="kalukaluku">Kalu Kaluku (Pilot Utama)</option>
-                                        <option value="awo">Awo</option>
-                                        <option value="kamisi">Kamisi</option>
-                                        <option value="koroha">Koroha</option>
-                                        <option value="lametuna">Lametuna</option>
-                                        <option value="sawangaoha">Sawangaoha</option>
-                                    </select>
-                                    <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400 text-xs">▾</span>
-                                </div>
-                            </div>
-
                             <!-- Email -->
                             <div>
                                 <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
