@@ -101,6 +101,7 @@
         }
         .dc-ico { width:30px; height:30px; border-radius:.6rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--cbg); color:var(--c); transition:all .18s ease; }
         .dc-ico svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .dc-ico i { font-size:15px; line-height:1; display:flex; align-items:center; justify-content:center; }
         .nav-tab:hover:not(.active), .dc-nav-item:hover { background:color-mix(in srgb, var(--c) 8%, #fff) !important; }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { background:var(--c); color:#fff; }
         .nav-tab.active { background:linear-gradient(135deg, var(--c), var(--c2)) !important; color:#fff !important; font-weight:700 !important; box-shadow:0 8px 16px -8px var(--c) !important; border-bottom:1px solid transparent !important; }
@@ -232,52 +233,124 @@
     <!-- ===== SIDEBAR DESCAN ===== -->
     <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
     <aside id="dcSidebar">
-        <div class="px-4 py-3.5 flex items-center justify-between" style="background:linear-gradient(180deg,#eaf8f0 0%,#ffffff 100%);">
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-2" title="Kembali ke 6 Desa Binaan">
-                <span class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#0f6b4a] to-[#17a06d] text-white shadow-md flex items-center justify-center text-base">📊</span>
-                <span class="leading-tight">
-                    <span class="flex items-center gap-1.5"><b class="text-[15px] tracking-wide text-[#0f1f1a]">DESCAN</b><span class="dc-tag" style="background:#0f6b4a;color:#fff;">KODEOHA & TIWU</span></span>
-                    <span class="text-[10px] text-slate-500">BPS Kolaka Utara</span>
-                </span>
-            </a>
-            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden text-slate-400 text-lg">✕</button>
+        <!-- 1. Header Sidebar: Penempatan Logo Resmi BPS & Pemkab Kolaka Utara -->
+        <div class="px-4 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white">
+            <div class="flex items-center gap-2.5">
+                <div class="flex items-center gap-1.5 bg-slate-50 px-2 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs">
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 w-auto object-contain">
+                    <div class="h-4 w-[1px] bg-slate-300"></div>
+                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 w-auto object-contain">
+                </div>
+                <div class="leading-tight">
+                    <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
+                    <div class="text-[9.5px] font-bold text-emerald-700 uppercase tracking-wide">BPS Kolaka Utara</div>
+                </div>
+            </div>
+            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Tutup Sidebar">
+                <i class="bi bi-x-lg text-sm"></i>
+            </button>
         </div>
 
+        <!-- 2. Kartu Identitas Akun Desa Aktif di Sidebar (Penempatan Benar & Rapi) -->
+        <div class="px-3 pt-3 pb-1">
+            <div class="p-2.5 rounded-xl bg-gradient-to-r from-emerald-50/90 to-teal-50/90 border border-emerald-200/80 flex items-center gap-2.5 shadow-2xs">
+                <div class="w-8 h-8 rounded-lg bg-[#0f6b4a] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <i class="bi bi-buildings-fill text-sm"></i>
+                </div>
+                <div class="min-w-0 flex-1 leading-tight">
+                    <div id="topBrandDesaTitle" class="text-xs font-black text-slate-900 uppercase truncate">AKUN DESA KOROHA</div>
+                    <div id="topBrandDesaKec" class="text-[10px] font-semibold text-emerald-800 truncate">(Kec. Kodeoha) • Terbina BPS</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Daftar Menu Navigasi Sidebar (Bootstrap Icons Rapi & Konsisten) -->
         <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 pb-3">
-            <div class="dc-nav-label" style="margin-top:.2rem;">Administrasi &amp; Data</div>
-            <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active" style="--c:#0f6b4a;--c2:#17a06d;--cbg:#e3f6ec;"><span class="dc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span><span>Dashboard Desa</span></button>
-            <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab" style="--c:#2563eb;--c2:#4f8cff;--cbg:#e6eefe;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>Profil Desa</span></button>
-            <button type="button" onclick="openAgenDesaModal()" class="dc-nav-item" style="--c:#7c3aed;--c2:#a06bff;--cbg:#efe8fd;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>Data Aparatur Desa</span></button>
-            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item" style="--c:#d97706;--c2:#f5a524;--cbg:#fdf0d9;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><span>Pengisian Data PODES</span></button>
-            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg></span><span>Monitoring Kelengkapan</span></button>
-            <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab" style="--c:#e11d48;--c2:#fb5577;--cbg:#fde4ea;"><span class="dc-ico"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span>Monev (Evaluasi)</span></button>
+            <div class="dc-nav-label" style="margin-top:.4rem;">Administrasi &amp; Data</div>
+            <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active" style="--c:#0f6b4a;--c2:#17a06d;--cbg:#e3f6ec;">
+                <span class="dc-ico"><i class="bi bi-grid-1x2-fill"></i></span>
+                <span>Dashboard Desa</span>
+            </button>
+            <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab" style="--c:#2563eb;--c2:#4f8cff;--cbg:#e6eefe;">
+                <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
+                <span>Profil Desa</span>
+            </button>
+            <button type="button" onclick="openAgenDesaModal()" class="dc-nav-item" style="--c:#7c3aed;--c2:#a06bff;--cbg:#efe8fd;">
+                <span class="dc-ico"><i class="bi bi-people-fill"></i></span>
+                <span>Data Aparatur Desa</span>
+            </button>
+            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item" style="--c:#d97706;--c2:#f5a524;--cbg:#fdf0d9;">
+                <span class="dc-ico"><i class="bi bi-pencil-square"></i></span>
+                <span>Pengisian Data PODES</span>
+            </button>
+            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;">
+                <span class="dc-ico"><i class="bi bi-clipboard-check-fill"></i></span>
+                <span>Monitoring Kelengkapan</span>
+            </button>
+            <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab" style="--c:#e11d48;--c2:#fb5577;--cbg:#fde4ea;">
+                <span class="dc-ico"><i class="bi bi-graph-up-arrow"></i></span>
+                <span>Monev (Evaluasi)</span>
+            </button>
 
             <div class="dc-nav-label">Kapasitas &amp; Pembinaan</div>
-            <button type="button" onclick="switchNavMenu('pembinaan')" id="nav-pembinaan" class="nav-tab" style="--c:#ea580c;--c2:#fb8a3c;--cbg:#feeadc;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span><span>Pembinaan Desa</span></button>
-            <button type="button" onclick="toggleMateriMenu()" id="nav-pembelajaran" class="nav-tab" style="--c:#4f46e5;--c2:#7c74f5;--cbg:#e8e7fd;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span>Materi Pembelajaran</span><b id="dcMateriCaret" class="dc-caret">▾</b></button>
+            <button type="button" onclick="switchNavMenu('pembinaan')" id="nav-pembinaan" class="nav-tab" style="--c:#ea580c;--c2:#fb8a3c;--cbg:#feeadc;">
+                <span class="dc-ico"><i class="bi bi-mortarboard-fill"></i></span>
+                <span>Pembinaan Desa</span>
+            </button>
+            <button type="button" onclick="toggleMateriMenu()" id="nav-pembelajaran" class="nav-tab" style="--c:#4f46e5;--c2:#7c74f5;--cbg:#e8e7fd;">
+                <span class="dc-ico"><i class="bi bi-book-half"></i></span>
+                <span>Materi Pembelajaran</span>
+                <b id="dcMateriCaret" class="dc-caret">▾</b>
+            </button>
             <div id="dcMateriSub" class="dc-sub hidden">
-                <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item" style="--c:#dc2626;"><span>Video Tutorial</span></button>
-                <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item" style="--c:#0284c7;"><span>Pre-test &amp; Post-test</span></button>
-                <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item" style="--c:#059669;"><span>Buku Panduan</span></button>
+                <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item" style="--c:#dc2626;">
+                    <i class="bi bi-play-circle-fill text-xs mr-1 text-rose-600"></i>
+                    <span>Video Tutorial</span>
+                </button>
+                <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item" style="--c:#0284c7;">
+                    <i class="bi bi-patch-question-fill text-xs mr-1 text-sky-600"></i>
+                    <span>Pre-test &amp; Post-test</span>
+                </button>
+                <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item" style="--c:#059669;">
+                    <i class="bi bi-journal-bookmark-fill text-xs mr-1 text-emerald-600"></i>
+                    <span>Buku Panduan</span>
+                </button>
             </div>
 
             <div class="dc-nav-label">Layanan</div>
-            <button type="button" onclick="openMetadataModal()" class="dc-nav-item" style="--c:#0891b2;--c2:#2cc3e0;--cbg:#dcf3f9;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Metadata SDI</span></button>
-            <button type="button" onclick="openPstModal()" class="dc-nav-item" style="--c:#db2777;--c2:#f56fae;--cbg:#fce3ef;"><span class="dc-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>Layanan PST</span></button>
+            <button type="button" onclick="openMetadataModal()" class="dc-nav-item" style="--c:#0891b2;--c2:#2cc3e0;--cbg:#dcf3f9;">
+                <span class="dc-ico"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
+                <span>Metadata SDI</span>
+            </button>
+            <button type="button" onclick="openPstModal()" class="dc-nav-item" style="--c:#db2777;--c2:#f56fae;--cbg:#fce3ef;">
+                <span class="dc-ico"><i class="bi bi-headset"></i></span>
+                <span>Layanan PST</span>
+            </button>
         </div>
 
-        <div class="p-3 border-t border-[#e5e9e7]">
-            <div class="flex items-center justify-between rounded-lg px-2 py-1 mb-2 text-[10px] bg-[#eef6f1]">
-                <span class="flex items-center gap-1 font-semibold text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Server BPS Aktif</span>
-                <span class="text-slate-500">v2.4</span>
+        <!-- 4. Footer Sidebar: Akses Kembali ke 6 Desa & Keluar Akun -->
+        <div class="p-3 border-t border-[#e5e9e7] space-y-2">
+            <div class="flex items-center justify-between rounded-lg px-2.5 py-1 text-[10px] bg-[#eef6f1]">
+                <span class="flex items-center gap-1.5 font-semibold text-emerald-700">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Server BPS Aktif
+                </span>
+                <span class="text-slate-500 font-bold">2026</span>
             </div>
-            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12.5px] font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-100 rounded-xl py-2 cursor-pointer transition"><span class="dc-ico" style="--c:#e11d48;--cbg:transparent;width:18px;height:18px;"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>Keluar Akun</button>
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl py-2 cursor-pointer transition">
+                <i class="bi bi-grid-3x3-gap-fill text-xs text-slate-500"></i>
+                <span>Kembali ke 6 Desa</span>
+            </a>
+            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-100 rounded-xl py-2 cursor-pointer transition">
+                <i class="bi bi-box-arrow-right text-xs"></i>
+                <span>Keluar Akun</span>
+            </button>
         </div>
     </aside>
 
-    <!-- ===== TOPBAR ===== -->
+    <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
     <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
-        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <!-- Sisi Kiri: Buka/Tutup Sidebar, Beranda, & Logo Resmi -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
             <!-- Tombol Buka/Tutup Sidebar (Tersedia Desktop & Mobile) -->
             <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka / Tutup Sidebar Navigasi">
                 <i class="bi bi-list text-xl leading-none"></i>
@@ -289,30 +362,36 @@
                 <span class="font-extrabold tracking-tight">Beranda</span>
             </button>
 
-            <!-- Brand Logo BPS & Kolaka Utara -->
-            <div class="hidden sm:flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/90 px-2.5 py-1 rounded-xl shadow-2xs">
-                <img src="/images/logo_bps.png" alt="BPS" class="h-6 sm:h-7 w-auto object-contain">
+            <!-- Brand Logo Resmi BPS & Pemkab Kolaka Utara di Header -->
+            <div class="flex items-center gap-2.5 shrink-0 bg-slate-50/90 border border-slate-200/90 px-2.5 py-1 rounded-xl shadow-2xs">
+                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 sm:h-7 w-auto object-contain">
                 <div class="h-4 sm:h-5 w-[1px] bg-slate-300"></div>
                 <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
-            </div>
-
-            <span class="dc-pill hidden md:inline-flex">✓ Operator Desa</span>
-            <div class="hidden lg:block border-l border-slate-200 pl-3 leading-tight min-w-0">
-                <div id="topBrandDesaTitle" class="text-xs font-bold text-slate-900 truncate">AKUN DESA KAMISI</div>
-                <div id="topBrandDesaKec" class="text-[10px] text-slate-500 truncate">(Kec. Kodeoha) • Terbina BPS</div>
+                <div class="h-4 sm:h-5 w-[1px] bg-slate-300 hidden md:block"></div>
+                <div class="hidden md:block leading-none">
+                    <div class="text-[11px] font-black tracking-tight text-slate-900">DESA CANTIK</div>
+                    <div class="text-[9px] font-bold text-slate-500 uppercase">BPS Kolaka Utara</div>
+                </div>
             </div>
         </div>
+
+        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator (Bersih & Rapi Tanpa Elemen Duplikat) -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            <div class="hidden xl:flex items-center gap-2 bg-[#f1f7f4] border border-[#dbeee3] px-3 py-1.5 rounded-xl text-xs">
+            <!-- Indikator Status Satu Data Indonesia -->
+            <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Desa Binaan BPS:</span>
-                <span id="topNavVillageBadge" class="font-extrabold text-[#0f6b4a] uppercase text-xs">DESA KAMISI</span>
+                <span>Satu Data Indonesia</span>
             </div>
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="inline-flex px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">← 6 Desa</a>
-            <span class="relative text-slate-500 text-sm">🔔<span class="absolute top-0 -right-0.5 w-[7px] h-[7px] rounded-full bg-red-500"></span></span>
-            <div class="flex items-center gap-2">
-                <div class="hidden sm:block text-right leading-tight"><div class="text-xs font-semibold">Operator Desa</div><div class="text-[10.5px] text-slate-500">Operator Data</div></div>
-                <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center">AD</div>
+
+            <!-- Profil Ringkas Operator Desa -->
+            <div class="flex items-center gap-2 pl-1 sm:pl-2 sm:border-l sm:border-slate-200">
+                <div class="hidden md:block text-right leading-tight">
+                    <div class="text-xs font-bold text-slate-800">Operator Desa</div>
+                    <div class="text-[10px] text-slate-500 font-medium">Admin Data Presisi</div>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center ring-2 ring-emerald-500/20 shadow-xs">
+                    AD
+                </div>
             </div>
         </div>
     </header>
@@ -4349,7 +4428,7 @@
             const brandTitle = document.getElementById('topBrandDesaTitle');
             if (brandTitle) brandTitle.textContent = ('AKUN ' + (data.title || 'DESA')).toUpperCase();
             const brandKec = document.getElementById('topBrandDesaKec');
-            if (brandKec) brandKec.textContent = '(Kec. ' + (vData.kec || 'Kodeoha') + ') • Terbina BPS';
+            if (brandKec) brandKec.textContent = '(Kec. ' + (data.kec || 'Kodeoha') + ') • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
             if (topBadge) topBadge.textContent = (data.title || 'Desa').toUpperCase();
 
