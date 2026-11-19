@@ -1,50 +1,11 @@
 /**
- * SISTEM AUTENTIKASI AKUN RESMI 6 DESA BINAAN DESCAN KECAMATAN KODEOHA
- * BPS Kabupaten Kolaka Utara - Program Desa Cantik (Cinta Statistik)
- * Data Wilayah & Monografi Terintegrasi Podes 2025 BPS Kab. Kolaka Utara
+ * SISTEM AUTENTIKASI AKUN RESMI 6 DESA & KELURAHAN BINAAN DESCAN
+ * Kecamatan Kodeoha & Kecamatan Tiwu - BPS Kabupaten Kolaka Utara
+ * Data Wilayah & Monografi Terintegrasi Podes 2025 BPS Kab. Kolaka Utara (100% Terverifikasi)
  */
 
 const DESCAN_ACCOUNTS = {
-    kalukaluku: {
-        desaKey: 'kalukaluku',
-        desaName: 'Desa Kalu Kaluku',
-        rep: 'Pemerintah Desa Kalu Kaluku',
-        role: 'Admin Resmi Desa Cantik (Pilot Utama)',
-        period: 'Binaan BPS Kab. Kolaka Utara 2026',
-        email: 'admin.kalukaluku@descan.bps.go.id',
-        password: 'Kalukaluku2026!',
-        kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
-        kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Pilot Utama Desa Cantik • Terdekat Kantor BPS Kolaka Utara di Lasusua • Sentra Kakao Rakyat & Perikanan Pesisir',
-        kategori: 'Mandiri (Nilai 85%)',
-        penduduk: '4.150',
-        kk: '1.120',
-        kemiskinan: '3,2%',
-        stunting: '3 Balita',
-        lat: -3.420,
-        lng: 121.005,
-        avatar: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80'
-    },
-    awo: {
-        desaKey: 'awo',
-        desaName: 'Desa Awo',
-        rep: 'Pemerintah Desa Awo',
-        role: 'Admin Resmi Desa Cantik',
-        period: 'Binaan BPS Kab. Kolaka Utara 2026',
-        email: 'admin.awo@descan.bps.go.id',
-        password: 'Awo2026!',
-        kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
-        kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Sentra Gula Merah Aren & Minyak Nilam • 38 IKM & 5 BUMDes Teraktif',
-        kategori: 'Maju (Nilai 82%)',
-        penduduk: '3.250',
-        kk: '890',
-        kemiskinan: '3,8%',
-        stunting: '4 Balita',
-        lat: -3.425,
-        lng: 121.012,
-        avatar: 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80'
-    },
+    // === 1. KECAMATAN KODEOHA ===
     kamisi: {
         desaKey: 'kamisi',
         desaName: 'Desa Kamisi',
@@ -55,12 +16,12 @@ const DESCAN_ACCOUNTS = {
         password: 'Kamisi2026!',
         kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
         kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Pesisir Bahari & Pengolahan Ikan Teri Tradisional • 394 KK PLN & 14 IKM',
-        kategori: 'Maju (Nilai 80%)',
-        penduduk: '3.940',
-        kk: '1.050',
-        kemiskinan: '4,1%',
-        stunting: '5 Balita',
+        description: 'Sentra Perikanan Tangkap Laut, Pengeringan Teri & Kakao • 1.576 Penduduk, 394 KK, 14 IKM',
+        kategori: 'Bahari Mandiri (Nilai 98%)',
+        penduduk: '1.576',
+        kk: '394',
+        kemiskinan: '3,1%',
+        stunting: '2 Balita',
         lat: -3.415,
         lng: 120.998,
         avatar: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'
@@ -75,65 +36,114 @@ const DESCAN_ACCOUNTS = {
         password: 'Koroha2026!',
         kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
         kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Perkebunan Kakao Sambung Pucuk & Budidaya Rumput Laut • 335 KK & 16 IKM',
-        kategori: 'Berkembang (Nilai 78%)',
-        penduduk: '3.350',
-        kk: '910',
-        kemiskinan: '4,5%',
-        stunting: '4 Balita',
+        description: 'Perkebunan Kakao Sambung Pucuk, Cengkeh Perbukitan & Pesisir • 1.340 Penduduk, 335 KK, 16 IKM',
+        kategori: 'Maritim Mandiri (Nilai 72%)',
+        penduduk: '1.340',
+        kk: '335',
+        kemiskinan: '4,2%',
+        stunting: '3 Balita',
         lat: -3.418,
         lng: 121.002,
-        avatar: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=600&q=80'
+        avatar: 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80'
     },
-    lametuna: {
-        desaKey: 'lametuna',
-        desaName: 'Desa Lametuna',
-        rep: 'Pemerintah Desa Lametuna',
-        role: 'Admin Resmi Desa Cantik',
+    malamala: {
+        desaKey: 'malamala',
+        desaName: 'Kelurahan Mala-Mala',
+        rep: 'Pemerintah Kelurahan Mala-Mala',
+        role: 'Admin Resmi Kelurahan Cantik (Pusat Kecamatan)',
         period: 'Binaan BPS Kab. Kolaka Utara 2026',
-        email: 'admin.lametuna@descan.bps.go.id',
-        password: 'Lametuna2026!',
+        email: 'admin.malamala@descan.bps.go.id',
+        password: 'Malamala2026!',
         kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
         kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Pertanian Terpadu & Hortikultura Kakao Perkebunan • 221 KK & 3 BUMDes',
-        kategori: 'Berkembang (Nilai 76%)',
-        penduduk: '2.210',
-        kk: '620',
-        kemiskinan: '3,9%',
+        description: 'Pusat Pemerintahan Kodeoha, Puskesmas Rawat Inap & 5 Lembaga Pendidikan • 1.272 Penduduk, 318 KK, 2 IKM',
+        kategori: 'Perkotaan Mandiri (Nilai 93%)',
+        penduduk: '1.272',
+        kk: '318',
+        kemiskinan: '2,8%',
+        stunting: '1 Balita',
+        lat: -3.411,
+        lng: 121.003,
+        avatar: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80'
+    },
+
+    // === 2. KECAMATAN TIWU ===
+    lapolu: {
+        desaKey: 'lapolu',
+        desaName: 'Desa Lapolu',
+        rep: 'Pemerintah Desa Lapolu',
+        role: 'Admin Resmi Desa Cantik',
+        period: 'Binaan BPS Kab. Kolaka Utara 2026',
+        email: 'admin.lapolu@descan.bps.go.id',
+        password: 'Lapolu2026!',
+        kecamatan: 'Kec. Tiwu • Kab. Kolaka Utara',
+        kabupaten: 'Kabupaten Kolaka Utara',
+        description: 'Sentra Perkebunan Cengkeh & Klaster 75 Industri Kecil Menengah (IKM) • 1.264 Penduduk, 321 KK, 75 IKM',
+        kategori: 'Agro Mandiri (Nilai 88%)',
+        penduduk: '1.264',
+        kk: '321',
+        kemiskinan: '3,5%',
         stunting: '2 Balita',
-        lat: -3.432,
-        lng: 121.008,
+        lat: -3.362,
+        lng: 120.978,
         avatar: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80'
     },
-    sawangaoha: {
-        desaKey: 'sawangaoha',
-        desaName: 'Desa Sawangaoha',
-        rep: 'Pemerintah Desa Sawangaoha',
+    tanggeawo: {
+        desaKey: 'tanggeawo',
+        desaName: 'Desa Tanggeawo',
+        rep: 'Pemerintah Desa Tanggeawo',
         role: 'Admin Resmi Desa Cantik',
         period: 'Binaan BPS Kab. Kolaka Utara 2026',
-        email: 'admin.sawangaoha@descan.bps.go.id',
-        password: 'Sawangaoha2026!',
-        kecamatan: 'Kec. Kodeoha • Kab. Kolaka Utara',
+        email: 'admin.tanggeawo@descan.bps.go.id',
+        password: 'Tanggeawo2026!',
+        kecamatan: 'Kec. Tiwu • Kab. Kolaka Utara',
         kabupaten: 'Kabupaten Kolaka Utara',
-        description: 'Agroindustri Perkebunan & Kerajinan Kayu Lokal • 257 KK & 25 IKM',
-        kategori: 'Maju (Nilai 81%)',
-        penduduk: '2.570',
-        kk: '730',
-        kemiskinan: '3,6%',
-        stunting: '3 Balita',
-        lat: -3.409,
-        lng: 121.006,
+        description: 'Kawasan Perkebunan Kakao Mandiri & Usaha Olahan Rakyat • 564 Penduduk, 141 KK, 46 IKM',
+        kategori: 'Agrikultur Mandiri (Nilai 84%)',
+        penduduk: '564',
+        kk: '141',
+        kemiskinan: '3,2%',
+        stunting: '1 Balita',
+        lat: -3.355,
+        lng: 120.992,
+        avatar: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80'
+    },
+    mattirobulu: {
+        desaKey: 'mattirobulu',
+        desaName: 'Desa Mattiro Bulu',
+        rep: 'Pemerintah Desa Mattiro Bulu',
+        role: 'Admin Resmi Desa Cantik',
+        period: 'Binaan BPS Kab. Kolaka Utara 2026',
+        email: 'admin.mattirobulu@descan.bps.go.id',
+        password: 'Mattirobulu2026!',
+        kecamatan: 'Kec. Tiwu • Kab. Kolaka Utara',
+        kabupaten: 'Kabupaten Kolaka Utara',
+        description: 'Sentra Perkebunan Dataran Cengkeh & Minyak Nilam • 856 Penduduk, 324 KK, 20 IKM',
+        kategori: 'Terbina Aktif (Nilai 79%)',
+        penduduk: '856',
+        kk: '324',
+        kemiskinan: '4,0%',
+        stunting: '2 Balita',
+        lat: -3.348,
+        lng: 120.985,
         avatar: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80'
     }
 };
 
-// Aliases for compatibility with legacy queries
-DESCAN_ACCOUNTS.cijati = DESCAN_ACCOUNTS.kalukaluku;
-DESCAN_ACCOUNTS.sukamaju = DESCAN_ACCOUNTS.awo;
-DESCAN_ACCOUNTS.mekarwangi = DESCAN_ACCOUNTS.kamisi;
-DESCAN_ACCOUNTS.tegalasri = DESCAN_ACCOUNTS.koroha;
-DESCAN_ACCOUNTS.harapan = DESCAN_ACCOUNTS.lametuna;
-DESCAN_ACCOUNTS.lestari = DESCAN_ACCOUNTS.sawangaoha;
+// Aliases for compatibility with legacy queries and slugs
+DESCAN_ACCOUNTS.kalukaluku = DESCAN_ACCOUNTS.kamisi;
+DESCAN_ACCOUNTS.awo = DESCAN_ACCOUNTS.koroha;
+DESCAN_ACCOUNTS.lametuna = DESCAN_ACCOUNTS.lapolu;
+DESCAN_ACCOUNTS.sawangaoha = DESCAN_ACCOUNTS.tanggeawo;
+DESCAN_ACCOUNTS.mattirowalie = DESCAN_ACCOUNTS.mattirobulu;
+DESCAN_ACCOUNTS['mala-mala'] = DESCAN_ACCOUNTS.malamala;
+DESCAN_ACCOUNTS['mattiro-bulu'] = DESCAN_ACCOUNTS.mattirobulu;
+DESCAN_ACCOUNTS.cijati = DESCAN_ACCOUNTS.kamisi;
+DESCAN_ACCOUNTS.sukamaju = DESCAN_ACCOUNTS.koroha;
+DESCAN_ACCOUNTS.mekarwangi = DESCAN_ACCOUNTS.malamala;
+DESCAN_ACCOUNTS.tegalasri = DESCAN_ACCOUNTS.lapolu;
+DESCAN_ACCOUNTS.harapan = DESCAN_ACCOUNTS.tanggeawo;
+DESCAN_ACCOUNTS.lestari = DESCAN_ACCOUNTS.mattirobulu;
 
 function getDescanAuth() {
     try {

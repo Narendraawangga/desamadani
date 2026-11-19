@@ -105,7 +105,7 @@
                 <div class="relative z-10 space-y-4">
                     <div class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Portal Login Resmi Desa Binaan (Kec. Kodeoha)</span>
+                        <span>Portal Login Resmi Desa Binaan (Kec. Kodeoha & Kec. Tiwu)</span>
                     </div>
 
                     <!-- Village Feature Landscape Photo Card -->
@@ -202,19 +202,19 @@
 
     <!-- SCRIPT LOGIC -->
     <script>
-        let currentSelectedDesa = 'kalukaluku';
+        let currentSelectedDesa = 'kamisi';
 
         function selectLoginDesa(key) {
-            key = (key || 'kalukaluku').toLowerCase();
-            if (key === 'cijati') key = 'kalukaluku';
-            if (key === 'sukamaju') key = 'awo';
-            if (key === 'mekarwangi') key = 'kamisi';
-            if (key === 'tegalasri') key = 'koroha';
-            if (key === 'harapan') key = 'lametuna';
-            if (key === 'lestari') key = 'sawangaoha';
+            key = (key || 'kamisi').toLowerCase();
+            if (key === 'cijati' || key === 'kalukaluku') key = 'kamisi';
+            if (key === 'sukamaju' || key === 'awo') key = 'koroha';
+            if (key === 'mekarwangi' || key === 'mala-mala') key = 'malamala';
+            if (key === 'tegalasri' || key === 'lametuna') key = 'lapolu';
+            if (key === 'harapan' || key === 'sawangaoha') key = 'tanggeawo';
+            if (key === 'lestari' || key === 'mattiro-bulu') key = 'mattirobulu';
 
             currentSelectedDesa = key;
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['kalukaluku'];
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['kamisi'];
 
             // Sinkronkan dropdown desa
             const selDesa = document.getElementById('selDesa');
@@ -262,7 +262,7 @@
         }
 
         function loginAsGuestViewer() {
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentSelectedDesa]) ? DESCAN_ACCOUNTS[currentSelectedDesa] : DESCAN_ACCOUNTS['kalukaluku'];
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentSelectedDesa]) ? DESCAN_ACCOUNTS[currentSelectedDesa] : DESCAN_ACCOUNTS['kamisi'];
             const session = {
                 desaKey: currentSelectedDesa,
                 desaName: acc.desaName,
@@ -349,7 +349,7 @@
             } catch(e) {}
 
             const params = new URLSearchParams(window.location.search);
-            const desaParam = (params.get('desa') || 'kalukaluku').toLowerCase();
+            const desaParam = (params.get('desa') || 'kamisi').toLowerCase();
             selectLoginDesa(desaParam);
 
             // Pastikan password selalu kosong saat halaman dimuat

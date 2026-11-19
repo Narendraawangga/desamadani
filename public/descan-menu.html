@@ -214,7 +214,7 @@
             <a href="/descan" onclick="exitToDescanDashboard(event)" class="flex items-center gap-2" title="Kembali ke 6 Desa Binaan">
                 <span class="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#0f6b4a] to-[#17a06d] text-white shadow-md flex items-center justify-center text-base">📊</span>
                 <span class="leading-tight">
-                    <span class="flex items-center gap-1.5"><b class="text-[15px] tracking-wide text-[#0f1f1a]">DESCAN</b><span class="dc-tag" style="background:#0f6b4a;color:#fff;">KODEOHA</span></span>
+                    <span class="flex items-center gap-1.5"><b class="text-[15px] tracking-wide text-[#0f1f1a]">DESCAN</b><span class="dc-tag" style="background:#0f6b4a;color:#fff;">KODEOHA & TIWU</span></span>
                     <span class="text-[10px] text-slate-500">BPS Kolaka Utara</span>
                 </span>
             </a>
@@ -276,7 +276,7 @@
 
             <span class="dc-pill hidden md:inline-flex">✓ Operator Desa</span>
             <div class="hidden lg:block border-l border-slate-200 pl-3 leading-tight min-w-0">
-                <div id="topBrandDesaTitle" class="text-xs font-bold text-slate-900 truncate">AKUN DESA KALU KALUKU</div>
+                <div id="topBrandDesaTitle" class="text-xs font-bold text-slate-900 truncate">AKUN DESA KAMISI</div>
                 <div id="topBrandDesaKec" class="text-[10px] text-slate-500 truncate">(Kec. Kodeoha) • Terbina BPS</div>
             </div>
         </div>
@@ -284,7 +284,7 @@
             <div class="hidden xl:flex items-center gap-2 bg-[#f1f7f4] border border-[#dbeee3] px-3 py-1.5 rounded-xl text-xs">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Desa Binaan BPS:</span>
-                <span id="topNavVillageBadge" class="font-extrabold text-[#0f6b4a] uppercase text-xs">DESA KALU KALUKU</span>
+                <span id="topNavVillageBadge" class="font-extrabold text-[#0f6b4a] uppercase text-xs">DESA KAMISI</span>
             </div>
             <a href="/descan" onclick="exitToDescanDashboard(event)" class="inline-flex px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">← 6 Desa</a>
             <span class="relative text-slate-500 text-sm">🔔<span class="absolute top-0 -right-0.5 w-[7px] h-[7px] rounded-full bg-red-500"></span></span>
@@ -1734,11 +1734,11 @@
         // ==============================================================
         // GLOBAL STATE VARIABLES (SAFE TOP-LEVEL INITIALIZATION)
         // ==============================================================
-        let currentTargetVillage = 'kalukaluku';
-        let currentVillageKey = 'kalukaluku';
+        let currentTargetVillage = 'kamisi';
+        let currentVillageKey = 'kamisi';
         let currentNavMenu = 'dashboard';
         let currentPemTab = 'panduan-excel';
-        let currentAnalitikDesa = 'kalukaluku';
+        let currentAnalitikDesa = 'kamisi';
         let currentMonevBuktiTab = 'desa';
         let currentExcelPage = 1;
         let bookViewMode = 'spread';
@@ -2150,410 +2150,440 @@
         // MASTER DATA 6 DESA BINAAN KECAMATAN KODEOHA (BPS KOLAKA UTARA)
         // ==============================================================
         const villagesData = {
-            kalukaluku: {
-                title: "Desa Kalu Kaluku",
-                sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Pilot Utama Mandiri (Nilai 85%)",
-                rep: "Pemerintah Desa Kalu Kaluku",
-                desc: "Sentra Kakao Rakyat, Perkebunan, dan Pesisir Teluk Bone binaan BPS Kabupaten Kolaka Utara.",
-                luas: "18,45 km²",
-                dusunCount: 4,
-                rtCount: 12,
-                komoditas: "Kakao, Kelapa, Perikanan",
-                pop: "4.150 Jiwa",
-                period: "2026",
-                umkm: "24 Unit",
-                agri: "Sentra Kakao 480 Ha",
-                catatanBps: "Rekomendasi BPS: Kategori Mandiri dengan kualitas data monografi dan SDI tertinggi di Kecamatan Kodeoha.",
-                batas: {
-                    utara: "Desa Mala Mala / Koridor Kantor BPS Lasusua",
-                    selatan: "Desa Lametuna & Desa Awo",
-                    barat: "Pesisir Teluk Bone",
-                    timur: "Perbukitan Perkebunan Kodeoha"
-                }
-            },
-            awo: {
-                title: "Desa Awo",
-                sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Berkembang (Nilai 78%)",
-                rep: "Pemerintah Desa Awo",
-                desc: "Kawasan agrikultur komoditas cengkeh, nilam, dan tanaman pangan pegunungan.",
-                luas: "16,20 km²",
-                dusunCount: 4,
-                rtCount: 10,
-                komoditas: "Cengkeh, Nilam, Kakao",
-                pop: "3.240 Jiwa",
-                period: "2026",
-                umkm: "18 Unit",
-                agri: "Cengkeh & Nilam 320 Ha",
-                catatanBps: "Rekomendasi BPS: Terus tingkatkan kelengkapan NIK kependudukan dalam register monografi.",
-                batas: {
-                    utara: "Desa Kalu Kaluku",
-                    selatan: "Desa Sawangaoha",
-                    barat: "Desa Lametuna",
-                    timur: "Kawasan Hutan Lindung"
-                }
-            },
+            // === 1. KECAMATAN KODEOHA ===
             kamisi: {
                 title: "Desa Kamisi",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Rintisan (Nilai 70%)",
+                kec: "Kodeoha",
+                avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Mandiri (Nilai 98%)",
                 rep: "Pemerintah Desa Kamisi",
-                desc: "Kawasan hortikultura sayuran dataran tinggi dan peternakan sapi rakyat.",
+                desc: "Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat.",
                 luas: "14,80 km²",
                 dusunCount: 3,
                 rtCount: 8,
-                komoditas: "Hortikultura, Palawija",
-                pop: "2.180 Jiwa",
+                komoditas: "Perikanan Tangkap, Teri, Kakao",
+                pop: "1.576 Jiwa",
                 period: "2026",
-                umkm: "12 Unit",
-                agri: "Hortikultura 190 Ha",
-                catatanBps: "Rekomendasi BPS: Standardisasi tabel DTKS dan bansos berbasis NIK 16 digit.",
+                umkm: "14 Unit",
+                agri: "Pesisir & Kakao 190 Ha",
+                catatanBps: "Rekomendasi BPS: Kategori Mandiri dengan kepatuhan pengisian 43 dari 44 indikator SDI.",
                 batas: {
                     utara: "Desa Koroha",
                     selatan: "Kecamatan Tiwu",
-                    barat: "Desa Sawangaoha",
+                    barat: "Pesisir Teluk Bone",
                     timur: "Pegunungan Kodeoha"
                 }
             },
             koroha: {
                 title: "Desa Koroha",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Berkembang (Nilai 75%)",
+                kec: "Kodeoha",
+                avatar: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Berkembang (Nilai 72%)",
                 rep: "Pemerintah Desa Koroha",
-                desc: "Sentra lumbung padi sawah irigasi teknis dan perikanan air tawar Kodeoha.",
+                desc: "Pengembangan perkebunan kakao sambung pucuk, cengkeh perbukitan dan budidaya perikanan laut.",
                 luas: "15,50 km²",
                 dusunCount: 3,
                 rtCount: 9,
-                komoditas: "Padi Sawah, Jagung, Ikan Air Tawar",
-                pop: "2.890 Jiwa",
+                komoditas: "Kakao, Cengkeh, Rumput Laut",
+                pop: "1.340 Jiwa",
                 period: "2026",
                 umkm: "16 Unit",
-                agri: "Lahan Padi Sawah 280 Ha",
-                catatanBps: "Rekomendasi BPS: Pembinaan digitalisasi data hasil panen gabah petani.",
+                agri: "Kakao & Cengkeh 240 Ha",
+                catatanBps: "Rekomendasi BPS: Akselerasi pengisian variabel sosial ekonomi rumah tangga DTKS.",
                 batas: {
-                    utara: "Desa Lametuna",
+                    utara: "Kelurahan Mala-Mala",
                     selatan: "Desa Kamisi",
                     barat: "Pesisir Teluk Bone",
-                    timur: "Desa Awo"
+                    timur: "Kawasan Hutan Lindung"
                 }
             },
-            lametuna: {
-                title: "Desa Lametuna",
+            malamala: {
+                title: "Kelurahan Mala-Mala",
                 sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
-                avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
-                heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Mandiri (Nilai 82%)",
-                rep: "Pemerintah Desa Lametuna",
-                desc: "Kawasan pesisir dermaga nelayan tradisional dan budidaya rumput laut Teluk Bone.",
-                luas: "12,90 km²",
-                dusunCount: 4,
-                rtCount: 11,
-                komoditas: "Perikanan Tangkap, Rumput Laut",
-                pop: "3.750 Jiwa",
+                kec: "Kodeoha",
+                avatar: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Perkotaan Mandiri (Nilai 93%)",
+                rep: "Pemerintah Kelurahan Mala-Mala",
+                desc: "Ibukota Kecamatan Kodeoha dengan fasilitas puskesmas rawat inap, perdagangan, dan 5 fasilitas pendidikan.",
+                luas: "12,20 km²",
+                dusunCount: 3,
+                rtCount: 10,
+                komoditas: "Jasa, Perdagangan, Kakao",
+                pop: "1.272 Jiwa",
                 period: "2026",
-                umkm: "22 Unit",
-                agri: "Sentra Perikanan & Pesisir",
-                catatanBps: "Rekomendasi BPS: Pemutakhiran geospasial tambak dan armada perahu nelayan.",
+                umkm: "2 Unit",
+                agri: "Pusat Pemerintahan & Perdagangan",
+                catatanBps: "Rekomendasi BPS: Kualitas data administrasi kependudukan dan layanan publik sangat baik.",
                 batas: {
-                    utara: "Desa Kalu Kaluku",
+                    utara: "Desa Delang-Delang",
                     selatan: "Desa Koroha",
                     barat: "Pesisir Teluk Bone",
-                    timur: "Desa Awo"
+                    timur: "Kawasan Hutan Lindung"
                 }
             },
-            sawangaoha: {
-                title: "Desa Sawangaoha",
-                sub: "Kecamatan Kodeoha • Kabupaten Kolaka Utara",
+
+            // === 2. KECAMATAN TIWU ===
+            lapolu: {
+                title: "Desa Lapolu",
+                sub: "Kecamatan Tiwu • Kabupaten Kolaka Utara",
+                kec: "Tiwu",
+                avatar: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Agro Mandiri (Nilai 88%)",
+                rep: "Pemerintah Desa Lapolu",
+                desc: "Sentra perkebunan cengkeh rakyat dan klaster 75 industri kecil menengah (IKM) pengolahan komoditas kebun.",
+                luas: "16,40 km²",
+                dusunCount: 3,
+                rtCount: 9,
+                komoditas: "Cengkeh, Kakao, Agroindustri",
+                pop: "1.264 Jiwa",
+                period: "2026",
+                umkm: "75 Unit",
+                agri: "Sentra Cengkeh 380 Ha",
+                catatanBps: "Rekomendasi BPS: Tingkatkan pelaporan berkala monografi industri kecil dan BUMDes.",
+                batas: {
+                    utara: "Kecamatan Kodeoha",
+                    selatan: "Desa Tanggeawo",
+                    barat: "Desa Tiwu",
+                    timur: "Kawasan Hutan Pegunungan"
+                }
+            },
+            tanggeawo: {
+                title: "Desa Tanggeawo",
+                sub: "Kecamatan Tiwu • Kabupaten Kolaka Utara",
+                kec: "Tiwu",
                 avatar: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80",
                 heroBg: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
                 photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-                kategori: "Desa Rintisan (Nilai 68%)",
-                rep: "Pemerintah Desa Sawangaoha",
-                desc: "Kawasan perkebunan kopi robusta rakyat dan hasil hutan bukan kayu madu alam.",
-                luas: "17,10 km²",
+                kategori: "Desa Mandiri (Nilai 84%)",
+                rep: "Pemerintah Desa Tanggeawo",
+                desc: "Kawasan perkebunan kakao rakyat mandiri dengan 46 unit usaha IKM produktif dan koperasi tani.",
+                luas: "13,60 km²",
+                dusunCount: 3,
+                rtCount: 7,
+                komoditas: "Kakao, Jagung, Palawija",
+                pop: "564 Jiwa",
+                period: "2026",
+                umkm: "46 Unit",
+                agri: "Kakao & Tanaman Pangan 160 Ha",
+                catatanBps: "Rekomendasi BPS: Monografi desa dan pencatatan NIK keluarga sudah tertib terstandar.",
+                batas: {
+                    utara: "Desa Lapolu",
+                    selatan: "Desa Mattiro Bulu",
+                    barat: "Desa Tahibua",
+                    timur: "Perbukitan Tiwu"
+                }
+            },
+            mattirobulu: {
+                title: "Desa Mattiro Bulu",
+                sub: "Kecamatan Tiwu • Kabupaten Kolaka Utara",
+                kec: "Tiwu",
+                avatar: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=200&q=80",
+                heroBg: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=85",
+                photo: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=85",
+                kategori: "Desa Terbina Aktif (Nilai 79%)",
+                rep: "Pemerintah Desa Mattiro Bulu",
+                desc: "Sentra perkebunan dataran tinggi penghasil cengkeh, minyak nilam, dan tanaman hortikultura.",
+                luas: "15,80 km²",
                 dusunCount: 3,
                 rtCount: 8,
-                komoditas: "Kopi Robusta, Madu Alam",
-                pop: "2.570 Jiwa",
+                komoditas: "Cengkeh, Nilam, Hortikultura",
+                pop: "856 Jiwa",
                 period: "2026",
-                umkm: "14 Unit",
-                agri: "Kopi Robusta 210 Ha",
-                catatanBps: "Rekomendasi BPS: Peningkatan kapasitas Agen Statistik Desa dalam pengolahan Excel.",
+                umkm: "20 Unit",
+                agri: "Cengkeh & Nilam 220 Ha",
+                catatanBps: "Rekomendasi BPS: Penguatan kapasitas agen statistik desa dalam pengolahan data sektoral.",
                 batas: {
-                    utara: "Desa Awo",
-                    selatan: "Desa Kamisi",
-                    barat: "Desa Koroha",
-                    timur: "Kawasan Hutan Lindung"
+                    utara: "Desa Tanggeawo",
+                    selatan: "Batas Selatan Kab. Kolaka Utara",
+                    barat: "Desa Lawadia",
+                    timur: "Kawasan Pegunungan"
                 }
             }
         };
 
         // Aliases for compatibility
-        villagesData.cijati = villagesData.kalukaluku;
-        villagesData.sukamaju = villagesData.awo;
-        villagesData.mekarwangi = villagesData.kamisi;
-        villagesData.tegalasri = villagesData.koroha;
-        villagesData.harapan = villagesData.lametuna;
-        villagesData.lestari = villagesData.sawangaoha;
+        villagesData.kalukaluku = villagesData.kamisi;
+        villagesData.awo = villagesData.koroha;
+        villagesData.lametuna = villagesData.lapolu;
+        villagesData.sawangaoha = villagesData.tanggeawo;
+        villagesData.mattirowalie = villagesData.mattirobulu;
+        villagesData['mala-mala'] = villagesData.malamala;
+        villagesData['mattiro-bulu'] = villagesData.mattirobulu;
+        villagesData.cijati = villagesData.kamisi;
+        villagesData.sukamaju = villagesData.koroha;
+        villagesData.mekarwangi = villagesData.malamala;
+        villagesData.tegalasri = villagesData.lapolu;
+        villagesData.harapan = villagesData.tanggeawo;
+        villagesData.lestari = villagesData.mattirobulu;
 
-        // Extended BPS Desa Cantik Sectoral & Micro Dataset (6 Desa di Kodeoha - Podes 2025 Kolaka Utara)
+        // Extended BPS Desa Cantik Sectoral & Micro Dataset (Podes 2025 Kolaka Utara)
         const descanSectoralData = {
-            kalukaluku: {
-                kpi: { pop: "4.150", kk: "1.120", sexRatio: "98,5%", p3ke: "3,2%", stunting: "3 Balita", stuntingVal: 3, rasio: "42,5%", pre: "112" },
-                desil: { d1: 25.9, d2: 18.7, d3: 21.1, d4: 34.3 },
+            kamisi: {
+                kpi: { pop: "1.576", kk: "394", sexRatio: "99,2%", p3ke: "3,1%", stunting: "2 Balita", stuntingVal: 2, rasio: "41,5%", pre: "48" },
+                desil: { d1: 22.5, d2: 20.1, d3: 24.8, d4: 32.6 },
                 pekerjaan: [
-                    { name: "Petani Kakao Rakyat", pct: 45 },
-                    { name: "Wiraswasta / IKM", pct: 26 },
-                    { name: "Nelayan & Budidaya Pesisir", pct: 18 },
-                    { name: "IRT", pct: 7 },
-                    { name: "Belum/Tidak Bekerja", pct: 4 }
-                ],
-                center: [-3.420, 121.005],
-                dusun: [
-                    { id: "dusun1", name: "Dusun I Kalu Kaluku", pop: 1180, kk: 320, pre: 28, kerawanan: "Sedang", lat: -3.418, lng: 121.002 },
-                    { id: "dusun2", name: "Dusun II Toddopuli", pop: 1040, kk: 280, pre: 32, kerawanan: "Tinggi", lat: -3.422, lng: 121.008 },
-                    { id: "dusun3", name: "Dusun III Mattirodeceng", pop: 980, kk: 260, pre: 25, kerawanan: "Rendah", lat: -3.424, lng: 121.003 },
-                    { id: "dusun4", name: "Dusun IV Bunga Eja", pop: 950, kk: 260, pre: 27, kerawanan: "Rendah", lat: -3.416, lng: 121.009 }
-                ],
-                piramida: [
-                    { age: "65+", m: 110, f: 135 },
-                    { age: "60-64", m: 155, f: 170 },
-                    { age: "55-59", m: 205, f: 220 },
-                    { age: "50-54", m: 265, f: 280 },
-                    { age: "45-49", m: 320, f: 335 },
-                    { age: "40-44", m: 390, f: 370 },
-                    { age: "35-39", m: 440, f: 415 },
-                    { age: "30-34", m: 495, f: 460 },
-                    { age: "25-29", m: 515, f: 490 },
-                    { age: "20-24", m: 465, f: 440 },
-                    { age: "15-19", m: 385, f: 365 },
-                    { age: "10-14", m: 330, f: 315 },
-                    { age: "5-9", m: 275, f: 255 },
-                    { age: "0-4", m: 205, f: 190 }
-                ],
-                pendidikan: [
-                    { label: "Tidak Sekolah", val: 38 },
-                    { label: "SD / Sdrjt", val: 82 },
-                    { label: "SMP / Sdrjt", val: 148 },
-                    { label: "SMA / Sdrjt", val: 122 },
-                    { label: "Perguruan Tinggi", val: 65 }
-                ]
-            },
-            awo: {
-                kpi: { pop: "3.250", kk: "890", sexRatio: "101,2%", p3ke: "3,8%", stunting: "4 Balita", stuntingVal: 4, rasio: "39,8%", pre: "98" },
-                desil: { d1: 22.4, d2: 21.3, d3: 24.1, d4: 32.2 },
-                pekerjaan: [
-                    { name: "Petani Aren & Gula Merah", pct: 48 },
-                    { name: "Penyuling Minyak Nilam", pct: 24 },
-                    { name: "Petani Kakao", pct: 16 },
+                    { name: "Nelayan & Budidaya Pesisir", pct: 44 },
+                    { name: "Petani Kakao & Kelapa", pct: 28 },
+                    { name: "Wiraswasta / IKM Teri", pct: 16 },
                     { name: "IRT", pct: 8 },
                     { name: "Belum/Tidak Bekerja", pct: 4 }
-                ],
-                center: [-3.425, 121.012],
-                dusun: [
-                    { id: "dusun1", name: "Dusun Awo Jaya", pop: 1150, kk: 310, pre: 28, kerawanan: "Sedang", lat: -3.423, lng: 121.010 },
-                    { id: "dusun2", name: "Dusun Harapan Nilam", pop: 1100, kk: 300, pre: 34, kerawanan: "Tinggi", lat: -3.427, lng: 121.015 },
-                    { id: "dusun3", name: "Dusun Sejahtera Aren", pop: 1000, kk: 280, pre: 30, kerawanan: "Sedang", lat: -3.424, lng: 121.013 }
-                ],
-                piramida: [
-                    { age: "65+", m: 95, f: 120 },
-                    { age: "60-64", m: 140, f: 155 },
-                    { age: "55-59", m: 190, f: 210 },
-                    { age: "50-54", m: 250, f: 270 },
-                    { age: "45-49", m: 310, f: 325 },
-                    { age: "40-44", m: 375, f: 360 },
-                    { age: "35-39", m: 430, f: 400 },
-                    { age: "30-34", m: 480, f: 445 },
-                    { age: "25-29", m: 505, f: 475 },
-                    { age: "20-24", m: 450, f: 425 },
-                    { age: "15-19", m: 370, f: 350 },
-                    { age: "10-14", m: 315, f: 300 },
-                    { age: "5-9", m: 260, f: 245 },
-                    { age: "0-4", m: 195, f: 180 }
-                ],
-                pendidikan: [
-                    { label: "Tidak Sekolah", val: 32 },
-                    { label: "SD / Sdrjt", val: 78 },
-                    { label: "SMP / Sdrjt", val: 140 },
-                    { label: "SMA / Sdrjt", val: 135 },
-                    { label: "Perguruan Tinggi", val: 72 }
-                ]
-            },
-            kamisi: {
-                kpi: { pop: "3.940", kk: "1.050", sexRatio: "99,1%", p3ke: "4,1%", stunting: "5 Balita", stuntingVal: 5, rasio: "41,0%", pre: "105" },
-                desil: { d1: 24.5, d2: 19.8, d3: 22.3, d4: 33.4 },
-                pekerjaan: [
-                    { name: "Nelayan & Ikan Teri", pct: 46 },
-                    { name: "Petani Kakao", pct: 28 },
-                    { name: "Wiraswasta / IKM", pct: 15 },
-                    { name: "IRT", pct: 7 },
-                    { name: "Belum Bekerja", pct: 4 }
                 ],
                 center: [-3.415, 120.998],
                 dusun: [
-                    { id: "dusun1", name: "Dusun Kamisi Pesisir", pop: 1350, kk: 360, pre: 34, kerawanan: "Sedang", lat: -3.413, lng: 120.995 },
-                    { id: "dusun2", name: "Dusun Teri Bahari", pop: 1320, kk: 350, pre: 41, kerawanan: "Tinggi", lat: -3.417, lng: 121.001 },
-                    { id: "dusun3", name: "Dusun Tanjung Baru", pop: 1270, kk: 340, pre: 30, kerawanan: "Rendah", lat: -3.414, lng: 120.999 }
+                    { id: "dusun1", name: "Dusun I Kamisi Bahari", pop: 540, kk: 135, pre: 15, kerawanan: "Sedang", lat: -3.414, lng: 120.996 },
+                    { id: "dusun2", name: "Dusun II Pesisir Teri", pop: 526, kk: 132, pre: 18, kerawanan: "Tinggi", lat: -3.416, lng: 120.999 },
+                    { id: "dusun3", name: "Dusun III Perkebunan Kakao", pop: 510, kk: 127, pre: 15, kerawanan: "Rendah", lat: -3.415, lng: 121.001 }
                 ],
                 piramida: [
-                    { age: "65+", m: 100, f: 125 },
-                    { age: "60-64", m: 145, f: 160 },
-                    { age: "55-59", m: 195, f: 215 },
-                    { age: "50-54", m: 255, f: 275 },
-                    { age: "45-49", m: 315, f: 330 },
-                    { age: "40-44", m: 380, f: 365 },
-                    { age: "35-39", m: 435, f: 410 },
-                    { age: "30-34", m: 490, f: 450 },
-                    { age: "25-29", m: 510, f: 480 },
-                    { age: "20-24", m: 460, f: 430 },
-                    { age: "15-19", m: 380, f: 360 },
-                    { age: "10-14", m: 320, f: 310 },
-                    { age: "5-9", m: 270, f: 250 },
-                    { age: "0-4", m: 200, f: 185 }
+                    { age: "65+", m: 45, f: 55 },
+                    { age: "60-64", m: 60, f: 65 },
+                    { age: "55-59", m: 80, f: 85 },
+                    { age: "50-54", m: 105, f: 110 },
+                    { age: "45-49", m: 125, f: 130 },
+                    { age: "40-44", m: 150, f: 145 },
+                    { age: "35-39", m: 170, f: 160 },
+                    { age: "30-34", m: 190, f: 180 },
+                    { age: "25-29", m: 200, f: 195 },
+                    { age: "20-24", m: 180, f: 175 },
+                    { age: "15-19", m: 150, f: 140 },
+                    { age: "10-14", m: 130, f: 120 },
+                    { age: "5-9", m: 105, f: 100 },
+                    { age: "0-4", m: 80, f: 75 }
                 ],
                 pendidikan: [
-                    { label: "Tidak Sekolah", val: 35 },
-                    { label: "SD / Sdrjt", val: 80 },
-                    { label: "SMP / Sdrjt", val: 145 },
-                    { label: "SMA / Sdrjt", val: 128 },
-                    { label: "Perguruan Tinggi", val: 68 }
+                    { label: "Tidak Sekolah", val: 18 },
+                    { label: "SD / Sdrjt", val: 45 },
+                    { label: "SMP / Sdrjt", val: 62 },
+                    { label: "SMA / Sdrjt", val: 54 },
+                    { label: "Perguruan Tinggi", val: 28 }
                 ]
             },
             koroha: {
-                kpi: { pop: "3.350", kk: "910", sexRatio: "100,4%", p3ke: "4,5%", stunting: "4 Balita", stuntingVal: 4, rasio: "40,2%", pre: "108" },
-                desil: { d1: 26.1, d2: 18.5, d3: 20.8, d4: 34.6 },
+                kpi: { pop: "1.340", kk: "335", sexRatio: "101,0%", p3ke: "4,2%", stunting: "3 Balita", stuntingVal: 3, rasio: "43,0%", pre: "42" },
+                desil: { d1: 24.0, d2: 21.5, d3: 23.5, d4: 31.0 },
                 pekerjaan: [
-                    { name: "Petani Kakao Sambung Pucuk", pct: 42 },
-                    { name: "Budidaya Rumput Laut", pct: 28 },
-                    { name: "Wiraswasta / IKM", pct: 18 },
-                    { name: "IRT", pct: 8 },
-                    { name: "Belum Bekerja", pct: 4 }
+                    { name: "Petani Kakao & Cengkeh", pct: 48 },
+                    { name: "Nelayan Tradisional", pct: 22 },
+                    { name: "IKM Olahan Hasil Kebun", pct: 15 },
+                    { name: "IRT", pct: 10 },
+                    { name: "Belum/Tidak Bekerja", pct: 5 }
                 ],
                 center: [-3.418, 121.002],
                 dusun: [
-                    { id: "dusun1", name: "Dusun Koroha Sentral", pop: 1150, kk: 310, pre: 36, kerawanan: "Sedang", lat: -3.416, lng: 121.000 },
-                    { id: "dusun2", name: "Dusun Kakao Jaya", pop: 1120, kk: 300, pre: 42, kerawanan: "Tinggi", lat: -3.420, lng: 121.004 },
-                    { id: "dusun3", name: "Dusun Rumput Laut", pop: 1080, kk: 300, pre: 30, kerawanan: "Rendah", lat: -3.419, lng: 121.003 }
+                    { id: "dusun1", name: "Dusun I Koroha Raya", pop: 480, kk: 120, pre: 14, kerawanan: "Sedang", lat: -3.417, lng: 121.001 },
+                    { id: "dusun2", name: "Dusun II Pesisir Maritim", pop: 450, kk: 112, pre: 16, kerawanan: "Tinggi", lat: -3.419, lng: 121.003 },
+                    { id: "dusun3", name: "Dusun III Bukit Harapan", pop: 410, kk: 103, pre: 12, kerawanan: "Rendah", lat: -3.418, lng: 121.004 }
                 ],
                 piramida: [
-                    { age: "65+", m: 105, f: 130 },
-                    { age: "60-64", m: 150, f: 165 },
-                    { age: "55-59", m: 200, f: 218 },
-                    { age: "50-54", m: 260, f: 278 },
-                    { age: "45-49", m: 318, f: 332 },
-                    { age: "40-44", m: 385, f: 368 },
-                    { age: "35-39", m: 438, f: 412 },
-                    { age: "30-34", m: 492, f: 455 },
-                    { age: "25-29", m: 512, f: 485 },
-                    { age: "20-24", m: 462, f: 435 },
-                    { age: "15-19", m: 382, f: 362 },
-                    { age: "10-14", m: 325, f: 312 },
-                    { age: "5-9", m: 272, f: 252 },
-                    { age: "0-4", m: 202, f: 188 }
+                    { age: "65+", m: 38, f: 46 },
+                    { age: "60-64", m: 50, f: 55 },
+                    { age: "55-59", m: 68, f: 72 },
+                    { age: "50-54", m: 90, f: 94 },
+                    { age: "45-49", m: 108, f: 112 },
+                    { age: "40-44", m: 130, f: 125 },
+                    { age: "35-39", m: 145, f: 138 },
+                    { age: "30-34", m: 160, f: 152 },
+                    { age: "25-29", m: 170, f: 165 },
+                    { age: "20-24", m: 155, f: 148 },
+                    { age: "15-19", m: 128, f: 120 },
+                    { age: "10-14", m: 110, f: 102 },
+                    { age: "5-9", m: 90, f: 85 },
+                    { age: "0-4", m: 68, f: 62 }
                 ],
                 pendidikan: [
-                    { label: "Tidak Sekolah", val: 36 },
-                    { label: "SD / Sdrjt", val: 81 },
-                    { label: "SMP / Sdrjt", val: 146 },
-                    { label: "SMA / Sdrjt", val: 125 },
-                    { label: "Perguruan Tinggi", val: 66 }
+                    { label: "Tidak Sekolah", val: 15 },
+                    { label: "SD / Sdrjt", val: 38 },
+                    { label: "SMP / Sdrjt", val: 52 },
+                    { label: "SMA / Sdrjt", val: 46 },
+                    { label: "Perguruan Tinggi", val: 22 }
                 ]
             },
-            lametuna: {
-                kpi: { pop: "2.210", kk: "620", sexRatio: "98,2%", p3ke: "3,9%", stunting: "2 Balita", stuntingVal: 2, rasio: "41,8%", pre: "115" },
-                desil: { d1: 25.4, d2: 19.1, d3: 21.8, d4: 33.7 },
+            malamala: {
+                kpi: { pop: "1.272", kk: "318", sexRatio: "97,8%", p3ke: "2,8%", stunting: "1 Balita", stuntingVal: 1, rasio: "38,5%", pre: "36" },
+                desil: { d1: 18.5, d2: 19.5, d3: 25.0, d4: 37.0 },
                 pekerjaan: [
-                    { name: "Pertanian Terpadu / Padi", pct: 40 },
-                    { name: "Perkebunan Kakao", pct: 32 },
-                    { name: "Wiraswasta / BUMDes", pct: 16 },
-                    { name: "IRT", pct: 8 },
-                    { name: "Belum Bekerja", pct: 4 }
+                    { name: "Perdagangan & Jasa", pct: 38 },
+                    { name: "Pegawai / Aparat / Guru", pct: 26 },
+                    { name: "Petani Kakao Rakyat", pct: 20 },
+                    { name: "IRT", pct: 10 },
+                    { name: "Lainnya", pct: 6 }
                 ],
-                center: [-3.432, 121.008],
+                center: [-3.411, 121.003],
                 dusun: [
-                    { id: "dusun1", name: "Dusun Lametuna Timur", pop: 780, kk: 220, pre: 37, kerawanan: "Sedang", lat: -3.430, lng: 121.006 },
-                    { id: "dusun2", name: "Dusun Lametuna Barat", pop: 730, kk: 200, pre: 44, kerawanan: "Tinggi", lat: -3.434, lng: 121.010 },
-                    { id: "dusun3", name: "Dusun Makmur", pop: 700, kk: 200, pre: 34, kerawanan: "Rendah", lat: -3.431, lng: 121.009 }
+                    { id: "dusun1", name: "Lingkungan I Mala-Mala Pusat", pop: 450, kk: 112, pre: 12, kerawanan: "Rendah", lat: -3.410, lng: 121.002 },
+                    { id: "dusun2", name: "Lingkungan II Pasar Kodeoha", pop: 430, kk: 108, pre: 14, kerawanan: "Sedang", lat: -3.412, lng: 121.004 },
+                    { id: "dusun3", name: "Lingkungan III Rawat Inap", pop: 392, kk: 98, pre: 10, kerawanan: "Rendah", lat: -3.411, lng: 121.005 }
                 ],
                 piramida: [
-                    { age: "65+", m: 112, f: 138 },
-                    { age: "60-64", m: 158, f: 172 },
-                    { age: "55-59", m: 208, f: 222 },
-                    { age: "50-54", m: 268, f: 282 },
-                    { age: "45-49", m: 322, f: 338 },
-                    { age: "40-44", m: 392, f: 372 },
-                    { age: "35-39", m: 442, f: 418 },
-                    { age: "30-34", m: 498, f: 462 },
-                    { age: "25-29", m: 518, f: 492 },
-                    { age: "20-24", m: 468, f: 442 },
-                    { age: "15-19", m: 388, f: 368 },
-                    { age: "10-14", m: 332, f: 318 },
-                    { age: "5-9", m: 278, f: 258 },
-                    { age: "0-4", m: 208, f: 192 }
+                    { age: "65+", m: 35, f: 42 },
+                    { age: "60-64", m: 48, f: 52 },
+                    { age: "55-59", m: 65, f: 70 },
+                    { age: "50-54", m: 85, f: 90 },
+                    { age: "45-49", m: 102, f: 108 },
+                    { age: "40-44", m: 122, f: 118 },
+                    { age: "35-39", m: 138, f: 130 },
+                    { age: "30-34", m: 152, f: 145 },
+                    { age: "25-29", m: 162, f: 156 },
+                    { age: "20-24", m: 148, f: 140 },
+                    { age: "15-19", m: 120, f: 115 },
+                    { age: "10-14", m: 105, f: 98 },
+                    { age: "5-9", m: 85, f: 80 },
+                    { age: "0-4", m: 65, f: 58 }
                 ],
                 pendidikan: [
-                    { label: "Tidak Sekolah", val: 40 },
-                    { label: "SD / Sdrjt", val: 84 },
-                    { label: "SMP / Sdrjt", val: 150 },
-                    { label: "SMA / Sdrjt", val: 130 },
-                    { label: "Perguruan Tinggi", val: 70 }
+                    { label: "Tidak Sekolah", val: 8 },
+                    { label: "SD / Sdrjt", val: 28 },
+                    { label: "SMP / Sdrjt", val: 42 },
+                    { label: "SMA / Sdrjt", val: 58 },
+                    { label: "Perguruan Tinggi", val: 45 }
                 ]
             },
-            sawangaoha: {
-                kpi: { pop: "2.570", kk: "730", sexRatio: "99,5%", p3ke: "3,6%", stunting: "3 Balita", stuntingVal: 3, rasio: "38,5%", pre: "90" },
-                desil: { d1: 23.8, d2: 20.2, d3: 23.5, d4: 32.5 },
+            lapolu: {
+                kpi: { pop: "1.264", kk: "321", sexRatio: "100,5%", p3ke: "3,5%", stunting: "2 Balita", stuntingVal: 2, rasio: "40,0%", pre: "38" },
+                desil: { d1: 21.0, d2: 20.5, d3: 24.5, d4: 34.0 },
                 pekerjaan: [
-                    { name: "Perkebunan Kakao & Cengkeh", pct: 45 },
-                    { name: "Kerajinan Kayu / IKM", pct: 26 },
-                    { name: "Wiraswasta", pct: 16 },
+                    { name: "Petani Cengkeh & Kakao", pct: 46 },
+                    { name: "IKM Pengolahan Cengkeh (75 Unit)", pct: 32 },
+                    { name: "Pedagang Pengumpul", pct: 10 },
                     { name: "IRT", pct: 8 },
-                    { name: "Belum Bekerja", pct: 5 }
+                    { name: "Lainnya", pct: 4 }
                 ],
-                center: [-3.409, 121.006],
+                center: [-3.362, 120.978],
                 dusun: [
-                    { id: "dusun1", name: "Dusun Sawangaoha Hulu", pop: 890, kk: 250, pre: 28, kerawanan: "Sedang", lat: -3.407, lng: 121.004 },
-                    { id: "dusun2", name: "Dusun Karya Kayu", pop: 850, kk: 240, pre: 34, kerawanan: "Rendah", lat: -3.411, lng: 121.008 },
-                    { id: "dusun3", name: "Dusun Perkebunan", pop: 830, kk: 240, pre: 28, kerawanan: "Rendah", lat: -3.408, lng: 121.007 }
+                    { id: "dusun1", name: "Dusun I Lapolu Pusat", pop: 440, kk: 112, pre: 12, kerawanan: "Sedang", lat: -3.361, lng: 120.977 },
+                    { id: "dusun2", name: "Dusun II Cengkeh Raya", pop: 424, kk: 108, pre: 15, kerawanan: "Tinggi", lat: -3.363, lng: 120.979 },
+                    { id: "dusun3", name: "Dusun III Agro Mandiri", pop: 400, kk: 101, pre: 11, kerawanan: "Rendah", lat: -3.362, lng: 120.980 }
                 ],
                 piramida: [
-                    { age: "65+", m: 92, f: 118 },
-                    { age: "60-64", m: 138, f: 152 },
-                    { age: "55-59", m: 188, f: 208 },
-                    { age: "50-54", m: 248, f: 268 },
-                    { age: "45-49", m: 308, f: 322 },
-                    { age: "40-44", m: 372, f: 358 },
-                    { age: "35-39", m: 428, f: 398 },
-                    { age: "30-34", m: 478, f: 442 },
-                    { age: "25-29", m: 502, f: 472 },
-                    { age: "20-24", m: 448, f: 422 },
-                    { age: "15-19", m: 368, f: 348 },
-                    { age: "10-14", m: 312, f: 298 },
-                    { age: "5-9", m: 258, f: 242 },
-                    { age: "0-4", m: 192, f: 178 }
+                    { age: "65+", m: 34, f: 40 },
+                    { age: "60-64", m: 46, f: 50 },
+                    { age: "55-59", m: 62, f: 68 },
+                    { age: "50-54", m: 82, f: 88 },
+                    { age: "45-49", m: 100, f: 105 },
+                    { age: "40-44", m: 120, f: 115 },
+                    { age: "35-39", m: 135, f: 128 },
+                    { age: "30-34", m: 150, f: 142 },
+                    { age: "25-29", m: 160, f: 154 },
+                    { age: "20-24", m: 145, f: 138 },
+                    { age: "15-19", m: 118, f: 112 },
+                    { age: "10-14", m: 102, f: 95 },
+                    { age: "5-9", m: 82, f: 78 },
+                    { age: "0-4", m: 62, f: 56 }
                 ],
                 pendidikan: [
-                    { label: "Tidak Sekolah", val: 30 },
-                    { label: "SD / Sdrjt", val: 76 },
-                    { label: "SMP / Sdrjt", val: 138 },
-                    { label: "SMA / Sdrjt", val: 132 },
-                    { label: "Perguruan Tinggi", val: 74 }
+                    { label: "Tidak Sekolah", val: 12 },
+                    { label: "SD / Sdrjt", val: 35 },
+                    { label: "SMP / Sdrjt", val: 48 },
+                    { label: "SMA / Sdrjt", val: 44 },
+                    { label: "Perguruan Tinggi", val: 24 }
+                ]
+            },
+            tanggeawo: {
+                kpi: { pop: "564", kk: "141", sexRatio: "102,0%", p3ke: "3,2%", stunting: "1 Balita", stuntingVal: 1, rasio: "39,0%", pre: "18" },
+                desil: { d1: 20.0, d2: 21.0, d3: 25.0, d4: 34.0 },
+                pekerjaan: [
+                    { name: "Petani Kakao Rakyat", pct: 52 },
+                    { name: "Pengrajin / IKM (46 Unit)", pct: 28 },
+                    { name: "Petani Jagung & Pangan", pct: 10 },
+                    { name: "IRT", pct: 7 },
+                    { name: "Lainnya", pct: 3 }
+                ],
+                center: [-3.355, 120.992],
+                dusun: [
+                    { id: "dusun1", name: "Dusun I Tanggeawo Subur", pop: 200, kk: 50, pre: 6, kerawanan: "Rendah", lat: -3.354, lng: 120.991 },
+                    { id: "dusun2", name: "Dusun II Kebun Kakao", pop: 190, kk: 48, pre: 7, kerawanan: "Sedang", lat: -3.356, lng: 120.993 },
+                    { id: "dusun3", name: "Dusun III Harapan Maju", pop: 174, kk: 43, pre: 5, kerawanan: "Rendah", lat: -3.355, lng: 120.994 }
+                ],
+                piramida: [
+                    { age: "65+", m: 15, f: 18 },
+                    { age: "60-64", m: 20, f: 22 },
+                    { age: "55-59", m: 28, f: 30 },
+                    { age: "50-54", m: 36, f: 38 },
+                    { age: "45-49", m: 45, f: 47 },
+                    { age: "40-44", m: 54, f: 52 },
+                    { age: "35-39", m: 60, f: 58 },
+                    { age: "30-34", m: 68, f: 64 },
+                    { age: "25-29", m: 72, f: 68 },
+                    { age: "20-24", m: 65, f: 62 },
+                    { age: "15-19", m: 52, f: 50 },
+                    { age: "10-14", m: 46, f: 42 },
+                    { age: "5-9", m: 36, f: 34 },
+                    { age: "0-4", m: 28, f: 25 }
+                ],
+                pendidikan: [
+                    { label: "Tidak Sekolah", val: 5 },
+                    { label: "SD / Sdrjt", val: 18 },
+                    { label: "SMP / Sdrjt", val: 24 },
+                    { label: "SMA / Sdrjt", val: 20 },
+                    { label: "Perguruan Tinggi", val: 12 }
+                ]
+            },
+            mattirobulu: {
+                kpi: { pop: "856", kk: "324", sexRatio: "99,5%", p3ke: "4,0%", stunting: "2 Balita", stuntingVal: 2, rasio: "42,0%", pre: "26" },
+                desil: { d1: 23.5, d2: 21.0, d3: 24.0, d4: 31.5 },
+                pekerjaan: [
+                    { name: "Petani Cengkeh & Nilam", pct: 50 },
+                    { name: "Penyuling Minyak Atsiri / IKM (20 Unit)", pct: 24 },
+                    { name: "Hortikultura Dataran", pct: 14 },
+                    { name: "IRT", pct: 8 },
+                    { name: "Lainnya", pct: 4 }
+                ],
+                center: [-3.348, 120.985],
+                dusun: [
+                    { id: "dusun1", name: "Dusun I Mattiro Dataran", pop: 300, kk: 114, pre: 9, kerawanan: "Sedang", lat: -3.347, lng: 120.984 },
+                    { id: "dusun2", name: "Dusun II Cengkeh Perbukitan", pop: 290, kk: 110, pre: 10, kerawanan: "Tinggi", lat: -3.349, lng: 120.986 },
+                    { id: "dusun3", name: "Dusun III Bukit Subur", pop: 266, kk: 100, pre: 7, kerawanan: "Rendah", lat: -3.348, lng: 120.987 }
+                ],
+                piramida: [
+                    { age: "65+", m: 24, f: 28 },
+                    { age: "60-64", m: 32, f: 36 },
+                    { age: "55-59", m: 42, f: 46 },
+                    { age: "50-54", m: 56, f: 60 },
+                    { age: "45-49", m: 68, f: 72 },
+                    { age: "40-44", m: 82, f: 78 },
+                    { age: "35-39", m: 92, f: 88 },
+                    { age: "30-34", m: 102, f: 98 },
+                    { age: "25-29", m: 108, f: 104 },
+                    { age: "20-24", m: 98, f: 94 },
+                    { age: "15-19", m: 80, f: 76 },
+                    { age: "10-14", m: 70, f: 65 },
+                    { age: "5-9", m: 55, f: 52 },
+                    { age: "0-4", m: 42, f: 38 }
+                ],
+                pendidikan: [
+                    { label: "Tidak Sekolah", val: 9 },
+                    { label: "SD / Sdrjt", val: 24 },
+                    { label: "SMP / Sdrjt", val: 34 },
+                    { label: "SMA / Sdrjt", val: 30 },
+                    { label: "Perguruan Tinggi", val: 16 }
                 ]
             }
         };
+
+        // Aliases for compatibility
+        descanSectoralData.kalukaluku = descanSectoralData.kamisi;
+        descanSectoralData.awo = descanSectoralData.koroha;
+        descanSectoralData.lametuna = descanSectoralData.lapolu;
+        descanSectoralData.sawangaoha = descanSectoralData.tanggeawo;
+        descanSectoralData.mattirowalie = descanSectoralData.mattirobulu;
+        descanSectoralData['mala-mala'] = descanSectoralData.malamala;
+        descanSectoralData['mattiro-bulu'] = descanSectoralData.mattirobulu;
+        descanSectoralData.cijati = descanSectoralData.kamisi;
+        descanSectoralData.sukamaju = descanSectoralData.koroha;
+        descanSectoralData.mekarwangi = descanSectoralData.malamala;
+        descanSectoralData.tegalasri = descanSectoralData.lapolu;
+        descanSectoralData.harapan = descanSectoralData.tanggeawo;
+        descanSectoralData.lestari = descanSectoralData.mattirobulu;
 
         // analitikDataMap aliases initialized after its declaration below
 
@@ -4084,7 +4114,7 @@
             const brandTitle = document.getElementById('topBrandDesaTitle');
             if (brandTitle) brandTitle.textContent = ('AKUN ' + (data.title || 'DESA')).toUpperCase();
             const brandKec = document.getElementById('topBrandDesaKec');
-            if (brandKec) brandKec.textContent = '(Kec. Kodeoha) • Terbina BPS';
+            if (brandKec) brandKec.textContent = '(Kec. ' + (vData.kec || 'Kodeoha') + ') • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
             if (topBadge) topBadge.textContent = (data.title || 'Desa').toUpperCase();
 
@@ -5283,10 +5313,10 @@
         document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => renderDashboardVisualCharts(currentActiveVillage || 'kalu_kaluku'), 200);
             const params = new URLSearchParams(window.location.search);
-            const desaParam = (params.get('desa') || 'kalukaluku').toLowerCase();
+            const desaParam = (params.get('desa') || 'kamisi').toLowerCase();
             const menuParam = (params.get('menu') || (window.location.hash ? window.location.hash.replace('#', '') : 'dashboard')).toLowerCase();
 
-            currentTargetVillage = (typeof villagesData !== 'undefined' && villagesData[desaParam]) ? desaParam : 'kalukaluku';
+            currentTargetVillage = (typeof villagesData !== 'undefined' && villagesData[desaParam]) ? desaParam : 'kamisi';
 
             const auth = typeof getDescanAuth === 'function' ? getDescanAuth() : null;
 
