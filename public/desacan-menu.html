@@ -509,14 +509,14 @@
                                 <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video tutorial, buku panduan, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint">✎ Lanjutkan Data PODES</button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost">📘 Unduh Buku Panduan</button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Panduan</button>
                                 </div>
                             </div>
                             <div class="dc-status-card">
                                 <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold tracking-wider opacity-70">STATUS BINAAN</span><span class="dc-tag" style="background:#6ee7b7;color:#053b28;">Terdaftar</span></div>
                                 <div id="dcHeroDesaName" class="text-[2rem] font-extrabold leading-[1.05]" style="letter-spacing:-.02em;">Desa Kalu Kaluku</div>
                                 <div class="text-[11px] opacity-65 mt-1.5 mb-4">Pilot Utama Kec. Kodeoha</div>
-                                <div class="flex justify-between items-center pt-3 border-t border-white/15"><span class="text-xs">🛡 Validasi BPS RI</span><b class="text-xl" style="color:#6ee7b7;">100%</b></div>
+                                <div class="flex justify-between items-center pt-3 border-t border-white/15"><span class="text-xs flex items-center gap-1.5"><i class="bi bi-shield-check text-[#6ee7b7]"></i> Validasi BPS RI</span><b class="text-xl" style="color:#6ee7b7;">100%</b></div>
                             </div>
                         </div>
                     </div>
@@ -524,26 +524,26 @@
                     <!-- KPI -->
                     <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
                         <div class="dc-card">
-                            <div class="flex justify-between items-center"><span class="dc-icon">📋</span><span class="dc-tag">93% Selesai</span></div>
+                            <div class="flex justify-between items-center"><span class="dc-icon"><i class="bi bi-clipboard2-check-fill"></i></span><span class="dc-tag">93% Selesai</span></div>
                             <div class="dc-kpi-label">Pengisian PODES</div>
                             <div class="dc-kpi-value">41 / 44 Indikator</div>
                             <div class="dc-progress mt-3"><span style="width:93%;background:var(--dc-green);"></span></div>
                             <div class="dc-kpi-foot"><span>Kurang 3 variabel</span><b>Standar SDI</b></div>
                         </div>
                         <div class="dc-card">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eaf1fb;color:#2563eb;">✔</span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Tahap 3</span></div>
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eaf1fb;color:#2563eb;"><i class="bi bi-patch-check-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Tahap 3</span></div>
                             <div class="dc-kpi-label">Verifikasi BPS Kolut</div>
                             <div class="dc-kpi-value" style="color:var(--dc-green);">Terverifikasi</div>
                             <div class="dc-kpi-foot mt-4"><span>✓ Metadata Sah</span><span>Rev. 12 Okt 2026</span></div>
                         </div>
                         <div class="dc-card">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eef2f6;color:#334155;">👥</span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Monografi 2026</span></div>
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eef2f6;color:#334155;"><i class="bi bi-people-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Monografi 2026</span></div>
                             <div class="dc-kpi-label">Cakupan Kependudukan</div>
                             <div class="dc-kpi-value"><span id="dcKpiKK">1.120</span> KK</div>
                             <div class="dc-kpi-foot mt-4"><span><span id="dcKpiJiwa">3.840</span> Jiwa terdata</span><b><span id="dcKpiDusun">4</span> Dusun</b></div>
                         </div>
                         <div class="dc-card">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#fdf3e1;color:#d97706;">🏅</span><span class="dc-tag" style="background:#fdf3e1;color:#b45309;">Grade A</span></div>
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#fdf3e1;color:#d97706;"><i class="bi bi-award-fill"></i></span><span class="dc-tag" style="background:#fdf3e1;color:#b45309;">Grade A</span></div>
                             <div class="dc-kpi-label">Skor Rata-rata Evaluasi</div>
                             <div class="dc-kpi-value">88.5 / 100</div>
                             <div class="dc-kpi-foot mt-4"><span>Pre-test &amp; Post-test</span><b>5 Operator</b></div>
@@ -552,7 +552,7 @@
 
                     <!-- GRAFIK -->
                     <div>
-                        <div class="dc-eyebrow mb-2">📊 Visualisasi Data Desa</div>
+                        <div class="dc-eyebrow mb-2 flex items-center gap-1.5"><i class="bi bi-bar-chart-fill"></i> <span>Visualisasi Data Desa</span></div>
                         <div class="grid lg:grid-cols-12 gap-4">
                             <div class="dc-card lg:col-span-4">
                                 <h6 class="font-bold text-sm">Komposisi Kesejahteraan (Desil)</h6>
@@ -576,10 +576,10 @@
                     <div class="dc-card">
                                 <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm">⚡ Aksi Cepat Operator Desa</h6><small class="text-slate-500 text-[11px]">Pintasan Fitur Pembinaan</small></div>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-quick"><span class="dc-icon">＋</span><b>Input Data PODES</b><small>41/44 terverifikasi</small></button>
-                                    <button type="button" onclick="switchNavMenu('pembelajaran')" class="dc-quick"><span class="dc-icon">📖</span><b>Materi Belajar</b><small>8 Modul Statistik</small></button>
-                                    <button type="button" onclick="switchNavMenu('posttest')" class="dc-quick"><span class="dc-icon">☑</span><b>Ikuti Post-test</b><small>Uji Kompetensi Sesi 2</small></button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-quick"><span class="dc-icon" style="background:#e8f4ee;color:var(--dc-green);">⬇</span><b>Panduan Teknis</b><small>PDF Panduan Desa</small></button>
+                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-quick"><span class="dc-icon"><i class="bi bi-pencil-square"></i></span><b>Input Data PODES</b><small>41/44 terverifikasi</small></button>
+                                    <button type="button" onclick="switchNavMenu('pembelajaran')" class="dc-quick"><span class="dc-icon"><i class="bi bi-book-half"></i></span><b>Materi Belajar</b><small>8 Modul Statistik</small></button>
+                                    <button type="button" onclick="switchNavMenu('posttest')" class="dc-quick"><span class="dc-icon"><i class="bi bi-ui-checks"></i></span><b>Ikuti Post-test</b><small>Uji Kompetensi Sesi 2</small></button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-quick"><span class="dc-icon" style="background:#e8f4ee;color:var(--dc-green);"><i class="bi bi-file-earmark-pdf-fill"></i></span><b>Panduan Teknis</b><small>PDF Panduan Desa</small></button>
                                 </div>
                             </div>
 
@@ -589,10 +589,10 @@
                             <span class="dc-icon" style="background:rgba(255,255,255,.14);color:#fff;">?</span>
                             <div><div class="font-bold text-sm">Pusat Bantuan Desa Cantik</div><div class="text-xs opacity-80">Ada kendala pengisian variabel atau login? Hubungi narahubung pembina BPS Kolaka Utara.</div></div>
                         </div>
-                        <button type="button" onclick="openPstModal()" class="dc-btn-ghost">💬 WhatsApp Helpdesk</button>
+                        <button type="button" onclick="openPstModal()" class="dc-btn-ghost flex items-center gap-1.5"><i class="bi bi-whatsapp"></i> <span>WhatsApp Helpdesk</span></button>
                     </div>
 
-                    <div class="dc-eyebrow pt-2">📈 Statistik Sektoral &amp; Potensi Desa (Data Lengkap)</div>
+                    <div class="dc-eyebrow pt-2 flex items-center gap-1.5"><i class="bi bi-graph-up-arrow"></i> <span>Statistik Sektoral &amp; Potensi Desa (Data Lengkap)</span></div>
                 </div>
                 <!-- =============== /BERANDA BARU =============== -->
 
@@ -609,7 +609,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <button type="button" onclick="openManageDataModal('kpi')" class="px-4 py-2 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
-                                    <span>✏️</span>
+                                    <i class="bi bi-pencil-fill text-xs mr-1"></i>
                                     <span>Edit Data Dasar</span>
                                 </button>
                             </div>
@@ -619,12 +619,12 @@
                         <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-700 select-none">
                             <label class="flex items-center gap-2 cursor-pointer hover:text-[#005ea6] transition">
                                 <input type="checkbox" id="chkPublik" checked onchange="togglePublicFilter(this)" class="w-4 h-4 text-[#005ea6] rounded border-slate-300 focus:ring-[#005ea6] cursor-pointer">
-                                <span>☑️ Tampilkan ke Publik</span>
+                                <span class="flex items-center gap-1.5"><i class="bi bi-globe text-[#005ea6]"></i> Tampilkan ke Publik</span>
                             </label>
                             <span class="text-slate-300 hidden sm:inline">|</span>
                             <label class="flex items-center gap-2 cursor-pointer hover:text-[#005ea6] transition">
                                 <input type="checkbox" id="chkInternal" onchange="toggleInternalFilter(this)" class="w-4 h-4 text-amber-600 rounded border-slate-300 focus:ring-amber-500 cursor-pointer">
-                                <span class="text-slate-500">🔒 Hanya Internal BPS & Pemda (Seleksi Potensi & Data)</span>
+                                <span class="text-slate-500 flex items-center gap-1.5"><i class="bi bi-shield-lock-fill text-amber-600"></i> Hanya Internal BPS &amp; Pemda (Seleksi Potensi &amp; Data)</span>
                             </label>
                         </div>
                     </div>
@@ -635,7 +635,9 @@
                         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Total Penduduk:</span>
-                                <span class="p-1.5 rounded-lg bg-blue-50 text-[#005ea6] text-sm">👥</span>
+                                <span class="w-8 h-8 rounded-xl bg-blue-50 text-[#005ea6] flex items-center justify-center text-sm shadow-2xs">
+                                    <i class="bi bi-people-fill text-base"></i>
+                                </span>
                             </div>
                             <div class="mt-2">
                                 <span id="dashKpiTotalPenduduk" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">4.150</span>
@@ -647,7 +649,9 @@
                         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Jumlah KK:</span>
-                                <span class="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 text-sm">🏠</span>
+                                <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shadow-2xs">
+                                    <i class="bi bi-house-door-fill text-base"></i>
+                                </span>
                             </div>
                             <div class="mt-2">
                                 <span id="dashKpiTotalKeluarga" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">1.120</span>
@@ -659,7 +663,9 @@
                         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Kemiskinan:</span>
-                                <span class="p-1.5 rounded-lg bg-amber-50 text-amber-600 text-sm">📈</span>
+                                <span class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm shadow-2xs">
+                                    <i class="bi bi-graph-down-arrow text-base"></i>
+                                </span>
                             </div>
                             <div class="mt-2 flex items-baseline gap-1">
                                 <span id="dashKpiPendudukMiskin" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">3,2%</span>
@@ -671,7 +677,9 @@
                         <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                             <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                 <span>Kasus Stunting:</span>
-                                <span class="p-1.5 rounded-lg bg-rose-50 text-rose-600 text-sm">👶</span>
+                                <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm shadow-2xs">
+                                    <i class="bi bi-heart-pulse-fill text-base"></i>
+                                </span>
                             </div>
                             <div class="mt-2">
                                 <span id="dashKpiStunting" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">3</span>
@@ -915,35 +923,35 @@
                         </div>
                         <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
                         <div class="dc-card flex flex-col">
-                            <span class="dc-icon">📍</span>
+                            <span class="dc-icon"><i class="bi bi-mortarboard-fill"></i></span>
                             <div class="dc-pilar-no">PILAR 01</div>
                             <div class="dc-pilar-title">Literasi Statistik</div>
                             <div class="dc-pilar-desc flex-1">Meningkatkan literasi statistik aparatur desa melalui pelatihan konsep, definisi, dan interpretasi indikator makro.</div>
                             <span class="dc-link mt-3">Pelatihan Berkelanjutan →</span>
                         </div>
                         <div class="dc-card flex flex-col">
-                            <span class="dc-icon">🗄</span>
+                            <span class="dc-icon"><i class="bi bi-folder-fill"></i></span>
                             <div class="dc-pilar-no">PILAR 02</div>
                             <div class="dc-pilar-title">Pengumpulan & Pengelolaan</div>
                             <div class="dc-pilar-desc flex-1">Meningkatkan kemampuan pengumpulan dan pengelolaan data desa secara digital, sistematis, dan tersirsip rapi.</div>
                             <span class="dc-link mt-3">Standarisasi Kuesioner →</span>
                         </div>
                         <div class="dc-card flex flex-col">
-                            <span class="dc-icon">⚙</span>
+                            <span class="dc-icon"><i class="bi bi-shield-check"></i></span>
                             <div class="dc-pilar-no">PILAR 03</div>
                             <div class="dc-pilar-title">Data Akurat & Berkualitas</div>
                             <div class="dc-pilar-desc flex-1">Mendorong tersedianya data desa yang akurat, mutakhir, valid, dan dapat dipertanggungjawabkan sesuai kaidah SDI.</div>
                             <span class="dc-link mt-3">Satu Data Indonesia →</span>
                         </div>
                         <div class="dc-card flex flex-col">
-                            <span class="dc-icon">📈</span>
+                            <span class="dc-icon"><i class="bi bi-graph-up"></i></span>
                             <div class="dc-pilar-no">PILAR 04</div>
                             <div class="dc-pilar-title">Perencanaan Pembangunan</div>
                             <div class="dc-pilar-desc flex-1">Meningkatkan pemanfaatan data riil dalam penyusunan RKPDes, APBDes, dan alokasi bantuan sosial yang tepat sasaran.</div>
                             <span class="dc-link mt-3">Kebijakan Berbasis Bukti →</span>
                         </div>
                         <div class="dc-card flex flex-col">
-                            <span class="dc-icon">🏛</span>
+                            <span class="dc-icon"><i class="bi bi-bank2"></i></span>
                             <div class="dc-pilar-no">PILAR 05</div>
                             <div class="dc-pilar-title">Tata Kelola Statistik</div>
                             <div class="dc-pilar-desc flex-1">Mendorong terwujudnya tata kelola dan kelembagaan statistik desa yang berkelanjutan bersama pembina BPS Kolaka Utara.</div>
@@ -969,10 +977,10 @@
                             </div>
                             <div class="space-y-4">
                                 <div class="dc-card">
-                                <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm">🗓 Agenda Pembinaan</h6><span class="dc-tag">BPS Kolut</span></div>
-                        <div class="dc-agenda "><div class="jenis"><span>KUNJUNGAN LAPANGAN</span><span>24 Okt 2026</span></div><b>Rekonsiliasi & Uji Petik Monografi Desa</b><small>📍 Kantor Desa Kalu Kaluku</small></div>
-                        <div class="dc-agenda biru"><div class="jenis"><span>DARING / ZOOM</span><span>02 Nov 2026</span></div><b>Webinar Pemanfaatan Data PODES untuk RKPDes</b><small>📍 BPS Kab. Kolaka Utara</small></div>
-                        <div class="dc-agenda amber"><div class="jenis"><span>EVALUASI AKHIR</span><span>15 Nov 2026</span></div><b>Penganugerahan Desa Cinta Statistik Teladan</b><small>📍 Aula Bappeda Kolaka Utara</small></div>
+                                <div class="flex justify-between items-center mb-3"><h6 class="font-bold text-sm flex items-center gap-1.5"><i class="bi bi-calendar-event-fill text-emerald-700"></i> <span>Agenda Pembinaan</span></h6><span class="dc-tag">BPS Kolut</span></div>
+                        <div class="dc-agenda "><div class="jenis"><span>KUNJUNGAN LAPANGAN</span><span>24 Okt 2026</span></div><b>Rekonsiliasi & Uji Petik Monografi Desa</b><small class="flex items-center gap-1"><i class="bi bi-geo-alt-fill text-slate-400"></i> Kantor Desa</small></div>
+                        <div class="dc-agenda biru"><div class="jenis"><span>DARING / ZOOM</span><span>02 Nov 2026</span></div><b>Webinar Pemanfaatan Data PODES untuk RKPDes</b><small class="flex items-center gap-1"><i class="bi bi-geo-alt-fill text-slate-400"></i> BPS Kab. Kolaka Utara</small></div>
+                        <div class="dc-agenda amber"><div class="jenis"><span>EVALUASI AKHIR</span><span>15 Nov 2026</span></div><b>Penganugerahan Desa Cinta Statistik Teladan</b><small class="flex items-center gap-1"><i class="bi bi-geo-alt-fill text-slate-400"></i> Aula Bappeda Kolaka Utara</small></div>
                                 <button type="button" class="w-full rounded-xl py-2 text-xs bg-[#eef3f8] hover:bg-[#e3ebf3]">Lihat Kalender Lengkap</button>
                             </div>
                                 <div id="dcTutorial" class="dc-card">
@@ -5719,10 +5727,10 @@
                         🏛️ Bantuan Sosial
                     </button>
                     <button type="button" onclick="switchManageModalTab('dusun')" id="modal-tab-dusun" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        🏘️ Kelola & Tambah Dusun
+                        <i class="bi bi-houses-fill mr-1"></i> Kelola & Tambah Dusun
                     </button>
                     <button type="button" onclick="switchManageModalTab('sosial')" id="modal-tab-sosial" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        👥 Sosial & Pendidikan
+                        <i class="bi bi-people-fill mr-1"></i> Sosial & Pendidikan
                     </button>
                 </div>
             </div>
@@ -6067,8 +6075,8 @@
             <!-- Modal Header -->
             <div class="bg-[#0b2545] text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">
-                        👥
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg">
+                        <i class="bi bi-people-fill"></i>
                     </div>
                     <div>
                         <h3 class="text-base font-black">Informasi Agen Statistik Desa</h3>
