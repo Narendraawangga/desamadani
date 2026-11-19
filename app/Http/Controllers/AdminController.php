@@ -87,6 +87,19 @@ class AdminController extends Controller
     }
 
     /**
+     * Get PODES Catalog list for public portal and admin workspace.
+     */
+    public function getPodesCatalog()
+    {
+        $catalogPath = database_path('data/podes_catalog.json');
+        $catalog = file_exists($catalogPath) ? json_decode(file_get_contents($catalogPath), true) : [];
+        return response()->json([
+            'success' => true,
+            'catalog' => $catalog,
+        ]);
+    }
+
+    /**
      * Get specific PODES table data for a chosen Desa & Kecamatan.
      */
     public function getPodesTableData(Request $request)
@@ -130,10 +143,11 @@ class AdminController extends Controller
         $cleanKecTarget = str_replace([' ', '-', '_'], '', $kecamatan);
         $cleanDesaTarget = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', $desa);
 
+        $isAllKec = empty($kecamatan) || $kecamatan === 'ALL';
         foreach ($rows as $r) {
             $rKec = strtoupper($r['kecamatan'] ?? '');
             $cleanRKec = str_replace([' ', '-', '_'], '', $rKec);
-            if ($cleanRKec === $cleanKecTarget || $rKec === $kecamatan) {
+            if ($isAllKec || $cleanRKec === $cleanKecTarget || $rKec === $kecamatan) {
                 $kecamatanRows[] = $r;
                 $rDesa = strtoupper($r['desa'] ?? '');
                 $cleanRDesa = preg_replace('/^(DESA|KELURAHAN)\s+/i', '', $rDesa);

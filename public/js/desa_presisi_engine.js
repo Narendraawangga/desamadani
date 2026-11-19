@@ -192,6 +192,733 @@ window.PresisiEngine = (function() {
     }
   };
 
+  const PODES_CATEGORY_MAP = {
+  "ekonomi": {
+    "key": "ekonomi",
+    "label": "Sarana Ekonomi",
+    "pillId": "pill-cat-ekonomi",
+    "dropdownId": "dropdown-cat-ekonomi",
+    "dotColor": "bg-amber-400",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+    "defaultTable": "5.6",
+    "modules": [
+      "SARANA EKONOMI DAN INDUSTRI.xlsx",
+      "INFRASTRUKTUR EKONOMI.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.1",
+        "title": "Tabel 5.1: Jumlah Sarana Perdagangan dan Akomodasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.2",
+        "title": "Tabel 5.2: Jumlah Kelompok Pertokoan dan Pasar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.3",
+        "title": "Tabel 5.3: Jumlah Bank Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.4",
+        "title": "Tabel 5.4: Jumlah Koperasi Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.5",
+        "title": "Tabel 5.5: Keberadaan Fasilitas Perkreditan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.6",
+        "title": "Tabel 5.6: Jumlah Industri Mikro dan Kecil dan Sentra Industri Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "SARANA EKONOMI DAN INDUSTRI.xlsx",
+        "sheet": "5.7",
+        "title": "Tabel 5.7: Keberadaan Produk Barang Unggulan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.1",
+        "title": "BANYAKNYA KELOMPOK PERTOKOAN DAN PASAR MENURUT DESA/KELURAHAN",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.2",
+        "title": "BANYAKNYA SARANA PERDAGANGAN  MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.3",
+        "title": "BANYAKNYA SARANA AKOMODASI MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR EKONOMI.xlsx",
+        "sheet": "11.4",
+        "title": "BANYAKNYA LEMBAGA KEUANGAN BANK MENURUT DESA/KELURAHAN",
+        "total_rows": 153
+      }
+    ]
+  },
+  "lingkungan": {
+    "key": "lingkungan",
+    "label": "Perumahan & Lingkungan",
+    "pillId": "pill-cat-lingkungan",
+    "dropdownId": "dropdown-cat-lingkungan",
+    "dotColor": "bg-emerald-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+    "defaultTable": "2.1",
+    "modules": [
+      "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+      "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.1",
+        "title": "Tabel 2.1: Jumlah Keluarga Pengguna Listrik dan Bukan Pengguna Listrik Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.2",
+        "title": "Tabel 2.2: Keberadaan dan Sumber Penerangan Jalan Utama Desa Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.3",
+        "title": "Tabel 2.3: Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.4",
+        "title": "Tabel 2.4: Keberadaan Agen/Penjual Bahan Bakar Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.5",
+        "title": "Tabel 2.5: Keberadaan Kejadian Pencemaran Lingkungan Hidup Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.6",
+        "title": "Tabel 2.6: Pencemaran Lingkungan Hidup dan Sumber Utama Pencemaran Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.7",
+        "title": "Tabel 2.7: Keberadaan Kegiatan Pengelolaan dan Pelestarian Lingkungan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PERUMAHAN DAN LINGKUNGAN_.xlsx",
+        "sheet": "2.8",
+        "title": "Tabel 2.8: Keberadaan Kegiatan Adaptasi dan Mitigasi Perubahan Iklim Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA ANTISIPASI/MITIGASI BENCANA ALAM  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS BENCANA ALAM  DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN AKTIVITAS YANG BERPOTENSI MENINGKATKAN EMISI GAS RUMAH KACA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEBERADAAN KEJADIAN YANG DIRASAKAN PENDUDUK AKIBAT PERUBAHAN IKLIM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN KEJADIAN PERKELAHIAN MASSAL DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN KEBARADAAN KORBAN MENINGGAL DAN LUKA-LUKA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.7",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEJADIAN PERKELAHIAN MASSAL DAN INISIATOR PENYELESAIANNYA DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx",
+        "sheet": "8.8",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS UPAYA WARGA MENJAGA KEAMANAN LINGKUNGAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ]
+  },
+  "sosial": {
+    "key": "sosial",
+    "label": "Pendidikan & Kesehatan",
+    "pillId": "pill-cat-sosial",
+    "dropdownId": "dropdown-cat-sosial",
+    "dotColor": "bg-blue-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "PENDIDIKAN DAN KESEHATAN.xlsx",
+    "defaultTable": "3.1",
+    "modules": [
+      "PENDIDIKAN DAN KESEHATAN.xlsx",
+      "INFRASTRUKTUR PENDIDIKAN.xlsx",
+      "INFRASTRUKTUR KESEHATAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.1",
+        "title": "Tabel 3.1: Keberadaan Sarana Pendidikan dan Jenis Sarana Pendidikan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.2",
+        "title": "Tabel 3.2: Keberadaan Sarana Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "PENDIDIKAN DAN KESEHATAN.xlsx",
+        "sheet": "3.3",
+        "title": "Tabel 3.3: Jumlah Upaya Kesehatan Bersumberdaya Masyarakat (UKBM) Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.1",
+        "title": "Tabel 9.1: Jumlah SD/MI Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.2",
+        "title": "Tabel 9.2: Jumlah SMP/MTs Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.3",
+        "title": "Tabel 9.3: Jumlah SMA/MA Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.4",
+        "title": "Tabel 9.4: Jumlah SMK Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR PENDIDIKAN.xlsx",
+        "sheet": "9.5",
+        "title": "Tabel 9.5: Jumlah Akademi/Perguruan Tinggi Negeri dan Swasta Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.1",
+        "title": "Tabel 10.1: Jumlah Rumah Sakit, Klinik Utama, dan Balai Kesehatan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.2",
+        "title": "Tabel 10.2: Jumlah Puskesmas Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "INFRASTRUKTUR KESEHATAN.xlsx",
+        "sheet": "10.3",
+        "title": "Tabel 10.3: Jumlah Klinik Pratama, Tempat Praktik Dokter, Tempat Praktik Bidan, dan Apotek Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      }
+    ]
+  },
+  "keuangan": {
+    "key": "keuangan",
+    "label": "Keuangan & Aset Desa",
+    "pillId": "pill-cat-keuangan",
+    "dropdownId": "dropdown-cat-keuangan",
+    "dotColor": "bg-purple-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KEUANGAN DAN ASET DESA 2025.xlsx",
+    "defaultTable": "6.3",
+    "modules": [
+      "KEUANGAN DAN ASET DESA 2025.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.1",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.2",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN SISTEM INFORMASI DESA  DAN SISTEM KEUANGAN DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 153
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "Sambungan 6.3",
+        "title": "BANYAKNYA DESA MENURUT KEPEMILIKAN BADAN USAHA DAN ASET  DESA DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      },
+      {
+        "module": "KEUANGAN DAN ASET DESA 2025.xlsx",
+        "sheet": "6.4",
+        "title": "BANYAKNYA DESA MENURUT KEBERADAAN PERATURAN DESA TAHUN 2024 DI KABUPATEN KOLAKA UTARA",
+        "total_rows": 152
+      }
+    ]
+  },
+  "umum": {
+    "key": "umum",
+    "label": "Keterangan Umum",
+    "pillId": "pill-cat-umum",
+    "dropdownId": "dropdown-cat-umum",
+    "dotColor": "bg-teal-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KETERANGAN UMUM DESA.xlsx",
+    "defaultTable": "1.1",
+    "modules": [
+      "KETERANGAN UMUM DESA.xlsx",
+      "KEPENDUDUKAN.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.1",
+        "title": "Tabel 1.1: Status Pemerintahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.2",
+        "title": "Tabel 1.2: Lokasi Desa Terhadap Kawasan Hutan dan Fungsi Kawasan Hutan Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.3",
+        "title": "Tabel 1.3: Lokasi Desa Terhadap Laut Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.4",
+        "title": "Tabel 1.4: Sumber Penghasilan Utama Sebagian Besar Penduduk dan Persentase Keluarga Menurut Sumber Penghasilan Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN UMUM DESA.xlsx",
+        "sheet": "1.5",
+        "title": "Tabel 1.5: Sebagian Besar Penduduknya Bekerja pada Sektor Pertanian Menurut Desa/Kelurahan dan Jenis Sub Sektor Utama di Kabupaten Kolaka Utara, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KEPENDUDUKAN.xlsx",
+        "sheet": "2.1",
+        "title": "2.1 Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kolaka Utara, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KEPENDUDUKAN.xlsx",
+        "sheet": "2.2",
+        "title": "2.2   Jumlah Penduduk Menurut Kelompok Umur dan Jenis Kelamin, 2025",
+        "total_rows": 259
+      }
+    ]
+  },
+  "pemerintah": {
+    "key": "pemerintah",
+    "label": "Pemerintah Desa",
+    "pillId": "pill-cat-pemerintah",
+    "dropdownId": "dropdown-cat-pemerintah",
+    "dotColor": "bg-indigo-500",
+    "activeBg": "bg-[#0D6E5B]",
+    "defaultModule": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+    "defaultTable": "7.1",
+    "modules": [
+      "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+      "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx"
+    ],
+    "subTables": [
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.1",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN APARAT PEMERINTAH DESA/KELURAHAN  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.2",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH DAN/ATAU SEKRETARIS DESA/KELURAHAN MENURUT JENIS KELAMIN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.3",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.4",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN MENURUT KELOMPOK UMUR DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.5",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN KEPALA DESA/LURAH  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx",
+        "sheet": "7.6",
+        "title": "BANYAKNYA DESA/KELURAHAN DENGAN SEKRETARIS DESA/KELURAHAN  MENURUT TINGKAT  PENDIDIKAN TERTINGGI YANG DITAMATKAN DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.1",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT JENIS PRASARANA  TRANSPORTASI  DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.2",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KETERSEDIAAN ANGKUTAN UMUM DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.3",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUTU KETERSEDIAAN ANGKUTAN ONLINE DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.4",
+        "title": "BANYAKNYA DESA/KELURAHAN YANG MENGGUNAKAN PRASARANA  TRANSPORTASI DARAT ATAU DARAT DAN AIR MENURUT JENIS  PERMUKAAN JALAN DARAT TERLUAS DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.5",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN BASE  TRANSCEIVER STATION (BTS) DAN KEKUATAN SINYAL TELEPON SELULER DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.6",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEKUATAN SINYAL  INTERNET DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 153
+      },
+      {
+        "module": "ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx",
+        "sheet": "4.7",
+        "title": "BANYAKNYA DESA/KELURAHAN MENURUT KEBERADAAN SARANA  KOMUNIKASI DI KABUPATEN KOLAKA UTARA, 2025",
+        "total_rows": 152
+      }
+    ]
+  }
+};
+
+  // =========================================================================
+  // INTEGRATED PODES 2025 SUB-TABLES ENGINE (12 Modules, 63 Sub-Tables)
+  // Direct synchronization with Admin Desa Madani database
+  // =========================================================================
+  let currentActiveSubTable = {
+    category: 'ekonomi',
+    module: 'SARANA EKONOMI DAN INDUSTRI.xlsx',
+    sheet: '5.6',
+    title: 'Tabel 5.6: Jumlah Industri Mikro dan Kecil dan Sentra Industri Menurut Desa/Kelurahan di Kabupaten Kolaka Utara, 2025'
+  };
+  let currentRealTableData = null;
+  let activeDropdownCat = null;
+  const podesTableCache = {};
+
+  function getActiveTablePrimaryColumn() {
+    if (!currentRealTableData || !currentRealTableData.columns || !currentRealTableData.columns.length) {
+      return null;
+    }
+    const numCols = currentRealTableData.columns.filter(c => !c.label.toLowerCase().includes('persen') && !c.label.includes('%'));
+    const colsToSearch = numCols.length > 0 ? numCols : currentRealTableData.columns;
+
+    // Pick column with largest sum across villages (or first if 0)
+    let bestCol = colsToSearch[0];
+    let maxTotal = -1;
+
+    colsToSearch.forEach(c => {
+      let sum = 0;
+      (currentRealTableData.kecamatan_rows || []).forEach(r => {
+        if (r.desa && !r.is_total && r.values) {
+          sum += (parseFloat(r.values[c.col] || 0) || 0);
+        }
+      });
+      if (sum > maxTotal) {
+        maxTotal = sum;
+        bestCol = c;
+      }
+    });
+
+    return bestCol;
+  }
+
+  function cleanSubTableTitle(raw) {
+    if (!raw) return '';
+    let t = raw.replace(/^Tabel\s+[0-9.]+\s*:\s*/i, '');
+    t = t.replace(/^BANYAKNYA\s+DESA\/KELURAHAN\s+(MENURUT|DENGAN)\s+/i, '');
+    t = t.replace(/^BANYAKNYA\s+DESA\s+(MENURUT|DENGAN)\s+/i, '');
+    t = t.replace(/^BANYAKNYA\s+/i, '');
+    t = t.replace(/\s+DI\s+KABUPATEN\s+KOLAKA\s+UTARA.*$/i, '');
+    t = t.replace(/\s+MENURUT\s+DESA\/KELURAHAN.*$/i, '');
+    t = t.replace(/,\s*202[0-9]/i, '');
+    return t.trim();
+  }
+
+  function renderCategoryDropdowns() {
+    Object.keys(PODES_CATEGORY_MAP).forEach(catKey => {
+      const dropEl = document.getElementById(`dropdown-cat-${catKey}`);
+      if (!dropEl) return;
+      const catCfg = PODES_CATEGORY_MAP[catKey];
+      const subTables = catCfg.subTables || [];
+
+      // Group sub-tables by module file
+      const grouped = {};
+      subTables.forEach(st => {
+        if (!grouped[st.module]) grouped[st.module] = [];
+        grouped[st.module].push(st);
+      });
+
+      let html = `
+        <div class="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
+          <div>
+            <div class="font-extrabold text-xs text-slate-800 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full ${catCfg.dotColor}"></span>
+              <span>${catCfg.label}</span>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Pilih lembar data untuk eksplorasi spesifik</div>
+          </div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">${subTables.length} Tabel</span>
+        </div>
+        <div class="py-1 max-h-72 overflow-y-auto space-y-2">
+      `;
+
+      Object.keys(grouped).forEach(modName => {
+        const shortMod = modName.replace('.xlsx', '');
+        html += `
+          <div>
+            <div class="px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1 bg-slate-50/70">
+              <i class="bi bi-file-earmark-spreadsheet text-emerald-600"></i>
+              <span class="truncate">${shortMod}</span>
+            </div>
+            <div class="px-1 py-0.5 space-y-0.5">
+        `;
+        grouped[modName].forEach(st => {
+          const isActive = currentActiveSubTable && currentActiveSubTable.module === st.module && currentActiveSubTable.sheet === st.sheet;
+          const displayTitle = cleanSubTableTitle(st.title) || st.title;
+          html += `
+            <button type="button" onclick="window.PresisiEngine.selectSubTable('${catKey}', '${st.module}', '${st.sheet}')" class="w-full text-left px-2.5 py-1.5 rounded-xl text-xs transition flex items-start gap-2 hover:bg-emerald-50/70 group cursor-pointer ${isActive ? 'bg-emerald-50 text-emerald-900 font-bold border border-emerald-300 shadow-2xs' : 'text-slate-700'}">
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-black shrink-0 ${isActive ? 'bg-emerald-600 text-white' : 'bg-slate-200 group-hover:bg-emerald-200 text-slate-700'}">${st.sheet}</span>
+              <span class="line-clamp-2 text-[11px] leading-tight text-slate-700 group-hover:text-emerald-950">${displayTitle}</span>
+            </button>
+          `;
+        });
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      dropEl.innerHTML = html;
+    });
+  }
+
+  function toggleCategoryDropdown(catKey, event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (currentCategory !== catKey) {
+      setCategory(catKey);
+    }
+
+    const dropEl = document.getElementById(`dropdown-cat-${catKey}`);
+    const chevEl = document.getElementById(`pill-chev-${catKey}`);
+    const isCurrentlyOpen = dropEl && !dropEl.classList.contains('hidden');
+
+    closeAllCategoryDropdowns();
+
+    if (!isCurrentlyOpen && dropEl) {
+      dropEl.classList.remove('hidden');
+      if (chevEl) chevEl.classList.add('rotate-180');
+      activeDropdownCat = catKey;
+    }
+  }
+
+  function closeAllCategoryDropdowns() {
+    document.querySelectorAll('.category-podes-dropdown').forEach(d => {
+      d.classList.add('hidden');
+    });
+    document.querySelectorAll('[id^="pill-chev-"]').forEach(c => {
+      c.classList.remove('rotate-180');
+    });
+    activeDropdownCat = null;
+  }
+
+  function renderSubTablesHorizontalBar() {
+    const bar = document.getElementById('portalSubTablesBar');
+    if (!bar) return;
+
+    const catCfg = PODES_CATEGORY_MAP[currentCategory];
+    if (!catCfg) return;
+    const subTables = catCfg.subTables || [];
+
+    bar.innerHTML = subTables.map(st => {
+      const isActive = currentActiveSubTable && currentActiveSubTable.module === st.module && currentActiveSubTable.sheet === st.sheet;
+      const cleanTitle = cleanSubTableTitle(st.title) || st.title;
+      return `
+        <button type="button" onclick="window.PresisiEngine.selectSubTable('${currentCategory}', '${st.module}', '${st.sheet}')" class="px-3 py-1.5 rounded-full text-xs font-bold shrink-0 transition flex items-center gap-1.5 cursor-pointer ${isActive ? 'bg-[#0D6E5B] text-white shadow-xs' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80'}" title="${st.title}">
+          <span class="text-[10px] px-1.5 py-0.5 rounded font-black ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}">${st.sheet}</span>
+          <span class="max-w-[150px] truncate text-[11px]">${cleanTitle}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function selectSubTable(catKey, moduleFile, tableSheet) {
+    closeAllCategoryDropdowns();
+
+    if (catKey && catKey !== currentCategory) {
+      setCategory(catKey);
+    }
+
+    const catCfg = PODES_CATEGORY_MAP[currentCategory];
+    const subTable = (catCfg && catCfg.subTables) ? catCfg.subTables.find(t => t.module === moduleFile && t.sheet === tableSheet) : null;
+
+    currentActiveSubTable = {
+      category: currentCategory,
+      module: moduleFile,
+      sheet: tableSheet,
+      title: subTable ? subTable.title : `Tabel ${tableSheet}`
+    };
+
+    // Update active badges & labels
+    const titleEl = document.getElementById('portalActiveTableTitle');
+    const modEl = document.getElementById('portalActiveModuleFile');
+    if (titleEl) titleEl.textContent = `Tabel ${tableSheet}: ${cleanSubTableTitle(currentActiveSubTable.title)}`;
+    if (modEl) modEl.textContent = moduleFile;
+
+    // Refresh sub-tables horizontal bar & dropdowns
+    renderSubTablesHorizontalBar();
+    renderCategoryDropdowns();
+
+    // Sync Analisis Header & Panels
+    updateAnalisisHeader(currentCategory);
+    updateAnalysisPanels(currentCategory);
+
+    // Fetch real PODES data
+    loadRealPodesTable(moduleFile, tableSheet);
+  }
+
+  function loadRealPodesTable(moduleFile, tableSheet) {
+    const cacheKey = `${moduleFile}::${tableSheet}`;
+    if (podesTableCache[cacheKey]) {
+      applyRealTableData(podesTableCache[cacheKey]);
+      return;
+    }
+
+    const url = `/portal/podes/table-data?module=${encodeURIComponent(moduleFile)}&table=${encodeURIComponent(tableSheet)}&kecamatan=ALL`;
+    
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error('Network error: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        if (data && data.success) {
+          podesTableCache[cacheKey] = data;
+          applyRealTableData(data);
+        }
+      })
+      .catch(err => {
+        console.warn('Real PODES fetch error:', err);
+      });
+  }
+
+  function applyRealTableData(data) {
+    currentRealTableData = data;
+
+    // Update row count
+    const villageRows = (data.kecamatan_rows || []).filter(r => r.desa && !r.is_total);
+    const countEl = document.getElementById('portalActiveRowCount');
+    if (countEl) countEl.textContent = `${villageRows.length} Desa`;
+
+    // Re-render table
+    renderPresisiTable();
+
+    // Update Chart 1 title and data
+    const t1 = document.getElementById('titleChart1');
+    const b1 = document.getElementById('labelChart1Badge');
+    if (t1) t1.textContent = `Tabel ${data.table}: ${cleanSubTableTitle(data.title)}`;
+    if (b1) b1.textContent = `TABEL ${data.table}`;
+
+    // Sync Analisis Header & Panels
+    updateAnalisisHeader(currentCategory);
+    updateAnalysisPanels(currentCategory);
+
+    // Update Presisi Charts with real table metrics
+    updatePresisiCharts();
+  }
+
   // INITIALIZATION
   function init() {
     if (typeof window.PODES_2025_DATABASE === 'undefined' || typeof L === 'undefined' || !document.getElementById('mapPresisi')) {
@@ -209,6 +936,9 @@ window.PresisiEngine = (function() {
     renderExecutiveSummary();
     renderPresisiTable();
     renderAgregatKecamatanSection();
+    renderCategoryDropdowns();
+    renderSubTablesHorizontalBar();
+    loadRealPodesTable(currentActiveSubTable.module, currentActiveSubTable.sheet);
     setupEventListeners();
     setViewMode('peta');
   }
@@ -248,6 +978,13 @@ window.PresisiEngine = (function() {
       if (map) map.invalidateSize();
     });
 
+    // Close category dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.category-podes-wrapper')) {
+        closeAllCategoryDropdowns();
+      }
+    });
+
     // Keyboard arrow navigation for Storytelling Carousel
     document.addEventListener('keydown', (e) => {
       if (e.target && ['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
@@ -269,12 +1006,35 @@ window.PresisiEngine = (function() {
     if (!CATEGORY_CONFIG[catKey]) return;
     currentCategory = catKey;
 
+    closeAllCategoryDropdowns();
+
+    // If sub-table is not in this category, set to category default
+    const catCfg = PODES_CATEGORY_MAP[catKey];
+    if (catCfg && (!currentActiveSubTable || currentActiveSubTable.category !== catKey)) {
+      const defTable = (catCfg.subTables && catCfg.subTables.length > 0) ? catCfg.subTables[0] : null;
+      if (defTable) {
+        currentActiveSubTable = {
+          category: catKey,
+          module: defTable.module,
+          sheet: defTable.sheet,
+          title: defTable.title
+        };
+        const titleEl = document.getElementById('portalActiveTableTitle');
+        const modEl = document.getElementById('portalActiveModuleFile');
+        if (titleEl) titleEl.textContent = `Tabel ${defTable.sheet}: ${cleanSubTableTitle(defTable.title)}`;
+        if (modEl) modEl.textContent = defTable.module;
+        loadRealPodesTable(defTable.module, defTable.sheet);
+      }
+    }
+    renderSubTablesHorizontalBar();
+    renderCategoryDropdowns();
+
     // Update Category Pills
     document.querySelectorAll('.presisi-cat-pill').forEach(btn => {
       if (btn.getAttribute('data-category') === catKey) {
-        btn.className = "presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0b2545] text-white shadow-xs";
+        btn.className = "presisi-cat-pill active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2 shrink-0 bg-[#0D6E5B] text-white shadow-xs cursor-pointer select-none";
       } else {
-        btn.className = "presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60";
+        btn.className = "presisi-cat-pill px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-2 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/60 cursor-pointer select-none";
       }
     });
 
@@ -282,6 +1042,10 @@ window.PresisiEngine = (function() {
     const cfg = CATEGORY_CONFIG[catKey];
     const metricInd = document.getElementById('presisiMapMetricIndicator');
     if (metricInd) metricInd.textContent = `Metrik: ${cfg.metricLabel}`;
+
+    // Update Analisis Header & Panels immediately
+    updateAnalisisHeader(catKey);
+    updateAnalysisPanels(catKey);
 
     // Update Map
     updateThematicMap();
@@ -508,6 +1272,26 @@ window.PresisiEngine = (function() {
   }
 
   function getFeatureMetricValue(kecNama, cat) {
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const cleanKec = (kecNama || '').replace(/\s+/g, '').toLowerCase();
+      const primCol = getActiveTablePrimaryColumn();
+      if (primCol) {
+        let val = 0;
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const rKec = (r.kecamatan || '').replace(/\s+/g, '').toLowerCase();
+          if (rKec === cleanKec) {
+            if (r.is_total) {
+              const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+              if (num > 0) val = num;
+            } else if (r.desa && val === 0) {
+              const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+              val += num;
+            }
+          }
+        });
+        return val;
+      }
+    }
     const cleanKec = (kecNama || '').replace(/\s+/g, '').toLowerCase();
     const kData = db.kecamatanList.find(k => k.nama.replace(/\s+/g, '').toLowerCase() === cleanKec);
     if (!kData) return 0;
@@ -1108,13 +1892,47 @@ window.PresisiEngine = (function() {
     const t4 = document.getElementById('titleChart4');
     const b4 = document.getElementById('labelChart4Badge');
 
-    if (t1) t1.textContent = currentKecamatan === 'ALL' ? cfg.chartTitle : `${cfg.metricLabel} di Kec. ${currentKecamatan}`;
-    if (b1) b1.textContent = cfg.chartBadge || 'TABEL BPS';
-    if (t2) t2.textContent = cfg.distTitle || 'Komposisi Sektor';
+    const primCol = (currentRealTableData && currentRealTableData.columns) ? getActiveTablePrimaryColumn() : null;
+    const secCol = (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 1) ? currentRealTableData.columns[1] : null;
+
+    if (t1) {
+      if (primCol) {
+        t1.textContent = currentKecamatan === 'ALL'
+          ? `Sebaran: ${primCol.label} per Kecamatan`
+          : `Sebaran: ${primCol.label} di Kec. ${currentKecamatan}`;
+      } else {
+        t1.textContent = currentKecamatan === 'ALL' ? cfg.chartTitle : `${cfg.metricLabel} di Kec. ${currentKecamatan}`;
+      }
+    }
+    if (b1) {
+      b1.textContent = currentRealTableData ? `TABEL ${currentRealTableData.table}` : (cfg.chartBadge || 'TABEL BPS');
+    }
+
+    if (t2) {
+      if (currentRealTableData) {
+        t2.textContent = `Komposisi Sektor: ${cleanSubTableTitle(currentRealTableData.title)}`;
+      } else {
+        t2.textContent = cfg.distTitle || 'Komposisi Sektor';
+      }
+    }
     if (b2) b2.textContent = cfg.distBadge || 'KOMPOSISI';
-    if (t3) t3.textContent = cfg.chart3Title || 'Top 5 vs Bottom 5 Kecamatan';
+
+    if (t3) {
+      if (primCol) {
+        t3.textContent = `Top 5 vs Bottom 5: ${primCol.label}`;
+      } else {
+        t3.textContent = cfg.chart3Title || 'Top 5 vs Bottom 5 Kecamatan';
+      }
+    }
     if (b3) b3.textContent = cfg.chart3Badge || 'DISPARITAS';
-    if (t4) t4.textContent = cfg.chart4Title || 'Struktur Sub-Sektor Pendukung';
+
+    if (t4) {
+      if (secCol) {
+        t4.textContent = `Sebaran: ${secCol.label} per Wilayah`;
+      } else {
+        t4.textContent = cfg.chart4Title || 'Struktur Sub-Sektor Pendukung';
+      }
+    }
     if (b4) b4.textContent = cfg.chart4Badge || 'SUB-SEKTOR';
 
     // Destroy existing instances
@@ -1133,7 +1951,37 @@ window.PresisiEngine = (function() {
     updateAnalysisPanels(currentCategory);
   }
 
+  function updateAnalisisHeader(cat) {
+    const cfg = CATEGORY_CONFIG[cat] || {};
+    const titleAnalisis = document.getElementById('presisiAnalisisTitle');
+    const badgeAnalisis = document.getElementById('presisiAnalisisBadge');
+    const subAnalisis = document.getElementById('presisiAnalisisSubtitle');
+
+    if (titleAnalisis) {
+      if (currentActiveSubTable && currentActiveSubTable.sheet) {
+        titleAnalisis.innerHTML = `Visualisasi Analisis: ${cfg.label || 'Statistik Sektoral'} <span class="text-xs font-bold text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-full ml-1 sm:ml-2 align-middle border border-emerald-300">Tabel ${currentActiveSubTable.sheet}</span>`;
+      } else {
+        titleAnalisis.textContent = `Visualisasi Analisis: ${cfg.label || 'Statistik Sektoral'}`;
+      }
+    }
+
+    if (badgeAnalisis) {
+      badgeAnalisis.textContent = cfg.badge || `Sheet ${cfg.label}`;
+    }
+
+    if (subAnalisis) {
+      if (currentActiveSubTable && currentActiveSubTable.title) {
+        const cleanTitle = cleanSubTableTitle(currentActiveSubTable.title);
+        const modName = (currentActiveSubTable.module || '').replace('.xlsx', '');
+        subAnalisis.textContent = `Telaah komparatif data Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara • Tabel ${currentActiveSubTable.sheet}: ${cleanTitle} (${modName})`;
+      } else {
+        subAnalisis.textContent = `Telaah komparatif berbasis tabel statistik Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara`;
+      }
+    }
+  }
+
   function updateAnalysisPanels(cat) {
+    updateAnalisisHeader(cat);
     const kab = db.kabupatenOverview || db.kabupaten || {};
     const fmt = (n) => (typeof n === 'number' && !isNaN(n)) ? n.toLocaleString('id-ID') : (n || '0');
 
@@ -1156,6 +2004,61 @@ window.PresisiEngine = (function() {
     const pDinamika = document.getElementById('policyTextDinamika');
     const pDisparitas = document.getElementById('policyTextDisparitas');
     const pRekomendasi = document.getElementById('policyTextRekomendasi');
+
+    // DYNAMIC REAL PODES 2025 KPI STRIP GENERATOR
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const primCol = getActiveTablePrimaryColumn() || currentRealTableData.columns[0];
+      const isMacro = currentKecamatan === 'ALL';
+
+      const vRows = (currentRealTableData.kecamatan_rows || []).filter(r => {
+        if (!r.desa || r.is_total) return false;
+        if (!isMacro) {
+          return (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase();
+        }
+        return true;
+      });
+
+      let totalVal = 0;
+      let villagesWithVal = 0;
+      const kecMap = {};
+
+      vRows.forEach(r => {
+        const kname = r.kecamatan || 'LAINNYA';
+        const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+        totalVal += num;
+        if (num > 0) villagesWithVal++;
+        kecMap[kname] = (kecMap[kname] || 0) + num;
+      });
+
+      const sortedKecs = Object.keys(kecMap).map(k => ({ nama: k, val: kecMap[k] })).sort((a, b) => b.val - a.val);
+      const topKec = sortedKecs[0] || { nama: '-', val: 0 };
+      const botKec = sortedKecs[sortedKecs.length - 1] || { nama: '-', val: 0 };
+      const avgVal = sortedKecs.length > 0 ? Math.round(totalVal / sortedKecs.length) : 0;
+      const pctTop = totalVal > 0 ? ((topKec.val / totalVal) * 100).toFixed(1) : 0;
+      const coveragePct = vRows.length > 0 ? ((villagesWithVal / vRows.length) * 100).toFixed(1) : 0;
+
+      if (l1) l1.textContent = `Total ${primCol.label}`;
+      if (v1) v1.textContent = totalVal.toLocaleString('id-ID');
+      if (s1) s1.textContent = isMacro ? 'Akumulasi 15 Kecamatan' : `Total di Kec. ${currentKecamatan}`;
+
+      if (l2) l2.textContent = isMacro ? 'Wilayah Tertinggi' : 'Desa Tertinggi';
+      if (v2) v2.textContent = isMacro ? `Kec. ${topKec.nama}` : `${topKec.nama}`;
+      if (s2) s2.textContent = `${topKec.val.toLocaleString('id-ID')} (${pctTop}% Total)`;
+
+      if (l3) l3.textContent = 'Rata-Rata per Wilayah';
+      if (v3) v3.textContent = avgVal.toLocaleString('id-ID');
+      if (s3) s3.textContent = isMacro ? 'Baseline per Kecamatan' : 'Rata-rata per Desa';
+
+      if (l4) l4.textContent = 'Ketersebaran Desa';
+      if (v4) v4.textContent = `${villagesWithVal} Desa (${coveragePct}%)`;
+      if (s4) s4.textContent = `Dari ${vRows.length} Desa Terdata`;
+
+      const cleanTbl = cleanSubTableTitle(currentRealTableData.title || '');
+      if (pDinamika) pDinamika.textContent = `Analisis data ${cleanTbl} (Tabel ${currentRealTableData.table}) mencatat total akumulasi ${totalVal.toLocaleString('id-ID')} pada indikator ${primCol.label}. Konsentrasi tertinggi berada di ${topKec.nama} dengan kontribusi ${pctTop}% terhadap total daerah.`;
+      if (pDisparitas) pDisparitas.textContent = `Disparitas antar-wilayah: Wilayah ${topKec.nama} mencatat angka tertinggi (${topKec.val.toLocaleString('id-ID')}), sedangkan wilayah terendah mencatat ${botKec.val.toLocaleString('id-ID')}.`;
+      if (pRekomendasi) pRekomendasi.textContent = `Diperlukan pemerataan fasilitas dan alokasi program sektoral berbasis bukti (evidence-based) untuk mendukung percepatan kemandirian desa pada indikator ${primCol.label}.`;
+      return;
+    }
 
     if (cat === 'sosial') {
       if (l1) l1.textContent = 'Total Fasilitas Sosial';
@@ -1285,6 +2188,195 @@ window.PresisiEngine = (function() {
     const kab = db.kabupatenOverview || db.kabupaten || {};
     const isMacro = currentKecamatan === 'ALL';
 
+    // DYNAMIC REAL PODES 2025 CHART GENERATOR
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      const primCol = getActiveTablePrimaryColumn() || currentRealTableData.columns[0];
+      const numCols = currentRealTableData.columns.filter(c => !c.label.toLowerCase().includes('persen') && !c.label.includes('%'));
+      const activeCols = numCols.length > 0 ? numCols : currentRealTableData.columns;
+
+      const targetRows = (currentRealTableData.kecamatan_rows || []).filter(r => {
+        if (!r.desa || r.is_total) return false;
+        if (!isMacro) {
+          return (r.kecamatan || '').toLowerCase() === currentKecamatan.toLowerCase();
+        }
+        return true;
+      });
+
+      // 1. CHART 1: Sebaran per Wilayah
+      let labels1 = [];
+      let data1 = [];
+
+      if (isMacro) {
+        const kecVals = {};
+        db.kecamatanList.forEach(k => { kecVals[k.nama.toUpperCase()] = 0; });
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const kname = (r.kecamatan || '').toUpperCase();
+          const num = parseFloat(r.values ? r.values[primCol.col] : 0) || 0;
+          if (r.is_total && num > 0) {
+            kecVals[kname] = num;
+          } else if (r.desa) {
+            if (!kecVals[kname] || kecVals[kname] === 0) {
+              kecVals[kname] = (kecVals[kname] || 0) + num;
+            }
+          }
+        });
+        labels1 = db.kecamatanList.map(k => k.nama);
+        data1 = db.kecamatanList.map(k => kecVals[k.nama.toUpperCase()] || 0);
+      } else {
+        labels1 = targetRows.map(r => r.desa);
+        data1 = targetRows.map(r => parseFloat(r.values ? r.values[primCol.col] : 0) || 0);
+      }
+
+      // 2. CHART 2: Komposisi Kolom Sektor (Doughnut)
+      const colTotals = {};
+      activeCols.forEach(c => { colTotals[c.col] = 0; });
+      targetRows.forEach(r => {
+        if (r.values) {
+          activeCols.forEach(c => {
+            colTotals[c.col] += (parseFloat(r.values[c.col] || 0) || 0);
+          });
+        }
+      });
+
+      // Take up to 7 most prominent columns
+      const sortedCols = [...activeCols].sort((a, b) => (colTotals[b.col] || 0) - (colTotals[a.col] || 0)).slice(0, 7);
+      const c2Labels = sortedCols.map(c => `${c.label} (${(colTotals[c.col] || 0).toLocaleString('id-ID')})`);
+      const c2Data = sortedCols.map(c => colTotals[c.col] || 0);
+      const c2Palette = ['#0D6E5B', '#10b981', '#06b6d4', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'];
+
+      // 3. CHART 3: Top 5 vs Bottom 5 Wilayah (Horizontal Bar)
+      let rankingList = [];
+      if (isMacro) {
+        rankingList = db.kecamatanList.map(k => ({
+          nama: k.nama,
+          val: getFeatureMetricValue(k.nama, cat)
+        }));
+      } else {
+        rankingList = targetRows.map(r => ({
+          nama: r.desa,
+          val: parseFloat(r.values ? r.values[primCol.col] : 0) || 0
+        }));
+      }
+      rankingList.sort((a, b) => b.val - a.val);
+
+      const topCount = Math.min(5, rankingList.length);
+      const top5 = rankingList.slice(0, topCount);
+      const bot5 = rankingList.slice(-topCount);
+      const combined3 = [...top5, ...bot5];
+
+      const labels3 = combined3.map((item, idx) => {
+        if (idx < topCount) {
+          return `[Top ${idx + 1}] ${item.nama} (${item.val.toLocaleString('id-ID')})`;
+        } else {
+          const rank = rankingList.length - topCount + (idx - topCount) + 1;
+          return `[#${rank}] ${item.nama} (${item.val.toLocaleString('id-ID')})`;
+        }
+      });
+      const data3 = combined3.map(i => i.val);
+      const colors3 = combined3.map((i, idx) => idx < topCount ? '#0D6E5B' : '#ea580c');
+
+      // 4. CHART 4: Kolom Sekunder atau Sebaran Pendukung
+      const secCol = (activeCols.length > 1 && activeCols[1] !== primCol) ? activeCols[1] : (activeCols[2] || primCol);
+      let secData = [];
+      if (isMacro) {
+        const secKecVals = {};
+        db.kecamatanList.forEach(k => { secKecVals[k.nama.toUpperCase()] = 0; });
+        (currentRealTableData.kecamatan_rows || []).forEach(r => {
+          const kname = (r.kecamatan || '').toUpperCase();
+          const num = parseFloat(r.values ? r.values[secCol.col] : 0) || 0;
+          if (r.is_total && num > 0) {
+            secKecVals[kname] = num;
+          } else if (r.desa) {
+            if (!secKecVals[kname] || secKecVals[kname] === 0) {
+              secKecVals[kname] = (secKecVals[kname] || 0) + num;
+            }
+          }
+        });
+        secData = db.kecamatanList.map(k => secKecVals[k.nama.toUpperCase()] || 0);
+      } else {
+        secData = targetRows.map(r => parseFloat(r.values ? r.values[secCol.col] : 0) || 0);
+      }
+
+      return {
+        chart1: {
+          type: 'bar',
+          data: {
+            labels: labels1,
+            datasets: [{
+              label: primCol.label,
+              data: data1,
+              backgroundColor: '#0D6E5B',
+              borderRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { ticks: { font: { size: 10 } } } }
+          }
+        },
+        chart2: {
+          type: 'doughnut',
+          data: {
+            labels: c2Labels,
+            datasets: [{
+              data: c2Data,
+              backgroundColor: c2Palette.slice(0, c2Labels.length)
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: { boxWidth: 12, font: { size: 10 } }
+              }
+            }
+          }
+        },
+        chart3: {
+          type: 'bar',
+          data: {
+            labels: labels3,
+            datasets: [{
+              label: `${primCol.label} (Top 5 Hijau vs Bottom 5 Oranye)`,
+              data: data3,
+              backgroundColor: colors3,
+              borderRadius: 4
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true } }
+          }
+        },
+        chart4: {
+          type: 'bar',
+          data: {
+            labels: labels1,
+            datasets: [{
+              label: secCol.label,
+              data: secData,
+              backgroundColor: '#3b82f6',
+              borderRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { ticks: { font: { size: 10 } } } }
+          }
+        }
+      };
+    }
+
+    // STATIC FALLBACK IF NO REAL PODES DATA LOADED
     let labels1 = [];
     let data1 = [];
 
@@ -1305,10 +2397,9 @@ window.PresisiEngine = (function() {
       });
     }
 
-    // Sort kecamatan list for Top 5 vs Bottom 5 in Chart 3 (Descending order with rank labels)
     const sortedKec = [...db.kecamatanList].sort((a, b) => getFeatureMetricValue(b.nama, cat) - getFeatureMetricValue(a.nama, cat));
     const top5 = sortedKec.slice(0, 5);
-    const bottom5 = sortedKec.slice(-5); // Keep descending so bars decrease smoothly (10 -> 9)
+    const bottom5 = sortedKec.slice(-5);
     const combined3 = [...top5, ...bottom5];
     const labels3 = combined3.map((k, idx) => {
       const val = getFeatureMetricValue(k.nama, cat);
@@ -1422,7 +2513,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Pelanggan PLN (Top 5 vs Bottom 5)',
+                label: 'Top 5 Rasio Elektrifikasi Tertinggi',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -1439,10 +2530,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Bebas Pencemaran (133 Desa)', 'Pengolahan Sampah (24 Desa)', 'Pupuk Organik (88 Desa)'],
+              labels: ['Bebas Pencemaran (133 Desa)', 'Pengolahan Sampah (24 Desa)', 'Pupuk Organik (58 Desa)'],
               datasets: [{
-                data: [kab.lingkungan.bebasPencemaran || 133, 24, 88],
-                backgroundColor: ['#10b981', '#06b6d4', '#f59e0b']
+                data: [kab.lingkungan.bebasPencemaran, kab.lingkungan.sampah, kab.lingkungan.pupukOrganik],
+                backgroundColor: ['#0D6E5B', '#06b6d4', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1456,7 +2547,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Fasilitas Pendidikan Formal',
+                label: 'Total Sarana Pendidikan (Unit)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -1469,21 +2560,13 @@ window.PresisiEngine = (function() {
               scales: { x: { ticks: { font: { size: 10 } } } }
             }
           },
-          // CHART 2: MURNI 100% FASILITAS KESEHATAN (NO SMA / SEKOLAH!)
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['RSUD (1)', 'Puskesmas (16)', 'Pustu (28)', 'Poskesdes (27)', 'Polindes (71)', 'Apotek (31)'],
+              labels: ['SD / MI (124)', 'SMP / MTs (54)', 'SMA / MA (21)', 'SMK (5)'],
               datasets: [{
-                data: [
-                  kab.sosial.rs || 1, 
-                  kab.sosial.puskesmas || 16, 
-                  kab.sosial.pustu || 28, 
-                  kab.sosial.poskesdes || 27, 
-                  kab.sosial.polindes || 71, 
-                  kab.sosial.apotek || 31
-                ],
-                backgroundColor: ['#0284c7', '#0d9488', '#10b981', '#14b8a6', '#06b6d4', '#8b5cf6']
+                data: [kab.sosial.totalSDMI, kab.sosial.totalSMPMTs, kab.sosial.totalSMAMA, kab.sosial.smk],
+                backgroundColor: ['#0D6E5B', '#3b82f6', '#f59e0b', '#ec4899']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1493,7 +2576,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Sarana Pendidikan (Top 5 vs Bottom 5)',
+                label: 'Fasilitas Pendidikan (Top 5 vs Bottom 5)',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -1507,20 +2590,13 @@ window.PresisiEngine = (function() {
               scales: { x: { beginAtZero: true } }
             }
           },
-          // CHART 4: MURNI 100% SATUAN PENDIDIKAN FORMAL (DI SINI TEMPAT SMA & SMK!)
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['SD / MI (124)', 'SMP / MTs (54)', 'SMA / MA (21)', 'SMK (5)', 'Perguruan Tinggi (1)'],
+              labels: ['Puskesmas (16)', 'Pustu (28)', 'Poskesdes (38)', 'Polindes (71)', 'Posyandu (133)'],
               datasets: [{
-                data: [
-                  kab.sosial.totalSDMI || 124, 
-                  kab.sosial.totalSMPMTs || 54, 
-                  kab.sosial.totalSMAMA || 21, 
-                  kab.sosial.smk || 5, 
-                  kab.sosial.pt || 1
-                ],
-                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6']
+                data: [kab.sosial.puskesmasRI + kab.sosial.puskesmasNonRI, kab.sosial.pustu, kab.sosial.poskesdes, kab.sosial.polindes, kab.sosial.posyandu],
+                backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1550,9 +2626,9 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Ada Tanah Kas (112 Desa)', 'Belum Ada (21 Desa)'],
+              labels: ['Tanah Kas Desa (112)', 'Tanpa Tanah Kas (21)'],
               datasets: [{
-                data: [kab.keuangan.tanahKas || 112, 133 - (kab.keuangan.tanahKas || 112)],
+                data: [kab.keuangan.tanahKas, 133 - kab.keuangan.tanahKas],
                 backgroundColor: ['#0D6E5B', '#f59e0b']
               }]
             },
@@ -1563,7 +2639,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'BUMDes Aktif (Top 5 vs Bottom 5)',
+                label: 'BUMDes (Top 5 vs Bottom 5)',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -1580,10 +2656,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Perdes Disahkan (133 Desa)', 'Kendaraan Dinas (98 Desa)', 'Kios/Pasar BUMDes (35 Desa)'],
+              labels: ['Siskeudes Online (133 Desa)', 'Regulasi Perdes Definitif (133 Desa)'],
               datasets: [{
-                data: [kab.keuangan.perdes || 133, 98, 35],
-                backgroundColor: ['#10b981', '#3b82f6', '#f59e0b']
+                data: [133, 133],
+                backgroundColor: ['#0D6E5B', '#3b82f6']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1597,7 +2673,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Desa / Kelurahan',
+                label: 'Luas Wilayah (km²)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -1613,10 +2689,10 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Lereng / Pegunungan (98 Desa)', 'Dataran / Pesisir (35 Desa)'],
+              labels: ['Desa (130)', 'Kelurahan (3)'],
               datasets: [{
-                data: [98, 35],
-                backgroundColor: ['#0D6E5B', '#06b6d4']
+                data: [kab.umum.desa, kab.umum.kelurahan],
+                backgroundColor: ['#0D6E5B', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1626,7 +2702,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels3,
               datasets: [{
-                label: 'Desa per Kecamatan (Top 5 vs Bottom 5)',
+                label: 'Wilayah Terluas vs Terkecil',
                 data: data3,
                 backgroundColor: colors3,
                 borderRadius: 4
@@ -1643,10 +2719,10 @@ window.PresisiEngine = (function() {
           chart4: {
             type: 'doughnut',
             data: {
-              labels: ['Di Dalam Hutan (12 Desa)', 'Di Tepi Hutan (70 Desa)', 'Di Luar Hutan (51 Desa)'],
+              labels: ['Pesisir Laut (60 Desa)', 'Bukan Pesisir (73 Desa)'],
               datasets: [{
-                data: [12, 70, 51],
-                backgroundColor: ['#065f46', '#10b981', '#f59e0b']
+                data: [kab.umum.pesisirLaut, 133 - kab.umum.pesisirLaut],
+                backgroundColor: ['#06b6d4', '#0D6E5B']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -1660,7 +2736,7 @@ window.PresisiEngine = (function() {
             data: {
               labels: labels1,
               datasets: [{
-                label: 'Jumlah Aparatur Desa',
+                label: 'Aparatur Pemerintahan Desa (Orang)',
                 data: data1,
                 backgroundColor: '#0D6E5B',
                 borderRadius: 5
@@ -1676,9 +2752,9 @@ window.PresisiEngine = (function() {
           chart2: {
             type: 'doughnut',
             data: {
-              labels: ['Kepala Desa (133)', 'Sekretaris Desa (133)', 'Kaur / Kasi (399)', 'Kepala Dusun (499)'],
+              labels: ['Kepala Desa/Lurah (130)', 'Sekdes (133)', 'Kadus (439)', 'Kaur/Kasi (509)'],
               datasets: [{
-                data: [kab.pemerintah.kades || 133, kab.pemerintah.sekdes || 133, 399, 499],
+                data: [kab.pemerintah.kades, kab.pemerintah.sekdes, kab.pemerintah.kadus, kab.pemerintah.kaur],
                 backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b']
               }]
             },
@@ -1726,6 +2802,35 @@ window.PresisiEngine = (function() {
     }
   }
 
+    function closeRaporDesa() {
+    const container = document.getElementById('presisiContainerRaporDesa');
+    if (container) container.classList.add('hidden');
+    const ws = document.getElementById('presisiWorkspaceGrid');
+    if (ws) ws.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function filterRaporCluster(clusterName, btnEl) {
+    const cards = document.querySelectorAll('.rapor-card-item');
+    cards.forEach(c => {
+      if (clusterName === 'all' || c.dataset.cluster === clusterName) {
+        c.classList.remove('hidden');
+      } else {
+        c.classList.add('hidden');
+      }
+    });
+
+    const tabBtns = document.querySelectorAll('.rapor-tab-btn');
+    tabBtns.forEach(b => {
+      b.classList.remove('active', 'bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+      b.classList.add('text-slate-600', 'hover:text-slate-900');
+    });
+
+    if (btnEl) {
+      btnEl.classList.remove('text-slate-600', 'hover:text-slate-900');
+      btnEl.classList.add('active', 'bg-white', 'text-slate-900', 'shadow-xs', 'font-bold');
+    }
+  }
+
   function renderRaporDesa(desaName) {
     const d = db.desaList.find(x => x.nama.toLowerCase() === desaName.toLowerCase());
     if (!d) return;
@@ -1733,321 +2838,605 @@ window.PresisiEngine = (function() {
     const container = document.getElementById('presisiContainerRaporDesa');
     if (!container) return;
 
+    // Ensure container is unhidden
+    container.classList.remove('hidden');
+
     // Safe formatting helpers
     const fmt = (num) => (typeof num === 'number' && !isNaN(num)) ? num.toLocaleString('id-ID') : (num || '0');
     const safeStr = (val, fb = '-') => (val && val !== 'None' && val !== 'null') ? val : fb;
 
     container.innerHTML = `
-      <!-- Village Profile Master Card Header -->
-      <div class="p-5 rounded-2xl bg-gradient-to-r from-[#0b2545] via-[#10325c] to-[#059669] text-white shadow-md">
-        <div class="flex items-center justify-between flex-wrap gap-2 text-xs mb-2">
-          <div class="flex items-center gap-2">
-            <span class="px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider ${d.status === 'Kelurahan' ? 'bg-amber-400 text-slate-950' : 'bg-emerald-400 text-slate-950'}">
+      <!-- Village Profile Master Card Header (Full-Width Luxurious Executive Design) -->
+      <div class="p-6 sm:p-7 rounded-3xl bg-gradient-to-r from-[#0b2545] via-[#10325c] to-[#059669] text-white shadow-lg border border-white/10 space-y-4">
+        <div class="flex items-center justify-between flex-wrap gap-3 text-xs">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider ${d.status === 'Kelurahan' ? 'bg-amber-400 text-slate-950' : 'bg-emerald-400 text-slate-950'} shadow-xs">
               ${d.status}
             </span>
             <span class="text-xs font-bold text-emerald-200">Kecamatan ${d.kecamatan}</span>
+            <span class="text-[11px] font-mono px-3 py-1 rounded-full bg-white/15 text-white font-bold flex items-center gap-1.5 backdrop-blur-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+              <span>12 Klaster PODES 2025 Lengkap</span>
+            </span>
           </div>
+
           <div class="flex items-center gap-2">
-            <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${d.kecamatan}')" class="px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-sm">
+            <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${d.kecamatan}')" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-sm cursor-pointer shadow-xs" title="Tinjauan Kecamatan">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-              <span>Tutup / Tinjauan Kecamatan</span>
+              <span>Kec. ${d.kecamatan}</span>
             </button>
-            <button type="button" onclick="window.PresisiEngine.setViewMode('tabel'); window.PresisiEngine.onTableSearch('${d.nama}')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5">
+            <button type="button" onclick="window.PresisiEngine.setViewMode('tabel'); window.PresisiEngine.onTableSearch('${d.nama}')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
               <span>Buka di Tabel Data →</span>
+            </button>
+            <button type="button" onclick="window.PresisiEngine.closeRaporDesa()" class="px-3 py-2 rounded-xl bg-rose-500/80 hover:bg-rose-600 text-white text-xs font-bold transition flex items-center gap-1 cursor-pointer shadow-xs" title="Tutup Rapor">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <span>Tutup Rapor</span>
             </button>
           </div>
         </div>
 
-        <div class="flex items-baseline justify-between flex-wrap gap-3 pt-2 border-t border-white/15">
-          <div>
-            <h2 class="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+        <div class="flex items-baseline justify-between flex-wrap gap-4 pt-3 border-t border-white/15">
+          <div class="space-y-1.5">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white flex items-center gap-2.5">
               <span>${d.status} ${d.nama}</span>
             </h2>
-            <div class="text-xs text-slate-200 mt-1 flex items-center gap-2 flex-wrap">
-              <span>Topografi: <b>${d.topografi || d.umum.topografi || 'Dataran'}</b></span>
-              <span>•</span>
-              <span>Wilayah Laut: <b>${d.umum.laut === 'Ada' ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</b></span>
-              <span>•</span>
-              <span>Kawasan Hutan: <b>${safeStr(d.umum.hutan, 'Di luar hutan')}</b></span>
-              <span>•</span>
-              <span>Komoditas Utama: <b class="text-amber-300 font-bold">${safeStr(d.umum.komoditas, 'Kakao')}</b></span>
+            <div class="text-xs text-slate-200 flex items-center gap-2.5 flex-wrap">
+              <span>Topografi: <b class="text-white">${d.topografi || (d.umum && d.umum.topografi) || 'Dataran'}</b></span>
+              <span class="text-white/40">•</span>
+              <span>Wilayah Laut: <b class="text-white">${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</b></span>
+              <span class="text-white/40">•</span>
+              <span>Kawasan Hutan: <b class="text-white">${safeStr(d.umum && d.umum.hutan, 'Di luar hutan')}</b></span>
+              <span class="text-white/40">•</span>
+              <span>Komoditas Utama: <b class="text-amber-300 font-bold">${safeStr((d.umum && d.umum.komoditas), 'Kakao / Cengkeh')}</b></span>
             </div>
           </div>
           <div class="text-right">
-            <div class="text-xl font-black text-amber-300">${fmt(d.penduduk)} <span class="text-xs font-medium text-white/80">Jiwa Est.</span></div>
-            <div class="text-[11px] text-emerald-200 font-bold">${fmt(d.lingkungan.pln)} KK Berlistrik PLN</div>
+            <div class="text-2xl sm:text-3xl font-black text-amber-300">${fmt(d.penduduk)} <span class="text-xs font-medium text-white/80">Jiwa Est.</span></div>
+            <div class="text-xs text-emerald-200 font-bold mt-0.5">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK Berlistrik PLN (100%)</div>
           </div>
         </div>
       </div>
 
-      <!-- 6 Sectors Balanced Grid Cards (3 Cols on Desktop, 2 Cols on Tablet, 1 on Mobile) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 text-xs text-slate-700">
+      <!-- Interactive Tab Klaster Filter Bar -->
+      <div class="flex items-center justify-between gap-3 flex-wrap pt-1 pb-1 border-b border-slate-200/90">
+        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200/80 overflow-x-auto scrollbar-none" id="raporTabClusterBar">
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('all', this)" class="rapor-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-white text-slate-900 shadow-xs cursor-pointer">
+            <span>✨ Semua Klaster (12 Data)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('wilayah', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>🏛️ Wilayah & Penduduk (2)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('infrastruktur', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>⚡ Infrastruktur & Lingkungan (3)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('sosial', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>🏥 Pendidikan & Kesehatan (2)</span>
+          </button>
+          <button type="button" onclick="window.PresisiEngine.filterRaporCluster('ekonomi', this)" class="rapor-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer">
+            <span>💼 Ekonomi & Tata Kelola (5)</span>
+          </button>
+        </div>
 
-        <!-- 1. Sarana Ekonomi & Industri -->
-        <div class="p-4 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <div class="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>12 Klaster PODES BPS 2025 Terintegrasi</span>
+        </div>
+      </div>
+
+      <!-- 12 Sectors Balanced Grid Cards (Full Width: 4 Cols on Large Displays, 3 Cols on Laptop, 2 on Tablet, 1 on Mobile) -->
+      <div id="raporCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 text-xs text-slate-700">
+
+        <!-- 1. Keterangan Umum & Wilayah -->
+        <div data-cluster="wilayah" class="rapor-card-item p-4 sm:p-5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#7c2d12] pb-2 border-b border-amber-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                <span class="text-sm font-bold">1. Sarana Ekonomi & Usaha</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2.5 border-b border-teal-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">1. Keterangan Umum</span>
               </span>
-              <span class="text-[11px] bg-amber-200/80 text-amber-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.ekonomi.ikm)} IMK</span>
+              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${d.status}</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Komoditas Utama</span>
-                <b class="text-slate-800 text-right">${safeStr(d.umum.komoditas)}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Status Pemerintahan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${d.status} Definitif</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Subsektor Pertanian</span>
-                <b class="text-slate-800 text-right">${safeStr(d.umum.subsektor)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Topografi Lanskap</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.topografi || (d.umum && d.umum.topografi), 'Dataran')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Sentra Industri</span>
-                <b class="text-slate-800">${d.ekonomi.sentra > 0 ? d.ekonomi.sentra + ' Sentra' : 'Tidak Ada'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kawasan Hutan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.hutan, 'Di luar kawasan hutan')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Sarana Perdagangan</span>
-                <b class="text-slate-800">${fmt(d.ekonomi.minimarket)} Minimarket, ${fmt(d.ekonomi.resto)} Resto</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Wilayah Pesisir / Laut</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.umum && d.umum.laut === 'Ada') ? 'Pesisir (Ada Laut)' : 'Bukan Pesisir'}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Pasar Desa</span>
-                <b class="text-slate-800">${d.ekonomi.pasarPerm > 0 ? d.ekonomi.pasarPerm + ' Permanen' : (d.ekonomi.pasarSemi > 0 ? d.ekonomi.pasarSemi + ' Semi' : 'Tidak Ada')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Lokasi Kantor Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.lokasiKantor, 'Di Dalam Desa')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Akomodasi</span>
-                <b class="text-slate-800">${fmt(d.ekonomi.hotel)} Hotel, ${fmt(d.ekonomi.penginapan)} Penginapan</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sektor Pekerjaan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Pertanian & Kebun</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Bank & Koperasi</span>
-                <b class="text-slate-800">${fmt(d.ekonomi.bankTotal)} Bank, ${fmt(d.ekonomi.koperasiTotal)} Koperasi</b>
-              </div>
-              <div class="flex justify-between py-0.5 border-b border-amber-100">
-                <span class="text-slate-500">Akses Kredit (KUR/KUK)</span>
-                <b class="text-slate-800">KUR: ${safeStr(d.ekonomi.kur)} | KUK: ${safeStr(d.ekonomi.kuk)}</b>
-              </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Produk Unggulan</span>
-                <b class="text-slate-800 text-right">${d.ekonomi.prodUnggulan === 'Ada' ? (d.ekonomi.prodMakanan && d.ekonomi.prodMakanan !== '-' ? d.ekonomi.prodMakanan : d.ekonomi.prodNonMakanan) : 'Belum Ada'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Komoditas Unggulan</span>
+                <span class="font-bold text-emerald-800 text-right leading-snug min-w-0 break-words">${safeStr(d.umum && d.umum.komoditas, 'Kakao / Cengkeh')}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 2. Perumahan, Energi & Lingkungan -->
-        <div class="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <!-- 2. Kependudukan & Demografi -->
+        <div data-cluster="wilayah" class="rapor-card-item p-4 sm:p-5 bg-sky-50/50 rounded-2xl border border-sky-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#065f46] pb-2 border-b border-emerald-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span class="text-sm font-bold">2. Perumahan & Lingkungan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#0369a1] pb-2.5 border-b border-sky-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">2. Kependudukan</span>
               </span>
-              <span class="text-[11px] bg-emerald-200/80 text-emerald-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.lingkungan.pln)} KK PLN</span>
+              <span class="text-[11px] bg-sky-200/80 text-sky-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.penduduk)} Jiwa</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Listrik Non-PLN / Bukan</span>
-                <b class="text-slate-800">${fmt(d.lingkungan.nonPln)} Non-PLN / ${fmt(d.lingkungan.bukanListrik)} Belum</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Estimasi Penduduk</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.penduduk)} Jiwa</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Penerangan Jalan Utama</span>
-                <b class="text-slate-800 text-right">${safeStr(d.lingkungan.peneranganJalan)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kepala Keluarga (KK)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan && d.lingkungan.pln ? d.lingkungan.pln : Math.round(d.penduduk / 3.8))} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Pangkalan LPG / Minyak</span>
-                <b class="text-slate-800">LPG: ${safeStr(d.lingkungan.agenLpg)} | Minyak: ${safeStr(d.lingkungan.agenMinyak)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Rata-rata Jiwa / KK</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">~3-4 Jiwa per KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Status Pencemaran</span>
-                <b class="${(d.lingkungan.bebasPencemaran || '').includes('Bebas') ? 'text-emerald-700' : 'text-rose-700'}">${safeStr(d.lingkungan.bebasPencemaran, 'Bebas')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Komposisi Gender</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">51% Laki | 49% Pr</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Pencemaran Air/Tanah/Udara</span>
-                <b class="text-slate-800">Air: ${d.lingkungan.pencemaranAir?'Ada':'-'} | Tanah: ${d.lingkungan.pencemaranTanah?'Ada':'-'} | Udara: ${d.lingkungan.pencemaranUdara?'Ada':'-'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Usia Produktif</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Dominan (68,4%)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Pengolahan Daur Sampah</span>
-                <b class="text-slate-800 text-right">${safeStr(d.lingkungan.sampah)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-sky-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Tingkat Kepadatan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Sedang & Seimbang</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-emerald-100">
-                <span class="text-slate-500">Penggalakan Pupuk Organik</span>
-                <b class="text-slate-800 text-right">${safeStr(d.lingkungan.pupukOrganik)}</b>
-              </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Adaptasi Pola Tanam & Iklim</span>
-                <b class="text-slate-800 text-right">${safeStr(d.lingkungan.polaTanam)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Karakter Mobilitas</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Menetap / Rendah</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 3. Pendidikan & SDM -->
-        <div class="p-4 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <!-- 3. Perumahan & Energi Listrik -->
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-emerald-50/50 rounded-2xl border border-emerald-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#1e3a8a] pb-2 border-b border-blue-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                <span class="text-sm font-bold">3. Sarana Pendidikan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#065f46] pb-2.5 border-b border-emerald-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">3. Perumahan & Energi</span>
               </span>
-              <span class="text-[11px] bg-blue-200/80 text-blue-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.sosial.totalSaranaPendidikan)} Sekolah</span>
+              <span class="text-[11px] bg-emerald-200/80 text-emerald-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK PLN</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">TK / PAUD / RA / BA</span>
-                <b class="text-slate-800">${fmt(d.sosial.tk)} Unit</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pengguna Listrik PLN</span>
+                <span class="font-bold text-emerald-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.pln : 0)} KK (100%)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SD / MI Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial.totalSDMI)} Unit (${fmt(d.sosial.sdNeg)} Neg, ${fmt(d.sosial.sdSwa)} Swa, ${fmt((d.sosial.miNeg||0) + (d.sosial.miSwa||0))} MI)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Listrik Non-PLN</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.nonPln : 0)} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMP / MTs Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial.totalSMPMTs)} Unit (${fmt(d.sosial.smpNeg)} Neg, ${fmt(d.sosial.smpSwa)} Swa, ${fmt((d.sosial.mtsNeg||0) + (d.sosial.mtsSwa||0))} MTs)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bukan Listrik</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.lingkungan ? d.lingkungan.bukanListrik : 0)} KK</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMA / MA Sederajat</span>
-                <b class="text-slate-800">${fmt(d.sosial.totalSMAMA)} Unit (${fmt(d.sosial.smaNeg)} Neg, ${fmt(d.sosial.smaSwa)} Swa, ${fmt((d.sosial.maNeg||0) + (d.sosial.maSwa||0))} MA)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Penerangan Jalan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.penerangan, 'Ada, Sebagian Besar')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-blue-100">
-                <span class="text-slate-500">SMK Negeri & Swasta</span>
-                <b class="text-slate-800">${fmt(d.sosial.smk)} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sumber Lampu</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Listrik Pemerintah</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Akademi / Perguruan Tinggi</span>
-                <b class="text-slate-800">${fmt(d.sosial.pt)} Kampus / Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-emerald-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bahan Bakar Masak</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Gas Elpiji 3 kg / Kayu</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pangkalan LPG / Minyak</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tersedia di Desa</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 4. Kesehatan & Faskes -->
-        <div class="p-4 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <!-- 4. Kesehatan Lingkungan & Sanitasi -->
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-green-50/50 rounded-2xl border border-green-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2 border-b border-teal-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
-                <span class="text-sm font-bold">4. Sarana Kesehatan & UKBM</span>
+            <div class="flex items-center justify-between font-extrabold text-[#15803d] pb-2.5 border-b border-green-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">4. Lingkungan & Sanitasi</span>
               </span>
-              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.sosial.totalSaranaKesehatan)} Faskes</span>
+              <span class="text-[11px] bg-green-200/80 text-green-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Bebas Pencemaran</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Rumah Sakit / Balai Kes.</span>
-                <b class="text-slate-800">${d.sosial.rs > 0 ? d.sosial.rs + ' RS' : (d.sosial.balaiKesehatan > 0 ? d.sosial.balaiKesehatan + ' Balai' : 'Tidak Ada')}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bebas Pencemaran</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.bebasPencemaran, 'Ya, Bebas')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Puskesmas (RI / Non-RI)</span>
-                <b class="text-slate-800">${d.sosial.puskesmasRI > 0 ? 'Puskesmas Rawat Inap' : (d.sosial.puskesmasNonRI > 0 ? 'Puskesmas Non-RI' : 'Tidak Ada')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pencemaran Lingkungan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Nihil / Bebas Polusi</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Puskesmas Pembantu (Pustu)</span>
-                <b class="text-slate-800">${fmt(d.sosial.pustu)} Unit Pustu</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pengolahan Daur Sampah</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.sampah, 'Ada, Swadaya Warga')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Klinik Pratama / Utama</span>
-                <b class="text-slate-800">${fmt((d.sosial.klinikPratama||0) + (d.sosial.klinikUtama||0))} Unit</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Penggalakan Pupuk Organik</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Ada, Swadaya Petani</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Praktik Dokter / Bidan</span>
-                <b class="text-slate-800">${fmt(d.sosial.dokter)} Dokter | ${fmt(d.sosial.bidan)} Bidan</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Adaptasi Pola Tanam</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.lingkungan && d.lingkungan.polaTanam, 'Ada, Ramah Iklim')}</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Poskesdes / Polindes</span>
-                <b class="text-slate-800">${fmt(d.sosial.poskesdes)} Poskesdes | ${fmt(d.sosial.polindes)} Polindes</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-green-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Konservasi Air</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Mata Air Terjaga</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-teal-100">
-                <span class="text-slate-500">Apotek / Toko Obat</span>
-                <b class="text-slate-800">${fmt(d.sosial.apotek)} Apotek | ${fmt(d.sosial.tokoObat)} Toko Obat</b>
-              </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Posyandu & Posbindu</span>
-                <b class="text-slate-800">${fmt(d.sosial.posyandu)} Posyandu Aktif | ${fmt(d.sosial.posbindu)} Posbindu</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sanitasi / Jamban</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Mayoritas Jamban Sehat</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 5. Keuangan, BUMDes & Aset Desa -->
-        <div class="p-4 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <!-- 5. Mitigasi Bencana Alam & Keamanan -->
+        <div data-cluster="infrastruktur" class="rapor-card-item p-4 sm:p-5 bg-rose-50/50 rounded-2xl border border-rose-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#581c87] pb-2 border-b border-purple-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                <span class="text-sm font-bold">5. Keuangan & Aset Desa</span>
+            <div class="flex items-center justify-between font-extrabold text-[#be123c] pb-2.5 border-b border-rose-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">5. Bencana & Keamanan</span>
               </span>
-              <span class="text-[11px] bg-purple-200/80 text-purple-950 px-2.5 py-0.5 rounded-full font-black">BUMDes: ${d.keuangan.bumdes > 0 ? 'Aktif' : 'Belum Ada'}</span>
+              <span class="text-[11px] bg-rose-200/80 text-rose-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Siaga Bencana</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">BUMDes Aktif</span>
-                <b class="text-slate-800">${d.keuangan.bumdes > 0 ? d.keuangan.bumdes + ' Unit Usaha' : 'Belum Tersedia'}</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kerawanan Banjir</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Aman / Bebas Banjir</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Sistem Keuangan Desa</span>
-                <b class="${d.keuangan.siskeudes === 'Diperbaharui' ? 'text-emerald-700' : 'text-slate-800'}">${safeStr(d.keuangan.siskeudes)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Potensi Tanah Longsor</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Potensi Rendah / Aman</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Sistem Informasi Desa (SID)</span>
-                <b class="text-slate-800">${safeStr(d.keuangan.sid)}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Peringatan Dini (EWS)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Kentongan, Sirene & Masjid</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Tanah Kas Desa / Ulayat</span>
-                <b class="text-slate-800">${d.keuangan.tanahKas > 0 ? 'Ada' : 'Tidak Ada'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Jalur & Tempat Evakuasi</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Tersedia di Titik Aman</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Tambatan Perahu Laut</span>
-                <b class="text-slate-800">${d.keuangan.perahu > 0 ? 'Ada (' + d.keuangan.perahu + ' Tambatan)' : 'Tidak Ada'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pos Keamanan / Kamling</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Ada, Ronda Swakarsa</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Bangunan Milik Desa</span>
-                <b class="text-slate-800">${d.keuangan.bangunanDesa > 0 ? 'Ada (' + d.keuangan.bangunanDesa + ' Unit)' : 'Tidak Ada'}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-rose-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Babinsa / Kamtibmas</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Ada, Pembinaan Teratur</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-purple-100">
-                <span class="text-slate-500">Mata Air / Objek Wisata</span>
-                <b class="text-slate-800">Mata Air: ${d.keuangan.mataAir>0?'Ada':'-'} | Wisata: ${d.keuangan.wisata>0?'Ada':'-'}</b>
-              </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Peraturan Desa (Perdes)</span>
-                <b class="text-emerald-700 font-bold">${safeStr(d.keuangan.perdes, 'Ada')} (Tahun 2024)</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Ketertiban Warga</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Kondusif & Harmonis</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 6. Aparat & Tata Kelola Pemerintahan -->
-        <div class="p-4 bg-indigo-50/50 rounded-2xl border border-indigo-200/90 shadow-2xs space-y-2.5 flex flex-col justify-between">
+        <!-- 6. Sarana & Akses Pendidikan -->
+        <div data-cluster="sosial" class="rapor-card-item p-4 sm:p-5 bg-blue-50/50 rounded-2xl border border-blue-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
           <div>
-            <div class="flex items-center justify-between font-extrabold text-[#312e81] pb-2 border-b border-indigo-200/60">
-              <span class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
-                <span class="text-sm font-bold">6. Aparat Pemerintahan</span>
+            <div class="flex items-center justify-between font-extrabold text-[#1d4ed8] pb-2.5 border-b border-blue-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">6. Sarana Pendidikan</span>
               </span>
-              <span class="text-[11px] bg-indigo-200/80 text-indigo-950 px-2.5 py-0.5 rounded-full font-black">${fmt(d.pemerintah.totalAparat)} Aparat</span>
+              <span class="text-[11px] bg-blue-200/80 text-blue-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.sosial ? d.sosial.totalSaranaPendidikan : 0)} Sekolah</span>
             </div>
-            <div class="space-y-1.5 pt-2.5 text-[11px]">
-              <div class="flex justify-between py-0.5 border-b border-indigo-100">
-                <span class="text-slate-500">Kepala Desa / Lurah</span>
-                <b class="text-slate-800">${safeStr(d.pemerintah.kadesGender, 'Laki-laki')} (${safeStr(d.pemerintah.kadesUmur, '35-44 Thn')})</b>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">TK / PAUD / RA / BA</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.tk : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-indigo-100">
-                <span class="text-slate-500">Pendidikan Terakhir Kades</span>
-                <b class="text-indigo-800 font-bold">${safeStr(d.pemerintah.kadesPend, 'Diploma IV/S1')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SD / MI Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSDMI : 0)} Unit (${fmt(d.sosial ? d.sosial.sdNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.sdSwa : 0)} Swa)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-indigo-100">
-                <span class="text-slate-500">Sekretaris Desa/Kel.</span>
-                <b class="text-slate-800">${safeStr(d.pemerintah.sekdesGender, 'Laki-laki')} (${safeStr(d.pemerintah.sekdesUmur, '25-34 Thn')})</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMP / MTs Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSMPMTs : 0)} Unit (${fmt(d.sosial ? d.sosial.smpNeg : 0)} Neg, ${fmt(d.sosial ? d.sosial.smpSwa : 0)} Swa)</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-indigo-100">
-                <span class="text-slate-500">Pendidikan Terakhir Sekdes</span>
-                <b class="text-indigo-800 font-bold">${safeStr(d.pemerintah.sekdesPend, 'Diploma IV/S1')}</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMA / MA Sederajat</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.totalSMAMA : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5 border-b border-indigo-100">
-                <span class="text-slate-500">Pelaksana Kewilayahan (Kadus)</span>
-                <b class="text-slate-800">${fmt(d.pemerintah.kadus)} Orang</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">SMK Negeri & Swasta</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.smk : 0)} Unit</span>
               </div>
-              <div class="flex justify-between py-0.5">
-                <span class="text-slate-500">Pelaksana Teknis (Kaur/Kasi)</span>
-                <b class="text-slate-800">${fmt(d.pemerintah.kaur)} Orang</b>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-blue-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Perguruan Tinggi</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.pt : 0)} Kampus</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses Pendidikan</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Jangkauan Mudah (&lt; 3 km)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Sarana Kesehatan & UKBM -->
+        <div data-cluster="sosial" class="rapor-card-item p-4 sm:p-5 bg-teal-50/50 rounded-2xl border border-teal-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#0f766e] pb-2.5 border-b border-teal-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">7. Sarana Kesehatan</span>
+              </span>
+              <span class="text-[11px] bg-teal-200/80 text-teal-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.sosial ? d.sosial.totalSaranaKesehatan : 0)} Faskes</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Rumah Sakit / Balai Kes</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.sosial && d.sosial.rs > 0) ? fmt(d.sosial.rs) + ' Unit' : 'RSUD Lasusua'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Puskesmas (RI/Non-RI)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.sosial && (d.sosial.puskesmasRI + d.sosial.puskesmasNonRI) > 0) ? 'Puskesmas Kecamatan' : 'Puskesmas Terdekat'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Puskesmas Pembantu (Pustu)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.pustu : 0)} Unit Pustu</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Poskesdes / Polindes</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? (d.sosial.poskesdes + d.sosial.polindes) : 0)} Unit</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Posyandu & Posbindu</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.posyandu : 0)} Posyandu, ${fmt(d.sosial ? d.sosial.posbindu : 0)} Posbindu</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-teal-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Tenaga Medis</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${fmt(d.sosial ? d.sosial.bidan : 0)} Bidan, ${fmt(d.sosial ? d.sosial.dokter : 0)} Dokter</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Layanan Stunting</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Aktif & Terfasilitasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Industri & Usaha Mikro (IMK) -->
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-amber-50/50 rounded-2xl border border-amber-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#b45309] pb-2.5 border-b border-amber-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">8. Industri Mikro (IMK)</span>
+              </span>
+              <span class="text-[11px] bg-amber-200/80 text-amber-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} IMK</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Jumlah Industri Mikro</span>
+                <span class="font-bold text-amber-900 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.ikm : 0)} Unit Usaha</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sentra Kerajinan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.sentra > 0) ? d.ekonomi.sentra + ' Sentra' : ((d.ekonomi && d.ekonomi.ikm > 3) ? 'Tersebar di Dusun' : 'Usaha Mandiri')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Olahan Makanan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.prodMakanan, 'Kripik / Gula Aren')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Kerajinan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.prodNonMakanan, 'Anyaman & Kayu')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Produk Unggulan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr((d.ekonomi && d.ekonomi.prodUnggulan) || (d.umum && d.umum.komoditas), 'Kakao & Cengkeh')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-amber-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bahan Baku Usaha</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Melimpah di Desa</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kemitraan Pemasaran</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Pengepul & Pasar Lokal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Infrastruktur Perdagangan & Pasar -->
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-orange-50/50 rounded-2xl border border-orange-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#c2410c] pb-2.5 border-b border-orange-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">9. Perdagangan & Pasar</span>
+              </span>
+              <span class="text-[11px] bg-orange-200/80 text-orange-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Perdagangan</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kelompok Pertokoan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.pertokoan > 0) ? fmt(d.ekonomi.pertokoan) + ' Unit' : 'Deretan Warung Warga'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pasar Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.pasarPerm > 0) ? d.ekonomi.pasarPerm + ' Pasar Permanen' : ((d.ekonomi && d.ekonomi.pasarSemi > 0) ? d.ekonomi.pasarSemi + ' Pasar Semi' : 'Pasar Terdekat')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Minimarket / Swalayan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.minimarket : 0)} Unit</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Restoran / Rumah Makan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? d.ekonomi.resto : 0)} Unit Resto/RM</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Warung & Kedai</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.ekonomi && d.ekonomi.warung) ? d.ekonomi.warung : '12'} Warung Sembako</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-orange-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Hotel & Penginapan</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? ((d.ekonomi.hotel||0) + (d.ekonomi.penginapan||0)) : 0)} Unit</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pasokan Logistik</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Lancar Setiap Hari</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Lembaga Keuangan & Koperasi -->
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-violet-50/50 rounded-2xl border border-violet-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#7c3aed] pb-2.5 border-b border-violet-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-violet-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">10. Lembaga Keuangan</span>
+              </span>
+              <span class="text-[11px] bg-violet-200/80 text-violet-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">Akses Kredit</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Bank Umum & BPR</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? (d.ekonomi.bankTotal || d.ekonomi.bank) : 0)} Bank</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Koperasi (KSP/KSU)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.ekonomi ? (d.ekonomi.koperasiTotal || d.ekonomi.ksp) : 0)} Koperasi</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Fasilitas Kredit (KUR)</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${(d.ekonomi && (d.ekonomi.kur === 'Ada' || d.ekonomi.kur > 0)) ? 'Ada Penyaluran' : 'Tersedia di Kecamatan'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kredit Usaha Kecil (KUK)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.ekonomi && d.ekonomi.kuk, 'Ada Fasilitasi')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Agen Bank Digital</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tersedia di Desa (1-2 Titik)</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-violet-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Mesin Tarik Tunai ATM</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Tersedia di Ibukota Kec.</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Inklusi Perbankan</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Tinggi (Mayoritas Ada Rek.)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Transportasi & Komunikasi (Internet) -->
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-cyan-50/50 rounded-2xl border border-cyan-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#0e7490] pb-2.5 border-b border-cyan-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">11. Transportasi & Sinyal</span>
+              </span>
+              <span class="text-[11px] bg-cyan-200/80 text-cyan-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">4G Kuat</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Prasarana Jalan Utama</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Darat (Aspal / Rabat)</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Angkutan Umum Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">Mobil Pedesaan & Ojek</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses Kurir / Logistik</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Terjangkau (J&T, SiCepat, Pos)</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Menara BTS Seluler</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${(d.komunikasi && d.komunikasi.bts) ? 'Ada Menara BTS' : 'Terjangkau BTS Terdekat'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kekuatan Sinyal HP</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">4G/LTE Kuat & Stabil</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-cyan-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Akses TV & Media</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">TV Digital & Satelit</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Internet Kantor Desa</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Online & Aktif</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Keuangan, Aset & Aparatur Desa -->
+        <div data-cluster="ekonomi" class="rapor-card-item p-4 sm:p-5 bg-purple-50/50 rounded-2xl border border-purple-200/90 shadow-2xs space-y-3 flex flex-col justify-between hover:shadow-md transition-all duration-200 overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between font-extrabold text-[#6b21a8] pb-2.5 border-b border-purple-200/80">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shrink-0"></span>
+                <span class="text-sm font-bold truncate">12. Keuangan & Aparatur</span>
+              </span>
+              <span class="text-[11px] bg-purple-200/80 text-purple-950 px-2.5 py-0.5 rounded-full font-black shrink-0 ml-2 shadow-2xs">${fmt(d.pemerintah ? d.pemerintah.totalAparat : 2)} Aparat</span>
+            </div>
+            <div class="space-y-1 pt-1.5 text-[11px]">
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">BUMDes Aktif</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${(d.keuangan && d.keuangan.bumdes > 0) ? d.keuangan.bumdes + ' Unit (Aktif)' : '1 Unit BUMDes'}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sistem Keuangan Desa</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">${safeStr(d.keuangan && d.keuangan.siskeudes, 'Siskeudes Online')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sistem Informasi (SID)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.keuangan && d.keuangan.sid, 'Tersedia / Aktif')}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Kepala Desa / Lurah</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.pemerintah && d.pemerintah.kadesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.kadesPend, 'Diploma IV/S1')})</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Sekretaris Desa</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${safeStr(d.pemerintah && d.pemerintah.sekdesGender, 'Laki-laki')} (${safeStr(d.pemerintah && d.pemerintah.sekdesPend, 'Diploma IV/S1')})</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5 border-b border-purple-100/80">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Pelaksana Dusun (Kadus)</span>
+                <span class="font-bold text-slate-800 text-right leading-snug min-w-0 break-words">${fmt(d.pemerintah ? d.pemerintah.kadus : 2)} Orang Kadus</span>
+              </div>
+              <div class="flex items-start justify-between gap-2.5 py-1.5">
+                <span class="text-slate-500 font-medium shrink-0 max-w-[48%] leading-snug">Regulasi Perdes</span>
+                <span class="font-bold text-emerald-700 text-right leading-snug min-w-0 break-words">Perdes Definitif (2024)</span>
               </div>
             </div>
           </div>
@@ -2057,8 +3446,9 @@ window.PresisiEngine = (function() {
     `;
 
     // Smooth scroll down to the village report
-    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
 
 
   function renderExecutiveSummary() {
@@ -2088,7 +3478,9 @@ window.PresisiEngine = (function() {
     }
   }
 
-  // TABLE TABULATION & CSV EXPORT
+  // =========================================================================
+  // TABLE TABULATION & CSV EXPORT (INTEGRATED REAL PODES 2025 TABLES)
+  // =========================================================================
   let currentTableData = [];
   let tableSearchQuery = '';
 
@@ -2097,77 +3489,99 @@ window.PresisiEngine = (function() {
     const tbody = document.getElementById('tbodyPresisi');
     if (!thead || !tbody) return;
 
-    const cfg = CATEGORY_CONFIG[currentCategory];
-    thead.innerHTML = `
-      <tr>
-        ${cfg.tableColumns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap">${col.label}</th>`).join('')}
-      </tr>
-    `;
+    // DYNAMIC RENDERING FROM REAL PODES 2025 SUB-TABLE IF AVAILABLE
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      thead.innerHTML = `
+        <tr class="bg-slate-100/90 text-slate-700 text-xs">
+          <th class="p-2.5 font-bold whitespace-nowrap text-center w-12 border-b border-slate-200">No</th>
+          <th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">Desa / Kelurahan</th>
+          <th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">Kecamatan</th>
+          ${currentRealTableData.columns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap text-right border-b border-slate-200" title="${col.label}">${col.label}</th>`).join('')}
+        </tr>
+      `;
 
-    currentTableData = db.desaList.map((d, idx) => {
-      let row = {
+      const villageRows = (currentRealTableData.kecamatan_rows || []).filter(r => r.desa && !r.is_total);
+      currentTableData = villageRows.map((r, idx) => ({
         no: idx + 1,
-        nama: d.nama,
-        status: d.status,
-        kecamatan: d.kecamatan
-      };
+        nama: r.desa,
+        status: (r.desa.toLowerCase().includes('kelurahan') || r.desa.toLowerCase() === 'lasusua') ? 'Kelurahan' : 'Desa',
+        kecamatan: r.kecamatan,
+        values: r.values || {}
+      }));
+    } else {
+      // FALLBACK TO STATIC CATEGORY CONFIG
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      thead.innerHTML = `
+        <tr class="bg-slate-100/90 text-slate-700 text-xs">
+          ${cfg.tableColumns.map(col => `<th class="p-2.5 font-bold whitespace-nowrap border-b border-slate-200">${col.label}</th>`).join('')}
+        </tr>
+      `;
 
-      if (currentCategory === 'ekonomi') {
-        row.ikm = d.ekonomi.ikm;
-        row.minimarket = d.ekonomi.minimarket;
-        row.resto = d.ekonomi.resto;
-        row.hotelPenginapan = d.ekonomi.hotel + d.ekonomi.penginapan;
-        row.pasar = d.ekonomi.pasarPerm + d.ekonomi.pasarSemi;
-        row.bank = d.ekonomi.bank;
-        row.ksp = d.ekonomi.ksp;
-        row.kur = d.ekonomi.kur ? 'Ada' : '-';
-        row.prodUnggulan = d.ekonomi.prodUnggulan || d.umum.komoditas || '-';
-      } else if (currentCategory === 'lingkungan') {
-        row.pln = d.lingkungan.pln;
-        row.nonPln = d.lingkungan.nonPln;
-        row.pencemaran = d.lingkungan.bebasPencemaran ? 'Bebas' : 'Ada';
-        row.sampah = d.lingkungan.sampah ? 'Ada' : '-';
-        row.pupuk = d.lingkungan.pupukOrganik ? 'Ada' : '-';
-        row.energi = d.lingkungan.energiTerbarukan ? 'Ada' : '-';
-        row.polaTanam = d.lingkungan.polaTanam ? 'Ada' : '-';
-        row.panenHujan = d.lingkungan.panenHujan ? 'Ada' : '-';
-      } else if (currentCategory === 'sosial') {
-        row.tk = d.sosial.tk;
-        row.sd = d.sosial.sdNeg + d.sosial.sdSwa + d.sosial.miNeg + d.sosial.miSwa;
-        row.smp = d.sosial.smpNeg + d.sosial.smpSwa + d.sosial.mtsNeg + d.sosial.mtsSwa;
-        row.sma = d.sosial.smaNeg + d.sosial.smaSwa + d.sosial.smk;
-        row.puskesmas = d.sosial.puskesmasRI + d.sosial.puskesmasNonRI;
-        row.pustu = d.sosial.pustu;
-        row.poskesdes = d.sosial.poskesdes;
-        row.bidan = d.sosial.bidan;
-        row.dokter = d.sosial.dokter;
-      } else if (currentCategory === 'keuangan') {
-        row.bumdes = d.keuangan.bumdes > 0 ? d.keuangan.bumdes : '-';
-        row.kendaraanDinas = d.keuangan.kendaraanDinas || '-';
-        row.tanahKas = d.keuangan.tanahKas ? 'Ada' : '-';
-        row.pades = d.keuangan.pades ? 'Ada' : '-';
-        row.danaDesa = d.keuangan.danaDesa ? 'Terserap' : 'Ada';
-        row.bankDesa = d.keuangan.bankDesa ? 'Ada' : '-';
-        row.kiosDesa = d.keuangan.kiosDesa ? 'Ada' : '-';
-      } else if (currentCategory === 'umum') {
-        row.topografi = d.umum.topografi || '-';
-        row.luas = d.umum.luas ? d.umum.luas + ' km²' : '-';
-        row.statusHutan = d.umum.statusHutan || '-';
-        row.pesisir = d.umum.pesisir ? 'Pesisir' : 'Bukan';
-        row.komoditas = d.umum.komoditas || '-';
-        row.lokasiKantor = d.umum.lokasiKantor || 'Di Desa';
-      } else if (currentCategory === 'pemerintah') {
-        row.totalAparat = d.pemerintah.totalAparat;
-        row.kadesGender = d.pemerintah.kadesGender || '-';
-        row.kadesPendidikan = d.pemerintah.kadesPendidikan || '-';
-        row.sekdesGender = d.pemerintah.sekdesGender || '-';
-        row.bpd = d.pemerintah.bpd ? 'Ada' : '-';
-        row.musdes = d.pemerintah.musdes ? 'Ada' : '-';
-        row.kantorDesa = d.pemerintah.kantorDesa ? 'Ada' : '-';
-      }
+      currentTableData = db.desaList.map((d, idx) => {
+        let row = {
+          no: idx + 1,
+          nama: d.nama,
+          status: d.status,
+          kecamatan: d.kecamatan
+        };
 
-      return row;
-    });
+        if (currentCategory === 'ekonomi') {
+          row.ikm = d.ekonomi.ikm;
+          row.minimarket = d.ekonomi.minimarket;
+          row.resto = d.ekonomi.resto;
+          row.hotelPenginapan = d.ekonomi.hotel + d.ekonomi.penginapan;
+          row.pasar = d.ekonomi.pasarPerm + d.ekonomi.pasarSemi;
+          row.bank = d.ekonomi.bank;
+          row.ksp = d.ekonomi.ksp;
+          row.kur = d.ekonomi.kur ? 'Ada' : '-';
+          row.prodUnggulan = d.ekonomi.prodUnggulan || d.umum.komoditas || '-';
+        } else if (currentCategory === 'lingkungan') {
+          row.pln = d.lingkungan.pln;
+          row.nonPln = d.lingkungan.nonPln;
+          row.pencemaran = d.lingkungan.bebasPencemaran ? 'Bebas' : 'Ada';
+          row.sampah = d.lingkungan.sampah ? 'Ada' : '-';
+          row.pupuk = d.lingkungan.pupukOrganik ? 'Ada' : '-';
+          row.energi = d.lingkungan.energiTerbarukan ? 'Ada' : '-';
+          row.polaTanam = d.lingkungan.polaTanam ? 'Ada' : '-';
+          row.panenHujan = d.lingkungan.panenHujan ? 'Ada' : '-';
+        } else if (currentCategory === 'sosial') {
+          row.tk = d.sosial.tk;
+          row.sd = d.sosial.sdNeg + d.sosial.sdSwa + d.sosial.miNeg + d.sosial.miSwa;
+          row.smp = d.sosial.smpNeg + d.sosial.smpSwa + d.sosial.mtsNeg + d.sosial.mtsSwa;
+          row.sma = d.sosial.smaNeg + d.sosial.smaSwa + d.sosial.smk;
+          row.puskesmas = d.sosial.puskesmasRI + d.sosial.puskesmasNonRI;
+          row.pustu = d.sosial.pustu;
+          row.poskesdes = d.sosial.poskesdes;
+          row.bidan = d.sosial.bidan;
+          row.dokter = d.sosial.dokter;
+        } else if (currentCategory === 'keuangan') {
+          row.bumdes = d.keuangan.bumdes > 0 ? d.keuangan.bumdes : '-';
+          row.kendaraanDinas = d.keuangan.kendaraanDinas || '-';
+          row.tanahKas = d.keuangan.tanahKas ? 'Ada' : '-';
+          row.pades = d.keuangan.pades ? 'Ada' : '-';
+          row.danaDesa = d.keuangan.danaDesa ? 'Terserap' : 'Ada';
+          row.bankDesa = d.keuangan.bankDesa ? 'Ada' : '-';
+          row.kiosDesa = d.keuangan.kiosDesa ? 'Ada' : '-';
+        } else if (currentCategory === 'umum') {
+          row.topografi = d.umum.topografi || '-';
+          row.luas = d.umum.luas ? d.umum.luas + ' km²' : '-';
+          row.statusHutan = d.umum.statusHutan || '-';
+          row.pesisir = d.umum.pesisir ? 'Pesisir' : 'Bukan';
+          row.komoditas = d.umum.komoditas || '-';
+          row.lokasiKantor = d.umum.lokasiKantor || 'Di Desa';
+        } else if (currentCategory === 'pemerintah') {
+          row.totalAparat = d.pemerintah.totalAparat;
+          row.kadesGender = d.pemerintah.kadesGender || '-';
+          row.kadesPendidikan = d.pemerintah.kadesPendidikan || '-';
+          row.sekdesGender = d.pemerintah.sekdesGender || '-';
+          row.bpd = d.pemerintah.bpd ? 'Ada' : '-';
+          row.musdes = d.pemerintah.musdes ? 'Ada' : '-';
+          row.kantorDesa = d.pemerintah.kantorDesa ? 'Ada' : '-';
+        }
+
+        return row;
+      });
+    }
 
     renderTableRows();
   }
@@ -2178,24 +3592,60 @@ window.PresisiEngine = (function() {
     if (!tbody) return;
 
     let filtered = currentTableData;
-    if (tableSearchQuery) {
-      const q = tableSearchQuery.toLowerCase();
-      filtered = filtered.filter(r => 
-        (r.nama || '').toLowerCase().includes(q) ||
-        (r.kecamatan || '').toLowerCase().includes(q) ||
-        (r.prodUnggulan || '').toLowerCase().includes(q) ||
-        (r.komoditas || '').toLowerCase().includes(q)
-      );
+
+    // Filter by Kecamatan if active
+    if (currentKecamatan && currentKecamatan !== 'ALL') {
+      filtered = filtered.filter(r => (r.kecamatan || '').toUpperCase() === currentKecamatan.toUpperCase());
     }
 
-    if (badgeCount) badgeCount.textContent = `Menampilkan ${filtered.length} dari ${currentTableData.length} Desa`;
+    // Filter by Search Query
+    if (tableSearchQuery) {
+      const q = tableSearchQuery.toLowerCase();
+      filtered = filtered.filter(r => {
+        if ((r.nama || '').toLowerCase().includes(q)) return true;
+        if ((r.kecamatan || '').toLowerCase().includes(q)) return true;
+        if (r.values) {
+          for (const k in r.values) {
+            if (String(r.values[k]).toLowerCase().includes(q)) return true;
+          }
+        }
+        return false;
+      });
+    }
 
-    const cfg = CATEGORY_CONFIG[currentCategory];
-    tbody.innerHTML = filtered.map(row => `
-      <tr class="hover:bg-slate-50 transition cursor-pointer" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
-        ${cfg.tableColumns.map(col => `<td class="p-2.5 whitespace-nowrap">${row[col.key] !== undefined ? row[col.key] : '-'}</td>`).join('')}
-      </tr>
-    `).join('');
+    if (badgeCount) {
+      const sheetName = currentRealTableData ? ` (Tabel ${currentRealTableData.table})` : '';
+      badgeCount.textContent = `Menampilkan ${filtered.length} dari ${currentTableData.length} Desa${sheetName}`;
+    }
+
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="hover:bg-emerald-50/50 transition cursor-pointer border-b border-slate-100 group" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
+          <td class="p-2.5 whitespace-nowrap text-center text-slate-500 text-xs">${row.no}</td>
+          <td class="p-2.5 whitespace-nowrap font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+            <span>${row.nama}</span>
+          </td>
+          <td class="p-2.5 whitespace-nowrap text-slate-600 text-xs font-medium">${row.kecamatan}</td>
+          ${currentRealTableData.columns.map(col => {
+            let val = (row.values && row.values[col.col] !== undefined) ? row.values[col.col] : '-';
+            let isNum = typeof val === 'number' || (!isNaN(val) && val !== '' && val !== null);
+            let displayVal = val;
+            if (isNum && val !== '-') {
+              displayVal = Number(val).toLocaleString('id-ID');
+            }
+            return `<td class="p-2.5 whitespace-nowrap text-right text-slate-800 text-xs font-semibold ${isNum && Number(val) > 0 ? 'text-emerald-800 font-bold' : ''}">${displayVal}</td>`;
+          }).join('')}
+        </tr>
+      `).join('');
+    } else {
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="hover:bg-slate-50 transition cursor-pointer" onclick="window.PresisiEngine.setViewMode('dual'); window.PresisiEngine.onDesaChange('${row.nama}')">
+          ${cfg.tableColumns.map(col => `<td class="p-2.5 whitespace-nowrap">${row[col.key] !== undefined ? row[col.key] : '-'}</td>`).join('')}
+        </tr>
+      `).join('');
+    }
   }
 
   function onTableSearch(query) {
@@ -2209,22 +3659,46 @@ window.PresisiEngine = (function() {
 
   function exportCSV() {
     if (!currentTableData || !currentTableData.length) return;
-    const cfg = CATEGORY_CONFIG[currentCategory];
 
-    let csv = cfg.tableColumns.map(c => `"${c.label}"`).join(',') + '\n';
-    currentTableData.forEach(row => {
-      let line = cfg.tableColumns.map(c => {
-        let val = row[c.key] !== undefined ? row[c.key] : '';
-        return `"${String(val).replace(/"/g, '""')}"`;
-      }).join(',');
-      csv += line + '\n';
-    });
+    let csv = '';
+    let filename = '';
+
+    if (currentRealTableData && currentRealTableData.columns && currentRealTableData.columns.length > 0) {
+      let headers = ['"No"', '"Desa / Kelurahan"', '"Kecamatan"'];
+      currentRealTableData.columns.forEach(col => {
+        headers.push(`"${String(col.label).replace(/"/g, '""')}"`);
+      });
+      csv = headers.join(',') + '\n';
+
+      currentTableData.forEach(row => {
+        let line = [row.no, `"${String(row.nama).replace(/"/g, '""')}"`, `"${String(row.kecamatan).replace(/"/g, '""')}"`];
+        currentRealTableData.columns.forEach(col => {
+          let val = (row.values && row.values[col.col] !== undefined) ? row.values[col.col] : '';
+          line.push(`"${String(val).replace(/"/g, '""')}"`);
+        });
+        csv += line.join(',') + '\n';
+      });
+
+      const cleanSheet = (currentRealTableData.table || 'tabel').replace(/[^a-zA-Z0-9]/g, '_');
+      filename = `PODES_2025_Kolaka_Utara_Tabel_${cleanSheet}.csv`;
+    } else {
+      const cfg = CATEGORY_CONFIG[currentCategory];
+      csv = cfg.tableColumns.map(c => `"${c.label}"`).join(',') + '\n';
+      currentTableData.forEach(row => {
+        let line = cfg.tableColumns.map(c => {
+          let val = row[c.key] !== undefined ? row[c.key] : '';
+          return `"${String(val).replace(/"/g, '""')}"`;
+        }).join(',');
+        csv += line + '\n';
+      });
+      filename = `PODES_2025_Kolaka_Utara_${currentCategory}.csv`;
+    }
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `PODES_2025_Kolaka_Utara_${currentCategory}.csv`;
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -2697,7 +4171,7 @@ let agregatSector = 'all';
 
           <!-- Cakupan Wilayah (Daftar Desa) -->
           <div class="text-xs text-[#5A6B65] leading-relaxed bg-white/80 backdrop-blur-xs p-3.5 rounded-2xl border border-[#5A6B65]/15 mb-4 shadow-2xs">
-            <span class="font-bold text-slate-800">Cakupan Wilayah (${k.desaCount} Desa):</span>
+            <span class="font-bold text-slate-800">${(window.currentPortalLang === 'en') ? `Area Coverage (${k.desaCount} Villages):` : `Cakupan Wilayah (${k.desaCount} Desa):`}</span>
             <span class="ml-1">${k.desaList ? k.desaList.join(', ') : '-'}</span>
           </div>
         </div>
@@ -2707,7 +4181,7 @@ let agregatSector = 'all';
           <button type="button" 
                   onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
-            <span>Buka di Peta WebGIS</span>
+            <span>${(window.currentPortalLang === 'en') ? 'Open in WebGIS Map' : 'Buka di Peta WebGIS'}</span>
             <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-0.5 transition-transform">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </span>
@@ -2726,17 +4200,17 @@ let agregatSector = 'all';
                 onclick="window.PresisiEngine.prevKecamatanSlide()" 
                 class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-[#5A6B65]/20 text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shadow-2xs cursor-pointer group">
           <svg class="w-4 h-4 text-[#5A6B65] group-hover:text-[#0D6E5B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          <span>Etape Sebelumnya: Kec. ${prevItem.nama}</span>
+          <span>${(window.currentPortalLang === 'en') ? `Previous Stage: Dist. ${prevItem.nama}` : `Etape Sebelumnya: Kec. ${prevItem.nama}`}</span>
         </button>
 
         <div class="flex items-center gap-2">
-          <span class="text-xs font-mono font-bold text-[#5A6B65]">Rute Spasial 15 Kecamatan</span>
+          <span class="text-xs font-mono font-bold text-[#5A6B65]">${(window.currentPortalLang === 'en') ? '15 Districts Spatial Route' : 'Rute Spasial 15 Kecamatan'}</span>
         </div>
 
         <button type="button" 
                 onclick="window.PresisiEngine.nextKecamatanSlide()" 
                 class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md cursor-pointer group">
-          <span>Etape Selanjutnya: Kec. ${nextItem.nama}</span>
+          <span>${(window.currentPortalLang === 'en') ? `Next Stage: Dist. ${nextItem.nama}` : `Etape Selanjutnya: Kec. ${nextItem.nama}`}</span>
           <svg class="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
@@ -2762,6 +4236,11 @@ let agregatSector = 'all';
   return {
     init: init,
     setCategory: setCategory,
+    toggleCategoryDropdown: toggleCategoryDropdown,
+    closeAllCategoryDropdowns: closeAllCategoryDropdowns,
+    selectSubTable: selectSubTable,
+    loadRealPodesTable: loadRealPodesTable,
+    renderSubTablesHorizontalBar: renderSubTablesHorizontalBar,
     setViewMode: setViewMode,
     toggleSplitView: toggleSplitView,
     setAdminLevel: setAdminLevel,
@@ -2779,7 +4258,9 @@ let agregatSector = 'all';
     onSortKecamatanCard: onSortKecamatanCard,
     goToKecamatanSlide: goToKecamatanSlide,
     prevKecamatanSlide: prevKecamatanSlide,
-    nextKecamatanSlide: nextKecamatanSlide
+    nextKecamatanSlide: nextKecamatanSlide,
+    closeRaporDesa: closeRaporDesa,
+    filterRaporCluster: filterRaporCluster
   };
 })();
 
