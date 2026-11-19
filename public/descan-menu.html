@@ -284,12 +284,8 @@
                 <span>Pengisian Data PODES</span>
             </button>
             <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;">
-                <span class="dc-ico"><i class="bi bi-clipboard-check-fill"></i></span>
-                <span>Monitoring Kelengkapan</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('monev')" id="nav-monev" class="nav-tab" style="--c:#e11d48;--c2:#fb5577;--cbg:#fde4ea;">
-                <span class="dc-ico"><i class="bi bi-graph-up-arrow"></i></span>
-                <span>Monev (Evaluasi)</span>
+                <span class="dc-ico"><i class="bi bi-clipboard-data-fill"></i></span>
+                <span>Monitoring</span>
             </button>
 
             <div class="dc-nav-label">Kapasitas &amp; Pembinaan</div>
@@ -1007,44 +1003,274 @@
                 <!-- ===================================================================== -->
                 <!-- MONITORING KELENGKAPAN PODES                                          -->
                 <!-- ===================================================================== -->
-                <div id="view-monitoring" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex items-center gap-3">
-                        <div class="dc-icon" style="width:42px;height:42px;">▤</div>
-                        <div>
-                            <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Monitoring Kelengkapan PODES</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Pantau pengisian variabel PODES per klaster dan tindak lanjut yang masih tersisa</p>
+                <div id="view-monitoring" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header Banner -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-600 to-emerald-700 text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                <i class="bi bi-clipboard-data-fill"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Sistem Monitoring &amp; Evaluasi (Monev)</h2>
+                                <p class="text-xs text-slate-500 mt-0.5">Monitoring kelengkapan variabel PODES, timeline tahapan Desa Cantik, serta portofolio bukti dukung pembinaan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-300 flex items-center gap-1.5 shadow-2xs">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Tahap 3 Aktif (Pengolahan)</span>
+                            </span>
                         </div>
                     </div>
 
-                    <div class="grid lg:grid-cols-2 gap-4">
-                        <div id="dcMonitoring" class="dc-card">
-                                <h6 class="font-bold text-sm">Monitoring Kelengkapan PODES <span id="dcMonDesa">Desa Kalu Kaluku</span></h6>
-                                <p class="text-[11px] text-slate-500 mb-3">Evaluasi pengisian 44 variabel inti statistik potensi desa tahun 2026</p>
-                        <div class="mb-3">
-                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#0f6b4a;font-size:8px;">●</span> 1. Data Kependudukan & Ketenagakerjaan</span><b style="font-size:11px;color:#0f6b4a;">100% (12/12)</b></div>
-                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#0f6b4a;font-size:8px;">●</span> 2. Perumahan, Sanitasi & Lingkungan Hidup</span><b style="font-size:11px;color:#0f6b4a;">100% (10/10)</b></div>
-                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#dc2626;font-size:8px;">●</span> 3. Pertanian, Perkebunan & Perikanan Bahari</span><b style="font-size:11px;color:#dc2626;">85% (11/13)</b></div>
-                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:85%;background:#dc2626;"></span></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="flex justify-between text-[12.5px]"><span><span style="color:#dc2626;font-size:8px;">●</span> 4. Akses Transportasi & Sarana Komunikasi</span><b style="font-size:11px;color:#dc2626;">67% (6/9)</b></div>
-                            <div class="dc-progress mt-1" style="height:6px;"><span style="width:67%;background:#dc2626;"></span></div>
-                        </div>
-                                <div class="rounded-xl p-2.5 px-3 flex gap-2 text-[11.5px] text-slate-500 bg-[#f6f9f7] border border-[#e5e9e7]">ⓘ <span>Tersisa 3 indikator komoditas perkebunan kakao dan cengkeh yang belum dilengkapi lampiran survei lapangan. Batas akhir konfirmasi rekonsiliasi data: 28 Oktober 2026.</span></div>
+                    <!-- BAGIAN 1: TIMELINE TAHAPAN PEMBINAAN DESA CANTIK (MONEV PROGRESS) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                    <span class="text-emerald-700"><i class="bi bi-clock-history"></i></span>
+                                    <span>TIMELINE TAHAPAN PEMBINAAN DESA CANTIK</span>
+                                </h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Alur pelaksanaan pembinaan berkala: Persiapan &rarr; Pengumpulan Data &rarr; Pengolahan &rarr; Publikasi BRS</p>
                             </div>
-                        <div class="dc-card ">
-                                <h6 class="font-bold text-sm">Kelengkapan PODES per Klaster</h6>
-                                <p class="text-[11px] text-slate-500">Variabel terisi vs belum terisi</p>
-                                <div class="relative mt-3" style="height:230px;"><canvas id="dcChartKelengkapan"></canvas></div>
+                            <span class="hidden sm:inline-flex px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-200">
+                                Evaluasi Berkala BPS
+                            </span>
+                        </div>
+
+                        <!-- 4-Phase Chevron Stepper -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1 select-none">
+                            <!-- Step 1: Persiapan (100% Selesai) -->
+                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-black">1. Persiapan</span>
+                                    <span class="text-sm font-bold">✓</span>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="text-[10px] text-emerald-100 font-medium">Sosialisasi &amp; SK Agen</div>
+                                    <div class="w-full bg-emerald-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
+                                        <div class="bg-white h-full rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- Step 2: Pengumpulan Data (100% Selesai) -->
+                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-black">2. Pengumpulan Data</span>
+                                    <span class="text-sm font-bold">✓</span>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="text-[10px] text-emerald-100 font-medium">Sensus Monografi Dusun</div>
+                                    <div class="w-full bg-emerald-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
+                                        <div class="bg-white h-full rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Pengolahan (Sedang Berjalan - 85%) -->
+                            <div class="p-3.5 rounded-xl bg-[#005ea6] text-white shadow-xs relative overflow-hidden flex flex-col justify-between ring-2 ring-blue-300">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-black">3. Pengolahan</span>
+                                    <span class="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black text-[9px] animate-pulse">Aktif (85%)</span>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="text-[10px] text-blue-100 font-medium">Validasi &amp; Entri SDI</div>
+                                    <div class="w-full bg-blue-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
+                                        <div class="bg-amber-400 h-full rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Publikasi (Tahap Akhir) -->
+                            <div class="p-3.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 relative overflow-hidden flex flex-col justify-between">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-black text-slate-700">4. Publikasi</span>
+                                    <span class="text-xs font-bold text-slate-400"><i class="bi bi-lock-fill"></i></span>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="text-[10px] text-slate-400 font-medium">Rilis BRS &amp; Infografis</div>
+                                    <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
+                                        <div class="bg-slate-400 h-full rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- BAGIAN 2: MONITORING KELENGKAPAN VARIABEL PODES -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                    <span class="text-teal-700"><i class="bi bi-bar-chart-steps"></i></span>
+                                    <span>MONITORING KELENGKAPAN PODES (<span id="dcMonDesa">Desa</span>)</span>
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Evaluasi pengisian 44 variabel inti statistik potensi desa tahun 2026</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-teal-50 text-teal-800 text-[11px] font-bold border border-teal-200">
+                                44 Variabel Inti
+                            </span>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-5 pt-1">
+                            <!-- Progress Bar 4 Klaster Utama -->
+                            <div id="dcMonitoring" class="space-y-3.5">
+                                <div>
+                                    <div class="flex justify-between text-[12.5px] font-medium">
+                                        <span><span class="text-emerald-700 text-xs">●</span> 1. Data Kependudukan &amp; Ketenagakerjaan</span>
+                                        <b class="text-[11px] text-emerald-800 font-bold">100% (12/12)</b>
+                                    </div>
+                                    <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[12.5px] font-medium">
+                                        <span><span class="text-emerald-700 text-xs">●</span> 2. Perumahan, Sanitasi &amp; Lingkungan Hidup</span>
+                                        <b class="text-[11px] text-emerald-800 font-bold">100% (10/10)</b>
+                                    </div>
+                                    <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:100%;background:#0f6b4a;"></span></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[12.5px] font-medium">
+                                        <span><span class="text-rose-600 text-xs">●</span> 3. Pertanian, Perkebunan &amp; Perikanan Bahari</span>
+                                        <b class="text-[11px] text-rose-600 font-bold">85% (11/13)</b>
+                                    </div>
+                                    <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:85%;background:#dc2626;"></span></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[12.5px] font-medium">
+                                        <span><span class="text-rose-600 text-xs">●</span> 4. Akses Transportasi &amp; Sarana Komunikasi</span>
+                                        <b class="text-[11px] text-rose-600 font-bold">67% (6/9)</b>
+                                    </div>
+                                    <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:67%;background:#dc2626;"></span></div>
+                                </div>
+                                <div class="rounded-xl p-3 flex items-start gap-2 text-[11.5px] text-slate-600 bg-[#f6f9f7] border border-[#e5e9e7]">
+                                    <i class="bi bi-info-circle-fill text-emerald-700 text-sm shrink-0 mt-0.5"></i>
+                                    <span>Tersisa 3 indikator komoditas perkebunan kakao dan cengkeh yang belum dilengkapi lampiran survei lapangan. Batas akhir konfirmasi rekonsiliasi data: 28 Oktober 2026.</span>
+                                </div>
+                            </div>
+
+                            <!-- Chart Kelengkapan PODES -->
+                            <div class="p-3 bg-slate-50/70 rounded-xl border border-slate-200">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h6 class="font-bold text-xs text-slate-800">Kelengkapan PODES per Klaster</h6>
+                                    <span class="text-[10px] text-slate-500">Terisi vs Belum Terisi</span>
+                                </div>
+                                <div class="relative" style="height:210px;"><canvas id="dcChartKelengkapan"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 3: PORTOFOLIO BUKTI DUKUNG & EVALUASI BPS (MONEV) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                        <!-- Left Col: KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV) (8 Cols) -->
+                        <div class="lg:col-span-8 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                                <div>
+                                    <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                        <span class="text-indigo-700"><i class="bi bi-folder2-open"></i></span>
+                                        <span>KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV)</span>
+                                    </h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Portofolio Pelaksanaan Pembinaan Statistik Sektoral Tingkat Desa &amp; Kabupaten</p>
+                                </div>
+                                <!-- Sub-tab Bukti Dukung: Desa & Kabupaten -->
+                                <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-xl text-xs font-bold border border-slate-200">
+                                    <button type="button" onclick="switchMonevBuktiTab('desa')" id="tabBuktiDesa" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer">
+                                        A. Tingkat Desa
+                                    </button>
+                                    <button type="button" onclick="switchMonevBuktiTab('kab')" id="tabBuktiKab" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer">
+                                        B. Tingkat Kabupaten
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Table of Bukti Dukung -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs text-left">
+                                    <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
+                                        <tr>
+                                            <th class="py-2.5 px-3 w-10 text-center">No</th>
+                                            <th class="py-2.5 px-4">Nama Dokumen Bukti Dukung</th>
+                                            <th class="py-2.5 px-3 text-center">Status</th>
+                                            <th class="py-2.5 px-4 text-center">File Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyMonevBukti" class="divide-y divide-slate-100 font-medium text-slate-800">
+                                        <!-- Injected via renderBuktiDukungTables -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Upload Action -->
+                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <button type="button" onclick="openAddBuktiModal()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+                                    <i class="bi bi-cloud-arrow-up-fill"></i>
+                                    <span>Unggah Dokumen Bukti Dukung Baru</span>
+                                </button>
+                                <span class="text-[11px] text-slate-400">Penyimpanan Terverifikasi Cloud SDI BPS</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Col: Verifikasi BPS / Pemda (4 Cols) -->
+                        <div class="lg:col-span-4 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <span class="text-xs font-bold text-slate-500">Verifikasi BPS / Pemda:</span>
+                                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300 flex items-center gap-1">
+                                        <span>✓</span>
+                                        <span>TERVERIFIKASI</span>
+                                    </span>
+                                </div>
+
+                                <div class="mt-4 text-center p-4 rounded-2xl bg-gradient-to-tr from-slate-900 to-[#005ea6] text-white shadow-md">
+                                    <span class="text-xs font-bold text-blue-200 block">Nilai Kinerja Evaluasi Mandiri:</span>
+                                    <div class="text-4xl font-black text-amber-300 mt-1">85%</div>
+                                    <span class="inline-block mt-2 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-black border border-emerald-400/40">
+                                        (Kategori: Mandiri)
+                                    </span>
+                                </div>
+
+                                <!-- Progress Aspects -->
+                                <div class="mt-4 space-y-2.5 text-xs">
+                                    <div class="space-y-1">
+                                        <div class="flex justify-between font-bold text-slate-700">
+                                            <span>Standardisasi Metadata SDI</span>
+                                            <span class="font-black text-emerald-700">90%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                                            <div class="bg-emerald-600 h-full rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="flex justify-between font-bold text-slate-700">
+                                            <span>Kualitas Data Sektoral</span>
+                                            <span class="font-black text-blue-700">85%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                                            <div class="bg-[#005ea6] h-full rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="flex justify-between font-bold text-slate-700">
+                                            <span>Pemanfaatan WebGIS &amp; Publikasi</span>
+                                            <span class="font-black text-indigo-700">80%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                                            <div class="bg-indigo-600 h-full rounded-full" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notes by BPS Kolut Tim Pembina -->
+                            <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed font-medium">
+                                💡 <b>Rekomendasi BPS Kolut:</b> Seluruh indikator monitoring dan dokumen pembinaan Desa Cantik Kolaka Utara memenuhi standar Kategori Mandiri tahun 2026.
+                            </div>
+                        </div>
+                    </div>
+
+                </div></div>
 
                 <!-- ===================================================================== -->
                 <!-- 2. PROFIL DESA (MONOGRAFI, SDM APARAT & POTENSI UNGGULAN)             -->
@@ -1751,206 +1977,7 @@
                 </div>
 
                 <!-- ===================================================================== -->
-                <!-- 4. MONITORING & EVALUASI (MONEV - SISTEM MONEV & KELENGKAPAN)         -->
-                <!-- ===================================================================== -->
-                <div id="view-monev" class="menu-view-container hidden space-y-4 animate-in fade-in duration-200">
-                    
-                    <!-- Content Top Header: Title -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0">
-                                📈
-                            </div>
-                            <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Sistem Monev & Kelengkapan Pembinaan</h2>
-                                <p class="text-xs text-slate-500 mt-0.5">Monitoring Evaluasi Progres Pembinaan Statistik Sektoral & Portofolio Bukti Dukung Desa Cantik</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-300">
-                                Tahap 3 Aktif (Pengolahan)
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Section 1: TIMELINE PEMBINAAN DESA CANTIK (Chevron Stepper Progress Bar) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                        <div>
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>⏱️</span>
-                                <span>TIMELINE PEMBINAAN DESA CANTIK</span>
-                            </h4>
-                            <p class="text-xs text-slate-400 mt-0.5">(Persiapan -> Pengumpulan Data -> Pengolahan -> Publikasi)</p>
-                        </div>
-
-                        <!-- 4-Phase Chevron Stepper -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 pt-1 select-none">
-                            <!-- Step 1: Persiapan (100% Selesai) -->
-                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black">1. Persiapan</span>
-                                    <span class="text-sm">✓</span>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="text-[10px] text-emerald-100 font-medium">Sosialisasi & SK Agen</div>
-                                    <div class="w-full bg-emerald-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                                        <div class="bg-white h-full rounded-full" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 2: Pengumpulan Data (100% Selesai) -->
-                            <div class="p-3.5 rounded-xl bg-emerald-600 text-white shadow-xs relative overflow-hidden flex flex-col justify-between">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black">2. Pengumpulan Data</span>
-                                    <span class="text-sm">✓</span>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="text-[10px] text-emerald-100 font-medium">Sensus Monografi Dusun</div>
-                                    <div class="w-full bg-emerald-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                                        <div class="bg-white h-full rounded-full" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 3: Pengolahan (Sedang Berjalan - 85%) -->
-                            <div class="p-3.5 rounded-xl bg-[#005ea6] text-white shadow-xs relative overflow-hidden flex flex-col justify-between ring-2 ring-blue-300">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black">3. Pengolahan</span>
-                                    <span class="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black text-[9px] animate-pulse">Aktif (85%)</span>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="text-[10px] text-blue-100 font-medium">Validasi & Entri SDI</div>
-                                    <div class="w-full bg-blue-900/40 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                                        <div class="bg-amber-400 h-full rounded-full" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 4: Publikasi (Tahap Akhir) -->
-                            <div class="p-3.5 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 relative overflow-hidden flex flex-col justify-between">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="font-black text-slate-700">4. Publikasi</span>
-                                    <span class="text-xs">🔒</span>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="text-[10px] text-slate-400 font-medium">Rilis BRS & WebGIS</div>
-                                    <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
-                                        <div class="bg-slate-400 h-full rounded-full" style="width: 25%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Section 2: Split Columns (Kelengkapan Bukti Dukung Internal & Verifikasi BPS) -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                        <!-- Left Col: KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV) (8 Cols) -->
-                        <div class="lg:col-span-8 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-                                <div>
-                                    <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                        <span>📁</span>
-                                        <span>KELENGKAPAN BUKTI DUKUNG INTERNAL (MONEV)</span>
-                                    </h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">Portofolio Pelaksanaan Pembinaan Statistik Sektoral Tingkat Desa & Kabupaten</p>
-                                </div>
-                                <!-- Sub-tab Bukti Dukung: Desa & Kabupaten -->
-                                <div class="flex items-center gap-1 p-1 bg-slate-100 rounded-xl text-xs font-bold border border-slate-200">
-                                    <button type="button" onclick="switchMonevBuktiTab('desa')" id="tabBuktiDesa" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition cursor-pointer">
-                                        A. Tingkat Desa
-                                    </button>
-                                    <button type="button" onclick="switchMonevBuktiTab('kab')" id="tabBuktiKab" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer">
-                                        B. Tingkat Kabupaten
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Table of Bukti Dukung -->
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-xs text-left">
-                                    <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
-                                        <tr>
-                                            <th class="py-2.5 px-3 w-10 text-center">No</th>
-                                            <th class="py-2.5 px-4">Nama Dokumen Bukti Dukung</th>
-                                            <th class="py-2.5 px-3 text-center">Status</th>
-                                            <th class="py-2.5 px-4 text-center">File Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyMonevBukti" class="divide-y divide-slate-100 font-medium text-slate-800">
-                                        <!-- Injected via renderBuktiDukungTables -->
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Upload Action -->
-                            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
-                                <button type="button" onclick="openAddBuktiModal()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-xs">
-                                    <span>➕ Unggah Dokumen Bukti Dukung Baru</span>
-                                </button>
-                                <span class="text-[11px] text-slate-400">Penyimpanan Terverifikasi Cloud SDI BPS</span>
-                            </div>
-                        </div>
-
-                        <!-- Right Col: Verifikasi BPS / Pemda (4 Cols) -->
-                        <div class="lg:col-span-4 bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between space-y-4">
-                            <div>
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <span class="text-xs font-bold text-slate-500">Verifikasi BPS / Pemda:</span>
-                                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-black text-xs border border-emerald-300 flex items-center gap-1">
-                                        <span>✓</span>
-                                        <span>TERVERIFIKASI</span>
-                                    </span>
-                                </div>
-
-                                <div class="mt-4 text-center p-4 rounded-2xl bg-gradient-to-tr from-slate-900 to-[#005ea6] text-white shadow-md">
-                                    <span class="text-xs font-bold text-blue-200 block">Nilai Kinerja Evaluasi Mandiri:</span>
-                                    <div class="text-4xl font-black text-amber-300 mt-1">85%</div>
-                                    <span class="inline-block mt-2 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-black border border-emerald-400/40">
-                                        (Kategori: Mandiri)
-                                    </span>
-                                </div>
-
-                                <!-- Progress Aspects -->
-                                <div class="mt-4 space-y-2 text-xs">
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Standardisasi Metadata SDI</span>
-                                            <span class="font-black text-emerald-700">90%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-emerald-600 h-full rounded-full" style="width: 90%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Kualitas Data Sektoral</span>
-                                            <span class="font-black text-blue-700">85%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-[#005ea6] h-full rounded-full" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <div class="flex justify-between font-bold text-slate-700">
-                                            <span>Pemanfaatan WebGIS & Publikasi</span>
-                                            <span class="font-black text-indigo-700">80%</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                                            <div class="bg-indigo-600 h-full rounded-full" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Notes by BPS Kolut Tim Pembina -->
-                            <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 leading-relaxed font-medium">
-                                💡 <b>Rekomendasi BPS Kolut:</b> Desa Kalu Kaluku memenuhi seluruh kriteria Desa Cantik Kategori Mandiri tahun 2026.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                
 
         </div>
     </main>
@@ -2861,6 +2888,9 @@
             if (menuKey === 'profil') {
                 menuKey = 'tentang';
             }
+            if (menuKey === 'monev') {
+                menuKey = 'monitoring';
+            }
             if (menuKey === 'excel') menuKey = 'buku';
             if (menuKey === 'posttest') menuKey = 'pretest';
             if (menuKey === 'layanan' || menuKey === 'pengaduan') {
@@ -2921,7 +2951,7 @@
                 }, 200);
             }
 
-            if (menuKey === 'monev') {
+            if (menuKey === 'monitoring' || menuKey === 'monev') {
                 if (typeof renderBuktiDukungTables === 'function') {
                     renderBuktiDukungTables(currentTargetVillage);
                 }
