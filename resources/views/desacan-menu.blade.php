@@ -61,7 +61,11 @@
         /* ===== DESCAN SIDEBAR THEME ===== */
         :root { --dc-green:#0f6b4a; --dc-green-dark:#0a4d36; --dc-mint:#6ee7b7; --dc-mint-bg:#ecfdf5; --dc-line:#e5e9e7; --dc-ink:#0f1f1a; --dc-muted:#6b7a74; }
         body { background-color:#f4f7f5; }
-        @media (min-width: 1024px) { body.dc-shell { padding-left: 240px; } }
+        @media (min-width: 1024px) {
+            body.dc-shell { padding-left: 240px; transition: padding-left .25s ease; }
+            body.dc-shell.dc-sidebar-collapsed { padding-left: 0 !important; }
+            body.dc-shell.dc-sidebar-collapsed #dcSidebar { transform: translateX(-100%); }
+        }
         #dcSidebar { position:fixed; top:0; bottom:0; left:0; width:240px; background:#fff; border-right:1px solid var(--dc-line); z-index:50; display:flex; flex-direction:column; transition:transform .25s ease; }
         @media (max-width: 1023px) { #dcSidebar { transform:translateX(-100%); } #dcSidebar.open { transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.25); } }
         .dc-nav-label { display:flex; align-items:center; gap:.45rem; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#8a9a93; padding:0 .5rem; margin:1.2rem 0 .5rem; }
@@ -198,6 +202,8 @@
 
     <!-- Chart.js for Interactive Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap Icons (CDN Resmi v1.11.3) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="dc-shell min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
 
@@ -248,23 +254,40 @@
     </aside>
 
     <!-- ===== TOPBAR ===== -->
-    <header class="dc-topbar px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3 min-w-0">
-            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden px-2.5 py-1.5 rounded-lg border border-slate-200 text-lg leading-none">☰</button>
-            <span class="dc-pill">✓ Operator Desa</span>
-            <div class="hidden md:block border-l border-slate-200 pl-3 leading-tight min-w-0">
+    <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+            <!-- Tombol Buka/Tutup Sidebar (Tersedia Desktop & Mobile) -->
+            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka / Tutup Sidebar Navigasi">
+                <i class="bi bi-list text-xl leading-none"></i>
+            </button>
+
+            <!-- Tombol Beranda (Halaman Utama Dashboard Desa) -->
+            <button type="button" id="btnTopBeranda" onclick="switchNavMenu('dashboard')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0f6b4a] border border-emerald-200 text-xs font-bold transition shadow-2xs cursor-pointer active:scale-95 shrink-0" title="Kembali ke Beranda Dashboard Desa">
+                <i class="bi bi-house-door-fill text-sm"></i>
+                <span class="font-extrabold tracking-tight">Beranda</span>
+            </button>
+
+            <!-- Brand Logo BPS & Kolaka Utara -->
+            <div class="hidden sm:flex items-center gap-2 shrink-0 bg-slate-50 border border-slate-200/90 px-2.5 py-1 rounded-xl shadow-2xs">
+                <img src="/images/logo_bps.png" alt="BPS" class="h-6 sm:h-7 w-auto object-contain">
+                <div class="h-4 sm:h-5 w-[1px] bg-slate-300"></div>
+                <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+            </div>
+
+            <span class="dc-pill hidden md:inline-flex">✓ Operator Desa</span>
+            <div class="hidden lg:block border-l border-slate-200 pl-3 leading-tight min-w-0">
                 <div id="topBrandDesaTitle" class="text-xs font-bold text-slate-900 truncate">AKUN DESA KALU KALUKU</div>
                 <div id="topBrandDesaKec" class="text-[10px] text-slate-500 truncate">(Kec. Kodeoha) • Terbina BPS</div>
             </div>
         </div>
-        <div class="flex items-center gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <div class="hidden xl:flex items-center gap-2 bg-[#f1f7f4] border border-[#dbeee3] px-3 py-1.5 rounded-xl text-xs">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Desa Binaan BPS:</span>
                 <span id="topNavVillageBadge" class="font-extrabold text-[#0f6b4a] uppercase text-xs">DESA KALU KALUKU</span>
             </div>
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">← 6 Desa</a>
-            <span class="relative text-slate-500">🔔<span class="absolute top-0 -right-0.5 w-[7px] h-[7px] rounded-full bg-red-500"></span></span>
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="inline-flex px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">← 6 Desa</a>
+            <span class="relative text-slate-500 text-sm">🔔<span class="absolute top-0 -right-0.5 w-[7px] h-[7px] rounded-full bg-red-500"></span></span>
             <div class="flex items-center gap-2">
                 <div class="hidden sm:block text-right leading-tight"><div class="text-xs font-semibold">Operator Desa</div><div class="text-[10.5px] text-slate-500">Operator Data</div></div>
                 <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center">AD</div>
@@ -3332,7 +3355,11 @@
         }
         function toggleMateriMenu() {
             const sub = document.getElementById('dcMateriSub');
-            dcShowMateri(sub ? sub.classList.contains('hidden') : true);
+            const willOpen = sub ? sub.classList.contains('hidden') : true;
+            dcShowMateri(willOpen);
+            if (currentNavMenu !== 'pembelajaran' && !DC_MATERI_CHILD.includes(currentNavMenu)) {
+                switchNavMenu('pembelajaran');
+            }
         }
         const DC_MATERI_CHILD = ['video', 'pretest', 'buku'];
         function dcOnMenuChange(menuKey) {
@@ -3351,11 +3378,16 @@
         }
 
         function toggleDcSidebar() {
+            const isDesktop = window.innerWidth >= 1024;
             const sb = document.getElementById('dcSidebar');
             const bd = document.getElementById('dcBackdrop');
-            if (!sb) return;
-            sb.classList.toggle('open');
-            if (bd) bd.classList.toggle('hidden', !sb.classList.contains('open'));
+            if (isDesktop) {
+                document.body.classList.toggle('dc-sidebar-collapsed');
+            } else {
+                if (!sb) return;
+                sb.classList.toggle('open');
+                if (bd) bd.classList.toggle('hidden', !sb.classList.contains('open'));
+            }
         }
         const dcCharts = {};
         function dcMake(id, cfg) {
