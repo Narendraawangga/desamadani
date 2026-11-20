@@ -2230,6 +2230,7 @@
                 renderDescanGaleri('all');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+                modal.style.display = 'flex';
                 if (document.body) document.body.classList.add('overflow-hidden');
             }
         }
@@ -2239,6 +2240,7 @@
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
+                modal.style.display = 'none';
             }
             if (document.body) document.body.classList.remove('overflow-hidden');
         }

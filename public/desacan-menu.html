@@ -59,25 +59,24 @@
             background-color: #f1f6fa;
         }
         
-        /* 3D Editorial Profil Desa (KEPOS Style) */
-        @keyframes float3D {
-            0%, 100% { transform: translateY(0px) rotate(0deg) translateZ(0); }
-            50% { transform: translateY(-8px) rotate(1deg) translateZ(15px); }
+        /* Profil Desa Modern Clean Editorial Styling */
+        .dc-profil-card {
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 1.25rem;
+            transition: all 0.2s ease;
         }
-        .animate-float-3d {
-            animation: float3D 6s ease-in-out infinite;
+        .dc-profil-card:hover {
+            border-color: #a7f3d0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
         }
         .tilt-card-3d {
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.2s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            transition: all 0.2s ease;
         }
         .tilt-card-3d:hover {
-            box-shadow: 0 20px 30px -10px rgba(22, 56, 41, 0.2);
-        }
-        .nature-card-dark {
-            background: linear-gradient(145deg, #163829 0%, #1e4a37 60%, #112e21 100%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
         }
 
         /* ===== DESCAN SIDEBAR THEME (Harmonized Light Style - Sinkron dengan Dashboard Desa) ===== */
@@ -440,6 +439,10 @@
                 <span class="dc-ico"><i class="bi bi-building"></i></span>
                 <span>Profil Desa</span>
             </button>
+            <button type="button" onclick="switchNavMenu('galeri')" id="nav-galeri" class="nav-tab">
+                <span class="dc-ico"><i class="bi bi-images"></i></span>
+                <span>Galeri Foto</span>
+            </button>
 
             <!-- 1. KAPASITAS & EDUKASI -->
             <div class="dc-nav-label">Kapasitas &amp; Edukasi</div>
@@ -534,10 +537,11 @@
                 <span>Output Desa</span>
             </button>
 
-            <!-- Menu Galeri di Header (Hanya Menu Teks) -->
-            <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
-                class="text-xs sm:text-[13px] font-bold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer" 
-                title="Buka Galeri Desa">
+            <!-- Menu Galeri di Header -->
+            <button type="button" onclick="switchNavMenu('galeri')" id="header-nav-galeri" 
+                class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 hover:text-[#0f6b4a] hover:bg-emerald-50 transition px-2.5 py-1.5 rounded-xl cursor-pointer" 
+                title="Buka Halaman Galeri Foto Desa">
+                <i class="bi bi-images text-emerald-600 text-xs"></i>
                 <span>Galeri</span>
             </button>
 
@@ -1650,451 +1654,516 @@
                 </div></div>
 
                 <!-- ===================================================================== -->
-                <!-- 2. PROFIL DESA (MONOGRAFI, SDM APARAT & POTENSI UNGGULAN - 3D ISOMETRIC)-->
+                <!-- 2. PROFIL DESA (MONOGRAFI & EKSPLORASI GEOSPASIAL EDITORIAL)          -->
                 <!-- ===================================================================== -->
-                <div id="view-tentang" class="menu-view-container hidden space-y-8 animate-in fade-in duration-300 select-none">
+                <div id="view-tentang" class="menu-view-container hidden space-y-6 animate-in fade-in duration-300">
                     
-                    <!-- ============================================================== -->
-                    <!-- 3D EDITORIAL PROFIL DESA (ISOMETRIC 3D & DIAMOND RHOMBUS STYLE)-->
-                    <!-- ============================================================== -->
-                    <div class="dc-profil-shell p-5 sm:p-8 lg:p-10 space-y-8 relative overflow-hidden bg-[#f6f3ec] border border-[#e6e1d5] rounded-3xl shadow-sm">
+                    <!-- 1. PANORAMA BENTANG ALAM & IDENTITAS WILAYAH -->
+                    <div class="relative w-full rounded-3xl overflow-hidden shadow-md border border-slate-200/80 bg-slate-900 group">
+                        <!-- Landscape Scenic Background Photo -->
+                        <div class="h-64 sm:h-72 lg:h-80 w-full relative overflow-hidden">
+                            <img id="profil3dLandscapeBg" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85" alt="Panorama Desa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/15"></div>
+                            
+                            <!-- Top Ambient Badges -->
+                            <div class="absolute top-4 sm:top-5 left-4 sm:left-6 right-4 sm:right-6 flex flex-wrap items-center justify-between gap-2.5 z-10">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/70 border border-white/20 text-white text-[11px] font-bold backdrop-blur-md shadow-xs">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>BPS KOLAKA UTARA • DESA CANTIK 2026</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="profil3dBadgeKategori" class="px-3 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] shadow-xs">
+                                        Perkotaan Mandiri (Nilai 93%)
+                                    </span>
+                                    <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full bg-white/20 text-white text-[10.5px] font-bold backdrop-blur-md border border-white/20">
+                                        Satu Data Indonesia
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Identity Banner with Village Portrait -->
+                            <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-10">
+                                <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                                    <img id="profil3dHeroPhoto" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80" alt="Foto Desa" onclick="switchNavMenu('galeri')" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 rounded-2xl object-cover border-3 border-white shadow-xl shrink-0 bg-slate-800 cursor-pointer hover:scale-105 transition-transform" title="Klik untuk membuka Galeri Foto Desa">
+                                    <div class="min-w-0">
+                                        <div class="text-[10.5px] sm:text-xs font-black tracking-widest text-emerald-300 uppercase">
+                                            MONOGRAFI &amp; INDIKATOR PEMBANGUNAN WILAYAH
+                                        </div>
+                                        <h1 id="profil3dHeroDesaName" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight uppercase leading-tight truncate drop-shadow-sm">
+                                            Kelurahan Mala-Mala
+                                        </h1>
+                                        <p id="profil3dHeroKecamatan" class="text-xs sm:text-sm text-emerald-100/90 font-medium truncate mt-0.5">
+                                            Kecamatan Kodeoha, Kabupaten Kolaka Utara • Terintegrasi Potensi Desa (PODES) 2025 BPS RI
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons in Panorama -->
+                                <div class="flex items-center gap-2 shrink-0 flex-wrap">
+                                    <button type="button" onclick="switchNavMenu('galeri')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white font-extrabold text-xs border border-white/20 backdrop-blur-md shadow-md transition cursor-pointer">
+                                        <i class="bi bi-images text-amber-300"></i>
+                                        <span class="hidden sm:inline">Galeri Foto Desa</span>
+                                        <span class="sm:hidden">Galeri</span>
+                                    </button>
+                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-[#0a4d36] font-extrabold text-xs shadow-md transition cursor-pointer">
+                                        <i class="bi bi-file-earmark-pdf-fill text-rose-600 text-sm"></i>
+                                        <span class="hidden sm:inline">Buku Monografi (PDF)</span>
+                                        <span class="sm:hidden">Monografi</span>
+                                    </button>
+                                    <button type="button" onclick="switchNavMenu('dashboard'); setTimeout(() => scrollToDashSection('sectionPeta'), 150);" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white font-extrabold text-xs border border-white/20 backdrop-blur-md shadow-md transition cursor-pointer">
+                                        <i class="bi bi-map-fill text-emerald-300"></i>
+                                        <span class="hidden sm:inline">Peta WebGIS</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. TATA LETAK ASIMETRIS (DOSSIER PASPOR WILAYAH + EKSPLORASI SEKTORAL) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                         
-                        <!-- Top Ambient Status Bar -->
-                        <div class="flex flex-wrap items-center justify-between gap-3 text-xs border-b border-[#e2ddd0] pb-3.5">
-                            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-[#ded8c8] text-[#163829] font-black text-[11px] shadow-2xs">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span>BPS KOLAKA UTARA • PROGRAM DESA CANTIK 2026</span>
-                            </div>
-                            <div class="flex items-center gap-2 text-[11px] font-bold text-[#556b60]">
-                                <span id="profil3dBadgeKategori" class="px-2.5 py-0.5 rounded-full bg-[#e8f4ed] text-[#0f6b4a] font-extrabold border border-[#c7e5d5]">
-                                    Perkotaan Mandiri (Nilai 93%)
-                                </span>
-                                <span>•</span>
-                                <span>STANDAR SDI RESMI</span>
-                            </div>
-                        </div>
-
-                        <!-- 1. HERO SECTION (RESPONSIVE GRID - RAPI, LEGA & PAS TANPA KATA TERPOTONG) -->
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-2 sm:py-4">
+                        <!-- ============================================================== -->
+                        <!-- SISI KIRI: PASPOR RESMI & DOSSIER MONOGRAFI WILAYAH (4 Kolom)  -->
+                        <!-- ============================================================== -->
+                        <div class="lg:col-span-5 xl:col-span-4 space-y-5">
                             
-                            <!-- Left: Main Typography & CTA (Bebas Hyphen Break & Ukuran Proporsional) -->
-                            <div class="lg:col-span-7 xl:col-span-8 space-y-3.5">
-                                <span class="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f6b4a] uppercase block">
-                                    PROFIL MONOGRAFI & INDIKATOR WILAYAH
-                                </span>
-                                <h1 id="profil3dHeroDesaName" class="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-[#163829] leading-tight uppercase" style="hyphens: none; word-break: keep-all; overflow-wrap: normal;">
-                                    Kelurahan Mala-Mala
-                                </h1>
-                                <p id="profil3dHeroKecamatan" class="text-xs sm:text-sm font-semibold text-slate-600 max-w-xl leading-relaxed">
-                                    Kecamatan Kodeoha, Kabupaten Kolaka Utara • Terintegrasi Potensi Desa (PODES) 2025 BPS RI
-                                </p>
-                                <div class="pt-2 flex flex-wrap items-center gap-3">
-                                    <button type="button" onclick="document.getElementById('secProfilTentang').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f6b4a] hover:bg-[#0a5238] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition cursor-pointer">
-                                        <i class="bi bi-grid-fill text-emerald-200"></i>
-                                        <span>Jelajahi Indikator Wilayah</span>
-                                        <i class="bi bi-chevron-down text-xs"></i>
-                                    </button>
-                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-[#163829] font-extrabold text-xs border border-[#ded8c8] shadow-xs hover:shadow-sm transition cursor-pointer">
-                                        <i class="bi bi-file-earmark-pdf-fill text-amber-500"></i>
-                                        <span>Buku Monografi</span>
-                                    </button>
-                                </div>
-                            </div>
+                            <!-- Lembar Paspor Identitas Wilayah -->
+                            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xs space-y-4 relative overflow-hidden">
+                                <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-emerald-50 pointer-events-none"></div>
 
-                            <!-- Right: 3D Summary Widget (Pas & Seimbang di Kolom Kanan) -->
-                            <div class="lg:col-span-5 xl:col-span-4">
-                                <div class="relative w-full p-5 sm:p-6 rounded-3xl bg-white border border-[#e4ded0] shadow-md hover:shadow-xl transition-all duration-300 space-y-3.5">
-                                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                                        <span class="text-[10.5px] font-black tracking-wider text-emerald-800 uppercase flex items-center gap-1.5">
-                                            <i class="bi bi-shield-check text-emerald-600 text-sm"></i>
-                                            <span>SDI STATISTIK DESA</span>
-                                        </span>
-                                        <span class="flex h-2 w-2 relative">
-                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                        </span>
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                                        <span class="text-xs font-black text-slate-800 tracking-wider uppercase">Lembar Monografi Resmi</span>
                                     </div>
-                                    <div class="flex items-center gap-3 pt-0.5">
-                                        <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-[#0f6b4a] border border-emerald-200/80 flex items-center justify-center text-xl shrink-0 shadow-2xs">
-                                            <i class="bi bi-buildings-fill"></i>
+                                    <span class="text-[10px] font-black px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
+                                        KODE BPS: 74.08
+                                    </span>
+                                </div>
+
+                                <!-- Ringkasan Metrik Paspor (List Bergaya Dokumen Resmi, Bukan Kartu Beranda) -->
+                                <div class="space-y-2.5 text-xs">
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <span class="text-slate-500 font-semibold flex items-center gap-2">
+                                            <i class="bi bi-aspect-ratio text-emerald-600"></i>
+                                            <span>Luas Wilayah:</span>
+                                        </span>
+                                        <b id="profil3dLuas" class="text-slate-900 font-black text-sm">14,80 km²</b>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <span class="text-slate-500 font-semibold flex items-center gap-2">
+                                            <i class="bi bi-people text-sky-600"></i>
+                                            <span>Total Penduduk:</span>
+                                        </span>
+                                        <b id="profil3dPop" class="text-slate-900 font-black text-sm">1.576 Jiwa</b>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <span class="text-slate-500 font-semibold flex items-center gap-2">
+                                            <i class="bi bi-house-door text-amber-600"></i>
+                                            <span>Kepala Keluarga:</span>
+                                        </span>
+                                        <b id="profil3dKK" class="text-slate-900 font-black text-sm">394 KK</b>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <span class="text-slate-500 font-semibold flex items-center gap-2">
+                                            <i class="bi bi-diagram-3 text-teal-600"></i>
+                                            <span>Struktur SLS:</span>
+                                        </span>
+                                        <b id="profil3dDusunCount" class="text-slate-900 font-black text-xs">3 Dusun • 8 RT</b>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                        <span class="text-slate-500 font-semibold flex items-center gap-2">
+                                            <i class="bi bi-patch-check text-emerald-600"></i>
+                                            <span>Verifikasi BPS:</span>
+                                        </span>
+                                        <span class="text-emerald-700 font-black">100% Selesai (SDI)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Kompas Batas Wilayah Administrasi (Visual Rose Direction) -->
+                                <div class="pt-3 border-t border-slate-100 space-y-2.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[11px] font-black text-slate-800 uppercase flex items-center gap-1.5">
+                                            <i class="bi bi-compass text-emerald-700 text-sm"></i>
+                                            <span>Batas Wilayah Geografis</span>
+                                        </span>
+                                        <span class="text-[10px] text-slate-400 font-bold">4 Arah</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                            <span class="text-slate-400 text-[9.5px] font-black uppercase block">Utara (N)</span>
+                                            <span id="profil3dBatasUtara" class="font-extrabold text-slate-900 leading-snug line-clamp-1">Desa Koroha</span>
                                         </div>
-                                        <div class="min-w-0">
-                                            <div class="text-xs font-black text-slate-900 uppercase truncate">Monografi Terintegrasi</div>
-                                            <div class="text-[10.5px] font-medium text-slate-500 truncate">Kec. Kodeoha, Kolut</div>
+                                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                            <span class="text-slate-400 text-[9.5px] font-black uppercase block">Timur (E)</span>
+                                            <span id="profil3dBatasTimur" class="font-extrabold text-slate-900 leading-snug line-clamp-1">Pegunungan Kodeoha</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                            <span class="text-slate-400 text-[9.5px] font-black uppercase block">Selatan (S)</span>
+                                            <span id="profil3dBatasSelatan" class="font-extrabold text-slate-900 leading-snug line-clamp-1">Kecamatan Tiwu</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                            <span class="text-slate-400 text-[9.5px] font-black uppercase block">Barat (W)</span>
+                                            <span id="profil3dBatasBarat" class="font-extrabold text-slate-900 leading-snug line-clamp-1">Pesisir Teluk Bone</span>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-2 gap-2 pt-1 text-[10.5px]">
-                                        <div class="p-2.5 rounded-xl bg-[#faf9f6] border border-[#e8e4d8]">
-                                            <span class="text-slate-400 block font-semibold text-[10px]">Tingkat Mandiri</span>
-                                            <b class="text-emerald-700 font-black">98% Terverifikasi</b>
-                                        </div>
-                                        <div class="p-2.5 rounded-xl bg-[#faf9f6] border border-[#e8e4d8]">
-                                            <span class="text-slate-400 block font-semibold text-[10px]">Regsosek / PODES</span>
-                                            <b class="text-slate-800 font-black">Satu Data RI</b>
-                                        </div>
+                                </div>
+
+                                <!-- Kantor Pelayanan Desa -->
+                                <div class="pt-3 border-t border-slate-100 space-y-2 text-xs">
+                                    <div class="flex items-center gap-2 text-slate-800 font-bold">
+                                        <i class="bi bi-building text-emerald-700"></i>
+                                        <span>Kantor &amp; Kontak Pelayanan</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                                        Jl. Poros Trans Sulawesi, Kodeoha • Pelayanan Senin - Jumat 08.00 - 15.30 WITA
+                                    </p>
+                                    <div class="flex items-center justify-between pt-1">
+                                        <span class="text-[11px] font-bold text-emerald-700">layanan.descan@bps.go.id</span>
+                                        <button type="button" onclick="openPstModal()" class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-[#0f6b4a] font-black text-[10.5px] transition cursor-pointer">
+                                            PST BPS
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- 3D ELEGAN SEPARATOR DIVIDER -->
-                        <div class="relative py-2 flex items-center justify-center">
-                            <div class="w-full h-px bg-gradient-to-r from-transparent via-[#dcd6c8] to-transparent"></div>
-                            <div class="absolute bg-[#f6f3ec] px-4 py-0.5 rounded-full border border-[#ded8c8] text-[10px] font-black uppercase tracking-widest text-[#0f6b4a] flex items-center gap-2 shadow-2xs">
-                                <i class="bi bi-diamond-fill text-[8px] text-emerald-600"></i>
-                                <span>SATU DATA INDONESIA • SPASIAL & DEMOGRAFI</span>
-                                <i class="bi bi-diamond-fill text-[8px] text-emerald-600"></i>
-                            </div>
-                        </div>
-
-                        <!-- 2. FRAMED RHOMBUS / DIAMOND COLLAGE SECTION (DESAIN BELAH KETUPAT LEBIH RAPI & PAS) -->
-                        <div id="secProfilTentang" class="relative rounded-3xl border-2 border-emerald-600/30 bg-white p-6 sm:p-10 pt-12 shadow-xl transition-all duration-300">
+                        <!-- ============================================================== -->
+                        <!-- SISI KANAN: EKSPLORASI MONOGRAFI, SEKTOR BASIS & APARATUR (8 Kolom)-->
+                        <!-- ============================================================== -->
+                        <div class="lg:col-span-7 xl:col-span-8 space-y-6">
                             
-                            <!-- Hidden dummy for JS compatibility (setSrc in script) -->
-                            <img id="profil3dLandscapeBg" src="" alt="" class="hidden" style="display:none;">
-                            <img id="profil3dHeroPhoto" src="" alt="" class="hidden" style="display:none;">
-
-                            <!-- Border Top Title Notch -->
-                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#f6f3ec] px-5 py-1.5 rounded-full border border-emerald-500/40 shadow-sm flex items-center gap-2 text-xs sm:text-sm font-black text-[#163829] tracking-wider uppercase whitespace-nowrap">
-                                <i class="bi bi-geo-alt-fill text-emerald-600"></i>
-                                <span>KARAKTERISTIK & KONDISI GEOGRAFIS DESA</span>
-                            </div>
-
-                            <!-- Decorative Subtle Corner Accents -->
-                            <div class="absolute -top-1.5 -left-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
-                            <div class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
-                            <div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
-                            <div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
-
-                            <!-- BARIS BELAH KETUPAT (DIAMOND / RHOMBUS 3D CARDS DENGAN PROPORSI PAS) -->
-                            <div class="py-8 sm:py-12">
-                                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-10">
-                                    
-                                    <!-- Rhombus 1: Luas Wilayah -->
-                                    <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rotate-45 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-emerald-50/70 border-2 border-emerald-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
-                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
-                                            <i class="bi bi-map-fill text-xl sm:text-2xl md:text-3xl text-emerald-600 group-hover:scale-110 transition-transform"></i>
-                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Luas</span>
-                                            <b id="profil3dLuas" class="text-xs sm:text-sm font-black text-[#163829] leading-tight">14,80 km²</b>
-                                        </div>
-                                    </div>
-
-                                    <!-- Rhombus 2: Penduduk -->
-                                    <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rotate-45 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-sky-50/70 border-2 border-sky-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
-                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
-                                            <i class="bi bi-people-fill text-xl sm:text-2xl md:text-3xl text-sky-600 group-hover:scale-110 transition-transform"></i>
-                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Penduduk</span>
-                                            <b id="profil3dPop" class="text-xs sm:text-sm font-black text-[#163829] leading-tight">1.576 Jiwa</b>
-                                        </div>
-                                    </div>
-
-                                    <!-- Rhombus 3: Keluarga (KK) -->
-                                    <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rotate-45 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-amber-50/70 border-2 border-amber-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
-                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
-                                            <i class="bi bi-house-heart-fill text-xl sm:text-2xl md:text-3xl text-amber-500 group-hover:scale-110 transition-transform"></i>
-                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Keluarga</span>
-                                            <b id="profil3dKK" class="text-xs sm:text-sm font-black text-amber-700 leading-tight">394 KK</b>
-                                        </div>
-                                    </div>
-
-                                    <!-- Rhombus 4: Struktur RT/Dusun -->
-                                    <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rotate-45 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white to-teal-50/70 border-2 border-teal-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
-                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
-                                            <i class="bi bi-diagram-3-fill text-xl sm:text-2xl md:text-3xl text-teal-600 group-hover:scale-110 transition-transform"></i>
-                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Struktur</span>
-                                            <b id="profil3dDusunCount" class="text-[10px] sm:text-xs font-black text-[#163829] leading-tight">3 Dusun • 8 RT</b>
-                                        </div>
-                                    </div>
-
-                                    <!-- Rhombus 5: Komoditas Basis (Center Dark 3D Rhombus) -->
-                                    <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rotate-45 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#163829] to-[#0f6b4a] border-2 border-emerald-300 shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer text-white">
-                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
-                                            <i class="bi bi-boxes text-xl sm:text-2xl md:text-3xl text-emerald-300 group-hover:scale-110 transition-transform"></i>
-                                            <span class="text-[8px] font-black uppercase text-emerald-200 mt-1 tracking-wider">Komoditas</span>
-                                            <span id="profil3dKomoditas" class="text-[9px] sm:text-[10px] font-black text-white leading-tight block line-clamp-2">Kakao & Perikanan</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- CHECKLIST SPESIFIKASI DATA (Sesuai Gaya Bullet Points List pada Gambar) -->
-                            <div class="space-y-3.5 pt-6 pb-4 border-t border-[#eee9dc] max-w-3xl mx-auto text-xs sm:text-[13px] text-slate-700 font-medium">
-                                <div class="flex items-start gap-3">
-                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
-                                    <div><b class="text-[#163829]">Karakteristik & Profil Wilayah:</b> <span id="profil3dDesc">Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.</span></div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
-                                    <div><b class="text-[#163829]">Batas Administrasi Terverifikasi SDI:</b> Sebelah Utara berbatasan dengan <span id="profil3dBatasUtara" class="font-bold text-[#0f6b4a]">Desa Koroha</span>, Selatan dengan <span id="profil3dBatasSelatan" class="font-bold text-[#0f6b4a]">Kecamatan Tiwu</span>, Barat dengan <span id="profil3dBatasBarat" class="font-bold text-[#0f6b4a]">Pesisir Teluk Bone</span>, dan Timur dengan <span id="profil3dBatasTimur" class="font-bold text-[#0f6b4a]">Pegunungan Kodeoha</span>.</div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
-                                    <div><b class="text-[#0f6b4a]">Rekomendasi Pembinaan BPS Kolut:</b> <span id="profil3dCatatanBps">Kategori Mandiri dengan kualitas data monografi dan SDI tertinggi di Kecamatan Kodeoha.</span></div>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
-                                    <div><b class="text-[#163829]">Sektor Komoditas Unggulan:</b> <span id="profil3dAgri" class="font-bold text-[#0f6b4a]">Pesisir & Kakao 190 Ha</span> terintegrasi dengan basis survei Potensi Desa (PODES) 2025.</div>
-                                </div>
-                            </div>
-
-                            <!-- Tombol Aksi di Bawah Kotak -->
-                            <div class="text-center pt-4">
-                                <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#0f6b4a] hover:bg-[#0a5238] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition cursor-pointer">
-                                    <i class="bi bi-file-earmark-arrow-down-fill text-amber-300"></i>
-                                    <span>UNDUH DOKUMEN MONOGRAFI RESMI</span>
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <!-- 3. SEKTOR BASIS & KOMODITAS UNGGULAN -->
-                        <div class="space-y-6 pt-2">
-                            <div class="text-center max-w-2xl mx-auto space-y-2">
-                                <span class="text-[10px] font-black uppercase text-[#0f6b4a] tracking-widest block">
-                                    POTENSI EKONOMI PRODUKTIF
-                                </span>
-                                <h3 class="text-2xl sm:text-3xl font-black text-[#163829] tracking-tight uppercase">
-                                    Komoditas & Sektor Unggulan Desa
-                                </h3>
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-                                    Data statistik sektoral PODES 2025 BPS Kolaka Utara mengelompokkan potensi ekonomi desa ke dalam 3 pilar produktif unggulan.
-                                </p>
-                            </div>
-
-                            <!-- 3D Pillar Cards dengan Bootstrap Icons -->
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                                
-                                <!-- Pillar 1: Perkebunan -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
-                                    <div class="w-13 h-13 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-110 transition-transform">
-                                        <i class="bi bi-flower1"></i>
-                                    </div>
-                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200">
-                                        Perkebunan Rakyat
-                                    </span>
-                                    <h4 class="text-base font-black text-[#163829] leading-snug">Sentra Kakao & Cengkeh</h4>
-                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
-                                        Pengembangan budidaya kakao sambung pucuk dan cengkeh rakyat dengan sertifikasi bibit unggul binaan dinas perkebunan.
-                                    </p>
-                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-emerald-800">
-                                        <span>Status PODES:</span>
-                                        <span class="flex items-center gap-1"><i class="bi bi-patch-check-fill text-emerald-600"></i> 190+ Ha Produktif</span>
-                                    </div>
-                                </div>
-
-                                <!-- Pillar 2: Kelautan & Pesisir -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-sky-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
-                                    <div class="w-13 h-13 rounded-2xl bg-sky-50 text-sky-700 border border-sky-200/80 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-110 transition-transform">
-                                        <i class="bi bi-water"></i>
-                                    </div>
-                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-sky-100 text-sky-900 border border-sky-200">
-                                        Pesisir & Kelautan
-                                    </span>
-                                    <h4 class="text-base font-black text-[#163829] leading-snug">Perikanan Tangkap & Teri</h4>
-                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
-                                        Sentra pengeringan ikan teri tradisional Teluk Bone, armada perahu nelayan pesisir, serta budidaya laut terpadu.
-                                    </p>
-                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-sky-800">
-                                        <span>Wilayah Pesisir:</span>
-                                        <span class="flex items-center gap-1"><i class="bi bi-shield-check text-sky-600"></i> Armada Terdata</span>
-                                    </div>
-                                </div>
-
-                                <!-- Pillar 3: IKM & BUMDes -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
-                                    <div class="w-13 h-13 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-110 transition-transform">
-                                        <i class="bi bi-shop-window"></i>
-                                    </div>
-                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
-                                        IKM & Usaha Rakyat
-                                    </span>
-                                    <h4 class="text-base font-black text-[#163829] leading-snug">Usaha Olahan & BUMDes</h4>
-                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
-                                        Pemberdayaan industri kecil menengah pengolahan pasca panen kopi, kakao olahan, serta digitalisasi kios pasar desa.
-                                    </p>
-                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-amber-800">
-                                        <span>Unit Usaha:</span>
-                                        <span class="flex items-center gap-1"><i class="bi bi-check-circle-fill text-amber-600"></i> Aktif Beroperasi</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- 4. APARATUR PEMERINTAHAN & AGEN DATA STATISTIK -->
-                        <div class="space-y-6 pt-4">
-                            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#e2ded5] pb-4">
-                                <div>
-                                    <span class="text-[10px] font-black uppercase text-[#0f6b4a] tracking-widest block">
-                                        STANDARISASI SUMBER DAYA MANUSIA
-                                    </span>
-                                    <h3 class="text-2xl sm:text-3xl font-black text-[#163829] mt-1 uppercase">
-                                        Aparatur Pemerintahan & Agen SDI
+                            <!-- 1. Narasi Profil Wilayah & Rekomendasi Resmi BPS -->
+                            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs space-y-4">
+                                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                                    <i class="bi bi-book-half text-emerald-700 text-base"></i>
+                                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider">
+                                        Karakteristik &amp; Bentang Alam Wilayah
                                     </h3>
                                 </div>
-                                <button type="button" onclick="openAgenDesaModal()" class="px-4 py-2 rounded-xl bg-white hover:bg-emerald-50 text-[#163829] font-extrabold text-xs border border-[#ded8c8] shadow-xs flex items-center gap-1.5 transition cursor-pointer">
-                                    <i class="bi bi-people-fill text-emerald-700"></i>
-                                    <span>Kelola Data Aparatur</span>
+
+                                <p id="profil3dDesc" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                                    Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.
+                                </p>
+
+                                <!-- Kotak Catatan Pembinaan BPS (Gaya Dokumen Akreditasi) -->
+                                <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-50/80 via-emerald-50/50 to-teal-50/60 border border-emerald-200/80 flex items-start gap-3.5">
+                                    <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 text-lg shadow-xs">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-900">
+                                            Catatan Pembinaan Tim Teknis BPS Kolaka Utara
+                                        </div>
+                                        <p id="profil3dCatatanBps" class="text-xs text-emerald-950 font-semibold leading-relaxed">
+                                            Kategori Mandiri dengan kualitas data monografi dan SDI tertinggi di Kecamatan Kodeoha.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Potensi Sektor Basis & Komoditas Unggulan (Strip Horizontal Khusus Profil) -->
+                            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs space-y-4">
+                                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <i class="bi bi-boxes text-emerald-700 text-base"></i>
+                                        <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider">
+                                            Sektor Basis &amp; Komoditas Unggulan (PODES 2025)
+                                        </h3>
+                                    </div>
+                                    <span class="text-[10.5px] font-black text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                        3 Pilar Ekonomi
+                                    </span>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <!-- Sektor Perkebunan -->
+                                    <div class="p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-emerald-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                        <div class="flex items-start gap-3.5">
+                                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#0f6b4a] flex items-center justify-center text-lg shrink-0">
+                                                <i class="bi bi-tree-fill"></i>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2">
+                                                    <h4 class="text-xs font-black text-slate-900 uppercase">Sentra Kakao &amp; Cengkeh</h4>
+                                                    <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-md bg-emerald-100 text-emerald-900">Agrikultur</span>
+                                                </div>
+                                                <p class="text-[11.5px] text-slate-500 leading-snug mt-0.5">
+                                                    Pengembangan budidaya kakao sambung pucuk dan cengkeh rakyat dengan sertifikasi bibit unggul.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="text-left sm:text-right shrink-0 pl-13 sm:pl-0">
+                                            <span class="text-[10px] text-slate-400 block font-bold">Hamparan Produktif:</span>
+                                            <span id="profil3dAgri" class="text-xs font-black text-emerald-800">Pesisir &amp; Kakao 190 Ha</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sektor Kelautan & Bahari -->
+                                    <div class="p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-sky-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                        <div class="flex items-start gap-3.5">
+                                            <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center text-lg shrink-0">
+                                                <i class="bi bi-water"></i>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2">
+                                                    <h4 class="text-xs font-black text-slate-900 uppercase">Perikanan Tangkap &amp; Teri</h4>
+                                                    <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-md bg-sky-100 text-sky-900">Pesisir</span>
+                                                </div>
+                                                <p class="text-[11.5px] text-slate-500 leading-snug mt-0.5">
+                                                    Sentra pengeringan teri tradisional Teluk Bone, armada perahu nelayan, serta budidaya laut terpadu.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="text-left sm:text-right shrink-0 pl-13 sm:pl-0">
+                                            <span class="text-[10px] text-slate-400 block font-bold">Komoditas Basis:</span>
+                                            <span id="profil3dKomoditas" class="text-xs font-black text-sky-800">Perikanan, Teri, Kakao</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sektor Usaha Rakyat / BUMDes -->
+                                    <div class="p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-amber-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                        <div class="flex items-start gap-3.5">
+                                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg shrink-0">
+                                                <i class="bi bi-shop"></i>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2">
+                                                    <h4 class="text-xs font-black text-slate-900 uppercase">Usaha Olahan &amp; Pasar Desa</h4>
+                                                    <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-md bg-amber-100 text-amber-900">Ekonomi</span>
+                                                </div>
+                                                <p class="text-[11.5px] text-slate-500 leading-snug mt-0.5">
+                                                    Pemberdayaan industri olahan kopi &amp; cokelat lokal, digitalisasi kios pasar desa, dan BUMDes.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="text-left sm:text-right shrink-0 pl-13 sm:pl-0">
+                                            <span class="text-[10px] text-slate-400 block font-bold">Status BUMDes:</span>
+                                            <span class="text-xs font-black text-amber-800">Aktif &amp; Terdata PODES</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Direktori Aparatur Pemerintahan & Dewan Agen SDI -->
+                            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs space-y-4">
+                                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <i class="bi bi-people-fill text-emerald-700 text-base"></i>
+                                        <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider">
+                                            Aparatur Pemerintahan &amp; Pengelola Data
+                                        </h3>
+                                    </div>
+                                    <button type="button" onclick="openAgenDesaModal()" class="px-3 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                                        <i class="bi bi-pencil-square"></i>
+                                        <span>Kelola Data</span>
+                                    </button>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                    <!-- Kepala Desa -->
+                                    <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+                                        <div class="w-11 h-11 rounded-xl bg-emerald-100 text-[#0f6b4a] flex items-center justify-center text-xl shrink-0">
+                                            <i class="bi bi-person-fill"></i>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <span class="text-[9.5px] font-black uppercase text-emerald-800">Kepala Desa / Lurah</span>
+                                            <div id="aparatKadesName" class="text-xs font-black text-slate-900 truncate">H. Syamsul Bahri, S.Sos</div>
+                                            <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">
+                                                <i class="bi bi-patch-check-fill text-emerald-600"></i> Terverifikasi BPS
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sekretaris Desa -->
+                                    <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+                                        <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl shrink-0">
+                                            <i class="bi bi-person-badge-fill"></i>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <span class="text-[9.5px] font-black uppercase text-blue-800">Sekretaris Desa</span>
+                                            <div id="aparatSekdesName" class="text-xs font-black text-slate-900 truncate">Muh. Ridwan, S.AP</div>
+                                            <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">
+                                                <i class="bi bi-patch-check-fill text-emerald-600"></i> Terverifikasi BPS
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Agen Statistik Desa -->
+                                    <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+                                        <div class="w-11 h-11 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center text-xl shrink-0">
+                                            <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <span class="text-[9.5px] font-black uppercase text-purple-800">Agen Statistik Desa</span>
+                                            <div class="text-xs font-black text-slate-900 truncate">Baharuddin, S.Pd</div>
+                                            <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">
+                                                <i class="bi bi-patch-check-fill text-purple-600"></i> Lulus Uji Kompetensi
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Operator Database SDI -->
+                                    <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+                                        <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0">
+                                            <i class="bi bi-laptop-fill"></i>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <span class="text-[9.5px] font-black uppercase text-amber-800">Operator Monografi</span>
+                                            <div class="text-xs font-black text-slate-900 truncate">Nurul Annisa, S.Kom</div>
+                                            <span class="text-[10px] text-slate-400 font-semibold flex items-center gap-1">
+                                                <i class="bi bi-patch-check-fill text-emerald-600"></i> Pengelola Database
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Sebaran Satuan Lingkungan Setempat (SLS / Dusun) -->
+                            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs space-y-4">
+                                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <i class="bi bi-houses-fill text-emerald-700 text-base"></i>
+                                        <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider">
+                                            Sebaran Satuan Lingkungan Setempat (SLS)
+                                        </h3>
+                                    </div>
+                                    <span class="text-[10.5px] font-bold text-slate-400 uppercase">Data Riil PODES 2025</span>
+                                </div>
+
+                                <!-- Dynamic Dusun Container -->
+                                <div id="profil3dDusunList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <!-- Populated dynamically via renderProfilDesa3D() -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- 3. FOOTER LEMBAR MONOGRAFI RESMI -->
+                    <div class="rounded-2xl p-4 bg-white border border-slate-200/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shadow-2xs">
+                        <div class="flex items-center gap-2.5">
+                            <img src="/images/logo_bps.png" alt="BPS" class="h-6 w-auto object-contain">
+                            <span class="font-bold text-slate-700">Badan Pusat Statistik Kabupaten Kolaka Utara • Diseminasi Monografi Desa Cantik 2026</span>
+                        </div>
+                        <div class="flex items-center gap-3 font-semibold text-[11px]">
+                            <span class="text-emerald-700 font-bold">Standardisasi Satu Data Indonesia</span>
+                            <span>•</span>
+                            <a href="javascript:void(0)" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="text-[#0f6b4a] font-bold hover:underline">Kembali ke Atas ↑</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- HALAMAN GALERI DOKUMENTASI DESA RESMI BPS                             -->
+                <!-- ===================================================================== -->
+                <div id="view-galeri" class="menu-view-container hidden space-y-6 animate-in fade-in duration-300">
+                    
+                    <!-- Header Banner Halaman Galeri: Modern & Berkelas -->
+                    <div class="bg-gradient-to-r from-slate-950 via-[#0a2f22] to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden border border-emerald-900/60">
+                        <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+                        
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                            <div class="flex items-start sm:items-center gap-4">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-teal-500/10 border border-emerald-400/30 text-emerald-300 flex items-center justify-center text-3xl shrink-0 shadow-inner">
+                                    <i class="bi bi-images"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-black uppercase tracking-wider flex items-center gap-1">
+                                            <i class="bi bi-shield-check text-emerald-400"></i>
+                                            <span>Dokumentasi Resmi Terverifikasi BPS</span>
+                                        </span>
+                                        <span id="pageGaleriKecBadge" class="px-2.5 py-0.5 rounded-full bg-white/10 text-slate-200 text-[10px] font-bold">
+                                            Kec. Kodeoha
+                                        </span>
+                                    </div>
+                                    <h1 id="pageGaleriTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mt-1.5">
+                                        Galeri Dokumentasi Desa Kamisi
+                                    </h1>
+                                    <p id="pageGaleriSub" class="text-xs sm:text-sm text-emerald-100/90 font-medium max-w-2xl mt-1 leading-relaxed">
+                                        Koleksi dokumentasi kegiatan pembinaan Desa Cantik BPS, potensi komoditas unggulan wilayah, bentang alam, dan pelayanan masyarakat.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2.5 shrink-0">
+                                <button type="button" onclick="openUploadFotoModal()" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs shadow-lg shadow-emerald-950/40 active:scale-95 transition cursor-pointer">
+                                    <i class="bi bi-cloud-arrow-up-fill text-sm"></i>
+                                    <span>+ Unggah Foto Baru</span>
+                                </button>
+                                <button type="button" onclick="switchNavMenu('tentang')" class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/15 transition cursor-pointer">
+                                    <i class="bi bi-building"></i>
+                                    <span>Profil Desa</span>
                                 </button>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- 4 Aparatur Cards Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                
-                                <!-- Kades -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-16 h-16 sm:w-18 sm:h-18 mx-auto rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 flex items-center justify-center text-3xl shadow-xs">
-                                        <i class="bi bi-person-fill"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 uppercase">Kepala Desa / Lurah</span>
-                                        <div id="aparatKadesName" class="text-sm font-black text-slate-900 mt-1">H. Syamsul Bahri, S.Sos</div>
-                                        <div class="text-[10px] text-slate-400 font-semibold">Pembina Utama Wilayah</div>
-                                    </div>
-                                    <div class="pt-2 border-t border-slate-100 text-[10.5px] text-emerald-700 font-bold flex items-center justify-center gap-1">
-                                        <i class="bi bi-patch-check-fill"></i>
-                                        <span>Terverifikasi BPS</span>
-                                    </div>
-                                </div>
-
-                                <!-- Sekdes -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-16 h-16 sm:w-18 sm:h-18 mx-auto rounded-2xl bg-blue-50 text-blue-700 border border-blue-200/80 flex items-center justify-center text-3xl shadow-xs">
-                                        <i class="bi bi-person-badge-fill"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 uppercase">Sekretaris Desa</span>
-                                        <div id="aparatSekdesName" class="text-sm font-black text-slate-900 mt-1">Muh. Ridwan, S.AP</div>
-                                        <div class="text-[10px] text-slate-400 font-semibold">Koordinator Administrasi</div>
-                                    </div>
-                                    <div class="pt-2 border-t border-slate-100 text-[10.5px] text-emerald-700 font-bold flex items-center justify-center gap-1">
-                                        <i class="bi bi-patch-check-fill"></i>
-                                        <span>Terverifikasi BPS</span>
-                                    </div>
-                                </div>
-
-                                <!-- Agen Statistik Desa -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-16 h-16 sm:w-18 sm:h-18 mx-auto rounded-2xl bg-purple-50 text-purple-700 border border-purple-200/80 flex items-center justify-center text-3xl shadow-xs">
-                                        <i class="bi bi-file-earmark-bar-graph-fill"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 uppercase">Agen Statistik Desa</span>
-                                        <div class="text-sm font-black text-slate-900 mt-1">Baharuddin, S.Pd</div>
-                                        <div class="text-[10px] text-slate-400 font-semibold">Kaur Perencanaan</div>
-                                    </div>
-                                    <div class="pt-2 border-t border-slate-100 text-[10.5px] text-emerald-700 font-bold flex items-center justify-center gap-1">
-                                        <i class="bi bi-patch-check-fill"></i>
-                                        <span>Lulus Uji Kompetensi</span>
-                                    </div>
-                                </div>
-
-                                <!-- Operator SDI -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-16 h-16 sm:w-18 sm:h-18 mx-auto rounded-2xl bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center justify-center text-3xl shadow-xs">
-                                        <i class="bi bi-laptop-fill"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Operator Monografi</span>
-                                        <div class="text-sm font-black text-slate-900 mt-1">Nurul Annisa, S.Kom</div>
-                                        <div class="text-[10px] text-slate-400 font-semibold">Pengelola Database SDI</div>
-                                    </div>
-                                    <div class="pt-2 border-t border-slate-100 text-[10.5px] text-emerald-700 font-bold flex items-center justify-center gap-1">
-                                        <i class="bi bi-patch-check-fill"></i>
-                                        <span>Terverifikasi BPS</span>
-                                    </div>
-                                </div>
-
-                            </div>
+                    <!-- Toolbar Filter Kategori & Pencarian Halaman Galeri -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <!-- Filter Pills -->
+                        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+                            <button type="button" onclick="filterPageGaleriPhotos('all', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-emerald-700 text-white shadow-sm border border-emerald-700 cursor-pointer whitespace-nowrap">Semua Foto</button>
+                            <button type="button" onclick="filterPageGaleriPhotos('pembinaan', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
+                                <i class="bi bi-mortarboard-fill text-emerald-600"></i>
+                                <span>Pembinaan BPS</span>
+                            </button>
+                            <button type="button" onclick="filterPageGaleriPhotos('potensi', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
+                                <i class="bi bi-graph-up-arrow text-amber-600"></i>
+                                <span>Potensi &amp; UMKM</span>
+                            </button>
+                            <button type="button" onclick="filterPageGaleriPhotos('alam', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
+                                <i class="bi bi-tree-fill text-teal-600"></i>
+                                <span>Pesona Alam</span>
+                            </button>
+                            <button type="button" onclick="filterPageGaleriPhotos('pelayanan', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
+                                <i class="bi bi-building-fill-check text-indigo-600"></i>
+                                <span>Layanan Desa</span>
+                            </button>
+                            <button type="button" onclick="filterPageGaleriPhotos('custom', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
+                                <i class="bi bi-star-fill text-amber-500"></i>
+                                <span>Unggahan Admin</span>
+                            </button>
                         </div>
 
-                        <!-- 5. SEBARAN DUSUN & PETA KONTAK -->
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
-                            
-                            <!-- Left: Sebaran Dusun & Lingkungan -->
-                            <div class="lg:col-span-6 space-y-4">
-                                <div class="flex items-center justify-between border-b border-[#e2ded5] pb-3">
-                                    <h4 class="text-lg font-black text-[#163829] flex items-center gap-2 uppercase">
-                                        <i class="bi bi-houses-fill text-emerald-700"></i>
-                                        <span>Sebaran Dusun & Wilayah RT</span>
-                                    </h4>
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase">Data Riil PODES</span>
-                                </div>
-                                <div id="profil3dDusunList" class="space-y-2.5">
-                                    <!-- Injected Dynamically by JS -->
-                                    <div class="p-3.5 rounded-2xl bg-white border border-[#e2ded5] text-xs flex items-center justify-between">
-                                        <div class="flex items-center gap-2.5">
-                                            <span class="w-7 h-7 rounded-xl bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">1</span>
-                                            <div>
-                                                <div class="font-bold text-slate-900">Dusun I Kamisi Bahari</div>
-                                                <div class="text-[10px] text-slate-400">135 KK • 540 Jiwa</div>
-                                            </div>
-                                        </div>
-                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Kerawanan: Rendah</span>
-                                    </div>
-                                </div>
+                        <!-- Search & Counter -->
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="relative w-full md:w-64">
+                                <i class="bi bi-search absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                                <input type="text" id="pageGaleriSearchInput" oninput="searchPageGaleriPhotos(this.value)" placeholder="Cari foto dokumentasi..." class="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
                             </div>
-
-                            <!-- Right: Peta Spasial & Kontak Pelayanan -->
-                            <div class="lg:col-span-6 space-y-4">
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-[#e2ded5] space-y-4">
-                                    <div class="flex items-center justify-between border-b border-[#e8e4d8] pb-3">
-                                        <h4 class="text-base font-black text-[#163829] flex items-center gap-2 uppercase">
-                                            <i class="bi bi-geo-alt-fill text-rose-600"></i>
-                                            <span>Peta Geospasial & Kontak Pelayanan</span>
-                                        </h4>
-                                        <button type="button" onclick="switchNavMenu('dashboard'); setTimeout(() => scrollToDashSection('sectionPeta'), 150);" class="text-[11px] font-extrabold text-[#0f6b4a] hover:underline flex items-center gap-1 cursor-pointer">
-                                            <span>Buka Peta Tematik</span>
-                                            <i class="bi bi-arrow-right"></i>
-                                        </button>
-                                    </div>
-
-                                    <!-- Quick Kontak Info -->
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                                        <div class="p-3 rounded-2xl bg-[#f8f6f0] border border-[#e8e4d8] space-y-1">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Alamat Kantor Desa:</span>
-                                            <div class="font-extrabold text-[#163829]">Jl. Poros Trans Sulawesi</div>
-                                            <div class="text-[10px] text-slate-500">Kabupaten Kolaka Utara, Sulawesi Tenggara</div>
-                                        </div>
-                                        <div class="p-3 rounded-2xl bg-[#f8f6f0] border border-[#e8e4d8] space-y-1">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Jam Operasional Layanan:</span>
-                                            <div class="font-extrabold text-[#163829]">Senin - Jumat</div>
-                                            <div class="text-[10px] text-slate-500">08.00 - 15.30 WITA (Terpadu)</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-center justify-between gap-3 text-xs">
-                                        <div class="flex items-center gap-2.5 min-w-0">
-                                            <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0"><i class="bi bi-envelope-fill"></i></span>
-                                            <div class="truncate">
-                                                <div class="text-[10px] font-bold text-slate-500">Email Resmi Layanan:</div>
-                                                <div class="font-extrabold text-[#0f6b4a] truncate">layanan.descan@bps.go.id</div>
-                                            </div>
-                                        </div>
-                                        <button type="button" onclick="openPstModal()" class="px-3 py-1.5 rounded-xl bg-[#0f6b4a] hover:bg-[#0a4d36] text-white font-extrabold text-[11px] transition shrink-0 cursor-pointer">
-                                            Konsultasi PST
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <span id="pageGaleriCount" class="text-xs font-black text-emerald-800 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200 whitespace-nowrap hidden sm:inline">
+                                8 Foto Dokumentasi
+                            </span>
                         </div>
+                    </div>
 
-                        <!-- Bottom Footer inside Profil Shell -->
-                        <div class="pt-6 border-t border-[#e2ded5] flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
-                            <div class="flex items-center gap-2">
-                                <img src="/images/logo_bps.png" alt="BPS" class="h-6 w-auto object-contain">
-                                <span class="font-bold text-[#163829]">Badan Pusat Statistik Kabupaten Kolaka Utara</span>
-                            </div>
-                            <div class="flex items-center gap-3 font-semibold text-[11px]">
-                                <span>Portal Resmi Desa Cantik 2026</span>
-                                <span>•</span>
-                                <a href="javascript:void(0)" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="text-[#0f6b4a] font-bold hover:underline">Kembali ke Atas ↑</a>
-                            </div>
+                    <!-- Grid Foto Halaman Galeri -->
+                    <div id="pageGaleriPhotosGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+                        <!-- Populated via renderPageGaleriPhotos() -->
+                    </div>
+
+                    <!-- Footer Info Halaman Galeri -->
+                    <div class="rounded-2xl p-4 bg-white border border-slate-200/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shadow-2xs">
+                        <div class="flex items-center gap-2.5">
+                            <i class="bi bi-info-circle-fill text-emerald-600 text-base"></i>
+                            <span>Klik pada kartu foto untuk melihat gambar dalam ukuran layar penuh (Lightbox) dengan navigasi panah keyboard.</span>
                         </div>
-
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="openUploadFotoModal()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold transition cursor-pointer flex items-center gap-1.5 text-xs">
+                                <i class="bi bi-cloud-arrow-up-fill text-emerald-600"></i>
+                                <span>Unggah Foto</span>
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -2793,6 +2862,7 @@
 
                 // ==============================================================
         // GALERI FOTO DESA RESMI & SISTEM UNGGAH DOKUMENTASI ADMIN
+        // Koleksi Foto Otentik Per Desa (Kecamatan Kodeoha & Tiwu)
         // ==============================================================
         const baseGaleriDatabase = [
             {
@@ -2800,7 +2870,7 @@
                 cat: 'pembinaan',
                 title: 'Pelatihan Literasi Statistik Aparatur',
                 caption: 'Bimbingan teknis pengisian kuesioner PODES dan standarisasi metadata bersama BPS Kolaka Utara.',
-                img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
                 badge: 'Pembinaan BPS',
                 date: 'Agustus 2025'
             },
@@ -2808,26 +2878,26 @@
                 id: 'base_2',
                 cat: 'pembinaan',
                 title: 'Verifikasi & Rekonsiliasi Data Sektoral',
-                caption: 'Penyelarasan indikator kemiskinan ekstrem, penerima bansos, dan data desil bersama tim verifikator.',
-                img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=700&q=80',
+                caption: 'Penyelarasan indikator kemiskinan ekstrem, penerima bansos, dan data desil bersama tim verifikator BPS.',
+                img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
                 badge: 'SDI Kolut',
                 date: 'Juli 2025'
             },
             {
                 id: 'base_3',
                 cat: 'potensi',
-                title: 'Sentra Perkebunan Kakao Rakyat',
-                caption: 'Perkebunan kakao produktif terintegrasi dengan metode sambung pucuk dan pembibitan unggul.',
-                img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=700&q=80',
+                title: 'Sentra Perkebunan Kakao Rakyat Terpadu',
+                caption: 'Perkebunan kakao produktif terintegrasi dengan metode sambung pucuk dan pembibitan bibit unggul.',
+                img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
                 badge: 'Komoditas Unggulan',
                 date: '2025'
             },
             {
                 id: 'base_4',
                 cat: 'potensi',
-                title: 'Pengeringan Kakao Fermentasi Berkualitas',
+                title: 'Pengeringan Biji Kakao Fermentasi SNI',
                 caption: 'Kelompok tani desa mengoptimalkan nilai jual biji kakao kering siap ekspor dengan standar mutu SNI.',
-                img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80',
                 badge: 'UMKM & IKM',
                 date: '2025'
             },
@@ -2836,7 +2906,7 @@
                 cat: 'alam',
                 title: 'Pesisir Bahari & Armada Perahu Nelayan',
                 caption: 'Aktivitas nelayan pesisir Teluk Bone serta sentra pengeringan ikan teri tradisional.',
-                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
                 badge: 'Pesona Bahari',
                 date: '2025'
             },
@@ -2845,7 +2915,7 @@
                 cat: 'alam',
                 title: 'Bentang Alam Perbukitan & Irigasi Subur',
                 caption: 'Topografi perbukitan alami yang menopang ketahanan pangan dan sumber mata air utama masyarakat.',
-                img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
                 badge: 'Panorama Alam',
                 date: '2025'
             },
@@ -2854,7 +2924,7 @@
                 cat: 'pelayanan',
                 title: 'Pelayanan Adminduk Terpadu di Balai Desa',
                 caption: 'Pemanfaatan sistem informasi desa terpadu untuk pencatatan mutasi penduduk dan verifikasi bansos.',
-                img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
                 badge: 'Layanan Desa',
                 date: '2025'
             },
@@ -2863,11 +2933,774 @@
                 cat: 'pelayanan',
                 title: 'Posyandu Terpadu Pencegahan Stunting',
                 caption: 'Pemantauan tumbuh kembang balita dan ibu hamil secara berkala yang terdata langsung pada dashboard desa.',
-                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80',
+                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
                 badge: 'Kesehatan Warga',
                 date: '2025'
             }
         ];
+
+        // KOLEKSI FOTO SPESIFIK & OTENTIK PER DESA (Kecamatan Kodeoha & Tiwu)
+        const villageGaleriDatabase = {
+            // === 1. DESA KAMISI (Pesisir & Perikanan Teri, Kakao) ===
+            kamisi: [
+                {
+                    id: 'kamisi_1',
+                    cat: 'alam',
+                    title: 'Pesisir Bahari & Perahu Tradisional Nelayan Kamisi',
+                    caption: 'Aktivitas armada kapal nelayan Dusun Kamisi Bahari di sepanjang perairan Teluk Bone.',
+                    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pesona Bahari',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'kamisi_2',
+                    cat: 'potensi',
+                    title: 'Sentra Pengeringan Ikan Teri Tradisional Kamisi',
+                    caption: 'Penjemuran teri asin higienis di para-para bambu pesisir oleh kelompok nelayan Dusun II Kamisi.',
+                    img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Produk Unggulan',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'kamisi_3',
+                    cat: 'pembinaan',
+                    title: 'Bimtek Pengisian Kuesioner PODES & Standar SDI BPS',
+                    caption: 'Pelatihan aparatur Desa Kamisi dalam standarisasi metadata statistik sektoral di Balai Desa Kamisi.',
+                    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'kamisi_4',
+                    cat: 'potensi',
+                    title: 'Perkebunan Kakao Sambung Pucuk Dusun III Kamisi',
+                    caption: 'Pengembangan kloning kakao produktif terintegrasi seluas 190 Ha untuk peningkatan panen petani.',
+                    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Rakyat',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'kamisi_5',
+                    cat: 'pelayanan',
+                    title: 'Posyandu Terpadu Dahlia & Pengukuran Stunting Balita',
+                    caption: 'Pemeriksaan rutin kesehatan ibu dan balita dengan pencatatan digital terintegrasi sistem desa.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Kesehatan',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'kamisi_6',
+                    cat: 'alam',
+                    title: 'Konservasi Sabuk Hijau Mangrove Pesisir Kamisi',
+                    caption: 'Zona perlindungan pesisir dan habitat biota laut muara Teluk Bone yang dijaga swadaya warga.',
+                    img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Lingkungan Hidup',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'kamisi_7',
+                    cat: 'pelayanan',
+                    title: 'Pelayanan Adminduk Presisi di Kantor Desa Kamisi',
+                    caption: 'Pelayanan pembuatan surat keterangan, mutasi domisili, dan verifikasi DTKS terpadu warga Kamisi.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Tata Kelola Desa',
+                    date: 'Mei 2025'
+                },
+                {
+                    id: 'kamisi_8',
+                    cat: 'potensi',
+                    title: 'Gudang Pengolahan & Pengemasan Teri Siap Pasarkan',
+                    caption: 'Klaster UMKM pengemasan hasil olahan perikanan Kamisi yang menembus pasar kabupaten dan provinsi.',
+                    img: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80',
+                    badge: 'UMKM Mandiri',
+                    date: 'Oktober 2025'
+                }
+            ],
+
+            // === 2. DESA KOROHA (Kakao 240 Ha, Cengkeh Bukit, Rumput Laut) ===
+            koroha: [
+                {
+                    id: 'koroha_1',
+                    cat: 'potensi',
+                    title: 'Perkebunan Kakao Sambung Pucuk 240 Ha Koroha',
+                    caption: 'Kawasan perkebunan kakao perbukitan dengan sistem pangkas dan pemupukan organik terstandar.',
+                    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Komoditas Unggulan',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'koroha_2',
+                    cat: 'potensi',
+                    title: 'Sentra Cengkeh Bukit & Hasil Rempah Koroha',
+                    caption: 'Pohon cengkeh lereng perbukitan Koroha yang menghasilkan panen bunga cengkeh berkualitas premium.',
+                    img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Rempah',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'koroha_3',
+                    cat: 'alam',
+                    title: 'Budidaya Rumput Laut di Pesisir Dusun Maritim',
+                    caption: 'Bentangan rakit budidaya rumput laut eucheuma cottonii oleh nelayan pesisir Dusun II Koroha.',
+                    img: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Maritim & Pesisir',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'koroha_4',
+                    cat: 'pembinaan',
+                    title: 'Pendataan Presisi Rumah Tangga Desil BPS Koroha',
+                    caption: 'Tim agen statistik desa dan BPS melakukan verifikasi lapangan variabel sosial ekonomi keluarga.',
+                    img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'koroha_5',
+                    cat: 'alam',
+                    title: 'Panorama Perbukitan Hijau Koroha & Hutan Lindung',
+                    caption: 'Bentang alam hijau perbukitan Koroha yang menopang cadangan air tanah dan kelestarian ekosistem.',
+                    img: 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Alam',
+                    date: 'Mei 2025'
+                },
+                {
+                    id: 'koroha_6',
+                    cat: 'pelayanan',
+                    title: 'Poskesdes Koroha & Pemeriksaan Balita Rutin',
+                    caption: 'Pemberian vitamin A, imunisasi dasar, serta edukasi gizi bagi keluarga di Dusun Koroha Raya.',
+                    img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Desa',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'koroha_7',
+                    cat: 'pembinaan',
+                    title: 'Musyawarah SDGs Desa & Evaluasi Data Sektoral',
+                    caption: 'Rembuk aparatur bersama BPD menyelaraskan alokasi dana desa dengan indikator SDGs Koroha.',
+                    img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+                    badge: 'SDGs Desa',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'koroha_8',
+                    cat: 'pelayanan',
+                    title: 'Balai Pertemuan Warga & Pusat Informasi Publik',
+                    caption: 'Gedung serbaguna Desa Koroha sebagai sentra koordinasi kelompok tani dan pelatihan keterampilan.',
+                    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Fasilitas Desa',
+                    date: 'Juli 2025'
+                }
+            ],
+
+            // === 3. KELURAHAN MALA-MALA (Ibukota Kecamatan, Puskesmas, Perdagangan) ===
+            malamala: [
+                {
+                    id: 'malamala_1',
+                    cat: 'pelayanan',
+                    title: 'Kantor Kelurahan Mala-Mala & Layanan Terpadu Satu Pintu',
+                    caption: 'Pusat administrasi pemerintahan kelurahan dan layanan kependudukan digital berbasis NIK.',
+                    img: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pemerintahan',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'malamala_2',
+                    cat: 'pelayanan',
+                    title: 'Puskesmas Perawatan Kodeoha di Mala-Mala',
+                    caption: 'Fasilitas kesehatan rawat inap rujukan utama kecamatan dengan layanan persalinan dan IGD 24 jam.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Warga',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'malamala_3',
+                    cat: 'potensi',
+                    title: 'Pusat Perdagangan & Kawasan Pertokoan Mala-Mala',
+                    caption: 'Aktivitas niaga dan pasar harian yang melayani kebutuhan logistik sembako seluruh desa Kodeoha.',
+                    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pusat Perdagangan',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'malamala_4',
+                    cat: 'pembinaan',
+                    title: 'Workshop Literasi Statistik Digital Kelurahan BPS',
+                    caption: 'Bimtek pemutakhiran data monografi kelurahan dan integrasi portal Desa Cantik Kolaka Utara.',
+                    img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'malamala_5',
+                    cat: 'pelayanan',
+                    title: 'Kompleks Fasilitas Pendidikan Terpadu Mala-Mala',
+                    caption: 'Gedung sekolah dasar dan menengah dengan sarana laboratorium komputer dan perpustakaan lengkap.',
+                    img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pendidikan',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'malamala_6',
+                    cat: 'alam',
+                    title: 'Ruang Terbuka Hijau & Lanskap Perkotaan Mala-Mala',
+                    caption: 'Taman kota dan jalur hijau asri di pusat ibukota kecamatan sebagai sarana interaksi masyarakat.',
+                    img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Tata Kota Asri',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'malamala_7',
+                    cat: 'pembinaan',
+                    title: 'Rekonsiliasi DTKS & Validasi Bantuan Sosial Terbina',
+                    caption: 'Penyelarasan data keluarga prasejahtera dan penerima PKH/Bansos bersama tim verifikator SDI.',
+                    img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Verifikasi SDI',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'malamala_8',
+                    cat: 'potensi',
+                    title: 'Pameran Produk IKM & Sentra Kuliner Khas Kodeoha',
+                    caption: 'Produk olahan pangan lokal dan kerajinan tangan hasil binaan kelompok pemberdayaan perempuan.',
+                    img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80',
+                    badge: 'UMKM Mandiri',
+                    date: 'Oktober 2025'
+                }
+            ],
+
+            // === 4. DESA LAPOLU (Sentra Cengkeh 380 Ha, 75 Unit IKM Suling Minyak) ===
+            lapolu: [
+                {
+                    id: 'lapolu_1',
+                    cat: 'potensi',
+                    title: 'Perkebunan Cengkeh Rakyat Seluas 380 Ha Lapolu',
+                    caption: 'Hamparan pohon cengkeh tua produktif di perbukitan Lapolu yang menjadi komoditas emas desa.',
+                    img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Sentra Cengkeh',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'lapolu_2',
+                    cat: 'potensi',
+                    title: 'Klaster 75 Unit IKM Penyulingan Minyak Daun Cengkeh',
+                    caption: 'Industri pengolahan minyak atsiri daun cengkeh tradisional yang memasok pasar farmasi dan parfum.',
+                    img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Industri Atsiri',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'lapolu_3',
+                    cat: 'pembinaan',
+                    title: 'Bimtek Agregasi Data Excel Monografi Bersama BPS',
+                    caption: 'Pelatihan 30 lembar kerja Excel monografi desa dan pembuatan tabel statistik sektoral Lapolu.',
+                    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'lapolu_4',
+                    cat: 'potensi',
+                    title: 'Penjemuran Bunga Cengkeh Alami Beraroma Khas',
+                    caption: 'Proses pengeringan bunga cengkeh dengan panas matahari alami untuk menjaga kadar eugenol tinggi.',
+                    img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kualitas Ekspor',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'lapolu_5',
+                    cat: 'pelayanan',
+                    title: 'Balai Desa Lapolu & Layanan Tata Kelola Presisi',
+                    caption: 'Kantor balai desa yang melayani administrasi kependudukan dan registrasi kartu keluarga monografi.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Desa',
+                    date: 'Mei 2025'
+                },
+                {
+                    id: 'lapolu_6',
+                    cat: 'alam',
+                    title: 'Bentang Alam Lembah Hijau & Irigasi Teknis Lapolu',
+                    caption: 'Saluran air bersih pegunungan yang mengairi hamparan perkebunan dan permukiman warga Lapolu.',
+                    img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Alam',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'lapolu_7',
+                    cat: 'pelayanan',
+                    title: 'Layanan Posyandu Balita & Lansia Terpadu Dusun Lapolu',
+                    caption: 'Pemeriksaan tensi darah, penimbangan berat badan balita, dan pembagian makanan tambahan bergizi.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Terpadu',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'lapolu_8',
+                    cat: 'potensi',
+                    title: 'Koperasi Tani Makmur Sejahtera & Pengelolaan BUMDes',
+                    caption: 'Unit simpan pinjam dan pengadaan sarana produksi tani cengkeh dan kakao bagi anggota koperasi.',
+                    img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+                    badge: 'BUMDes Mandiri',
+                    date: 'September 2025'
+                }
+            ],
+
+            // === 5. DESA TANGGEAWO (Kakao 160 Ha, 46 IKM, Palawija & Jagung) ===
+            tanggeawo: [
+                {
+                    id: 'tanggeawo_1',
+                    cat: 'potensi',
+                    title: 'Perkebunan Kakao Mandiri 160 Ha Dusun Tanggeawo',
+                    caption: 'Kawasan perkebunan kakao monokultur dan tumpang sari yang dikelola secara modern oleh petani.',
+                    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kakao Unggulan',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'tanggeawo_2',
+                    cat: 'potensi',
+                    title: 'Klaster 46 Unit Usaha IKM & Pengolahan Hasil Kebun',
+                    caption: 'Geliat usaha mikro pengolahan biji kakao fermentasi dan pakan ternak dari limbah kulit kakao.',
+                    img: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80',
+                    badge: 'IKM Tanggeawo',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'tanggeawo_3',
+                    cat: 'pembinaan',
+                    title: 'Verifikasi Monografi Desa & Pencatatan NIK BPS',
+                    caption: 'Pendataan tertib administrasi kependudukan dan pencatatan kepemilikan lahan produktif terstandar.',
+                    img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'tanggeawo_4',
+                    cat: 'potensi',
+                    title: 'Hamparan Tanaman Jagung & Palawija Subur',
+                    caption: 'Komoditas ketahanan pangan pendukung yang dipanen berkala untuk mencukupi kebutuhan pangan lokal.',
+                    img: 'https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pangan Desa',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'tanggeawo_5',
+                    cat: 'alam',
+                    title: 'Matahari Terbit di Atas Perbukitan Indah Tanggeawo',
+                    caption: 'Keindahan panorama fajar pegunungan Tiwu yang menyinari hamparan lembah pertanian Tanggeawo.',
+                    img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pesona Alam',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'tanggeawo_6',
+                    cat: 'pelayanan',
+                    title: 'Poskesdes Tanggeawo & Penanganan Stunting Terpadu',
+                    caption: 'Layanan konsultasi gizi terpadu dan pemberian paket nutrisi bagi ibu hamil dan baduta (bawah dua tahun).',
+                    img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Kesehatan',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'tanggeawo_7',
+                    cat: 'pelayanan',
+                    title: 'Gotong Royong Swadaya Perbaikan Jalan Tani & Irigasi',
+                    caption: 'Budaya kebersamaan warga Tanggeawo dalam merawat prasarana aksesibilitas jalan sentra perkebunan.',
+                    img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Gotong Royong',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'tanggeawo_8',
+                    cat: 'potensi',
+                    title: 'Fermentasi Biji Kakao Kering Berkualitas Tinggi',
+                    caption: 'Kotak-kotak fermentasi kayu bertingkat untuk menghasilkan biji cokelat beraroma khas standar ekspor.',
+                    img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Mutu Standar',
+                    date: 'Oktober 2025'
+                }
+            ],
+
+            // === 6. DESA MATTIRO BULU (Sentra Nilam Atsiri, Cengkeh Dataran Tinggi) ===
+            mattirobulu: [
+                {
+                    id: 'mattirobulu_1',
+                    cat: 'potensi',
+                    title: 'Sentra Perkebunan Nilam Dataran Tinggi Mattiro Bulu',
+                    caption: 'Hamparan tanaman nilam wangi (Pogostemon cablin) di ketinggian 600 mdpl bersuhu sejuk.',
+                    img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Nilam',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'mattirobulu_2',
+                    cat: 'potensi',
+                    title: 'Ketel Tradisional Penyulingan Minyak Nilam Murni',
+                    caption: 'Fasilitas ketel uap penyulingan minyak atsiri nilam dengan rendemen tinggi dan kemurnian terjaga.',
+                    img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Atsiri Bernilai',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'mattirobulu_3',
+                    cat: 'pembinaan',
+                    title: 'Lokakarya Agen Statistik Sektoral BPS Kolut',
+                    caption: 'Pelatihan teknis pengumpulan data mikro dan pemutakhiran indikator sosial ekonomi keluarga.',
+                    img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'mattirobulu_4',
+                    cat: 'potensi',
+                    title: 'Kebun Hortikultura & Cengkeh Dataran Tinggi',
+                    caption: 'Budidaya aneka sayuran segar dataran tinggi dan cengkeh yang memperkaya diversifikasi pangan lokal.',
+                    img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Hortikultura',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'mattirobulu_5',
+                    cat: 'alam',
+                    title: 'Sumber Mata Air Pegunungan & Hutan Adat Asri',
+                    caption: 'Kawasan mata air jernih abadi yang dilindungi hukum adat untuk mengalirkan air ke permukiman desa.',
+                    img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Mata Air Alami',
+                    date: 'Mei 2025'
+                },
+                {
+                    id: 'mattirobulu_6',
+                    cat: 'pelayanan',
+                    title: 'Pelayanan Adminduk Mandiri di Balai Pertemuan',
+                    caption: 'Petugas desa melayani pencatatan kelahiran, kematian, serta rekomendasi perizinan usaha kebun.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Publik',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'mattirobulu_7',
+                    cat: 'pelayanan',
+                    title: 'Posyandu Cempaka & Edukasi Menu PMT Bergizi',
+                    caption: 'Penyuluhan gizi berbasis bahan pangan lokal sayuran segar dan pemeriksaan kesehatan ibu hamil.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Warga',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'mattirobulu_8',
+                    cat: 'alam',
+                    title: 'Kabut Senja di Lembah Hijau Sejuk Mattiro Bulu',
+                    caption: 'Pemandangan spektakuler perbukitan berselimut kabut yang mencirikan iklim mikro sejuk pegunungan.',
+                    img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Alam',
+                    date: 'Juni 2025'
+                }
+            ],
+
+            // === 7. DESA KALU KALUKU (Pesisir Bahari Teluk Bone, Kakao Sambung Pucuk) ===
+            kalukaluku: [
+                {
+                    id: 'kalukaluku_1',
+                    cat: 'alam',
+                    title: 'Pesisir Pantai Teluk Bone & Dermaga Kalu Kaluku',
+                    caption: 'Panorama pantai berpasir bersih dengan perahu nelayan tradisional yang bersandar rapi.',
+                    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pesona Bahari',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'kalukaluku_2',
+                    cat: 'potensi',
+                    title: 'Armada Perikanan Tangkap & Tangkapan Segar Nelayan',
+                    caption: 'Aktivitas bongkar muat hasil tangkapan laut ikan kembung, cakalang, dan teri segar pagi hari.',
+                    img: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perikanan Tangkap',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'kalukaluku_3',
+                    cat: 'pembinaan',
+                    title: 'Bimtek Standardisasi Indikator PODES BPS di Kalu Kaluku',
+                    caption: 'Sesi pendampingan intensif penginputan statistik potensi desa dan pemutakhiran profil wilayah.',
+                    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'kalukaluku_4',
+                    cat: 'potensi',
+                    title: 'Sentra Pengeringan Teri & Ikan Asin Pesisir Tradisional',
+                    caption: 'Pengolahan ikan asin bersih tanpa bahan pengawet kimia yang menjadi oleh-oleh khas Kalu Kaluku.',
+                    img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Produk Unggulan',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'kalukaluku_5',
+                    cat: 'potensi',
+                    title: 'Kebun Kakao Sambung Pucuk Produktif Kalu Kaluku',
+                    caption: 'Optimalisasi lahan perkebunan kakao dengan teknologi sambung pucuk varietas tahan hama.',
+                    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Kakao',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'kalukaluku_6',
+                    cat: 'pelayanan',
+                    title: 'Layanan Terpadu Satu Pintu di Balai Desa Kalu Kaluku',
+                    caption: 'Aparatur desa melayani pengurusan surat kependudukan secara cepat, transparan, dan ramah.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Desa',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'kalukaluku_7',
+                    cat: 'pelayanan',
+                    title: 'Posyandu Terpadu Kesehatan Ibu dan Balita',
+                    caption: 'Pemberian vaksinasi dan pengukuran lingkar kepala balita untuk memastikan bebas stunting.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Warga',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'kalukaluku_8',
+                    cat: 'alam',
+                    title: 'Siluet Perahu Saat Matahari Terbenam di Teluk Bone',
+                    caption: 'Pemandangan magis senja di perairan pesisir Kalu Kaluku saat perahu nelayan mulai berlayar.',
+                    img: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Senja',
+                    date: 'September 2025'
+                }
+            ],
+
+            // === 8. DESA AWO (Persawahan Irigasi Teknis, Panen Raya, Kakao) ===
+            awo: [
+                {
+                    id: 'awo_1',
+                    cat: 'potensi',
+                    title: 'Hamparan Sawah Padi Berkelanjutan & Saluran Irigasi',
+                    caption: 'Sistem pengairan teknis bendungan yang mengairi hamparan persawahan subur di Desa Awo.',
+                    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Lumbung Pangan',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'awo_2',
+                    cat: 'potensi',
+                    title: 'Panen Raya Padi Organik Kelompok Tani Mandiri Awo',
+                    caption: 'Kebahagiaan petani saat panen melimpah dengan hasil gabah kering giling berkualitas prima.',
+                    img: 'https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panen Raya',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'awo_3',
+                    cat: 'pembinaan',
+                    title: 'Pelatihan Data Statistik Sektoral Pertanian Bersama BPS',
+                    caption: 'Bimbingan pencatatan luas panen, estimasi produktivitas per hektar, dan harga gabah tingkat petani.',
+                    img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'awo_4',
+                    cat: 'potensi',
+                    title: 'Perkebunan Kakao Sambung Pucuk Tumpangsari Kelapa',
+                    caption: 'Sistem pola tanam tumpang sari yang meningkatkan pendapatan petani dari berbagai komoditas.',
+                    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Agroforestri',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'awo_5',
+                    cat: 'alam',
+                    title: 'Bendungan & Aliran Sungai Alami Sumber Irigasi Awo',
+                    caption: 'Hulu sungai berarus jernih yang membelah pedesaan Awo dan menjadi tumpuan ketahanan air.',
+                    img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Sumber Daya Air',
+                    date: 'Mei 2025'
+                },
+                {
+                    id: 'awo_6',
+                    cat: 'pelayanan',
+                    title: 'Pelayanan Publik di Balai Pertemuan Terpadu Desa Awo',
+                    caption: 'Sosialisasi program ketahanan pangan, asuransi tani, dan pelayanan surat pengantar warga.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Desa',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'awo_7',
+                    cat: 'pelayanan',
+                    title: 'Poskesdes Awo & Pemeriksaan Kesehatan Warga Lansia',
+                    caption: 'Cek kesehatan gula darah, kolesterol, dan penyuluhan pola hidup sehat bagi para lansia.',
+                    img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Lansia',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'awo_8',
+                    cat: 'alam',
+                    title: 'Lembah Hijau Asri Berlatar Pegunungan Kolaka Utara',
+                    caption: 'Keindahan bentang alam desa yang dikelilingi perbukitan hijau sejuk dan udara yang masih segar.',
+                    img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Alam',
+                    date: 'Juni 2025'
+                }
+            ],
+
+            // === 9. DESA LAMETUNA (Kelapa, Kopra, Kakao, Pesisir) ===
+            lametuna: [
+                {
+                    id: 'lametuna_1',
+                    cat: 'potensi',
+                    title: 'Sentra Perkebunan Kelapa & Kakao Rakyat Lametuna',
+                    caption: 'Perkebunan kelapa produktif di dataran pesisir Lametuna yang memasok komoditas kopra berkualitas.',
+                    img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Rakyat',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'lametuna_2',
+                    cat: 'potensi',
+                    title: 'Pengolahan Kopra Putih Standar Mutu Industri',
+                    caption: 'Proses pengeringan kelapa dengan ruang oven pemanas untuk menghasilkan kopra putih bernilai jual tinggi.',
+                    img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Komoditas Unggulan',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'lametuna_3',
+                    cat: 'pembinaan',
+                    title: 'Bimbingan Teknis Agen Statistik Desa BPS Kolut',
+                    caption: 'Pembekalan metodologi survei cepat berbasis perangkat mobile dan standarisasi data monografi.',
+                    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'lametuna_4',
+                    cat: 'pelayanan',
+                    title: 'Balai Desa Modern Lametuna & Pusat Informasi Digital',
+                    caption: 'Kantor desa berkonsep terbuka dengan akses Wi-Fi gratis untuk warga yang membutuhkan informasi publik.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pelayanan Terbuka',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'lametuna_5',
+                    cat: 'alam',
+                    title: 'Pesisir Teluk Bone & Konservasi Terumbu Karang',
+                    caption: 'Perairan pantai berair bening yang menjadi kawasan konservasi biota laut dan wisata bahari.',
+                    img: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pesona Bahari',
+                    date: 'Juni 2025'
+                },
+                {
+                    id: 'lametuna_6',
+                    cat: 'pelayanan',
+                    title: 'Posyandu Mawar & Penimbangan Balita Presisi',
+                    caption: 'Pemantauan tumbuh kembang anak usia dini secara digital yang langsung terintegrasi sistem desa.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Warga',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'lametuna_7',
+                    cat: 'potensi',
+                    title: 'Kelompok Usaha Bersama Pengrajin Anyaman Lidi',
+                    caption: 'Pemberdayaan ibu rumah tangga memanfaatkan lidi kelapa menjadi piring, keranjang, dan souvenir.',
+                    img: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Ekonomi Kreatif',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'lametuna_8',
+                    cat: 'alam',
+                    title: 'Suasana Tenang Pagi Hari di Perkebunan Tropis',
+                    caption: 'Kicauan burung dan udara sejuk pegunungan mengawali rutinitas aktivitas harian masyarakat tani Lametuna.',
+                    img: 'https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Alam',
+                    date: 'Mei 2025'
+                }
+            ],
+
+            // === 10. DESA SAWANGAOHA (Mangrove, Tambak Bandeng, Kakao) ===
+            sawangaoha: [
+                {
+                    id: 'sawangaoha_1',
+                    cat: 'alam',
+                    title: 'Suaka Konservasi Mangrove & Ekosistem Pesisir',
+                    caption: 'Hutan bakau rimbun seluas puluhan hektar yang berfungsi sebagai benteng abrasi dan habitat kepiting bakau.',
+                    img: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Konservasi Mangrove',
+                    date: 'September 2025'
+                },
+                {
+                    id: 'sawangaoha_2',
+                    cat: 'potensi',
+                    title: 'Kawasan Tambak Budidaya Bandeng & Udang Windu',
+                    caption: 'Sentra budidaya tambak payau ramah lingkungan yang memasok kebutuhan pasar ikan Kolaka Utara.',
+                    img: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perikanan Budidaya',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'sawangaoha_3',
+                    cat: 'pembinaan',
+                    title: 'Verifikasi Data Lapangan PODES Bersama BPS',
+                    caption: 'Tim gabungan memeriksa indikator fasilitas ekonomi perikanan dan sanitasi lingkungan pemukiman.',
+                    img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Pembinaan BPS',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'sawangaoha_4',
+                    cat: 'potensi',
+                    title: 'Perkebunan Kakao Terpadu & Pembibitan Swadaya',
+                    caption: 'Kelompok tani membudidayakan bibit kakao unggul bersertifikat untuk ditanam di kebun rakyat.',
+                    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Perkebunan Kakao',
+                    date: 'Juli 2025'
+                },
+                {
+                    id: 'sawangaoha_5',
+                    cat: 'pelayanan',
+                    title: 'Pelayanan Kantor Desa Terpadu Sawangaoha',
+                    caption: 'Ruang pelayanan publik yang nyaman untuk pengurusan surat tanah, izin usaha, dan bantuan bibit.',
+                    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Layanan Desa',
+                    date: 'November 2025'
+                },
+                {
+                    id: 'sawangaoha_6',
+                    cat: 'potensi',
+                    title: 'Dermaga Muara Perahu & Pendaratan Hasil Tangkapan',
+                    caption: 'Tempat berlabuh perahu tambak dan nelayan muara sungai saat membawa ikan bandeng segar.',
+                    img: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Dermaga Tradisional',
+                    date: 'Oktober 2025'
+                },
+                {
+                    id: 'sawangaoha_7',
+                    cat: 'pelayanan',
+                    title: 'Posyandu Melati Terpadu & Layanan Kesehatan Lansia',
+                    caption: 'Pemeriksaan rutin tekanan darah, senam lansia, dan imunisasi berkala bagi balita desa.',
+                    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Kesehatan Warga',
+                    date: 'Agustus 2025'
+                },
+                {
+                    id: 'sawangaoha_8',
+                    cat: 'alam',
+                    title: 'Eksotisme Senja di Muara Pesisir Sawangaoha',
+                    caption: 'Langit jingga keemasan yang memantul di permukaan air muara saat matahari tenggelam perlahan.',
+                    img: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80',
+                    badge: 'Panorama Senja',
+                    date: 'Juni 2025'
+                }
+            ]
+        };
 
         let activeGaleriCategory = 'all';
         let activeGaleriSearchQuery = '';
@@ -2875,7 +3708,7 @@
 
         // Mengambil foto custom yang diunggah oleh admin dari localStorage
         function getCustomGaleriPhotos(villageKey) {
-            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            const vKey = (villageKey || currentTargetVillage || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
             try {
                 const stored = localStorage.getItem('descan_custom_galeri_' + vKey);
                 if (stored) {
@@ -2890,7 +3723,7 @@
 
         // Menyimpan foto custom admin ke localStorage
         function saveCustomGaleriPhotos(villageKey, photosArray) {
-            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            const vKey = (villageKey || currentTargetVillage || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
             try {
                 localStorage.setItem('descan_custom_galeri_' + vKey, JSON.stringify(photosArray));
             } catch (e) {
@@ -2898,11 +3731,13 @@
             }
         }
 
-        // Menggabungkan foto default dengan foto yang diunggah admin
+        // Menggabungkan foto default per-desa dengan foto yang diunggah admin
         function getCombinedGaleriPhotos(villageKey) {
-            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            const rawKey = villageKey || currentTargetVillage || 'kamisi';
+            const vKey = String(rawKey).toLowerCase().replace(/[^a-z0-9]/g, '');
             const customPhotos = getCustomGaleriPhotos(vKey);
-            return [...customPhotos, ...baseGaleriDatabase];
+            const curated = villageGaleriDatabase[vKey] || villageGaleriDatabase[rawKey] || baseGaleriDatabase;
+            return [...customPhotos, ...curated];
         }
 
         // Update indikator jumlah foto di topbar dan modal
@@ -2914,10 +3749,11 @@
             }
             const modalCount = document.getElementById('galeriCountInfo');
             if (modalCount) {
-                modalCount.textContent = count + ' Foto';
+                modalCount.textContent = count + ' Foto Dokumentasi';
             }
         }
 
+        // Render Kartu Galeri Foto Modern & Estetik
         function renderGaleriPhotos(category, searchQuery) {
             const grid = document.getElementById('galeriPhotosGrid');
             if (!grid) return;
@@ -2926,6 +3762,7 @@
             if (searchQuery !== undefined) activeGaleriSearchQuery = searchQuery.trim().toLowerCase();
             
             const curVillage = currentTargetVillage || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage };
             const allPhotos = getCombinedGaleriPhotos(curVillage);
             
             // Filter kategori
@@ -2944,22 +3781,27 @@
                 );
             }
 
+            // Simpan daftar foto aktif untuk navigasi lightbox (Next / Prev)
+            currentLightboxList = [...filtered];
+
             updateGaleriCountBadges(allPhotos.length);
 
             // Empty state bila tidak ada foto
             if (filtered.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full py-12 px-4 text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-purple-50 text-purple-400 mx-auto flex items-center justify-center text-3xl mb-3 border border-purple-100">
+                    <div class="col-span-full py-16 px-6 text-center bg-gradient-to-b from-slate-50 to-white rounded-3xl border border-dashed border-slate-300">
+                        <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-4xl mb-4 border border-emerald-100 shadow-sm">
                             <i class="bi bi-images"></i>
                         </div>
-                        <h4 class="font-extrabold text-slate-800 text-sm sm:text-base">Belum Ada Foto Sesuai Kriteria</h4>
-                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Tidak ditemukan foto dengan kata kunci atau kategori ini. Anda dapat mengunggah foto dokumentasi baru sebagai Admin Desa.</p>
-                        <div class="mt-4 flex items-center justify-center gap-2">
-                            <button type="button" onclick="resetGaleriFilters()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                Reset Filter
+                        <h4 class="font-extrabold text-slate-900 text-base sm:text-lg">Belum Ada Dokumentasi Sesuai Kriteria</h4>
+                        <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1.5 leading-relaxed">
+                            Tidak ditemukan foto dengan kata kunci atau kategori yang dipilih. Anda dapat mereset filter atau mengunggah dokumentasi baru untuk ${vData.title}.
+                        </p>
+                        <div class="mt-5 flex items-center justify-center gap-3 flex-wrap">
+                            <button type="button" onclick="resetGaleriFilters()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                <i class="bi bi-arrow-counterclockwise mr-1.5"></i>Reset Filter
                             </button>
-                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-black transition shadow-sm cursor-pointer flex items-center gap-1.5">
                                 <i class="bi bi-cloud-arrow-up-fill"></i>
                                 <span>+ Unggah Foto Baru</span>
                             </button>
@@ -2969,48 +3811,89 @@
                 return;
             }
                 
-            grid.innerHTML = filtered.map(p => {
+            grid.innerHTML = filtered.map((p, idx) => {
                 const isCustom = Boolean(p.isCustom);
-                const safeTitle = (p.title || '').replace(/'/g, "\'");
-                const safeCaption = (p.caption || '').replace(/'/g, "\'");
-                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\'");
-                const safeDate = (p.date || '2026').replace(/'/g, "\'");
+                const safeTitle = (p.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeCaption = (p.caption || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\\'");
+                const safeDate = (p.date || '2025/2026').replace(/'/g, "\\'");
+
+                // Ikon dan warna badge kategori
+                let catIco = 'bi-camera';
+                let catColorClass = 'bg-slate-900/70 border-white/20 text-white';
+                if (p.cat === 'pembinaan') {
+                    catIco = 'bi-mortarboard-fill';
+                    catColorClass = 'bg-emerald-950/75 border-emerald-400/30 text-emerald-200';
+                } else if (p.cat === 'potensi') {
+                    catIco = 'bi-graph-up-arrow';
+                    catColorClass = 'bg-amber-950/75 border-amber-400/30 text-amber-200';
+                } else if (p.cat === 'alam') {
+                    catIco = 'bi-tree-fill';
+                    catColorClass = 'bg-teal-950/75 border-teal-400/30 text-teal-200';
+                } else if (p.cat === 'pelayanan') {
+                    catIco = 'bi-building-fill-check';
+                    catColorClass = 'bg-indigo-950/75 border-indigo-400/30 text-indigo-200';
+                }
 
                 return `
-                <div class="group bg-white rounded-2xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-sm' : 'border-slate-200 shadow-2xs'} hover:shadow-lg transition-all duration-300 flex flex-col">
-                    <div class="relative overflow-hidden aspect-4/3 bg-slate-100">
-                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="viewPhotoFull('${p.img}', '${safeTitle}', '${safeCaption}', '${safeBadge}', '${safeDate}')">
+                <div class="group bg-white rounded-3xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-md' : 'border-slate-200 shadow-sm'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                    <!-- Image Card with Zoom and Overlay -->
+                    <div class="relative overflow-hidden aspect-[16/11] bg-slate-900 cursor-pointer" onclick="viewPhotoByIndex(${idx})">
+                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-108 transition-all duration-700 ease-out opacity-95 group-hover:opacity-100">
                         
-                        <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                            <span class="px-2.5 py-1 rounded-lg ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white ring-1 ring-white/30' : 'bg-black/60 text-white'} backdrop-blur-xs text-[10px] font-black tracking-wide uppercase">
-                                ${isCustom ? '⭐ Unggahan Admin' : p.badge}
+                        <!-- Top Gradients for Text Legibility -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none"></div>
+
+                        <!-- Top Badges: Category & Date -->
+                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white border border-purple-300/40 shadow-sm' : catColorClass} backdrop-blur-md text-[10px] font-black uppercase tracking-wider border">
+                                <i class="bi ${isCustom ? 'bi-star-fill text-yellow-300' : catIco}"></i>
+                                <span>${isCustom ? 'Unggahan Admin' : p.badge}</span>
                             </span>
-                        </div>
-                        
-                        <div class="absolute bottom-2.5 right-2.5">
-                            <span class="px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-semibold">
+                            <span class="px-2 py-0.5 rounded-lg bg-black/60 backdrop-blur-md text-slate-200 text-[10px] font-semibold border border-white/10">
                                 ${p.date}
                             </span>
                         </div>
-                    </div>
-                    <div class="p-3.5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h4 class="font-black text-slate-900 text-xs sm:text-sm group-hover:text-purple-700 transition leading-snug line-clamp-2">${p.title}</h4>
-                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${p.caption}</p>
+
+                        <!-- Center Quick Action on Hover -->
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                            <div class="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <i class="bi bi-arrows-fullscreen text-base"></i>
+                            </div>
                         </div>
-                        <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                            <span class="text-slate-400 font-medium truncate max-w-[140px]">
-                                ${isCustom ? 'Admin ' + (villagesData[curVillage]?.title || 'Desa') : 'Dokumentasi Terbina BPS'}
+
+                        <!-- Bottom Location attribution -->
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] text-white/90 font-medium pointer-events-none">
+                            <span class="truncate flex items-center gap-1">
+                                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
+                                <span>${vData.title}</span>
+                            </span>
+                            <span class="text-white/70 text-[9px] uppercase tracking-wider font-bold">BPS Kolut</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm sm:text-[15px] group-hover:text-emerald-700 transition leading-snug line-clamp-2">${p.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.caption}</p>
+                        </div>
+                        
+                        <!-- Card Footer Action -->
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                                <i class="bi ${isCustom ? 'bi-person-badge-fill text-purple-600' : 'bi-shield-check text-emerald-600'}"></i>
+                                <span>${isCustom ? 'Admin Desa' : 'Dokumentasi BPS'}</span>
                             </span>
                             <div class="flex items-center gap-2">
                                 ${isCustom ? `
-                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 p-1 rounded-md text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
+                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
                                         <i class="bi bi-trash"></i>
                                         <span class="hidden sm:inline">Hapus</span>
                                     </button>
                                 ` : ''}
-                                <button type="button" onclick="viewPhotoFull('${p.img}', '${safeTitle}', '${safeCaption}', '${safeBadge}', '${safeDate}')" class="text-purple-600 font-bold hover:underline flex items-center gap-1 cursor-pointer">
-                                    <i class="bi bi-arrows-fullscreen text-xs"></i>
+                                <button type="button" onclick="viewPhotoByIndex(${idx})" class="text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-arrows-fullscreen text-[11px]"></i>
                                     <span>Perbesar</span>
                                 </button>
                             </div>
@@ -3023,12 +3906,12 @@
 
         function filterGaleriPhotos(category, btn) {
             document.querySelectorAll('.galeri-filter-btn').forEach(el => {
-                el.classList.remove('bg-purple-600', 'text-white', 'shadow-2xs');
-                el.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
+                el.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
             });
             if (btn) {
-                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-                btn.classList.add('bg-purple-600', 'text-white', 'shadow-2xs');
+                btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
             }
             renderGaleriPhotos(category);
         }
@@ -3052,15 +3935,16 @@
             if (!modal) return;
             
             const curVillage = currentTargetVillage || 'kamisi';
-            const vData = villagesData[curVillage] || villagesData.kamisi || {};
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage, kec: 'Kodeoha' };
             const vTitle = vData.title || 'Desa Kamisi';
             
             const titleEl = document.getElementById('galeriModalTitle');
-            if (titleEl) titleEl.textContent = `Galeri Foto ${vTitle}`;
+            if (titleEl) titleEl.textContent = `Galeri Foto Resmi ${vTitle}`;
             const subEl = document.getElementById('galeriModalSub');
-            if (subEl) subEl.textContent = `Dokumentasi pembinaan Desa Cantik, potensi ${vData.komoditas || 'unggulan'}, dan aktivitas di ${vTitle}`;
+            if (subEl) subEl.textContent = `Dokumentasi Terverifikasi Pembinaan Desa Cantik BPS & Potensi Unggulan ${vTitle} (Kec. ${vData.kec || 'Kodeoha'})`;
             
             resetGaleriFilters();
+            modal.style.display = 'flex';
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             if (document.body) document.body.classList.add('overflow-hidden');
@@ -3069,10 +3953,190 @@
         function closeGaleriDesaModal() {
             const modal = document.getElementById('galeriDesaModal');
             if (modal) {
+                modal.style.display = 'none';
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
             if (document.body) document.body.classList.remove('overflow-hidden');
+        }
+
+        // ==============================================================
+        // LOGIKA HALAMAN UTAMA GALERI DESA (#view-galeri)
+        // ==============================================================
+        let activePageGaleriCategory = 'all';
+        let activePageGaleriSearchQuery = '';
+
+        function renderPageGaleriPhotos(category, searchQuery) {
+            const grid = document.getElementById('pageGaleriPhotosGrid');
+            if (!grid) return;
+            
+            if (category !== undefined) activePageGaleriCategory = category;
+            if (searchQuery !== undefined) activePageGaleriSearchQuery = searchQuery.trim().toLowerCase();
+            
+            const curVillage = currentTargetVillage || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage, kec: 'Kodeoha' };
+            const allPhotos = getCombinedGaleriPhotos(curVillage);
+            
+            // Update Header Text on Page
+            const titleEl = document.getElementById('pageGaleriTitle');
+            if (titleEl) titleEl.textContent = `Galeri Dokumentasi ${vData.title}`;
+            const subEl = document.getElementById('pageGaleriSub');
+            if (subEl) subEl.textContent = `Dokumentasi Resmi Terverifikasi BPS Kolaka Utara • Potensi ${vData.komoditas || 'Unggulan'}, Layanan, & Kegiatan di ${vData.title}`;
+            const kecBadge = document.getElementById('pageGaleriKecBadge');
+            if (kecBadge) kecBadge.textContent = `Kec. ${vData.kec || 'Kodeoha'}`;
+
+            // Filter kategori
+            let filtered = activePageGaleriCategory === 'all' 
+                ? allPhotos 
+                : (activePageGaleriCategory === 'custom' 
+                    ? allPhotos.filter(p => p.isCustom) 
+                    : allPhotos.filter(p => p.cat === activePageGaleriCategory));
+                
+            // Filter pencarian
+            if (activePageGaleriSearchQuery) {
+                filtered = filtered.filter(p => 
+                    (p.title && p.title.toLowerCase().includes(activePageGaleriSearchQuery)) ||
+                    (p.caption && p.caption.toLowerCase().includes(activePageGaleriSearchQuery)) ||
+                    (p.badge && p.badge.toLowerCase().includes(activePageGaleriSearchQuery))
+                );
+            }
+
+            // Set lightbox list to current filtered items
+            currentLightboxList = [...filtered];
+
+            const countEl = document.getElementById('pageGaleriCount');
+            if (countEl) countEl.textContent = `${filtered.length} Foto Dokumentasi`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 px-6 text-center bg-white rounded-3xl border border-dashed border-slate-300">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-3xl mb-3 border border-emerald-100">
+                            <i class="bi bi-images"></i>
+                        </div>
+                        <h4 class="font-extrabold text-slate-900 text-base">Belum Ada Dokumentasi Sesuai Kriteria</h4>
+                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Tidak ditemukan foto dengan kata kunci atau kategori ini. Anda dapat mereset filter atau mengunggah dokumentasi baru untuk ${vData.title}.</p>
+                        <div class="mt-4 flex items-center justify-center gap-2">
+                            <button type="button" onclick="resetPageGaleriFilters()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                Reset Filter
+                            </button>
+                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                                <span>+ Unggah Foto Baru</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map((p, idx) => {
+                const isCustom = Boolean(p.isCustom);
+                const safeTitle = (p.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeCaption = (p.caption || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\\'");
+                const safeDate = (p.date || '2025/2026').replace(/'/g, "\\'");
+
+                let catIco = 'bi-camera';
+                let catColorClass = 'bg-slate-900/70 border-white/20 text-white';
+                if (p.cat === 'pembinaan') {
+                    catIco = 'bi-mortarboard-fill';
+                    catColorClass = 'bg-emerald-950/75 border-emerald-400/30 text-emerald-200';
+                } else if (p.cat === 'potensi') {
+                    catIco = 'bi-graph-up-arrow';
+                    catColorClass = 'bg-amber-950/75 border-amber-400/30 text-amber-200';
+                } else if (p.cat === 'alam') {
+                    catIco = 'bi-tree-fill';
+                    catColorClass = 'bg-teal-950/75 border-teal-400/30 text-teal-200';
+                } else if (p.cat === 'pelayanan') {
+                    catIco = 'bi-building-fill-check';
+                    catColorClass = 'bg-indigo-950/75 border-indigo-400/30 text-indigo-200';
+                }
+
+                return `
+                <div class="group bg-white rounded-3xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-md' : 'border-slate-200/90 shadow-2xs'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden aspect-[16/11] bg-slate-900 cursor-pointer" onclick="viewPhotoByIndex(${idx})">
+                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-108 transition-all duration-700 ease-out opacity-95 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none"></div>
+
+                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white border border-purple-300/40 shadow-sm' : catColorClass} backdrop-blur-md text-[10px] font-black uppercase tracking-wider border">
+                                <i class="bi ${isCustom ? 'bi-star-fill text-yellow-300' : catIco}"></i>
+                                <span>${isCustom ? 'Unggahan Admin' : p.badge}</span>
+                            </span>
+                            <span class="px-2 py-0.5 rounded-lg bg-black/60 backdrop-blur-md text-slate-200 text-[10px] font-semibold border border-white/10">
+                                ${p.date}
+                            </span>
+                        </div>
+
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                            <div class="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                <i class="bi bi-arrows-fullscreen text-base"></i>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] text-white/90 font-medium pointer-events-none">
+                            <span class="truncate flex items-center gap-1">
+                                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
+                                <span>${vData.title}</span>
+                            </span>
+                            <span class="text-white/70 text-[9px] uppercase tracking-wider font-bold">BPS Kolut</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm sm:text-[15px] group-hover:text-emerald-700 transition leading-snug line-clamp-2">${p.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.caption}</p>
+                        </div>
+                        
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                                <i class="bi ${isCustom ? 'bi-person-badge-fill text-purple-600' : 'bi-shield-check text-emerald-600'}"></i>
+                                <span>${isCustom ? 'Admin Desa' : 'Dokumentasi BPS'}</span>
+                            </span>
+                            <div class="flex items-center gap-2">
+                                ${isCustom ? `
+                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
+                                        <i class="bi bi-trash"></i>
+                                        <span class="hidden sm:inline">Hapus</span>
+                                    </button>
+                                ` : ''}
+                                <button type="button" onclick="viewPhotoByIndex(${idx})" class="text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-arrows-fullscreen text-[11px]"></i>
+                                    <span>Perbesar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function filterPageGaleriPhotos(category, btn) {
+            document.querySelectorAll('.page-galeri-filter-btn').forEach(el => {
+                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
+                el.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+            });
+            if (btn) {
+                btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
+            }
+            renderPageGaleriPhotos(category);
+        }
+
+        function searchPageGaleriPhotos(keyword) {
+            renderPageGaleriPhotos(undefined, keyword);
+        }
+
+        function resetPageGaleriFilters() {
+            activePageGaleriCategory = 'all';
+            activePageGaleriSearchQuery = '';
+            const searchInput = document.getElementById('pageGaleriSearchInput');
+            if (searchInput) searchInput.value = '';
+            const allBtn = document.querySelector('.page-galeri-filter-btn');
+            if (allBtn) filterPageGaleriPhotos('all', allBtn);
+            else renderPageGaleriPhotos('all', '');
         }
 
         // ==============================================================
@@ -3265,12 +4329,23 @@
         }
 
         // ==============================================================
-        // LIGHTBOX VIEWER FOTO LENGKAP & UNDUH
+        // LIGHTBOX VIEWER FOTO LENGKAP DENGAN NAVIGASI (NEXT / PREV)
         // ==============================================================
-        function viewPhotoFull(imgUrl, title, caption, badge, date) {
+        let currentLightboxIndex = 0;
+        let currentLightboxList = [];
+
+        function viewPhotoByIndex(index) {
+            if (!currentLightboxList || currentLightboxList.length === 0) return;
+            if (index < 0) index = currentLightboxList.length - 1;
+            if (index >= currentLightboxList.length) index = 0;
+            currentLightboxIndex = index;
+
+            const p = currentLightboxList[currentLightboxIndex];
+            if (!p) return;
+
             const lightbox = document.getElementById('galeriLightboxModal');
             if (!lightbox) {
-                window.open(imgUrl, '_blank');
+                window.open(p.img, '_blank');
                 return;
             }
 
@@ -3279,23 +4354,50 @@
             const capEl = document.getElementById('lightboxCaption');
             const badgeEl = document.getElementById('lightboxBadge');
             const dateEl = document.getElementById('lightboxDate');
+            const counterEl = document.getElementById('lightboxCounter');
             const downloadBtn = document.getElementById('lightboxDownloadBtn');
 
-            if (imgEl) imgEl.src = imgUrl;
-            if (titleEl) titleEl.textContent = title || 'Dokumentasi Desa';
-            if (capEl) capEl.textContent = caption || '';
-            if (badgeEl) badgeEl.textContent = badge || 'Dokumentasi';
-            if (dateEl) dateEl.textContent = date || '';
+            if (imgEl) imgEl.src = p.img;
+            if (titleEl) titleEl.textContent = p.title || 'Dokumentasi Desa';
+            if (capEl) capEl.textContent = p.caption || '';
+            if (badgeEl) badgeEl.textContent = p.badge || (p.isCustom ? 'Unggahan Admin' : 'Dokumentasi Resmi BPS');
+            if (dateEl) dateEl.textContent = p.date || '2025/2026';
+            if (counterEl) counterEl.textContent = `${currentLightboxIndex + 1} / ${currentLightboxList.length}`;
 
             if (downloadBtn) {
                 downloadBtn.onclick = function() {
-                    downloadPhotoFile(imgUrl, title);
+                    downloadPhotoFile(p.img, p.title);
                 };
             }
 
             lightbox.classList.remove('hidden');
             lightbox.classList.add('flex');
             if (document.body) document.body.classList.add('overflow-hidden');
+        }
+
+        function nextLightboxPhoto() {
+            viewPhotoByIndex(currentLightboxIndex + 1);
+        }
+
+        function prevLightboxPhoto() {
+            viewPhotoByIndex(currentLightboxIndex - 1);
+        }
+
+        function viewPhotoFull(imgUrl, title, caption, badge, date, photoIndex) {
+            if (typeof photoIndex === 'number' && currentLightboxList && currentLightboxList[photoIndex]) {
+                viewPhotoByIndex(photoIndex);
+                return;
+            }
+            if (currentLightboxList && currentLightboxList.length > 0) {
+                const foundIdx = currentLightboxList.findIndex(p => p.img === imgUrl || p.title === title);
+                if (foundIdx !== -1) {
+                    viewPhotoByIndex(foundIdx);
+                    return;
+                }
+            }
+            // Fallback single view
+            currentLightboxList = [{ img: imgUrl, title: title, caption: caption, badge: badge, date: date }];
+            viewPhotoByIndex(0);
         }
 
         function closeGaleriLightbox() {
@@ -3306,6 +4408,16 @@
             }
             if (document.body) document.body.classList.remove('overflow-hidden');
         }
+
+        // Listener Keyboard untuk Navigasi Lightbox (Esc, Panah Kiri, Panah Kanan)
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('galeriLightboxModal');
+            if (lightbox && !lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeGaleriLightbox();
+                else if (e.key === 'ArrowRight') nextLightboxPhoto();
+                else if (e.key === 'ArrowLeft') prevLightboxPhoto();
+            }
+        });
 
         function downloadPhotoFile(imgUrl, title) {
             try {
@@ -3975,11 +5087,8 @@ function triggerPubDownload() {
 
 
         function switchNavMenu(menuKey) {
-            if (menuKey === 'galeri') {
-                openGaleriDesaModal();
-                return;
-            }
             // Handle aliases & shortcuts
+            if (menuKey === 'gallery') menuKey = 'galeri';
             if (menuKey === 'kependudukan') {
                 switchNavMenu('dashboard');
                 setTimeout(() => scrollToDashSection('sectionPiramida'), 150);
@@ -4027,14 +5136,14 @@ function triggerPubDownload() {
                 return;
             }
 
-            // HANYA 4 MENU RESMI
-            const validMenus = ['dashboard', 'tentang', 'output', 'monitoring', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan'];
+            // DAFTAR MENU RESMI DESCAN
+            const validMenus = ['dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
             currentNavMenu = menuKey;
 
-            // Update Top Nav Tabs (4 buttons)
+            // Update Top Nav Tabs
             document.querySelectorAll('.nav-tab').forEach(el => {
                 el.classList.remove('active');
             });
@@ -4043,13 +5152,21 @@ function triggerPubDownload() {
                 dBtn.classList.add('active');
             }
 
-            // Update Header Output Desa Button Active State
+            // Update Header Output & Galeri Button Active State
             const headerOutputBtn = document.getElementById('header-nav-output');
             if (headerOutputBtn) {
                 if (menuKey === 'output') {
                     headerOutputBtn.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-100/90', 'shadow-sm');
                 } else {
                     headerOutputBtn.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-100/90', 'shadow-sm');
+                }
+            }
+            const headerGaleriBtn = document.getElementById('header-nav-galeri');
+            if (headerGaleriBtn) {
+                if (menuKey === 'galeri') {
+                    headerGaleriBtn.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-100/90', 'shadow-sm');
+                } else {
+                    headerGaleriBtn.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-100/90', 'shadow-sm');
                 }
             }
 
@@ -4064,7 +5181,7 @@ function triggerPubDownload() {
                 sBtn.classList.add('bg-[#005ea6]', 'text-white', 'shadow-sm');
             }
 
-            // Update View Visibility (4 views)
+            // Update View Visibility (All views)
             document.querySelectorAll('.menu-view-container').forEach(el => {
                 el.classList.add('hidden');
             });
@@ -4072,6 +5189,7 @@ function triggerPubDownload() {
             if (targetView) {
                 targetView.classList.remove('hidden');
                 if (menuKey === 'tentang') renderProfilDesa3D(currentTargetVillage);
+                if (menuKey === 'galeri') renderPageGaleriPhotos('all', '');
             }
             dcOnMenuChange(menuKey);
 
@@ -5572,15 +6690,15 @@ function triggerPubDownload() {
             const dusunContainer = document.getElementById('profil3dDusunList');
             if (dusunContainer && sData.dusun) {
                 dusunContainer.innerHTML = sData.dusun.map((d, idx) => `
-                    <div class="p-3.5 rounded-2xl bg-white border border-[#e2ded5] text-xs flex items-center justify-between shadow-2xs hover:border-emerald-300 transition">
-                        <div class="flex items-center gap-2.5 min-w-0">
-                            <span class="w-7 h-7 rounded-xl bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs shrink-0">${idx+1}</span>
+                    <div class="p-4 rounded-xl bg-slate-50/70 border border-slate-200 text-xs flex items-center justify-between hover:bg-white hover:border-emerald-300 transition shadow-2xs">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-100 text-[#0f6b4a] font-extrabold flex items-center justify-center text-xs shrink-0">${idx+1}</span>
                             <div class="truncate">
-                                <div class="font-bold text-slate-900 truncate">${d.name}</div>
-                                <div class="text-[10px] text-slate-400 font-medium">${d.kk} KK • ${d.pop} Jiwa</div>
+                                <div class="font-extrabold text-slate-900 truncate">${d.name}</div>
+                                <div class="text-[11px] text-slate-500 font-medium">${d.kk} KK • ${d.pop} Jiwa</div>
                             </div>
                         </div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${d.kerawanan === 'Tinggi' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">Kerawanan: ${d.kerawanan}</span>
+                        <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full shrink-0 ${d.kerawanan === 'Tinggi' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">${d.kerawanan === 'Tinggi' ? 'Kerawanan Tinggi' : 'Kerawanan Rendah'}</span>
                     </div>
                 `).join('');
             }
@@ -5595,28 +6713,7 @@ function triggerPubDownload() {
         }
 
         function attach3DTiltListeners() {
-            const cards = document.querySelectorAll('.tilt-card-3d');
-            cards.forEach(card => {
-                card.removeEventListener('mousemove', card._tiltHandler);
-                card.removeEventListener('mouseleave', card._leaveHandler);
-                
-                card._tiltHandler = e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const cx = rect.width / 2;
-                    const cy = rect.height / 2;
-                    const rx = ((y - cy) / cy) * -7;
-                    const ry = ((x - cx) / cx) * 7;
-                    card.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(8px)`;
-                };
-                card._leaveHandler = () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                };
-
-                card.addEventListener('mousemove', card._tiltHandler);
-                card.addEventListener('mouseleave', card._leaveHandler);
-            });
+            // Clean, non-intrusive hover interaction without aggressive 3D perspective
         }
 
         function switchVillage(key) {
@@ -5651,6 +6748,9 @@ function triggerPubDownload() {
 
             // 4. Update Sectoral Data & Charts
             renderDashboardCantik(key);
+            if (currentNavMenu === 'galeri' && typeof renderPageGaleriPhotos === 'function') {
+                renderPageGaleriPhotos('all', '');
+            }
         }
 
         function switchPemTab(tab) {
@@ -7448,605 +8548,6 @@ function triggerPubDownload() {
             <div class="flex items-center gap-3">
                 <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 text-white text-xs font-semibold">
                     <span>⏱️ Estimasi: 15 Menit</span>
-                    <span class="opacity-40">•</span>
-                    <span>4 Butir Soal Terstandar SDI</span>
-                </div>
-                <button type="button" onclick="closePretestModal()" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer border border-white/20">
-                    <span class="text-sm leading-none">✕</span>
-                    <span>Tutup / Keluar</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Scrollable Test Content Body -->
-        <div class="flex-1 overflow-y-auto px-4 sm:px-8 py-6 bg-slate-50/70">
-            <div class="max-w-4xl mx-auto space-y-6">
-                <!-- Guidance / Instruction Card -->
-                <div class="p-4 sm:p-5 rounded-2xl bg-blue-50 border border-blue-200 text-blue-900 flex items-start gap-3.5 shadow-2xs">
-                    <span class="text-2xl shrink-0 mt-0.5">ℹ️</span>
-                    <div class="text-xs space-y-1">
-                        <div class="font-black text-sm text-[#005ea6]">Petunjuk Pengerjaan Pre-Test:</div>
-                        <p class="leading-relaxed text-blue-800">
-                            Pre-Test ini merupakan evaluasi diagnostik awal untuk mengukur pemahaman aparatur desa mengenai prinsip <b>Satu Data Indonesia (SDI)</b>, statistik sektoral, dan pengolahan monografi desa. Hasil tes ini tidak membatalkan sertifikasi akhir dan digunakan BPS sebagai bahan penyesuaian materi pembinaan.
-                        </p>
-                    </div>
-                </div>
-
-                <form id="pretestForm" onsubmit="submitPretest(event)" class="space-y-5 text-slate-800">
-                    <div id="pretestResultArea" class="hidden"></div>
-
-                    <!-- Soal 1 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 1 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Prinsip Satu Data Indonesia</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa tujuan utama dari implementasi prinsip Satu Data Indonesia (SDI) di tingkat desa?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q1" value="A" required class="w-4 h-4 text-[#005ea6]">
-                                <span>A. Menambah beban administrasi laporan perangkat desa</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q1" value="B" required class="w-4 h-4 text-[#005ea6]">
-                                <span class="font-semibold text-slate-900">B. Menghasilkan data desa yang akurat, mutakhir, terpadu, dan berstandar BPS untuk perencanaan pembangunan desa</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q1" value="C" required class="w-4 h-4 text-[#005ea6]">
-                                <span>C. Mengganti seluruh struktur perangkat desa yang ada</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 2 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 2 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Rumus Demografi & Sektoral</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana rumus standar BPS untuk menghitung Rasio Jenis Kelamin (Sex Ratio) penduduk desa?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q2" value="A" required class="w-4 h-4 text-[#005ea6]">
-                                <span>A. (Jumlah Balita / Jumlah Lansia) x 100</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q2" value="B" required class="w-4 h-4 text-[#005ea6]">
-                                <span class="font-semibold text-slate-900">B. (Jumlah Penduduk Laki-Laki / Jumlah Penduduk Perempuan) x 100</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q2" value="C" required class="w-4 h-4 text-[#005ea6]">
-                                <span>C. (Total Kepala Keluarga / Total Rumah Tangga) x 100%</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 3 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 3 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Pengolahan Spreadsheet Monografi</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Dalam pengolahan data monografi Excel, rumus apa yang paling tepat untuk menghitung total otomatis data per dusun?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q3" value="A" required class="w-4 h-4 text-[#005ea6]">
-                                <span class="font-semibold text-slate-900">A. Fungsi =SUM(range_data)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q3" value="B" required class="w-4 h-4 text-[#005ea6]">
-                                <span>B. Fungsi =CONCATENATE()</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q3" value="C" required class="w-4 h-4 text-[#005ea6]">
-                                <span>C. Mengetik angka satu per satu secara manual</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 4 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-[#005ea6] text-xs font-black">Soal 4 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Tata Kelola Agen Statistik</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Siapakah penanggung jawab teknis verifikasi data statistik sektoral desa binaan Desa Cantik?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q4" value="A" required class="w-4 h-4 text-[#005ea6]">
-                                <span>A. Hanya pihak ketiga dari swasta</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q4" value="B" required class="w-4 h-4 text-[#005ea6]">
-                                <span class="font-semibold text-slate-900">B. Agen Statistik Desa bersama Tim Pembina BPS Kabupaten Kolaka Utara</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-blue-300 cursor-pointer transition">
-                                <input type="radio" name="pre_q4" value="C" required class="w-4 h-4 text-[#005ea6]">
-                                <span>C. Tidak perlu ada verifikasi</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Submit Actions Bar -->
-                    <div class="pt-4 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
-                        <span class="text-xs text-slate-500 font-medium text-center sm:text-left">
-                            Passing Grade: Bebas (Penilaian Diagnostik Awal Aparatur Desa)
-                        </span>
-                        <div class="flex items-center gap-3 w-full sm:w-auto">
-                            <button type="button" onclick="closePretestModal()" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer transition">
-                                Batal
-                            </button>
-                            <button type="submit" class="w-1/2 sm:w-auto px-7 py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
-                                <span>Kumpulkan Jawaban Pre-Test</span>
-                                <span>✓</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS 2: POST-TEST EVALUASI KELULUSAN (FULL SCREEN)        -->
-    <!-- ============================================================== -->
-    <div id="posttestModal" class="fixed inset-0 z-[9999] hidden bg-slate-50 flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-150" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
-        <!-- Sticky Header Bar -->
-        <div class="shrink-0 bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-950 text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
-            <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl shadow-inner">🎓</div>
-                <div>
-                    <div class="text-[10px] font-black uppercase tracking-widest text-emerald-300">Uji Kelulusan SDM Desa Cantik</div>
-                    <h3 class="text-base sm:text-lg font-black tracking-tight">[3. POST-TEST] Kuis Evaluasi Standarisasi SDM</h3>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 text-white text-xs font-semibold">
-                    <span>Passing Grade: <b class="text-emerald-300">70 / 100</b></span>
-                    <span class="opacity-40">•</span>
-                    <span>Syarat Sertifikat Resmi</span>
-                </div>
-                <button type="button" onclick="closePosttestModal()" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer border border-white/20">
-                    <span class="text-sm leading-none">✕</span>
-                    <span>Tutup / Keluar</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Scrollable Test Content Body -->
-        <div class="flex-1 overflow-y-auto px-4 sm:px-8 py-6 bg-slate-50/70">
-            <div class="max-w-4xl mx-auto space-y-6">
-                <!-- Guidance / Instruction Card -->
-                <div class="p-4 sm:p-5 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-950 flex items-start gap-3.5 shadow-2xs">
-                    <span class="text-2xl shrink-0 mt-0.5">🎯</span>
-                    <div class="text-xs space-y-1">
-                        <div class="font-black text-sm text-indigo-800">Petunjuk Pengerjaan Post-Test Kelulusan:</div>
-                        <p class="leading-relaxed text-indigo-900">
-                            Evaluasi akhir ini menentukan penerbitan <b>Sertifikat Kompetensi Agen Statistik Desa Cantik</b> yang diakui BPS Kabupaten Kolaka Utara. Diperlukan nilai minimal <b>70</b> untuk lulus. Pastikan menjawab setiap soal secara akurat sesuai materi microlearning dan pembinaan.
-                        </p>
-                    </div>
-                </div>
-
-                <form id="posttestForm" onsubmit="submitPosttest(event)" class="space-y-5 text-slate-800">
-                    <div id="posttestResultArea" class="hidden"></div>
-
-                    <!-- Soal 1 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 1 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Indikator Monografi BPS</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Berapa standar minimal variabel data monografi yang wajib dikelola agen statistik desa binaan BPS?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q1" value="A" required class="w-4 h-4 text-indigo-600">
-                                <span class="font-semibold text-slate-900">A. 44 Indikator Makro Sektoral (Kependudukan, Sosial, Pertanian, Sanitasi & Ekonomi)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q1" value="B" required class="w-4 h-4 text-indigo-600">
-                                <span>B. Hanya 1 data kependudukan saja</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q1" value="C" required class="w-4 h-4 text-indigo-600">
-                                <span>C. Data tidak dibatasi dan tidak memiliki standar</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 2 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 2 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Verifikasi Integritas Data</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana agen statistik memastikan tidak ada data ganda (duplikasi) dalam spreadsheet registrasi keluarga?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q2" value="A" required class="w-4 h-4 text-indigo-600">
-                                <span class="font-semibold text-slate-900">A. Memvalidasi NIK / Nomor KK sebagai primary key dan menggunakan fungsi Conditional Formatting Duplicate</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q2" value="B" required class="w-4 h-4 text-indigo-600">
-                                <span>B. Menghapus baris secara acak tanpa verifikasi</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 3 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 3 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Alur Validasi BPS</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apakah data hasil sensus monografi desa dapat langsung dipublikasikan sebelum disetujui BPS Kolut?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q3" value="A" required class="w-4 h-4 text-indigo-600">
-                                <span class="font-semibold text-slate-900">A. Harus melalui tahap Verifikasi & Validasi Kualitas Data oleh Pembina BPS</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q3" value="B" required class="w-4 h-4 text-indigo-600">
-                                <span>B. Boleh langsung dipublikasikan tanpa diperiksa siapapun</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Soal 4 -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-xs font-black">Soal 4 dari 4</span>
-                            <span class="text-[11px] font-bold text-slate-400">Topik: Pemanfaatan WebGIS SDI</span>
-                        </div>
-                        <p class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa manfaat utama ketersediaan WebGIS Peta Tematik bagi pemerintah desa binaan BPS?</p>
-                        <div class="space-y-2 pt-2 text-xs sm:text-sm">
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q4" value="A" required class="w-4 h-4 text-indigo-600">
-                                <span class="font-semibold text-slate-900">A. Memberikan visualisasi sebaran spasial keluarga prasejahtera, balita stunting, dan potensi kakao per dusun</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3.5 rounded-xl hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                                <input type="radio" name="post_q4" value="B" required class="w-4 h-4 text-indigo-600">
-                                <span>B. Hanya sebagai hiasan grafis</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Submit Actions Bar -->
-                    <div class="pt-4 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
-                        <span class="text-xs text-slate-500 font-medium text-center sm:text-left">
-                            Passing Grade: <b>70 / 100</b> (Syarat Penerbitan Sertifikat Kompetensi)
-                        </span>
-                        <div class="flex items-center gap-3 w-full sm:w-auto">
-                            <button type="button" onclick="closePosttestModal()" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer transition">
-                                Batal
-                            </button>
-                            <button type="submit" class="w-1/2 sm:w-auto px-7 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
-                                <span>Selesaikan Ujian Post-Test</span>
-                                <span>🎓</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS: VIDEO THEATER FULL SCREEN                          -->
-    <!-- ============================================================== -->
-    <div id="videoTheaterModal" class="fixed inset-0 z-[9999] hidden bg-slate-950/98 backdrop-blur-md flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-200" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
-        <!-- Header -->
-        <div class="shrink-0 bg-slate-900/90 text-white px-5 sm:px-8 py-3.5 flex items-center justify-between border-b border-white/10 z-20">
-            <div class="flex items-center gap-3">
-                <span class="w-9 h-9 rounded-xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center text-lg">🎬</span>
-                <div>
-                    <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Video Microlearning Desa Cantik BPS</div>
-                    <h3 class="text-sm sm:text-base font-black text-white">Panduan Statistik Sektoral & Monografi Desa</h3>
-                </div>
-            </div>
-            <button type="button" onclick="closeVideoTheaterModal()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
-                <span>✕</span>
-                <span>Tutup Video</span>
-            </button>
-        </div>
-        <!-- Theater Video Container -->
-        <div class="flex-1 flex items-center justify-center p-3 sm:p-6 md:p-8">
-            <div class="w-full h-full max-w-6xl aspect-video max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl bg-black border border-white/10">
-                <iframe id="theaterVideoIframe" class="w-full h-full" src="" title="Video Microlearning Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS 3: SERTIFIKAT KELULUSAN KOMPETENSI RESMI BPS         -->
-    <!-- ============================================================== -->
-    <div id="sertifikatModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
-        <div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border-4 border-amber-400 overflow-hidden my-6 p-6 sm:p-10 select-none animate-in fade-in zoom-in duration-200">
-            <!-- Close Button -->
-            <button type="button" onclick="closeSertifikatModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-black text-sm cursor-pointer z-10">✕</button>
-
-            <!-- Certificate Header -->
-            <div class="text-center space-y-3 pb-6 border-b-2 border-slate-200">
-                <div class="flex items-center justify-center gap-3">
-                    <img src="/images/logo_bps.png" alt="BPS" class="h-12 w-auto object-contain">
-                    <div class="h-10 w-[2px] bg-slate-300"></div>
-                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-12 w-auto object-contain">
-                </div>
-                <div>
-                    <span class="text-xs font-black uppercase tracking-widest text-[#005ea6] block">BADAN PUSAT STATISTIK KABUPATEN KOLAKA UTARA</span>
-                    <h2 class="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight mt-1">SERTIFIKAT KOMPETENSI</h2>
-                    <span class="text-xs font-bold text-amber-600 tracking-wider uppercase">PROGRAM DESA CINTA STATISTIK (DESA CANTIK) TAHUN 2026</span>
-                </div>
-            </div>
-
-            <!-- Certificate Body -->
-            <div class="py-8 text-center space-y-4">
-                <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Diberikan dengan predikat SANGAT MEMUASKAN kepada:</p>
-                <div class="text-2xl sm:text-3xl font-black text-slate-900 font-serif border-b border-dashed border-slate-300 pb-2 max-w-lg mx-auto">
-                    APARATUR PEMERINTAH DESA KALU KALUKU
-                </div>
-                <p class="text-xs text-[#005ea6] font-extrabold uppercase tracking-wider">
-                    KECAMATAN KODEOHA • KABUPATEN KOLAKA UTARA
-                </p>
-                <p class="text-xs text-slate-600 max-w-xl mx-auto leading-relaxed pt-2">
-                    Telah menyelesaikan seluruh kurikulum standarisasi SDM Agen Statistik Desa, mencakup pengolahan Buku Praktik Excel (30 Lembar), pemutakhiran data monografi spasial WebGIS, serta evaluasi mandiri Satu Data Indonesia dengan perolehan nilai kompetensi:
-                </p>
-                <div class="inline-flex items-center gap-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900">
-                    <span class="text-2xl">🏆</span>
-                    <div class="text-left">
-                        <span class="text-[10px] font-bold text-emerald-700 block uppercase">Nilai Kelulusan Terverifikasi:</span>
-                        <b class="text-xl font-black text-emerald-900">85 / 100 (KATEGORI: MANDIRI)</b>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Signatures & Verification -->
-            <div class="pt-6 border-t border-slate-200 grid grid-cols-2 items-center text-xs">
-                <div class="space-y-1">
-                    <span class="text-[10px] font-mono text-slate-400 block">ID Verifikasi: SDI-KOLUT-KK-2026</span>
-                    <div class="w-16 h-16 rounded-xl bg-slate-100 border border-slate-300 flex items-center justify-center font-mono text-[9px] text-slate-500 font-black">
-                        [QR CODE SDI]
-                    </div>
-                </div>
-                <div class="text-right space-y-1">
-                    <span class="text-slate-500 text-[11px]">Lasusua, 17 November 2026</span>
-                    <div class="font-black text-slate-900 text-sm">Tim Pembina Desa Cantik</div>
-                    <div class="text-slate-500 text-[11px]">BPS Kabupaten Kolaka Utara</div>
-                </div>
-            </div>
-
-            <!-- Print Actions -->
-            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center gap-3">
-                <button type="button" onclick="window.print()" class="px-6 py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs shadow-md transition flex items-center gap-2 cursor-pointer">
-                    <span>🖨️ Cetak / Simpan PDF Sertifikat</span>
-                </button>
-                <button type="button" onclick="closeSertifikatModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
-                    Tutup
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS 4: BUKU PANDUAN PRAKTIK EXCEL (30 LEMBAR)           -->
-    <!-- ============================================================== -->
-    <div id="excelBookModal" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
-        <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-4 flex flex-col max-h-[92vh] animate-in fade-in zoom-in duration-200">
-            <!-- Modal Header with Page Selector -->
-            <div class="bg-[#072448] text-white p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3 shrink-0">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-lg shrink-0">📗</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">Modul Resmi BPS RI • 30 Lembar Praktik</div>
-                        <h3 class="text-base sm:text-lg font-black text-white">Buku Praktik Excel Statistik Satu Data Desa</h3>
-                    </div>
-                </div>
-                
-                <div class="flex items-center gap-2">
-                    <select id="excelPageSelect" onchange="goToExcelPage(this.value)" class="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-bold text-white focus:ring-2 focus:ring-emerald-400 cursor-pointer">
-                        <!-- Injected by initExcelReader -->
-                    </select>
-                    <button type="button" onclick="closeExcelBookModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
-                </div>
-            </div>
-
-            <!-- Reader Controls & Progress Ribbon -->
-            <div class="bg-slate-100 px-4 py-2 border-b border-slate-200 flex items-center justify-between gap-3 text-xs text-slate-600 shrink-0">
-                <div class="flex items-center gap-2">
-                    <span id="excelPageBadge" class="px-2.5 py-0.5 rounded-md bg-emerald-700 text-white font-black text-[10px]">Lembar 1 / 30</span>
-                    <span id="excelProgressText" class="font-bold text-slate-700 hidden sm:inline">Progres Pembacaan: Lembar 1 dari 30 (3%)</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button type="button" id="btnPrevExcelPage" onclick="prevExcelPage()" class="px-3 py-1 rounded-lg bg-white hover:bg-slate-200 border border-slate-300 font-bold text-xs text-slate-800 transition cursor-pointer">← Sebelumnya</button>
-                    <button type="button" id="btnNextExcelPage" onclick="nextExcelPage()" class="px-3 py-1 rounded-lg bg-[#005ea6] hover:bg-[#004e8a] font-bold text-xs text-white transition cursor-pointer">Selanjutnya →</button>
-                </div>
-            </div>
-
-            <!-- Main Sheet Display Container (Single or Spread Mode) -->
-            <div class="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4" id="excelSheetCard">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    <!-- Left Page Container -->
-                    <div id="bookPageLeft" class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-2xs space-y-3">
-                        <div class="flex items-center justify-between pb-2 border-b border-slate-200 text-xs text-slate-500 font-bold">
-                            <span id="bookPageLeftNumber">Halaman Pengantar SDI</span>
-                            <span class="text-emerald-700 font-black">BPS Kolaka Utara</span>
-                        </div>
-                        <div id="sheetContentContainerLeft" class="text-xs leading-relaxed text-slate-700 space-y-3">
-                            <!-- Injected by renderExcelPage -->
-                        </div>
-                    </div>
-
-                    <!-- Right Page Container -->
-                    <div id="bookPageRight" class="p-5 rounded-2xl bg-white border-2 border-emerald-500/40 shadow-xs space-y-3">
-                        <div class="flex items-center justify-between pb-2 border-b border-slate-200 text-xs text-slate-500 font-bold">
-                            <span class="text-[#005ea6] font-black">Lembar Materi & Rumus</span>
-                            <span id="bookPageRightNumber" class="text-slate-400">Hal. 1</span>
-                        </div>
-                        <div id="sheetContentContainerRight" class="text-xs leading-relaxed text-slate-700 space-y-3">
-                            <!-- Injected by renderExcelPage -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Toolbar -->
-            <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0">
-                <span id="excelNextPreview" class="text-xs text-slate-500 font-bold">Lanjut ke Hal 2: Format Data Kependudukan →</span>
-                <div class="flex items-center gap-2">
-                    <button type="button" onclick="printCurrentExcelPage()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition cursor-pointer">
-                        🖨️ Cetak Lembar Ini
-                    </button>
-                    <button type="button" onclick="closeExcelBookModal()" class="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition cursor-pointer">
-                        Tutup Buku
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS 5: RUMUS DASAR STATISTIK SEKTORAL DESA               -->
-    <!-- ============================================================== -->
-    <div id="rumusStatistikModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
-            <div class="bg-gradient-to-r from-[#005ea6] to-[#072448] text-white p-5 sm:p-6 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📐</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-amber-300">FORMULA-BPS-STAT-01</div>
-                        <h3 class="text-base sm:text-lg font-black text-white">Ringkasan Rumus Dasar Statistik Sektoral Desa</h3>
-                    </div>
-                </div>
-                <button type="button" onclick="closeRumusStatistikModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
-            </div>
-
-            <div class="p-6 space-y-4 text-xs text-slate-700 max-h-[75vh] overflow-y-auto">
-                <!-- Formula 1: Sex Ratio -->
-                <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 space-y-1.5">
-                    <div class="flex items-center justify-between">
-                        <h5 class="font-black text-[#005ea6] text-sm">1. Rasio Jenis Kelamin (Sex Ratio)</h5>
-                        <span class="px-2 py-0.5 rounded bg-blue-200 text-blue-900 text-[10px] font-black">Demografi</span>
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-white border border-blue-100 font-mono font-bold text-slate-800 text-center text-xs">
-                        Sex Ratio = (Jumlah Penduduk Laki-laki / Jumlah Penduduk Perempuan) × 100
-                    </div>
-                    <p class="text-[11px] text-slate-500">Angka 98,5% menunjukkan terdapat 98-99 laki-laki untuk setiap 100 perempuan di desa.</p>
-                </div>
-
-                <!-- Formula 2: Dependency Ratio -->
-                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1.5">
-                    <div class="flex items-center justify-between">
-                        <h5 class="font-black text-emerald-800 text-sm">2. Rasio Beban Ketergantungan (Dependency Ratio)</h5>
-                        <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 text-[10px] font-black">Kesejahteraan</span>
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-white border border-emerald-100 font-mono font-bold text-slate-800 text-center text-xs">
-                        DR = [ (Penduduk Usia 0–14 th + Penduduk Usia 65+ th) / Penduduk Usia 15–64 th ] × 100
-                    </div>
-                    <p class="text-[11px] text-slate-500">Mengukur berapa banyak tanggungan usia non-produktif yang ditopang oleh 100 penduduk usia produktif.</p>
-                </div>
-
-                <!-- Formula 3: Prevalensi Stunting -->
-                <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 space-y-1.5">
-                    <div class="flex items-center justify-between">
-                        <h5 class="font-black text-rose-800 text-sm">3. Prevalensi Kasus Stunting Balita</h5>
-                        <span class="px-2 py-0.5 rounded bg-rose-200 text-rose-900 text-[10px] font-black">Kesehatan</span>
-                    </div>
-                    <div class="p-2.5 rounded-xl bg-white border border-rose-100 font-mono font-bold text-slate-800 text-center text-xs">
-                        Prevalensi Stunting = (Jumlah Balita Stunting / Total Balita Diukur Posyandu) × 100%
-                    </div>
-                </div>
-
-                <!-- Formula 4: Excel Shortcuts -->
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <h5 class="font-black text-slate-900 text-sm">Formula Standar di Excel / Spreadsheet:</h5>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
-                        <div class="p-2 rounded-lg bg-white border border-slate-200"><b>=SUM(B2:B20)</b> : Total data</div>
-                        <div class="p-2 rounded-lg bg-white border border-slate-200"><b>=AVERAGE(B2:B20)</b> : Rata-rata</div>
-                        <div class="p-2 rounded-lg bg-white border border-slate-200"><b>=COUNTIF(C2:C20, "Miskin")</b></div>
-                        <div class="p-2 rounded-lg bg-white border border-slate-200"><b>=VLOOKUP(A2, Data_KK!A:D, 3, FALSE)</b></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-2">
-                <button type="button" onclick="showToast('Formula Rumus Dasar Statistik berhasil disalin!');" class="px-4 py-2 rounded-xl bg-[#005ea6] text-white font-bold text-xs hover:bg-[#004e8a] transition cursor-pointer">Salin Formula</button>
-                <button type="button" onclick="closeRumusStatistikModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-300 transition cursor-pointer">Tutup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL LMS 6: SURAT KEPUTUSAN (SK) AGEN STATISTIK DESA          -->
-    <!-- ============================================================== -->
-    <div id="skAgenModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
-            <div class="bg-slate-900 text-white p-5 sm:p-6 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📜</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-amber-300">SK-BPS-KOLUT-008</div>
-                        <h3 class="text-base sm:text-lg font-black text-white">SK Tim Agen Statistik Desa Kalu Kaluku</h3>
-                    </div>
-                </div>
-                <button type="button" onclick="closeSkAgenModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
-            </div>
-
-            <div class="p-6 space-y-4 text-xs text-slate-700 max-h-[75vh] overflow-y-auto leading-relaxed">
-                <!-- Legal Document Preview -->
-                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-300 space-y-3 font-serif">
-                    <div class="text-center space-y-1 pb-3 border-b border-slate-300">
-                        <div class="font-black text-sm uppercase text-slate-900">PEMERINTAH KABUPATEN KOLAKA UTARA</div>
-                        <div class="font-black text-base uppercase text-slate-900">KANTOR KEPALA DESA KALU KALUKU</div>
-                        <div class="text-[10px] text-slate-500 font-sans">Kecamatan Kodeoha, Kabupaten Kolaka Utara, Sulawesi Tenggara 93553</div>
-                    </div>
-
-                    <div class="text-center pt-2">
-                        <div class="font-black text-sm underline text-slate-900">KEPUTUSAN KEPALA DESA KALU KALUKU</div>
-                        <div class="text-xs font-sans text-slate-600">NOMOR: 08/DS-KK/2026</div>
-                        <div class="text-[11px] font-bold text-slate-800 pt-1">TENTANG</div>
-                        <div class="text-xs font-bold text-slate-900 uppercase">PEMBENTUKAN TIM AGEN STATISTIK DESA CINTA STATISTIK (DESA CANTIK) TAHUN 2026</div>
-                    </div>
-
-                    <div class="space-y-2 pt-2 text-[11px] font-sans">
-                        <p><b>Menimbang:</b> Bahwa untuk mewujudkan keterpaduan data statistik sektoral desa dan mengoptimalkan pembinaan statistik oleh BPS Kabupaten Kolaka Utara...</p>
-                        <p><b>MEMUTUSKAN:</b></p>
-                        <div class="pl-3 space-y-1">
-                            <div>1. <b>Penanggung Jawab:</b> H. Syamsul Bahri, S.Sos (Kepala Desa)</div>
-                            <div>2. <b>Koordinator Lapangan:</b> Muh. Ridwan, S.AP (Sekretaris Desa)</div>
-                            <div>3. <b>Agen Statistik Sektoral:</b> Baharuddin, S.Pd (Kaur Perencanaan)</div>
-                            <div>4. <b>Operator WebGIS:</b> Rosmini, S.Kom (Kasi Pelayanan)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-2">
-                <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition cursor-pointer">🖨️ Cetak Berkas SK</button>
-                <button type="button" onclick="closeSkAgenModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-300 transition cursor-pointer">Tutup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- MODAL MONEV: UNGGAH DOKUMEN BUKTI DUKUNG BARU                  -->
-    <!-- ============================================================== -->
-    <div id="addBuktiModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
-            <div class="bg-gradient-to-r from-emerald-700 to-teal-900 text-white p-5 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl">📁</div>
-                    <div>
-                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">Portofolio Monev Desa Cantik</div>
-                        <h3 class="text-base font-black text-white">Unggah Dokumen Bukti Dukung</h3>
-                    </div>
-                </div>
-                <button type="button" onclick="closeAddBuktiModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
-            </div>
-
-            <form onsubmit="event.preventDefault(); const name = document.getElementById('buktiModalNama').value; const tbody = document.getElementById('tbodyMonevBukti'); if (tbody && name) { const count = tbody.querySelectorAll('tr').length + 1; const tr = document.createElement('tr'); tr.className = 'hover:bg-slate-50 transition'; tr.innerHTML = `<td class='py-2.5 px-3 text-center font-bold text-slate-500'>${count}</td><td class='py-2.5 px-4 font-bold text-slate-800'>${name}</td><td class='py-2.5 px-3 text-center'><span class='px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black'>✓ Lengkap</span></td><td class='py-2.5 px-4 text-center'><button type='button' onclick='showToast(\"Mengunduh ${name}...\")' class='px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer'>Download</button></td>`; tbody.appendChild(tr); showToast('✅ Dokumen bukti dukung berhasil diunggah!'); closeAddBuktiModal(); }" class="p-6 space-y-4 text-xs text-slate-700">
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Kategori Tingkat Bukti Dukung</label>
-                    <select id="buktiModalKategori" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-                        <option value="desa">A. Tingkat Desa (Laporan Bulanan, SK, Foto Kegiatan)</option>
                         <option value="kab">B. Tingkat Kabupaten (Verifikasi BPS, Rekapitulasi Sektoral)</option>
                     </select>
                 </div>
@@ -8077,75 +8578,94 @@ function triggerPubDownload() {
     <!-- MODAL GALERI FOTO DESA RESMI & INTERAKTIF                        -->
     <!-- Menampilkan dokumentasi pembinaan, potensi, pencarian & upload  -->
     <!-- ============================================================== -->
-    <div id="galeriDesaModal" class="hidden fixed inset-0 z-50 bg-slate-900/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
-        <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
-            <!-- Modal Header -->
-            <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-gradient-to-r from-purple-50 via-white to-indigo-50 shrink-0">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+    <div id="galeriDesaModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 lg:p-6 animate-in fade-in duration-200">
+        <div class="bg-white rounded-3xl w-full max-w-6xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200/90 ring-1 ring-black/5">
+            <!-- Modal Header: Estetik, Elegan, & Modern -->
+            <div class="p-4 sm:p-5 border-b border-emerald-900/60 bg-gradient-to-r from-slate-950 via-[#0a2f22] to-slate-950 text-white flex items-center justify-between shrink-0 relative overflow-hidden">
+                <!-- Ambient Glow Effect -->
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none"></div>
+
+                <div class="flex items-center gap-3 sm:gap-3.5 relative z-10 min-w-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-teal-500/10 border border-emerald-400/30 text-emerald-300 flex items-center justify-center text-xl shrink-0 shadow-inner">
                         <i class="bi bi-camera-reels"></i>
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h3 id="galeriModalTitle" class="text-base sm:text-lg font-black text-slate-900">Galeri Foto Desa Kamisi</h3>
-                            <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-wider border border-purple-200">Dokumentasi Resmi BPS</span>
+                            <h3 id="galeriModalTitle" class="text-base sm:text-lg font-black text-white tracking-tight truncate">Galeri Foto Resmi Desa Kamisi</h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-black uppercase tracking-wider flex items-center gap-1 shrink-0">
+                                <i class="bi bi-shield-check text-emerald-400"></i>
+                                <span>Terverifikasi BPS</span>
+                            </span>
                         </div>
-                        <p id="galeriModalSub" class="text-xs text-slate-500 mt-0.5 line-clamp-1">Dokumentasi pembinaan Desa Cantik, potensi sentra kakao, bahari, dan aktivitas warga</p>
+                        <p id="galeriModalSub" class="text-xs text-slate-300/90 mt-0.5 line-clamp-1 font-medium">Dokumentasi Terverifikasi Pembinaan Desa Cantik BPS &amp; Potensi Unggulan Wilayah</p>
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 relative z-10 shrink-0">
                     <!-- Tombol Tambah Foto Baru oleh Admin -->
-                    <button type="button" onclick="openUploadFotoModal()" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:to-indigo-800 text-white font-bold text-xs shadow-md shadow-purple-500/20 active:scale-95 transition cursor-pointer">
+                    <button type="button" onclick="openUploadFotoModal()" class="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs shadow-md shadow-emerald-950/40 active:scale-95 transition cursor-pointer">
                         <i class="bi bi-cloud-arrow-up-fill text-sm"></i>
                         <span class="hidden sm:inline">+ Unggah Foto Baru</span>
                         <span class="sm:hidden">+ Unggah</span>
                     </button>
-                    <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer" title="Tutup Galeri">
+                    <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white flex items-center justify-center transition cursor-pointer" title="Tutup Galeri">
                         <i class="bi bi-x-lg text-sm"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Toolbar Interaktif: Filter Kategori & Pencarian -->
-            <div class="px-4 sm:px-6 py-2.5 border-b border-slate-200 bg-slate-50/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+            <div class="px-4 sm:px-6 py-2.5 border-b border-slate-200 bg-slate-50/95 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
                 <!-- Category Filter Tabs -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
-                    <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer whitespace-nowrap">Semua Foto</button>
-                    <button type="button" onclick="filterGaleriPhotos('custom', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <span>⭐ Unggahan Admin</span>
+                    <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-emerald-700 text-white shadow-sm border border-emerald-700 cursor-pointer whitespace-nowrap">Semua Foto</button>
+                    <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <i class="bi bi-mortarboard-fill text-emerald-600"></i>
+                        <span>Pembinaan BPS</span>
                     </button>
-                    <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Pembinaan BPS</button>
-                    <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Potensi &amp; UMKM</button>
-                    <button type="button" onclick="filterGaleriPhotos('alam', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Pesona Alam</button>
-                    <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Layanan Desa</button>
+                    <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <i class="bi bi-graph-up-arrow text-amber-600"></i>
+                        <span>Potensi &amp; UMKM</span>
+                    </button>
+                    <button type="button" onclick="filterGaleriPhotos('alam', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <i class="bi bi-tree-fill text-teal-600"></i>
+                        <span>Pesona Alam</span>
+                    </button>
+                    <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <i class="bi bi-building-fill-check text-indigo-600"></i>
+                        <span>Layanan Desa</span>
+                    </button>
+                    <button type="button" onclick="filterGaleriPhotos('custom', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <i class="bi bi-star-fill text-amber-500"></i>
+                        <span>Unggahan Admin</span>
+                    </button>
                 </div>
 
-                <!-- Input Pencarian Foto -->
+                <!-- Input Pencarian Foto & Indikator Jumlah -->
                 <div class="flex items-center gap-2 shrink-0">
-                    <div class="relative w-full sm:w-56">
+                    <div class="relative w-full sm:w-60">
                         <i class="bi bi-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari foto dokumentasi..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition">
+                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari dokumentasi kegiatan..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition">
                     </div>
-                    <span id="galeriCountInfo" class="text-xs font-extrabold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200 whitespace-nowrap hidden sm:inline">
-                        8 Foto
+                    <span id="galeriCountInfo" class="text-xs font-black text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-xl border border-emerald-300 whitespace-nowrap hidden sm:inline">
+                        8 Foto Dokumentasi
                     </span>
                 </div>
             </div>
 
-            <!-- Photo Grid -->
-            <div id="galeriPhotosGrid" class="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Photo Grid Kontainer Estetik -->
+            <div id="galeriPhotosGrid" class="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 bg-[#f8faf9]">
                 <!-- Dynamically populated via renderGaleriPhotos() -->
             </div>
 
             <!-- Modal Footer -->
             <div class="p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 shrink-0">
                 <span class="flex items-center gap-1.5">
-                    <i class="bi bi-info-circle text-purple-600"></i>
-                    <span>Klik pada foto atau tombol perbesar untuk melihat ukuran resolusi penuh.</span>
+                    <i class="bi bi-info-circle text-emerald-700"></i>
+                    <span>Klik pada foto atau tombol perbesar untuk melihat gambar resolusi tinggi dengan navigasi galeri.</span>
                 </span>
                 <div class="flex items-center gap-2">
-                    <button type="button" onclick="openUploadFotoModal()" class="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold transition cursor-pointer flex items-center gap-1 text-xs">
+                    <button type="button" onclick="openUploadFotoModal()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold transition cursor-pointer flex items-center gap-1 text-xs">
                         <i class="bi bi-cloud-arrow-up-fill"></i>
                         <span>Unggah Foto</span>
                     </button>
@@ -8279,37 +8799,57 @@ function triggerPubDownload() {
 
     <!-- ============================================================== -->
     <!-- MODAL LIGHTBOX FULLSCREEN ZOOM FOTO DOKUMENTASI                -->
+    <!-- Menampilkan foto resolusi penuh dengan navigasi (Next/Prev)    -->
     <!-- ============================================================== -->
-    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-70 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-        <div class="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 flex flex-col max-h-[95vh]">
+    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-70 bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
+        <div class="relative w-full max-w-5xl bg-slate-900/90 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex flex-col max-h-[96vh]">
             <!-- Lightbox Topbar -->
-            <div class="p-3 sm:p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
-                <div class="flex items-center gap-2">
-                    <span id="lightboxBadge" class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-black uppercase tracking-wider">
-                        Dokumentasi
+            <div class="p-3.5 sm:p-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <span id="lightboxBadge" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-black uppercase tracking-wider">
+                        Dokumentasi Resmi
                     </span>
-                    <span id="lightboxDate" class="text-xs text-slate-400 font-semibold">2026</span>
+                    <span id="lightboxDate" class="text-xs text-slate-400 font-semibold hidden sm:inline">2025/2026</span>
+                    <span id="lightboxCounter" class="px-2.5 py-0.5 rounded-full bg-white/10 text-slate-200 text-[11px] font-black tracking-wide border border-white/10">
+                        1 / 8
+                    </span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="lightboxDownloadBtn" type="button" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer" title="Unduh Foto Ini">
+                    <button id="lightboxDownloadBtn" type="button" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer" title="Unduh Foto Ini">
                         <i class="bi bi-download"></i>
                         <span class="hidden sm:inline">Unduh Foto</span>
                     </button>
-                    <button type="button" onclick="closeGaleriLightbox()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer" title="Tutup">
+                    <button type="button" onclick="closeGaleriLightbox()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer" title="Tutup (Esc)">
                         ✕
                     </button>
                 </div>
             </div>
 
-            <!-- Lightbox Image Center -->
-            <div class="flex-1 overflow-hidden bg-black flex items-center justify-center p-2 sm:p-4 min-h-[300px]">
-                <img id="lightboxImg" src="" alt="Dokumentasi Penuh" class="max-h-[68vh] max-w-full object-contain rounded-xl shadow-lg">
+            <!-- Lightbox Image Center dengan Navigasi Panah Mengambang -->
+            <div class="relative flex-1 overflow-hidden bg-black/90 flex items-center justify-center p-2 sm:p-4 min-h-[350px]">
+                <!-- Tombol Navigasi Sebelumnya (Prev) -->
+                <button type="button" onclick="prevLightboxPhoto()" class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-emerald-600/80 text-white flex items-center justify-center transition-all duration-200 border border-white/20 backdrop-blur-md cursor-pointer z-20 shadow-xl active:scale-90" title="Foto Sebelumnya (Panah Kiri ←)">
+                    <i class="bi bi-chevron-left text-lg"></i>
+                </button>
+
+                <!-- Foto Resolusi Tinggi -->
+                <img id="lightboxImg" src="" alt="Dokumentasi Penuh" class="max-h-[68vh] max-w-full object-contain rounded-2xl shadow-2xl transition-all duration-300 select-none">
+
+                <!-- Tombol Navigasi Selanjutnya (Next) -->
+                <button type="button" onclick="nextLightboxPhoto()" class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-emerald-600/80 text-white flex items-center justify-center transition-all duration-200 border border-white/20 backdrop-blur-md cursor-pointer z-20 shadow-xl active:scale-90" title="Foto Selanjutnya (Panah Kanan →)">
+                    <i class="bi bi-chevron-right text-lg"></i>
+                </button>
             </div>
 
             <!-- Lightbox Caption Footer -->
-            <div class="p-4 bg-slate-900 border-t border-slate-800 text-white shrink-0">
-                <h4 id="lightboxTitle" class="font-black text-sm sm:text-base text-white">Judul Dokumentasi Foto</h4>
-                <p id="lightboxCaption" class="text-xs text-slate-400 mt-1 leading-relaxed">Keterangan dokumentasi kegiatan resmi desa.</p>
+            <div class="p-4 bg-slate-900 border-t border-slate-800 text-white shrink-0 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="min-w-0">
+                    <h4 id="lightboxTitle" class="font-black text-sm sm:text-base text-white truncate">Judul Dokumentasi Foto</h4>
+                    <p id="lightboxCaption" class="text-xs text-slate-400 mt-0.5 leading-relaxed line-clamp-2">Keterangan dokumentasi kegiatan resmi desa.</p>
+                </div>
+                <div class="text-[10px] text-slate-500 font-medium shrink-0 hidden md:block">
+                    Navigasi: <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">←</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">→</kbd> • Tutup: <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Esc</kbd>
+                </div>
             </div>
         </div>
     </div>
