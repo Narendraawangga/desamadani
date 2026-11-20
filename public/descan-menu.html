@@ -484,12 +484,6 @@
 
         <!-- 3. Footer Sidebar: Akses Kembali ke 6 Desa & Keluar Akun -->
         <div class="p-3 border-t border-[#e5e9e7] bg-[#fafcfb] space-y-2">
-            <div class="flex items-center justify-between rounded-xl px-2.5 py-1.5 text-[10px] bg-emerald-50 border border-emerald-200/80">
-                <span class="flex items-center gap-1.5 font-bold text-emerald-800">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Server BPS Aktif
-                </span>
-                <span class="text-slate-500 font-extrabold">2026</span>
-            </div>
             <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
                 <i class="bi bi-grid-3x3-gap-fill text-xs text-slate-500"></i>
                 <span>Kembali ke 6 Desa</span>
