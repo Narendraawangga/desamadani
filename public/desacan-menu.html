@@ -1734,43 +1734,111 @@
                             </div>
                         </div>
 
-                        <!-- 2. "CHI SIAMO" SECTION: FLOATING 3D CARD ON ROLLING LUSH HILLS -->
-                        <div id="secProfilTentang" class="relative w-full rounded-3xl overflow-hidden min-h-[380px] sm:min-h-[460px] flex items-center justify-center p-4 sm:p-8 shadow-xl">
-                            <!-- Background Panoramic Rolling Hills Image -->
-                            <img id="profil3dLandscapeBg" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85" alt="Panorama Alam" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.75]">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                        <!-- 2. INFOGRAFIS KARAKTERISTIK & KONDISI GEOGRAFIS DESA -->
+                        <div id="secProfilTentang" class="relative w-full rounded-3xl overflow-hidden p-6 sm:p-10 bg-white border border-[#e6e2d6] shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <!-- Hidden dummy for JS compatibility (setSrc in script) -->
+                            <img id="profil3dLandscapeBg" src="" alt="" class="hidden" style="display:none;">
 
-                            <!-- Floating 3D Ivory Card (Interactive Tilt on Hover) -->
-                            <div class="tilt-card-3d relative z-10 max-w-2xl w-full bg-[#f8f6f0]/95 backdrop-blur-md rounded-3xl p-6 sm:p-9 shadow-2xl border border-white/60 text-center space-y-4">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-[#0f6b4a] text-[10px] font-black uppercase tracking-wider">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                    <span>Karakteristik & Kondisi Geografis</span>
+                            <!-- Subtle Ambient Infographic Background Accents (Pure CSS, No Image) -->
+                            <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-100/40 blur-3xl pointer-events-none"></div>
+                            <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-teal-100/30 blur-3xl pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-[radial-gradient(#0f6b4a_0.6px,transparent_0.6px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none"></div>
+
+                            <!-- Content Wrapper -->
+                            <div class="relative z-10 space-y-6">
+                                <!-- Header Section (Infographic Title & Description) -->
+                                <div class="text-center max-w-2xl mx-auto space-y-3">
+                                    <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-[#0f6b4a] text-[11px] font-black uppercase tracking-wider border border-emerald-200/70 shadow-2xs">
+                                        <i class="bi bi-geo-alt-fill text-emerald-600"></i>
+                                        <span>Karakteristik & Kondisi Geografis</span>
+                                    </div>
+                                    <h3 class="text-2xl sm:text-3xl font-serif font-black text-[#163829] tracking-tight">
+                                        Kedaulatan Data & Keasrian Wilayah
+                                    </h3>
+                                    <p id="profil3dDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto">
+                                        Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.
+                                    </p>
                                 </div>
-                                <h3 class="text-xl sm:text-2xl font-serif font-black text-[#163829]">
-                                    Kedaulatan Data & Keasrian Wilayah
-                                </h3>
-                                <p id="profil3dDesc" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium max-w-xl mx-auto">
-                                    Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.
-                                </p>
 
-                                <!-- 4-Grid Key Metrics inside floating card -->
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-[#e2ddd0] text-center">
-                                    <div class="p-2.5 rounded-2xl bg-white border border-[#e8e4d8] shadow-2xs">
-                                        <span class="text-[10px] font-bold text-slate-400 block uppercase">Luas Wilayah</span>
-                                        <b id="profil3dLuas" class="text-sm font-black text-[#163829]">14,80 km²</b>
+                                <!-- Infographic 4-Grid Key Metrics Cards -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                                    
+                                    <!-- Metric 1: Luas Wilayah -->
+                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-emerald-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#0f6b4a] to-[#10b981] text-white flex items-center justify-center text-lg shadow-md shadow-emerald-700/20 group-hover:scale-110 transition-transform duration-300">
+                                                <i class="bi bi-map-fill"></i>
+                                            </div>
+                                            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-full border border-emerald-200/60">Spasial</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Luas Wilayah</span>
+                                        <div class="text-xl sm:text-2xl font-black text-[#163829] tracking-tight mt-0.5">
+                                            <b id="profil3dLuas">14,80 km²</b>
+                                        </div>
+                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
+                                            <span>Cakupan Area</span>
+                                            <span class="font-bold text-[#0f6b4a] flex items-center gap-1"><i class="bi bi-check2-circle"></i> Terpetakan</span>
+                                        </div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white border border-[#e8e4d8] shadow-2xs">
-                                        <span class="text-[10px] font-bold text-slate-400 block uppercase">Penduduk</span>
-                                        <b id="profil3dPop" class="text-sm font-black text-[#163829]">1.576 Jiwa</b>
+
+                                    <!-- Metric 2: Penduduk -->
+                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-sky-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-blue-500"></div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-600 to-blue-500 text-white flex items-center justify-center text-lg shadow-md shadow-sky-600/20 group-hover:scale-110 transition-transform duration-300">
+                                                <i class="bi bi-people-fill"></i>
+                                            </div>
+                                            <span class="text-[10px] font-black uppercase tracking-wider text-sky-800 bg-sky-100/70 px-2 py-0.5 rounded-full border border-sky-200/60">Demografi</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Penduduk</span>
+                                        <div class="text-xl sm:text-2xl font-black text-[#163829] tracking-tight mt-0.5">
+                                            <b id="profil3dPop">1.576 Jiwa</b>
+                                        </div>
+                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
+                                            <span>Validitas SDI</span>
+                                            <span class="font-bold text-sky-600 flex items-center gap-1"><i class="bi bi-shield-check"></i> 100% Jiwa</span>
+                                        </div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white border border-[#e8e4d8] shadow-2xs">
-                                        <span class="text-[10px] font-bold text-slate-400 block uppercase">Keluarga</span>
-                                        <b id="profil3dKK" class="text-sm font-black text-[#0f6b4a]">394 KK</b>
+
+                                    <!-- Metric 3: Keluarga -->
+                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-amber-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-400"></div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center text-lg shadow-md shadow-amber-500/20 group-hover:scale-110 transition-transform duration-300">
+                                                <i class="bi bi-house-heart-fill"></i>
+                                            </div>
+                                            <span class="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-full border border-amber-200/60">Keluarga</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Keluarga</span>
+                                        <div class="text-xl sm:text-2xl font-black text-amber-700 tracking-tight mt-0.5">
+                                            <b id="profil3dKK">394 KK</b>
+                                        </div>
+                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
+                                            <span>Basis Data</span>
+                                            <span class="font-bold text-amber-700 flex items-center gap-1"><i class="bi bi-database-check"></i> Regsosek</span>
+                                        </div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white border border-[#e8e4d8] shadow-2xs">
-                                        <span class="text-[10px] font-bold text-slate-400 block uppercase">Struktur RT</span>
-                                        <b id="profil3dDusunCount" class="text-sm font-black text-[#163829]">3 Dusun • 8 RT</b>
+
+                                    <!-- Metric 4: Struktur RT -->
+                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-teal-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400"></div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-600 to-emerald-500 text-white flex items-center justify-center text-lg shadow-md shadow-teal-600/20 group-hover:scale-110 transition-transform duration-300">
+                                                <i class="bi bi-diagram-3-fill"></i>
+                                            </div>
+                                            <span class="text-[10px] font-black uppercase tracking-wider text-teal-800 bg-teal-100/70 px-2 py-0.5 rounded-full border border-teal-200/60">Wilayah</span>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Struktur RT</span>
+                                        <div class="text-base sm:text-lg font-black text-[#163829] tracking-tight mt-1 truncate">
+                                            <b id="profil3dDusunCount">3 Dusun • 8 RT</b>
+                                        </div>
+                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
+                                            <span>Administrasi</span>
+                                            <span class="font-bold text-teal-700 flex items-center gap-1"><i class="bi bi-diagram-2"></i> Komunitas</span>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
