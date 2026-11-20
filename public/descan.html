@@ -19,6 +19,9 @@
         }
     </script>
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -447,35 +450,71 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- 4. FLOATING STATS STRIP (5 Angka Pokok Bersih)                  -->
+    <!-- 4. FLOATING STATS STRIP (5 Kartu Desain Modern Sesuai Mockup)   -->
     <!-- ============================================================== -->
-    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-7 relative z-20">
-        <div class="card-surface p-4 sm:p-5 grid grid-cols-2 md:grid-cols-5 gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 shadow-md">
-            <div class="text-center px-2 py-1">
-                <div class="text-2xl sm:text-3xl font-black text-slate-900 leading-none">6</div>
-                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Desa Pilot</div>
-                <div class="text-[10px] text-emerald-700 font-semibold mt-0.5">Kec. Kodeoha</div>
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+            
+            <!-- Kartu 1: Desa Pilot -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
+                    <i class="bi bi-geo-alt-fill text-2xl text-[#0E7C5A]"></i>
+                </div>
+                <div class="w-full">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">6</div>
+                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Desa Pilot</div>
+                    <div class="text-xs text-emerald-700 font-bold">Kec. Kodeoha</div>
+                </div>
             </div>
-            <div class="text-center px-2 py-1">
-                <div class="text-2xl sm:text-3xl font-black text-slate-900 leading-none">2.426</div>
-                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Total Keluarga</div>
-                <div class="text-[10px] text-slate-400 font-medium mt-0.5">Kepala Keluarga (KK)</div>
+
+            <!-- Kartu 2: Total Keluarga -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
+                    <i class="bi bi-people-fill text-2xl text-[#0E7C5A]"></i>
+                </div>
+                <div class="w-full">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">2.426</div>
+                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Total Keluarga</div>
+                    <div class="text-[11px] text-slate-400 font-medium">Kepala Keluarga (KK)</div>
+                </div>
             </div>
-            <div class="text-center px-2 py-1">
-                <div class="text-2xl sm:text-3xl font-black text-slate-900 leading-none">8.734</div>
-                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Total Penduduk</div>
-                <div class="text-[10px] text-slate-400 font-medium mt-0.5">Jiwa Terdata</div>
+
+            <!-- Kartu 3: Total Penduduk -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
+                    <i class="bi bi-person-vcard-fill text-2xl text-[#0E7C5A]"></i>
+                </div>
+                <div class="w-full">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">8.734</div>
+                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Total Penduduk</div>
+                    <div class="text-[11px] text-slate-400 font-medium">Jiwa Terdata</div>
+                </div>
             </div>
-            <div class="text-center px-2 py-1">
-                <div class="text-2xl sm:text-3xl font-black text-emerald-700 leading-none">84%</div>
-                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Rata-rata Progres</div>
-                <div class="text-[10px] text-emerald-600 font-medium mt-0.5">Pendataan Selesai</div>
+
+            <!-- Kartu 4: Rata-rata Progres -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
+                    <i class="bi bi-graph-up-arrow text-2xl text-[#0E7C5A]"></i>
+                </div>
+                <div class="w-full">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0E7C5A] tracking-tight leading-none mb-1.5">84%</div>
+                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Rata-rata Progres</div>
+                    <div class="text-xs text-emerald-600 font-semibold">Pendataan Selesai</div>
+                </div>
             </div>
-            <div class="text-center px-2 py-1 col-span-2 md:col-span-1">
-                <div class="text-2xl sm:text-3xl font-black text-blue-700 leading-none">223 / 264</div>
-                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Indikator Terinput</div>
-                <div class="text-[10px] text-blue-600 font-medium mt-0.5">44 Indikator / Desa</div>
+
+            <!-- Kartu 5: Indikator Terinput -->
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
+                    <i class="bi bi-check2-circle text-2xl text-[#0E7C5A]"></i>
+                </div>
+                <div class="w-full">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-700 tracking-tight leading-none mb-1.5">223 / 264</div>
+                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Indikator Terinput</div>
+                    <div class="text-xs text-blue-600 font-semibold">44 Indikator / Desa</div>
+                </div>
             </div>
+
         </div>
     </div>
 
