@@ -1520,6 +1520,12 @@ window.PresisiEngine = (function() {
       const isTarget = cleanKec === currentKecamatan.replace(/\s+/g, '').toLowerCase();
       if (isTarget) {
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           fillColor: color,
           weight: 2.5,
           opacity: 0.95,
@@ -1528,6 +1534,12 @@ window.PresisiEngine = (function() {
         };
       } else {
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           fillColor: color,
           weight: 1,
           opacity: 0.35,
@@ -1538,6 +1550,12 @@ window.PresisiEngine = (function() {
     }
 
     return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
       fillColor: color,
       weight: 2,
       opacity: 1,
@@ -1633,6 +1651,12 @@ window.PresisiEngine = (function() {
           const isSelected = currentDesa !== 'ALL' &&
             feature.properties.nama.toLowerCase() === currentDesa.toLowerCase();
           return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
             fillColor: feature.properties.color || '#10b981',
             weight: isSelected ? 4 : 2,
             opacity: 1,
@@ -2089,7 +2113,13 @@ window.PresisiEngine = (function() {
         else if (currentCategory === 'keuangan') metric = v.keuangan ? (v.keuangan.bumdes || 0) : 0;
         else if (currentCategory === 'umum') metric = v.umum ? 1 : 0;
         else if (currentCategory === 'pemerintah') metric = v.pemerintah ? (v.pemerintah.totalAparat || 0) : 0;
-        return { nama: v.nama, val: isNaN(metric) ? 0 : metric };
+        return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+ nama: v.nama, val: isNaN(metric) ? 0 : metric };
       });
       values.sort((a, b) => b.val - a.val);
 
@@ -2576,6 +2606,12 @@ window.PresisiEngine = (function() {
       }
 
       return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
         chart1: {
           type: 'bar',
           data: {
@@ -2694,6 +2730,12 @@ window.PresisiEngine = (function() {
     switch (cat) {
       case 'ekonomi':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -2757,6 +2799,12 @@ window.PresisiEngine = (function() {
 
       case 'lingkungan':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -2820,6 +2868,12 @@ window.PresisiEngine = (function() {
 
       case 'sosial':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -2883,6 +2937,12 @@ window.PresisiEngine = (function() {
 
       case 'keuangan':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -2946,6 +3006,12 @@ window.PresisiEngine = (function() {
 
       case 'umum':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -3009,6 +3075,12 @@ window.PresisiEngine = (function() {
 
       case 'pemerintah':
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: {
             type: 'bar',
             data: {
@@ -3072,6 +3144,12 @@ window.PresisiEngine = (function() {
 
       default:
         return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
           chart1: { type: 'bar', data: { labels: [], datasets: [] } },
           chart2: { type: 'doughnut', data: { labels: [], datasets: [] } },
           chart3: { type: 'bar', data: { labels: [], datasets: [] } },
@@ -3985,543 +4063,627 @@ window.PresisiEngine = (function() {
 
 
   // =========================================================================
-  // SECTION AGREGAT 15 KECAMATAN KOLAKA UTARA (PODES BPS 2025)
-  // Dynamic Cards, Sektor Filtering, Instant Searching, Sorting & WebGIS Sync
+  // MODUL BARU: PUSAT KOMPARASI & ANALITIK DISPARITAS WILAYAH (PODES BPS 2025)
+  // Fitur Komparator Head-to-Head, 3 Koridor Pembangunan, & Leaderboard Wilayah
   // =========================================================================
-let agregatSector = 'all';
-  let agregatZone = 'all';
-  let agregatSearchQuery = '';
-  let agregatSortBy = 'geo';
-  let agregatSlideIndex = 0;
+  let comparatorTab = 'headtohead'; // 'headtohead', 'koridor', 'leaderboard'
+  let comparatorKec1 = 'Porehu';
+  let comparatorKec2 = 'Lasusua';
+  let leaderboardMetric = 'imk'; // 'imk', 'jiwa', 'pln', 'sekolah', 'faskes', 'bumdes'
 
-  const NORTH_TO_SOUTH_ORDER = [
-    'Tolala', 'Porehu', 'Batu Putih', 'Pakue Utara', 'Pakue Tengah', 'Pakue',
-    'Watunohu', 'Tiwu', 'Ngapa', 'Kodeoha', 'Katoi', 'Lasusua', 'Lambai',
-    'Ranteangin', 'Wawo'
-  ];
-
-  function getFilteredKecamatanList() {
-    if (!db || !db.kecamatanList) return [];
-    let list = [...db.kecamatanList];
-
-    if (agregatSearchQuery) {
-      list = list.filter(k => 
-        k.nama.toLowerCase().includes(agregatSearchQuery) || 
-        (k.karakteristik && k.karakteristik.toLowerCase().includes(agregatSearchQuery)) ||
-        (k.desaList && k.desaList.some(d => d.toLowerCase().includes(agregatSearchQuery)))
-      );
+  const KORIDOR_DATA = {
+    utara: {
+      nama: 'Koridor Utara',
+      sub: 'Perbatasan & Sentra Perkebunan Kakao',
+      kecamatan: ['Tolala', 'Porehu', 'Batu Putih', 'Pakue', 'Pakue Utara', 'Pakue Tengah'],
+      desa: 55,
+      jiwa: 47035,
+      imk: 2149,
+      pln: 12376,
+      sekolah: 137,
+      faskes: 85,
+      bumdes: 56,
+      highlight: '59,3% Sentra Industri Mikro Kabupaten',
+      karakter: 'Pusat hilirisasi perkebunan kakao, cengkeh, nilam, kelapa dalam, dan perikanan laut perbatasan Sulsel.'
+    },
+    tengah: {
+      nama: 'Koridor Tengah',
+      sub: 'Lumbung Pangan Pokok & Agroindustri',
+      kecamatan: ['Watunohu', 'Tiwu', 'Ngapa', 'Kodeoha'],
+      desa: 39,
+      jiwa: 40976,
+      imk: 994,
+      pln: 9869,
+      sekolah: 88,
+      faskes: 54,
+      bumdes: 46,
+      highlight: 'Sentra Padi Sawah & Tanaman Lada',
+      karakter: 'Lembah agraris sentra tanaman pangan, padi sawah irigasi, perkebunan lada putih/hitam, dan aneka industri pangan.'
+    },
+    selatan: {
+      nama: 'Koridor Selatan',
+      sub: 'Pusat Ibu Kota, Medis & Pendidikan Tinggi',
+      kecamatan: ['Lasusua', 'Katoi', 'Lambai', 'Ranteangin', 'Wawo'],
+      desa: 39,
+      jiwa: 54681,
+      imk: 479,
+      pln: 15832,
+      sekolah: 122,
+      faskes: 84,
+      bumdes: 44,
+      highlight: '38,4% Konsentrasi Populasi & RSUD Rujukan',
+      karakter: 'Pusat pemerintahan kabupaten di Lasusua, sirkulasi perbankan, fasilitas rujukan RSUD Kelas C, dan perguruan tinggi.'
     }
+  };
 
-    if (agregatSortBy === 'geo') {
-      list.sort((a, b) => {
-        let idxA = NORTH_TO_SOUTH_ORDER.indexOf(a.nama);
-        let idxB = NORTH_TO_SOUTH_ORDER.indexOf(b.nama);
-        if (idxA === -1) idxA = 99;
-        if (idxB === -1) idxB = 99;
-        return idxA - idxB;
-      });
-    } else if (agregatSortBy === 'imk') {
-      list.sort((a, b) => (b.ekonomi?.ikm || 0) - (a.ekonomi?.ikm || 0));
-    } else if (agregatSortBy === 'pln') {
-      list.sort((a, b) => (b.lingkungan?.pln || 0) - (a.lingkungan?.pln || 0));
-    } else if (agregatSortBy === 'desa') {
-      list.sort((a, b) => (b.desaCount || 0) - (a.desaCount || 0));
-    } else if (agregatSortBy === 'sekolah') {
-      list.sort((a, b) => (b.sosial?.totalSaranaPendidikan || 0) - (a.sosial?.totalSaranaPendidikan || 0));
-    } else if (agregatSortBy === 'faskes') {
-      list.sort((a, b) => (b.sosial?.totalSaranaKesehatan || 0) - (a.sosial?.totalSaranaKesehatan || 0));
-    } else if (agregatSortBy === 'bumdes') {
-      list.sort((a, b) => (b.keuangan?.bumdes || 0) - (a.keuangan?.bumdes || 0));
+  function getKecPop(kName) {
+    const clean = (kName || '').replace(/\s+/g, '').toLowerCase();
+    if (KECAMATAN_DEMOGRAPHY[clean]) {
+      return KECAMATAN_DEMOGRAPHY[clean].jiwa;
     }
-
-    return list;
-  }
-
-  function setAgregatZone(zone) {
-    agregatZone = zone || 'all';
-    if (zone === 'utara') agregatSlideIndex = 0; // Tolala
-    else if (zone === 'tengah') agregatSlideIndex = 5; // Pakue
-    else if (zone === 'selatan') agregatSlideIndex = 10; // Katoi
-    renderAgregatKecamatanSection();
-  }
-
-  function setAgregatSector(sec) {
-    agregatSector = sec;
-    agregatSlideIndex = 0;
-    document.querySelectorAll('.agregat-sec-btn').forEach(btn => {
-      if (btn.getAttribute('data-sec') === sec) {
-        btn.className = "agregat-sec-btn active px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shrink-0 bg-[#0D6E5B] text-white shadow-xs";
-      } else {
-        btn.className = "agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700";
+    if (db && db.kecamatan) {
+      for (const [k, v] of Object.entries(db.kecamatan)) {
+        if (v.nama && v.nama.toLowerCase() === kName.toLowerCase()) {
+          return v.penduduk_total || 0;
+        }
       }
+    }
+    return 0;
+  }
+
+  function setComparatorTab(tab) {
+    comparatorTab = tab || 'headtohead';
+    document.querySelectorAll('.comparator-tab-btn').forEach(btn => {
+      btn.className = "comparator-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer";
     });
-    renderAgregatKecamatanSection();
-  }
-
-  function onSearchKecamatanCard(query) {
-    agregatSearchQuery = (query || '').toLowerCase().trim();
-    agregatSlideIndex = 0;
-    renderAgregatKecamatanSection();
-  }
-
-  function onSortKecamatanCard(sortBy) {
-    agregatSortBy = sortBy;
-    agregatSlideIndex = 0;
-    renderAgregatKecamatanSection();
-  }
-
-  function goToKecamatanSlide(idx) {
-    agregatSlideIndex = idx;
-    renderAgregatKecamatanSection();
-  }
-
-  function prevKecamatanSlide() {
-    const list = getFilteredKecamatanList();
-    if (list.length === 0) return;
-    if (agregatSlideIndex > 0) {
-      agregatSlideIndex--;
-    } else {
-      agregatSlideIndex = list.length - 1;
+    const activeBtn = document.getElementById('tabBtn-' + comparatorTab);
+    if (activeBtn) {
+      activeBtn.className = "comparator-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer bg-[#0D6E5B] text-white shadow-xs";
     }
     renderAgregatKecamatanSection();
   }
 
-  function nextKecamatanSlide() {
-    const list = getFilteredKecamatanList();
-    if (list.length === 0) return;
-    if (agregatSlideIndex < list.length - 1) {
-      agregatSlideIndex++;
-    } else {
-      agregatSlideIndex = 0;
-    }
+  function setComparatorKec1(name) {
+    comparatorKec1 = name;
     renderAgregatKecamatanSection();
   }
 
-  const KECAMATAN_SVG_MAPS = {
-  "lasusua": {
-    "nama": "Lasusua",
-    "path": "M 26.2,27.4 L 62.8,35.6 L 82.5,34.1 L 90.0,38.9 L 67.7,52.4 L 37.4,64.7 L 35.0,63.8 L 37.1,68.2 L 35.5,72.6 L 31.2,70.8 L 28.4,63.7 L 20.1,58.3 L 18.3,55.3 L 21.6,56.0 L 13.0,45.0 L 10.9,36.3 L 10.0,28.8 L 26.2,27.4 Z",
-    "cx": 42.9,
-    "cy": 44.9
-  },
-  "pakue": {
-    "nama": "Pakue",
-    "path": "M 38.6,22.6 L 90.0,54.9 L 80.6,66.0 L 76.2,64.6 L 75.1,77.4 L 59.3,74.7 L 22.7,52.5 L 16.6,58.1 L 10.0,45.8 L 15.0,43.2 L 19.5,28.8 L 27.8,23.6 L 34.8,26.9 L 38.6,22.6 Z",
-    "cx": 49.2,
-    "cy": 49.5
-  },
-  "batuputih": {
-    "nama": "Batu Putih",
-    "path": "M 10.2,40.1 L 10.0,39.9 L 10.0,39.8 L 10.3,39.9 L 10.2,40.1 Z M 12.4,38.1 L 12.5,38.1 L 12.5,38.2 L 12.4,38.2 L 12.4,38.1 Z M 16.2,31.4 L 16.0,31.3 L 16.0,31.2 L 16.2,31.3 L 16.2,31.4 Z M 14.4,29.7 L 14.3,30.1 L 14.1,30.0 L 14.0,29.9 L 14.4,29.7 Z M 14.5,26.0 L 14.4,26.0 L 14.4,25.9 L 14.5,26.0 L 14.5,26.0 Z M 14.3,25.7 L 14.2,25.7 L 14.2,25.6 L 14.3,25.7 L 14.3,25.7 Z M 14.4,25.2 L 18.5,29.5 L 23.2,29.9 L 22.2,39.9 L 26.6,40.8 L 26.3,43.8 L 29.4,43.8 L 27.2,48.0 L 28.5,49.1 L 44.7,51.7 L 48.6,55.6 L 67.0,64.5 L 90.0,66.4 L 89.7,74.8 L 62.9,70.5 L 30.6,56.5 L 13.0,51.4 L 13.1,45.8 L 10.5,44.0 L 10.1,41.1 L 12.7,38.4 L 14.3,41.2 L 16.1,40.3 L 16.6,35.6 L 19.4,36.9 L 19.8,33.1 L 16.1,33.4 L 17.2,30.0 L 14.7,30.4 L 15.1,26.3 L 14.4,25.2 Z",
-    "cx": 44.8,
-    "cy": 56.3
-  },
-  "ranteangin": {
-    "nama": "Rante Angin",
-    "path": "M 83.7,20.8 L 90.0,26.8 L 74.0,33.1 L 69.3,40.8 L 62.8,43.1 L 45.5,59.8 L 39.1,59.2 L 35.2,70.0 L 23.8,80.0 L 10.0,65.0 L 21.5,51.6 L 35.7,50.0 L 79.1,20.0 L 83.7,20.8 Z",
-    "cx": 44.2,
-    "cy": 50.8
-  },
-  "kodeoha": {
-    "nama": "Kodeoha",
-    "path": "M 26.0,27.8 L 28.4,30.9 L 26.9,34.1 L 31.2,37.3 L 90.0,67.9 L 83.1,72.2 L 30.9,59.3 L 10.0,44.5 L 26.0,27.8 Z",
-    "cx": 44.3,
-    "cy": 52.9
-  },
-  "ngapa": {
-    "nama": "Ngapa",
-    "path": "M 36.6,10.0 L 71.5,30.6 L 86.8,33.2 L 84.2,35.6 L 87.0,40.4 L 79.9,51.5 L 76.9,51.7 L 77.5,61.9 L 72.1,70.9 L 85.7,81.4 L 82.0,90.0 L 50.0,76.9 L 28.3,63.4 L 27.1,52.4 L 13.0,31.6 L 23.4,17.6 L 34.3,20.1 L 34.5,16.8 L 29.8,15.0 L 36.6,10.0 Z",
-    "cx": 51.6,
-    "cy": 47.9
-  },
-  "wawo": {
-    "nama": "Wawo",
-    "path": "M 64.3,17.3 L 84.2,33.5 L 90.0,52.3 L 48.8,70.3 L 38.3,82.7 L 31.8,72.0 L 10.0,61.7 L 19.6,53.4 L 22.8,44.3 L 28.1,44.8 L 42.6,30.9 L 48.0,29.0 L 51.9,22.5 L 64.3,17.3 Z",
-    "cx": 52.8,
-    "cy": 48.7
-  },
-  "lambai": {
-    "nama": "Lambai",
-    "path": "M 90.0,33.3 L 47.2,62.8 L 32.7,64.7 L 21.5,77.5 L 10.6,69.1 L 12.9,62.8 L 10.0,56.7 L 13.3,58.0 L 55.8,40.7 L 87.0,22.5 L 90.0,33.3 Z",
-    "cx": 46.9,
-    "cy": 51.4
-  },
-  "watunohu": {
-    "nama": "Watunohu",
-    "path": "M 68.0,13.2 L 68.4,25.9 L 90.0,58.5 L 63.1,52.3 L 38.1,86.8 L 32.1,78.8 L 11.6,81.7 L 10.0,59.2 L 26.4,30.4 L 68.0,13.2 Z",
-    "cx": 44.9,
-    "cy": 49.5
-  },
-  "pakuetengah": {
-    "nama": "Pakue Tengah",
-    "path": "M 24.0,24.3 L 58.3,40.8 L 90.0,59.6 L 72.0,59.9 L 68.7,69.7 L 58.0,75.7 L 17.2,49.1 L 10.2,48.2 L 10.0,25.8 L 24.0,24.3 Z",
-    "cx": 42.5,
-    "cy": 48.5
-  },
-  "pakueutara": {
-    "nama": "Pakue Utara",
-    "path": "M 17.1,31.2 L 56.7,48.1 L 70.0,52.0 L 90.0,54.4 L 88.9,69.2 L 78.7,63.7 L 69.9,63.8 L 61.2,60.9 L 21.2,39.5 L 13.0,40.4 L 10.0,34.4 L 12.6,30.8 L 17.1,31.2 Z",
-    "cx": 54.6,
-    "cy": 50.5
-  },
-  "porehu": {
-    "nama": "Porehu",
-    "path": "M 36.3,17.0 L 39.3,16.8 L 40.5,20.8 L 44.0,22.3 L 45.5,25.6 L 56.4,30.3 L 57.0,34.5 L 64.2,41.7 L 71.6,44.9 L 73.6,50.7 L 71.6,60.2 L 77.4,66.4 L 78.1,71.1 L 83.8,74.1 L 84.9,82.0 L 90.0,86.4 L 62.9,84.1 L 41.2,73.7 L 36.6,69.1 L 15.9,64.7 L 18.9,60.4 L 14.8,59.6 L 14.8,55.9 L 10.0,55.1 L 11.2,43.4 L 21.8,44.4 L 24.0,43.4 L 22.3,39.5 L 27.9,40.4 L 35.8,13.6 L 36.3,17.0 Z",
-    "cx": 48.4,
-    "cy": 55.6
-  },
-  "katoi": {
-    "nama": "Katoi",
-    "path": "M 19.4,32.7 L 39.4,46.7 L 89.7,59.2 L 90.0,65.1 L 73.5,67.3 L 29.5,57.7 L 11.2,59.3 L 10.0,45.7 L 19.2,37.8 L 19.4,32.7 Z",
-    "cx": 44.2,
-    "cy": 54.0
-  },
-  "tiwu": {
-    "nama": "Tiwu",
-    "path": "M 44.7,10.0 L 83.0,64.7 L 85.8,90.0 L 17.3,51.3 L 21.8,41.7 L 14.2,31.9 L 25.2,28.9 L 28.2,11.9 L 44.7,10.0 Z",
-    "cx": 49.9,
-    "cy": 48.4
-  },
-  "tolala": {
-    "nama": "Tolala",
-    "path": "M 47.8,76.9 L 47.7,76.9 L 47.7,76.8 L 47.8,76.8 L 47.8,76.9 Z M 46.1,75.6 L 45.8,75.5 L 45.9,75.3 L 46.1,75.5 L 46.1,75.6 Z M 46.0,74.5 L 45.9,74.4 L 46.2,74.4 L 46.2,74.4 L 46.0,74.5 Z M 44.7,74.2 L 44.6,74.1 L 44.6,74.1 L 44.7,74.1 L 44.7,74.2 Z M 13.9,28.5 L 10.8,29.9 L 10.0,28.7 L 13.0,27.5 L 13.9,28.5 Z M 55.0,21.0 L 64.8,23.7 L 71.9,29.2 L 75.6,39.8 L 82.4,38.3 L 86.9,43.1 L 90.0,42.8 L 79.7,77.9 L 72.4,76.7 L 74.6,81.9 L 71.8,83.1 L 50.7,81.2 L 47.7,79.3 L 44.5,75.1 L 49.5,78.9 L 52.4,63.7 L 48.6,58.6 L 49.1,55.1 L 46.7,55.9 L 47.2,42.9 L 43.5,43.6 L 44.2,49.4 L 38.5,45.6 L 35.7,27.6 L 32.6,40.7 L 29.2,37.0 L 21.4,37.9 L 27.2,46.0 L 21.0,38.5 L 22.4,34.2 L 30.7,30.5 L 34.0,22.7 L 45.4,21.1 L 49.8,16.9 L 55.0,21.0 Z",
-    "cx": 60.8,
-    "cy": 49.6
+  function setComparatorKec2(name) {
+    comparatorKec2 = name;
+    renderAgregatKecamatanSection();
   }
-};
+
+  function swapComparatorKec() {
+    const tmp = comparatorKec1;
+    comparatorKec1 = comparatorKec2;
+    comparatorKec2 = tmp;
+    renderAgregatKecamatanSection();
+  }
+
+  function setLeaderboardMetric(metric) {
+    leaderboardMetric = metric || 'imk';
+    renderAgregatKecamatanSection();
+  }
 
   function renderAgregatKecamatanSection() {
     const container = document.getElementById('gridKecamatanCards');
     if (!container || !db || !db.kecamatanList) return;
 
-    const list = getFilteredKecamatanList();
-
-    if (list.length === 0) {
-      container.innerHTML = `
-        <div class="w-full py-16 text-center bg-white rounded-3xl border border-[#5A6B65]/15 p-8 space-y-4 shadow-xs">
-          <p class="text-base font-semibold text-[#5A6B65]">Tidak ada kecamatan yang cocok dengan kata kunci "${agregatSearchQuery}".</p>
-          <button type="button" onclick="window.PresisiEngine.onSearchKecamatanCard(''); document.getElementById('inputSearchKecamatanCard').value = '';" class="px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-xs font-bold text-white shadow-xs transition">Reset Pencarian</button>
-        </div>
-      `;
-      return;
-    }
-
-    if (agregatSlideIndex >= list.length) {
-      agregatSlideIndex = 0;
-    }
-
     const fmt = (n) => (typeof n === 'number' && !isNaN(n)) ? n.toLocaleString('id-ID') : (n || '0');
-    const pesisirList = ['tolala', 'batuputih', 'pakueutara', 'pakue', 'kodeoha', 'katoi', 'lasusua', 'lambai', 'ranteangin', 'wawo'];
+    const allKecNames = db.kecamatanList.map(k => k.nama);
 
-    // 1. HORIZONTAL ROUTE WAYPOINT NAVIGATOR BAR (NATIONAL GEOGRAPHIC GAZETTE STYLE)
-    const zonePillsHtml = `
-      <div class="flex items-center gap-1.5 flex-wrap">
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('all')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'all' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
-          Semua Rute (15 Etape)
-        </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('utara')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'utara' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
-          Zona Utara (Tolala - Pakue Tengah)
-        </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('tengah')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'tengah' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
-          Zona Tengah (Pakue - Kodeoha)
-        </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('selatan')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'selatan' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
-          Zona Selatan (Katoi - Wawo)
-        </button>
-      </div>
-    `;
+    // Update active tab buttons visual state
+    ['headtohead', 'koridor', 'leaderboard'].forEach(t => {
+      const btn = document.getElementById('tabBtn-' + t);
+      if (btn) {
+        if (t === comparatorTab) {
+          btn.className = "comparator-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer bg-[#0D6E5B] text-white shadow-xs";
+        } else {
+          btn.className = "comparator-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer";
+        }
+      }
+    });
 
-    const routeTrackerHtml = `
-      <div class="w-full bg-[#FDFDFB] rounded-2xl border border-[#5A6B65]/20 p-4 sm:p-5 mb-6 shadow-[0_2px_12px_rgba(13,110,91,0.03)] space-y-3">
-        <div class="flex items-center justify-between gap-4 pb-3 border-b border-[#5A6B65]/15 flex-wrap">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B] animate-pulse"></span>
-            <span class="text-xs font-mono font-black text-[#0D6E5B] uppercase tracking-widest">JALUR EKSPEDISI 15 KECAMATAN</span>
-          </div>
-          ${zonePillsHtml}
-          <div class="flex items-center gap-3 text-xs font-bold text-[#5A6B65]">
-            <span class="font-mono text-[#0D6E5B] font-extrabold text-sm">${String(agregatSlideIndex + 1).padStart(2, '0')}</span>
-            <span>/</span>
-            <span class="font-mono text-slate-500">${String(list.length).padStart(2, '0')} Etape</span>
-          </div>
-        </div>
-
-        <!-- Scrollable Waypoint Track -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none py-1" id="trackExpeditionWaypoints">
-          ${list.map((item, i) => {
-            const isActive = (i === agregatSlideIndex);
-            return `
-              <button type="button" 
-                      onclick="window.PresisiEngine.goToKecamatanSlide(${i})" 
-                      class="shrink-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${ isActive ? 'bg-[#0D6E5B] text-white shadow-sm ring-2 ring-[#0D6E5B]/25 scale-105 font-bold' : 'bg-white hover:bg-emerald-50/50 text-[#5A6B65] border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 ' }">
-                <span class="w-2 h-2 rounded-full ${isActive ? 'bg-white animate-pulse' : 'bg-[#0D6E5B]/50'}"></span>
-                <span class="text-[10px] font-mono font-bold ${isActive ? 'text-white' : 'text-slate-500'}">${String(i + 1).padStart(2, '0')}</span>
-                <span class="text-xs font-bold ${isActive ? 'text-white' : 'text-slate-800'}">${item.nama}</span>
-              </button>
-              ${i < list.length - 1 ? '<div class="w-3.5 h-0.5 border-t-2 border-dashed border-[#5A6B65]/25 shrink-0"></div>' : ''}
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
-
-    // 2. CURRENT ACTIVE KECAMATAN DETAILS
-    const k = list[agregatSlideIndex];
-    const idx = agregatSlideIndex;
-    const normName = (k.nama || '').replace(/\\s+/g, '').toLowerCase();
-    const isPesisir = pesisirList.includes(normName);
-    let statusLabel = isPesisir ? 'PESISIR' : 'DARATAN';
-    if (k.kelurahanCount > 0) {
-      statusLabel = isPesisir ? 'PESISIR & DARAT' : 'DARATAN';
+    if (comparatorTab === 'headtohead') {
+      renderTabHeadToHead(container, fmt, allKecNames);
+    } else if (comparatorTab === 'koridor') {
+      renderTabKoridor(container, fmt);
+    } else if (comparatorTab === 'leaderboard') {
+      renderTabLeaderboard(container, fmt);
     }
+  }
 
-    // Alternating layout: even slide index reverses left/right
-    const isEven = (agregatSlideIndex % 2 === 1);
-
-    let geoKoridor = 'KORIDOR TENGAH';
-    if (idx < 5) geoKoridor = 'KORIDOR UTARA';
-    else if (idx >= 10) geoKoridor = 'KORIDOR SELATAN';
-
-    // Sector progress calculation
-    let progressLabel = 'Aktivitas Ekonomi & Rasio Kelistrikan Wilayah';
-    let progressPct = 0;
-    let progressSub = '';
-
-    if (agregatSector === 'ekonomi') {
-      progressPct = Math.min(100, Math.max(2, Math.round(((k.ekonomi?.ikm || 0) / 1440) * 100)));
-      progressLabel = 'Kontribusi Sentra Industri Mikro (IMK)';
-      progressSub = `${fmt(k.ekonomi?.ikm)} Unit / 1.440 Sentra Tertinggi (Porehu)`;
-    } else if (agregatSector === 'lingkungan') {
-      progressPct = Math.min(100, Math.round(k.lingkungan?.persenPln || 90));
-      progressLabel = 'Rasio Elektrifikasi Listrik PLN';
-      progressSub = `${fmt(k.lingkungan?.pln)} KK Berlistrik / Rasio ${progressPct}%`;
-    } else if (agregatSector === 'pendidikan') {
-      progressPct = Math.min(100, Math.max(5, Math.round(((k.sosial?.totalSaranaPendidikan || 0) / 33) * 100)));
-      progressLabel = 'Kapasitas Sarana Pendidikan Formal';
-      progressSub = `${fmt(k.sosial?.totalSaranaPendidikan)} Sekolah / 33 Rujukan Terlengkap (Lasusua)`;
-    } else if (agregatSector === 'kesehatan') {
-      progressPct = Math.min(100, Math.max(5, Math.round(((k.sosial?.totalSaranaKesehatan || 0) / 19) * 100)));
-      progressLabel = 'Ketersediaan Fasilitas Kesehatan Murni';
-      progressSub = `${fmt(k.sosial?.totalSaranaKesehatan)} Faskes / 19 Rujukan Terlengkap (Lasusua)`;
-    } else if (agregatSector === 'pemerintahan') {
-      progressPct = Math.min(100, Math.max(5, Math.round(((k.keuangan?.bumdes || 0) / 15) * 100)));
-      progressLabel = 'Keaktifan Kelembagaan BUMDes';
-      progressSub = `${fmt(k.keuangan?.bumdes)} BUMDes / 15 Unit Tertinggi`;
+  function renderTabHeadToHead(container, fmt, allKecNames) {
+    const k1 = db.kecamatanList.find(x => x.nama === comparatorKec1) || db.kecamatanList[0];
+    const isAvg = (comparatorKec2 === 'AVERAGE');
+    let k2 = null;
+    if (isAvg) {
+      k2 = {
+        nama: 'Rata-rata Kabupaten',
+        kode: '74.08.AVG',
+        desaCount: 9,
+        karakteristik: 'Tolok Ukur Standar Rata-rata 15 Kecamatan',
+        ekonomi: { ikm: 241, pasarPerm: 1, pasarSemi: 2, bank: 2 },
+        lingkungan: { pln: 2538, persenPln: 91.5 },
+        sosial: { totalSaranaPendidikan: 14, totalSaranaKesehatan: 12 },
+        keuangan: { bumdes: 9 }
+      };
     } else {
-      progressPct = Math.min(100, Math.max(3, Math.round(((k.ekonomi?.ikm || 0) / 1440) * 100)));
-      progressLabel = 'Rasio Aktivitas Ekonomi & IMK Terhadap Sentra';
-      progressSub = `${fmt(k.ekonomi?.ikm)} IMK / ${fmt(k.lingkungan?.pln)} KK PLN (${progressPct}%)`;
+      k2 = db.kecamatanList.find(x => x.nama === comparatorKec2) || db.kecamatanList[3];
     }
 
-    // Map SVG with Stipple Halftone & Concentric Rings
-    const mapData = KECAMATAN_SVG_MAPS[normName] || null;
-    let svgMapHtml = '';
-    if (mapData) {
-      svgMapHtml = `
-        <svg viewBox="0 0 100 100" class="w-full h-full max-h-[320px] drop-shadow-[0_12px_28px_rgba(13,110,91,0.18)] overflow-visible">
-          <defs>
-            <pattern id="stipple-carousel-${idx}" width="6" height="6" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="0.8" fill="#0D6E5B" opacity="0.32"/>
-            </pattern>
-          </defs>
-          <!-- Stipple Halftone Pattern Layer -->
-          <path d="${mapData.path}" fill="url(#stipple-carousel-${idx})" stroke="none"/>
-          <!-- Main Teal Tint Polygon -->
-          <path d="${mapData.path}" fill="rgba(13,110,91,0.16)" stroke="#0D6E5B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" class="hover:stroke-[#095244] hover:fill-[rgba(13,110,91,0.24)] transition-all duration-300"/>
-          <!-- Concentric Node Rings at Centroid / Capital -->
-          <circle cx="${mapData.cx}" cy="${mapData.cy}" r="7" fill="#0D6E5B" opacity="0.2"/>
-          <circle cx="${mapData.cx}" cy="${mapData.cy}" r="4.2" fill="#0D6E5B" opacity="0.35"/>
-          <circle cx="${mapData.cx}" cy="${mapData.cy}" r="2.2" fill="#0D6E5B"/>
-          <circle cx="${mapData.cx}" cy="${mapData.cy}" r="0.8" fill="#FFFFFF"/>
-          <!-- Minimal Compass Rose -->
-          <g transform="translate(86, 14) scale(0.7)" opacity="0.65">
-            <path d="M 0 -12 L 4 0 L 0 -3 L -4 0 Z" fill="#0D6E5B"/>
-            <path d="M 0 12 L 4 0 L 0 3 L -4 0 Z" fill="#5A6B65"/>
-            <text x="0" y="-14" font-size="7" font-weight="900" fill="#0D6E5B" text-anchor="middle">U</text>
-          </g>
-        </svg>
-      `;
-    } else {
-      svgMapHtml = `
-        <div class="text-xs text-[#5A6B65] font-semibold">Peta Vektor Kolaka Utara</div>
-      `;
-    }
+    const pop1 = getKecPop(k1.nama);
+    const pop2 = isAvg ? 9513 : getKecPop(k2.nama);
 
-    // Visual Map Column (Col A) - Borderless, Organic, Stipple, Generous Canvas
-    const visualMapColumn = `
-      <div class="w-full lg:w-[48%] flex flex-col justify-center">
-        <!-- Visual Peta Siluet Besar dengan Efek Bingkai Organik, Stipple & Watercolor Wash -->
-        <div class="relative w-full h-[300px] sm:h-[350px] lg:h-[380px] rounded-3xl bg-gradient-to-br from-[#0D6E5B]/8 via-white to-[#F7F7F5] border border-[#0D6E5B]/20 p-6 flex items-center justify-center overflow-hidden shadow-[0_12px_36px_rgba(13,110,91,0.07)] group/map">
-          <!-- Stipple Halftone Background Aura -->
-          <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#0D6E5B 0.75px, transparent 0.75px); background-size: 8px 8px;"></div>
-          
-          <!-- Watercolor Wash Accents -->
-          <div class="absolute -top-12 -left-12 w-52 h-52 rounded-full bg-[#0D6E5B]/12 blur-3xl pointer-events-none"></div>
-          <div class="absolute -bottom-12 -right-12 w-52 h-52 rounded-full bg-emerald-300/18 blur-3xl pointer-events-none"></div>
+    const metrics = [
+      {
+        label: 'Sentra Industri Mikro & Kecil (IMK)',
+        sub: 'Pusat hilirisasi olahan pangan, kakao, kopi & kerajinan',
+        val1: k1.ekonomi?.ikm || 0,
+        val2: k2.ekonomi?.ikm || 0,
+        unit: 'Unit',
+        icon: '🏭'
+      },
+      {
+        label: 'Jumlah Penduduk (Jiwa)',
+        sub: 'Total populasi berdasarkan hasil PODES BPS 2025',
+        val1: pop1,
+        val2: pop2,
+        unit: 'Jiwa',
+        icon: '👥'
+      },
+      {
+        label: 'Keluarga Berlistrik PLN',
+        sub: 'Akses penerangan dan rasio elektrifikasi rumah tangga',
+        val1: k1.lingkungan?.pln || 0,
+        val2: k2.lingkungan?.pln || 0,
+        unit: 'KK',
+        extra1: `Rasio: ${k1.lingkungan?.persenPln || 0}%`,
+        extra2: `Rasio: ${k2.lingkungan?.persenPln || 0}%`,
+        icon: '⚡'
+      },
+      {
+        label: 'Sarana Satuan Pendidikan Formal',
+        sub: 'Ketersediaan gedung sekolah jenjang SD/MI, SMP/MTs, hingga SMA/SMK',
+        val1: k1.sosial?.totalSaranaPendidikan || 0,
+        val2: k2.sosial?.totalSaranaPendidikan || 0,
+        unit: 'Sekolah',
+        icon: '🎓'
+      },
+      {
+        label: 'Fasilitas Layanan Kesehatan Aktif',
+        sub: 'Jaringan RSUD, Puskesmas, Pustu, Poskesdes, dan Polindes',
+        val1: k1.sosial?.totalSaranaKesehatan || 0,
+        val2: k2.sosial?.totalSaranaKesehatan || 0,
+        unit: 'Faskes',
+        icon: '🏥'
+      },
+      {
+        label: 'Badan Usaha Milik Desa (BUMDes)',
+        sub: 'Penguatan kelembagaan ekonomi desa mandiri',
+        val1: k1.keuangan?.bumdes || 0,
+        val2: k2.keuangan?.bumdes || 0,
+        unit: 'BUMDes',
+        icon: '💼'
+      }
+    ];
 
-          <!-- SVG Dashed Expedition Trail snaking out into the spread (reference style!) -->
-          <div class="absolute inset-0 pointer-events-none opacity-40">
-            <svg class="w-full h-full" viewBox="0 0 400 300">
-              <path d="${isEven ? 'M 350,150 Q 250,80 100,200' : 'M 50,150 Q 150,220 300,100'}" 
-                    fill="none" stroke="#5A6B65" stroke-width="1.8" stroke-dasharray="5 5"/>
-              <circle cx="${isEven ? 250 : 150}" cy="${isEven ? 80 : 220}" r="3.5" fill="#0D6E5B"/>
-            </svg>
-          </div>
-
-          <!-- SVG Map Path -->
-          ${svgMapHtml}
-
-          <!-- Micro Coordinates Badge -->
-          <div class="absolute bottom-3.5 left-4 px-3 py-1 rounded-md bg-white/95 backdrop-blur-xs border border-[#5A6B65]/15 text-[10px] font-mono text-[#5A6B65] flex items-center gap-1.5 shadow-xs">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#0D6E5B]"></span>
-            <span>Titik Spasial: ${k.lat ? k.lat.toFixed(3) : '-'}, ${k.lng ? k.lng.toFixed(3) : '-'}</span>
-          </div>
-
-          <!-- Stop Tag Overlay -->
-          <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#0D6E5B]/10 border border-[#0D6E5B]/20 text-[11px] font-mono font-bold text-[#0D6E5B] shadow-2xs">
-            STOP ${String(idx + 1).padStart(2, '0')} • ${geoKoridor}
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Text & Statistic Column (Col B) - National Geographic Editorial Gazette
-    const textStatColumn = `
-      <div class="w-full lg:w-[48%] flex flex-col justify-between space-y-4">
-        <div>
-          <!-- Header Meta Ribbon -->
-          <div class="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#5A6B65] uppercase mb-1.5">
-            <span>${k.kode}</span>
-            <span>•</span>
-            <span class="px-2 py-0.5 rounded-full ${isPesisir ? 'bg-sky-100 text-sky-800' : 'bg-amber-100 text-amber-800'} text-[10px] font-mono font-black">${statusLabel}</span>
-            <span>•</span>
-            <span class="italic">${k.desaCount} Desa ${k.kelurahanCount > 0 ? `(${k.kelurahanCount} Kel)` : ''}</span>
-          </div>
-
-          <!-- Aksen Garis Pendek Khas Editorial Majalah -->
-          <div class="w-12 h-1 bg-[#0D6E5B] rounded-full mb-3"></div>
-          
-          <!-- Nama Kecamatan (Besar & Tebal Bergaya National Geographic) -->
-          <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D6E5B] tracking-tight leading-none mb-3">
-            Kecamatan ${k.nama}
-          </h3>
-
-          <!-- Badge Potensi Wilayah Sebagai Lead Kutipan Jurnalistik -->
-          <div class="p-3.5 rounded-xl bg-gradient-to-r from-emerald-50/70 to-transparent border-l-4 border-[#0D6E5B] text-xs text-[#0D6E5B] italic leading-relaxed mb-4">
-            "${k.karakteristik || 'Wilayah Strategis Penopang Kemandirian Pangan & Agribisnis Kolaka Utara'}"
-          </div>
-
-          <!-- Progress Bar Persentase Sektoral -->
-          <div class="space-y-1.5 bg-[#FDFDFB] p-3.5 rounded-xl border border-[#5A6B65]/15 mb-4 shadow-2xs">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-slate-800">${progressLabel}</span>
-              <span class="font-mono font-black text-[#0D6E5B] text-sm">${progressPct}%</span>
-            </div>
-            <div class="w-full h-1.5 rounded-full bg-slate-200 overflow-hidden">
-              <div class="h-full rounded-full bg-[#0D6E5B] transition-all duration-700" style="width: ${progressPct}%"></div>
-            </div>
-            <div class="text-[11px] italic text-[#5A6B65] flex items-center justify-between pt-0.5">
-              <span>${progressSub}</span>
-              <span class="font-mono text-[9px] uppercase tracking-wider text-slate-400">BPS PODES 2025</span>
-            </div>
-          </div>
-
-          <!-- 4 Indikator Statistik (Editorial Hairline Grid) -->
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <!-- 1. IMK & Sentra Usaha -->
-            <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
-              <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">I. IMK &amp; SENTRA</div>
-              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.ekonomi?.ikm)} <span class="text-xs italic font-normal text-[#5A6B65]">Unit</span></div>
-              <div class="text-[10px] text-[#5A6B65]">${(k.ekonomi?.pasarPerm||0)+(k.ekonomi?.pasarSemi||0)} Pasar • ${k.ekonomi?.bank||0} Bank</div>
-            </div>
-
-            <!-- 2. Keluarga Berlistrik -->
-            <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
-              <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">II. LISTRIK PLN</div>
-              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.lingkungan?.pln)} <span class="text-xs italic font-normal text-[#5A6B65]">KK</span></div>
-              <div class="text-[10px] text-[#5A6B65]">Rasio: ${k.lingkungan?.persenPln}%</div>
-            </div>
-
-            <!-- 3. Sarana Pendidikan -->
-            <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
-              <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">III. PENDIDIKAN</div>
-              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaPendidikan)} <span class="text-xs italic font-normal text-[#5A6B65]">Sekolah</span></div>
-              <div class="text-[10px] text-[#5A6B65]">${k.sosial?.totalSDMI||0} SD • ${k.sosial?.totalSMPMTs||0} SMP • ${(k.sosial?.totalSMAMA||0)+(k.sosial?.smk||0)} SMA</div>
-            </div>
-
-            <!-- 4. Fasilitas Kesehatan -->
-            <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
-              <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">IV. KESEHATAN</div>
-              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaKesehatan)} <span class="text-xs italic font-normal text-[#5A6B65]">Faskes</span></div>
-              <div class="text-[10px] text-[#5A6B65]">${(k.sosial?.puskesmasRI||0)+(k.sosial?.puskesmasNonRI||0)} Pusk • ${(k.sosial?.pustu||0)+(k.sosial?.poskesdes||0)} Pustu/Poskes</div>
-            </div>
-          </div>
-
-          <!-- Cakupan Wilayah (Daftar Desa) -->
-          <div class="text-xs text-[#5A6B65] leading-relaxed bg-[#FDFDFB] p-3.5 rounded-xl border border-[#5A6B65]/15 mb-4 space-y-1">
-            <div class="font-mono text-[10px] uppercase tracking-wider text-[#0D6E5B] font-bold">DAFTAR DESA / KELURAHAN KONSTITUEN (${k.desaCount} WILAYAH):</div>
-            <div class="italic text-slate-700">${k.desaList ? k.desaList.join(' • ') : '-'}</div>
-          </div>
-        </div>
-
-        <!-- Tombol Buka di Peta WebGIS -->
-        <div>
-          <button type="button" 
-                  onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
-            <span>Buka Etape ${k.nama} di Peta WebGIS</span>
-            <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
-              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </span>
-          </button>
-        </div>
-      </div>
-    `;
-
-    // 3. BOTTOM EXPEDITION CONTROLS BAR
-    const prevItem = list[(idx - 1 + list.length) % list.length];
-    const nextItem = list[(idx + 1) % list.length];
-
-    const bottomControlsHtml = `
-      <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 mt-6 border-t border-[#5A6B65]/15">
-        <button type="button" 
-                onclick="window.PresisiEngine.prevKecamatanSlide()" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-[#5A6B65]/20 text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shadow-2xs cursor-pointer group">
-          <svg class="w-4 h-4 text-[#5A6B65] group-hover:text-[#0D6E5B] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          <span>${(window.currentPortalLang === 'en') ? `Previous Stage: Dist. ${prevItem.nama}` : `Etape Sebelumnya: Kec. ${prevItem.nama}`}</span>
-        </button>
-
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-mono font-bold text-[#5A6B65]">${(window.currentPortalLang === 'en') ? '15 Districts Spatial Route' : 'Rute Spasial 15 Kecamatan'}</span>
-        </div>
-
-        <button type="button" 
-                onclick="window.PresisiEngine.nextKecamatanSlide()" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md cursor-pointer group">
-          <span>${(window.currentPortalLang === 'en') ? `Next Stage: Dist. ${nextItem.nama}` : `Etape Selanjutnya: Kec. ${nextItem.nama}`}</span>
-          <svg class="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    `;
-
-    // Assembling the complete 1-screen storytelling carousel spread
     container.innerHTML = `
-      <div class="w-full space-y-4">
-        <!-- Top Interactive Waypoint Route Bar -->
-        ${routeTrackerHtml}
+      <div class="space-y-6">
+        <!-- Selector Control Bar -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs">
+          <!-- Wilayah 1 (Kiri) -->
+          <div class="md:col-span-5 bg-emerald-50/50 rounded-2xl p-4 border border-emerald-100/80 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-black text-[#0D6E5B] uppercase tracking-wider">WILAYAH PERTAMA (A)</span>
+              <span class="text-[11px] font-bold text-slate-500">${k1.desaCount} Desa</span>
+            </div>
+            <select onchange="window.PresisiEngine.setComparatorKec1(this.value)" class="w-full text-base font-extrabold text-slate-900 bg-white border border-emerald-200 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-[#0D6E5B] cursor-pointer">
+              ${allKecNames.map(name => `<option value="${name}" ${name === k1.nama ? 'selected' : ''}>Kecamatan ${name}</option>`).join('')}
+            </select>
+            <div class="text-xs text-[#0D6E5B] font-medium truncate italic">
+              "${k1.karakteristik || 'Wilayah Strategis Kolaka Utara'}"
+            </div>
+          </div>
 
-        <!-- Main Editorial 2-Column Spread (Alternating Left-Right like reference image!) -->
-        <div class="w-full flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center justify-between gap-8 lg:gap-12 relative p-2 sm:p-4">
-          ${visualMapColumn}
-          ${textStatColumn}
+          <!-- VS Badge / Swap Button (Tengah) -->
+          <div class="md:col-span-2 flex flex-col items-center justify-center py-2">
+            <button type="button" onclick="window.PresisiEngine.swapComparatorKec()" title="Tukar Posisi Wilayah" class="w-12 h-12 rounded-full bg-slate-900 hover:bg-[#0D6E5B] text-white flex items-center justify-center shadow-md hover:scale-110 transition cursor-pointer group">
+              <span class="font-black text-xs group-hover:hidden">VS</span>
+              <svg class="w-4 h-4 hidden group-hover:block transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            </button>
+            <span class="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">Bandingkan</span>
+          </div>
+
+          <!-- Wilayah 2 (Kanan) -->
+          <div class="md:col-span-5 bg-sky-50/50 rounded-2xl p-4 border border-sky-100/80 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-black text-sky-700 uppercase tracking-wider">WILAYAH KEDUA (B)</span>
+              <span class="text-[11px] font-bold text-slate-500">${k2.desaCount} Desa</span>
+            </div>
+            <select onchange="window.PresisiEngine.setComparatorKec2(this.value)" class="w-full text-base font-extrabold text-slate-900 bg-white border border-sky-200 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-sky-600 cursor-pointer">
+              <option value="AVERAGE" ${isAvg ? 'selected' : ''}>📊 Rata-rata 15 Kecamatan (Tolok Ukur)</option>
+              ${allKecNames.map(name => `<option value="${name}" ${name === k2.nama && !isAvg ? 'selected' : ''}>Kecamatan ${name}</option>`).join('')}
+            </select>
+            <div class="text-xs text-sky-800 font-medium truncate italic">
+              "${k2.karakteristik || 'Wilayah Penopang Kolaka Utara'}"
+            </div>
+          </div>
         </div>
 
-        <!-- Bottom Expedition Navigation Controls -->
-        ${bottomControlsHtml}
+        <!-- 6 Baris Matriks Komparasi Dual-Bar -->
+        <div class="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-7 shadow-xs space-y-6">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">INDIKATOR SEKTORAL PODES 2025</span>
+            <div class="flex items-center gap-4 text-xs font-bold">
+              <span class="flex items-center gap-1.5 text-[#0D6E5B]"><span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B]"></span> ${k1.nama}</span>
+              <span class="flex items-center gap-1.5 text-sky-700"><span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span> ${k2.nama}</span>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            ${metrics.map(m => {
+              const maxVal = Math.max(m.val1, m.val2, 1);
+              const pct1 = Math.round((m.val1 / maxVal) * 100);
+              const pct2 = Math.round((m.val2 / maxVal) * 100);
+              const diff = m.val1 - m.val2;
+              let badgeHtml = '';
+              if (diff > 0) {
+                const ratio = m.val2 > 0 ? ((diff / m.val2) * 100).toFixed(0) : 100;
+                badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">+${ratio}% di ${k1.nama}</span>`;
+              } else if (diff < 0) {
+                const ratio = m.val1 > 0 ? ((Math.abs(diff) / m.val1) * 100).toFixed(0) : 100;
+                badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold">+${ratio}% di ${k2.nama}</span>`;
+              } else {
+                badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold">Seimbang (0)</span>`;
+              }
+
+              return `
+                <div class="p-3.5 rounded-2xl bg-slate-50/60 border border-slate-100 hover:border-slate-300 transition space-y-2.5">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base">${m.icon}</span>
+                      <span class="font-extrabold text-slate-900">${m.label}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      ${badgeHtml}
+                      <span class="text-[11px] text-slate-500 font-mono">${m.sub}</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                    <!-- Sisi Kiri (Wilayah A) -->
+                    <div class="sm:col-span-6 space-y-1">
+                      <div class="flex justify-between items-center text-xs">
+                        <span class="font-bold text-[#0D6E5B]">${k1.nama}</span>
+                        <span class="font-mono font-extrabold text-[#0D6E5B] text-sm">${fmt(m.val1)} <span class="text-[10px] text-slate-500 font-normal">${m.unit}</span></span>
+                      </div>
+                      <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                        <div class="h-full rounded-full bg-[#0D6E5B] transition-all duration-700" style="width: ${pct1}%"></div>
+                      </div>
+                    </div>
+
+                    <!-- Sisi Kanan (Wilayah B) -->
+                    <div class="sm:col-span-6 space-y-1">
+                      <div class="flex justify-between items-center text-xs">
+                        <span class="font-bold text-sky-700">${k2.nama}</span>
+                        <span class="font-mono font-extrabold text-sky-700 text-sm">${fmt(m.val2)} <span class="text-[10px] text-slate-500 font-normal">${m.unit}</span></span>
+                      </div>
+                      <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                        <div class="h-full rounded-full bg-sky-600 transition-all duration-700" style="width: ${pct2}%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Kesimpulan Analisis Strategis & Tombol Aksi -->
+          <div class="pt-4 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="text-xs text-slate-600 leading-relaxed max-w-2xl">
+              <span class="font-extrabold text-[#0D6E5B]">💡 Kesimpulan Analitik:</span>
+              ${(k1.ekonomi?.ikm || 0) > (k2.ekonomi?.ikm || 0)
+                ? `<b>Kecamatan ${k1.nama}</b> memiliki konsentrasi sentra industri rakyat yang jauh lebih masif (${fmt(k1.ekonomi?.ikm)} Unit), sementara <b>Kecamatan ${k2.nama}</b> unggul dalam kepadatan layanan dan konsentrasi penduduk.`
+                : `<b>Kecamatan ${k2.nama}</b> mencatat volume sentra industri yang lebih tinggi, sementara <b>Kecamatan ${k1.nama}</b> memiliki karakteristik spesifik penopang wilayah.`}
+            </div>
+
+            <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
+              <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${k1.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});" class="px-4 py-2 rounded-xl bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+                <span>📍 Lihat ${k1.nama} di Peta</span>
+              </button>
+              ${!isAvg ? `
+                <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${k2.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});" class="px-4 py-2 rounded-xl bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+                  <span>📍 Lihat ${k2.nama} di Peta</span>
+                </button>
+              ` : ''}
+              <button type="button" onclick="document.getElementById('sectionExplorerPodes')?.scrollIntoView({behavior:'smooth'});" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                <span>📋 Data 133 Desa</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
+
+  function renderTabKoridor(container, fmt) {
+    const kU = KORIDOR_DATA.utara;
+    const kT = KORIDOR_DATA.tengah;
+    const kS = KORIDOR_DATA.selatan;
+
+    container.innerHTML = `
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <!-- KORIDOR UTARA -->
+          <div class="bg-white rounded-3xl border-2 border-emerald-500/30 p-6 shadow-xs flex flex-col justify-between space-y-4 hover:border-emerald-600 transition">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-mono text-[10px] font-black uppercase tracking-wider">ZONA 01 • PERBATASAN</span>
+                <span class="text-xs font-bold text-slate-500">6 Kecamatan • 55 Desa</span>
+              </div>
+              <div>
+                <h4 class="text-2xl font-black text-[#0D6E5B] tracking-tight">Koridor Utara</h4>
+                <p class="text-xs text-slate-500 font-medium">${kU.sub}</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100 text-xs text-emerald-950 font-bold">
+                🏆 ${kU.highlight}
+              </div>
+              <div class="text-xs text-slate-600 leading-relaxed italic">
+                "${kU.karakter}"
+              </div>
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sentra IMK</div>
+                  <div class="text-lg font-black text-[#0D6E5B]">${fmt(kU.imk)} <span class="text-[10px] font-normal text-slate-500">Unit (59,3%)</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Populasi</div>
+                  <div class="text-lg font-black text-slate-900">${fmt(kU.jiwa)} <span class="text-[10px] font-normal text-slate-500">Jiwa</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Listrik PLN</div>
+                  <div class="text-base font-extrabold text-slate-900">${fmt(kU.pln)} <span class="text-[10px] font-normal text-slate-500">KK</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sekolah & Faskes</div>
+                  <div class="text-base font-extrabold text-slate-900">${kU.sekolah} Sek • ${kU.faskes} Fas</div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+              <b>Cakupan Wilayah:</b> ${kU.kecamatan.join(', ')}
+            </div>
+          </div>
+
+          <!-- KORIDOR TENGAH -->
+          <div class="bg-white rounded-3xl border-2 border-amber-500/30 p-6 shadow-xs flex flex-col justify-between space-y-4 hover:border-amber-600 transition">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-mono text-[10px] font-black uppercase tracking-wider">ZONA 02 • AGROPANGAN</span>
+                <span class="text-xs font-bold text-slate-500">4 Kecamatan • 39 Desa</span>
+              </div>
+              <div>
+                <h4 class="text-2xl font-black text-amber-900 tracking-tight">Koridor Tengah</h4>
+                <p class="text-xs text-slate-500 font-medium">${kT.sub}</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-100 text-xs text-amber-950 font-bold">
+                🌾 ${kT.highlight}
+              </div>
+              <div class="text-xs text-slate-600 leading-relaxed italic">
+                "${kT.karakter}"
+              </div>
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sentra IMK</div>
+                  <div class="text-lg font-black text-amber-700">${fmt(kT.imk)} <span class="text-[10px] font-normal text-slate-500">Unit (27,4%)</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Populasi</div>
+                  <div class="text-lg font-black text-slate-900">${fmt(kT.jiwa)} <span class="text-[10px] font-normal text-slate-500">Jiwa</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Listrik PLN</div>
+                  <div class="text-base font-extrabold text-slate-900">${fmt(kT.pln)} <span class="text-[10px] font-normal text-slate-500">KK</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sekolah & Faskes</div>
+                  <div class="text-base font-extrabold text-slate-900">${kT.sekolah} Sek • ${kT.faskes} Fas</div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+              <b>Cakupan Wilayah:</b> ${kT.kecamatan.join(', ')}
+            </div>
+          </div>
+
+          <!-- KORIDOR SELATAN -->
+          <div class="bg-white rounded-3xl border-2 border-sky-500/30 p-6 shadow-xs flex flex-col justify-between space-y-4 hover:border-sky-600 transition">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 font-mono text-[10px] font-black uppercase tracking-wider">ZONA 03 • IBU KOTA & JASA</span>
+                <span class="text-xs font-bold text-slate-500">5 Kecamatan • 39 Desa</span>
+              </div>
+              <div>
+                <h4 class="text-2xl font-black text-sky-950 tracking-tight">Koridor Selatan</h4>
+                <p class="text-xs text-slate-500 font-medium">${kS.sub}</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-sky-50/70 border border-sky-100 text-xs text-sky-950 font-bold">
+                🏛️ ${kS.highlight}
+              </div>
+              <div class="text-xs text-slate-600 leading-relaxed italic">
+                "${kS.karakter}"
+              </div>
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs">
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sentra IMK</div>
+                  <div class="text-lg font-black text-sky-700">${fmt(kS.imk)} <span class="text-[10px] font-normal text-slate-500">Unit (13,2%)</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Populasi</div>
+                  <div class="text-lg font-black text-slate-900">${fmt(kS.jiwa)} <span class="text-[10px] font-normal text-slate-500">Jiwa (38,4%)</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Listrik PLN</div>
+                  <div class="text-base font-extrabold text-slate-900">${fmt(kS.pln)} <span class="text-[10px] font-normal text-slate-500">KK (41,6%)</span></div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-50">
+                  <div class="text-[10px] text-slate-400 font-bold uppercase">Sekolah & Faskes</div>
+                  <div class="text-base font-extrabold text-slate-900">${kS.sekolah} Sek • ${kS.faskes} Fas</div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+              <b>Cakupan Wilayah:</b> ${kS.kecamatan.join(', ')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Macro Balance Summary Bar -->
+        <div class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+            <span>Proporsi Sentra IMK Antar-Koridor (Total: 3.622 Sentra Industri)</span>
+            <span class="text-[#0D6E5B] font-mono">Utara (59,3%) • Tengah (27,4%) • Selatan (13,2%)</span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-slate-100 overflow-hidden flex">
+            <div style="width: 59.3%" class="bg-[#0D6E5B] h-full" title="Utara: 59,3%"></div>
+            <div style="width: 27.4%" class="bg-amber-500 h-full" title="Tengah: 27,4%"></div>
+            <div style="width: 13.3%" class="bg-sky-600 h-full" title="Selatan: 13,3%"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderTabLeaderboard(container, fmt) {
+    const metricDefs = {
+      imk: { name: 'Sentra IMK & Industri Rakyat', unit: 'Unit', icon: '🏭', getter: k => k.ekonomi?.ikm || 0 },
+      jiwa: { name: 'Jumlah Penduduk (Jiwa)', unit: 'Jiwa', icon: '👥', getter: k => getKecPop(k.nama) },
+      pln: { name: 'Keluarga Berlistrik PLN', unit: 'KK', icon: '⚡', getter: k => k.lingkungan?.pln || 0 },
+      sekolah: { name: 'Sarana Satuan Pendidikan', unit: 'Sekolah', icon: '🎓', getter: k => k.sosial?.totalSaranaPendidikan || 0 },
+      faskes: { name: 'Fasilitas Kesehatan Aktif', unit: 'Faskes', icon: '🏥', getter: k => k.sosial?.totalSaranaKesehatan || 0 },
+      bumdes: { name: 'Keberadaan BUMDes Aktif', unit: 'BUMDes', icon: '💼', getter: k => k.keuangan?.bumdes || 0 }
+    };
+
+    const currentDef = metricDefs[leaderboardMetric] || metricDefs.imk;
+    const sorted = [...db.kecamatanList].sort((a, b) => currentDef.getter(b) - currentDef.getter(a));
+    const top1Val = currentDef.getter(sorted[0]) || 1;
+
+    container.innerHTML = `
+      <div class="space-y-6">
+        <!-- Metric Switcher Pills -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-3 shadow-xs flex items-center gap-2 overflow-x-auto scrollbar-none">
+          <span class="text-xs font-bold text-slate-500 shrink-0 px-2">Pilih Indikator:</span>
+          ${Object.entries(metricDefs).map(([key, def]) => {
+            const isActive = (key === leaderboardMetric);
+            return `
+              <button type="button" onclick="window.PresisiEngine.setLeaderboardMetric('${key}')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition shrink-0 cursor-pointer flex items-center gap-1.5 ${isActive ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}">
+                <span>${def.icon}</span>
+                <span>${def.name}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Top 3 Podium Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- JUARA 2 (Perak) -->
+          <div class="order-2 md:order-1 bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-[11px] font-black">🥈 PERINGKAT #2</span>
+              <span class="text-xs font-mono text-slate-400">74.08</span>
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-slate-800">Kec. ${sorted[1].nama}</h4>
+              <p class="text-xs text-slate-500 italic mt-0.5">${sorted[1].karakteristik || ''}</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100">
+              <div class="text-2xl font-black text-slate-700">${fmt(currentDef.getter(sorted[1]))} <span class="text-xs font-normal text-slate-500">${currentDef.unit}</span></div>
+            </div>
+          </div>
+
+          <!-- JUARA 1 (Emas / Juara Umum) -->
+          <div class="order-1 md:order-2 bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/50 rounded-3xl border-2 border-amber-400 p-6 shadow-md flex flex-col justify-between space-y-3 transform md:-translate-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-amber-400 text-amber-950 text-xs font-black shadow-2xs flex items-center gap-1">👑 JUARA 1</span>
+              <span class="text-xs font-bold text-emerald-800">Tertinggi di Kolut</span>
+            </div>
+            <div>
+              <h4 class="text-2xl font-black text-[#0D6E5B]">Kec. ${sorted[0].nama}</h4>
+              <p class="text-xs text-emerald-900 italic mt-0.5 font-medium">${sorted[0].karakteristik || ''}</p>
+            </div>
+            <div class="pt-2 border-t border-amber-200/60">
+              <div class="text-3xl font-black text-[#0D6E5B]">${fmt(currentDef.getter(sorted[0]))} <span class="text-sm font-normal text-slate-600">${currentDef.unit}</span></div>
+            </div>
+          </div>
+
+          <!-- JUARA 3 (Perunggu) -->
+          <div class="order-3 bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs flex flex-col justify-between space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-[11px] font-black">🥉 PERINGKAT #3</span>
+              <span class="text-xs font-mono text-slate-400">74.08</span>
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-slate-800">Kec. ${sorted[2].nama}</h4>
+              <p class="text-xs text-slate-500 italic mt-0.5">${sorted[2].karakteristik || ''}</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100">
+              <div class="text-2xl font-black text-slate-700">${fmt(currentDef.getter(sorted[2]))} <span class="text-xs font-normal text-slate-500">${currentDef.unit}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Ranking Table (Posisi 4 s/d 15) -->
+        <div class="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-xs space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-100">
+            Peringkat Seluruh 15 Kecamatan Berdasarkan ${currentDef.name}
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            ${sorted.map((item, idx) => {
+              const val = currentDef.getter(item);
+              const pct = Math.round((val / top1Val) * 100);
+              return `
+                <div class="flex items-center gap-3 p-3 rounded-2xl bg-slate-50/70 border border-slate-100 hover:bg-emerald-50/40 transition">
+                  <span class="w-7 h-7 rounded-full flex items-center justify-center font-mono font-black text-xs ${idx === 0 ? 'bg-amber-400 text-amber-950' : (idx === 1 ? 'bg-slate-300 text-slate-800' : (idx === 2 ? 'bg-amber-200 text-amber-900' : 'bg-slate-200 text-slate-600'))}">
+                    ${idx + 1}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="font-bold text-slate-900 truncate">Kec. ${item.nama}</span>
+                      <span class="font-mono font-extrabold text-[#0D6E5B]">${fmt(val)} <span class="text-[10px] text-slate-500 font-normal">${currentDef.unit}</span></span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-slate-200 mt-1.5 overflow-hidden">
+                      <div class="h-full rounded-full bg-[#0D6E5B] transition-all duration-500" style="width: ${pct}%"></div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Compatibility stubs for legacy route methods
+  function setAgregatSector(sec) {}
+  function setAgregatZone(zone) {
+    comparatorTab = 'koridor';
+    renderAgregatKecamatanSection();
+  }
+  function onSearchKecamatanCard(query) {}
+  function onSortKecamatanCard(sortBy) {}
+  function goToKecamatanSlide(idx) {}
+  function prevKecamatanSlide() {}
+  function nextKecamatanSlide() {}
+
   return {
+    setComparatorTab: setComparatorTab,
+    setComparatorKec1: setComparatorKec1,
+    setComparatorKec2: setComparatorKec2,
+    swapComparatorKec: swapComparatorKec,
+    setLeaderboardMetric: setLeaderboardMetric,
+
     init: init,
     setCategory: setCategory,
     toggleCategoryDropdown: toggleCategoryDropdown,

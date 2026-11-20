@@ -9117,78 +9117,44 @@
         </div>
     </div>
 
-    <section id="sectionDaftarKecamatan"  class="w-full bg-[#F7F7F5] py-10 sm:py-14 px-4 lg:px-8 xl:px-12 border-b border-slate-200/90 scroll-mt-20">
-        <div class="max-w-[1720px] mx-auto space-y-8">
+    <section id="sectionDaftarKecamatan" class="w-full bg-[#F7F7F5] py-10 sm:py-14 px-4 lg:px-8 xl:px-12 border-b border-slate-200/90 scroll-mt-20">
+        <div class="max-w-[1720px] mx-auto space-y-6 sm:space-y-8">
             
-            <!-- Header Sub-Bar Daftar Kecamatan -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/90">
-                <div>
+            <!-- Header Komparator & Disparitas -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-4 border-b border-slate-200/90">
+                <div class="space-y-1.5">
                     <span class="text-[10px] font-mono uppercase tracking-widest font-black text-[#0D6E5B] flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
-                        <span>DAFTAR EKSPEDISI 15 KECAMATAN KOLAKA UTARA</span>
+                        <span>ANALITIK KOMPARATIF PODES BPS 2025</span>
                     </span>
-                    <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight font-sans mt-0.5">
-                        Telusuri Indikator Sektoral Per Kecamatan
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-sans">
+                        Pusat Komparasi &amp; Analisis Disparitas Wilayah
                     </h3>
-                </div>
-                <div class="text-xs text-[#5A6B65] font-medium">
-                    Pilih filter sektor atau cari nama kecamatan di bawah ini.
-                </div>
-            </div>
-
-            <!-- Bilah Filter Sektor, Pencarian & Sorting -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <!-- Sektor Filter Tabs -->
-                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="agregatSectorPills">
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('all')" data-sec="all" class="agregat-sec-btn active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shrink-0 bg-[#0D6E5B] text-white shadow-xs cursor-pointer">
-                        <span data-i18n="agregat_sec_all">Semua Sektor (15)</span>
-                    </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('ekonomi')" data-sec="ekonomi" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-[#5A6B65] border border-slate-200 cursor-pointer">
-                        <span data-i18n="agregat_sec_ekonomi">Ekonomi &amp; 3.622 IMK</span>
-                    </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('lingkungan')" data-sec="lingkungan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-[#5A6B65] border border-slate-200 cursor-pointer">
-                        <span data-i18n="agregat_sec_lingkungan">Kelistrikan &amp; Lingkungan</span>
-                    </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pendidikan')" data-sec="pendidikan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-[#5A6B65] border border-slate-200 cursor-pointer">
-                        <span data-i18n="agregat_sec_pendidikan">Pendidikan (205 Unit)</span>
-                    </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('kesehatan')" data-sec="kesehatan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-[#5A6B65] border border-slate-200 cursor-pointer">
-                        <span data-i18n="agregat_sec_kesehatan">Kesehatan (174 Unit)</span>
-                    </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pemerintahan')" data-sec="pemerintahan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-[#5A6B65] border border-slate-200 cursor-pointer">
-                        <span data-i18n="agregat_sec_pemerintahan">BUMDes &amp; Pemerintahan</span>
-                    </button>
+                    <p class="text-xs sm:text-sm text-[#5A6B65] font-medium max-w-3xl leading-relaxed">
+                        Bandingkan profil sektoral antar-kecamatan secara <i>head-to-head</i>, telaah disparitas 3 koridor pembangunan, atau pantau peringkat daya saing wilayah Kabupaten Kolaka Utara.
+                    </p>
                 </div>
 
-                <!-- Right Search & Sorting -->
-                <div class="flex items-center gap-3 shrink-0 flex-wrap sm:flex-nowrap">
-                    <div class="relative w-full sm:w-64">
-                        <svg class="w-3.5 h-3.5 text-[#5A6B65] absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <input id="inputSearchKecamatanCard" data-i18n-ph="agregat_search_ph" type="text" oninput="window.PresisiEngine.onSearchKecamatanCard(this.value)" placeholder="Cari kecamatan..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-full text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0D6E5B]">
-                    </div>
-
-                    <select id="selectSortKecamatanCard" onchange="window.PresisiEngine.onSortKecamatanCard(this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded-full px-3.5 py-1.5 font-bold text-[#5A6B65] focus:outline-none focus:border-[#0D6E5B] cursor-pointer">
-                        <option value="geo" data-i18n="agregat_sort_geo">Urutkan: Geografis (Utara - Selatan)</option>
-                        <option value="imk" data-i18n="agregat_sort_imk">Urutkan: IMK Terbanyak</option>
-                        <option value="pln" data-i18n="agregat_sort_pln">Urutkan: Listrik PLN Terbanyak</option>
-                        <option value="desa" data-i18n="agregat_sort_desa">Urutkan: Jumlah Desa Terbanyak</option>
-                        <option value="sekolah" data-i18n="agregat_sort_sekolah">Urutkan: Sarana Pendidikan</option>
-                        <option value="faskes" data-i18n="agregat_sort_faskes">Urutkan: Sarana Kesehatan</option>
-                        <option value="bumdes" data-i18n="agregat_sort_bumdes">Urutkan: BUMDes Terbanyak</option>
-                    </select>
+                <!-- 3 Segment Mode Tabs -->
+                <div class="inline-flex p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs self-start lg:self-auto gap-1" id="comparatorNavTabs">
+                    <button type="button" onclick="window.PresisiEngine.setComparatorTab('headtohead')" id="tabBtn-headtohead" class="comparator-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer bg-[#0D6E5B] text-white shadow-xs">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        <span>Head-to-Head (2 Wilayah)</span>
+                    </button>
+                    <button type="button" onclick="window.PresisiEngine.setComparatorTab('koridor')" id="tabBtn-koridor" class="comparator-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        <span>3 Koridor Wilayah</span>
+                    </button>
+                    <button type="button" onclick="window.PresisiEngine.setComparatorTab('leaderboard')" id="tabBtn-leaderboard" class="comparator-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition flex items-center gap-2 cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        <span>Peringkat Daya Saing</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Dynamic 15 Kecamatan Cards Container -->
-            <div id="gridKecamatanCards" class="w-full flex flex-col space-y-10 sm:space-y-14 relative">
+            <!-- Dynamic Comparator Container -->
+            <div id="gridKecamatanCards" class="w-full">
                 <!-- Rendered dynamically by PresisiEngine.renderAgregatKecamatanSection() -->
-            </div>
-
-            <!-- Bottom Hint Indicator -->
-            <div class="text-center pt-2">
-                <p class="text-xs text-slate-500 flex items-center justify-center gap-1.5">
-                    <span data-i18n="agregat_bottom_hint" class="flex items-center gap-1.5"><svg class="w-4 h-4 text-[#0D6E5B] inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg><b>Tips:</b> Klik tombol <b>"Buka di Peta WebGIS ↓"</b> pada etape kecamatan di atas untuk langsung menganalisis sebaran desa dan metrik spasial secara interaktif.</span>
-                </p>
             </div>
 
         </div>
