@@ -2526,6 +2526,93 @@
                 <!-- ===================================================================== -->
                 <!-- VIDEO TUTORIAL                                                        -->
                 <!-- ===================================================================== -->
+                    <!-- ============================================================== -->
+    <!-- CINEMATIC VILLAGE OPENING OVERLAY (INSPIRED BY BRAND IN MOTION)-->
+    <!-- ============================================================== -->
+    <div id="villageVideoOpeningOverlay" class="hidden fixed inset-0 z-50 bg-black flex flex-col justify-between overflow-hidden text-white transition-opacity duration-500 animate-in fade-in">
+        <!-- Background Video / Animated Scenery Layer with Ken Burns Motion -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <video id="openingBgVideo" class="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-7000 ease-out" src="/videos/Kolaka_Utara.mp4" playsinline muted loop></video>
+            <!-- Cinematic Vignette & Gradient Overlays -->
+            <div id="openingBgFallback" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/85"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,rgba(0,0,0,0.9)_100%)]"></div>
+        </div>
+
+        <!-- Top Header: Official Badges & Controls -->
+        <div class="relative z-10 p-4 sm:p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20 shadow-md">
+                    <img src="/images/logo_bps.png" alt="BPS" class="h-6 sm:h-7 w-auto object-contain">
+                    <div class="h-4 w-[1px] bg-white/30"></div>
+                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+                </div>
+                <div class="hidden sm:block leading-tight">
+                    <div class="text-[11px] font-black uppercase tracking-widest text-emerald-300">BPS KOLAKA UTARA</div>
+                    <div class="text-[9px] text-white/70 font-semibold">Program Pembinaan Desa Cantik 2026</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <button type="button" onclick="toggleOpeningAudio()" id="btnOpeningAudio" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-md cursor-pointer">
+                    <i id="iconOpeningAudio" class="bi bi-volume-up-fill text-emerald-300"></i>
+                    <span id="textOpeningAudio" class="hidden sm:inline">Suara Aktif</span>
+                </button>
+                <button type="button" onclick="finishVillageVideoOpening()" class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition flex items-center gap-1.5 backdrop-blur-md shadow-lg shadow-emerald-900/50 cursor-pointer">
+                    <span>Lewati Opening</span>
+                    <i class="bi bi-skip-forward-fill text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Kinetic Typography: Brand In Motion Cinematic Title -->
+        <div class="relative z-10 px-4 sm:px-8 text-center max-w-4xl mx-auto my-auto space-y-4">
+            <!-- Kinetic Tagline Badge -->
+            <div id="openingTagline" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-black uppercase tracking-widest backdrop-blur-md animate-pulse">
+                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
+                <span>DESA KITA • DALAM GERAK DATA PRESISI</span>
+            </div>
+
+            <!-- Main Village Name (Massive Impact Typography) -->
+            <h1 id="openingVillageTitle" class="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)] leading-tight">
+                DESA CANTIK
+            </h1>
+
+            <!-- Subtitle / Kecamatan -->
+            <p id="openingVillageKec" class="text-sm sm:text-xl font-extrabold text-teal-300 uppercase tracking-widest drop-shadow-md">
+                KECAMATAN TIWU • KABUPATEN KOLAKA UTARA
+            </p>
+
+            <!-- Description / Village Character -->
+            <p id="openingVillageDesc" class="text-xs sm:text-sm text-slate-200/90 font-normal max-w-2xl mx-auto leading-relaxed drop-shadow italic">
+                Penguatan Kapasitas Statistik Sektoral & Standarisasi Satu Data Indonesia
+            </p>
+
+            <!-- 3 Pill Badges (Potensi - Data - Mandiri) -->
+            <div class="pt-3 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-[11px] font-bold text-white/90">
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">🌾 Potensi Wilayah</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">📊 Data Sektoral BPS</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">🎓 Agen Statistik Mandiri</span>
+            </div>
+        </div>
+
+        <!-- Bottom Timeline Stepper & Progress Bar -->
+        <div class="relative z-10 p-4 sm:p-6 max-w-2xl w-full mx-auto space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-white/80">
+                <span id="openingStatusText" class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Menyiapkan Modul Video Microlearning...</span>
+                </span>
+                <span id="openingCountdown" class="text-emerald-300 font-mono">5s</span>
+            </div>
+
+            <!-- Progress Bar Line -->
+            <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
+                <div id="openingProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 rounded-full transition-all duration-100 ease-linear" style="width: 0%;"></div>
+            </div>
+        </div>
+    </div>
+
                 <div id="view-video" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
@@ -2535,10 +2622,16 @@
                                 <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
                             </div>
                         </div>
-                        <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs self-start sm:self-auto cursor-pointer">
-                            <i class="bi bi-arrow-left"></i>
-                            <span>Kembali ke E-Learning</span>
-                        </button>
+                        <div class="flex items-center gap-2 self-start sm:self-auto">
+                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
+                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
+                                <span>Putar Opening Desa</span>
+                            </button>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Menu Pembelajaran</span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="max-w-4xl w-full">
@@ -2681,10 +2774,16 @@
                                 <p class="text-xs text-slate-500 mt-0.5">Buku pedoman Excel, rumus dasar statistik sektoral, dan SK Agen Statistik</p>
                             </div>
                         </div>
-                        <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs self-start sm:self-auto cursor-pointer">
-                            <i class="bi bi-arrow-left"></i>
-                            <span>Kembali ke E-Learning</span>
-                        </button>
+                        <div class="flex items-center gap-2 self-start sm:self-auto">
+                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
+                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
+                                <span>Putar Opening Desa</span>
+                            </button>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Menu Pembelajaran</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Section 2: BUKU PEDOMAN & RUMUS DASAR (Table of Resources) -->
@@ -3780,6 +3879,171 @@ function triggerPubDownload() {
             if (typeof document !== 'undefined' && document.body) {
                 document.body.classList.remove('overflow-hidden');
             }
+        }
+
+        
+        // ==============================================================
+        // CINEMATIC OPENING VIDEO DESA (BRAND IN MOTION MOTION OPENER)
+        // ==============================================================
+        let villageOpeningTimer = null;
+        let villageOpeningProgressInterval = null;
+        let isOpeningAudioMuted = false;
+        let openingAudioCtx = null;
+
+        function playCinematicOpeningAudio() {
+            if (isOpeningAudioMuted) return;
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                if (!openingAudioCtx) openingAudioCtx = new AudioCtx();
+                if (openingAudioCtx.state === 'suspended') openingAudioCtx.resume();
+                
+                const now = openingAudioCtx.currentTime;
+                // Deep cinematic bass swell (C2 -> C3)
+                const oscBass = openingAudioCtx.createOscillator();
+                const gainBass = openingAudioCtx.createGain();
+                oscBass.type = 'sine';
+                oscBass.frequency.setValueAtTime(65.41, now);
+                oscBass.frequency.exponentialRampToValueAtTime(130.81, now + 2.5);
+                gainBass.gain.setValueAtTime(0.001, now);
+                gainBass.gain.linearRampToValueAtTime(0.2, now + 1.2);
+                gainBass.gain.exponentialRampToValueAtTime(0.001, now + 4.8);
+                oscBass.connect(gainBass);
+                gainBass.connect(openingAudioCtx.destination);
+                oscBass.start(now);
+                oscBass.stop(now + 4.9);
+
+                // Shimmering cinematic major chord (C - E - G - B - C)
+                const freqs = [261.63, 329.63, 392.00, 493.88, 523.25];
+                freqs.forEach((freq, idx) => {
+                    const osc = openingAudioCtx.createOscillator();
+                    const gain = openingAudioCtx.createGain();
+                    osc.type = 'triangle';
+                    const startT = now + 0.6 + (idx * 0.18);
+                    osc.frequency.setValueAtTime(freq, startT);
+                    gain.gain.setValueAtTime(0.001, startT);
+                    gain.gain.linearRampToValueAtTime(0.07, startT + 0.4);
+                    gain.gain.exponentialRampToValueAtTime(0.001, startT + 3.8);
+                    osc.connect(gain);
+                    gain.connect(openingAudioCtx.destination);
+                    osc.start(startT);
+                    osc.stop(startT + 4.0);
+                });
+            } catch(e) {}
+        }
+
+        function toggleOpeningAudio() {
+            isOpeningAudioMuted = !isOpeningAudioMuted;
+            const textEl = document.getElementById('textOpeningAudio');
+            const iconEl = document.getElementById('iconOpeningAudio');
+            if (isOpeningAudioMuted) {
+                if (textEl) textEl.textContent = 'Suara Mati';
+                if (iconEl) iconEl.className = 'bi bi-volume-mute-fill text-slate-400';
+            } else {
+                if (textEl) textEl.textContent = 'Suara Aktif';
+                if (iconEl) iconEl.className = 'bi bi-volume-up-fill text-emerald-300';
+                playCinematicOpeningAudio();
+            }
+        }
+
+        function startVillageVideoOpening(force = false) {
+            clearTimeout(villageOpeningTimer);
+            clearInterval(villageOpeningProgressInterval);
+
+            // Fetch current active village data
+            const vKey = currentTargetVillage || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[vKey]) ? villagesData[vKey] : {
+                title: "Desa Cinta Statistik",
+                sub: "Kabupaten Kolaka Utara",
+                desc: "Kedaulatan Data Statistik Sektoral Menuju Indonesia Emas."
+            };
+
+            const overlay = document.getElementById('villageVideoOpeningOverlay');
+            if (!overlay) {
+                actuallyOpenVideoTutorial();
+                return;
+            }
+
+            // Populate opening content with active village attributes
+            const titleEl = document.getElementById('openingVillageTitle');
+            const kecEl = document.getElementById('openingVillageKec');
+            const descEl = document.getElementById('openingVillageDesc');
+            const bgVideo = document.getElementById('openingBgVideo');
+            const fallbackBg = document.getElementById('openingBgFallback');
+
+            if (titleEl) titleEl.textContent = vData.title || "DESA CANTIK";
+            if (kecEl) kecEl.textContent = vData.sub || "KECAMATAN TIWU • KOLAKA UTARA";
+            if (descEl) descEl.textContent = vData.desc || "Penguatan Literasi Statistik Sektoral Desa Cinta Statistik BPS RI";
+
+            if (fallbackBg && vData.photo) {
+                fallbackBg.style.backgroundImage = `url('${vData.photo}')`;
+            }
+
+            // Display overlay
+            overlay.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+
+            // Play background video
+            if (bgVideo) {
+                bgVideo.currentTime = 0;
+                bgVideo.play().catch(() => {});
+            }
+
+            // Play ambient cinematic audio
+            playCinematicOpeningAudio();
+
+            // Progress bar and countdown timer (5 seconds)
+            const durationMs = 5200;
+            const startTime = Date.now();
+            const progressBar = document.getElementById('openingProgressBar');
+            const countdownEl = document.getElementById('openingCountdown');
+
+            villageOpeningProgressInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const percent = Math.min(100, (elapsed / durationMs) * 100);
+                const remainingSec = Math.max(0, Math.ceil((durationMs - elapsed) / 1000));
+                
+                if (progressBar) progressBar.style.width = percent + '%';
+                if (countdownEl) countdownEl.textContent = remainingSec + 's';
+
+                if (elapsed >= durationMs) {
+                    clearInterval(villageOpeningProgressInterval);
+                    finishVillageVideoOpening();
+                }
+            }, 50);
+
+            showToast('🎬 Menampilkan Opening Video ' + (vData.title || 'Desa') + '...');
+        }
+
+        function finishVillageVideoOpening() {
+            clearTimeout(villageOpeningTimer);
+            clearInterval(villageOpeningProgressInterval);
+
+            const overlay = document.getElementById('villageVideoOpeningOverlay');
+            if (overlay) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-0', 'pointer-events-none');
+                }, 400);
+            }
+            actuallyOpenVideoTutorial();
+        }
+
+        function actuallyOpenVideoTutorial() {
+            currentNavMenu = 'video';
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            const dBtn = document.getElementById('nav-pembelajaran');
+            if (dBtn) dBtn.classList.add('active', 'has-active');
+
+            document.querySelectorAll('.menu-view-container').forEach(el => el.classList.add('hidden'));
+            const targetView = document.getElementById('view-video');
+            if (targetView) targetView.classList.remove('hidden');
+
+            dcOnMenuChange('video');
+            if (typeof playMicrolearningVideo === 'function') {
+                playMicrolearningVideo(true);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function playMicrolearningVideo(unmute = true) {
