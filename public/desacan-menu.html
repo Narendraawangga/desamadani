@@ -361,62 +361,19 @@
         <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <!-- Indikator Status Satu Data Indonesia -->
-            <!-- Menu Output Desa (Dipindahkan ke Header) -->
-            <div class="relative flex items-center">
-                <button type="button" onclick="switchNavMenu('output')" id="header-nav-output" 
-                    class="group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-gradient-to-r from-sky-50 via-emerald-50/80 to-teal-50/70 hover:from-sky-100 hover:via-emerald-100 hover:to-teal-100/90 text-slate-900 border border-emerald-200/90 hover:border-emerald-300 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95" 
-                    title="Buka Dokumen Output Desa (Monografi, Tabel Statistik, Leaflet & Unduh Berkas)">
-                    
-                    <!-- Icon Box dengan Badge -->
-                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-sky-600 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                        <i class="bi bi-file-earmark-bar-graph-fill text-xs sm:text-sm"></i>
-                        <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-                            <span class="relative inline-flex rounded-full h-full w-full bg-emerald-500 ring-1 ring-white"></span>
-                        </span>
-                    </div>
+            <!-- Menu Output Desa di Header (Teks Bersih) -->
+            <button type="button" onclick="switchNavMenu('output')" id="header-nav-output" 
+                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                title="Buka Dokumen Output Desa">
+                <span>Output Desa</span>
+            </button>
 
-                    <!-- Label Teks Dua Tingkat Berkelas -->
-                    <div class="text-left hidden xs:block">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[9px] font-black uppercase tracking-wider text-emerald-700 leading-none">Dokumen Resmi</span>
-                            <span class="px-1.5 py-0.2 rounded-full bg-emerald-200/80 text-emerald-900 text-[9px] font-black leading-none">4 Berkas</span>
-                        </div>
-                        <div class="text-xs font-black text-slate-800 group-hover:text-emerald-700 transition leading-tight flex items-center gap-1 mt-0.5">
-                            <span>Output Desa</span>
-                            <i class="bi bi-chevron-right text-[10px] text-emerald-400 group-hover:translate-x-0.5 transition-transform"></i>
-                        </div>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Menu Galeri Foto Desa Premium & Interaktif di Header -->
-            <div class="relative flex items-center">
-                <button type="button" onclick="openGaleriDesaModal()" 
-                    class="group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50/70 to-fuchsia-50/60 hover:from-purple-100 hover:via-indigo-100 hover:to-fuchsia-100/90 text-purple-950 border border-purple-200/90 hover:border-purple-300 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95" 
-                    title="Buka Galeri Dokumentasi & Unggah Foto Baru Desa">
-                    
-                    <!-- Icon Box dengan Badge Pulse Berkedip -->
-                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-fuchsia-600 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                        <i class="bi bi-camera-fill text-xs sm:text-sm"></i>
-                        <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-full w-full bg-pink-500 ring-1 ring-white"></span>
-                        </span>
-                    </div>
-
-                    <!-- Label Teks Dua Tingkat Berkelas -->
-                    <div class="text-left hidden xs:block">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[9px] font-black uppercase tracking-wider text-purple-700 leading-none">Dokumentasi</span>
-                            <span id="topbarGaleriBadge" class="px-1.5 py-0.2 rounded-full bg-purple-200/80 text-purple-800 text-[9px] font-black leading-none">8 Foto</span>
-                        </div>
-                        <div class="text-xs font-black text-slate-800 group-hover:text-purple-700 transition leading-tight flex items-center gap-1 mt-0.5">
-                            <span>Galeri Desa</span>
-                            <i class="bi bi-chevron-right text-[10px] text-purple-400 group-hover:translate-x-0.5 transition-transform"></i>
-                        </div>
-                    </div>
-                </button>
-            </div>
+            <!-- Menu Galeri di Header (Hanya Teks Galeri Tanpa Gambar/Ikon) -->
+            <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
+                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                title="Buka Galeri Desa">
+                <span>Galeri</span>
+            </button>
 
             <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>

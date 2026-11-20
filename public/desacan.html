@@ -370,30 +370,12 @@
                 </a>
             </nav>
 
-            <!-- Menu Galeri Foto Desa Premium di Header -->
+            <!-- Tombol Galeri di Header (Teks Bersih Tanpa Gambar) -->
             <div class="flex items-center gap-2.5">
                 <button type="button" onclick="openDescanGaleriModal(event)" 
-                    class="group relative flex items-center gap-2.5 px-3.5 py-1.5 sm:py-2 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50/70 to-fuchsia-50/60 hover:from-purple-100 hover:via-indigo-100 hover:to-fuchsia-100/90 text-purple-950 border border-purple-200/90 hover:border-purple-300 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95" 
-                    title="Galeri Dokumentasi & Foto Desa Cantik">
-                    
-                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-fuchsia-600 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                        <i class="bi bi-camera-fill text-xs sm:text-sm"></i>
-                        <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-full w-full bg-pink-500 ring-1 ring-white"></span>
-                        </span>
-                    </div>
-
-                    <div class="text-left hidden xs:block">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[9px] font-black uppercase tracking-wider text-purple-700 leading-none">Dokumentasi</span>
-                            <span class="px-1.5 py-0.2 rounded-full bg-purple-200/80 text-purple-800 text-[9px] font-black leading-none">6 Desa</span>
-                        </div>
-                        <div class="text-xs font-black text-slate-800 group-hover:text-purple-700 transition leading-tight flex items-center gap-1 mt-0.5">
-                            <span>Galeri Desa</span>
-                            <i class="bi bi-chevron-right text-[10px] text-purple-400 group-hover:translate-x-0.5 transition-transform"></i>
-                        </div>
-                    </div>
+                    class="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                    title="Buka Galeri Foto">
+                    <span>Galeri</span>
                 </button>
             </div>
 
