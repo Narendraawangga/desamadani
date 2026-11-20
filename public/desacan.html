@@ -767,7 +767,7 @@
                 <div id="coverflowTrack" class="coverflow-track">
 
                     <!-- 1. DESA KAMISI (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 0, 'kamisi')"
+                    <div onclick="handleCoverflowCardClick(event, 0, 'kamisi')" onmouseenter="handleCoverflowCardHover(0)"
                          class="coverflow-card group border border-white/20 active" data-index="0" data-key="kamisi">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Kamisi" class="card-bg">
@@ -813,7 +813,7 @@
                     </div>
 
                     <!-- 2. DESA KOROHA (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 1, 'koroha')"
+                    <div onclick="handleCoverflowCardClick(event, 1, 'koroha')" onmouseenter="handleCoverflowCardHover(1)"
                          class="coverflow-card group border border-white/20 card-right" data-index="1" data-key="koroha">
                         <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Koroha" class="card-bg">
@@ -859,7 +859,7 @@
                     </div>
 
                     <!-- 3. KELURAHAN MALA-MALA (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 2, 'malamala')"
+                    <div onclick="handleCoverflowCardClick(event, 2, 'malamala')" onmouseenter="handleCoverflowCardHover(2)"
                          class="coverflow-card group border border-white/20 card-far-right" data-index="2" data-key="malamala">
                         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" 
                              alt="Kelurahan Mala-Mala" class="card-bg">
@@ -905,7 +905,7 @@
                     </div>
 
                     <!-- 4. DESA LAPOLU (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 3, 'lapolu')"
+                    <div onclick="handleCoverflowCardClick(event, 3, 'lapolu')" onmouseenter="handleCoverflowCardHover(3)"
                          class="coverflow-card group border border-white/20" data-index="3" data-key="lapolu">
                         <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Lapolu" class="card-bg">
@@ -951,7 +951,7 @@
                     </div>
 
                     <!-- 5. DESA TANGGEAWO (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 4, 'tanggeawo')"
+                    <div onclick="handleCoverflowCardClick(event, 4, 'tanggeawo')" onmouseenter="handleCoverflowCardHover(4)"
                          class="coverflow-card group border border-white/20" data-index="4" data-key="tanggeawo">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Tanggeawo" class="card-bg">
@@ -997,7 +997,7 @@
                     </div>
 
                     <!-- 6. DESA MATTIRO BULU (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 5, 'mattirobulu')"
+                    <div onclick="handleCoverflowCardClick(event, 5, 'mattirobulu')" onmouseenter="handleCoverflowCardHover(5)"
                          class="coverflow-card group border border-white/20" data-index="5" data-key="mattirobulu">
                         <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Mattiro Bulu" class="card-bg">
@@ -1046,33 +1046,23 @@
 
             </div>
 
-            <!-- Carousel Controls Underneath (Circular Arrows & Indicators) -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-slate-200/80 max-w-2xl mx-auto">
-                <button type="button" onclick="userInteractRotate(-1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Geser ke Kiri (Sebelumnya)">
-                    <i class="bi bi-chevron-left text-lg"></i>
-                </button>
-
-                <div class="text-center space-y-1.5 flex-1 min-w-0">
-                    <div class="flex items-center justify-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span>Bergerak Otomatis</span>
-                        </span>
-                        <span id="coverflowActiveTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight truncate">
-                            Desa Kamisi (Kecamatan Kodeoha)
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-center gap-2" id="coverflowDots"></div>
+            <!-- Indikator Rotasi Otomatis (Tombol Panah Lingkaran Dihapus Sesuai Permintaan) -->
+            <div class="flex flex-col items-center justify-center gap-2 mt-6 pt-4 border-t border-slate-200/80 max-w-xl mx-auto">
+                <div class="flex items-center justify-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Bergerak Otomatis</span>
+                    </span>
+                    <span id="coverflowActiveTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight truncate">
+                        Desa Kamisi (Kecamatan Kodeoha)
+                    </span>
                 </div>
-
-                <button type="button" onclick="userInteractRotate(1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Geser ke Kanan (Berikutnya)">
-                    <i class="bi bi-chevron-right text-lg"></i>
-                </button>
+                <div class="flex items-center justify-center gap-2" id="coverflowDots"></div>
             </div>
 
-            <div class="text-center mt-3 text-[11px] text-slate-400 font-medium flex items-center justify-center gap-1.5">
-                <i class="bi bi-arrow-left-right text-xs"></i>
-                <span>6 Desa berjejer aktif bergerak ke kiri. Klik kartu mana saja untuk memutar ke tengah.</span>
+            <div class="text-center mt-2.5 text-[11px] text-slate-400 font-medium flex items-center justify-center gap-1.5">
+                <i class="bi bi-cursor text-xs text-emerald-600"></i>
+                <span>6 Desa berjejer bergerak otomatis. Arahkan kursor ke kartu desa mana saja untuk memutar ke tengah secara otomatis.</span>
             </div>
         </div>
 
@@ -1779,6 +1769,11 @@
         // Run on Page Load
         document.addEventListener('DOMContentLoaded', () => {
             initDashboardCharts();
+            // Pasang event listener hover otomatis ke semua kartu desa
+            document.querySelectorAll('.coverflow-card').forEach((card, idx) => {
+                card.addEventListener('mouseenter', () => handleCoverflowCardHover(idx));
+                card.addEventListener('pointerenter', () => handleCoverflowCardHover(idx));
+            });
         });
     
         // ==============================================================
@@ -1877,6 +1872,16 @@
         function userInteractGoTo(index) {
             goToCoverflow(index);
             pauseAndResumeAutoplay();
+        }
+
+        let coverflowHoverTimer = null;
+        function handleCoverflowCardHover(index) {
+            if (index === currentCoverflowIdx) return;
+            clearTimeout(coverflowHoverTimer);
+            coverflowHoverTimer = setTimeout(() => {
+                goToCoverflow(index);
+                pauseAndResumeAutoplay();
+            }, 60); // Respon instan dan sangat halus saat kursor diarahkan ke desa
         }
 
         function handleCoverflowCardClick(event, index, key) {
