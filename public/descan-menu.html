@@ -80,7 +80,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        /* ===== DESCAN SIDEBAR THEME (Modern Flow UI Floating Style Sesuai Pinterest) ===== */
+        /* ===== DESCAN SIDEBAR THEME (Harmonized Light Style - Sinkron dengan Dashboard Desa) ===== */
         :root { 
             --dc-green:#0f6b4a; 
             --dc-green-dark:#0a4d36; 
@@ -100,14 +100,14 @@
             bottom: 0; 
             left: 0; 
             width: var(--dc-sidebar-w); 
-            background: linear-gradient(180deg, #0e2a1e 0%, #091f16 60%, #05140e 100%); 
-            border-right: 1px solid rgba(255, 255, 255, 0.08); 
-            border-top-right-radius: 24px;
-            border-bottom-right-radius: 24px;
+            background: #ffffff; 
+            border-right: 1px solid var(--dc-line); 
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 6px 0 32px rgba(0, 0, 0, 0.28);
+            box-shadow: 4px 0 24px rgba(15, 31, 26, 0.05);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
         @media (min-width: 1024px) {
@@ -117,8 +117,8 @@
             body.dc-shell.sidebar-collapsed #dcSidebar { transform: translateX(-100%) !important; }
         }
         @media (max-width: 1023px) { 
-            #dcSidebar { transform: translateX(-100%); border-radius: 0 24px 24px 0; } 
-            #dcSidebar.open { transform: translateX(0); box-shadow: 0 0 50px rgba(0,0,0,.5); } 
+            #dcSidebar { transform: translateX(-100%); border-radius: 0 20px 20px 0; } 
+            #dcSidebar.open { transform: translateX(0); box-shadow: 0 0 50px rgba(0,0,0,.25); } 
         }
 
         /* Section Heading Labels */
@@ -130,9 +130,8 @@
             font-weight: 800; 
             letter-spacing: .12em; 
             text-transform: uppercase; 
-            color: #6ee7b7; 
-            opacity: 0.9;
-            padding: 0 .5rem; 
+            color: #0f6b4a; 
+            padding: 0 .6rem; 
             margin: 1.15rem 0 .45rem; 
         }
         .dc-nav-label::before { 
@@ -140,7 +139,7 @@
             width: 14px; 
             height: 3px; 
             border-radius: 99px; 
-            background: linear-gradient(90deg, #10b981, #6ee7b7); 
+            background: linear-gradient(90deg, #0f6b4a, #6ee7b7); 
         }
 
         /* Nav Tab & Action Items */
@@ -150,12 +149,12 @@
             gap: .75rem; 
             width: 100%; 
             text-align: left;
-            padding: .55rem .75rem !important; 
+            padding: .52rem .75rem !important; 
             border-radius: .85rem !important; 
             margin-bottom: .22rem;
             font-size: .835rem !important; 
             font-weight: 600 !important; 
-            color: #cbd5e1 !important;
+            color: #334155 !important;
             background: transparent !important; 
             border: 1px solid transparent !important; 
             cursor: pointer; 
@@ -169,50 +168,58 @@
             align-items: center; 
             justify-content: center; 
             flex-shrink: 0; 
-            background: rgba(255, 255, 255, 0.07); 
-            color: #94a3b8; 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #f1f5f3; 
+            color: #475569; 
+            border: 1px solid #e2e8e5;
             transition: all .2s ease; 
         }
         .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; }
 
         /* Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
-            background: rgba(255, 255, 255, 0.08) !important; 
-            color: #ffffff !important;
-            border-color: rgba(255, 255, 255, 0.1) !important;
+            background: #f0f7f3 !important; 
+            color: #0f6b4a !important;
+            border-color: #d8ece0 !important;
             transform: translateX(3px);
         }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: rgba(16, 185, 129, 0.22); 
-            color: #6ee7b7; 
-            border-color: rgba(110, 231, 183, 0.3);
+            background: #dcf2e5; 
+            color: #0f6b4a; 
+            border-color: #b7e4cc;
         }
 
-        /* Active State - Flow UI Elevated Pill */
+        /* Active State - Flow UI Elevated Pill Harmonized with Dashboard */
         .nav-tab.active { 
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(5, 150, 105, 0.42) 100%) !important; 
+            background: linear-gradient(135deg, #0f6b4a 0%, #0a5238 100%) !important; 
             color: #ffffff !important; 
             font-weight: 700 !important; 
-            border: 1px solid rgba(110, 231, 183, 0.38) !important; 
-            box-shadow: 0 4px 18px -2px rgba(16, 185, 129, 0.35) !important; 
+            border: 1px solid #0f6b4a !important; 
+            box-shadow: 0 4px 14px -2px rgba(15, 107, 74, 0.35) !important; 
         }
         .nav-tab.active .dc-ico { 
-            background: #10b981; 
+            background: rgba(255, 255, 255, 0.22); 
             color: #ffffff; 
-            border-color: #34d399;
-            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .nav-tab.active .dc-caret {
+            color: #ffffff !important;
         }
 
         /* Active Parent State when child is selected */
         .nav-tab.has-active { 
-            background: rgba(16, 185, 129, 0.16) !important; 
-            color: #6ee7b7 !important; 
-            border: 1px solid rgba(110, 231, 183, 0.22) !important; 
+            background: #eaf7f0 !important; 
+            color: #0f6b4a !important; 
+            font-weight: 700 !important;
+            border: 1px solid #c0ebd2 !important; 
         }
         .nav-tab.has-active .dc-ico { 
-            background: rgba(16, 185, 129, 0.3); 
-            color: #6ee7b7; 
+            background: #0f6b4a; 
+            color: #ffffff; 
+            border-color: #0f6b4a;
+        }
+        .nav-tab.has-active .dc-caret {
+            color: #0f6b4a !important;
         }
 
         /* Caret for collapsible menu */
@@ -225,13 +232,13 @@
             align-items: center;
             justify-content: center;
         }
-        .dc-caret.open { transform: rotate(180deg); color: #6ee7b7; }
+        .dc-caret.open { transform: rotate(180deg); color: #0f6b4a; }
 
-        /* Submenu Items (Indented with Dot Bullet like Pinterest Flow UI) */
+        /* Submenu Items (Indented with Dot Bullet) */
         .dc-sub { 
-            margin: .25rem 0 .45rem 1.25rem; 
+            margin: .25rem 0 .45rem 1.35rem; 
             padding-left: .75rem; 
-            border-left: 1.5px solid rgba(110, 231, 183, 0.25); 
+            border-left: 2px solid #d2e8dc; 
         }
         .dc-sub-item { 
             display: flex; 
@@ -243,7 +250,7 @@
             border-radius: .65rem; 
             font-size: .8rem; 
             font-weight: 600; 
-            color: #94a3b8; 
+            color: #64748b; 
             background: transparent; 
             border: 1px solid transparent; 
             cursor: pointer; 
@@ -255,34 +262,34 @@
             width: 6px; 
             height: 6px; 
             border-radius: 50%; 
-            background: #64748b; 
+            background: #94a3b8; 
             flex-shrink: 0; 
             transition: all .18s; 
         }
         .dc-sub-item:hover { 
-            background: rgba(255, 255, 255, 0.06); 
-            color: #ffffff; 
+            background: #f0f7f3; 
+            color: #0f6b4a; 
             transform: translateX(2px);
         }
         .dc-sub-item:hover::before { 
-            background: #6ee7b7; 
+            background: #0f6b4a; 
         }
         .dc-sub-item.active { 
-            background: rgba(16, 185, 129, 0.18); 
-            color: #6ee7b7; 
+            background: #eaf7f0; 
+            color: #0f6b4a; 
             font-weight: 700; 
-            border-color: rgba(110, 231, 183, 0.25); 
+            border-color: #c0ebd2; 
         }
         .dc-sub-item.active::before { 
-            background: #10b981; 
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35); 
+            background: #0f6b4a; 
+            box-shadow: 0 0 0 3px rgba(15, 107, 74, 0.25); 
         }
 
         /* Custom Modern Scrollbar for Sidebar Links */
         #topNavMenuLinks::-webkit-scrollbar { width: 4px; }
         #topNavMenuLinks::-webkit-scrollbar-track { background: transparent; }
-        #topNavMenuLinks::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 99px; }
-        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: rgba(110, 231, 183, 0.4); }
+        #topNavMenuLinks::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: #0f6b4a; }
         .dc-topbar { background:#fff; border-bottom:1px solid var(--dc-line); position:sticky; top:0; z-index:40; }
         .dc-pill { display:inline-flex; align-items:center; gap:.4rem; background:var(--dc-mint-bg); color:var(--dc-green); border:1px solid #b7e8d0; border-radius:999px; padding:.3rem .8rem; font-size:12px; font-weight:600; }
         .dc-hero { background:linear-gradient(135deg,#0a4d36 0%,#0f6b4a 55%,#0c5a3f 100%); color:#fff; border-radius:1rem; padding:2rem; position:relative; overflow:hidden; }
@@ -397,34 +404,32 @@
 </head>
 <body class="dc-shell min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
 
-    <!-- ===== SIDEBAR DESCAN (Modern Flow UI Dark Forest Style Sesuai Referensi) ===== -->
-    <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-40 lg:hidden"></div>
+    <!-- ===== SIDEBAR DESCAN (Harmonized Light Style - Sinkron Sempurna dengan Dashboard) ===== -->
+    <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 backdrop-blur-2xs z-40 lg:hidden"></div>
     <aside id="dcSidebar">
         <!-- 1. Header Sidebar: Penempatan Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
-        <div class="px-3.5 py-4 flex items-center justify-between border-b border-white/10 bg-white/[0.03] relative">
+        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white relative">
             <div class="flex items-center gap-2.5 min-w-0">
-                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-2.5 py-1.5 rounded-xl border border-white/15 shadow-sm shrink-0">
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain drop-shadow-xs" title="Badan Pusat Statistik Kolaka Utara">
-                    <div class="h-5 w-[1px] bg-white/20"></div>
-                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain drop-shadow-xs" title="Pemerintah Kabupaten Kolaka Utara">
+                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs shrink-0">
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                    <div class="h-5 w-[1px] bg-slate-300"></div>
+                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                 </div>
                 <div class="leading-tight truncate">
-                    <div class="text-[13px] font-black tracking-tight text-white flex items-center gap-1.5">
-                        <span>DESA CANTIK</span>
-                    </div>
-                    <div class="text-[9.5px] font-extrabold text-emerald-400 uppercase tracking-wider mt-0.5">BPS KOLAKA UTARA</div>
+                    <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
+                    <div class="text-[9.5px] font-extrabold text-[#0f6b4a] uppercase tracking-wider mt-0.5">BPS KOLAKA UTARA</div>
                 </div>
             </div>
             
             <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
             <button type="button" onclick="toggleDcSidebar()" id="btnSidebarClose" 
-                class="w-7 h-7 rounded-xl border border-white/15 hover:border-emerald-400/50 bg-white/8 hover:bg-emerald-500/25 text-slate-300 hover:text-white flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
+                class="w-7 h-7 rounded-xl border border-slate-200 hover:border-emerald-300 bg-slate-50 hover:bg-emerald-50 text-slate-500 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
                 title="Tutup / Sembunyikan Sidebar">
                 <i class="bi bi-chevron-left text-xs font-black"></i>
             </button>
         </div>
 
-        <!-- 2. Daftar Menu Navigasi Sidebar (Modern Flow UI Style dengan Data & Aksi Utuh) -->
+        <!-- 2. Daftar Menu Navigasi Sidebar (Modern Flow UI Light Style - Rapi, Terstruktur, Terbaca Jelas) -->
         <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 py-2 space-y-0.5">
             <div class="dc-nav-label" style="margin-top:.35rem;">Menu Utama</div>
             <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active">
@@ -445,15 +450,15 @@
             </button>
             <div id="dcMateriSub" class="dc-sub hidden">
                 <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item">
-                    <i class="bi bi-play-circle-fill text-xs mr-1 text-rose-400"></i>
+                    <i class="bi bi-play-circle-fill text-xs mr-1 text-rose-500"></i>
                     <span>Video Tutorial</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item">
-                    <i class="bi bi-patch-question-fill text-xs mr-1 text-sky-400"></i>
+                    <i class="bi bi-patch-question-fill text-xs mr-1 text-sky-600"></i>
                     <span>Pre-test &amp; Post-test</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item">
-                    <i class="bi bi-journal-bookmark-fill text-xs mr-1 text-emerald-400"></i>
+                    <i class="bi bi-journal-bookmark-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Buku Panduan</span>
                 </button>
             </div>
@@ -478,19 +483,19 @@
         </div>
 
         <!-- 3. Footer Sidebar: Akses Kembali ke 6 Desa & Keluar Akun -->
-        <div class="p-3 border-t border-white/10 bg-white/[0.02] space-y-2">
-            <div class="flex items-center justify-between rounded-xl px-2.5 py-1.5 text-[10px] bg-white/6 border border-white/10">
-                <span class="flex items-center gap-1.5 font-bold text-emerald-300">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Server BPS Aktif
+        <div class="p-3 border-t border-[#e5e9e7] bg-[#fafcfb] space-y-2">
+            <div class="flex items-center justify-between rounded-xl px-2.5 py-1.5 text-[10px] bg-emerald-50 border border-emerald-200/80">
+                <span class="flex items-center gap-1.5 font-bold text-emerald-800">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Server BPS Aktif
                 </span>
-                <span class="text-slate-400 font-extrabold">2026</span>
+                <span class="text-slate-500 font-extrabold">2026</span>
             </div>
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-200 hover:text-white bg-white/8 hover:bg-white/14 border border-white/12 rounded-xl py-2.5 cursor-pointer transition shadow-xs">
-                <i class="bi bi-grid-3x3-gap-fill text-xs text-emerald-400"></i>
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
+                <i class="bi bi-grid-3x3-gap-fill text-xs text-slate-500"></i>
                 <span>Kembali ke 6 Desa</span>
             </a>
-            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-300 hover:text-rose-200 bg-rose-500/12 hover:bg-rose-500/22 border border-rose-500/22 rounded-xl py-2.5 cursor-pointer transition shadow-xs">
-                <i class="bi bi-box-arrow-right text-xs"></i>
+            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
+                <i class="bi bi-box-arrow-right text-xs text-rose-600"></i>
                 <span>Keluar Akun</span>
             </button>
         </div>
@@ -498,10 +503,10 @@
 
     <!-- Tombol Buka Sidebar (>) Muncul di Ujung Kiri saat Sidebar Tertutup -->
     <button type="button" id="btnFloatingSidebarOpen" onclick="toggleDcSidebar()" 
-        class="hidden fixed left-0 top-14 sm:top-16 z-40 bg-[#0e2a1e] hover:bg-[#133727] text-emerald-300 border-y border-r border-emerald-500/40 shadow-2xl py-3 px-2.5 rounded-r-2xl transition-all duration-300 cursor-pointer active:scale-95 group flex items-center gap-1.5 backdrop-blur-md" 
+        class="hidden fixed left-0 top-14 sm:top-16 z-40 bg-white hover:bg-emerald-50 text-[#0f6b4a] border-y border-r border-emerald-300 shadow-lg py-3 px-2.5 rounded-r-2xl transition-all duration-300 cursor-pointer active:scale-95 group flex items-center gap-1.5" 
         title="Buka Sidebar Navigasi">
-        <i class="bi bi-chevron-right text-sm font-black text-emerald-400 group-hover:translate-x-0.5 transition-transform"></i>
-        <span class="text-[10px] font-black uppercase tracking-wider text-emerald-300 pr-1 hidden sm:inline">Menu</span>
+        <i class="bi bi-chevron-right text-sm font-black text-emerald-600 group-hover:translate-x-0.5 transition-transform"></i>
+        <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
     </button>
 
     <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
