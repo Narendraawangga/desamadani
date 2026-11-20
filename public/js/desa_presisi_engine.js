@@ -4202,16 +4202,16 @@ let agregatSector = 'all';
     // 1. HORIZONTAL ROUTE WAYPOINT NAVIGATOR BAR (NATIONAL GEOGRAPHIC GAZETTE STYLE)
     const zonePillsHtml = `
       <div class="flex items-center gap-1.5 flex-wrap">
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('all')" class="px-3 py-1 rounded-full text-[11px] font-serif font-bold transition ${agregatZone === 'all' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
+        <button type="button" onclick="window.PresisiEngine.setAgregatZone('all')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'all' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
           Semua Rute (15 Etape)
         </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('utara')" class="px-3 py-1 rounded-full text-[11px] font-serif font-bold transition ${agregatZone === 'utara' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
+        <button type="button" onclick="window.PresisiEngine.setAgregatZone('utara')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'utara' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
           Zona Utara (Tolala - Pakue Tengah)
         </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('tengah')" class="px-3 py-1 rounded-full text-[11px] font-serif font-bold transition ${agregatZone === 'tengah' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
+        <button type="button" onclick="window.PresisiEngine.setAgregatZone('tengah')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'tengah' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
           Zona Tengah (Pakue - Kodeoha)
         </button>
-        <button type="button" onclick="window.PresisiEngine.setAgregatZone('selatan')" class="px-3 py-1 rounded-full text-[11px] font-serif font-bold transition ${agregatZone === 'selatan' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
+        <button type="button" onclick="window.PresisiEngine.setAgregatZone('selatan')" class="px-3 py-1 rounded-full text-[11px] font-bold transition ${agregatZone === 'selatan' ? 'bg-[#0D6E5B] text-white shadow-2xs' : 'bg-white hover:bg-slate-100 text-[#5A6B65] border border-[#5A6B65]/20'}">
           Zona Selatan (Katoi - Wawo)
         </button>
       </div>
@@ -4225,7 +4225,7 @@ let agregatSector = 'all';
             <span class="text-xs font-mono font-black text-[#0D6E5B] uppercase tracking-widest">JALUR EKSPEDISI 15 KECAMATAN</span>
           </div>
           ${zonePillsHtml}
-          <div class="flex items-center gap-3 text-xs font-serif font-bold text-[#5A6B65]">
+          <div class="flex items-center gap-3 text-xs font-bold text-[#5A6B65]">
             <span class="font-mono text-[#0D6E5B] font-extrabold text-sm">${String(agregatSlideIndex + 1).padStart(2, '0')}</span>
             <span>/</span>
             <span class="font-mono text-slate-500">${String(list.length).padStart(2, '0')} Etape</span>
@@ -4239,11 +4239,7 @@ let agregatSector = 'all';
             return `
               <button type="button" 
                       onclick="window.PresisiEngine.goToKecamatanSlide(${i})" 
-                      class="shrink-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                        isActive 
-                          ? 'bg-[#0D6E5B] text-white shadow-sm ring-2 ring-[#0D6E5B]/25 scale-105 font-serif font-bold' 
-                          : 'bg-white hover:bg-emerald-50/50 text-[#5A6B65] border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 font-serif'
-                      }">
+                      class="shrink-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer ${ isActive ? 'bg-[#0D6E5B] text-white shadow-sm ring-2 ring-[#0D6E5B]/25 scale-105 font-bold' : 'bg-white hover:bg-emerald-50/50 text-[#5A6B65] border border-[#5A6B65]/15 hover:border-[#0D6E5B]/40 ' }">
                 <span class="w-2 h-2 rounded-full ${isActive ? 'bg-white animate-pulse' : 'bg-[#0D6E5B]/50'}"></span>
                 <span class="text-[10px] font-mono font-bold ${isActive ? 'text-white' : 'text-slate-500'}">${String(i + 1).padStart(2, '0')}</span>
                 <span class="text-xs font-bold ${isActive ? 'text-white' : 'text-slate-800'}">${item.nama}</span>
@@ -4385,32 +4381,32 @@ let agregatSector = 'all';
             <span>•</span>
             <span class="px-2 py-0.5 rounded-full ${isPesisir ? 'bg-sky-100 text-sky-800' : 'bg-amber-100 text-amber-800'} text-[10px] font-mono font-black">${statusLabel}</span>
             <span>•</span>
-            <span class="font-serif italic">${k.desaCount} Desa ${k.kelurahanCount > 0 ? `(${k.kelurahanCount} Kel)` : ''}</span>
+            <span class="italic">${k.desaCount} Desa ${k.kelurahanCount > 0 ? `(${k.kelurahanCount} Kel)` : ''}</span>
           </div>
 
           <!-- Aksen Garis Pendek Khas Editorial Majalah -->
           <div class="w-12 h-1 bg-[#0D6E5B] rounded-full mb-3"></div>
           
           <!-- Nama Kecamatan (Besar & Tebal Bergaya National Geographic) -->
-          <h3 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-[#0D6E5B] tracking-tight leading-none mb-3">
+          <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0D6E5B] tracking-tight leading-none mb-3">
             Kecamatan ${k.nama}
           </h3>
 
           <!-- Badge Potensi Wilayah Sebagai Lead Kutipan Jurnalistik -->
-          <div class="p-3.5 rounded-xl bg-gradient-to-r from-emerald-50/70 to-transparent border-l-4 border-[#0D6E5B] text-xs font-serif text-[#0D6E5B] italic leading-relaxed mb-4">
+          <div class="p-3.5 rounded-xl bg-gradient-to-r from-emerald-50/70 to-transparent border-l-4 border-[#0D6E5B] text-xs text-[#0D6E5B] italic leading-relaxed mb-4">
             "${k.karakteristik || 'Wilayah Strategis Penopang Kemandirian Pangan & Agribisnis Kolaka Utara'}"
           </div>
 
           <!-- Progress Bar Persentase Sektoral -->
           <div class="space-y-1.5 bg-[#FDFDFB] p-3.5 rounded-xl border border-[#5A6B65]/15 mb-4 shadow-2xs">
             <div class="flex items-center justify-between text-xs">
-              <span class="font-serif font-bold text-slate-800">${progressLabel}</span>
+              <span class="font-bold text-slate-800">${progressLabel}</span>
               <span class="font-mono font-black text-[#0D6E5B] text-sm">${progressPct}%</span>
             </div>
             <div class="w-full h-1.5 rounded-full bg-slate-200 overflow-hidden">
               <div class="h-full rounded-full bg-[#0D6E5B] transition-all duration-700" style="width: ${progressPct}%"></div>
             </div>
-            <div class="text-[11px] font-serif italic text-[#5A6B65] flex items-center justify-between pt-0.5">
+            <div class="text-[11px] italic text-[#5A6B65] flex items-center justify-between pt-0.5">
               <span>${progressSub}</span>
               <span class="font-mono text-[9px] uppercase tracking-wider text-slate-400">BPS PODES 2025</span>
             </div>
@@ -4421,36 +4417,36 @@ let agregatSector = 'all';
             <!-- 1. IMK & Sentra Usaha -->
             <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
               <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">I. IMK &amp; SENTRA</div>
-              <div class="text-2xl font-serif font-black text-[#0D6E5B]">${fmt(k.ekonomi?.ikm)} <span class="text-xs font-serif italic font-normal text-[#5A6B65]">Unit</span></div>
-              <div class="text-[10px] font-serif text-[#5A6B65]">${(k.ekonomi?.pasarPerm||0)+(k.ekonomi?.pasarSemi||0)} Pasar • ${k.ekonomi?.bank||0} Bank</div>
+              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.ekonomi?.ikm)} <span class="text-xs italic font-normal text-[#5A6B65]">Unit</span></div>
+              <div class="text-[10px] text-[#5A6B65]">${(k.ekonomi?.pasarPerm||0)+(k.ekonomi?.pasarSemi||0)} Pasar • ${k.ekonomi?.bank||0} Bank</div>
             </div>
 
             <!-- 2. Keluarga Berlistrik -->
             <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
               <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">II. LISTRIK PLN</div>
-              <div class="text-2xl font-serif font-black text-[#0D6E5B]">${fmt(k.lingkungan?.pln)} <span class="text-xs font-serif italic font-normal text-[#5A6B65]">KK</span></div>
-              <div class="text-[10px] font-serif text-[#5A6B65]">Rasio: ${k.lingkungan?.persenPln}%</div>
+              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.lingkungan?.pln)} <span class="text-xs italic font-normal text-[#5A6B65]">KK</span></div>
+              <div class="text-[10px] text-[#5A6B65]">Rasio: ${k.lingkungan?.persenPln}%</div>
             </div>
 
             <!-- 3. Sarana Pendidikan -->
             <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
               <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">III. PENDIDIKAN</div>
-              <div class="text-2xl font-serif font-black text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaPendidikan)} <span class="text-xs font-serif italic font-normal text-[#5A6B65]">Sekolah</span></div>
-              <div class="text-[10px] font-serif text-[#5A6B65]">${k.sosial?.totalSDMI||0} SD • ${k.sosial?.totalSMPMTs||0} SMP • ${(k.sosial?.totalSMAMA||0)+(k.sosial?.smk||0)} SMA</div>
+              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaPendidikan)} <span class="text-xs italic font-normal text-[#5A6B65]">Sekolah</span></div>
+              <div class="text-[10px] text-[#5A6B65]">${k.sosial?.totalSDMI||0} SD • ${k.sosial?.totalSMPMTs||0} SMP • ${(k.sosial?.totalSMAMA||0)+(k.sosial?.smk||0)} SMA</div>
             </div>
 
             <!-- 4. Fasilitas Kesehatan -->
             <div class="p-3.5 rounded-xl bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all space-y-1">
               <div class="text-[10px] font-mono uppercase tracking-widest text-[#5A6B65] font-bold">IV. KESEHATAN</div>
-              <div class="text-2xl font-serif font-black text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaKesehatan)} <span class="text-xs font-serif italic font-normal text-[#5A6B65]">Faskes</span></div>
-              <div class="text-[10px] font-serif text-[#5A6B65]">${(k.sosial?.puskesmasRI||0)+(k.sosial?.puskesmasNonRI||0)} Pusk • ${(k.sosial?.pustu||0)+(k.sosial?.poskesdes||0)} Pustu/Poskes</div>
+              <div class="text-2xl font-extrabold text-[#0D6E5B]">${fmt(k.sosial?.totalSaranaKesehatan)} <span class="text-xs italic font-normal text-[#5A6B65]">Faskes</span></div>
+              <div class="text-[10px] text-[#5A6B65]">${(k.sosial?.puskesmasRI||0)+(k.sosial?.puskesmasNonRI||0)} Pusk • ${(k.sosial?.pustu||0)+(k.sosial?.poskesdes||0)} Pustu/Poskes</div>
             </div>
           </div>
 
           <!-- Cakupan Wilayah (Daftar Desa) -->
           <div class="text-xs text-[#5A6B65] leading-relaxed bg-[#FDFDFB] p-3.5 rounded-xl border border-[#5A6B65]/15 mb-4 space-y-1">
             <div class="font-mono text-[10px] uppercase tracking-wider text-[#0D6E5B] font-bold">DAFTAR DESA / KELURAHAN KONSTITUEN (${k.desaCount} WILAYAH):</div>
-            <div class="font-serif italic text-slate-700">${k.desaList ? k.desaList.join(' • ') : '-'}</div>
+            <div class="italic text-slate-700">${k.desaList ? k.desaList.join(' • ') : '-'}</div>
           </div>
         </div>
 
@@ -4458,7 +4454,7 @@ let agregatSector = 'all';
         <div>
           <button type="button" 
                   onclick="window.PresisiEngine.onKecamatanChange('${k.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-serif font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-sm hover:shadow-md transform hover:-translate-y-0.5 cursor-pointer group/btn">
             <span>Buka Etape ${k.nama} di Peta WebGIS</span>
             <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
