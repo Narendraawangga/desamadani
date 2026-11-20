@@ -316,9 +316,17 @@
             margin-bottom: .15rem !important; 
             transition: all .18s ease !important; 
         }
+        .dc-sub-item i {
+            transition: transform .18s ease, color .18s ease !important;
+        }
         .dc-sub-item:hover { 
             background: #f1f5f9 !important; 
             color: #0f6b4a !important; 
+            transform: translateX(3px) !important;
+        }
+        .dc-sub-item:hover i {
+            color: #0f6b4a !important;
+            transform: scale(1.15) !important;
         }
         .dc-sub-item.active { 
             background: #ecfdf5 !important; 
@@ -2221,75 +2229,95 @@
                 <!-- ===================================================================== -->
                                 <div id="view-pembelajaran" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
                     <!-- ===================================================================== -->
-                    <!-- E-LEARNING HERO BANNER (3D ORBITAL & DESA CANTIK THEME)               -->
+                    <!-- HERO BANNER MATERI PEMBELAJARAN (KOMPAK & PROPORSIONAL DENGAN CTA)   -->
                     <!-- ===================================================================== -->
-                    <div class="bg-gradient-to-br from-[#062417] via-[#0c432d] to-[#12583b] rounded-3xl p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl border border-emerald-500/20">
+                    <div class="bg-gradient-to-br from-[#062417] via-[#0c432d] to-[#12583b] rounded-3xl px-6 py-5 sm:px-8 sm:py-6 lg:px-9 lg:py-6 text-white relative overflow-hidden shadow-2xl border border-emerald-500/20">
                         <!-- Decorative Ambient Glows -->
-                        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none"></div>
-                        <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-teal-400/15 blur-3xl pointer-events-none"></div>
+                        <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-teal-400/15 blur-3xl pointer-events-none"></div>
 
-                        <!-- Top Header Pill Bar -->
-                        <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
-                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wide shadow-xs">
+                        <!-- Top Header Pill Bar with Progress Indicator -->
+                        <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/10">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold tracking-wide shadow-xs">
                                 <i class="bi bi-mortarboard-fill text-emerald-300"></i>
                                 <span>BPS KABUPATEN KOLAKA UTARA</span>
                                 <span class="text-white/40">•</span>
                                 <span class="text-emerald-200">POJOK LITERASI DESA CANTIK</span>
                             </div>
-                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 backdrop-blur-md border border-emerald-400/30 text-emerald-200 text-xs font-semibold">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                                <span>Kurikulum Pembinaan 2026</span>
+
+                            <!-- Indikator Progres Belajar Ringkas -->
+                            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 backdrop-blur-md border border-emerald-400/30 text-xs">
+                                <span class="text-emerald-100 font-semibold text-[11px] flex items-center gap-1.5">
+                                    <i class="bi bi-award-fill text-amber-300"></i>
+                                    <span>Progres Sertifikasi:</span>
+                                </span>
+                                <div class="w-20 sm:w-28 h-2 rounded-full bg-black/40 border border-white/10 overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full" style="width: 25%;"></div>
+                                </div>
+                                <span class="font-extrabold text-amber-300 text-[11px]">1/4 Selesai (25%)</span>
                             </div>
                         </div>
 
                         <!-- Main Hero Content: Left Details & Right 3D Orbital Stage -->
-                        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mt-6">
-                            <!-- Left: Title, Intro, Feature Checklist Pills -->
-                            <div class="lg:col-span-7 space-y-4">
-                                <span class="inline-block px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-[11px] font-black uppercase tracking-wider border border-emerald-400/30">
+                        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mt-4">
+                            <!-- Left: Title, Intro, Feature Pills & Primary CTA -->
+                            <div class="lg:col-span-7 space-y-3">
+                                <span class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-black uppercase tracking-wider border border-emerald-400/30">
                                     Platform Pembelajaran Mandiri
                                 </span>
-                                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-                                    E-Learning<br>
+                                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+                                    Materi Pembelajaran<br>
                                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-white">Statistik Desa</span>
                                 </h1>
-                                <p class="text-xs sm:text-sm text-emerald-100/90 font-normal leading-relaxed max-w-xl">
-                                    Program penguatan kapasitas statistik sektoral & literasi data bagi Agen Statistik dan aparatur desa guna mewujudkan standarisasi Satu Data Indonesia (SDI).
+                                <p class="text-xs sm:text-[13px] text-emerald-100/90 font-normal leading-relaxed max-w-xl">
+                                    Program penguatan kapasitas statistik sektoral &amp; literasi data bagi Agen Statistik dan aparatur desa guna mewujudkan standarisasi Satu Data Indonesia (SDI).
                                 </p>
 
-                                <!-- 4 Key Feature Checklist Pills (Matching Reference Image) -->
-                                <div class="grid grid-cols-2 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-3">
-                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
-                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0"><i class="bi bi-camera-video-fill"></i></span>
-                                        <span>Video Microlearning</span>
+                                <!-- 4 Key Feature Checklist Pills (Compact) -->
+                                <div class="grid grid-cols-2 sm:grid-cols-2 gap-2 pt-1">
+                                    <div class="flex items-center gap-2 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-6 h-6 rounded-lg bg-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0 text-xs"><i class="bi bi-camera-video-fill"></i></span>
+                                        <span class="text-[11px] sm:text-xs">Video Microlearning</span>
                                     </div>
-                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
-                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-teal-300 shrink-0"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
-                                        <span>Praktik Rumus Excel</span>
+                                    <div class="flex items-center gap-2 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-6 h-6 rounded-lg bg-emerald-500/30 flex items-center justify-center text-teal-300 shrink-0 text-xs"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
+                                        <span class="text-[11px] sm:text-xs">Praktik Rumus Excel</span>
                                     </div>
-                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
-                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-amber-300 shrink-0"><i class="bi bi-patch-check-fill"></i></span>
-                                        <span>Sertifikasi Agen BPS</span>
+                                    <div class="flex items-center gap-2 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-6 h-6 rounded-lg bg-emerald-500/30 flex items-center justify-center text-amber-300 shrink-0 text-xs"><i class="bi bi-patch-check-fill"></i></span>
+                                        <span class="text-[11px] sm:text-xs">Sertifikasi Agen BPS</span>
                                     </div>
-                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
-                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-sky-300 shrink-0"><i class="bi bi-clock-history"></i></span>
-                                        <span>Akses Belajar 24/7</span>
+                                    <div class="flex items-center gap-2 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-6 h-6 rounded-lg bg-emerald-500/30 flex items-center justify-center text-sky-300 shrink-0 text-xs"><i class="bi bi-clock-history"></i></span>
+                                        <span class="text-[11px] sm:text-xs">Akses Belajar 24/7</span>
                                     </div>
+                                </div>
+
+                                <!-- Action Call-To-Action (CTA) Buttons -->
+                                <div class="flex flex-wrap items-center gap-3 pt-2">
+                                    <button type="button" onclick="switchNavMenu('video')" class="py-2.5 px-5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 hover:from-amber-300 hover:to-yellow-200 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition transform hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer">
+                                        <span>Mulai Belajar Sekarang</span>
+                                        <i class="bi bi-arrow-right-short text-lg leading-none"></i>
+                                    </button>
+                                    <button type="button" onclick="document.getElementById('section-tahapan-sertifikasi')?.scrollIntoView({behavior: 'smooth'})" class="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs sm:text-sm backdrop-blur-md transition flex items-center gap-2 cursor-pointer">
+                                        <i class="bi bi-pie-chart-fill text-emerald-300 text-xs"></i>
+                                        <span>Lihat Progres Saya</span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Right: 3D Orbital Avatar Stage (Matching Reference Image) -->
-                            <div class="lg:col-span-5 flex justify-center py-4">
-                                <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+                            <!-- Right: 3D Orbital Avatar Stage (Compact & Focused) -->
+                            <div class="lg:col-span-5 flex justify-center py-2">
+                                <div class="relative w-52 h-52 sm:w-60 sm:h-60 flex items-center justify-center">
                                     <!-- Glowing Outer Halo Orbit -->
-                                    <div class="absolute inset-0 rounded-full border-2 border-emerald-400/40 shadow-[0_0_60px_rgba(16,185,129,0.35)] animate-[spin_25s_linear_infinite] pointer-events-none"></div>
+                                    <div class="absolute inset-0 rounded-full border-2 border-emerald-400/40 shadow-[0_0_50px_rgba(16,185,129,0.35)] animate-[spin_25s_linear_infinite] pointer-events-none"></div>
                                     
                                     <!-- Inner Halo Circle with Backdrop Glow -->
-                                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border border-teal-300/60 bg-gradient-to-tr from-emerald-950/80 to-emerald-800/40 backdrop-blur-md flex items-center justify-center shadow-inner relative">
+                                    <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border border-teal-300/60 bg-gradient-to-tr from-emerald-950/80 to-emerald-800/40 backdrop-blur-md flex items-center justify-center shadow-inner relative">
                                         <!-- Central 3D Learner Avatar -->
-                                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-300 p-1 shadow-2xl flex items-center justify-center relative">
-                                            <!-- High-Quality Learner Illustration SVG with Headphones & Digital Tablet -->
-                                            <svg class="w-24 h-24 sm:w-28 sm:h-28 drop-shadow-xl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-300 p-1 shadow-2xl flex items-center justify-center relative">
+                                            <!-- Learner Illustration SVG with Headphones & Digital Tablet -->
+                                            <svg class="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-xl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <!-- Headphone Arc -->
                                                 <path d="M34 56 C34 26, 86 26, 86 56" stroke="#34d399" stroke-width="5" stroke-linecap="round" fill="none"/>
                                                 <!-- Headphone Earcups -->
@@ -2317,53 +2345,53 @@
                                         </div>
                                     </div>
 
-                                    <!-- 6 Floating 3D Orbiting Glass Spheres (Matching Reference Layout) -->
-                                    <!-- Orb 1: Top (12 o'clock) - Notifikasi BPS -->
-                                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 shadow-[0_8px_20px_rgba(16,185,129,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-base transform hover:scale-110 transition duration-300">
+                                    <!-- 6 Floating 3D Orbiting Glass Spheres -->
+                                    <!-- Orb 1: Top (12 o'clock) -->
+                                    <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 shadow-[0_6px_15px_rgba(16,185,129,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-bell-fill"></i>
                                     </div>
-                                    <!-- Orb 2: Top Right (2 o'clock) - Grafik Statistik -->
-                                    <div class="absolute top-5 -right-2 w-11 h-11 rounded-full bg-gradient-to-tr from-teal-400 to-cyan-300 shadow-[0_8px_20px_rgba(20,184,166,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-teal-950 text-base transform hover:scale-110 transition duration-300">
+                                    <!-- Orb 2: Top Right (2 o'clock) -->
+                                    <div class="absolute top-4 -right-1 w-9 h-9 rounded-full bg-gradient-to-tr from-teal-400 to-cyan-300 shadow-[0_6px_15px_rgba(20,184,166,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-teal-950 text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-graph-up-arrow"></i>
                                     </div>
-                                    <!-- Orb 3: Bottom Right (4 o'clock) - E-Sertifikat -->
-                                    <div class="absolute bottom-5 -right-2 w-11 h-11 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-[0_8px_20px_rgba(245,158,11,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-amber-950 text-base transform hover:scale-110 transition duration-300">
+                                    <!-- Orb 3: Bottom Right (4 o'clock) -->
+                                    <div class="absolute bottom-4 -right-1 w-9 h-9 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-[0_6px_15px_rgba(245,158,11,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-amber-950 text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-award-fill"></i>
                                     </div>
-                                    <!-- Orb 4: Bottom (6 o'clock) - Verifikasi Standar SDI -->
-                                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 shadow-[0_6px_15px_rgba(5,150,105,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-sm transform hover:scale-110 transition duration-300">
+                                    <!-- Orb 4: Bottom (6 o'clock) -->
+                                    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 shadow-[0_5px_12px_rgba(5,150,105,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-shield-fill-check"></i>
                                     </div>
-                                    <!-- Orb 5: Bottom Left (8 o'clock) - Video Microlearning -->
-                                    <div class="absolute bottom-5 -left-2 w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-red-400 shadow-[0_8px_20px_rgba(225,29,72,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-base transform hover:scale-110 transition duration-300">
+                                    <!-- Orb 5: Bottom Left (8 o'clock) -->
+                                    <div class="absolute bottom-4 -left-1 w-9 h-9 rounded-full bg-gradient-to-tr from-rose-500 to-red-400 shadow-[0_6px_15px_rgba(225,29,72,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-play-btn-fill"></i>
                                     </div>
-                                    <!-- Orb 6: Top Left (10 o'clock) - Rumus Excel -->
-                                    <div class="absolute top-5 -left-2 w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-[0_8px_20px_rgba(16,185,129,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-sm transform hover:scale-110 transition duration-300">
+                                    <!-- Orb 6: Top Left (10 o'clock) -->
+                                    <div class="absolute top-4 -left-1 w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-[0_5px_12px_rgba(16,185,129,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Curved Organic Wave at the Bottom of Hero (Matching Reference Image) -->
-                        <div class="mt-8 -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 lg:-mx-10 lg:-mb-10 overflow-hidden leading-none">
-                            <svg class="w-full h-8 sm:h-12 text-[#f6f8f6] fill-current" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <!-- Curved Organic Wave at the Bottom of Hero -->
+                        <div class="mt-4 -mx-6 -mb-5 sm:-mx-8 sm:-mb-6 lg:-mx-9 lg:-mb-6 overflow-hidden leading-none">
+                            <svg class="w-full h-7 sm:h-9 text-[#f6f8f6] fill-current" viewBox="0 0 1200 120" preserveAspectRatio="none">
                                 <path d="M0,0 C150,90 350,-40 500,60 C650,140 900,10 1200,80 L1200,120 L0,120 Z"></path>
                             </svg>
                         </div>
                     </div>
 
                     <!-- ===================================================================== -->
-                    <!-- BOTTOM SECTION: FEATURED COURSES & INTERACTIVE STEPPER WIDGET        -->
+                    <!-- MODUL PEMBELAJARAN UTAMA & WIDGET TAHAPAN SERTIFIKASI                -->
                     <!-- ===================================================================== -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
-                        <!-- Left: Featured Courses (3 Cards Grid) -->
+                        <!-- Left: Modul Pembelajaran Utama (3 Cards Grid) -->
                         <div class="lg:col-span-8 space-y-4">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                                        <span>Featured Courses</span>
+                                        <span>Modul Pembelajaran Utama</span>
                                         <span class="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 rounded-full">3 Modul Terpadu</span>
                                     </h3>
                                     <p class="text-xs text-slate-500 mt-0.5">Kurikulum standar BPS Satu Data Indonesia untuk Agen Statistik Desa.</p>
@@ -2372,99 +2400,102 @@
 
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <!-- Card 1: Video Tutorial Microlearning -->
-                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer" onclick="switchNavMenu('video')">
                                     <div>
                                         <!-- Top Preview Banner with 3D Play Visual -->
-                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#0c3f29] via-[#0f6b4a] to-[#10b981] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                        <div class="h-28 sm:h-32 rounded-2xl bg-gradient-to-br from-[#0c3f29] via-[#0f6b4a] to-[#10b981] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition duration-300">
                                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
                                             <!-- Floating Tags -->
-                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-emerald-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Microlearning</span>
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-emerald-100 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">VIDEO MATERI</span>
                                             <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-emerald-900/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">5-7 Menit</span>
                                             <!-- Center 3D Play Icon -->
-                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
+                                            <div class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition duration-300">
                                                 <i class="bi bi-play-fill text-2xl ml-0.5"></i>
                                             </div>
                                         </div>
 
-                                        <!-- Title & Description -->
-                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-emerald-700 transition">Video Tutorial Desa Cantik</h4>
-                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                                            Video edukasi microlearning tata cara pengumpulan data desa dan standarisasi statistik.
+                                        <!-- Title & 1-Line Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-emerald-700 transition">Video Tutorial Desa Cantik</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed line-clamp-1" title="Video microlearning tata cara pengumpulan data dan standarisasi statistik desa.">
+                                            Video microlearning tata cara pengumpulan data dan standarisasi statistik desa.
                                         </p>
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <button type="button" onclick="switchNavMenu('video')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-emerald-700/20 hover:shadow-emerald-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                            <span>Mulai Tonton</span>
-                                            <i class="bi bi-arrow-right"></i>
+                                        <button type="button" onclick="event.stopPropagation(); switchNavMenu('video')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-emerald-700/20 hover:shadow-emerald-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-play-fill text-sm"></i>
+                                            <span>Tonton Video</span>
+                                            <i class="bi bi-arrow-right text-xs"></i>
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Card 2: Pre-test & Post-test -->
-                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer" onclick="switchNavMenu('pretest')">
                                     <div>
                                         <!-- Top Preview Banner with 3D Test Visual -->
-                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#0369a1] via-[#0284c7] to-[#0d9488] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                        <div class="h-28 sm:h-32 rounded-2xl bg-gradient-to-br from-[#0369a1] via-[#0284c7] to-[#0d9488] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition duration-300">
                                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
                                             <!-- Floating Tags -->
-                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-sky-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Evaluasi Mandiri</span>
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-sky-100 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">EVALUASI MANDIRI</span>
                                             <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-sky-950/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">10 Soal SDI</span>
                                             <!-- Center 3D Badge Icon -->
-                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
-                                                <i class="bi bi-patch-check-fill text-2xl"></i>
+                                            <div class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition duration-300">
+                                                <i class="bi bi-patch-check-fill text-xl"></i>
                                             </div>
                                         </div>
 
-                                        <!-- Title & Description -->
-                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-sky-700 transition">Pre-test &amp; Post-test</h4>
-                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                                            Ukur pemahaman awal dan akhir materi statistik sektoral untuk meraih sertifikat kelulusan agen.
+                                        <!-- Title & 1-Line Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-sky-700 transition">Pre-test &amp; Post-test</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed line-clamp-1" title="Ukur pemahaman statistik sektoral untuk meraih sertifikat kelulusan agen.">
+                                            Ukur pemahaman statistik sektoral untuk meraih sertifikat kelulusan agen.
                                         </p>
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <button type="button" onclick="switchNavMenu('pretest')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-600 to-teal-700 hover:from-sky-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-sky-700/20 hover:shadow-sky-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                            <span>Mulai Evaluasi</span>
-                                            <i class="bi bi-arrow-right"></i>
+                                        <button type="button" onclick="event.stopPropagation(); switchNavMenu('pretest')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-600 to-teal-700 hover:from-sky-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-sky-700/20 hover:shadow-sky-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-pencil-square text-xs"></i>
+                                            <span>Kerjakan Soal</span>
+                                            <i class="bi bi-arrow-right text-xs"></i>
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Card 3: Buku Panduan & Rumus Excel -->
-                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer" onclick="switchNavMenu('buku')">
                                     <div>
                                         <!-- Top Preview Banner with 3D Book Visual -->
-                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#b45309] via-[#d97706] to-[#059669] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                        <div class="h-28 sm:h-32 rounded-2xl bg-gradient-to-br from-[#b45309] via-[#d97706] to-[#059669] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition duration-300">
                                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
                                             <!-- Floating Tags -->
-                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-amber-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Dokumen Resmi</span>
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-amber-100 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">BUKU PANDUAN</span>
                                             <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-amber-950/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">30 Lembar</span>
                                             <!-- Center 3D Book Icon -->
-                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
-                                                <i class="bi bi-journal-bookmark-fill text-2xl"></i>
+                                            <div class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition duration-300">
+                                                <i class="bi bi-journal-bookmark-fill text-xl"></i>
                                             </div>
                                         </div>
 
-                                        <!-- Title & Description -->
-                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-amber-700 transition">Buku Panduan &amp; Rumus</h4>
-                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                                            Buku pedoman Excel terstandarisasi, modul rumus statistik sektoral, dan Surat Keputusan Agen.
+                                        <!-- Title & 1-Line Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-amber-700 transition">Buku Panduan &amp; Rumus</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed line-clamp-1" title="Pedoman teknis Excel terstandarisasi dan modul rumus statistik sektoral.">
+                                            Pedoman teknis Excel terstandarisasi dan modul rumus statistik sektoral.
                                         </p>
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <button type="button" onclick="switchNavMenu('buku')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-emerald-700 hover:from-amber-700 hover:to-emerald-800 text-white font-black text-xs shadow-md shadow-amber-700/20 hover:shadow-amber-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                            <span>Buka Panduan</span>
-                                            <i class="bi bi-arrow-right"></i>
+                                        <button type="button" onclick="event.stopPropagation(); switchNavMenu('buku')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-emerald-700 hover:from-amber-700 hover:to-emerald-800 text-white font-black text-xs shadow-md shadow-amber-700/20 hover:shadow-amber-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-book text-xs"></i>
+                                            <span>Baca Panduan</span>
+                                            <i class="bi bi-arrow-right text-xs"></i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right: Interactive Stepper & Certification Widget (Matching Reference's Dark Right Widget) -->
-                        <div class="lg:col-span-4 bg-gradient-to-br from-[#062015] via-[#0a3524] to-[#124d35] rounded-3xl p-5 sm:p-6 text-white shadow-xl border border-emerald-500/25 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Right: Interactive Stepper & Certification Widget -->
+                        <div id="section-tahapan-sertifikasi" class="lg:col-span-4 bg-gradient-to-br from-[#062015] via-[#0a3524] to-[#124d35] rounded-3xl p-5 text-white shadow-xl border border-emerald-500/25 flex flex-col justify-between relative overflow-hidden">
                             <!-- Inner Ambient Glow Blob -->
                             <div class="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-400/15 blur-2xl pointer-events-none"></div>
 
@@ -2478,63 +2509,86 @@
                                 <h3 class="text-base sm:text-lg font-black text-white">Tahapan Sertifikasi</h3>
                                 <p class="text-xs text-emerald-100/75 mt-0.5">Ikuti 4 langkah terstruktur untuk mencapai kelulusan Agen Statistik.</p>
 
-                                <!-- 4 Rounded Glass Icons Bar (Matching Reference Icon Bar) -->
-                                <div class="grid grid-cols-4 gap-2 my-4">
-                                    <button type="button" onclick="openPretestModal()" title="Mulai Pre-test" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
-                                        <i class="bi bi-clipboard-check text-emerald-300 text-base group-hover:scale-110 transition"></i>
-                                        <span class="text-[9px] font-bold text-white/80">Pretest</span>
-                                    </button>
-                                    <button type="button" onclick="switchNavMenu('video')" title="Buka Video Tutorial" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
-                                        <i class="bi bi-play-circle-fill text-rose-300 text-base group-hover:scale-110 transition"></i>
-                                        <span class="text-[9px] font-bold text-white/80">Video</span>
-                                    </button>
-                                    <button type="button" onclick="openPosttestModal()" title="Mulai Post-test" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
-                                        <i class="bi bi-patch-question-fill text-sky-300 text-base group-hover:scale-110 transition"></i>
-                                        <span class="text-[9px] font-bold text-white/80">Posttest</span>
-                                    </button>
-                                    <button type="button" onclick="openSertifikatModal()" title="E-Sertifikat Kelulusan" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
-                                        <i class="bi bi-award-fill text-amber-300 text-base group-hover:scale-110 transition"></i>
-                                        <span class="text-[9px] font-bold text-white/80">Sertifikat</span>
-                                    </button>
+                                <!-- 4 Stages Interactive Status Grid (Pretest, Video, Posttest, Sertifikat) -->
+                                <div class="grid grid-cols-4 gap-2 my-3.5">
+                                    <!-- Tahap 1: Pretest - SELESAI (Hijau Menyala + Ikon Centang) -->
+                                    <div onclick="openPretestModal()" title="Tahap 1: Pre-test telah selesai" class="p-2 rounded-2xl bg-emerald-500/25 border-2 border-emerald-400 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.3)] flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-105 transition group relative">
+                                        <div class="relative">
+                                            <i class="bi bi-clipboard-check text-base"></i>
+                                            <span class="absolute -top-1.5 -right-2 w-3.5 h-3.5 rounded-full bg-emerald-400 text-emerald-950 flex items-center justify-center text-[9px] font-black"><i class="bi bi-check"></i></span>
+                                        </div>
+                                        <span class="text-[9px] font-black text-white">Pretest</span>
+                                        <span class="text-[7.5px] font-extrabold text-emerald-200 bg-emerald-900/70 px-1 rounded">Selesai</span>
+                                    </div>
+
+                                    <!-- Tahap 2: Video - SEDANG AKTIF / DIKERJAKAN (Border Kuning Menyala + Animasi) -->
+                                    <div onclick="switchNavMenu('video')" title="Tahap 2: Sedang Aktif - Tonton Video Tutorial" class="p-2 rounded-2xl bg-amber-500/20 border-2 border-amber-300 ring-2 ring-amber-400/40 text-amber-200 shadow-[0_0_18px_rgba(245,158,11,0.35)] flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-105 transition group relative animate-pulse">
+                                        <div class="relative">
+                                            <i class="bi bi-play-circle-fill text-amber-300 text-base"></i>
+                                            <span class="absolute -top-1.5 -right-2 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                                        </div>
+                                        <span class="text-[9px] font-black text-amber-200">Video</span>
+                                        <span class="text-[7.5px] font-extrabold text-slate-950 bg-amber-300 px-1 rounded">Aktif</span>
+                                    </div>
+
+                                    <!-- Tahap 3: Posttest - TERKUNCI (Opacity Rendah + Ikon Gembok) -->
+                                    <div onclick="showToast('⚠️ Selesaikan materi video tutorial terlebih dahulu untuk membuka Post-test.')" title="Tahap 3: Post-test terkunci" class="p-2 rounded-2xl bg-white/5 border border-white/10 opacity-60 text-white/50 flex flex-col items-center justify-center gap-1 cursor-not-allowed hover:opacity-80 transition relative">
+                                        <div class="relative">
+                                            <i class="bi bi-patch-question-fill text-white/40 text-base"></i>
+                                            <span class="absolute -top-1.5 -right-2 w-3.5 h-3.5 rounded-full bg-slate-800 text-amber-300 flex items-center justify-center text-[8px]"><i class="bi bi-lock-fill"></i></span>
+                                        </div>
+                                        <span class="text-[9px] font-bold text-white/50">Posttest</span>
+                                        <span class="text-[7.5px] font-bold text-white/40 bg-white/10 px-1 rounded">Kunci</span>
+                                    </div>
+
+                                    <!-- Tahap 4: Sertifikat - TERKUNCI (Opacity Rendah + Ikon Gembok) -->
+                                    <div onclick="showToast('🔒 Selesaikan seluruh tahapan untuk menerbitkan E-Sertifikat resmi.')" title="Tahap 4: Sertifikat terkunci" class="p-2 rounded-2xl bg-white/5 border border-white/10 opacity-50 text-white/40 flex flex-col items-center justify-center gap-1 cursor-not-allowed hover:opacity-75 transition relative">
+                                        <div class="relative">
+                                            <i class="bi bi-award-fill text-amber-300/40 text-base"></i>
+                                            <span class="absolute -top-1.5 -right-2 w-3.5 h-3.5 rounded-full bg-slate-800 text-amber-300 flex items-center justify-center text-[8px]"><i class="bi bi-lock-fill"></i></span>
+                                        </div>
+                                        <span class="text-[9px] font-bold text-white/40">Sertifikat</span>
+                                        <span class="text-[7.5px] font-bold text-white/40 bg-white/10 px-1 rounded">Kunci</span>
+                                    </div>
                                 </div>
 
-                                <!-- Stepper Progress Bar (Matching Reference Stepper Track ●────●────●────●) -->
+                                <!-- Stepper Progress Bar (Refined 25% Progress) -->
                                 <div class="my-3 px-1">
                                     <div class="flex items-center justify-between text-[10px] font-bold text-emerald-200/80 mb-2">
                                         <span>Tahap 1</span>
-                                        <span>Tahap 2</span>
-                                        <span>Tahap 3</span>
-                                        <span>Kelulusan</span>
+                                        <span class="text-amber-300 font-extrabold">Tahap 2</span>
+                                        <span class="text-white/40">Tahap 3</span>
+                                        <span class="text-white/40">Kelulusan</span>
                                     </div>
                                     <div class="relative flex items-center justify-between">
                                         <!-- Connecting Track Line -->
                                         <div class="absolute left-2 right-2 top-1/2 -translate-y-1/2 h-1 bg-white/15 rounded-full z-0">
-                                            <div class="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 rounded-full" style="width: 75%;"></div>
+                                            <div class="h-full bg-gradient-to-r from-emerald-400 to-amber-300 rounded-full" style="width: 35%;"></div>
                                         </div>
                                         <!-- Step Dots -->
-                                        <div class="w-6 h-6 rounded-full bg-emerald-400 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10">
+                                        <div class="w-6 h-6 rounded-full bg-emerald-400 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10" title="Pre-test selesai">
                                             <i class="bi bi-check-lg"></i>
                                         </div>
-                                        <div class="w-6 h-6 rounded-full bg-emerald-400 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10">
-                                            <i class="bi bi-check-lg"></i>
+                                        <div class="w-6 h-6 rounded-full bg-amber-300 border-2 border-white flex items-center justify-center text-[10px] text-slate-950 font-black shadow-md z-10 animate-pulse" title="Materi Video sedang aktif">
+                                            2
                                         </div>
-                                        <div class="w-6 h-6 rounded-full bg-teal-300 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10 animate-pulse">
-                                            3
+                                        <div class="w-6 h-6 rounded-full bg-white/15 border-2 border-emerald-950 flex items-center justify-center text-[9px] text-white/40 z-10" title="Post-test terkunci">
+                                            <i class="bi bi-lock-fill"></i>
                                         </div>
-                                        <div class="w-6 h-6 rounded-full bg-white/25 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-white font-bold z-10">
-                                            4
+                                        <div class="w-6 h-6 rounded-full bg-white/15 border-2 border-emerald-950 flex items-center justify-center text-[9px] text-white/40 z-10" title="Sertifikat terkunci">
+                                            <i class="bi bi-lock-fill"></i>
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between text-[9px] font-medium text-emerald-100/60 mt-2">
-                                        <span>Pre-Test</span>
-                                        <span>Materi Video</span>
+                                        <span class="text-emerald-300 font-bold">Pre-Test ✓</span>
+                                        <span class="text-amber-200 font-bold">Video •</span>
                                         <span>Post-Test</span>
                                         <span>Sertifikat</span>
                                     </div>
                                 </div>
 
                                 <!-- Minimum Criteria Info Box -->
-                                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-xs space-y-1.5 my-3">
+                                <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs space-y-1 my-2.5">
                                     <div class="flex items-center justify-between">
                                         <span class="text-white/70 text-[11px]">Standar Kelulusan:</span>
                                         <span class="font-extrabold text-emerald-300 text-[11px]">Skor Minimal 70 / 100</span>
@@ -2546,10 +2600,10 @@
                                 </div>
                             </div>
 
-                            <!-- Bottom CTA Button (Matching Reference's Cyan Pill CTA Button) -->
-                            <div class="mt-4">
-                                <button type="button" onclick="openSertifikatModal()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
-                                    <span>Lihat Lembar Sertifikat</span>
+                            <!-- Bottom CTA Button -->
+                            <div class="mt-3">
+                                <button type="button" onclick="openSertifikatModal()" class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
+                                    <span>Pratinjau E-Sertifikat</span>
                                     <i class="bi bi-award-fill text-sm"></i>
                                 </button>
                             </div>
@@ -2732,7 +2786,7 @@
                         <div class="flex items-center gap-2 self-start sm:self-auto">
                             <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
                                 <i class="bi bi-arrow-left"></i>
-                                <span>Kembali ke E-Learning</span>
+                                <span>Kembali ke Materi Pembelajaran</span>
                             </button>
                             <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer"><span>🔓</span><span>Unlock</span></button>
                         </div>
@@ -6531,10 +6585,12 @@ function triggerPubDownload() {
         }
         function toggleMateriMenu() {
             const sub = document.getElementById('dcMateriSub');
-            const willOpen = sub ? sub.classList.contains('hidden') : true;
-            dcShowMateri(willOpen);
-            if (currentNavMenu !== 'pembelajaran' && !DC_MATERI_CHILD.includes(currentNavMenu)) {
+            if (currentNavMenu !== 'pembelajaran') {
+                dcShowMateri(true);
                 switchNavMenu('pembelajaran');
+            } else {
+                const willOpen = sub ? sub.classList.contains('hidden') : true;
+                dcShowMateri(willOpen);
             }
         }
         const DC_MATERI_CHILD = ['video', 'pretest', 'buku'];
