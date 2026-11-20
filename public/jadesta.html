@@ -510,7 +510,6 @@
     </section>
 
     <!-- SECTION 1.5: DESA MADANI OVERVIEW & GATEWAY TO WEB UTAMA -->
-        <!-- SECTION 1.5: SEKSI PETA ILUSTRATIF (LAYOUT 2 KOLOM ASIMETRIS GAYA MIKE KUS) -->
     <section id="tentang" class="py-16 sm:py-24 bg-[#F7F7F5] border-b border-[#5A6B65]/20 scroll-mt-6 relative overflow-hidden">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
@@ -1211,7 +1210,7 @@
                                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600 ring-2 ring-white"></span>
                                 </span>
-                                <span>Rute 01 • Kec. Lasusua</span>
+                                <span>Waypoint 01 • Kec. Lasusua</span>
                             </div>
 
                             <!-- Tipografi & Aksen Watermark Handwriting Dekoratif -->
@@ -2102,8 +2101,7 @@
                 <div id="loginAlertBox" class="hidden mb-4 p-3 rounded-xl text-xs font-semibold"></div>
 
                 <form id="formLoginModal" method="POST" action="/login" onsubmit="handleLoginSubmit(event)">
-                    @csrf
-                    
+                    <input type="hidden" name="_token" value="" autocomplete="off">                    
                     <!-- Input Email / Username -->
                     <div class="mb-4">
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
@@ -2498,20 +2496,20 @@
                 subtitle: 'Indeks Perkembangan Desa (IPD) 60 – 70',
                 headerClass: 'bg-gradient-to-r from-amber-600 via-amber-700 to-slate-900',
                 accentColor: '#d97706',
-                desc: 'Desa yang telah memiliki pemenuhan kebutuhan sarana dasar yang cukup, namun masih membutuhkan penguatan kapasitas ekonomi produktif, BUMDes, hilirisasi kakao/cengkeh, dan perluasan jangkauan konektivitas digital 4G.',
+                desc: 'Desa yang telah memiliki ketersediaan pelayanan dasar yang mulai stabil, BUMDes aktif rintisan, terhubung sinyal seluler 4G, dan siap diakselerasi menuju kelompok desa maju.',
                 icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>`,
                 points: [
-                    { title: 'Revitalisasi BUMDes Rintisan', desc: 'Pendampingan manajerial dan suntikan modal usaha untuk diversifikasi produk lokal.' },
-                    { title: 'Digitalisasi Desa & Sinyal 4G', desc: 'Pemasangan tower penguat sinyal seluler dan akses internet kantor desa.' },
-                    { title: 'Infrastruktur Pertanian Kakao', desc: 'Pembangunan jalan usaha tani dan fasilitas penjemuran/fermentasi komoditas.' },
-                    { title: 'Peningkatan Kapasitas SDM', desc: 'Pelatihan vokasi pemuda dan literasi keuangan untuk pelaku UMKM pedesaan.' }
+                    { title: 'Penguatan BUMDes Rintisan', desc: 'Pendampingan manajerial dan permodalan agar unit usaha desa mandiri dan berprofit.' },
+                    { title: 'Optimalisasi Jaringan 4G', desc: 'Pemanfaatan jaringan seluler untuk administrasi desa digital dan promosi produk lokal.' },
+                    { title: 'Hilirisasi Kebun Kakao', desc: 'Peningkatan mutu fermentasi biji kakao untuk memenuhi standar pasar industri.' },
+                    { title: 'Pendidikan & Posyandu', desc: 'Ketersediaan PAUD terpadu dan posyandu aktif dengan pemantauan gizi anak.' }
                 ],
                 highlight: {
                     badge: 'Akselerasi Produktivitas',
-                    text: '38 Desa (28,6%) berada pada fase transisi emas menuju status Desa Maju dan Mandiri.'
+                    text: '38 Desa (28,6%) memiliki momentum tercepat untuk bertransformasi menjadi Desa Maju.'
                 },
-                actionUrl: '/portal#sectionPotensi',
-                actionText: 'Lihat Potensi Ekonomi'
+                actionUrl: '/portal#sectionTabel',
+                actionText: 'Lihat Data Desa Berkembang'
             },
             3: {
                 number: '03',
@@ -2520,29 +2518,29 @@
                 subtitle: 'Indeks Perkembangan Desa (IPD) 70 – 80',
                 headerClass: 'bg-gradient-to-r from-[#0D6E5B] via-[#095244] to-[#043328]',
                 accentColor: '#0D6E5B',
-                desc: 'Kelompok status terbesar di Kolaka Utara dengan capaian pelayanan publik prima, fasilitas posyandu & faskes lengkap, infrastruktur jalan aspal mulus, serta produktivitas perkebunan kakao dan cengkeh yang sangat tinggi.',
+                desc: 'Kelompok terbesar di Kabupaten Kolaka Utara (hampir 50% wilayah). Memiliki infrastruktur jalan aspal hotmix memadai, fasilitas kesehatan dan pendidikan lengkap, serta produktivitas ekonomi kakao & perikanan yang tinggi.',
                 icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
                 points: [
-                    { title: 'Kategori Terbesar Daerah', desc: 'Mencakup hampir separuh (48,1%) dari seluruh desa di Bumi Patampanua.' },
-                    { title: 'Akses Hotmix Menyeluruh', desc: 'Jalan utama desa terhubung langsung ke jalan poros provinsi dan pelabuhan.' },
-                    { title: 'Sentra Kakao Berkelanjutan', desc: 'Penerapan good agricultural practices (GAP) dan sertifikasi perkebunan rakyat.' },
-                    { title: 'Kesiapan Transformasi Mandiri', desc: 'Kesiapan kelembagaan dan tata kelola keuangan desa menuju status mandiri seutuhnya.' }
+                    { title: 'Kelompok Paling Dominan', desc: 'Mencakup 64 desa (48,1%) sebagai tulang punggung perekonomian Kabupaten Kolaka Utara.' },
+                    { title: 'Fasilitas Layanan Lengkap', desc: 'Puskesmas pembantu rawat jalan, SMP/MTs, dan sarana olahraga warga dalam kondisi baik.' },
+                    { title: 'Rantai Pasok Komoditas Kuat', desc: 'Sentra kakao, cengkeh, dan perikanan dengan konektivitas jalan hotmix langsung ke ibukota.' },
+                    { title: 'Kesiapan Status Mandiri', desc: 'Mayoritas desa telah memenuhi 80% kriteria untuk dideklarasikan sebagai Desa Mandiri.' }
                 ],
                 highlight: {
                     badge: 'Kategori Terbesar Kolut',
-                    text: 'Tulang punggung stabilitas ekonomi dan ketahanan pangan Kabupaten Kolaka Utara.'
+                    text: '64 Desa menjadi pilar stabilitas ekonomi, pangan, dan ketahanan sosial Kabupaten Kolaka Utara.'
                 },
-                actionUrl: '/portal#sectionTabel',
-                actionText: 'Jelajahi 64 Desa Maju'
+                actionUrl: '/portal#sectionPeta',
+                actionText: 'Buka Peta Desa Maju'
             },
             4: {
                 number: '04',
                 badge: '28 Desa (21,1%)',
                 title: 'Desa Mandiri',
                 subtitle: 'Indeks Perkembangan Desa (IPD) > 80',
-                headerClass: 'bg-gradient-to-r from-emerald-600 via-teal-700 to-slate-900',
+                headerClass: 'bg-gradient-to-r from-emerald-700 via-teal-800 to-slate-900',
                 accentColor: '#059669',
-                desc: 'Tingkat kemandirian tertinggi di mana desa mampu membiayai pembangunan dari PADes, memiliki BUMDes mandiri beromzet tinggi, tata kelola pemerintahan berbasis digital, dan menjadi percontohan inovasi daerah.',
+                desc: 'Desa percontohan dengan kapasitas kemandirian fiskal dan pendapatan asli desa (PADes) mandiri, BUMDes berdaya saing tinggi, fasilitas publik modern, dan menjadi barometer inovasi daerah.',
                 icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
                 points: [
                     { title: 'Kemandirian PADes Nyata', desc: 'BUMDes memiliki unit usaha beromzet tinggi di sektor pariwisata, perdagangan, dan logistik.' },

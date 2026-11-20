@@ -1,0 +1,6635 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Rante Baru",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1372,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah hibrida di Desa Rante Baru.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16555875063591,
+              -3.5406978093563453
+            ],
+            [
+              121.18091362596317,
+              -3.555347195316756
+            ],
+            [
+              121.14212772231656,
+              -3.570540877959104
+            ],
+            [
+              121.14103440859809,
+              -3.5723389483152244
+            ],
+            [
+              121.13519083628076,
+              -3.571248828790493
+            ],
+            [
+              121.12345003040348,
+              -3.560297580959405
+            ],
+            [
+              121.15457065401256,
+              -3.538805139345641
+            ],
+            [
+              121.16555875063591,
+              -3.5406978093563453
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ranteangin",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 732,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah hibrida di Desa Ranteangin.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.13519083627938,
+              -3.5712488287891953
+            ],
+            [
+              121.10024439276934,
+              -3.590806625810495
+            ],
+            [
+              121.07927354647715,
+              -3.5908066258099884
+            ],
+            [
+              121.12345003040329,
+              -3.5602975809592112
+            ],
+            [
+              121.13519083627938,
+              -3.5712488287891953
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Pohu",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "perkebunan",
+        "penduduk": 2050,
+        "kk": 530,
+        "ipd": 82.5,
+        "potensi": "Sentra Kakao Super Kencana Sertifikasi Lestari, Padi Sawah Irigasi Teknis, dan Peternakan Sapi.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.10024439276887,
+              -3.590806625810995
+            ],
+            [
+              121.13519083627774,
+              -3.5712488287899258
+            ],
+            [
+              121.14103440859809,
+              -3.5723389483152244
+            ],
+            [
+              121.13068177184641,
+              -3.589364957326893
+            ],
+            [
+              121.11493367335038,
+              -3.594880431087006
+            ],
+            [
+              121.1122121845197,
+              -3.597504407283114
+            ],
+            [
+              121.10024439276887,
+              -3.590806625810995
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Torotuo",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1092,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Torotuo.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.10024439276783,
+              -3.5908066258099884
+            ],
+            [
+              121.1122121845197,
+              -3.597504407283114
+            ],
+            [
+              121.09462476786857,
+              -3.614461655875624
+            ],
+            [
+              121.07569747903531,
+              -3.593276319916549
+            ],
+            [
+              121.0792735464772,
+              -3.5908066258099884
+            ],
+            [
+              121.10024439276783,
+              -3.5908066258099884
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lawekara",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Maju",
+        "sektor": "pertanian",
+        "penduduk": 1840,
+        "kk": 470,
+        "ipd": 75.3,
+        "potensi": "Lumbung Padi Sawah Irigasi, Penggilingan Beras Modern, dan Kakao.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09462476786841,
+              -3.6144616558754836
+            ],
+            [
+              121.07294580010864,
+              -3.6353638527595535
+            ],
+            [
+              121.0573903597774,
+              -3.6339524099756773
+            ],
+            [
+              121.04812596224338,
+              -3.6601638021177223
+            ],
+            [
+              121.02031632643741,
+              -3.6844093014480563
+            ],
+            [
+              120.98689588243906,
+              -3.6480381980043717
+            ],
+            [
+              121.01480175020072,
+              -3.615397646084432
+            ],
+            [
+              121.04927926542587,
+              -3.6115211957465476
+            ],
+            [
+              121.07569747903494,
+              -3.5932763199161384
+            ],
+            [
+              121.09462476786841,
+              -3.6144616558754836
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Landolia",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1184,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah hibrida di Desa Landolia.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09800741572973,
+              -3.6682084095689675
+            ],
+            [
+              121.12800741572973,
+              -3.6682084095689675
+            ],
+            [
+              121.12800741572973,
+              -3.6382084095689673
+            ],
+            [
+              121.09800741572973,
+              -3.6382084095689673
+            ],
+            [
+              121.09800741572973,
+              -3.6682084095689675
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Maroko",
+        "kecamatan": "Ranteangin",
+        "kode_kec": "74.08.04",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 704,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Maroko.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.11740919008214,
+              -3.689009004155027
+            ],
+            [
+              121.14740919008214,
+              -3.689009004155027
+            ],
+            [
+              121.14740919008214,
+              -3.6590090041550267
+            ],
+            [
+              121.11740919008214,
+              -3.6590090041550267
+            ],
+            [
+              121.11740919008214,
+              -3.689009004155027
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lapasi-Pasi",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1012,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Lapasi-Pasi.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.05622093023474,
+              -3.567558139529505
+            ],
+            [
+              121.06195121950078,
+              -3.569786585353166
+            ],
+            [
+              121.07868055673178,
+              -3.591534723751222
+            ],
+            [
+              121.05096906367146,
+              -3.610626764213748
+            ],
+            [
+              121.03353686479215,
+              -3.6129262704146634
+            ],
+            [
+              121.05622093023474,
+              -3.567558139529505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lambai",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1910,
+        "kk": 490,
+        "ipd": 77.2,
+        "potensi": "Sentra Penyulingan Minyak Atsiri Nilam Tradisional dan Perkebunan Cengkeh Rakyat.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00500000000233,
+              -3.613333333334518
+            ],
+            [
+              121.00500000000243,
+              -3.5966666666641327
+            ],
+            [
+              121.05249999999324,
+              -3.5650000000038857
+            ],
+            [
+              121.05622093022875,
+              -3.567558139541466
+            ],
+            [
+              121.03353686479215,
+              -3.6129262704146634
+            ],
+            [
+              121.01480175020072,
+              -3.615397646084432
+            ],
+            [
+              121.01232843724932,
+              -3.618218958165845
+            ],
+            [
+              121.00500000000233,
+              -3.613333333334518
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Latawaro",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1604,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Latawaro.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06195121951987,
+              -3.56978658536004
+            ],
+            [
+              121.05622093017634,
+              -3.567558139504782
+            ],
+            [
+              121.05250000001365,
+              -3.56500000002053
+            ],
+            [
+              121.05176645970927,
+              -3.563899689563955
+            ],
+            [
+              121.07247174227712,
+              -3.5554808471633237
+            ],
+            [
+              121.11137657058316,
+              -3.5327175720625785
+            ],
+            [
+              121.06195121951987,
+              -3.56978658536004
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Raoda",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 544,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Raoda.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.1579702073592,
+              -3.5369075257616487
+            ],
+            [
+              121.07868055673178,
+              -3.591534723751222
+            ],
+            [
+              121.06195121951221,
+              -3.5697865853657595
+            ],
+            [
+              121.11137657058316,
+              -3.5327175720625785
+            ],
+            [
+              121.15049288683736,
+              -3.5098305550360465
+            ],
+            [
+              121.1579702073592,
+              -3.5369075257616487
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Woise",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Mandiri",
+        "sektor": "perkebunan",
+        "penduduk": 1750,
+        "kk": 440,
+        "ipd": 80.5,
+        "potensi": "Sentra Kakao Produktif Kualitas Ekspor dan Agribisnis Kelapa Dalam.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.05249999999981,
+              -3.564999999999802
+            ],
+            [
+              121.00499999999987,
+              -3.5966666666665352
+            ],
+            [
+              120.99218722883857,
+              -3.5881248192256816
+            ],
+            [
+              121.05176645970849,
+              -3.563899689562785
+            ],
+            [
+              121.05249999999981,
+              -3.564999999999802
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Woitombo",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 444,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Woitombo.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00500000000262,
+              -3.596666666668382
+            ],
+            [
+              121.00500000000243,
+              -3.613333333331593
+            ],
+            [
+              120.97146873330412,
+              -3.635687511130574
+            ],
+            [
+              120.9594726853162,
+              -3.6263149139020925
+            ],
+            [
+              120.96525641065489,
+              -3.6107687509770017
+            ],
+            [
+              120.95795465398419,
+              -3.5955241981831705
+            ],
+            [
+              120.9662799452633,
+              -3.5986588139530795
+            ],
+            [
+              120.99218722883917,
+              -3.588124819226079
+            ],
+            [
+              121.00500000000262,
+              -3.596666666668382
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tebongeano",
+        "kecamatan": "Lambai",
+        "kode_kec": "74.08.08",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1620,
+        "kk": 410,
+        "ipd": 74.9,
+        "potensi": "Perkebunan Bunga Cengkeh Harum, Kopi Robusta, dan Kakao.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00500000000083,
+              -3.6133333333327715
+            ],
+            [
+              121.01232843725107,
+              -3.618218958167015
+            ],
+            [
+              120.98663004733885,
+              -3.6475331531324855
+            ],
+            [
+              120.97146873330412,
+              -3.635687511130574
+            ],
+            [
+              121.00500000000083,
+              -3.6133333333327715
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Walasiho",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pariwisata",
+        "penduduk": 1820,
+        "kk": 470,
+        "ipd": 84.8,
+        "potensi": "Destinasi Wisata Ikonik Danau Biru Kolaka Utara dengan air sebening kaca, Perkebunan Cengkeh & Homestay Wisatawan.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16012242009955,
+              -3.5630303115642645
+            ],
+            [
+              121.17807617767357,
+              -3.5555368326586745
+            ],
+            [
+              121.22800136937904,
+              -3.596202087227887
+            ],
+            [
+              121.19881631541871,
+              -3.5962020872280624
+            ],
+            [
+              121.16012242009955,
+              -3.5630303115642645
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Wawo",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1616,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Wawo.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16012242009955,
+              -3.5630303115642645
+            ],
+            [
+              121.19881631541874,
+              -3.596202087228096
+            ],
+            [
+              121.16719310418055,
+              -3.623312256940453
+            ],
+            [
+              121.08544525931185,
+              -3.623312256940761
+            ],
+            [
+              121.11493367335038,
+              -3.594880431087006
+            ],
+            [
+              121.13068177184641,
+              -3.589364957326893
+            ],
+            [
+              121.14212772231656,
+              -3.570540877959104
+            ],
+            [
+              121.16012242009955,
+              -3.5630303115642645
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Puumbolo",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1260,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Puumbolo.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16719310418091,
+              -3.623312256939951
+            ],
+            [
+              121.19881631541794,
+              -3.596202087228062
+            ],
+            [
+              121.22800136937904,
+              -3.596202087227887
+            ],
+            [
+              121.23589610921817,
+              -3.602632540359423
+            ],
+            [
+              121.2506859690361,
+              -3.650422426653636
+            ],
+            [
+              121.19881631541992,
+              -3.6504224266537575
+            ],
+            [
+              121.16719310418091,
+              -3.623312256939951
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tinukari",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pariwisata",
+        "penduduk": 1940,
+        "kk": 510,
+        "ipd": 82.1,
+        "potensi": "Wisata Petualangan Arung Jeram Sungai Tinukari, Kopi Robusta Dataran Tinggi, dan Cengkeh.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16719310418219,
+              -3.623312256940761
+            ],
+            [
+              121.19881631541894,
+              -3.650422426652931
+            ],
+            [
+              121.1624088044248,
+              -3.6816341146259113
+            ],
+            [
+              121.06649056188584,
+              -3.706302954999875
+            ],
+            [
+              121.02031632643741,
+              -3.6844093014480563
+            ],
+            [
+              121.04812596224338,
+              -3.6601638021177223
+            ],
+            [
+              121.0573903597774,
+              -3.6339524099756773
+            ],
+            [
+              121.07294580010864,
+              -3.6353638527595535
+            ],
+            [
+              121.08544525931185,
+              -3.623312256940761
+            ],
+            [
+              121.16719310418219,
+              -3.623312256940761
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Salurengko",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 928,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Salurengko.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.19881631541735,
+              -3.6504224266539023
+            ],
+            [
+              121.2506859690361,
+              -3.650422426653636
+            ],
+            [
+              121.25272830266908,
+              -3.657021738162655
+            ],
+            [
+              121.18154169218882,
+              -3.6881950654469144
+            ],
+            [
+              121.16240880442541,
+              -3.6816341146253886
+            ],
+            [
+              121.19881631541735,
+              -3.6504224266539023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Uluwawo",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1680,
+        "kk": 430,
+        "ipd": 76.9,
+        "potensi": "Kopi Organik Dataran Tinggi, Cengkeh Grade A, dan Sayuran Dataran Tinggi.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16240880442564,
+              -3.6816341146258
+            ],
+            [
+              121.18154169218882,
+              -3.6881950654469144
+            ],
+            [
+              121.13296448142569,
+              -3.709467510916852
+            ],
+            [
+              121.10265097566207,
+              -3.745308020648565
+            ],
+            [
+              121.08361131171273,
+              -3.7144208103720757
+            ],
+            [
+              121.06649056188584,
+              -3.706302954999875
+            ],
+            [
+              121.16240880442564,
+              -3.6816341146258
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Latawe",
+        "kecamatan": "Wawo",
+        "kode_kec": "74.08.07",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 720,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Latawe.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.17962530861116,
+              -3.7467529357921445
+            ],
+            [
+              121.20962530861117,
+              -3.7467529357921445
+            ],
+            [
+              121.20962530861117,
+              -3.7167529357921443
+            ],
+            [
+              121.17962530861116,
+              -3.7167529357921443
+            ],
+            [
+              121.17962530861116,
+              -3.7467529357921445
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sulaho",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Maju",
+        "sektor": "perikanan",
+        "penduduk": 1480,
+        "kk": 390,
+        "ipd": 77.4,
+        "potensi": "Kampung Nelayan Tradisional Teluk Bone, Sentra Pengolahan Ikan Asin Kering, dan Kelapa Dalam.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.92699487921038,
+              -3.4677419604230977
+            ],
+            [
+              120.992050936203,
+              -3.4824020667189055
+            ],
+            [
+              120.99148611377304,
+              -3.487563579608182
+            ],
+            [
+              120.87188832784815,
+              -3.487563579607995
+            ],
+            [
+              120.87004780806001,
+              -3.4724717549674438
+            ],
+            [
+              120.92699487921038,
+              -3.4677419604230977
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Totallang",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1890,
+        "kk": 480,
+        "ipd": 78.1,
+        "potensi": "Perkebunan Kakao Berkelanjutan, Budi Daya Tanaman Nilam Atsiri, dan Bunga Cengkeh Kering.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.07595626967293,
+              -3.50077799239822
+            ],
+            [
+              120.99293216203519,
+              -3.500777992398102
+            ],
+            [
+              120.99148611377346,
+              -3.487563579604136
+            ],
+            [
+              120.99205093620304,
+              -3.4824020667185103
+            ],
+            [
+              121.05527312815241,
+              -3.496648919312122
+            ],
+            [
+              121.08500288186463,
+              -3.4943694192691606
+            ],
+            [
+              121.07595626967293,
+              -3.50077799239822
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Pitulua",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pariwisata",
+        "penduduk": 3120,
+        "kk": 840,
+        "ipd": 86.4,
+        "potensi": "Sentra Wisata Pantai Berova dengan wahana bahari, dermaga perahu nelayan, serta perkebunan kakao rakyat.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.99148611377314,
+              -3.487563579607995
+            ],
+            [
+              120.99293216203509,
+              -3.500777992397159
+            ],
+            [
+              120.99166861749009,
+              -3.5123246327337103
+            ],
+            [
+              120.93073714198566,
+              -3.592608819072775
+            ],
+            [
+              120.90561159100218,
+              -3.5762808521795364
+            ],
+            [
+              120.89931956434646,
+              -3.565682667421129
+            ],
+            [
+              120.91086939730485,
+              -3.567973538348042
+            ],
+            [
+              120.88048958092952,
+              -3.5296120571506435
+            ],
+            [
+              120.8732574191946,
+              -3.498789803106888
+            ],
+            [
+              120.87188832784815,
+              -3.487563579607995
+            ],
+            [
+              120.99148611377314,
+              -3.487563579607995
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Rante Limbong",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1720,
+        "kk": 430,
+        "ipd": 76.8,
+        "potensi": "Perkebunan Kakao Rakyat & Kopi Robusta Dataran Tinggi dengan sertifikasi bibit unggul.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06352025462057,
+              -3.527206817977483
+            ],
+            [
+              121.01501119586226,
+              -3.5272068179773166
+            ],
+            [
+              120.99166861749043,
+              -3.5123246327335447
+            ],
+            [
+              120.99293216203452,
+              -3.500777992398204
+            ],
+            [
+              121.0759562696732,
+              -3.500777992398319
+            ],
+            [
+              121.06352025462057,
+              -3.527206817977483
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tojabi",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 3340,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Tojabi.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06973826214896,
+              -3.5404212307676386
+            ],
+            [
+              121.06352025462175,
+              -3.5272068179752063
+            ],
+            [
+              121.07595626967398,
+              -3.5007779923974756
+            ],
+            [
+              121.08500288186366,
+              -3.4943694192698422
+            ],
+            [
+              121.1246902437598,
+              -3.4913264292712256
+            ],
+            [
+              121.15087845137953,
+              -3.5080168589908
+            ],
+            [
+              121.09736522202394,
+              -3.5404212307676386
+            ],
+            [
+              121.06973826214896,
+              -3.5404212307676386
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lasusua",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 4684,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lasusua.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.01501119586383,
+              -3.5272068179774676
+            ],
+            [
+              121.06352025462175,
+              -3.527206817977316
+            ],
+            [
+              121.06973826214798,
+              -3.540421230764599
+            ],
+            [
+              121.06033091100177,
+              -3.560413586961834
+            ],
+            [
+              121.04571469573798,
+              -3.5663571779316725
+            ],
+            [
+              121.01501119586383,
+              -3.5272068179774676
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Watuliu",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 5764,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Watuliu.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0697382621466,
+              -3.540421230767587
+            ],
+            [
+              121.09736522202427,
+              -3.540421230767638
+            ],
+            [
+              121.07256535810484,
+              -3.5554385268664532
+            ],
+            [
+              121.06033091100228,
+              -3.5604135869607387
+            ],
+            [
+              121.0697382621466,
+              -3.540421230767587
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ponggiha",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Maju",
+        "sektor": "pertanian",
+        "penduduk": 2450,
+        "kk": 620,
+        "ipd": 79.5,
+        "potensi": "Sentra Hortikultura Sayuran Segar (Cabai, Tomat, Terung), Tanaman Pangan Sawah, dan Perkebunan Kakao.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.9916686174903,
+              -3.512324632733391
+            ],
+            [
+              121.01501119586507,
+              -3.52720681797907
+            ],
+            [
+              121.04571469573688,
+              -3.5663571779302776
+            ],
+            [
+              120.9662799452633,
+              -3.5986588139530795
+            ],
+            [
+              120.95795465398419,
+              -3.5955241981831705
+            ],
+            [
+              120.96525641065489,
+              -3.6107687509770017
+            ],
+            [
+              120.9594726853162,
+              -3.6263149139020925
+            ],
+            [
+              120.94462979672778,
+              -3.6202113141008
+            ],
+            [
+              120.93450404382668,
+              -3.59505675936191
+            ],
+            [
+              120.93073714198566,
+              -3.592608819072775
+            ],
+            [
+              120.9916686174903,
+              -3.512324632733391
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Patowonua",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 5520,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Patowonua.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06567079054965,
+              -3.5950644691373856
+            ],
+            [
+              121.09567079054965,
+              -3.5950644691373856
+            ],
+            [
+              121.09567079054965,
+              -3.5650644691373854
+            ],
+            [
+              121.06567079054965,
+              -3.5650644691373854
+            ],
+            [
+              121.06567079054965,
+              -3.5950644691373856
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Babussalam",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1040,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Babussalam.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0375877262177,
+              -3.608278881927302
+            ],
+            [
+              121.0675877262177,
+              -3.608278881927302
+            ],
+            [
+              121.0675877262177,
+              -3.578278881927302
+            ],
+            [
+              121.0375877262177,
+              -3.578278881927302
+            ],
+            [
+              121.0375877262177,
+              -3.608278881927302
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Batuganda Permai",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 2092,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Batuganda Permai.",
+        "color": "#eab308"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06567079054965,
+              -3.6214932947172183
+            ],
+            [
+              121.09567079054965,
+              -3.6214932947172183
+            ],
+            [
+              121.09567079054965,
+              -3.591493294717218
+            ],
+            [
+              121.06567079054965,
+              -3.591493294717218
+            ],
+            [
+              121.06567079054965,
+              -3.6214932947172183
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Puncak Monapa",
+        "kecamatan": "Lasusua",
+        "kode_kec": "74.08.01",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1832,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Puncak Monapa.",
+        "color": "#0284c7"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0375877262177,
+              -3.6347077075071343
+            ],
+            [
+              121.0675877262177,
+              -3.6347077075071343
+            ],
+            [
+              121.0675877262177,
+              -3.604707707507134
+            ],
+            [
+              121.0375877262177,
+              -3.604707707507134
+            ],
+            [
+              121.0375877262177,
+              -3.6347077075071343
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ujung Tobaku",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1432,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Ujung Tobaku.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.04505643280818,
+              -3.411087776954275
+            ],
+            [
+              121.07505643280818,
+              -3.411087776954275
+            ],
+            [
+              121.07505643280818,
+              -3.3810877769542746
+            ],
+            [
+              121.04505643280818,
+              -3.3810877769542746
+            ],
+            [
+              121.04505643280818,
+              -3.411087776954275
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Katoi",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Maju",
+        "sektor": "perikanan",
+        "penduduk": 1820,
+        "kk": 460,
+        "ipd": 77.8,
+        "potensi": "Dermaga Pendaratan Perahu Nelayan Tangkap, Perkebunan Kakao, dan Kelapa Dalam.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.92209583210102,
+              -3.404708114104963
+            ],
+            [
+              120.96111924685579,
+              -3.4319499286462474
+            ],
+            [
+              120.98910707764443,
+              -3.438871752632442
+            ],
+            [
+              120.97533107348615,
+              -3.4704727988292206
+            ],
+            [
+              120.97208111551356,
+              -3.4742003700036195
+            ],
+            [
+              120.92209583210102,
+              -3.404708114104963
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Simbula",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Mandiri",
+        "sektor": "pariwisata",
+        "penduduk": 1960,
+        "kk": 510,
+        "ipd": 83.2,
+        "potensi": "Wisata Bahari Pantai Simbula, Sentra Pengolahan Teri Kering Super Ekspor, dan Kakao.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.89642794989004,
+              -3.3867896492228624
+            ],
+            [
+              120.92209583210102,
+              -3.404708114104963
+            ],
+            [
+              120.97208111550918,
+              -3.474200369997565
+            ],
+            [
+              120.97090127154473,
+              -3.4765514425283435
+            ],
+            [
+              120.92915162704605,
+              -3.4674955299946646
+            ],
+            [
+              120.87004780806001,
+              -3.4724717549674438
+            ],
+            [
+              120.86615499995332,
+              -3.428826540912098
+            ],
+            [
+              120.8959277505653,
+              -3.4032588637055596
+            ],
+            [
+              120.89642794989004,
+              -3.3867896492228624
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Maruge",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1280,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Maruge.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.9891070776446,
+              -3.4388717526320214
+            ],
+            [
+              121.05198627742358,
+              -3.4544227525114453
+            ],
+            [
+              121.04044159374003,
+              -3.4704727988057975
+            ],
+            [
+              120.97533107349636,
+              -3.470472798805743
+            ],
+            [
+              120.9891070776446,
+              -3.4388717526320214
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lanipa-Nipa",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1012,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Lanipa-Nipa.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.04044159373959,
+              -3.470472798804923
+            ],
+            [
+              121.05198627742357,
+              -3.4544227525114737
+            ],
+            [
+              121.12376154535912,
+              -3.4721738878146198
+            ],
+            [
+              121.1246902437598,
+              -3.4913264292712256
+            ],
+            [
+              121.07147637803246,
+              -3.498367181999811
+            ],
+            [
+              121.05847775650157,
+              -3.4955476518920006
+            ],
+            [
+              121.04044159373959,
+              -3.470472798804923
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lambuno",
+        "kecamatan": "Katoi",
+        "kode_kec": "74.08.13",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1650,
+        "kk": 420,
+        "ipd": 75.4,
+        "potensi": "Perkebunan Kakao Kualitas Unggul dan Minyak Atsiri Nilam.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.97208111548599,
+              -3.47420037004327
+            ],
+            [
+              120.97533107350614,
+              -3.4704727988058637
+            ],
+            [
+              121.0404415937409,
+              -3.470472798805699
+            ],
+            [
+              121.05847775650189,
+              -3.495547651892445
+            ],
+            [
+              120.97090127154479,
+              -3.4765514425282427
+            ],
+            [
+              120.97208111548599,
+              -3.47420037004327
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kalu Kaluku",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1484,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kalu Kaluku.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06803810182701,
+              -3.3546621315270944
+            ],
+            [
+              121.09803810182702,
+              -3.3546621315270944
+            ],
+            [
+              121.09803810182702,
+              -3.324662131527094
+            ],
+            [
+              121.06803810182701,
+              -3.324662131527094
+            ],
+            [
+              121.06803810182701,
+              -3.3546621315270944
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Awo",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1300,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Awo.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.04311985672608,
+              -3.366184892943401
+            ],
+            [
+              121.07311985672608,
+              -3.366184892943401
+            ],
+            [
+              121.07311985672608,
+              -3.336184892943401
+            ],
+            [
+              121.04311985672608,
+              -3.336184892943401
+            ],
+            [
+              121.04311985672608,
+              -3.366184892943401
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lametuna",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Maju",
+        "sektor": "perikanan",
+        "penduduk": 1860,
+        "kk": 470,
+        "ipd": 76.5,
+        "potensi": "Budidaya Rumput Laut Cottonii dan Tambak Bandeng Air Payau.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.94599552697207,
+              -3.333900750818941
+            ],
+            [
+              120.95354364392404,
+              -3.3435724468109242
+            ],
+            [
+              120.94888711534816,
+              -3.3534925022771063
+            ],
+            [
+              120.9623388840323,
+              -3.3634885576507827
+            ],
+            [
+              121.002817661002,
+              -3.384537160939872
+            ],
+            [
+              121.00268689042416,
+              -3.385753177199202
+            ],
+            [
+              120.99525193308895,
+              -3.4087987000162694
+            ],
+            [
+              120.98286033751889,
+              -3.4318442228593073
+            ],
+            [
+              120.97938090968974,
+              -3.4364663206722015
+            ],
+            [
+              120.96111924685579,
+              -3.4319499286462474
+            ],
+            [
+              120.89615126357,
+              -3.3858176538615794
+            ],
+            [
+              120.94599552697207,
+              -3.333900750818941
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mala Mala",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1272,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Mala Mala.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0026868904249,
+              -3.3857531771921754
+            ],
+            [
+              121.00281766100186,
+              -3.3845371609411035
+            ],
+            [
+              121.00515619387153,
+              -3.3857531771921745
+            ],
+            [
+              121.0026868904249,
+              -3.3857531771921754
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Jabal Nur",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 408,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Jabal Nur.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06803810182701,
+              -3.4007531771923207
+            ],
+            [
+              121.09803810182702,
+              -3.4007531771923207
+            ],
+            [
+              121.09803810182702,
+              -3.3707531771923205
+            ],
+            [
+              121.06803810182701,
+              -3.3707531771923205
+            ],
+            [
+              121.06803810182701,
+              -3.4007531771923207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Koroha",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1340,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Koroha.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.99525193308696,
+              -3.4087987000246063
+            ],
+            [
+              121.00268689042517,
+              -3.3857531771922726
+            ],
+            [
+              121.00515619387109,
+              -3.385753177192175
+            ],
+            [
+              121.04947526654514,
+              -3.4087987000246063
+            ],
+            [
+              120.99525193308696,
+              -3.4087987000246063
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Jabal Kubis",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 640,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Jabal Kubis.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06803810182701,
+              -3.4237987000249337
+            ],
+            [
+              121.09803810182702,
+              -3.4237987000249337
+            ],
+            [
+              121.09803810182702,
+              -3.3937987000249334
+            ],
+            [
+              121.06803810182701,
+              -3.3937987000249334
+            ],
+            [
+              121.06803810182701,
+              -3.4237987000249337
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kamisi",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1576,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kamisi.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06115500851323,
+              -3.4318442228580026
+            ],
+            [
+              120.98286033751985,
+              -3.4318442228577997
+            ],
+            [
+              120.99525193308517,
+              -3.408798700024488
+            ],
+            [
+              121.04947526654576,
+              -3.4087987000246063
+            ],
+            [
+              121.07049317154413,
+              -3.4197278233185577
+            ],
+            [
+              121.06115500851323,
+              -3.4318442228580026
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Meeto",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "perkebunan",
+        "penduduk": 2120,
+        "kk": 550,
+        "ipd": 85,
+        "potensi": "Sentra Pengolahan Fermentasi Biji Kakao Ekspor Binaan BPS dan Pemda Kolaka Utara.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.07204035220278,
+              -3.4459681113390452
+            ],
+            [
+              121.06115500851332,
+              -3.4318442228584276
+            ],
+            [
+              121.07049317154414,
+              -3.419727823318529
+            ],
+            [
+              121.09874468717447,
+              -3.434418359677234
+            ],
+            [
+              121.07204035220278,
+              -3.4459681113390452
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sawangaoha",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1028,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Sawangaoha.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.98286033751926,
+              -3.431844222857807
+            ],
+            [
+              121.06115500851318,
+              -3.431844222858224
+            ],
+            [
+              121.07204035220279,
+              -3.445968111339443
+            ],
+            [
+              121.06791478622934,
+              -3.4548897456902354
+            ],
+            [
+              121.05387452625716,
+              -3.454889745690312
+            ],
+            [
+              120.97938090968923,
+              -3.4364663206729094
+            ],
+            [
+              120.98286033751926,
+              -3.431844222857807
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Delang-Delang",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Delang-Delang.",
+        "color": "#eab308"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.067914786229,
+              -3.454889745687733
+            ],
+            [
+              121.07204035220121,
+              -3.445968111339446
+            ],
+            [
+              121.09874468717544,
+              -3.4344183596768265
+            ],
+            [
+              121.14533371457935,
+              -3.4586442387405896
+            ],
+            [
+              121.12376154535912,
+              -3.4721738878146198
+            ],
+            [
+              121.06972783905104,
+              -3.458810515455309
+            ],
+            [
+              121.067914786229,
+              -3.454889745687733
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ainani Tajriani",
+        "kecamatan": "Kodeoha",
+        "kode_kec": "74.08.05",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 752,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Ainani Tajriani.",
+        "color": "#0284c7"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06791478623038,
+              -3.454889745690312
+            ],
+            [
+              121.0697278390511,
+              -3.4588105154554536
+            ],
+            [
+              121.05387452625675,
+              -3.4548897456903114
+            ],
+            [
+              121.06791478623038,
+              -3.454889745690312
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mattiro Bulu",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 856,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Mattiro Bulu.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.98614603506148,
+              -3.331719066752902
+            ],
+            [
+              121.01614603506148,
+              -3.331719066752902
+            ],
+            [
+              121.01614603506148,
+              -3.3017190667529017
+            ],
+            [
+              120.98614603506148,
+              -3.3017190667529017
+            ],
+            [
+              120.98614603506148,
+              -3.331719066752902
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lawadia",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 936,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lawadia.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.97715738120826,
+              -3.3108142177019317
+            ],
+            [
+              120.99485381666483,
+              -3.3360588139858685
+            ],
+            [
+              120.98399691840433,
+              -3.3428528622296403
+            ],
+            [
+              120.95934559736114,
+              -3.3173993920310045
+            ],
+            [
+              120.96018362367533,
+              -3.312787813206967
+            ],
+            [
+              120.97715738120826,
+              -3.3108142177019317
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Watumea",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 524,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Watumea.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.98399691840565,
+              -3.342852862229572
+            ],
+            [
+              120.99485381666508,
+              -3.336058813985724
+            ],
+            [
+              121.01246751825039,
+              -3.3611853874526574
+            ],
+            [
+              120.98898982599228,
+              -3.356288084065938
+            ],
+            [
+              120.98399691840565,
+              -3.342852862229572
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tiwu",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "perikanan",
+        "penduduk": 1910,
+        "kk": 490,
+        "ipd": 80.8,
+        "potensi": "Tambak Budidaya Udang Windu, Pelabuhan Nelayan Tradisional, dan Kelapa Kopra.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.98399691840564,
+              -3.342852862230987
+            ],
+            [
+              120.9889898259928,
+              -3.356288084067391
+            ],
+            [
+              120.97912659909576,
+              -3.3664722584346034
+            ],
+            [
+              120.95104359799946,
+              -3.348898430284228
+            ],
+            [
+              120.95354364392404,
+              -3.3435724468109242
+            ],
+            [
+              120.94571883795402,
+              -3.333407181296309
+            ],
+            [
+              120.95699450898951,
+              -3.3303372069964325
+            ],
+            [
+              120.95934559736114,
+              -3.3173993920310045
+            ],
+            [
+              120.98399691840564,
+              -3.342852862230987
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tahibua",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Maju",
+        "sektor": "perikanan",
+        "penduduk": 1790,
+        "kk": 460,
+        "ipd": 77.5,
+        "potensi": "Sentra Budidaya Rumput Laut Eucheuma Cottonii, Penjemuran Alami, dan Perkebunan Kakao.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.97912659909481,
+              -3.3664722584339994
+            ],
+            [
+              120.97786254096884,
+              -3.3698736635357704
+            ],
+            [
+              120.94888711534816,
+              -3.3534925022771063
+            ],
+            [
+              120.95104359799946,
+              -3.348898430284228
+            ],
+            [
+              120.97912659909481,
+              -3.3664722584339994
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lapolu",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1264,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Lapolu.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.97912659909373,
+              -3.3664722584371534
+            ],
+            [
+              120.98898982599374,
+              -3.356288084066416
+            ],
+            [
+              121.01246751825039,
+              -3.3611853874526574
+            ],
+            [
+              121.0167939517795,
+              -3.3673571991753306
+            ],
+            [
+              121.01701805951704,
+              -3.3694276288369376
+            ],
+            [
+              120.99805916481581,
+              -3.3812917581818467
+            ],
+            [
+              120.97786254096845,
+              -3.369873663536848
+            ],
+            [
+              120.97912659909373,
+              -3.3664722584371534
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tanggeawo",
+        "kecamatan": "Tiwu",
+        "kode_kec": "74.08.14",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 564,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Tanggeawo.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.01701805951704,
+              -3.3694276288369376
+            ],
+            [
+              121.01962176743064,
+              -3.3934821044155115
+            ],
+            [
+              120.9980591648162,
+              -3.381291758181635
+            ],
+            [
+              121.01701805951704,
+              -3.3694276288369376
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ngapa",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1544,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Ngapa.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09946013105527,
+              -3.290261926184385
+            ],
+            [
+              121.12946013105527,
+              -3.290261926184385
+            ],
+            [
+              121.12946013105527,
+              -3.2602619261843846
+            ],
+            [
+              121.09946013105527,
+              -3.2602619261843846
+            ],
+            [
+              121.09946013105527,
+              -3.290261926184385
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tadoumera",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 792,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Tadoumera.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.03926466693088,
+              -3.2673965869828407
+            ],
+            [
+              121.1011189101987,
+              -3.303971927423913
+            ],
+            [
+              121.09864231283137,
+              -3.3067232829903617
+            ],
+            [
+              121.06879903157184,
+              -3.306723282990483
+            ],
+            [
+              121.0338291162269,
+              -3.2911834665451893
+            ],
+            [
+              121.03420148291218,
+              -3.283462809860737
+            ],
+            [
+              121.02314240010173,
+              -3.2792356751862144
+            ],
+            [
+              121.03926466693088,
+              -3.2673965869828407
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lapai",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 3680,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lapai.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09864231283248,
+              -3.3067232829887865
+            ],
+            [
+              121.10111891019845,
+              -3.303971927424182
+            ],
+            [
+              121.12151688969277,
+              -3.3160335582020934
+            ],
+            [
+              121.15754288639516,
+              -3.322153201908691
+            ],
+            [
+              121.15155811131785,
+              -3.32783259419881
+            ],
+            [
+              121.15754084821064,
+              -3.3381846397967303
+            ],
+            [
+              121.12696184898834,
+              -3.33818463979629
+            ],
+            [
+              121.09864231283248,
+              -3.3067232829887865
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Koreiha",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Koreiha.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.12696184898866,
+              -3.338184639796646
+            ],
+            [
+              121.09239864503404,
+              -3.33818463979654
+            ],
+            [
+              121.06879903157133,
+              -3.3067232829903617
+            ],
+            [
+              121.09864231283453,
+              -3.3067232829910496
+            ],
+            [
+              121.12696184898866,
+              -3.338184639796646
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lawolatu",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 2650,
+        "kk": 690,
+        "ipd": 83.6,
+        "potensi": "Lumbung Pangan Utama Padi Sawah Irigasi Teknis, Penggilingan Beras, dan Ternak Sapi.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06879903157106,
+              -3.3067232829901547
+            ],
+            [
+              121.09239864503378,
+              -3.3381846397968618
+            ],
+            [
+              121.06879903157177,
+              -3.3696459966029053
+            ],
+            [
+              121.01941709666244,
+              -3.3915901790992153
+            ],
+            [
+              121.0167939517795,
+              -3.3673571991753306
+            ],
+            [
+              120.98339111830558,
+              -3.318459704251893
+            ],
+            [
+              121.00790108396791,
+              -3.285238821614257
+            ],
+            [
+              121.03382680916002,
+              -3.2912313011835295
+            ],
+            [
+              121.0338291162269,
+              -3.2911834665451893
+            ],
+            [
+              121.06879903157106,
+              -3.3067232829901547
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Puurau",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1420,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Puurau.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.12696184898729,
+              -3.3381846397965402
+            ],
+            [
+              121.09864231283274,
+              -3.369645996602913
+            ],
+            [
+              121.06879903157231,
+              -3.369645996602537
+            ],
+            [
+              121.09239864503398,
+              -3.3381846397965402
+            ],
+            [
+              121.12696184898729,
+              -3.3381846397965402
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Parutellang",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Parutellang.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.12696184898739,
+              -3.3381846397967303
+            ],
+            [
+              121.15754084821064,
+              -3.3381846397967303
+            ],
+            [
+              121.15814980197183,
+              -3.3392383242891697
+            ],
+            [
+              121.14143607441531,
+              -3.3652755087576907
+            ],
+            [
+              121.13417673696688,
+              -3.365776988717016
+            ],
+            [
+              121.13537293511106,
+              -3.385376675005961
+            ],
+            [
+              121.11280208090866,
+              -3.385376675005961
+            ],
+            [
+              121.0986423128324,
+              -3.369645996603255
+            ],
+            [
+              121.12696184898739,
+              -3.3381846397967303
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Watumotaha",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Watumotaha.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.06879903157304,
+              -3.3696459966025007
+            ],
+            [
+              121.09864231283103,
+              -3.3696459966025376
+            ],
+            [
+              121.11280208091104,
+              -3.3853766750083163
+            ],
+            [
+              121.098642312836,
+              -3.401107353408839
+            ],
+            [
+              121.03189750245683,
+              -3.401107353408613
+            ],
+            [
+              121.01962187175207,
+              -3.393481920054512
+            ],
+            [
+              121.01941709666472,
+              -3.3915901790982104
+            ],
+            [
+              121.06879903157304,
+              -3.3696459966025007
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Beringin",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 2712,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Beringin.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09864231283395,
+              -3.401107353409689
+            ],
+            [
+              121.11280208091294,
+              -3.3853766750061647
+            ],
+            [
+              121.13537293511106,
+              -3.385376675005961
+            ],
+            [
+              121.13565037506487,
+              -3.389922523905284
+            ],
+            [
+              121.1228622278096,
+              -3.4111557728206208
+            ],
+            [
+              121.13029016714214,
+              -3.41683803181218
+            ],
+            [
+              121.1128020809107,
+              -3.416838031812126
+            ],
+            [
+              121.09864231283395,
+              -3.401107353409689
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Padaelo",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Padaelo.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09864231283325,
+              -3.4011073534089022
+            ],
+            [
+              121.11280208091094,
+              -3.4168380318124076
+            ],
+            [
+              121.09864231283426,
+              -3.4325687102146683
+            ],
+            [
+              121.08861635937612,
+              -3.4325687102152607
+            ],
+            [
+              121.070812104595,
+              -3.4252805068898056
+            ],
+            [
+              121.03189750245683,
+              -3.401107353408613
+            ],
+            [
+              121.09864231283325,
+              -3.4011073534089022
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Nimbuneha",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Nimbuneha.",
+        "color": "#eab308"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09864231283328,
+              -3.4325687102152136
+            ],
+            [
+              121.11280208091088,
+              -3.4168380318123277
+            ],
+            [
+              121.13029016714214,
+              -3.41683803181218
+            ],
+            [
+              121.15502405171867,
+              -3.4357590719235986
+            ],
+            [
+              121.14625875633658,
+              -3.456164727819896
+            ],
+            [
+              121.10449208499946,
+              -3.439067466704402
+            ],
+            [
+              121.09864231283328,
+              -3.4325687102152136
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mataiwoi",
+        "kecamatan": "Ngapa",
+        "kode_kec": "74.08.06",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1176,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Mataiwoi.",
+        "color": "#0284c7"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09864231283355,
+              -3.43256871021526
+            ],
+            [
+              121.10449208499925,
+              -3.4390674667041488
+            ],
+            [
+              121.08861635937292,
+              -3.4325687102152598
+            ],
+            [
+              121.09864231283355,
+              -3.43256871021526
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sapoiha",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 852,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Sapoiha.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00836756270805,
+              -3.2608661991224794
+            ],
+            [
+              121.00340237153117,
+              -3.2513719498392035
+            ],
+            [
+              121.01263691835914,
+              -3.2475484091317526
+            ],
+            [
+              121.01300330216077,
+              -3.2597842881143606
+            ],
+            [
+              121.01371971937417,
+              -3.2608661991219168
+            ],
+            [
+              121.00836756270805,
+              -3.2608661991224794
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Watunohu",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Maju",
+        "sektor": "pertanian",
+        "penduduk": 2080,
+        "kk": 540,
+        "ipd": 78.2,
+        "potensi": "Sentra Sayur Mayur (Cabai, Tomat, Terung), Pisang Barangan, dan Kakao.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00340237153127,
+              -3.2513719498393545
+            ],
+            [
+              121.00836756270877,
+              -3.2608661991238495
+            ],
+            [
+              121.00430069598995,
+              -3.268642706622101
+            ],
+            [
+              120.98188580447992,
+              -3.2803320432688285
+            ],
+            [
+              120.96608740213003,
+              -3.2753887355542597
+            ],
+            [
+              120.97246359282065,
+              -3.264182072744404
+            ],
+            [
+              121.00340237153127,
+              -3.2513719498393545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lahabaru",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1396,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lahabaru.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0043006959893,
+              -3.2686427066211747
+            ],
+            [
+              121.00836756270829,
+              -3.2608661991221255
+            ],
+            [
+              121.01371971937492,
+              -3.2608661991219168
+            ],
+            [
+              121.02547804196236,
+              -3.278623252442252
+            ],
+            [
+              121.0157836154334,
+              -3.2786232524413323
+            ],
+            [
+              121.0043006959893,
+              -3.2686427066211747
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sarona",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 732,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Bandeng Air Payau : Ikan hidup di Desa Sarona.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.9901348021255,
+              -3.2875017791029895
+            ],
+            [
+              120.98188580447794,
+              -3.2803320432699175
+            ],
+            [
+              121.00430069598995,
+              -3.268642706622433
+            ],
+            [
+              121.01578361542923,
+              -3.2786232524377144
+            ],
+            [
+              121.0081152494147,
+              -3.285288323876114
+            ],
+            [
+              121.00790108396791,
+              -3.285238821614257
+            ],
+            [
+              121.00743893519551,
+              -3.2858761521794007
+            ],
+            [
+              121.0055686023189,
+              -3.28750177910299
+            ],
+            [
+              120.9901348021255,
+              -3.2875017791029895
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tambuha",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1792,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Tambuha.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.00556860231795,
+              -3.287501779101622
+            ],
+            [
+              121.01578361542737,
+              -3.278623252443037
+            ],
+            [
+              121.02547804196236,
+              -3.278623252442252
+            ],
+            [
+              121.03382680916002,
+              -3.2912313011835295
+            ],
+            [
+              121.0081152494147,
+              -3.285288323876114
+            ],
+            [
+              121.00743893519551,
+              -3.2858761521794007
+            ],
+            [
+              121.00599279186567,
+              -3.2878704695934307
+            ],
+            [
+              121.00556860231795,
+              -3.287501779101622
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Nyule",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 592,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Nyule.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.99013480213101,
+              -3.2875017791032164
+            ],
+            [
+              121.00556860231929,
+              -3.28750177910299
+            ],
+            [
+              121.00599279186612,
+              -3.2878704695938406
+            ],
+            [
+              120.99571300466577,
+              -3.302046905783776
+            ],
+            [
+              120.99013480213101,
+              -3.2875017791032164
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Samaturu",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "perkebunan",
+        "penduduk": 1850,
+        "kk": 470,
+        "ipd": 81,
+        "potensi": "Perkebunan Kakao Kualitas Super, Kelapa Dalam, dan Tanaman Pangan.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.981885804474,
+              -3.280332043266972
+            ],
+            [
+              120.99013480213178,
+              -3.2875017791071826
+            ],
+            [
+              120.99571300466576,
+              -3.302046905783743
+            ],
+            [
+              120.98372677856798,
+              -3.318576622413161
+            ],
+            [
+              120.97793901167609,
+              -3.3108387970727904
+            ],
+            [
+              120.95824036140357,
+              -3.3136781600190375
+            ],
+            [
+              120.95665780821139,
+              -3.291961997648002
+            ],
+            [
+              120.9660874021309,
+              -3.275388735554528
+            ],
+            [
+              120.981885804474,
+              -3.280332043266972
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lelehao",
+        "kecamatan": "Watunohu",
+        "kode_kec": "74.08.09",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 776,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lelehao.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.991817658828,
+              -3.3291373590830733
+            ],
+            [
+              121.021817658828,
+              -3.3291373590830733
+            ],
+            [
+              121.021817658828,
+              -3.299137359083073
+            ],
+            [
+              120.991817658828,
+              -3.299137359083073
+            ],
+            [
+              120.991817658828,
+              -3.3291373590830733
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lalombundi",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 920,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lalombundi.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.13100332167103,
+              -3.2177481449608734
+            ],
+            [
+              121.16100332167103,
+              -3.2177481449608734
+            ],
+            [
+              121.16100332167103,
+              -3.187748144960873
+            ],
+            [
+              121.13100332167103,
+              -3.187748144960873
+            ],
+            [
+              121.13100332167103,
+              -3.2177481449608734
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Toaha",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 688,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Toaha.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.10794646061099,
+              -3.2254919653316425
+            ],
+            [
+              121.070530708779,
+              -3.2014743965016597
+            ],
+            [
+              121.07437279127134,
+              -3.19706218986812
+            ],
+            [
+              121.11957183351237,
+              -3.2254919653316425
+            ],
+            [
+              121.10794646061099,
+              -3.2254919653316425
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kasumeeto",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1184,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kasumeeto.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.16876693349539,
+              -3.2596076958884814
+            ],
+            [
+              121.147508067253,
+              -3.2482357857032316
+            ],
+            [
+              121.14220752933052,
+              -3.239729606610319
+            ],
+            [
+              121.17381068420246,
+              -3.259607695888481
+            ],
+            [
+              121.16876693349539,
+              -3.2596076958884814
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kosali",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1172,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kosali.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.14750806725213,
+              -3.2482357857018354
+            ],
+            [
+              121.1197569418559,
+              -3.248235785701162
+            ],
+            [
+              121.10794646061119,
+              -3.2254919653316594
+            ],
+            [
+              121.11957183351237,
+              -3.2254919653316425
+            ],
+            [
+              121.14220752932961,
+              -3.2397296066089307
+            ],
+            [
+              121.14750806725213,
+              -3.2482357857018354
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mikuasi",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1920,
+        "kk": 490,
+        "ipd": 75.9,
+        "potensi": "Perkebunan Kakao Rakyat Berkelanjutan, Kelapa Dalam, dan Pisang.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.070530708779,
+              -3.2014743965016597
+            ],
+            [
+              121.10794646061348,
+              -3.2254919653335263
+            ],
+            [
+              121.11975694185608,
+              -3.2482357857011
+            ],
+            [
+              121.10794646060924,
+              -3.2709796060744445
+            ],
+            [
+              121.08743360458392,
+              -3.284147026408667
+            ],
+            [
+              121.0541894133237,
+              -3.201455302357306
+            ],
+            [
+              121.06579669795929,
+              -3.206910884129968
+            ],
+            [
+              121.070530708779,
+              -3.2014743965016597
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Olo Oloho",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1180,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Olo Oloho.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.10794646060837,
+              -3.2709796060747105
+            ],
+            [
+              121.119756941856,
+              -3.24823578570103
+            ],
+            [
+              121.14750806725039,
+              -3.248235785701162
+            ],
+            [
+              121.1687669334941,
+              -3.2596076958875693
+            ],
+            [
+              121.14750806724815,
+              -3.27097960607471
+            ],
+            [
+              121.10794646060837,
+              -3.2709796060747105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kondara",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "perikanan",
+        "penduduk": 2180,
+        "kk": 560,
+        "ipd": 81.3,
+        "potensi": "Sentra Budidaya Tambak Udang Windu Super Intensif dan Bandeng Air Payau Teluk Bone.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.08743360458244,
+              -3.2841470264063886
+            ],
+            [
+              121.08604582898099,
+              -3.2937234264479476
+            ],
+            [
+              121.0858037233893,
+              -3.294280312829422
+            ],
+            [
+              121.03819241065128,
+              -3.2652797879318314
+            ],
+            [
+              121.02407862223072,
+              -3.2781228253081167
+            ],
+            [
+              121.00913300858156,
+              -3.2500885757271476
+            ],
+            [
+              121.02052605463382,
+              -3.2441356897102764
+            ],
+            [
+              121.03071699129612,
+              -3.2113004660436104
+            ],
+            [
+              121.0497164186778,
+              -3.1993529339906672
+            ],
+            [
+              121.0541894133237,
+              -3.201455302357306
+            ],
+            [
+              121.08743360458244,
+              -3.2841470264063886
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sipakainge",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1280,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Sipakainge.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.08743360458213,
+              -3.284147026410738
+            ],
+            [
+              121.10794646060913,
+              -3.2709796060744964
+            ],
+            [
+              121.14750806725337,
+              -3.27097960607471
+            ],
+            [
+              121.13333548975807,
+              -3.2937234264450206
+            ],
+            [
+              121.08604582898148,
+              -3.2937234264445476
+            ],
+            [
+              121.08743360458213,
+              -3.284147026410738
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Seuwwa",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 824,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Seuwwa.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.14042177850526,
+              -3.3050953366303992
+            ],
+            [
+              121.13333548975824,
+              -3.293723426444733
+            ],
+            [
+              121.14750806725431,
+              -3.270979606071778
+            ],
+            [
+              121.16876693349215,
+              -3.259607695888405
+            ],
+            [
+              121.17381068420246,
+              -3.259607695888481
+            ],
+            [
+              121.19162675936752,
+              -3.2708138407861043
+            ],
+            [
+              121.1701288291822,
+              -3.2961647427086405
+            ],
+            [
+              121.16013671373844,
+              -3.2929000418034207
+            ],
+            [
+              121.15905537794161,
+              -3.305095336630399
+            ],
+            [
+              121.14042177850526,
+              -3.3050953366303992
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Alipato",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 872,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Alipato.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0860458289826,
+              -3.2937234264447928
+            ],
+            [
+              121.13333548975803,
+              -3.2937234264447928
+            ],
+            [
+              121.14042177850546,
+              -3.3050953366302482
+            ],
+            [
+              121.13244860389689,
+              -3.317890500470471
+            ],
+            [
+              121.12151688969277,
+              -3.3160335582020934
+            ],
+            [
+              121.08580372338947,
+              -3.294280312829009
+            ],
+            [
+              121.0860458289826,
+              -3.2937234264447928
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lalume",
+        "kecamatan": "Pakue",
+        "kode_kec": "74.08.02",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 700,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lalume.",
+        "color": "#eab308"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.14042177850533,
+              -3.305095336630566
+            ],
+            [
+              121.15905537794161,
+              -3.305095336630399
+            ],
+            [
+              121.15754288639516,
+              -3.322153201908691
+            ],
+            [
+              121.13244860389689,
+              -3.317890500470471
+            ],
+            [
+              121.14042177850533,
+              -3.305095336630566
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Teposua",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 688,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Teposua.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32357967363806,
+              -3.1127907943596016
+            ],
+            [
+              121.35357967363807,
+              -3.1127907943596016
+            ],
+            [
+              121.35357967363807,
+              -3.0827907943596013
+            ],
+            [
+              121.32357967363806,
+              -3.0827907943596013
+            ],
+            [
+              121.32357967363806,
+              -3.1127907943596016
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Pakue",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1384,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Pakue.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.2844347423745,
+              -3.1336911908956746
+            ],
+            [
+              121.3144347423745,
+              -3.1336911908956746
+            ],
+            [
+              121.3144347423745,
+              -3.1036911908956744
+            ],
+            [
+              121.2844347423745,
+              -3.1036911908956744
+            ],
+            [
+              121.2844347423745,
+              -3.1336911908956746
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mataleuno",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 856,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Mataleuno.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32357967363806,
+              -3.1545915874317476
+            ],
+            [
+              121.35357967363807,
+              -3.1545915874317476
+            ],
+            [
+              121.35357967363807,
+              -3.1245915874317474
+            ],
+            [
+              121.32357967363806,
+              -3.1245915874317474
+            ],
+            [
+              121.32357967363806,
+              -3.1545915874317476
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Puundoho",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1810,
+        "kk": 460,
+        "ipd": 74.6,
+        "potensi": "Perkebunan Kakao Rakyat, Kelapa Dalam, dan Tanaman Pangan.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.07983694072232,
+              -3.0896009269411593
+            ],
+            [
+              121.24787069824632,
+              -3.1612958118646826
+            ],
+            [
+              121.23354511993156,
+              -3.201541970171428
+            ],
+            [
+              121.09968528314937,
+              -3.1300611263199016
+            ],
+            [
+              121.05990754599657,
+              -3.1342036617695044
+            ],
+            [
+              121.04499268916129,
+              -3.1051180291736387
+            ],
+            [
+              121.05764470963572,
+              -3.0873405960915647
+            ],
+            [
+              121.07983694072232,
+              -3.0896009269411593
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lawata",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1092,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Banyar : Ikan segar di Desa Lawata.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31492269167842,
+              -3.184192575068683
+            ],
+            [
+              121.338705844699,
+              -3.191042864636472
+            ],
+            [
+              121.43216118566933,
+              -3.2022927770400025
+            ],
+            [
+              121.32458681386171,
+              -3.202292777040215
+            ],
+            [
+              121.31492269167842,
+              -3.184192575068683
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Amowe",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 876,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Amowe.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.24787069824663,
+              -3.161295811863877
+            ],
+            [
+              121.27371995591125,
+              -3.172324902572143
+            ],
+            [
+              121.31492269167842,
+              -3.184192575068683
+            ],
+            [
+              121.32458681386143,
+              -3.202292777040849
+            ],
+            [
+              121.31342760215142,
+              -3.2231931735759063
+            ],
+            [
+              121.27409061992435,
+              -3.2231931735758397
+            ],
+            [
+              121.23354511993134,
+              -3.2015419701719665
+            ],
+            [
+              121.24787069824663,
+              -3.161295811863877
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kalo",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 468,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kalo.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31342760215121,
+              -3.2231931735762145
+            ],
+            [
+              121.32458681386177,
+              -3.202292777040215
+            ],
+            [
+              121.43216118566933,
+              -3.2022927770400025
+            ],
+            [
+              121.43644200179699,
+              -3.202808090620863
+            ],
+            [
+              121.43333305108926,
+              -3.2440935701121187
+            ],
+            [
+              121.32458681386169,
+              -3.244093570112187
+            ],
+            [
+              121.31342760215121,
+              -3.2231931735762145
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Salu Dongka",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1408,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Salu Dongka.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31342760215018,
+              -3.2231931735758397
+            ],
+            [
+              121.32458681386123,
+              -3.2440935701113265
+            ],
+            [
+              121.3245019557186,
+              -3.2442525032772593
+            ],
+            [
+              121.2954806679985,
+              -3.2346154098732427
+            ],
+            [
+              121.27409061992341,
+              -3.2231931735758397
+            ],
+            [
+              121.31342760215018,
+              -3.2231931735758397
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lengkong Batu",
+        "kecamatan": "Pakue Utara",
+        "kode_kec": "74.08.11",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 620,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Lengkong Batu.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32458681386157,
+              -3.244093570112187
+            ],
+            [
+              121.43333305108926,
+              -3.2440935701121187
+            ],
+            [
+              121.43097223428128,
+              -3.275444164916223
+            ],
+            [
+              121.38136268224207,
+              -3.2483670359099506
+            ],
+            [
+              121.33784981331826,
+              -3.2486849237701563
+            ],
+            [
+              121.32450195571883,
+              -3.244252503276882
+            ],
+            [
+              121.32458681386157,
+              -3.244093570112187
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Pasampang",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1208,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Pasampang.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.2094391973611,
+              -3.152103101092194
+            ],
+            [
+              121.23943919736111,
+              -3.152103101092194
+            ],
+            [
+              121.23943919736111,
+              -3.122103101092194
+            ],
+            [
+              121.2094391973611,
+              -3.122103101092194
+            ],
+            [
+              121.2094391973611,
+              -3.152103101092194
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Labipi",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 816,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Labipi.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.17177702971352,
+              -3.1793256282312132
+            ],
+            [
+              121.16512004464876,
+              -3.162204721898469
+            ],
+            [
+              121.19234090920565,
+              -3.175322508426973
+            ],
+            [
+              121.19911804245857,
+              -3.1793256282312132
+            ],
+            [
+              121.17177702971352,
+              -3.1793256282312132
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lanipa",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 764,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Lanipa.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.2094391973611,
+              -3.1802514525174668
+            ],
+            [
+              121.23943919736111,
+              -3.1802514525174668
+            ],
+            [
+              121.23943919736111,
+              -3.1502514525174665
+            ],
+            [
+              121.2094391973611,
+              -3.1502514525174665
+            ],
+            [
+              121.2094391973611,
+              -3.1802514525174668
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Majapahit",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1890,
+        "kk": 480,
+        "ipd": 75.9,
+        "potensi": "Kelapa Kopra Putih Kualitas Ekspor, Tambak Bandeng, dan Perkebunan Kakao.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09842865325982,
+              -3.1300660132358757
+            ],
+            [
+              121.16512004464877,
+              -3.1622047218985254
+            ],
+            [
+              121.17177702971371,
+              -3.17932562823116
+            ],
+            [
+              121.155359982211,
+              -3.2215481553661234
+            ],
+            [
+              121.1420852089263,
+              -3.238618657086406
+            ],
+            [
+              121.0796805755981,
+              -3.198060061422666
+            ],
+            [
+              121.06058194040429,
+              -3.1955195449909866
+            ],
+            [
+              121.05990754599657,
+              -3.1342036617695044
+            ],
+            [
+              121.09842865325982,
+              -3.1300660132358757
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Latali",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1112,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Latali.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.20041958036879,
+              -3.180094421169781
+            ],
+            [
+              121.24677215669219,
+              -3.2074739796553984
+            ],
+            [
+              121.21798510866684,
+              -3.2074739796554637
+            ],
+            [
+              121.20041958036879,
+              -3.180094421169781
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Terengga",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Terengga.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.21798510866712,
+              -3.2074739796559077
+            ],
+            [
+              121.20895573254153,
+              -3.2215481553675724
+            ],
+            [
+              121.15535998221016,
+              -3.2215481553678225
+            ],
+            [
+              121.17177702971311,
+              -3.179325628231074
+            ],
+            [
+              121.19911804245851,
+              -3.1793256282312132
+            ],
+            [
+              121.20041958036846,
+              -3.18009442116925
+            ],
+            [
+              121.21798510866712,
+              -3.2074739796559077
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Powalaa",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 688,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Powalaa.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.20895573254032,
+              -3.2215481553711545
+            ],
+            [
+              121.21798510866812,
+              -3.207473979655171
+            ],
+            [
+              121.24677215669219,
+              -3.2074739796553984
+            ],
+            [
+              121.27928308114929,
+              -3.2266775456321852
+            ],
+            [
+              121.22993899908556,
+              -3.2275307387525345
+            ],
+            [
+              121.2271826974113,
+              -3.2356223310806573
+            ],
+            [
+              121.21798510866519,
+              -3.2356223310808763
+            ],
+            [
+              121.20895573254032,
+              -3.2215481553711545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "To Lemo",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 812,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa To Lemo.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.15535998221043,
+              -3.221548155367715
+            ],
+            [
+              121.20895573253836,
+              -3.2215481553678225
+            ],
+            [
+              121.21798510866647,
+              -3.2356223310850942
+            ],
+            [
+              121.20895573254292,
+              -3.249696506792755
+            ],
+            [
+              121.15912991024562,
+              -3.2496965067932404
+            ],
+            [
+              121.14208520892609,
+              -3.2386186570866555
+            ],
+            [
+              121.15535998221043,
+              -3.221548155367715
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Salulotong",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 380,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Salulotong.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.20895573254113,
+              -3.2496965067948294
+            ],
+            [
+              121.21798510866928,
+              -3.2356223310807484
+            ],
+            [
+              121.2271826974113,
+              -3.2356223310806573
+            ],
+            [
+              121.22080220995406,
+              -3.254353337136763
+            ],
+            [
+              121.21429622343403,
+              -3.2580207814915028
+            ],
+            [
+              121.20895573254113,
+              -3.2496965067948294
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Kalahunde",
+        "kecamatan": "Pakue Tengah",
+        "kode_kec": "74.08.10",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 592,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Kalahunde.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.20895573254005,
+              -3.2496965067932404
+            ],
+            [
+              121.2142962234336,
+              -3.258020781490826
+            ],
+            [
+              121.19161231355747,
+              -3.2708077703622394
+            ],
+            [
+              121.15912991024568,
+              -3.24969650679324
+            ],
+            [
+              121.20895573254005,
+              -3.2496965067932404
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Latowu",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1400,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah inbrida di Desa Latowu.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32450322611807,
+              -2.9840527134119745
+            ],
+            [
+              121.35450322611807,
+              -2.9840527134119745
+            ],
+            [
+              121.35450322611807,
+              -2.9540527134119743
+            ],
+            [
+              121.32450322611807,
+              -2.9540527134119743
+            ],
+            [
+              121.32450322611807,
+              -2.9840527134119745
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Batu Api",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 350,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah inbrida di Desa Batu Api.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.28504668480173,
+              -3.0063151302890114
+            ],
+            [
+              121.31504668480173,
+              -3.0063151302890114
+            ],
+            [
+              121.31504668480173,
+              -2.976315130289011
+            ],
+            [
+              121.28504668480173,
+              -2.976315130289011
+            ],
+            [
+              121.28504668480173,
+              -3.0063151302890114
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Bukit Tinggi",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 808,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Bukit Tinggi.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32450322611807,
+              -3.0285775471660483
+            ],
+            [
+              121.35450322611807,
+              -3.0285775471660483
+            ],
+            [
+              121.35450322611807,
+              -2.998577547166048
+            ],
+            [
+              121.32450322611807,
+              -2.998577547166048
+            ],
+            [
+              121.32450322611807,
+              -3.0285775471660483
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Batu Putih",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "perikanan",
+        "penduduk": 2150,
+        "kk": 540,
+        "ipd": 80.2,
+        "potensi": "Perikanan Tangkap Laut Dalam Teluk Bone dan Sentra Perdagangan Ikan Basah.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.0645646366487,
+              -2.9579215049734557
+            ],
+            [
+              121.08514926212877,
+              -2.979236106561018
+            ],
+            [
+              121.10819099461878,
+              -2.9813106635562576
+            ],
+            [
+              121.10318246419945,
+              -3.030315405331635
+            ],
+            [
+              121.12509154913573,
+              -3.0349079003792667
+            ],
+            [
+              121.12368478822248,
+              -3.04973855459059
+            ],
+            [
+              121.13881386177036,
+              -3.0499782751772386
+            ],
+            [
+              121.12798014007149,
+              -3.0705618637389875
+            ],
+            [
+              121.13434861899361,
+              -3.0757602734178136
+            ],
+            [
+              121.21459759290462,
+              -3.0889243390869296
+            ],
+            [
+              121.22187986790529,
+              -3.096304810584019
+            ],
+            [
+              121.21971788824696,
+              -3.1026272146745795
+            ],
+            [
+              121.19739022008943,
+              -3.1352742703364624
+            ],
+            [
+              121.14455564722539,
+              -3.112319819903746
+            ],
+            [
+              121.05764470963572,
+              -3.0873405960915647
+            ],
+            [
+              121.05846061506543,
+              -3.059458626914079
+            ],
+            [
+              121.04547380487224,
+              -3.0507842341050946
+            ],
+            [
+              121.04357916624554,
+              -3.036636050213474
+            ],
+            [
+              121.05613957098444,
+              -3.0228461652183114
+            ],
+            [
+              121.0643256238285,
+              -3.037124365896716
+            ],
+            [
+              121.0730465421642,
+              -3.0324680603526417
+            ],
+            [
+              121.0756665586648,
+              -3.0090818812237785
+            ],
+            [
+              121.08962477516332,
+              -3.0157792332249755
+            ],
+            [
+              121.09153258795868,
+              -2.9967554153300853
+            ],
+            [
+              121.07328489218412,
+              -2.9983751590862653
+            ],
+            [
+              121.07869941344723,
+              -2.9814818027429624
+            ],
+            [
+              121.0663273339394,
+              -2.9834836639398645
+            ],
+            [
+              121.06793540899196,
+              -2.963334885896245
+            ],
+            [
+              121.0645646366487,
+              -2.9579215049734557
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Mosiku",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1316,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Mosiku.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32450322611807,
+              -3.0731023809201226
+            ],
+            [
+              121.35450322611807,
+              -3.0731023809201226
+            ],
+            [
+              121.35450322611807,
+              -3.0431023809201223
+            ],
+            [
+              121.32450322611807,
+              -3.0431023809201223
+            ],
+            [
+              121.32450322611807,
+              -3.0731023809201226
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lelewawo",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1452,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Cengkeh di Desa Lelewawo.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.21971788824646,
+              -3.102627214673996
+            ],
+            [
+              121.2218798679052,
+              -3.0963048105843027
+            ],
+            [
+              121.22811815298722,
+              -3.1026272146739955
+            ],
+            [
+              121.21971788824646,
+              -3.102627214673996
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Parung Lampe",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 380,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Padi sawah inbrida di Desa Parung Lampe.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32450322611807,
+              -3.1176272146741963
+            ],
+            [
+              121.35450322611807,
+              -3.1176272146741963
+            ],
+            [
+              121.35450322611807,
+              -3.087627214674196
+            ],
+            [
+              121.32450322611807,
+              -3.087627214674196
+            ],
+            [
+              121.32450322611807,
+              -3.1176272146741963
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Bukit Baru",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 508,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Bukit Baru.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.21971788824737,
+              -3.10262721467395
+            ],
+            [
+              121.22811815298704,
+              -3.1026272146739955
+            ],
+            [
+              121.23366158621332,
+              -3.1082453973072006
+            ],
+            [
+              121.31377718012105,
+              -3.146650928885543
+            ],
+            [
+              121.31349443531414,
+              -3.1471520484278392
+            ],
+            [
+              121.22472946455873,
+              -3.1471520484282713
+            ],
+            [
+              121.19739022008946,
+              -3.1352742703364083
+            ],
+            [
+              121.21971788824737,
+              -3.10262721467395
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Puncak Harapan",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 500,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Puncak Harapan.",
+        "color": "#14b8a6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31349443531283,
+              -3.147152048426972
+            ],
+            [
+              121.31377718012098,
+              -3.1466509288856783
+            ],
+            [
+              121.32459376588963,
+              -3.151836145721518
+            ],
+            [
+              121.43814457940891,
+              -3.1613322176077077
+            ],
+            [
+              121.43781280449988,
+              -3.1694144653052674
+            ],
+            [
+              121.32605547560429,
+              -3.169414465305317
+            ],
+            [
+              121.31349443531283,
+              -3.147152048426972
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Makkuaseng",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 688,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Kakao di Desa Makkuaseng.",
+        "color": "#6366f1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31349443531506,
+              -3.1471520484282713
+            ],
+            [
+              121.3260554756048,
+              -3.169414465306242
+            ],
+            [
+              121.31788518359637,
+              -3.183894989409881
+            ],
+            [
+              121.30432036879006,
+              -3.1817310251666413
+            ],
+            [
+              121.22472946455964,
+              -3.147152048428271
+            ],
+            [
+              121.31349443531506,
+              -3.1471520484282713
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tetebawo",
+        "kecamatan": "Batu Putih",
+        "kode_kec": "74.08.03",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 384,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Tetebawo.",
+        "color": "#eab308"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.32605547560527,
+              -3.1694144653052803
+            ],
+            [
+              121.43781280449988,
+              -3.1694144653052674
+            ],
+            [
+              121.43644200179699,
+              -3.202808090620863
+            ],
+            [
+              121.31788518359637,
+              -3.183894989409881
+            ],
+            [
+              121.32605547560527,
+              -3.1694144653052803
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tobela",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1240,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Tobela.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.33940405060655,
+              -2.8904851772740723
+            ],
+            [
+              121.36940405060655,
+              -2.8904851772740723
+            ],
+            [
+              121.36940405060655,
+              -2.860485177274072
+            ],
+            [
+              121.33940405060655,
+              -2.860485177274072
+            ],
+            [
+              121.33940405060655,
+              -2.8904851772740723
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tangga Ruru",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 800,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Tangga Ruru.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.21349766898231,
+              -2.8708776907527636
+            ],
+            [
+              121.2259472637553,
+              -2.8698254857575307
+            ],
+            [
+              121.23071499979744,
+              -2.886665999736067
+            ],
+            [
+              121.24543100034043,
+              -2.892703000243216
+            ],
+            [
+              121.25198999973873,
+              -2.9067109996128693
+            ],
+            [
+              121.29731900007187,
+              -2.926495000044156
+            ],
+            [
+              121.29996299969275,
+              -2.944133000437546
+            ],
+            [
+              121.30316937532288,
+              -2.9473074075311523
+            ],
+            [
+              121.29481838442581,
+              -2.951711054696
+            ],
+            [
+              121.2466026349964,
+              -2.951711054696094
+            ],
+            [
+              121.18897159830381,
+              -2.931451043681396
+            ],
+            [
+              121.21105687207705,
+              -2.8564287079184965
+            ],
+            [
+              121.21349766898231,
+              -2.8708776907527636
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Porehu",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Maju",
+        "sektor": "perkebunan",
+        "penduduk": 1680,
+        "kk": 420,
+        "ipd": 75.1,
+        "potensi": "Kopi Robusta Dataran Tinggi Khas Kolut, Bunga Cengkeh, dan Minyak Nilam.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.29481838442479,
+              -2.951711054696544
+            ],
+            [
+              121.30316937531963,
+              -2.9473074075328753
+            ],
+            [
+              121.3222035567648,
+              -2.966151812448518
+            ],
+            [
+              121.29481838442479,
+              -2.951711054696544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Ponggi",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 500,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Ponggi.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.29481838442344,
+              -2.951711054696039
+            ],
+            [
+              121.32220355676462,
+              -2.9661518124484325
+            ],
+            [
+              121.33025299987605,
+              -2.9741210001839704
+            ],
+            [
+              121.36121816608556,
+              -2.9875703173162265
+            ],
+            [
+              121.36960349430592,
+              -3.0116934252113765
+            ],
+            [
+              121.36606722831539,
+              -3.0279369321183505
+            ],
+            [
+              121.31887927123121,
+              -3.0279369321183505
+            ],
+            [
+              121.24660263499698,
+              -2.951711054696039
+            ],
+            [
+              121.29481838442344,
+              -2.951711054696039
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Larui",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Berkembang",
+        "sektor": "perkebunan",
+        "penduduk": 1420,
+        "kk": 360,
+        "ipd": 71.8,
+        "potensi": "Perkebunan Minyak Atsiri Nilam, Cengkeh, dan Hasil Hutan Bukan Kayu.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.2466026349969,
+              -2.951711054696268
+            ],
+            [
+              121.31887927123142,
+              -3.0279369321184224
+            ],
+            [
+              121.2466026349969,
+              -3.1041628095410365
+            ],
+            [
+              121.2342233679034,
+              -3.108514702237506
+            ],
+            [
+              121.23366158621332,
+              -3.1082453973072006
+            ],
+            [
+              121.21459759290462,
+              -3.0889243390869296
+            ],
+            [
+              121.12798014007149,
+              -3.0705618637389875
+            ],
+            [
+              121.14040605299704,
+              -3.052632114280584
+            ],
+            [
+              121.12310424976135,
+              -3.0491655155760213
+            ],
+            [
+              121.123091774366,
+              -3.0336263232961187
+            ],
+            [
+              121.10318246419945,
+              -3.030315405331635
+            ],
+            [
+              121.10819099461878,
+              -2.9813106635562576
+            ],
+            [
+              121.15279654522442,
+              -2.9854303373401763
+            ],
+            [
+              121.16186366387706,
+              -2.9813708371943335
+            ],
+            [
+              121.15483731199242,
+              -2.964806005892399
+            ],
+            [
+              121.17800200069189,
+              -2.9687141015745055
+            ],
+            [
+              121.18897159830388,
+              -2.9314510436814225
+            ],
+            [
+              121.2466026349969,
+              -2.951711054696268
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Bangsala",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 1060,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Bangsala.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31597295397539,
+              -3.104162809541202
+            ],
+            [
+              121.24660263499715,
+              -3.1041628095410383
+            ],
+            [
+              121.31887927123151,
+              -3.027936932118351
+            ],
+            [
+              121.36606722831539,
+              -3.0279369321183505
+            ],
+            [
+              121.36094225588045,
+              -3.05147801339956
+            ],
+            [
+              121.36768943843065,
+              -3.0587108879362876
+            ],
+            [
+              121.31597295397539,
+              -3.104162809541202
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Sarambu",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Maju",
+        "sektor": "pariwisata",
+        "penduduk": 1720,
+        "kk": 440,
+        "ipd": 77,
+        "potensi": "Wisata Air Terjun Sarambu Bertingkat, Kopi Robusta Organik, dan Madu Hutan Asli.",
+        "color": "#8b5cf6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.31597295397545,
+              -3.1041628095407545
+            ],
+            [
+              121.36768943843065,
+              -3.0587108879362876
+            ],
+            [
+              121.38540311496183,
+              -3.0776996731013924
+            ],
+            [
+              121.38821087932865,
+              -3.097401611295254
+            ],
+            [
+              121.41205625139492,
+              -3.109663765770108
+            ],
+            [
+              121.41689131608143,
+              -3.1430713989258834
+            ],
+            [
+              121.43814457940891,
+              -3.1613322176077077
+            ],
+            [
+              121.37501483091374,
+              -3.156052778286185
+            ],
+            [
+              121.31597295397545,
+              -3.1041628095407545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tinuna",
+        "kecamatan": "Porehu",
+        "kode_kec": "74.08.12",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 644,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Nilam di Desa Tinuna.",
+        "color": "#ec4899"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.24660263499722,
+              -3.1041628095410023
+            ],
+            [
+              121.31597295397567,
+              -3.1041628095410383
+            ],
+            [
+              121.37501483091374,
+              -3.156052778286185
+            ],
+            [
+              121.32459376588963,
+              -3.151836145721518
+            ],
+            [
+              121.2342233679034,
+              -3.108514702237506
+            ],
+            [
+              121.24660263499722,
+              -3.1041628095410023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lawaki Jaya",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 784,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Lada di Desa Lawaki Jaya.",
+        "color": "#a3e635"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.11783198873077,
+              -2.7917854478062525
+            ],
+            [
+              121.13052127703531,
+              -2.7952968412761834
+            ],
+            [
+              121.15320712800667,
+              -2.8127038157284687
+            ],
+            [
+              121.15372486746024,
+              -2.814192378994935
+            ],
+            [
+              121.11783198873077,
+              -2.7917854478062525
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Patikala",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 644,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Lada di Desa Patikala.",
+        "color": "#10b981"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09908918012161,
+              -2.786598917705817
+            ],
+            [
+              121.11783198873077,
+              -2.7917854478062525
+            ],
+            [
+              121.15372486746024,
+              -2.814192378994935
+            ],
+            [
+              121.16506999968078,
+              -2.8468110000275715
+            ],
+            [
+              121.18659000012849,
+              -2.842016000138244
+            ],
+            [
+              121.2010030001884,
+              -2.8571310001954657
+            ],
+            [
+              121.21105687207705,
+              -2.8564287079184965
+            ],
+            [
+              121.2081869716762,
+              -2.86617758554915
+            ],
+            [
+              121.1196382181068,
+              -2.8846037645787748
+            ],
+            [
+              121.09016272434488,
+              -2.854242551341787
+            ],
+            [
+              121.06527228770491,
+              -2.787427384117094
+            ],
+            [
+              121.06833279422312,
+              -2.78701581912469
+            ],
+            [
+              121.08245986113377,
+              -2.7732887535730697
+            ],
+            [
+              121.09908918012161,
+              -2.786598917705817
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Tolala",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Maju",
+        "sektor": "perikanan",
+        "penduduk": 1720,
+        "kk": 440,
+        "ipd": 74.8,
+        "potensi": "Pelabuhan Perbatasan Provinsi, Pangkalan Armada Nelayan Tangkap Laut, dan Kopra.",
+        "color": "#06b6d4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09016272434464,
+              -2.8542425513417844
+            ],
+            [
+              121.07386652015258,
+              -2.864415820773143
+            ],
+            [
+              121.07416678896618,
+              -2.8566092000544927
+            ],
+            [
+              121.06216415635083,
+              -2.8589190583678032
+            ],
+            [
+              121.06359456382354,
+              -2.8708283189283414
+            ],
+            [
+              121.05885394285404,
+              -2.8737877574469266
+            ],
+            [
+              121.04623661792562,
+              -2.86526822974497
+            ],
+            [
+              121.03739818337954,
+              -2.807710103438467
+            ],
+            [
+              121.02731803779727,
+              -2.849491520217441
+            ],
+            [
+              121.01636409202933,
+              -2.837915921682395
+            ],
+            [
+              120.99162014525359,
+              -2.840774579583126
+            ],
+            [
+              121.01019435878266,
+              -2.866442845061215
+            ],
+            [
+              120.99033333591478,
+              -2.8425000008742813
+            ],
+            [
+              120.99489082305308,
+              -2.8287034231244093
+            ],
+            [
+              121.0214444441059,
+              -2.8169444438309483
+            ],
+            [
+              121.03196795995348,
+              -2.7919060203465165
+            ],
+            [
+              121.06527228770491,
+              -2.787427384117094
+            ],
+            [
+              121.09016272434464,
+              -2.8542425513417844
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Bahari",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Maju",
+        "sektor": "pariwisata",
+        "penduduk": 1650,
+        "kk": 420,
+        "ipd": 76.5,
+        "potensi": "Kawasan Konservasi Terumbu Karang Teluk Tolala, Wisata Selam Bahari, dan Ikan Tangkap Laut Dalam.",
+        "color": "#3b82f6"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.09016272434488,
+              -2.854242551341999
+            ],
+            [
+              121.1196382181063,
+              -2.88460376457796
+            ],
+            [
+              121.1046057775614,
+              -2.924956412598465
+            ],
+            [
+              121.0678816768597,
+              -2.962784048713373
+            ],
+            [
+              121.06541899978708,
+              -2.9595597351935794
+            ],
+            [
+              121.06862344753078,
+              -2.9620199883146316
+            ],
+            [
+              121.08691852801266,
+              -2.943175152527306
+            ],
+            [
+              121.09066317736381,
+              -2.9233423879408065
+            ],
+            [
+              121.07856193498537,
+              -2.9067306902691143
+            ],
+            [
+              121.08010201589536,
+              -2.895806398746231
+            ],
+            [
+              121.07256152969092,
+              -2.8983439716968746
+            ],
+            [
+              121.07386652015258,
+              -2.864415820773143
+            ],
+            [
+              121.06359456382354,
+              -2.8708283189283414
+            ],
+            [
+              121.06439978911908,
+              -2.87753244906321
+            ],
+            [
+              121.05885394285404,
+              -2.8737877574469266
+            ],
+            [
+              121.09016272434488,
+              -2.854242551341999
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Lelewulu",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Mandiri",
+        "sektor": "pertanian",
+        "penduduk": 720,
+        "kk": 400,
+        "ipd": 70.0,
+        "potensi": "Sentra komoditas Lada di Desa Lelewulu.",
+        "color": "#f59e0b"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.1046057775621,
+              -2.924956412597761
+            ],
+            [
+              121.11963821810596,
+              -2.8846037645788583
+            ],
+            [
+              121.2081869716771,
+              -2.8661775855489693
+            ],
+            [
+              121.17800200069189,
+              -2.9687141015745055
+            ],
+            [
+              121.17347673881646,
+              -2.967950648344537
+            ],
+            [
+              121.1046057775621,
+              -2.924956412597761
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nama": "Loka",
+        "kecamatan": "Tolala",
+        "kode_kec": "74.08.15",
+        "status": "Berkembang",
+        "sektor": "perkebunan",
+        "penduduk": 1390,
+        "kk": 350,
+        "ipd": 71.4,
+        "potensi": "Sentra Madu Lebah Hutan Liar Pegunungan Tolala, Kakao, dan Kelapa Dalam.",
+        "color": "#16a34a"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              121.10460577756213,
+              -2.9249564125977825
+            ],
+            [
+              121.17347673881646,
+              -2.967950648344537
+            ],
+            [
+              121.15483731199242,
+              -2.964806005892399
+            ],
+            [
+              121.16186366387706,
+              -2.9813708371943335
+            ],
+            [
+              121.15279654522442,
+              -2.9854303373401763
+            ],
+            [
+              121.08514926212877,
+              -2.979236106561018
+            ],
+            [
+              121.07573463374638,
+              -2.9730657033194916
+            ],
+            [
+              121.0678816768597,
+              -2.962784048713373
+            ],
+            [
+              121.06862344753078,
+              -2.9620199883146316
+            ],
+            [
+              121.08149458370815,
+              -2.971901957209525
+            ],
+            [
+              121.08691852801266,
+              -2.943175152527306
+            ],
+            [
+              121.10460577756213,
+              -2.9249564125977825
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

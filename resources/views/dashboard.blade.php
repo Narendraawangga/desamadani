@@ -63,7 +63,10 @@
     <!-- EMBEDDED GEOJSON DATA (Instant Zero-Latency Loading) -->
     <script>
         window.KOLAKA_UTARA_GEOJSON = {!! file_get_contents(public_path('data/kolaka_utara_kecamatan.geojson')) !!};
+        window.KOLUT_DESA_GEOJSON = {!! file_get_contents(public_path('data/kolut_desa_polygons.json')) !!};
     </script>
+    <script src="/data/kolut_kecamatan_polygons.js"></script>
+    <script src="/data/kolut_desa_polygons.js"></script>
 
     <!-- PODES 2025 DATABASE & DESA PRESISI ENGINE -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261117_02"></script>
@@ -1112,9 +1115,31 @@
                             </div>
                         </div>
 
-                        <!-- Leaflet Map Container -->
-                        <div id="presisiMapContainer" class="relative w-full rounded-xl overflow-hidden border border-slate-200 shadow-inner" style="height: 520px; min-height: 520px; background-color: #0b192c;">
-                            <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 520px;"></div>
+                        <!-- Leaflet Map Container (Exact desapresisi.id WebGIS layout) -->
+                        <div id="presisiMapContainer" class="relative w-full rounded-2xl overflow-hidden border border-slate-200/90 shadow-lg" style="height: 580px; min-height: 580px; background-color: #0b192c;">
+                            <!-- Floating Top-Left Analysis Pills -->
+                            <div class="absolute top-3.5 left-3.5 z-[400] flex items-center gap-2 pointer-events-auto">
+                                <button type="button" class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-md border border-slate-200/90 text-xs font-bold text-slate-800 flex items-center gap-1.5 hover:bg-slate-50 transition">
+                                    <span>Unit Analisis</span>
+                                    <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </button>
+                                <button type="button" class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-md border border-slate-200/90 text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
+                                    Sarana &amp; Prasarana
+                                </button>
+                                <button type="button" class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-md border border-slate-200/90 text-xs font-bold text-slate-700 hover:bg-slate-50 transition">
+                                    Penggunaan Lahan
+                                </button>
+                            </div>
+
+                            <!-- Floating Bottom-Left Summary Demography Card (Exact desapresisi.id style) -->
+                            <div id="mapFloatingDemographyCard" class="absolute bottom-5 left-5 z-[400] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-4 border border-slate-100/90 pointer-events-auto min-w-[145px]">
+                                <div class="text-[11px] font-semibold text-slate-500">Jumlah Jiwa</div>
+                                <div id="statJumlahJiwa" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">67.019</div>
+                                <div class="text-[11px] font-semibold text-slate-500 mt-2.5">Jumlah Keluarga</div>
+                                <div id="statJumlahKeluarga" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">19.749</div>
+                            </div>
+
+                            <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 580px;"></div>
                         </div>
 
                         <!-- Interactive Guide Caption -->
@@ -2079,7 +2104,10 @@
     <!-- EMBEDDED GEOJSON DATA (Instant Zero-Latency Loading) -->
     <script>
         window.KOLAKA_UTARA_GEOJSON = {!! file_get_contents(public_path('data/kolaka_utara_kecamatan.geojson')) !!};
+        window.KOLUT_DESA_GEOJSON = {!! file_get_contents(public_path('data/kolut_desa_polygons.json')) !!};
     </script>
+    <script src="/data/kolut_kecamatan_polygons.js"></script>
+    <script src="/data/kolut_desa_polygons.js"></script>
 
     <!-- Local Leaflet JS (Instant Load, Zero External Dependency) -->
     <script src="/vendor/leaflet/leaflet.js"></script>
