@@ -2360,13 +2360,6 @@
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <div class="flex items-center justify-between text-xs mb-3">
-                                            <div class="flex items-center text-amber-500 gap-1 text-[11px]">
-                                                <span>⭐⭐⭐⭐⭐</span>
-                                                <b class="text-slate-800 ml-0.5">4.9</b>
-                                            </div>
-                                            <span class="text-[10px] font-bold text-slate-400">BPS RI</span>
-                                        </div>
                                         <button type="button" onclick="switchNavMenu('video')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-emerald-700/20 hover:shadow-emerald-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
                                             <span>Mulai Tonton</span>
                                             <i class="bi bi-arrow-right"></i>
@@ -2397,13 +2390,6 @@
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <div class="flex items-center justify-between text-xs mb-3">
-                                            <div class="flex items-center text-amber-500 gap-1 text-[11px]">
-                                                <span>⭐⭐⭐⭐⭐</span>
-                                                <b class="text-slate-800 ml-0.5">4.8</b>
-                                            </div>
-                                            <span class="text-[10px] font-bold text-slate-400">Terakreditasi</span>
-                                        </div>
                                         <button type="button" onclick="switchNavMenu('pretest')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-600 to-teal-700 hover:from-sky-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-sky-700/20 hover:shadow-sky-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
                                             <span>Mulai Evaluasi</span>
                                             <i class="bi bi-arrow-right"></i>
@@ -2434,13 +2420,6 @@
                                     </div>
 
                                     <div class="mt-4 pt-3 border-t border-slate-100">
-                                        <div class="flex items-center justify-between text-xs mb-3">
-                                            <div class="flex items-center text-amber-500 gap-1 text-[11px]">
-                                                <span>⭐⭐⭐⭐⭐</span>
-                                                <b class="text-slate-800 ml-0.5">5.0</b>
-                                            </div>
-                                            <span class="text-[10px] font-bold text-slate-400">Resmi SDI</span>
-                                        </div>
                                         <button type="button" onclick="switchNavMenu('buku')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-emerald-700 hover:from-amber-700 hover:to-emerald-800 text-white font-black text-xs shadow-md shadow-amber-700/20 hover:shadow-amber-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
                                             <span>Buka Panduan</span>
                                             <i class="bi bi-arrow-right"></i>
