@@ -266,28 +266,17 @@
 
         <!-- 3. Daftar Menu Navigasi Sidebar (Bootstrap Icons Rapi & Konsisten) -->
         <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 pb-3">
-            <div class="dc-nav-label" style="margin-top:.4rem;">Administrasi &amp; Data</div>
+            <div class="dc-nav-label" style="margin-top:.4rem;">Menu Utama</div>
             <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active" style="--c:#0f6b4a;--c2:#17a06d;--cbg:#e3f6ec;">
                 <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
                 <span>Beranda</span>
             </button>
             <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab" style="--c:#2563eb;--c2:#4f8cff;--cbg:#e6eefe;">
-                <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
+                <span class="dc-ico"><i class="bi bi-building"></i></span>
                 <span>Profil Desa</span>
             </button>
-            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item" style="--c:#d97706;--c2:#f5a524;--cbg:#fdf0d9;">
-                <span class="dc-ico"><i class="bi bi-pencil-square"></i></span>
-                <span>Pengisian Data PODES</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;">
-                <span class="dc-ico"><i class="bi bi-clipboard-data-fill"></i></span>
-                <span>Monitoring</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('output')" id="nav-output" class="nav-tab" style="--c:#0284c7;--c2:#38bdf8;--cbg:#e0f2fe;">
-                <span class="dc-ico"><i class="bi bi-file-earmark-bar-graph-fill"></i></span>
-                <span>Output Desa</span>
-            </button>
 
+            <!-- 1. KAPASITAS & EDUKASI (DIUTAMAKAN LEBIH DULU) -->
             <div class="dc-nav-label">Kapasitas &amp; Edukasi</div>
             <button type="button" onclick="toggleMateriMenu()" id="nav-pembelajaran" class="nav-tab" style="--c:#4f46e5;--c2:#7c74f5;--cbg:#e8e7fd;">
                 <span class="dc-ico"><i class="bi bi-book-half"></i></span>
@@ -309,6 +298,22 @@
                 </button>
             </div>
 
+            <!-- 2. ADMINISTRASI & PENGISIAN DATA PODES -->
+            <div class="dc-nav-label">Administrasi &amp; Data</div>
+            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item" style="--c:#d97706;--c2:#f5a524;--cbg:#fdf0d9;">
+                <span class="dc-ico"><i class="bi bi-pencil-square"></i></span>
+                <span>Pengisian Data PODES</span>
+            </button>
+            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab" style="--c:#0d9488;--c2:#25c2b0;--cbg:#dcf5f1;">
+                <span class="dc-ico"><i class="bi bi-clipboard-data-fill"></i></span>
+                <span>Monitoring</span>
+            </button>
+            <button type="button" onclick="switchNavMenu('output')" id="nav-output" class="nav-tab" style="--c:#0284c7;--c2:#38bdf8;--cbg:#e0f2fe;">
+                <span class="dc-ico"><i class="bi bi-file-earmark-bar-graph-fill"></i></span>
+                <span>Output Desa</span>
+            </button>
+
+            <!-- 3. LAYANAN -->
             <div class="dc-nav-label">Layanan</div>
             <button type="button" onclick="openMetadataModal()" class="dc-nav-item" style="--c:#0891b2;--c2:#2cc3e0;--cbg:#dcf3f9;">
                 <span class="dc-ico"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
