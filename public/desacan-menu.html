@@ -514,9 +514,12 @@
                 <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight hidden lg:inline">Portal Satu Data</span>
                 <span class="text-slate-300 hidden lg:inline">•</span>
                 
-                <!-- Identitas Akun Desa Aktif (Hanya Teks Bersih Tanpa Background Hijau) -->
+                <!-- Identitas Wilayah Desa Aktif (Hanya Teks & Icon Bootstrap Tanpa Kata AKUN) -->
                 <div class="min-w-0 leading-tight py-0.5">
-                    <div id="topBrandDesaTitle" class="text-xs sm:text-[13px] font-extrabold text-slate-900 uppercase tracking-tight truncate">AKUN DESA LAPOLU</div>
+                    <div class="flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-slate-900 uppercase tracking-tight truncate">
+                        <i class="bi bi-buildings-fill text-emerald-700 text-xs shrink-0"></i>
+                        <span id="topBrandDesaTitle" class="truncate">DESA LAPOLU</span>
+                    </div>
                     <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
                 </div>
             </div>
@@ -5670,7 +5673,7 @@ function triggerPubDownload() {
 
             // 1. Top Navigation & Brand Bars
             const brandTitle = document.getElementById('topBrandDesaTitle');
-            if (brandTitle) brandTitle.textContent = ('AKUN ' + (data.title || 'DESA')).toUpperCase();
+            if (brandTitle) brandTitle.textContent = (data.title || 'DESA').toUpperCase();
             const brandKec = document.getElementById('topBrandDesaKec');
             if (brandKec) brandKec.textContent = '(Kec. ' + (data.kec || 'Kodeoha') + ') • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
