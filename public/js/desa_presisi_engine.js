@@ -1322,28 +1322,34 @@ window.PresisiEngine = (function() {
     // Scale Control on Top-Right (as in reference: 20 km bar)
     L.control.scale({ position: 'topright', imperial: false }).addTo(map);
 
-    // 1. Primary Base: Esri World Imagery (High Resolution Satellite - Free, Crisp, No Watermarks)
-    const baseSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    // 1. Primary Base: Esri World Light Gray Canvas (Clean, Minimalist, Light & Elegant)
+    const baseLight = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19,
-      attribution: 'Esri, Earthstar Geographics'
+      attribution: '© Esri, Canvas World Light Gray'
     }).addTo(map);
 
-    // 2. Esri World Boundaries Reference
-    const refLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+    const refLabels = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19,
-      opacity: 0.9
-    });
+      opacity: 0.95
+    }).addTo(map);
 
-    // 3. Alternative OSM Base Layer
+    // 2. Alternative OSM Base Layer
     const baseOsm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap'
     });
 
+    // 3. High Resolution Esri World Imagery Satellite
+    const baseSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+      attribution: 'Esri, Earthstar Geographics'
+    });
+
     // Layer Switcher Control (Bottom-Right)
     L.control.layers({
-      "Citra Satelit": baseSatellite,
-      "Peta Terbuka (OSM)": baseOsm
+      "Peta Terang (Light Canvas)": baseLight,
+      "Peta Terbuka (OSM)": baseOsm,
+      "Citra Satelit": baseSatellite
     }, {
       "Label Referensi Batas": refLabels
     }, { position: 'bottomright' }).addTo(map);

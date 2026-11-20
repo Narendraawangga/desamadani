@@ -68,9 +68,10 @@
     <script src="/data/kolut_kecamatan_polygons.js"></script>
     <script src="/data/kolut_desa_polygons.js"></script>
 
-    <!-- PODES 2025 DATABASE & DESA PRESISI ENGINE -->
-    <script src="/data/podes_kolut_complete_2025.js?v=20261117_02"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261117_02"></script>
+    <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
+    <script src="/data/podes_kolut_complete_2025.js?v=20261120_01"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261120_01"></script>
+    <script src="/js/podes_explorer.js?v=20261120_01"></script>
 
     <style>
         html, body {
