@@ -520,15 +520,10 @@
                 <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight hidden lg:inline">Portal Satu Data</span>
                 <span class="text-slate-300 hidden lg:inline">•</span>
                 
-                <!-- Kartu Identitas Akun Desa Aktif (Dipindahkan dari Sidebar) -->
-                <div class="px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2 shadow-2xs">
-                    <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#0f6b4a] text-white flex items-center justify-center shrink-0 shadow-xs">
-                        <i class="bi bi-buildings-fill text-xs"></i>
-                    </div>
-                    <div class="min-w-0 leading-tight">
-                        <div id="topBrandDesaTitle" class="text-[11px] sm:text-xs font-black text-slate-900 uppercase truncate">AKUN DESA LAPOLU</div>
-                        <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
-                    </div>
+                <!-- Identitas Akun Desa Aktif (Hanya Teks Bersih Tanpa Background Hijau) -->
+                <div class="min-w-0 leading-tight py-0.5">
+                    <div id="topBrandDesaTitle" class="text-xs sm:text-[13px] font-extrabold text-slate-900 uppercase tracking-tight truncate">AKUN DESA LAPOLU</div>
+                    <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
                 </div>
             </div>
         </div>
