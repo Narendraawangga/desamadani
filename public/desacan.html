@@ -240,7 +240,7 @@
         .coverflow-card {
             position: relative;
             width: 280px;
-            height: 470px;
+            height: 440px;
             border-radius: 28px;
             overflow: hidden;
             cursor: pointer;
@@ -335,7 +335,7 @@
             }
             .coverflow-card {
                 width: 250px;
-                height: 420px;
+                height: 400px;
                 border-radius: 22px;
             }
             .coverflow-card .card-content {
@@ -877,10 +877,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-emerald-300 transition">
                                     Desa Kamisi
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Pusat perikanan tangkap dan pengeringan teri tradisional, perkebunan kakao rakyat.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.576</b>
@@ -923,10 +921,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-sky-300 transition">
                                     Desa Koroha
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Pengembangan perkebunan kakao sambung pucuk, cengkeh perbukitan dan budidaya laut.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.340</b>
@@ -969,10 +965,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-amber-300 transition">
                                     Kelurahan Mala-Mala
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Ibukota Kecamatan Kodeoha, pusat puskesmas rawat inap dan fasilitas umum terpadu.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.272</b>
@@ -1015,10 +1009,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-emerald-300 transition">
                                     Desa Lapolu
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Sentra perkebunan cengkeh rakyat dan klaster 75 industri kecil menengah (IKM) produktif.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.264</b>
@@ -1061,10 +1053,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-indigo-300 transition">
                                     Desa Tanggeawo
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Kawasan perkebunan kakao rakyat mandiri dengan 46 unit usaha IKM produktif.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">564</b>
@@ -1107,10 +1097,8 @@
                                 <h3 class="text-2xl font-black text-white tracking-tight leading-tight group-hover:text-purple-300 transition">
                                     Desa Mattiro Bulu
                                 </h3>
-                                <p class="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
-                                    Sentra agroindustri perkebunan cengkeh perbukitan, nilam, dan tanaman hortikultura.
-                                </p>
-                                <div class="grid grid-cols-3 gap-1.5 p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center my-3 text-[10px]">
+
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">856</b>
