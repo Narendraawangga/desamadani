@@ -172,27 +172,29 @@
         }
     
         /* ============================================================== */
-        /* 3D ROTATING COVERFLOW CAROUSEL (INSPIRASI POPULAR TOURS)       */
+        /* 3D ROTATING COVERFLOW CAROUSEL (6 DESA MUNCUL SEMUA + AUTOPLAY) */
         /* ============================================================== */
         .coverflow-stage {
             perspective: 1200px;
             perspective-origin: 50% 50%;
             position: relative;
             width: 100%;
-            height: 540px;
+            max-width: 1240px;
+            margin: 0 auto;
+            height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: visible;
             touch-action: pan-y;
             user-select: none;
         }
 
         .coverflow-card {
             position: absolute;
-            width: 300px;
-            height: 495px;
-            border-radius: 28px;
+            width: 275px;
+            height: 460px;
+            border-radius: 26px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
@@ -201,13 +203,13 @@
                         box-shadow 0.65s ease;
             will-change: transform, opacity, filter;
             transform-style: preserve-3d;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55);
             background: #0f172a;
         }
 
         .coverflow-card.active {
             cursor: default;
-            box-shadow: 0 35px 70px -15px rgba(14, 124, 90, 0.45), 0 0 0 2.5px rgba(52, 211, 153, 0.85);
+            box-shadow: 0 30px 60px -12px rgba(14, 124, 90, 0.45), 0 0 0 2.5px rgba(52, 211, 153, 0.85);
         }
 
         .coverflow-card img.card-bg {
@@ -240,17 +242,31 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 1.35rem;
+            padding: 1.25rem;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 1023px) {
             .coverflow-stage {
                 height: 480px;
             }
             .coverflow-card {
-                width: 265px;
-                height: 445px;
-                border-radius: 24px;
+                width: 250px;
+                height: 430px;
+                border-radius: 22px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .coverflow-stage {
+                height: 440px;
+            }
+            .coverflow-card {
+                width: 230px;
+                height: 395px;
+                border-radius: 20px;
+            }
+            .coverflow-card .card-content {
+                padding: 1rem;
             }
         }
 
@@ -692,17 +708,7 @@
                 Pilih salah satu desa binaan statistik presisi di bawah ini untuk masuk ke dashboard operasional, monografi, dan modul pembinaan. Klik kartu di samping untuk memutar ke depan.
             </p>
 
-            <!-- View Switcher Tabs (3D Coverflow & Grid Klasik) -->
-            <div class="pt-2 flex items-center justify-center gap-2">
-                <button type="button" id="btnView3d" onclick="switchDesaDisplayMode('3d')" class="px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 bg-[#0E7C5A] text-white shadow-xs cursor-pointer">
-                    <i class="bi bi-badge-3d-fill text-sm"></i>
-                    <span>Tampilan 3D Coverflow</span>
-                </button>
-                <button type="button" id="btnViewGrid" onclick="switchDesaDisplayMode('grid')" class="px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 cursor-pointer">
-                    <i class="bi bi-grid-fill text-xs"></i>
-                    <span>Tampilan Grid (6 Desa)</span>
-                </button>
-            </div>
+
         </div>
 
         <!-- 3D COVERFLOW STAGE CONTAINER -->
@@ -1007,20 +1013,26 @@
 
             </div>
 
-            <!-- Carousel Controls Underneath (Circular Arrows & Indicators matching Image 2) -->
+            <!-- Carousel Controls Underneath (Circular Arrows & Autoplay Indicators) -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-4 border-t border-slate-200/80 max-w-2xl mx-auto">
-                <button type="button" onclick="rotateCoverflow(-1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Putar ke Kiri (Sebelumnya)">
+                <button type="button" onclick="userInteractRotate(-1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Putar ke Kiri (Sebelumnya)">
                     <i class="bi bi-chevron-left text-lg"></i>
                 </button>
 
                 <div class="text-center space-y-1.5 flex-1 min-w-0">
-                    <div id="coverflowActiveTitle" class="text-sm sm:text-base font-black text-slate-900 tracking-tight truncate">
-                        Desa Kamisi (Kecamatan Kodeoha)
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>Putar Otomatis Aktif</span>
+                        </span>
+                        <span id="coverflowActiveTitle" class="text-xs sm:text-sm font-black text-slate-900 tracking-tight truncate">
+                            Desa Kamisi (Kecamatan Kodeoha)
+                        </span>
                     </div>
                     <div class="flex items-center justify-center gap-2" id="coverflowDots"></div>
                 </div>
 
-                <button type="button" onclick="rotateCoverflow(1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Putar ke Kanan (Berikutnya)">
+                <button type="button" onclick="userInteractRotate(1)" class="w-12 h-12 rounded-full border border-slate-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 flex items-center justify-center transition shadow-sm active:scale-90 cursor-pointer shrink-0" title="Putar ke Kanan (Berikutnya)">
                     <i class="bi bi-chevron-right text-lg"></i>
                 </button>
             </div>
@@ -1031,306 +1043,7 @@
             </div>
         </div>
 
-        <!-- GRID KLASIK CONTAINER (TERSEMBUNYI SAAT MODE 3D AKTIF) -->
-        <div id="containerGridKlasik" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-            <!-- 1. DESA KAMISI (KEC. KODEOHA) -->
-            <div onclick="handleDesaCardAccess(event, 'kamisi')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group border-2 border-emerald-400/80 hover:border-emerald-500">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=350&q=80" 
-                             alt="Desa Kamisi" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-emerald-300 font-black">
-                            ★ 4.8
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-black">
-                            Pesisir &amp; Teri • Kodeoha
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Desa Kamisi
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Pusat perikanan tangkap dan pengeringan teri tradisional, perkebunan kakao rakyat.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">1.576</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-[#0E7C5A]">394 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">14 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-emerald-700">● Bahari Mandiri (98%)</span>
-                    <span class="font-black text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1">
-                        <span>Pilih Desa</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 2. DESA KOROHA (KEC. KODEOHA) -->
-            <div onclick="handleDesaCardAccess(event, 'koroha')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=350&q=80" 
-                             alt="Desa Koroha" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-emerald-300 font-black">
-                            ★ 4.7
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-black">
-                            Kakao &amp; Pesisir • Kodeoha
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Desa Koroha
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Pengembangan perkebunan kakao sambung pucuk, cengkeh perbukitan dan budidaya laut.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">1.340</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-emerald-700">335 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">16 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-emerald-700">● Maritim Mandiri (72%)</span>
-                    <span class="font-black text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1">
-                        <span>Pilih Desa</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 3. KELURAHAN MALA-MALA (KEC. KODEOHA) -->
-            <div onclick="handleDesaCardAccess(event, 'malamala')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=350&q=80" 
-                             alt="Kelurahan Mala-Mala" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-amber-300 font-black">
-                            ★ 4.9
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 font-black">
-                            Pusat Layanan • Kodeoha
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Kelurahan Mala-Mala
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Ibukota Kecamatan Kodeoha, pusat puskesmas rawat inap dan fasilitas umum terpadu.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">1.272</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-amber-700">318 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">2 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-amber-700">● Perkotaan Mandiri (93%)</span>
-                    <span class="font-black text-amber-700 group-hover:text-amber-800 flex items-center gap-1">
-                        <span>Pilih Kelurahan</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 4. DESA LAPOLU (KEC. TIWU) -->
-            <div onclick="handleDesaCardAccess(event, 'lapolu')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=350&q=80" 
-                             alt="Desa Lapolu" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-emerald-300 font-black">
-                            ★ 4.8
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 font-black">
-                            Sentra Cengkeh &amp; IMK • Tiwu
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Desa Lapolu
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Sentra perkebunan cengkeh rakyat dan klaster 75 industri kecil menengah (IKM) produktif.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">1.264</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-sky-700">321 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">75 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-sky-700">● Agro Mandiri (88%)</span>
-                    <span class="font-black text-sky-700 group-hover:text-sky-800 flex items-center gap-1">
-                        <span>Pilih Desa</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 5. DESA TANGGEAWO (KEC. TIWU) -->
-            <div onclick="handleDesaCardAccess(event, 'tanggeawo')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=350&q=80" 
-                             alt="Desa Tanggeawo" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-indigo-300 font-black">
-                            ★ 4.7
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 font-black">
-                            Perkebunan Kakao • Tiwu
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Desa Tanggeawo
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Kawasan perkebunan kakao rakyat mandiri dengan 46 unit usaha IKM produktif.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">564</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-indigo-700">141 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">46 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-indigo-700">● Agrikultur Mandiri (84%)</span>
-                    <span class="font-black text-indigo-700 group-hover:text-indigo-800 flex items-center gap-1">
-                        <span>Pilih Desa</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- 6. DESA MATTIRO BULU (KEC. TIWU) -->
-            <div onclick="handleDesaCardAccess(event, 'mattirobulu')"
-                 class="village-compact-card p-4 flex flex-col justify-between cursor-pointer group">
-                <div class="flex items-start gap-3.5">
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 shrink-0 relative shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=350&q=80" 
-                             alt="Desa Mattiro Bulu" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute bottom-1 left-1 text-[8.5px] px-1.5 py-0.5 rounded bg-slate-950/80 text-purple-300 font-black">
-                            ★ 4.8
-                        </span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <span class="text-[9px] px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 font-black">
-                            Dataran Cengkeh &amp; Nilam • Tiwu
-                        </span>
-                        <h3 class="text-base font-black text-slate-900 mt-1 leading-snug group-hover:text-[#0E7C5A] transition">
-                            Desa Mattiro Bulu
-                        </h3>
-                        <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
-                            Sentra agroindustri perkebunan cengkeh perbukitan, nilam, dan tanaman hortikultura.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2 p-2 rounded-xl bg-slate-50 border border-slate-100 text-center my-3 text-[10px]">
-                    <div>
-                        <span class="text-slate-400 block font-bold">Penduduk</span>
-                        <b class="text-xs font-black text-slate-900">856</b>
-                    </div>
-                    <div class="border-x border-slate-200">
-                        <span class="text-slate-400 block font-bold">Keluarga</span>
-                        <b class="text-xs font-black text-purple-700">324 KK</b>
-                    </div>
-                    <div>
-                        <span class="text-slate-400 block font-bold">IKM</span>
-                        <b class="text-xs font-black text-amber-600">20 Unit</b>
-                    </div>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] font-bold text-purple-700">● Terbina Aktif (79%)</span>
-                    <span class="font-black text-purple-700 group-hover:text-purple-800 flex items-center gap-1">
-                        <span>Pilih Desa</span>
-                        <span class="group-hover:translate-x-1 transition">→</span>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
     <!-- ============================================================== -->
     <!-- 7. MENU 4: OUTPUT PROGRAM DESA CANTIK (#output)                -->
@@ -1896,24 +1609,7 @@
             }
         }
 
-        function switchDesaDisplayMode(mode) {
-            const c3d = document.getElementById('container3dCoverflow');
-            const cGrid = document.getElementById('containerGridKlasik');
-            const btn3d = document.getElementById('btnView3d');
-            const btnGrid = document.getElementById('btnViewGrid');
-
-            if (mode === 'grid') {
-                if (c3d) c3d.classList.add('hidden');
-                if (cGrid) cGrid.classList.remove('hidden');
-                if (btn3d) {
-                    btn3d.classList.remove('bg-[#0E7C5A]', 'text-white', 'shadow-xs');
-                    btn3d.classList.add('bg-slate-100', 'text-slate-700', 'border', 'border-slate-200');
-                }
-                if (btnGrid) {
-                    btnGrid.classList.remove('bg-slate-100', 'text-slate-700', 'border', 'border-slate-200');
-                    btnGrid.classList.add('bg-[#0E7C5A]', 'text-white', 'shadow-xs');
-                }
-            } else {
+         else {
                 if (cGrid) cGrid.classList.add('hidden');
                 if (c3d) c3d.classList.remove('hidden');
                 if (btnGrid) {
