@@ -120,6 +120,26 @@
             #dcSidebar.open { transform: translateX(0); box-shadow: 0 0 50px rgba(0,0,0,.25); } 
         }
 
+        /* ============================================================== */
+        /* MODERN FLOW UI SIDEBAR - ATTRACTIVE 3D & HARMONIZED STYLING    */
+        /* ============================================================== */
+        #dcSidebar { 
+            position: fixed; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            width: var(--dc-sidebar-w); 
+            background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 60%, #f2f7f4 100%); 
+            border-right: 1px solid rgba(15, 107, 74, 0.12); 
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+            z-index: 50; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 4px 0 28px -4px rgba(15, 31, 26, 0.06), 1px 0 3px rgba(15, 31, 26, 0.02);
+            transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
+        }
+
         /* Section Heading Labels */
         .dc-nav-label { 
             display: flex; 
@@ -129,16 +149,17 @@
             font-weight: 800; 
             letter-spacing: .12em; 
             text-transform: uppercase; 
-            color: #0f6b4a; 
-            padding: 0 .6rem; 
+            color: #0d6e4d; 
+            padding: 0 .65rem; 
             margin: 1.15rem 0 .45rem; 
         }
         .dc-nav-label::before { 
             content: ""; 
             width: 14px; 
-            height: 3px; 
+            height: 3.5px; 
             border-radius: 99px; 
-            background: linear-gradient(90deg, #0f6b4a, #6ee7b7); 
+            background: linear-gradient(90deg, #0f6b4a, #34d399); 
+            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.4);
         }
 
         /* Nav Tab & Action Items */
@@ -148,21 +169,24 @@
             gap: .75rem; 
             width: 100%; 
             text-align: left;
-            padding: .52rem .75rem !important; 
-            border-radius: .85rem !important; 
-            margin-bottom: .22rem;
+            padding: .55rem .75rem !important; 
+            border-radius: .9rem !important; 
+            margin-bottom: .28rem;
             font-size: .835rem !important; 
             font-weight: 600 !important; 
             color: #334155 !important;
             background: transparent !important; 
             border: 1px solid transparent !important; 
             cursor: pointer; 
-            transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
+
+        /* Distinct 3D Icon Container */
         .dc-ico { 
-            width: 32px; 
-            height: 32px; 
-            border-radius: .65rem; 
+            width: 34px; 
+            height: 34px; 
+            border-radius: .75rem; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center; 
@@ -170,39 +194,60 @@
             background: #f1f5f3; 
             color: #475569; 
             border: 1px solid #e2e8e5;
-            transition: all .2s ease; 
+            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
-        .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+        .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
 
-        /* Hover State */
+        /* Synchronized Emerald 3D Icon Gradients (Harmonized with Beranda) */
+        .nav-tab .dc-ico, .dc-nav-item .dc-ico { 
+            background: linear-gradient(135deg, #059669, #34d399) !important; 
+            color: #ffffff !important; 
+            border-color: rgba(5, 150, 105, 0.25) !important; 
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.28) !important; 
+        }
+        .nav-tab .dc-ico i, .dc-nav-item .dc-ico i {
+            color: #ffffff !important;
+        }
+
+        /* Modern Interactive Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
-            background: #f0f7f3 !important; 
+            background: #f0f8f4 !important; 
             color: #0f6b4a !important;
-            border-color: #d8ece0 !important;
-            transform: translateX(3px);
+            border-color: #d1ecde !important;
+            transform: translateX(4px);
+            box-shadow: 0 2px 10px rgba(15, 107, 74, 0.07);
         }
-        .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: #dcf2e5; 
-            color: #0f6b4a; 
-            border-color: #b7e4cc;
+        .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
+            transform: scale(1.12);
         }
 
-        /* Active State - Flow UI Elevated Pill Harmonized with Dashboard */
+        /* Active State - Lush Elevated Pill */
         .nav-tab.active { 
-            background: linear-gradient(135deg, #0f6b4a 0%, #0a5238 100%) !important; 
+            background: linear-gradient(135deg, #0f6b4a 0%, #084c34 100%) !important; 
             color: #ffffff !important; 
             font-weight: 700 !important; 
             border: 1px solid #0f6b4a !important; 
-            box-shadow: 0 4px 14px -2px rgba(15, 107, 74, 0.35) !important; 
+            box-shadow: 0 6px 18px -2px rgba(15, 107, 74, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important; 
         }
         .nav-tab.active .dc-ico { 
-            background: rgba(255, 255, 255, 0.22); 
-            color: #ffffff; 
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.24) !important; 
+            color: #ffffff !important; 
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
         }
         .nav-tab.active .dc-caret {
             color: #ffffff !important;
+        }
+        .nav-tab.active::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 8px #34d399;
         }
 
         /* Active Parent State when child is selected */
@@ -211,11 +256,13 @@
             color: #0f6b4a !important; 
             font-weight: 700 !important;
             border: 1px solid #c0ebd2 !important; 
+            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.08);
         }
         .nav-tab.has-active .dc-ico { 
-            background: #0f6b4a; 
-            color: #ffffff; 
-            border-color: #0f6b4a;
+            background: linear-gradient(135deg, #0f6b4a, #10b981) !important; 
+            color: #ffffff !important; 
+            border-color: #0f6b4a !important;
+            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.3) !important;
         }
         .nav-tab.has-active .dc-caret {
             color: #0f6b4a !important;
@@ -233,11 +280,11 @@
         }
         .dc-caret.open { transform: rotate(180deg); color: #0f6b4a; }
 
-        /* Submenu Items (Indented with Dot Bullet) */
+        /* Submenu Items (Indented with Connecting Line) */
         .dc-sub { 
-            margin: .25rem 0 .45rem 1.35rem; 
-            padding-left: .75rem; 
-            border-left: 2px solid #d2e8dc; 
+            margin: .3rem 0 .5rem 1.35rem; 
+            padding-left: .85rem; 
+            border-left: 2px solid #a7d9be; 
         }
         .dc-sub-item { 
             display: flex; 
@@ -245,16 +292,16 @@
             gap: .65rem; 
             width: 100%; 
             text-align: left; 
-            padding: .46rem .7rem; 
-            border-radius: .65rem; 
+            padding: .48rem .75rem; 
+            border-radius: .7rem; 
             font-size: .8rem; 
             font-weight: 600; 
             color: #64748b; 
             background: transparent; 
             border: 1px solid transparent; 
             cursor: pointer; 
-            margin-bottom: .15rem; 
-            transition: all .18s ease; 
+            margin-bottom: .2rem; 
+            transition: all .2s ease; 
         }
         .dc-sub-item::before { 
             content: ""; 
@@ -266,18 +313,21 @@
             transition: all .18s; 
         }
         .dc-sub-item:hover { 
-            background: #f0f7f3; 
+            background: #f0f8f4; 
             color: #0f6b4a; 
-            transform: translateX(2px);
+            transform: translateX(3px);
+            border-color: #d8ede1;
         }
         .dc-sub-item:hover::before { 
             background: #0f6b4a; 
+            transform: scale(1.2);
         }
         .dc-sub-item.active { 
             background: #eaf7f0; 
             color: #0f6b4a; 
             font-weight: 700; 
             border-color: #c0ebd2; 
+            box-shadow: 0 1px 4px rgba(15, 107, 74, 0.1);
         }
         .dc-sub-item.active::before { 
             background: #0f6b4a; 
@@ -407,22 +457,25 @@
     <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 backdrop-blur-2xs z-40 lg:hidden"></div>
     <aside id="dcSidebar">
         <!-- 1. Header Sidebar: Penempatan Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
-        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white relative">
+        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-gradient-to-r from-emerald-50/50 via-white to-white relative">
             <div class="flex items-center gap-2.5 min-w-0">
-                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs shrink-0">
+                <div class="flex items-center gap-2 bg-white/95 px-2.5 py-1.5 rounded-2xl border border-slate-200/90 shadow-2xs shrink-0 ring-1 ring-slate-900/5">
                     <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
                     <div class="h-5 w-[1px] bg-slate-300"></div>
                     <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                 </div>
                 <div class="leading-tight truncate">
-                    <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Sistem BPS Aktif"></span>
+                    </div>
                     <div class="text-[9.5px] font-extrabold text-[#0f6b4a] uppercase tracking-wider mt-0.5">BPS KOLAKA UTARA</div>
                 </div>
             </div>
             
             <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
             <button type="button" onclick="toggleDcSidebar()" id="btnSidebarClose" 
-                class="w-7 h-7 rounded-xl border border-slate-200 hover:border-emerald-300 bg-slate-50 hover:bg-emerald-50 text-slate-500 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
+                class="w-7 h-7 rounded-xl border border-slate-200/90 hover:border-emerald-300 bg-white hover:bg-emerald-50 text-slate-400 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
                 title="Tutup / Sembunyikan Sidebar">
                 <i class="bi bi-chevron-left text-xs font-black"></i>
             </button>
@@ -436,7 +489,7 @@
                 <span>Beranda</span>
             </button>
             <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-building"></i></span>
+                <span class="dc-ico"><i class="bi bi-buildings-fill"></i></span>
                 <span>Profil Desa</span>
             </button>
             <button type="button" onclick="switchNavMenu('galeri')" id="nav-galeri" class="nav-tab">
@@ -453,11 +506,11 @@
             </button>
             <div id="dcMateriSub" class="dc-sub hidden">
                 <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item">
-                    <i class="bi bi-play-circle-fill text-xs mr-1 text-rose-500"></i>
+                    <i class="bi bi-play-circle-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Video Tutorial</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item">
-                    <i class="bi bi-patch-question-fill text-xs mr-1 text-sky-600"></i>
+                    <i class="bi bi-patch-question-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Pre-test &amp; Post-test</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item">
@@ -485,14 +538,26 @@
             </button>
         </div>
 
-        <!-- 3. Footer Sidebar: Akses Kembali ke 6 Desa & Keluar Akun -->
-        <div class="p-3 border-t border-[#e5e9e7] bg-[#fafcfb] space-y-2">
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
-                <i class="bi bi-grid-3x3-gap-fill text-xs text-slate-500"></i>
+        <!-- 3. Footer Sidebar: Mini Status SDI, Akses Kembali ke 6 Desa & Keluar Akun -->
+        <div class="p-3 border-t border-[#e5e9e7] bg-gradient-to-b from-[#fafcfb] to-[#f4f8f6] space-y-2">
+            <!-- Mini Live Status Satu Data Indonesia -->
+            <div class="px-3 py-2 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/5 border border-emerald-500/20 shadow-2xs flex items-center justify-between">
+                <div class="flex items-center gap-2 min-w-0">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></div>
+                    <div class="truncate leading-tight">
+                        <div class="text-[10px] font-extrabold text-emerald-950 uppercase tracking-wider">Satu Data Indonesia</div>
+                        <div class="text-[9px] text-emerald-700 font-medium">BPS Kolaka Utara 2026</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-black text-emerald-800 bg-emerald-100/90 border border-emerald-300/80 px-2 py-0.5 rounded-full shrink-0">Aktif</span>
+            </div>
+
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-emerald-800 bg-white hover:bg-emerald-50/90 border border-slate-200/90 hover:border-emerald-300 rounded-xl py-2.5 cursor-pointer transition shadow-2xs hover:shadow-xs group active:scale-98">
+                <i class="bi bi-grid-3x3-gap-fill text-xs text-emerald-600 group-hover:scale-110 transition-transform"></i>
                 <span>Kembali ke 6 Desa</span>
             </a>
-            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
-                <i class="bi bi-box-arrow-right text-xs text-rose-600"></i>
+            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50/80 hover:bg-rose-100 border border-rose-200/90 rounded-xl py-2.5 cursor-pointer transition shadow-2xs group active:scale-98">
+                <i class="bi bi-box-arrow-right text-xs text-rose-600 group-hover:translate-x-0.5 transition-transform"></i>
                 <span>Keluar Akun</span>
             </button>
         </div>
@@ -562,14 +627,6 @@
                 </div>
             </div>
 
-            <!-- Tombol Kembali ke Desa Madani di Ujung Kanan Header -->
-            <div class="pl-1 sm:pl-2 sm:border-l sm:border-slate-200">
-                <a href="/portal" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-[#0f6b4a] font-bold text-xs border border-slate-200 hover:border-emerald-300 transition shadow-2xs group cursor-pointer" title="Kembali ke Portal Utama Desa Madani">
-                    <i class="bi bi-arrow-left-circle-fill text-emerald-600 text-sm group-hover:-translate-x-0.5 transition-transform"></i>
-                    <span class="hidden sm:inline">Kembali ke Desa Madani</span>
-                    <span class="sm:hidden">Desa Madani</span>
-                </a>
-            </div>
         </div>
     </header>
     <!-- ============================================================== -->
@@ -2170,42 +2227,434 @@
 
                 <!-- MATERI PEMBELAJARAN (HUB)                                             -->
                 <!-- ===================================================================== -->
-                <div id="view-pembelajaran" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dc-ico" style="--c:#4f46e5;--cbg:#e8e7fd;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#4f46e5,#7c74f5);color:#fff;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-                            <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Materi Pembelajaran</h2>
-                                <p class="text-xs text-slate-500 mt-0.5">Program Penguatan Kapasitas Statistik Sektoral Aparatur Desa Cinta Statistik BPS RI</p>
+                                <div id="view-pembelajaran" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- ===================================================================== -->
+                    <!-- E-LEARNING HERO BANNER (3D ORBITAL & DESA CANTIK THEME)               -->
+                    <!-- ===================================================================== -->
+                    <div class="bg-gradient-to-br from-[#062417] via-[#0c432d] to-[#12583b] rounded-3xl p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl border border-emerald-500/20">
+                        <!-- Decorative Ambient Glows -->
+                        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-teal-400/15 blur-3xl pointer-events-none"></div>
+
+                        <!-- Top Header Pill Bar -->
+                        <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wide shadow-xs">
+                                <i class="bi bi-mortarboard-fill text-emerald-300"></i>
+                                <span>BPS KABUPATEN KOLAKA UTARA</span>
+                                <span class="text-white/40">•</span>
+                                <span class="text-emerald-200">POJOK LITERASI DESA CANTIK</span>
                             </div>
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 backdrop-blur-md border border-emerald-400/30 text-emerald-200 text-xs font-semibold">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                <span>Kurikulum Pembinaan 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Hero Content: Left Details & Right 3D Orbital Stage -->
+                        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mt-6">
+                            <!-- Left: Title, Intro, Feature Checklist Pills -->
+                            <div class="lg:col-span-7 space-y-4">
+                                <span class="inline-block px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-[11px] font-black uppercase tracking-wider border border-emerald-400/30">
+                                    Platform Pembelajaran Mandiri
+                                </span>
+                                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                                    E-Learning<br>
+                                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-white">Statistik Desa</span>
+                                </h1>
+                                <p class="text-xs sm:text-sm text-emerald-100/90 font-normal leading-relaxed max-w-xl">
+                                    Program penguatan kapasitas statistik sektoral & literasi data bagi Agen Statistik dan aparatur desa guna mewujudkan standarisasi Satu Data Indonesia (SDI).
+                                </p>
+
+                                <!-- 4 Key Feature Checklist Pills (Matching Reference Image) -->
+                                <div class="grid grid-cols-2 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-3">
+                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0"><i class="bi bi-camera-video-fill"></i></span>
+                                        <span>Video Microlearning</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-teal-300 shrink-0"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
+                                        <span>Praktik Rumus Excel</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-amber-300 shrink-0"><i class="bi bi-patch-check-fill"></i></span>
+                                        <span>Sertifikasi Agen BPS</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 text-xs font-semibold text-white/95 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/15 shadow-2xs hover:bg-white/15 transition">
+                                        <span class="w-7 h-7 rounded-xl bg-emerald-500/30 flex items-center justify-center text-sky-300 shrink-0"><i class="bi bi-clock-history"></i></span>
+                                        <span>Akses Belajar 24/7</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: 3D Orbital Avatar Stage (Matching Reference Image) -->
+                            <div class="lg:col-span-5 flex justify-center py-4">
+                                <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+                                    <!-- Glowing Outer Halo Orbit -->
+                                    <div class="absolute inset-0 rounded-full border-2 border-emerald-400/40 shadow-[0_0_60px_rgba(16,185,129,0.35)] animate-[spin_25s_linear_infinite] pointer-events-none"></div>
+                                    
+                                    <!-- Inner Halo Circle with Backdrop Glow -->
+                                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border border-teal-300/60 bg-gradient-to-tr from-emerald-950/80 to-emerald-800/40 backdrop-blur-md flex items-center justify-center shadow-inner relative">
+                                        <!-- Central 3D Learner Avatar -->
+                                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-300 p-1 shadow-2xl flex items-center justify-center relative">
+                                            <!-- High-Quality Learner Illustration SVG with Headphones & Digital Tablet -->
+                                            <svg class="w-24 h-24 sm:w-28 sm:h-28 drop-shadow-xl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <!-- Headphone Arc -->
+                                                <path d="M34 56 C34 26, 86 26, 86 56" stroke="#34d399" stroke-width="5" stroke-linecap="round" fill="none"/>
+                                                <!-- Headphone Earcups -->
+                                                <rect x="28" y="48" width="10" height="20" rx="5" fill="#064e3b" stroke="#6ee7b7" stroke-width="2"/>
+                                                <rect x="82" y="48" width="10" height="20" rx="5" fill="#064e3b" stroke="#6ee7b7" stroke-width="2"/>
+                                                <!-- Face/Head -->
+                                                <circle cx="60" cy="56" r="23" fill="#fed7aa"/>
+                                                <!-- Hair -->
+                                                <path d="M38 52 C38 34, 82 34, 82 52 C77 41, 65 38, 60 38 C53 38, 43 42, 38 52 Z" fill="#1e293b"/>
+                                                <!-- Eyes & Friendly Smile -->
+                                                <circle cx="53" cy="55" r="2.5" fill="#0f172a"/>
+                                                <circle cx="67" cy="55" r="2.5" fill="#0f172a"/>
+                                                <path d="M56 64 Q60 67 64 64" stroke="#e11d48" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                                <!-- Neck -->
+                                                <rect x="55" y="75" width="10" height="8" fill="#fdba74"/>
+                                                <!-- Clothes / Jacket -->
+                                                <path d="M36 102 C36 86, 46 80, 60 80 C74 80, 84 86, 84 102 Z" fill="#059669"/>
+                                                <path d="M54 80 L60 93 L66 80 Z" fill="#e2e8f0"/>
+                                                <!-- Statistics Tablet -->
+                                                <rect x="42" y="86" width="36" height="24" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                                                <circle cx="60" cy="98" r="3.5" fill="#38bdf8"/>
+                                                <line x1="47" y1="91" x2="57" y2="91" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+                                                <line x1="63" y1="91" x2="73" y2="91" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- 6 Floating 3D Orbiting Glass Spheres (Matching Reference Layout) -->
+                                    <!-- Orb 1: Top (12 o'clock) - Notifikasi BPS -->
+                                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 shadow-[0_8px_20px_rgba(16,185,129,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-base transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-bell-fill"></i>
+                                    </div>
+                                    <!-- Orb 2: Top Right (2 o'clock) - Grafik Statistik -->
+                                    <div class="absolute top-5 -right-2 w-11 h-11 rounded-full bg-gradient-to-tr from-teal-400 to-cyan-300 shadow-[0_8px_20px_rgba(20,184,166,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-teal-950 text-base transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-graph-up-arrow"></i>
+                                    </div>
+                                    <!-- Orb 3: Bottom Right (4 o'clock) - E-Sertifikat -->
+                                    <div class="absolute bottom-5 -right-2 w-11 h-11 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 shadow-[0_8px_20px_rgba(245,158,11,0.5)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-amber-950 text-base transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <!-- Orb 4: Bottom (6 o'clock) - Verifikasi Standar SDI -->
+                                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 shadow-[0_6px_15px_rgba(5,150,105,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-sm transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-shield-fill-check"></i>
+                                    </div>
+                                    <!-- Orb 5: Bottom Left (8 o'clock) - Video Microlearning -->
+                                    <div class="absolute bottom-5 -left-2 w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-red-400 shadow-[0_8px_20px_rgba(225,29,72,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-base transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-play-btn-fill"></i>
+                                    </div>
+                                    <!-- Orb 6: Top Left (10 o'clock) - Rumus Excel -->
+                                    <div class="absolute top-5 -left-2 w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-[0_8px_20px_rgba(16,185,129,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-sm transform hover:scale-110 transition duration-300">
+                                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Curved Organic Wave at the Bottom of Hero (Matching Reference Image) -->
+                        <div class="mt-8 -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 lg:-mx-10 lg:-mb-10 overflow-hidden leading-none">
+                            <svg class="w-full h-8 sm:h-12 text-[#f6f8f6] fill-current" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                                <path d="M0,0 C150,90 350,-40 500,60 C650,140 900,10 1200,80 L1200,120 L0,120 Z"></path>
+                            </svg>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <button type="button" onclick="switchNavMenu('video')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #dc2626;">
-                            <span class="dc-ico" style="--c:#dc2626;--cbg:#fde8e8;width:42px;height:42px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
-                            <div class="font-extrabold text-base mt-3">Video Tutorial</div>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Video edukasi microlearning Desa Cantik BPS berdurasi singkat.</p>
-                            <span class="dc-link mt-3 inline-block" style="color:#dc2626;">Buka Video →</span>
-                        </button>
-                        <button type="button" onclick="switchNavMenu('pretest')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #0284c7;">
-                            <span class="dc-ico" style="--c:#0284c7;--cbg:#e0f2fe;width:42px;height:42px;"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-                            <div class="font-extrabold text-base mt-3">Pre-test &amp; Post-test</div>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Ukur pemahaman awal dan akhir, lalu raih sertifikat kompetensi.</p>
-                            <span class="dc-link mt-3 inline-block" style="color:#0284c7;">Mulai Evaluasi →</span>
-                        </button>
-                        <button type="button" onclick="switchNavMenu('buku')" class="dc-card text-left hover:shadow-lg transition cursor-pointer" style="border-top:4px solid #059669;">
-                            <span class="dc-ico" style="--c:#059669;--cbg:#dcf5ea;width:42px;height:42px;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
-                            <div class="font-extrabold text-base mt-3">Buku Panduan</div>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Buku pedoman Excel, rumus dasar statistik, dan SK Agen Statistik.</p>
-                            <span class="dc-link mt-3 inline-block" style="color:#059669;">Buka Panduan →</span>
-                        </button>
+                    <!-- ===================================================================== -->
+                    <!-- BOTTOM SECTION: FEATURED COURSES & INTERACTIVE STEPPER WIDGET        -->
+                    <!-- ===================================================================== -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+                        <!-- Left: Featured Courses (3 Cards Grid) -->
+                        <div class="lg:col-span-8 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                        <span>Featured Courses</span>
+                                        <span class="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 rounded-full">3 Modul Terpadu</span>
+                                    </h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Kurikulum standar BPS Satu Data Indonesia untuk Agen Statistik Desa.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <!-- Card 1: Video Tutorial Microlearning -->
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                    <div>
+                                        <!-- Top Preview Banner with 3D Play Visual -->
+                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#0c3f29] via-[#0f6b4a] to-[#10b981] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
+                                            <!-- Floating Tags -->
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-emerald-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Microlearning</span>
+                                            <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-emerald-900/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">5-7 Menit</span>
+                                            <!-- Center 3D Play Icon -->
+                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
+                                                <i class="bi bi-play-fill text-2xl ml-0.5"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Title & Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-emerald-700 transition">Video Tutorial Desa Cantik</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                            Video edukasi microlearning tata cara pengumpulan data desa dan standarisasi statistik.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-4 pt-3 border-t border-slate-100">
+                                        <button type="button" onclick="switchNavMenu('video')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-emerald-700/20 hover:shadow-emerald-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <span>Mulai Tonton</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Pre-test & Post-test -->
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                    <div>
+                                        <!-- Top Preview Banner with 3D Test Visual -->
+                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#0369a1] via-[#0284c7] to-[#0d9488] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
+                                            <!-- Floating Tags -->
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-sky-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Evaluasi Mandiri</span>
+                                            <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-sky-950/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">10 Soal SDI</span>
+                                            <!-- Center 3D Badge Icon -->
+                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
+                                                <i class="bi bi-patch-check-fill text-2xl"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Title & Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-sky-700 transition">Pre-test &amp; Post-test</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                            Ukur pemahaman awal dan akhir materi statistik sektoral untuk meraih sertifikat kelulusan agen.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-4 pt-3 border-t border-slate-100">
+                                        <button type="button" onclick="switchNavMenu('pretest')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-600 to-teal-700 hover:from-sky-700 hover:to-teal-800 text-white font-black text-xs shadow-md shadow-sky-700/20 hover:shadow-sky-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <span>Mulai Evaluasi</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Buku Panduan & Rumus Excel -->
+                                <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group">
+                                    <div>
+                                        <!-- Top Preview Banner with 3D Book Visual -->
+                                        <div class="h-32 rounded-2xl bg-gradient-to-br from-[#b45309] via-[#d97706] to-[#059669] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition">
+                                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
+                                            <!-- Floating Tags -->
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-amber-100 bg-black/30 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">Dokumen Resmi</span>
+                                            <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-amber-950/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">30 Lembar</span>
+                                            <!-- Center 3D Book Icon -->
+                                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition">
+                                                <i class="bi bi-journal-bookmark-fill text-2xl"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Title & Description -->
+                                        <h4 class="font-black text-slate-900 text-sm mt-3.5 group-hover:text-amber-700 transition">Buku Panduan &amp; Rumus</h4>
+                                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                            Buku pedoman Excel terstandarisasi, modul rumus statistik sektoral, dan Surat Keputusan Agen.
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-4 pt-3 border-t border-slate-100">
+                                        <button type="button" onclick="switchNavMenu('buku')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-emerald-700 hover:from-amber-700 hover:to-emerald-800 text-white font-black text-xs shadow-md shadow-amber-700/20 hover:shadow-amber-700/30 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <span>Buka Panduan</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Interactive Stepper & Certification Widget (Matching Reference's Dark Right Widget) -->
+                        <div class="lg:col-span-4 bg-gradient-to-br from-[#062015] via-[#0a3524] to-[#124d35] rounded-3xl p-5 sm:p-6 text-white shadow-xl border border-emerald-500/25 flex flex-col justify-between relative overflow-hidden">
+                            <!-- Inner Ambient Glow Blob -->
+                            <div class="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-400/15 blur-2xl pointer-events-none"></div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-[10px] uppercase tracking-wider font-extrabold text-emerald-300 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
+                                        Alur Kompetensi Agen
+                                    </span>
+                                    <span class="text-[10px] font-bold text-emerald-200/80">Tahapan BPS</span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-black text-white">Tahapan Sertifikasi</h3>
+                                <p class="text-xs text-emerald-100/75 mt-0.5">Ikuti 4 langkah terstruktur untuk mencapai kelulusan Agen Statistik.</p>
+
+                                <!-- 4 Rounded Glass Icons Bar (Matching Reference Icon Bar) -->
+                                <div class="grid grid-cols-4 gap-2 my-4">
+                                    <button type="button" onclick="openPretestModal()" title="Mulai Pre-test" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
+                                        <i class="bi bi-clipboard-check text-emerald-300 text-base group-hover:scale-110 transition"></i>
+                                        <span class="text-[9px] font-bold text-white/80">Pretest</span>
+                                    </button>
+                                    <button type="button" onclick="switchNavMenu('video')" title="Buka Video Tutorial" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
+                                        <i class="bi bi-play-circle-fill text-rose-300 text-base group-hover:scale-110 transition"></i>
+                                        <span class="text-[9px] font-bold text-white/80">Video</span>
+                                    </button>
+                                    <button type="button" onclick="openPosttestModal()" title="Mulai Post-test" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
+                                        <i class="bi bi-patch-question-fill text-sky-300 text-base group-hover:scale-110 transition"></i>
+                                        <span class="text-[9px] font-bold text-white/80">Posttest</span>
+                                    </button>
+                                    <button type="button" onclick="openSertifikatModal()" title="E-Sertifikat Kelulusan" class="p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex flex-col items-center justify-center gap-1 transition group cursor-pointer">
+                                        <i class="bi bi-award-fill text-amber-300 text-base group-hover:scale-110 transition"></i>
+                                        <span class="text-[9px] font-bold text-white/80">Sertifikat</span>
+                                    </button>
+                                </div>
+
+                                <!-- Stepper Progress Bar (Matching Reference Stepper Track ●────●────●────●) -->
+                                <div class="my-3 px-1">
+                                    <div class="flex items-center justify-between text-[10px] font-bold text-emerald-200/80 mb-2">
+                                        <span>Tahap 1</span>
+                                        <span>Tahap 2</span>
+                                        <span>Tahap 3</span>
+                                        <span>Kelulusan</span>
+                                    </div>
+                                    <div class="relative flex items-center justify-between">
+                                        <!-- Connecting Track Line -->
+                                        <div class="absolute left-2 right-2 top-1/2 -translate-y-1/2 h-1 bg-white/15 rounded-full z-0">
+                                            <div class="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 rounded-full" style="width: 75%;"></div>
+                                        </div>
+                                        <!-- Step Dots -->
+                                        <div class="w-6 h-6 rounded-full bg-emerald-400 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10">
+                                            <i class="bi bi-check-lg"></i>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-emerald-400 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10">
+                                            <i class="bi bi-check-lg"></i>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-teal-300 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-emerald-950 font-black shadow-md z-10 animate-pulse">
+                                            3
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-white/25 border-2 border-emerald-950 flex items-center justify-center text-[10px] text-white font-bold z-10">
+                                            4
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-[9px] font-medium text-emerald-100/60 mt-2">
+                                        <span>Pre-Test</span>
+                                        <span>Materi Video</span>
+                                        <span>Post-Test</span>
+                                        <span>Sertifikat</span>
+                                    </div>
+                                </div>
+
+                                <!-- Minimum Criteria Info Box -->
+                                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-xs space-y-1.5 my-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-white/70 text-[11px]">Standar Kelulusan:</span>
+                                        <span class="font-extrabold text-emerald-300 text-[11px]">Skor Minimal 70 / 100</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-white/70 text-[11px]">Penerbit Sertifikat:</span>
+                                        <span class="font-bold text-teal-200 text-[11px]">BPS Kab. Kolaka Utara</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom CTA Button (Matching Reference's Cyan Pill CTA Button) -->
+                            <div class="mt-4">
+                                <button type="button" onclick="openSertifikatModal()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-200 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
+                                    <span>Lihat Lembar Sertifikat</span>
+                                    <i class="bi bi-award-fill text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- ===================================================================== -->
                 <!-- VIDEO TUTORIAL                                                        -->
                 <!-- ===================================================================== -->
+                    <!-- ============================================================== -->
+    <!-- CINEMATIC VILLAGE OPENING OVERLAY (INSPIRED BY BRAND IN MOTION)-->
+    <!-- ============================================================== -->
+    <div id="villageVideoOpeningOverlay" class="hidden fixed inset-0 z-50 bg-black flex flex-col justify-between overflow-hidden text-white transition-opacity duration-500 animate-in fade-in">
+        <!-- Background Video / Animated Scenery Layer with Ken Burns Motion -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <video id="openingBgVideo" class="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-7000 ease-out" src="/videos/Kolaka_Utara.mp4" playsinline muted loop></video>
+            <!-- Cinematic Vignette & Gradient Overlays -->
+            <div id="openingBgFallback" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/85"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,rgba(0,0,0,0.9)_100%)]"></div>
+        </div>
+
+        <!-- Top Header: Official Badges & Controls -->
+        <div class="relative z-10 p-4 sm:p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20 shadow-md">
+                    <img src="/images/logo_bps.png" alt="BPS" class="h-6 sm:h-7 w-auto object-contain">
+                    <div class="h-4 w-[1px] bg-white/30"></div>
+                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-6 sm:h-7 w-auto object-contain">
+                </div>
+                <div class="hidden sm:block leading-tight">
+                    <div class="text-[11px] font-black uppercase tracking-widest text-emerald-300">BPS KOLAKA UTARA</div>
+                    <div class="text-[9px] text-white/70 font-semibold">Program Pembinaan Desa Cantik 2026</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+                <button type="button" onclick="toggleOpeningAudio()" id="btnOpeningAudio" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 backdrop-blur-md cursor-pointer">
+                    <i id="iconOpeningAudio" class="bi bi-volume-up-fill text-emerald-300"></i>
+                    <span id="textOpeningAudio" class="hidden sm:inline">Suara Aktif</span>
+                </button>
+                <button type="button" onclick="finishVillageVideoOpening()" class="px-4 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition flex items-center gap-1.5 backdrop-blur-md shadow-lg shadow-emerald-900/50 cursor-pointer">
+                    <span>Lewati Opening</span>
+                    <i class="bi bi-skip-forward-fill text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Kinetic Typography: Brand In Motion Cinematic Title -->
+        <div class="relative z-10 px-4 sm:px-8 text-center max-w-4xl mx-auto my-auto space-y-4">
+            <!-- Kinetic Tagline Badge -->
+            <div id="openingTagline" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-black uppercase tracking-widest backdrop-blur-md animate-pulse">
+                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
+                <span>DESA KITA • DALAM GERAK DATA PRESISI</span>
+            </div>
+
+            <!-- Main Village Name (Massive Impact Typography) -->
+            <h1 id="openingVillageTitle" class="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)] leading-tight">
+                DESA CANTIK
+            </h1>
+
+            <!-- Subtitle / Kecamatan -->
+            <p id="openingVillageKec" class="text-sm sm:text-xl font-extrabold text-teal-300 uppercase tracking-widest drop-shadow-md">
+                KECAMATAN TIWU • KABUPATEN KOLAKA UTARA
+            </p>
+
+            <!-- Description / Village Character -->
+            <p id="openingVillageDesc" class="text-xs sm:text-sm text-slate-200/90 font-normal max-w-2xl mx-auto leading-relaxed drop-shadow italic">
+                Penguatan Kapasitas Statistik Sektoral & Standarisasi Satu Data Indonesia
+            </p>
+
+            <!-- 3 Pill Badges (Potensi - Data - Mandiri) -->
+            <div class="pt-3 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-[11px] font-bold text-white/90">
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">🌾 Potensi Wilayah</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">📊 Data Sektoral BPS</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">🎓 Agen Statistik Mandiri</span>
+            </div>
+        </div>
+
+        <!-- Bottom Timeline Stepper & Progress Bar -->
+        <div class="relative z-10 p-4 sm:p-6 max-w-2xl w-full mx-auto space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-white/80">
+                <span id="openingStatusText" class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Menyiapkan Modul Video Microlearning...</span>
+                </span>
+                <span id="openingCountdown" class="text-emerald-300 font-mono">5s</span>
+            </div>
+
+            <!-- Progress Bar Line -->
+            <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
+                <div id="openingProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 rounded-full transition-all duration-100 ease-linear" style="width: 0%;"></div>
+            </div>
+        </div>
+    </div>
+
                 <div id="view-video" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
@@ -2214,6 +2663,16 @@
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Tutorial</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
                             </div>
+                        </div>
+                        <div class="flex items-center gap-2 self-start sm:self-auto">
+                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
+                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
+                                <span>Putar Opening Desa</span>
+                            </button>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Menu Pembelajaran</span>
+                            </button>
                         </div>
                     </div>
 
@@ -2278,7 +2737,13 @@
                                 <p class="text-xs text-slate-500 mt-0.5">Evaluasi kompetensi aparatur desa dan sertifikat Agen Statistik</p>
                             </div>
                         </div>
-                        <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 self-start cursor-pointer"><span>🔓</span><span>Unlock semua menu</span></button>
+                        <div class="flex items-center gap-2 self-start sm:self-auto">
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Kembali ke E-Learning</span>
+                            </button>
+                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer"><span>🔓</span><span>Unlock</span></button>
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
@@ -2350,6 +2815,16 @@
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buku Panduan</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Buku pedoman Excel, rumus dasar statistik sektoral, dan SK Agen Statistik</p>
                             </div>
+                        </div>
+                        <div class="flex items-center gap-2 self-start sm:self-auto">
+                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
+                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
+                                <span>Putar Opening Desa</span>
+                            </button>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Menu Pembelajaran</span>
+                            </button>
                         </div>
                     </div>
 
@@ -4489,6 +4964,171 @@ function triggerPubDownload() {
             if (typeof document !== 'undefined' && document.body) {
                 document.body.classList.remove('overflow-hidden');
             }
+        }
+
+        
+        // ==============================================================
+        // CINEMATIC OPENING VIDEO DESA (BRAND IN MOTION MOTION OPENER)
+        // ==============================================================
+        let villageOpeningTimer = null;
+        let villageOpeningProgressInterval = null;
+        let isOpeningAudioMuted = false;
+        let openingAudioCtx = null;
+
+        function playCinematicOpeningAudio() {
+            if (isOpeningAudioMuted) return;
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                if (!openingAudioCtx) openingAudioCtx = new AudioCtx();
+                if (openingAudioCtx.state === 'suspended') openingAudioCtx.resume();
+                
+                const now = openingAudioCtx.currentTime;
+                // Deep cinematic bass swell (C2 -> C3)
+                const oscBass = openingAudioCtx.createOscillator();
+                const gainBass = openingAudioCtx.createGain();
+                oscBass.type = 'sine';
+                oscBass.frequency.setValueAtTime(65.41, now);
+                oscBass.frequency.exponentialRampToValueAtTime(130.81, now + 2.5);
+                gainBass.gain.setValueAtTime(0.001, now);
+                gainBass.gain.linearRampToValueAtTime(0.2, now + 1.2);
+                gainBass.gain.exponentialRampToValueAtTime(0.001, now + 4.8);
+                oscBass.connect(gainBass);
+                gainBass.connect(openingAudioCtx.destination);
+                oscBass.start(now);
+                oscBass.stop(now + 4.9);
+
+                // Shimmering cinematic major chord (C - E - G - B - C)
+                const freqs = [261.63, 329.63, 392.00, 493.88, 523.25];
+                freqs.forEach((freq, idx) => {
+                    const osc = openingAudioCtx.createOscillator();
+                    const gain = openingAudioCtx.createGain();
+                    osc.type = 'triangle';
+                    const startT = now + 0.6 + (idx * 0.18);
+                    osc.frequency.setValueAtTime(freq, startT);
+                    gain.gain.setValueAtTime(0.001, startT);
+                    gain.gain.linearRampToValueAtTime(0.07, startT + 0.4);
+                    gain.gain.exponentialRampToValueAtTime(0.001, startT + 3.8);
+                    osc.connect(gain);
+                    gain.connect(openingAudioCtx.destination);
+                    osc.start(startT);
+                    osc.stop(startT + 4.0);
+                });
+            } catch(e) {}
+        }
+
+        function toggleOpeningAudio() {
+            isOpeningAudioMuted = !isOpeningAudioMuted;
+            const textEl = document.getElementById('textOpeningAudio');
+            const iconEl = document.getElementById('iconOpeningAudio');
+            if (isOpeningAudioMuted) {
+                if (textEl) textEl.textContent = 'Suara Mati';
+                if (iconEl) iconEl.className = 'bi bi-volume-mute-fill text-slate-400';
+            } else {
+                if (textEl) textEl.textContent = 'Suara Aktif';
+                if (iconEl) iconEl.className = 'bi bi-volume-up-fill text-emerald-300';
+                playCinematicOpeningAudio();
+            }
+        }
+
+        function startVillageVideoOpening(force = false) {
+            clearTimeout(villageOpeningTimer);
+            clearInterval(villageOpeningProgressInterval);
+
+            // Fetch current active village data
+            const vKey = currentTargetVillage || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[vKey]) ? villagesData[vKey] : {
+                title: "Desa Cinta Statistik",
+                sub: "Kabupaten Kolaka Utara",
+                desc: "Kedaulatan Data Statistik Sektoral Menuju Indonesia Emas."
+            };
+
+            const overlay = document.getElementById('villageVideoOpeningOverlay');
+            if (!overlay) {
+                actuallyOpenVideoTutorial();
+                return;
+            }
+
+            // Populate opening content with active village attributes
+            const titleEl = document.getElementById('openingVillageTitle');
+            const kecEl = document.getElementById('openingVillageKec');
+            const descEl = document.getElementById('openingVillageDesc');
+            const bgVideo = document.getElementById('openingBgVideo');
+            const fallbackBg = document.getElementById('openingBgFallback');
+
+            if (titleEl) titleEl.textContent = vData.title || "DESA CANTIK";
+            if (kecEl) kecEl.textContent = vData.sub || "KECAMATAN TIWU • KOLAKA UTARA";
+            if (descEl) descEl.textContent = vData.desc || "Penguatan Literasi Statistik Sektoral Desa Cinta Statistik BPS RI";
+
+            if (fallbackBg && vData.photo) {
+                fallbackBg.style.backgroundImage = `url('${vData.photo}')`;
+            }
+
+            // Display overlay
+            overlay.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+
+            // Play background video
+            if (bgVideo) {
+                bgVideo.currentTime = 0;
+                bgVideo.play().catch(() => {});
+            }
+
+            // Play ambient cinematic audio
+            playCinematicOpeningAudio();
+
+            // Progress bar and countdown timer (5 seconds)
+            const durationMs = 5200;
+            const startTime = Date.now();
+            const progressBar = document.getElementById('openingProgressBar');
+            const countdownEl = document.getElementById('openingCountdown');
+
+            villageOpeningProgressInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const percent = Math.min(100, (elapsed / durationMs) * 100);
+                const remainingSec = Math.max(0, Math.ceil((durationMs - elapsed) / 1000));
+                
+                if (progressBar) progressBar.style.width = percent + '%';
+                if (countdownEl) countdownEl.textContent = remainingSec + 's';
+
+                if (elapsed >= durationMs) {
+                    clearInterval(villageOpeningProgressInterval);
+                    finishVillageVideoOpening();
+                }
+            }, 50);
+
+            showToast('🎬 Menampilkan Opening Video ' + (vData.title || 'Desa') + '...');
+        }
+
+        function finishVillageVideoOpening() {
+            clearTimeout(villageOpeningTimer);
+            clearInterval(villageOpeningProgressInterval);
+
+            const overlay = document.getElementById('villageVideoOpeningOverlay');
+            if (overlay) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    overlay.classList.remove('opacity-0', 'pointer-events-none');
+                }, 400);
+            }
+            actuallyOpenVideoTutorial();
+        }
+
+        function actuallyOpenVideoTutorial() {
+            currentNavMenu = 'video';
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            const dBtn = document.getElementById('nav-pembelajaran');
+            if (dBtn) dBtn.classList.add('active', 'has-active');
+
+            document.querySelectorAll('.menu-view-container').forEach(el => el.classList.add('hidden'));
+            const targetView = document.getElementById('view-video');
+            if (targetView) targetView.classList.remove('hidden');
+
+            dcOnMenuChange('video');
+            if (typeof playMicrolearningVideo === 'function') {
+                playMicrolearningVideo(true);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function playMicrolearningVideo(unmute = true) {

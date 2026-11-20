@@ -30,24 +30,24 @@ window.PresisiEngine = (function() {
     'wawo': '#7c3aed'         // Purple
   };
 
-  // Official demographics matching desapresisi.id reference screenshots
+  // Official PODES BPS 2025 demographics (15 Kecamatan & Kabupaten Kolaka Utara)
   const KECAMATAN_DEMOGRAPHY = {
-    'ALL': { jiwa: 67019, kk: 19749 },
-    'lambai': { jiwa: 6340, kk: 1781 },
-    'lasusua': { jiwa: 28460, kk: 8463 },
-    'porehu': { jiwa: 5980, kk: 1615 },
-    'batuputih': { jiwa: 8120, kk: 2379 },
-    'pakueutara': { jiwa: 7850, kk: 2212 },
-    'pakuetengah': { jiwa: 7420, kk: 2089 },
-    'pakue': { jiwa: 10450, kk: 2927 },
-    'watunohu': { jiwa: 7120, kk: 2107 },
-    'tiwu': { jiwa: 4980, kk: 1449 },
-    'ngapa': { jiwa: 11980, kk: 3353 },
-    'kodeoha': { jiwa: 10650, kk: 2960 },
-    'katoi': { jiwa: 6240, kk: 1877 },
-    'ranteangin': { jiwa: 5890, kk: 1673 },
-    'wawo': { jiwa: 6420, kk: 1883 },
-    'tolala': { jiwa: 3950, kk: 1154 }
+    'ALL': { jiwa: 142692, kk: 38077 },
+    'lasusua': { jiwa: 26729, kk: 8463 },
+    'ngapa': { jiwa: 17256, kk: 4353 },
+    'kodeoha': { jiwa: 11592, kk: 2960 },
+    'pakue': { jiwa: 10757, kk: 2927 },
+    'batuputih': { jiwa: 9229, kk: 2379 },
+    'pakueutara': { jiwa: 8402, kk: 2212 },
+    'pakuetengah': { jiwa: 7738, kk: 2089 },
+    'katoi': { jiwa: 7408, kk: 1877 },
+    'watunohu': { jiwa: 7279, kk: 2107 },
+    'lambai': { jiwa: 7195, kk: 1883 },
+    'wawo': { jiwa: 7188, kk: 1890 },
+    'porehu': { jiwa: 6822, kk: 1615 },
+    'ranteangin': { jiwa: 6161, kk: 1673 },
+    'tiwu': { jiwa: 4849, kk: 1449 },
+    'tolala': { jiwa: 4087, kk: 1154 }
   };
 
 
@@ -1232,18 +1232,26 @@ window.PresisiEngine = (function() {
     if (!elJiwa || !elKeluarga) return;
 
     if (!kecName || kecName === 'ALL') {
-      elJiwa.textContent = '67.019';
-      elKeluarga.textContent = '19.749';
+      elJiwa.textContent = '142.692';
+      elKeluarga.textContent = '38.077';
       return;
     }
 
     const cleanKec = kecName.replace(/\s+/g, '').toLowerCase();
 
     if (desaName && desaName !== 'ALL') {
-      const d = db.desaList.find(x => x.nama.toLowerCase() === desaName.toLowerCase());
+      let d = null;
+      if (db && db.desa) {
+        d = db.desa.find(x => x.nama.toLowerCase() === desaName.toLowerCase() && (cleanKec === 'all' || x.kecamatan.replace(/\s+/g, '').toLowerCase() === cleanKec));
+      }
+      if (!d && db && db.desaList) {
+        d = db.desaList.find(x => x.nama.toLowerCase() === desaName.toLowerCase());
+      }
       if (d) {
-        elJiwa.textContent = (d.penduduk || 0).toLocaleString('id-ID');
-        elKeluarga.textContent = (d.kk || 0).toLocaleString('id-ID');
+        const jiwaCount = (d.demografi && d.demografi.penduduk_total) ? d.demografi.penduduk_total : (d.penduduk || 0);
+        const kkCount = (d.lingkungan && d.lingkungan.pln_kk) ? (d.lingkungan.pln_kk + (d.lingkungan.non_pln_kk || 0)) : (d.kk || 0);
+        elJiwa.textContent = jiwaCount ? jiwaCount.toLocaleString('id-ID') : '-';
+        elKeluarga.textContent = kkCount ? kkCount.toLocaleString('id-ID') : '-';
         return;
       }
     }
@@ -1252,11 +1260,11 @@ window.PresisiEngine = (function() {
       elJiwa.textContent = KECAMATAN_DEMOGRAPHY[cleanKec].jiwa.toLocaleString('id-ID');
       elKeluarga.textContent = KECAMATAN_DEMOGRAPHY[cleanKec].kk.toLocaleString('id-ID');
     } else {
-      const vList = db.desaList.filter(x => x.kecamatan.replace(/\s+/g, '').toLowerCase() === cleanKec);
-      const j = vList.reduce((acc, v) => acc + (v.penduduk || 0), 0);
-      const k = vList.reduce((acc, v) => acc + (v.kk || 0), 0);
-      elJiwa.textContent = (j || 6000).toLocaleString('id-ID');
-      elKeluarga.textContent = (k || 1800).toLocaleString('id-ID');
+      const vList = (db && (db.desa || db.desaList) || []).filter(x => x.kecamatan.replace(/\s+/g, '').toLowerCase() === cleanKec);
+      const j = vList.reduce((acc, v) => acc + ((v.demografi && v.demografi.penduduk_total) || v.penduduk || 0), 0);
+      const k = vList.reduce((acc, v) => acc + ((v.lingkungan && v.lingkungan.pln_kk) || v.kk || 0), 0);
+      elJiwa.textContent = j ? j.toLocaleString('id-ID') : '-';
+      elKeluarga.textContent = k ? k.toLocaleString('id-ID') : '-';
     }
   }
 
