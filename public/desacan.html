@@ -364,10 +364,7 @@
                 <a href="#output" class="nav-link">
                     Output Program
                 </a>
-                <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link flex items-center gap-1.5 cursor-pointer">
-                    <i class="bi bi-images text-purple-600 text-xs"></i>
-                    <span>Galeri</span>
-                </a>
+
             </nav>
 
             <!-- Tombol Galeri di Header (Selaras Warna Hijau Output Desa) -->
