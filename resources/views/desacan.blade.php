@@ -350,7 +350,7 @@
                 </div>
             </a>
 
-            <!-- Navigasi Menu Header Descan -->
+            <!-- Navigasi Menu Header Descan (Rata Kanan & Sinkron) -->
             <nav class="hidden md:flex items-center gap-7">
                 <a href="#beranda" class="nav-link">
                     Beranda
@@ -364,17 +364,10 @@
                 <a href="#output" class="nav-link">
                     Output Program
                 </a>
-
+                <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link cursor-pointer">
+                    Galeri
+                </a>
             </nav>
-
-            <!-- Tombol Galeri di Header (Selaras Warna Hijau Output Desa) -->
-            <div class="flex items-center gap-2.5">
-                <button type="button" onclick="openDescanGaleriModal(event)" 
-                    class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
-                    title="Buka Galeri Foto">
-                    <span>Galeri</span>
-                </button>
-            </div>
 
 
         </div>
