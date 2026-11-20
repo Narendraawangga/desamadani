@@ -86,10 +86,16 @@
 
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: #F7F7F5;
+            background-image: url('/images/bg_misty_mountains.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #E8F0EA;
             color: #1e293b;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
         }
 
         .tabular-nums {
@@ -331,12 +337,12 @@
 
     </style>
 </head>
-<body class="min-h-screen bg-[#F7F7F5] text-slate-800 antialiased flex flex-col overflow-x-hidden w-full max-w-full">
+<body class="min-h-screen text-slate-800 antialiased flex flex-col overflow-x-hidden w-full max-w-full bg-cover bg-fixed bg-top" style="background-image: url('/images/bg_misty_mountains.jpg'); background-attachment: fixed; background-size: cover; background-position: center top;">
 
         <!-- ========================================================================= -->
-    <!-- 1. TOP NAVIGATION BAR (GLASSMORPHI LUSH FOREST THEME)                      -->
+    <!-- 1. TOP NAVIGATION BAR (FROSTED GLASS ON MISTY MOUNTAINS)                  -->
     <!-- ========================================================================= -->
-    <header class="bg-[#022c22]/90 backdrop-blur-md text-white border-b border-white/10 sticky top-0 z-50 transition-all min-h-[60px] flex items-center w-full max-w-full shadow-lg">
+    <header class="bg-white/80 backdrop-blur-md text-slate-800 border-b border-slate-200/60 sticky top-0 z-50 transition-all min-h-[60px] flex items-center w-full max-w-full shadow-xs">
         <div class="w-full px-4 lg:px-8 py-2.5 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             <!-- Left: Logo & Brand -->
             <div class="flex items-center gap-3 shrink-0">
@@ -345,271 +351,262 @@
                         onclick="openLoginModal()" 
                         class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" 
                         title="Desa Madani Kabupaten Kolaka Utara (Klik untuk Login)">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#a3e635] shadow-[0_0_10px_#a3e635] animate-pulse"></span>
-                    <div class="flex items-center gap-1.5 shrink-0 bg-white/10 backdrop-blur-md border border-white/20 px-2 py-1 rounded-lg">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B] shadow-[0_0_8px_#0D6E5B] animate-pulse"></span>
+                    <div class="flex items-center gap-1.5 shrink-0 bg-white/90 backdrop-blur-md border border-slate-200/80 px-2 py-1 rounded-lg shadow-2xs">
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
-                        <div class="h-3.5 w-[1px] bg-white/30"></div>
+                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
                         <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
                     </div>
-                    <div class="text-base sm:text-lg font-black text-white leading-none tracking-tight whitespace-nowrap font-sans">
-                        Desa <span class="text-[#a3e635]">Madani</span>
-                        <span class="hidden sm:inline text-xs font-semibold text-emerald-200/80 ml-1.5 pl-2 border-l border-white/20">Kolaka Utara</span>
+                    <div class="text-base sm:text-lg font-black text-slate-900 leading-none tracking-tight whitespace-nowrap font-sans">
+                        Desa <span class="text-[#0D6E5B]">Madani</span>
+                        <span class="hidden sm:inline text-xs font-semibold text-slate-500 ml-1.5 pl-2 border-l border-slate-300">Kolaka Utara</span>
                     </div>
                 </button>
             </div>
 
             <!-- Center: Navigation Menu Links -->
-            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-bold text-emerald-100/90 whitespace-nowrap shrink-0">
-                <a href="/" data-i18n="nav_home" class="hover:text-[#a3e635] transition py-1">Beranda</a>
-                <a href="#sectionPeta" data-i18n="nav_gis" class="hover:text-[#a3e635] transition py-1 flex items-center gap-1.5 text-white font-extrabold relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-0.5 after:bg-[#a3e635]">
-                    <svg class="w-3.5 h-3.5 text-[#a3e635]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-bold text-slate-700 whitespace-nowrap shrink-0">
+                <a href="/" data-i18n="nav_home" class="hover:text-[#0D6E5B] transition py-1">Beranda</a>
+                <a href="#sectionPeta" data-i18n="nav_gis" class="hover:text-[#0D6E5B] transition py-1 flex items-center gap-1.5 text-[#0D6E5B] font-extrabold relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-0.5 after:bg-[#0D6E5B]">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                     <span>WebGIS Peta Spasial</span>
                 </a>
-                <a href="#sectionDaftarKecamatan" class="hover:text-[#a3e635] transition py-1">15 Kecamatan</a>
-                <a href="#sectionDesaPresisi" class="hover:text-[#a3e635] transition py-1">Analisis Data</a>
-                <a href="/descan" data-i18n="nav_descan" class="hover:text-[#a3e635] transition py-1">Desa Cantik</a>
+                <a href="#sectionDaftarKecamatan" class="hover:text-[#0D6E5B] transition py-1">15 Kecamatan</a>
+                <a href="#sectionDesaPresisi" class="hover:text-[#0D6E5B] transition py-1">Analisis Data</a>
+                <a href="/descan" data-i18n="nav_descan" class="hover:text-[#0D6E5B] transition py-1">Desa Cantik</a>
             </nav>
 
             <!-- Right Controls: Kelola Data & Bahasa -->
             <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 hover:border-[#a3e635] text-white hover:text-[#a3e635] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer bg-white/5 backdrop-blur-xs">
-                    <svg class="w-3.5 h-3.5 text-[#a3e635]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                <button id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#0D6E5B] text-slate-700 hover:text-[#0D6E5B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer bg-white/70 backdrop-blur-xs">
+                    <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                     <span data-i18n="btn_15_kec">15 Kecamatan</span>
                 </button>
 
-                <button id="btnOpenAdminPortal" class="bg-gradient-to-r from-[#a3e635] via-emerald-400 to-[#22c55e] hover:from-[#bef264] hover:to-[#4ade80] text-[#042f24] font-black px-4 py-1.5 rounded-full shadow-md shadow-lime-500/20 hover:shadow-lime-400/35 transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Kelola Data">
-                    <svg class="w-3.5 h-3.5 text-[#042f24] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <button id="btnOpenAdminPortal" class="bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold px-4 py-1.5 rounded-full shadow-sm hover:shadow-md transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Kelola Data">
+                    <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     <span data-i18n="btn_kelola_data">Kelola Data</span>
                 </button>
 
-                <div class="flex items-center bg-white/10 backdrop-blur-md rounded-full p-0.5 text-xs font-bold border border-white/20 shrink-0">
-                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#a3e635] text-[#042f24] shadow-xs transition-all cursor-pointer font-black text-[11px]">ID</button>
-                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-white/80 hover:text-white transition-all cursor-pointer font-bold text-[11px]">EN</button>
+                <div class="flex items-center bg-white/80 backdrop-blur-md rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0 shadow-2xs">
+                    <button type="button" id="btnLangID" onclick="setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                    <button type="button" id="btnLangEN" onclick="setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-slate-900 transition-all cursor-pointer font-bold text-[11px]">EN</button>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- ========================================================================= -->
-    <!-- 2. MASTER HERO SECTION (LUSH ORGANIC EMERALD & LIME THEME)                -->
-    <!-- Mengikuti Referensi: Kiri Judul & Metrik • Kanan Capsule Frame Stadium    -->
+    <!-- 2. MASTER HERO SECTION (MISTY MOUNTAIN PANORAMA THEME)                    -->
+    <!-- Latar Foto Pegunungan Nyambung Halus • Tipografi Bersih & Elegan          -->
     <!-- ========================================================================= -->
-    <section id="sectionHeroMaster" class="relative bg-gradient-to-b from-[#022c22] via-[#064e3b] to-[#042f24] text-white pt-10 sm:pt-14 pb-20 sm:pb-28 lg:pb-36 px-4 lg:px-8 xl:px-12 overflow-hidden w-full max-w-full">
-        <!-- Floating Ambient Depth-of-Field Orbs & Leaf Particles -->
-        <div class="absolute -top-32 -left-20 w-[550px] h-[550px] bg-lime-400/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
-        <div class="absolute top-1/3 right-0 w-[600px] h-[600px] bg-emerald-400/15 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-10 left-1/4 w-72 h-72 bg-teal-300/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Floating Organic Leaf Depth Elements -->
-        <div class="absolute top-24 left-10 w-10 h-10 bg-gradient-to-br from-lime-400 to-emerald-600 rounded-full blur-[2px] opacity-40 pointer-events-none transform -rotate-45 animate-float-slow"></div>
-        <div class="absolute top-1/2 left-[48%] w-14 h-14 bg-gradient-to-br from-lime-300 to-emerald-500 rounded-full blur-[3px] opacity-30 pointer-events-none transform rotate-12 animate-float-delayed"></div>
-        <div class="absolute bottom-32 right-12 w-12 h-12 bg-gradient-to-br from-emerald-400 to-lime-500 rounded-full blur-[2px] opacity-40 pointer-events-none transform rotate-45 animate-float-reverse"></div>
-
+    <section id="sectionHeroMaster" class="relative text-slate-900 pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 lg:pb-20 px-4 lg:px-8 xl:px-12 w-full max-w-full">
         <div class="max-w-[1720px] mx-auto relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 <!-- SISI KIRI (Col 7): Tipografi Bersih, Modern, To-The-Point -->
-                <div class="lg:col-span-7 space-y-5">
+                <div class="lg:col-span-7 space-y-4 sm:space-y-5">
                     <!-- Accent Dash & Micro Eyebrow -->
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-1 bg-[#a3e635] rounded-full"></div>
-                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-lime-300">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-1 bg-[#0D6E5B] rounded-full"></div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/80 backdrop-blur-md border border-emerald-300/60 text-[#0D6E5B] text-[11px] font-mono font-bold tracking-widest uppercase shadow-2xs">
+                            <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
                             PORTAL SATU DATA SPASIAL &amp; PODES 2025
                         </span>
                     </div>
 
                     <!-- Clean Geometric Typography: DESA MADANI KOLAKA UTARA -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.04] font-sans">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#0D6E5B] tracking-tight leading-[1.05] font-sans">
                         Desa Madani<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#a3e635] via-emerald-300 to-teal-200">
+                        <span class="text-slate-900">
                             Kabupaten Kolaka Utara
                         </span>
                     </h1>
 
                     <!-- Concise 1-2 Line Subtitle (No essays or redundant text) -->
-                    <p class="text-sm sm:text-base text-emerald-100/90 max-w-xl font-normal leading-relaxed">
+                    <p class="text-sm sm:text-base text-slate-700 max-w-xl font-normal leading-relaxed">
                         Integrasi Satu Data Desa Presisi, batas spasial 15 kecamatan, dan profil potensi 133 desa se-Kabupaten Kolaka Utara berbasis bukti (*evidence-based policy*).
                     </p>
 
-                    <!-- CTA Buttons: Lime Pill & Glassmorphic Pill -->
-                    <div class="flex flex-wrap items-center gap-3.5 pt-2">
-                        <a href="#sectionPeta" class="px-7 py-3 rounded-full bg-gradient-to-r from-[#a3e635] via-emerald-400 to-[#22c55e] hover:from-[#bef264] hover:to-[#4ade80] text-[#042f24] font-black text-xs sm:text-sm shadow-xl shadow-lime-500/25 hover:shadow-lime-400/40 hover:scale-105 active:scale-95 transition flex items-center gap-2.5 cursor-pointer">
+                    <!-- CTA Buttons: Emerald Pill & Glassmorphic Pill -->
+                    <div class="flex flex-wrap items-center gap-3.5 pt-1">
+                        <a href="#sectionPeta" class="px-7 py-3 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2.5 cursor-pointer">
                             <span>Buka Peta WebGIS Spasial</span>
-                            <svg class="w-4 h-4 text-[#042f24]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         </a>
 
-                        <a href="#sectionDaftarKecamatan" class="px-6 py-3 rounded-full border border-white/30 hover:border-white text-white font-bold text-xs sm:text-sm hover:bg-white/10 transition flex items-center gap-2 cursor-pointer backdrop-blur-xs">
+                        <a href="#sectionDaftarKecamatan" class="px-6 py-3 rounded-full bg-white/80 hover:bg-white text-[#0D6E5B] border border-[#0D6E5B]/30 font-bold text-xs sm:text-sm shadow-xs hover:shadow transition flex items-center gap-2 cursor-pointer backdrop-blur-xs">
                             <span>Jelajah 15 Kecamatan</span>
-                            <svg class="w-4 h-4 text-lime-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
                     </div>
 
                     <!-- Compact 4-Metric Glassmorphic Row (Efisien & To The Point) -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 max-w-2xl">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 max-w-2xl">
                         <!-- Stat 1 -->
-                        <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-3 space-y-0.5">
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-lime-300 font-bold block">ADMINISTRASI</span>
-                            <div class="text-xl sm:text-2xl font-black text-white font-sans">15 <span class="text-xs font-normal text-emerald-200">Kec</span></div>
-                            <span class="text-[10px] text-emerald-200/80 block">127 Desa • 6 Kel</span>
+                        <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/80 p-3 space-y-0.5 shadow-xs">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-[#0D6E5B] font-bold block">ADMINISTRASI</span>
+                            <div class="text-xl sm:text-2xl font-black text-slate-900 font-sans">15 <span class="text-xs font-semibold text-slate-500">Kec</span></div>
+                            <span class="text-[10px] text-slate-600 block">127 Desa • 6 Kel</span>
                         </div>
 
                         <!-- Stat 2 -->
-                        <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-3 space-y-0.5">
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-lime-300 font-bold block">INDUSTRI &amp; IMK</span>
-                            <div class="text-xl sm:text-2xl font-black text-white font-sans">3.622 <span class="text-xs font-normal text-emerald-200">Unit</span></div>
-                            <span class="text-[10px] text-emerald-200/80 block">Klaster Kakao &amp; Pangan</span>
+                        <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/80 p-3 space-y-0.5 shadow-xs">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-[#0D6E5B] font-bold block">INDUSTRI &amp; IMK</span>
+                            <div class="text-xl sm:text-2xl font-black text-slate-900 font-sans">3.622 <span class="text-xs font-semibold text-slate-500">Unit</span></div>
+                            <span class="text-[10px] text-slate-600 block">Klaster Kakao &amp; Pangan</span>
                         </div>
 
                         <!-- Stat 3 -->
-                        <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-3 space-y-0.5">
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-lime-300 font-bold block">LISTRIK PLN</span>
-                            <div class="text-xl sm:text-2xl font-black text-white font-sans">38.077 <span class="text-xs font-normal text-emerald-200">KK</span></div>
-                            <span class="text-[10px] text-emerald-200/80 block">Rasio 91,5% Elektrifikasi</span>
+                        <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/80 p-3 space-y-0.5 shadow-xs">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-[#0D6E5B] font-bold block">LISTRIK PLN</span>
+                            <div class="text-xl sm:text-2xl font-black text-slate-900 font-sans">38.077 <span class="text-xs font-semibold text-slate-500">KK</span></div>
+                            <span class="text-[10px] text-slate-600 block">Rasio 91,5% Elektrifikasi</span>
                         </div>
 
                         <!-- Stat 4 -->
-                        <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-3 space-y-0.5">
-                            <span class="text-[10px] font-mono uppercase tracking-wider text-lime-300 font-bold block">FASILITAS</span>
-                            <div class="text-xl sm:text-2xl font-black text-white font-sans">205 / 174</div>
-                            <span class="text-[10px] text-emerald-200/80 block">Sekolah • Faskes</span>
+                        <div class="bg-white/80 backdrop-blur-md rounded-2xl border border-white/80 p-3 space-y-0.5 shadow-xs">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-[#0D6E5B] font-bold block">FASILITAS</span>
+                            <div class="text-xl sm:text-2xl font-black text-slate-900 font-sans">205 / 174</div>
+                            <span class="text-[10px] text-slate-600 block">Sekolah • Faskes</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- SISI KANAN (Col 5): THE SIGNATURE VERTICAL CAPSULE / STADIUM FRAME (SESUAI GAMBAR) -->
+                <!-- SISI KANAN (Col 5): THE SIGNATURE VERTICAL CAPSULE STADIUM FRAME (FROSTED CRYSTAL GLASS) -->
                 <div class="lg:col-span-5 flex items-center justify-center relative select-none">
-                    <!-- Soft ambient glow under capsule -->
-                    <div class="absolute inset-0 bg-lime-400/20 rounded-[100px] blur-2xl transform scale-95 pointer-events-none"></div>
+                    <!-- Soft ambient aura -->
+                    <div class="absolute inset-0 bg-emerald-600/10 rounded-[100px] blur-2xl transform scale-95 pointer-events-none"></div>
 
                     <!-- Stadium Capsule Frame Container -->
-                    <div class="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[9/13] rounded-[90px] border-4 border-white/25 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden bg-emerald-950/70 backdrop-blur-md p-4 sm:p-5 flex flex-col justify-between items-center group transition-transform duration-500 hover:scale-[1.02]">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[9/13] rounded-[90px] border-4 border-white/90 shadow-2xl overflow-hidden bg-white/70 backdrop-blur-xl p-4 sm:p-5 flex flex-col justify-between items-center group transition-transform duration-500 hover:scale-[1.02]">
                         
                         <!-- Top Micro Header inside Capsule -->
-                        <div class="w-full flex items-center justify-between pb-2 border-b border-white/15 text-[10px] text-emerald-200">
-                            <div class="flex items-center gap-1.5 font-bold text-white">
-                                <span class="w-2 h-2 rounded-full bg-[#a3e635] animate-pulse"></span>
+                        <div class="w-full flex items-center justify-between pb-2 border-b border-slate-200/80 text-[10px] text-slate-600">
+                            <div class="flex items-center gap-1.5 font-bold text-[#0D6E5B]">
+                                <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
                                 <span>KABUPATEN KOLAKA UTARA</span>
                             </div>
-                            <span class="font-mono text-lime-300 bg-white/10 px-2 py-0.5 rounded-full border border-white/10 font-bold">7408 • SULTRA</span>
+                            <span class="font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200 font-bold">7408 • SULTRA</span>
                         </div>
 
                         <!-- Central Visual: Master Interactive 3D Vector Map of Kolaka Utara -->
                         <div class="relative w-full aspect-[400/460] flex items-center justify-center py-2">
-                            <svg class="w-full h-full filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.35)]" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-full h-full filter drop-shadow-[0_12px_20px_rgba(13,110,91,0.18)]" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
-                                    <linearGradient id="lushGradLime" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#bef264"/>
-                                        <stop offset="100%" stop-color="#84cc16"/>
-                                    </linearGradient>
-                                    <linearGradient id="lushGradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#10b981"/>
+                                    <linearGradient id="mistGradEmerald1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#059669"/>
                                         <stop offset="100%" stop-color="#047857"/>
                                     </linearGradient>
-                                    <linearGradient id="lushGradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#2dd4bf"/>
+                                    <linearGradient id="mistGradEmerald2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#10b981"/>
+                                        <stop offset="100%" stop-color="#059669"/>
+                                    </linearGradient>
+                                    <linearGradient id="mistGradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0d9488"/>
                                         <stop offset="100%" stop-color="#0f766e"/>
                                     </linearGradient>
-                                    <linearGradient id="lushGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#fbbf24"/>
-                                        <stop offset="100%" stop-color="#d97706"/>
-                                    </linearGradient>
-                                    <linearGradient id="lushGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#38bdf8"/>
-                                        <stop offset="100%" stop-color="#0284c7"/>
-                                    </linearGradient>
-                                    <linearGradient id="lushGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <linearGradient id="mistGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
                                         <stop offset="0%" stop-color="#0284c7"/>
                                         <stop offset="100%" stop-color="#0b2545"/>
                                     </linearGradient>
-                                    <!-- Compatibility aliases -->
-                                    <linearGradient id="kecGradAmber" href="#lushGradAmber"/>
-                                    <linearGradient id="kecGradNavy" href="#lushGradNavy"/>
-                                    <linearGradient id="kecGradSky" href="#lushGradCyan"/>
-                                    <linearGradient id="kecGradEmerald1" href="#lushGradEmerald"/>
-                                    <linearGradient id="kecGradEmerald2" href="#lushGradLime"/>
-                                    <linearGradient id="kecGradTeal" href="#lushGradTeal"/>
+                                    <linearGradient id="mistGradSky" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0284c7"/>
+                                        <stop offset="100%" stop-color="#0369a1"/>
+                                    </linearGradient>
+                                    <linearGradient id="mistGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#f59e0b"/>
+                                        <stop offset="100%" stop-color="#d97706"/>
+                                    </linearGradient>
+                                    <!-- Aliases -->
+                                    <linearGradient id="kecGradAmber" href="#mistGradAmber"/>
+                                    <linearGradient id="kecGradNavy" href="#mistGradNavy"/>
+                                    <linearGradient id="kecGradSky" href="#mistGradSky"/>
+                                    <linearGradient id="kecGradEmerald1" href="#mistGradEmerald1"/>
+                                    <linearGradient id="kecGradEmerald2" href="#mistGradEmerald2"/>
+                                    <linearGradient id="kecGradTeal" href="#mistGradTeal"/>
                                 </defs>
 
                                 <!-- 15 Poligon Kecamatan Interaktif -->
                                 <g id="svgKecamatanGroup" class="cursor-pointer">
-                                    <path id="svgKec-Lasusua" data-kecamatan="Lasusua" d="M 100.6 332.2 L 157.2 345.0 L 187.9 342.6 L 199.4 350.0 L 164.9 371.0 L 117.9 390.1 L 114.2 388.7 L 117.5 395.5 L 114.9 402.4 L 108.3 399.7 L 103.9 388.5 L 91.1 380.2 L 88.3 375.5 L 93.4 376.6 L 80.0 359.6 L 76.8 345.9 L 75.4 334.3 L 100.6 332.2 Z" fill="url(#lushGradAmber)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lasusua');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Lasusua" data-kecamatan="Lasusua" d="M 100.6 332.2 L 157.2 345.0 L 187.9 342.6 L 199.4 350.0 L 164.9 371.0 L 117.9 390.1 L 114.2 388.7 L 117.5 395.5 L 114.9 402.4 L 108.3 399.7 L 103.9 388.5 L 91.1 380.2 L 88.3 375.5 L 93.4 376.6 L 80.0 359.6 L 76.8 345.9 L 75.4 334.3 L 100.6 332.2 Z" fill="url(#mistGradAmber)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lasusua');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Lasusua (Ibu Kota Kabupaten)</title>
                                     </path>
-                                    <path id="svgKec-Pakue" data-kecamatan="Pakue" d="M 165.6 212.5 L 217.4 245.1 L 207.9 256.3 L 203.5 254.9 L 202.4 267.8 L 186.5 265.1 L 149.7 242.6 L 143.4 248.3 L 136.8 235.9 L 141.9 233.3 L 146.4 218.8 L 154.8 213.5 L 161.9 216.8 L 165.6 212.5 Z" fill="url(#lushGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Pakue" data-kecamatan="Pakue" d="M 165.6 212.5 L 217.4 245.1 L 207.9 256.3 L 203.5 254.9 L 202.4 267.8 L 186.5 265.1 L 149.7 242.6 L 143.4 248.3 L 136.8 235.9 L 141.9 233.3 L 146.4 218.8 L 154.8 213.5 L 161.9 216.8 L 165.6 212.5 Z" fill="url(#mistGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Pakue</title>
                                     </path>
-                                    <path id="svgKec-BatuPutih" data-kecamatan="Batu Putih" d="M 152.3 139.1 L 151.8 138.8 L 151.9 138.5 L 152.4 138.8 L 152.3 139.1 Z M 157.1 134.9 L 157.2 134.9 L 157.3 135.0 L 157.1 135.0 L 157.1 134.9 Z M 165.3 120.1 L 164.9 119.9 L 164.9 119.8 L 165.3 120.0 L 165.3 120.1 Z M 161.4 116.5 L 161.1 117.3 L 160.7 117.2 L 160.6 117.0 L 161.4 116.5 Z M 161.5 108.5 L 161.3 108.4 L 161.4 108.1 L 161.6 108.3 L 161.5 108.5 Z M 161.1 107.8 L 160.9 107.7 L 160.9 107.6 L 161.1 107.7 L 161.1 107.8 Z M 161.3 106.7 L 170.4 116.1 L 180.6 117.0 L 178.4 138.7 L 188.0 140.7 L 187.4 147.3 L 194.1 147.4 L 189.3 156.5 L 192.1 158.8 L 227.6 164.6 L 236.0 173.2 L 276.2 192.5 L 326.3 196.7 L 325.6 215.0 L 267.2 205.7 L 196.6 175.0 L 158.3 163.9 L 158.6 151.6 L 152.9 147.8 L 152.0 141.5 L 157.6 135.4 L 161.2 141.7 L 165.1 139.7 L 166.2 129.3 L 172.4 132.3 L 173.2 123.9 L 165.2 124.6 L 167.6 117.1 L 162.1 118.0 L 162.8 109.1 L 161.3 106.7 Z" fill="url(#lushGradCyan)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Batu Putih');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-BatuPutih" data-kecamatan="Batu Putih" d="M 152.3 139.1 L 151.8 138.8 L 151.9 138.5 L 152.4 138.8 L 152.3 139.1 Z M 157.1 134.9 L 157.2 134.9 L 157.3 135.0 L 157.1 135.0 L 157.1 134.9 Z M 165.3 120.1 L 164.9 119.9 L 164.9 119.8 L 165.3 120.0 L 165.3 120.1 Z M 161.4 116.5 L 161.1 117.3 L 160.7 117.2 L 160.6 117.0 L 161.4 116.5 Z M 161.5 108.5 L 161.3 108.4 L 161.4 108.1 L 161.6 108.3 L 161.5 108.5 Z M 161.1 107.8 L 160.9 107.7 L 160.9 107.6 L 161.1 107.7 L 161.1 107.8 Z M 161.3 106.7 L 170.4 116.1 L 180.6 117.0 L 178.4 138.7 L 188.0 140.7 L 187.4 147.3 L 194.1 147.4 L 189.3 156.5 L 192.1 158.8 L 227.6 164.6 L 236.0 173.2 L 276.2 192.5 L 326.3 196.7 L 325.6 215.0 L 267.2 205.7 L 196.6 175.0 L 158.3 163.9 L 158.6 151.6 L 152.9 147.8 L 152.0 141.5 L 157.6 135.4 L 161.2 141.7 L 165.1 139.7 L 166.2 129.3 L 172.4 132.3 L 173.2 123.9 L 165.2 124.6 L 167.6 117.1 L 162.1 118.0 L 162.8 109.1 L 161.3 106.7 Z" fill="url(#mistGradSky)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Batu Putih');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Batu Putih</title>
                                     </path>
-                                    <path id="svgKec-RanteAngin" data-kecamatan="Rante Angin" d="M 205.9 364.5 L 212.7 371.0 L 195.6 377.7 L 190.5 386.0 L 183.6 388.5 L 165.0 406.4 L 158.1 405.7 L 154.1 417.3 L 141.8 428.1 L 127.0 412.0 L 139.3 397.5 L 154.6 395.8 L 201.1 363.6 L 205.9 364.5 Z" fill="url(#lushGradLime)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Rante Angin');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-RanteAngin" data-kecamatan="Rante Angin" d="M 205.9 364.5 L 212.7 371.0 L 195.6 377.7 L 190.5 386.0 L 183.6 388.5 L 165.0 406.4 L 158.1 405.7 L 154.1 417.3 L 141.8 428.1 L 127.0 412.0 L 139.3 397.5 L 154.6 395.8 L 201.1 363.6 L 205.9 364.5 Z" fill="url(#mistGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Rante Angin');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Rante Angin</title>
                                     </path>
-                                    <path id="svgKec-Kodeoha" data-kecamatan="Kodeoha" d="M 108.9 273.0 L 112.3 277.3 L 110.2 281.7 L 116.2 286.1 L 197.0 328.2 L 187.5 334.2 L 115.6 316.4 L 86.9 296.0 L 108.9 273.0 Z" fill="url(#lushGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Kodeoha');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Kodeoha" data-kecamatan="Kodeoha" d="M 108.9 273.0 L 112.3 277.3 L 110.2 281.7 L 116.2 286.1 L 197.0 328.2 L 187.5 334.2 L 115.6 316.4 L 86.9 296.0 L 108.9 273.0 Z" fill="url(#mistGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Kodeoha');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Kodeoha</title>
                                     </path>
-                                    <path id="svgKec-Ngapa" data-kecamatan="Ngapa" d="M 150.1 243.6 L 186.5 265.1 L 202.4 267.8 L 199.7 270.3 L 202.6 275.4 L 195.3 286.9 L 192.1 287.1 L 192.7 297.8 L 187.1 307.2 L 201.3 318.1 L 197.4 327.1 L 164.1 313.4 L 141.5 299.4 L 140.2 287.8 L 125.5 266.2 L 136.3 251.5 L 147.7 254.1 L 147.9 250.7 L 143.0 248.8 L 150.1 243.6 Z" fill="url(#lushGradCyan)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Ngapa');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Ngapa" data-kecamatan="Ngapa" d="M 150.1 243.6 L 186.5 265.1 L 202.4 267.8 L 199.7 270.3 L 202.6 275.4 L 195.3 286.9 L 192.1 287.1 L 192.7 297.8 L 187.1 307.2 L 201.3 318.1 L 197.4 327.1 L 164.1 313.4 L 141.5 299.4 L 140.2 287.8 L 125.5 266.2 L 136.3 251.5 L 147.7 254.1 L 147.9 250.7 L 143.0 248.8 L 150.1 243.6 Z" fill="url(#mistGradSky)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Ngapa');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Ngapa</title>
                                     </path>
-                                    <path id="svgKec-Wawo" data-kecamatan="Wawo" d="M 211.5 371.0 L 237.0 391.9 L 244.4 415.9 L 191.5 439.1 L 178.1 455.0 L 169.7 441.3 L 141.8 428.1 L 154.1 417.3 L 158.1 405.7 L 165.0 406.4 L 183.6 388.5 L 190.5 386.0 L 195.6 377.7 L 211.5 371.0 Z" fill="url(#lushGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Wawo');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Wawo" data-kecamatan="Wawo" d="M 211.5 371.0 L 237.0 391.9 L 244.4 415.9 L 191.5 439.1 L 178.1 455.0 L 169.7 441.3 L 141.8 428.1 L 154.1 417.3 L 158.1 405.7 L 165.0 406.4 L 183.6 388.5 L 190.5 386.0 L 195.6 377.7 L 211.5 371.0 Z" fill="url(#mistGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Wawo');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Wawo</title>
                                     </path>
-                                    <path id="svgKec-Lambai" data-kecamatan="Lambai" d="M 202.6 362.8 L 155.3 395.4 L 139.3 397.5 L 126.9 411.7 L 114.9 402.4 L 117.5 395.5 L 114.2 388.7 L 117.9 390.1 L 164.8 371.0 L 199.3 350.8 L 202.6 362.8 Z" fill="url(#lushGradEmerald)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lambai');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Lambai" data-kecamatan="Lambai" d="M 202.6 362.8 L 155.3 395.4 L 139.3 397.5 L 126.9 411.7 L 114.9 402.4 L 117.5 395.5 L 114.2 388.7 L 117.9 390.1 L 164.8 371.0 L 199.3 350.8 L 202.6 362.8 Z" fill="url(#mistGradEmerald1)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lambai');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Lambai</title>
                                     </path>
-                                    <path id="svgKec-Watunohu" data-kecamatan="Watunohu" d="M 138.4 234.8 L 138.5 240.2 L 147.7 254.1 L 136.3 251.5 L 125.6 266.2 L 123.1 262.8 L 114.4 264.1 L 113.7 254.4 L 120.6 242.2 L 138.4 234.8 Z" fill="url(#lushGradLime)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Watunohu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Watunohu" data-kecamatan="Watunohu" d="M 138.4 234.8 L 138.5 240.2 L 147.7 254.1 L 136.3 251.5 L 125.6 266.2 L 123.1 262.8 L 114.4 264.1 L 113.7 254.4 L 120.6 242.2 L 138.4 234.8 Z" fill="url(#mistGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Watunohu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Watunohu</title>
                                     </path>
-                                    <path id="svgKec-PakueTengah" data-kecamatan="Pakue Tengah" d="M 176.3 182.8 L 217.8 202.9 L 256.2 225.6 L 234.4 225.9 L 230.3 237.8 L 217.4 245.1 L 168.0 212.9 L 159.6 211.8 L 159.3 184.7 L 176.3 182.8 Z" fill="url(#lushGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Tengah');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-PakueTengah" data-kecamatan="Pakue Tengah" d="M 176.3 182.8 L 217.8 202.9 L 256.2 225.6 L 234.4 225.9 L 230.3 237.8 L 217.4 245.1 L 168.0 212.9 L 159.6 211.8 L 159.3 184.7 L 176.3 182.8 Z" fill="url(#mistGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Tengah');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Pakue Tengah</title>
                                     </path>
-                                    <path id="svgKec-PakueUtara" data-kecamatan="Pakue Utara" d="M 168.1 164.9 L 253.7 201.5 L 282.4 209.8 L 325.6 215.0 L 323.1 247.1 L 301.2 235.2 L 282.0 235.3 L 263.3 229.1 L 176.8 182.8 L 159.3 184.7 L 152.7 171.8 L 158.3 163.9 L 168.1 164.9 Z" fill="url(#lushGradLime)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Utara');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-PakueUtara" data-kecamatan="Pakue Utara" d="M 168.1 164.9 L 253.7 201.5 L 282.4 209.8 L 325.6 215.0 L 323.1 247.1 L 301.2 235.2 L 282.0 235.3 L 263.3 229.1 L 176.8 182.8 L 159.3 184.7 L 152.7 171.8 L 158.3 163.9 L 168.1 164.9 Z" fill="url(#mistGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Utara');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Pakue Utara</title>
                                     </path>
-                                    <path id="svgKec-Porehu" data-kecamatan="Porehu" d="M 227.1 68.2 L 232.6 67.7 L 234.7 75.2 L 241.2 77.8 L 244.1 84.0 L 264.1 92.8 L 265.3 100.6 L 278.7 113.8 L 292.3 119.8 L 296.0 130.5 L 292.2 148.1 L 303.0 159.7 L 304.3 168.4 L 314.8 173.8 L 316.9 188.6 L 326.3 196.7 L 276.2 192.5 L 236.0 173.2 L 227.6 164.6 L 189.3 156.5 L 194.8 148.6 L 187.2 147.0 L 187.2 140.2 L 178.4 138.7 L 180.6 117.0 L 200.3 118.8 L 204.3 117.1 L 201.2 109.7 L 211.4 111.5 L 226.0 61.8 L 227.1 68.2 Z" fill="url(#lushGradEmerald)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Porehu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Porehu" data-kecamatan="Porehu" d="M 227.1 68.2 L 232.6 67.7 L 234.7 75.2 L 241.2 77.8 L 244.1 84.0 L 264.1 92.8 L 265.3 100.6 L 278.7 113.8 L 292.3 119.8 L 296.0 130.5 L 292.2 148.1 L 303.0 159.7 L 304.3 168.4 L 314.8 173.8 L 316.9 188.6 L 326.3 196.7 L 276.2 192.5 L 236.0 173.2 L 227.6 164.6 L 189.3 156.5 L 194.8 148.6 L 187.2 147.0 L 187.2 140.2 L 178.4 138.7 L 180.6 117.0 L 200.3 118.8 L 204.3 117.1 L 201.2 109.7 L 211.4 111.5 L 226.0 61.8 L 227.1 68.2 Z" fill="url(#mistGradEmerald1)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Porehu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Porehu</title>
                                     </path>
-                                    <path id="svgKec-Katoi" data-kecamatan="Katoi" d="M 87.1 296.4 L 115.6 316.4 L 187.5 334.2 L 187.9 342.6 L 164.4 345.8 L 101.5 332.1 L 75.4 334.3 L 73.7 315.0 L 86.8 303.7 L 87.1 296.4 Z" fill="url(#lushGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Katoi');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Katoi" data-kecamatan="Katoi" d="M 87.1 296.4 L 115.6 316.4 L 187.5 334.2 L 187.9 342.6 L 164.4 345.8 L 101.5 332.1 L 75.4 334.3 L 73.7 315.0 L 86.8 303.7 L 87.1 296.4 Z" fill="url(#mistGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Katoi');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Katoi</title>
                                     </path>
-                                    <path id="svgKec-Tiwu" data-kecamatan="Tiwu" d="M 122.7 262.8 L 140.2 287.8 L 141.5 299.4 L 110.2 281.7 L 112.3 277.3 L 108.8 272.8 L 113.8 271.4 L 115.2 263.7 L 122.7 262.8 Z" fill="url(#lushGradLime)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tiwu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Tiwu" data-kecamatan="Tiwu" d="M 122.7 262.8 L 140.2 287.8 L 141.5 299.4 L 110.2 281.7 L 112.3 277.3 L 108.8 272.8 L 113.8 271.4 L 115.2 263.7 L 122.7 262.8 Z" fill="url(#mistGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tiwu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Tiwu</title>
                                     </path>
-                                    <path id="svgKec-Tolala" data-kecamatan="Tolala" d="M 166.4 110.0 L 166.3 110.0 L 166.3 109.9 L 166.4 109.9 L 166.4 110.0 Z M 163.9 108.2 L 163.6 108.1 L 163.7 107.8 L 164.0 108.0 L 163.9 108.2 Z M 163.9 106.6 L 163.7 106.5 L 164.1 106.4 L 164.1 106.5 L 163.9 106.6 Z M 161.9 106.1 L 161.9 106.0 L 161.9 106.0 L 162.0 106.1 L 161.9 106.1 Z M 118.5 41.4 L 114.1 43.5 L 113.0 41.7 L 117.3 40.1 L 118.5 41.4 Z M 176.6 30.9 L 190.4 34.7 L 200.5 42.4 L 205.7 57.5 L 215.2 55.4 L 221.6 62.1 L 226.0 61.8 L 211.4 111.5 L 201.2 109.7 L 204.3 117.1 L 200.3 118.8 L 170.4 116.1 L 166.3 113.4 L 161.7 107.4 L 168.8 112.9 L 172.8 91.4 L 167.5 84.0 L 168.2 79.2 L 164.8 80.3 L 165.6 61.9 L 160.3 62.9 L 161.2 71.1 L 153.2 65.7 L 149.3 40.2 L 144.9 58.7 L 140.0 53.6 L 129.1 54.9 L 137.3 66.2 L 128.5 55.6 L 130.5 49.5 L 142.3 44.3 L 146.9 33.2 L 163.0 31.1 L 169.2 25.0 L 176.6 30.9 Z" fill="url(#lushGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tolala');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                    <path id="svgKec-Tolala" data-kecamatan="Tolala" d="M 166.4 110.0 L 166.3 110.0 L 166.3 109.9 L 166.4 109.9 L 166.4 110.0 Z M 163.9 108.2 L 163.6 108.1 L 163.7 107.8 L 164.0 108.0 L 163.9 108.2 Z M 163.9 106.6 L 163.7 106.5 L 164.1 106.4 L 164.1 106.5 L 163.9 106.6 Z M 161.9 106.1 L 161.9 106.0 L 161.9 106.0 L 162.0 106.1 L 161.9 106.1 Z M 118.5 41.4 L 114.1 43.5 L 113.0 41.7 L 117.3 40.1 L 118.5 41.4 Z M 176.6 30.9 L 190.4 34.7 L 200.5 42.4 L 205.7 57.5 L 215.2 55.4 L 221.6 62.1 L 226.0 61.8 L 211.4 111.5 L 201.2 109.7 L 204.3 117.1 L 200.3 118.8 L 170.4 116.1 L 166.3 113.4 L 161.7 107.4 L 168.8 112.9 L 172.8 91.4 L 167.5 84.0 L 168.2 79.2 L 164.8 80.3 L 165.6 61.9 L 160.3 62.9 L 161.2 71.1 L 153.2 65.7 L 149.3 40.2 L 144.9 58.7 L 140.0 53.6 L 129.1 54.9 L 137.3 66.2 L 128.5 55.6 L 130.5 49.5 L 142.3 44.3 L 146.9 33.2 L 163.0 31.1 L 169.2 25.0 L 176.6 30.9 Z" fill="url(#mistGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tolala');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
                                         <title>Kecamatan Tolala</title>
                                     </path>
                                     <!-- Ibu Kota Lasusua Marker Pin -->
                                     <g transform="translate(126.4, 359.4)" class="pointer-events-none">
-                                        <circle r="7" fill="#a3e635" fill-opacity="0.4" class="animate-ping" />
-                                        <circle r="4" fill="#a3e635" stroke="#ffffff" stroke-width="1.5" />
+                                        <circle r="7" fill="#0D6E5B" fill-opacity="0.3" class="animate-ping" />
+                                        <circle r="4" fill="#0D6E5B" stroke="#ffffff" stroke-width="1.5" />
                                     </g>
                                 </g>
 
                                 <!-- Compass Rose Micro Graphic (Top-Right) -->
                                 <g transform="translate(345, 45)" opacity="0.85">
-                                    <circle r="14" fill="#042f24" stroke="#a3e635" stroke-width="1" />
-                                    <path d="M 0 -11 L 3.5 0 L 0 11 L -3.5 0 Z" fill="#ffffff" />
-                                    <path d="M 0 -11 L 3.5 0 L 0 0 Z" fill="#a3e635" />
-                                    <text x="0" y="-14" fill="#ffffff" font-size="8" font-weight="900" text-anchor="middle">U</text>
+                                    <circle r="14" fill="#ffffff" stroke="#0D6E5B" stroke-width="1" />
+                                    <path d="M 0 -11 L 3.5 0 L 0 11 L -3.5 0 Z" fill="#0b2545" />
+                                    <path d="M 0 -11 L 3.5 0 L 0 0 Z" fill="#0D6E5B" />
+                                    <text x="0" y="-14" fill="#0b2545" font-size="8" font-weight="900" text-anchor="middle">U</text>
                                 </g>
                             </svg>
                         </div>
 
                         <!-- Bottom Micro Footer inside Capsule -->
-                        <div class="w-full flex items-center justify-between pt-2 border-t border-white/15 text-[10px] text-emerald-200">
-                            <span class="flex items-center gap-1 text-lime-300 font-bold">
+                        <div class="w-full flex items-center justify-between pt-2 border-t border-slate-200/80 text-[10px] text-slate-500">
+                            <span class="flex items-center gap-1 text-[#0D6E5B] font-bold">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
                                 <span>Peta Vektor 15 Kecamatan</span>
                             </span>
-                            <span class="font-mono text-white/80">PODES 2024–2025</span>
+                            <span class="font-mono text-slate-400">PODES 2024–2025</span>
                         </div>
 
                         <!-- Floating Badges outside Capsule -->
-                        <div class="absolute -top-3 -right-2 z-30 bg-emerald-900/90 backdrop-blur-md border border-lime-400/40 px-3 py-1 rounded-full shadow-lg flex items-center gap-1.5 text-[10px] font-bold text-white">
-                            <span class="w-2 h-2 rounded-full bg-[#a3e635] animate-pulse"></span>
+                        <div class="absolute -top-3 -right-2 z-30 bg-white/95 backdrop-blur-md border border-emerald-300 px-3 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-slate-800">
+                            <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
                             <span>100% Spasial Podes</span>
                         </div>
-                        <div class="absolute -bottom-3 -left-2 z-30 bg-emerald-900/90 backdrop-blur-md border border-emerald-400/40 px-3 py-1 rounded-full shadow-lg flex items-center gap-1.5 text-[10px] font-bold text-white">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <div class="absolute -bottom-3 -left-2 z-30 bg-white/95 backdrop-blur-md border border-teal-300 px-3 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-slate-800">
+                            <span class="w-2 h-2 rounded-full bg-[#0284c7]"></span>
                             <span>133 Desa Madani</span>
                         </div>
                     </div>
@@ -620,69 +617,61 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 3. ORGANIC WAVE TRANSITION & 3 OVERLAPPING STADIUM FEATURE CARDS           -->
-    <!-- Mengikuti Referensi: Kurva Gelombang Halus + 3 Kartu Stadium Beririsan    -->
+    <!-- 3. OVERLAPPING STADIUM FEATURE CARDS (SEAMLESS ON MISTY MOUNTAINS)        -->
+    <!-- 3 Kartu Kapsul Transparan Halus Di Atas Lereng Pegunungan                -->
     <!-- ========================================================================= -->
-    <div class="relative w-full bg-[#F7F7F5]">
-        <!-- Fluid Curved Wave Separator from dark emerald to warm off-white -->
-        <div class="w-full overflow-hidden leading-none -mt-12 sm:-mt-16 lg:-mt-20 relative z-20 pointer-events-none">
-            <svg class="relative block w-full h-16 sm:h-24 lg:h-32 text-[#F7F7F5] fill-current" viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,64C1200,75,1320,85,1380,90.7L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-            </svg>
-        </div>
-
-        <!-- 3 Overlapping Stadium / Pill Feature Cards Container -->
-        <div class="max-w-[1720px] mx-auto px-4 lg:px-8 xl:px-12 -mt-16 sm:-mt-24 lg:-mt-28 relative z-30 pb-10">
+    <div class="relative w-full pb-10">
+        <div class="max-w-[1720px] mx-auto px-4 lg:px-8 xl:px-12 relative z-30">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 
-                <!-- Card 1: Sentra & IMK (Dark Forest Emerald Gradient) -->
-                <div class="bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#042f24] rounded-[36px] p-6 sm:p-7 text-white shadow-2xl border border-white/10 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
+                <!-- Card 1: Sentra & IMK (White Frosted Glass) -->
+                <div class="bg-white/85 backdrop-blur-md rounded-[32px] p-6 sm:p-7 text-slate-900 shadow-xl border border-white/90 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
                     <div class="space-y-2">
-                        <div class="w-10 h-1 bg-[#a3e635] rounded-full"></div>
-                        <span class="text-[10px] font-mono uppercase tracking-widest text-lime-300 font-bold block">EKONOMI &amp; INDUSTRI RAKYAT</span>
-                        <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">Sentra &amp; IMK</h3>
-                        <div class="text-3xl sm:text-4xl font-extrabold text-[#a3e635] tracking-tight font-sans">
-                            3.622 <span class="text-sm font-semibold text-emerald-200">Unit Usaha</span>
+                        <div class="w-10 h-1 bg-[#0D6E5B] rounded-full"></div>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-[#0D6E5B] font-bold block">EKONOMI &amp; INDUSTRI RAKYAT</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Sentra &amp; IMK</h3>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-[#0D6E5B] tracking-tight font-sans">
+                            3.622 <span class="text-sm font-semibold text-slate-600">Unit Usaha</span>
                         </div>
-                        <p class="text-xs text-emerald-100/80 leading-relaxed font-sans pt-1">
+                        <p class="text-xs text-slate-600 leading-relaxed font-sans pt-1">
                             Pusat pengolahan kakao, lada, dan pangan rakyat dengan kontribusi terbesar di Kec. Porehu (1.440 IMK).
                         </p>
                     </div>
                     <div>
                         <button type="button" 
                                 onclick="window.PresisiEngine?.setAgregatSector('ekonomi'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#a3e635] to-[#22c55e] text-[#042f24] font-black text-xs shadow-md hover:scale-105 transition cursor-pointer">
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-xs shadow-md hover:scale-105 transition cursor-pointer">
                             <span>Lihat Klaster Usaha</span>
                             <span>&rarr;</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Card 2: Elektrifikasi PLN (Lush Lime Gradient) -->
-                <div class="bg-gradient-to-br from-[#10b981] via-[#059669] to-[#047857] rounded-[36px] p-6 sm:p-7 text-white shadow-2xl border border-white/20 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
+                <!-- Card 2: Elektrifikasi PLN (Deep Emerald Glass Card) -->
+                <div class="bg-gradient-to-br from-[#0D6E5B] via-[#095244] to-[#043d32] rounded-[32px] p-6 sm:p-7 text-white shadow-xl border border-emerald-400/30 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
                     <div class="space-y-2">
-                        <div class="w-10 h-1 bg-white rounded-full"></div>
-                        <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-100 font-bold block">KELISTRIKAN &amp; HUNIAN</span>
+                        <div class="w-10 h-1 bg-emerald-300 rounded-full"></div>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-200 font-bold block">KELISTRIKAN &amp; HUNIAN</span>
                         <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">Elektrifikasi PLN</h3>
                         <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">
-                            38.077 <span class="text-sm font-semibold text-emerald-100">Keluarga</span>
+                            38.077 <span class="text-sm font-semibold text-emerald-200">Keluarga</span>
                         </div>
-                        <p class="text-xs text-emerald-50 leading-relaxed font-sans pt-1">
+                        <p class="text-xs text-emerald-100/90 leading-relaxed font-sans pt-1">
                             Rasio elektrifikasi mencapai 91,5% se-kabupaten, dengan konsentrasi tertinggi di Ibu Kota Lasusua (8.463 KK).
                         </p>
                     </div>
                     <div>
                         <button type="button" 
                                 onclick="window.PresisiEngine?.setAgregatSector('lingkungan'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#047857] font-black text-xs shadow-md hover:bg-emerald-50 hover:scale-105 transition cursor-pointer">
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#0D6E5B] font-bold text-xs shadow-md hover:bg-emerald-50 hover:scale-105 transition cursor-pointer">
                             <span>Cek Rasio Listrik</span>
                             <span>&rarr;</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Card 3: Sarana Sosial & BUMDes (Crisp Pure White Card) -->
-                <div class="bg-white rounded-[36px] p-6 sm:p-7 text-slate-800 shadow-xl border border-slate-200/90 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
+                <!-- Card 3: Sarana Sosial & BUMDes (White Frosted Glass) -->
+                <div class="bg-white/85 backdrop-blur-md rounded-[32px] p-6 sm:p-7 text-slate-800 shadow-xl border border-white/90 flex flex-col justify-between space-y-4 transform hover:-translate-y-1 transition-all duration-300">
                     <div class="space-y-2">
                         <div class="w-10 h-1 bg-[#0D6E5B] rounded-full"></div>
                         <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-700 font-bold block">SOSIAL &amp; PEMERINTAHAN</span>
@@ -697,7 +686,7 @@
                     <div>
                         <button type="button" 
                                 onclick="window.PresisiEngine?.setAgregatSector('pendidikan'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0D6E5B] text-white font-black text-xs shadow-md hover:bg-[#095244] hover:scale-105 transition cursor-pointer">
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-xs shadow-md hover:scale-105 transition cursor-pointer">
                             <span>Detail Layanan</span>
                             <span>&rarr;</span>
                         </button>
@@ -711,12 +700,12 @@
     <!-- ========================================================================= -->
     <!-- 4. EKSPEDISI 15 KECAMATAN & FILTER SEKTOR (EFISIEN, TO THE POINT)          -->
     <!-- ========================================================================= -->
-    <section id="sectionDaftarKecamatan" class="w-full bg-[#F7F7F5] py-8 sm:py-12 px-4 lg:px-8 xl:px-12 border-b border-slate-200/90 scroll-mt-20">
+    <section id="sectionDaftarKecamatan" class="w-full py-6 sm:py-10 px-4 lg:px-8 xl:px-12 scroll-mt-20">
         <div id="sectionAgregatKecamatan" class="scroll-mt-24"></div>
         <div class="max-w-[1720px] mx-auto space-y-6">
             
             <!-- Header Ringkas & Elegan -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/80">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-300/60">
                 <div class="space-y-1">
                     <div class="flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B] animate-pulse"></span>
@@ -728,31 +717,31 @@
                         Navigasi 15 Kecamatan Kolaka Utara
                     </h2>
                 </div>
-                <div class="text-xs text-slate-500 font-medium max-w-md">
+                <div class="text-xs text-slate-600 font-medium max-w-md">
                     Pilih sektor tematik atau cari nama kecamatan untuk melihat indikator potensi dan pintasan WebGIS.
                 </div>
             </div>
 
-            <!-- Bilah Filter Sektor, Pencarian & Sorting (Bersih & Responsif) -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-3.5 sm:p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <!-- Bilah Filter Sektor, Pencarian & Sorting (Frosted Glass Container) -->
+            <div class="bg-white/85 backdrop-blur-md rounded-2xl border border-white/90 shadow-sm p-3.5 sm:p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <!-- Sektor Filter Tabs -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="agregatSectorPills">
                     <button type="button" onclick="window.PresisiEngine?.setAgregatSector('all')" data-sec="all" class="agregat-sec-btn active px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 shrink-0 bg-[#0D6E5B] text-white shadow-xs cursor-pointer">
                         <span data-i18n="agregat_sec_all">Semua Sektor (15)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('ekonomi')" data-sec="ekonomi" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
+                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('ekonomi')" data-sec="ekonomi" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-white/90 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
                         <span data-i18n="agregat_sec_ekonomi">Ekonomi &amp; 3.622 IMK</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('lingkungan')" data-sec="lingkungan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
+                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('lingkungan')" data-sec="lingkungan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-white/90 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
                         <span data-i18n="agregat_sec_lingkungan">Kelistrikan &amp; Lingkungan</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('pendidikan')" data-sec="pendidikan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
+                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('pendidikan')" data-sec="pendidikan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-white/90 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
                         <span data-i18n="agregat_sec_pendidikan">Pendidikan (205)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('kesehatan')" data-sec="kesehatan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
+                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('kesehatan')" data-sec="kesehatan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-white/90 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
                         <span data-i18n="agregat_sec_kesehatan">Kesehatan (174)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('pemerintahan')" data-sec="pemerintahan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-50 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
+                    <button type="button" onclick="window.PresisiEngine?.setAgregatSector('pemerintahan')" data-sec="pemerintahan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-white/90 hover:bg-emerald-50 text-slate-700 border border-slate-200 cursor-pointer">
                         <span data-i18n="agregat_sec_pemerintahan">BUMDes &amp; Desa</span>
                     </button>
                 </div>
@@ -761,10 +750,10 @@
                 <div class="flex items-center gap-3 shrink-0 flex-wrap sm:flex-nowrap">
                     <div class="relative w-full sm:w-60">
                         <svg class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <input id="inputSearchKecamatanCard" data-i18n-ph="agregat_search_ph" type="text" oninput="window.PresisiEngine?.onSearchKecamatanCard(this.value)" placeholder="Cari kecamatan..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-full text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0D6E5B]">
+                        <input id="inputSearchKecamatanCard" data-i18n-ph="agregat_search_ph" type="text" oninput="window.PresisiEngine?.onSearchKecamatanCard(this.value)" placeholder="Cari kecamatan..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-full text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0D6E5B]">
                     </div>
 
-                    <select id="selectSortKecamatanCard" onchange="window.PresisiEngine?.onSortKecamatanCard(this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded-full px-3.5 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-[#0D6E5B] cursor-pointer">
+                    <select id="selectSortKecamatanCard" onchange="window.PresisiEngine?.onSortKecamatanCard(this.value)" class="text-xs bg-white border border-slate-200 rounded-full px-3.5 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-[#0D6E5B] cursor-pointer">
                         <option value="geo" data-i18n="agregat_sort_geo">Urutkan: Geografis (Utara - Selatan)</option>
                         <option value="imk" data-i18n="agregat_sort_imk">Urutkan: IMK Terbanyak</option>
                         <option value="pln" data-i18n="agregat_sort_pln">Urutkan: Listrik PLN Terbanyak</option>
@@ -784,10 +773,10 @@
         </div>
     </section>
 
-    <!-- FLOATING PUSAT BANTUAN WIDGET (LUSH EMERALD & LIME ACCENT) -->
-    <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 bg-[#022c22] text-white pl-4 pr-1.5 py-1.5 rounded-full shadow-2xl border border-white/20 hover:scale-105 hover:shadow-lime-500/20 transition cursor-pointer group" onclick="showToast('Pusat Bantuan Desa Madani: Hubungi Tim BPS Kabupaten Kolaka Utara via kontak layanan di footer.')">
+    <!-- FLOATING PUSAT BANTUAN WIDGET (DEEP EMERALD ACCENT) -->
+    <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 bg-[#0D6E5B] text-white pl-4 pr-1.5 py-1.5 rounded-full shadow-2xl border border-white/20 hover:scale-105 hover:shadow-emerald-900/30 transition cursor-pointer group" onclick="showToast('Pusat Bantuan Desa Madani: Hubungi Tim BPS Kabupaten Kolaka Utara via kontak layanan di footer.')">
         <span data-i18n="hero_help_text" class="text-[11px] font-bold leading-tight text-right">Pusat<br>Bantuan</span>
-        <div class="w-9 h-9 rounded-full bg-gradient-to-r from-[#a3e635] to-[#22c55e] text-[#042f24] flex items-center justify-center shadow-md transition font-black">
+        <div class="w-9 h-9 rounded-full bg-emerald-600 group-hover:bg-emerald-500 text-white flex items-center justify-center shadow-md transition font-black">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-4 0h-2v2h2V9z" clip-rule="evenodd"/></svg>
         </div>
     </div>
