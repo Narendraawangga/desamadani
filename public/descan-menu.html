@@ -520,36 +520,36 @@
                 <span class="text-slate-300 hidden lg:inline">•</span>
                 
                 <!-- Kartu Identitas Akun Desa Aktif (Dipindahkan dari Sidebar) -->
-                <div class="px-2.5 py-1 rounded-xl bg-gradient-to-r from-emerald-50/90 to-teal-50/90 border border-emerald-200/80 flex items-center gap-2 shadow-2xs">
+                <div class="px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2 shadow-2xs">
                     <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#0f6b4a] text-white flex items-center justify-center shrink-0 shadow-xs">
                         <i class="bi bi-buildings-fill text-xs"></i>
                     </div>
                     <div class="min-w-0 leading-tight">
                         <div id="topBrandDesaTitle" class="text-[11px] sm:text-xs font-black text-slate-900 uppercase truncate">AKUN DESA LAPOLU</div>
-                        <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-emerald-800 truncate">(Kec. Tiwu) • Terbina BPS</div>
+                        <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator -->
-        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            <!-- Indikator Status Satu Data Indonesia -->
-            <!-- Menu Output Desa di Header (Teks Bersih) -->
+        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator (Menu Teks Bersih Tanpa Kotak Hijau) -->
+        <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+            <!-- Menu Output Desa di Header (Hanya Menu Teks) -->
             <button type="button" onclick="switchNavMenu('output')" id="header-nav-output" 
-                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                class="text-xs sm:text-[13px] font-bold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer" 
                 title="Buka Dokumen Output Desa">
                 <span>Output Desa</span>
             </button>
 
-            <!-- Menu Galeri di Header (Selaras Warna Hijau Output Desa) -->
+            <!-- Menu Galeri di Header (Hanya Menu Teks) -->
             <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
-                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                class="text-xs sm:text-[13px] font-bold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer" 
                 title="Buka Galeri Desa">
                 <span>Galeri</span>
             </button>
 
-            <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+            <!-- Status Satu Data Indonesia (Hanya Teks Bersih) -->
+            <div class="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 px-2 py-1">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Satu Data Indonesia</span>
             </div>
