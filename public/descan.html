@@ -370,10 +370,10 @@
                 </a>
             </nav>
 
-            <!-- Tombol Galeri di Header (Teks Bersih Tanpa Gambar) -->
+            <!-- Tombol Galeri di Header (Selaras Warna Hijau Output Desa) -->
             <div class="flex items-center gap-2.5">
                 <button type="button" onclick="openDescanGaleriModal(event)" 
-                    class="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                    class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
                     title="Buka Galeri Foto">
                     <span>Galeri</span>
                 </button>

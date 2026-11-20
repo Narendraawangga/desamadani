@@ -368,9 +368,9 @@
                 <span>Output Desa</span>
             </button>
 
-            <!-- Menu Galeri di Header (Hanya Teks Galeri Tanpa Gambar/Ikon) -->
+            <!-- Menu Galeri di Header (Selaras Warna Hijau Output Desa) -->
             <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
-                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
+                class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" 
                 title="Buka Galeri Desa">
                 <span>Galeri</span>
             </button>
