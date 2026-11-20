@@ -392,7 +392,201 @@
         </div>
     </header>
 
-    <!-- ========================================================================= -->
+    <!-- HERO SECTION: DESA MADANI KOLAKA UTARA (COMPACT & PERFECT AT 100% ZOOM) -->
+    <section class="relative bg-white text-slate-900 py-6 sm:py-8 lg:py-10 px-4 lg:px-8 xl:px-10 overflow-hidden border-b border-slate-200/80 w-full max-w-full">
+        <!-- Floating Animated Background Glow & Ambient Mesh -->
+        <div class="absolute -top-32 -left-20 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+        <div class="absolute top-20 right-0 w-[420px] h-[420px] bg-blue-100/30 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
+
+        <div class="max-w-[1720px] mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                <!-- Left Column: Typography & Action Buttons -->
+                <div class="lg:col-span-7 space-y-3.5 sm:space-y-4">
+                    <!-- Eyebrow text with live pulsing indicator -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-black tracking-widest uppercase shadow-2xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span data-i18n="hero_eyebrow">PORTAL SATU DATA & KEDAULATAN DESA MANDIRI</span>
+                    </div>
+
+                    <!-- Clean Proportional Typography: DESA MADANI KOLAKA UTARA -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[#0D6E5B] tracking-tight leading-[1.05] uppercase font-sans">
+                        <span data-i18n="hero_title_1">DESA MADANI</span><br>
+                        <span data-i18n="hero_title_2" class="text-[#0b2545]">KOLAKA UTARA</span>
+                    </h1>
+
+                    <p data-i18n="hero_desc" class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xl font-normal pt-0.5">
+                        Mewujudkan <b>Desa Mandiri, Maju, dan Sejahtera</b> melalui integrasi data geospasial tematik resolusi tinggi, statistik potensi desa (Podes BPS 2024–2025), dan sistem analitik perencanaan pembangunan berbasis bukti (*evidence-based policy*).
+                    </p>
+
+                    <!-- CTA Buttons: Compact Responsive Pills -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <!-- Emerald Pill Button: Portal Data WebGIS -->
+                        <a href="#sectionPeta" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#059669] to-[#047857] hover:from-[#047857] hover:to-[#065f46] text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-700/20 hover:shadow-lg transition flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer">
+                            <span data-i18n="hero_btn_webgis">Portal Data WebGIS</span>
+                            <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                        </a>
+
+                        <!-- Dark Navy Pill Button: Jelajahi Potensi Desa -->
+                        <a href="#sectionDesaPresisi" class="px-6 py-2.5 rounded-full bg-[#0D6E5B] hover:bg-[#162d4a] text-white font-bold text-xs sm:text-sm shadow-md shadow-slate-900/15 hover:shadow-lg transition flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer">
+                            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 3.5l11 6.5-11 6.5v-13z"/></svg>
+                            <span data-i18n="hero_btn_explore">Jelajahi Potensi Desa</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Stylized 3D Vector Map of Kabupaten Kolaka Utara -->
+                <div class="lg:col-span-5 flex items-center justify-center relative select-none">
+                    <!-- Glowing Ambient Aura Mesh -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/15 via-teal-400/10 to-blue-600/15 rounded-full blur-2xl animate-glow-pulse pointer-events-none"></div>
+
+                    <!-- Main Interactive 3D Relief Card Container (Proportional Scale) -->
+                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[380px] z-10 transition-transform duration-500 hover:scale-[1.01]">
+                        <!-- Background Glassmorphic Relief Card Plate -->
+                        <div class="relative bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/90 shadow-xl p-3.5 sm:p-5 overflow-hidden">
+                            <!-- Header Micro Bar Inside Card -->
+                            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100/90 text-[10px] sm:text-[11px]">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span data-i18n="hero_card_head" class="font-extrabold text-[#0D6E5B] tracking-tight">KABUPATEN KOLAKA UTARA</span>
+                                </div>
+                                <span class="text-[10px] font-mono font-bold text-slate-400 bg-slate-50 px-2 py-0.5 rounded-full border border-slate-100">
+                                    7408 • SULTRA
+                                </span>
+                            </div>
+
+                            <!-- THE MASTER SVG MAP: 15 KECAMATAN OF KOLAKA UTARA -->
+                            <div class="relative w-full aspect-[400/480] flex items-center justify-center">
+                                <svg class="w-full h-full filter drop-shadow-[0_15px_25px_rgba(11,37,69,0.18)]" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <defs>
+                                        <linearGradient id="kecGradEmerald1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#059669"/>
+                                            <stop offset="100%" stop-color="#047857"/>
+                                        </linearGradient>
+                                        <linearGradient id="kecGradEmerald2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#10b981"/>
+                                            <stop offset="100%" stop-color="#059669"/>
+                                        </linearGradient>
+                                        <linearGradient id="kecGradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#0d9488"/>
+                                            <stop offset="100%" stop-color="#0f766e"/>
+                                        </linearGradient>
+                                        <linearGradient id="kecGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#005ea6"/>
+                                            <stop offset="100%" stop-color="#0b2545"/>
+                                        </linearGradient>
+                                        <linearGradient id="kecGradSky" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#0284c7"/>
+                                            <stop offset="100%" stop-color="#0369a1"/>
+                                        </linearGradient>
+                                        <linearGradient id="kecGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#f59e0b"/>
+                                            <stop offset="100%" stop-color="#d97706"/>
+                                        </linearGradient>
+                                        <!-- Backward compatibility alias -->
+                                        <linearGradient id="kecGrad1" href="#kecGradEmerald1"/>
+                                        <linearGradient id="kecGrad2" href="#kecGradEmerald2"/>
+                                        <linearGradient id="kecGrad3" href="#kecGradNavy"/>
+                                        <linearGradient id="kecGrad4" href="#kecGradAmber"/>
+                                    </defs>
+
+                                    <!-- 15 INTERACTIVE GEOGRAPHIC KECAMATAN POLYGONS (OFFICIAL PODES KOLAKA UTARA) -->
+                                    <g id="svgKecamatanGroup" class="cursor-pointer filter drop-shadow-[0_4px_12px_rgba(11,37,69,0.18)]">
+                                        <path id="svgKec-Lasusua" data-kecamatan="Lasusua" d="M 100.6 332.2 L 157.2 345.0 L 187.9 342.6 L 199.4 350.0 L 164.9 371.0 L 117.9 390.1 L 114.2 388.7 L 117.5 395.5 L 114.9 402.4 L 108.3 399.7 L 103.9 388.5 L 91.1 380.2 L 88.3 375.5 L 93.4 376.6 L 80.0 359.6 L 76.8 345.9 L 75.4 334.3 L 100.6 332.2 Z" fill="url(#kecGradAmber)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lasusua');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Lasusua (Ibu Kota Kabupaten) - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Pakue" data-kecamatan="Pakue" d="M 165.6 212.5 L 217.4 245.1 L 207.9 256.3 L 203.5 254.9 L 202.4 267.8 L 186.5 265.1 L 149.7 242.6 L 143.4 248.3 L 136.8 235.9 L 141.9 233.3 L 146.4 218.8 L 154.8 213.5 L 161.9 216.8 L 165.6 212.5 Z" fill="url(#kecGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Pakue - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-BatuPutih" data-kecamatan="Batu Putih" d="M 152.3 139.1 L 151.8 138.8 L 151.9 138.5 L 152.4 138.8 L 152.3 139.1 Z M 157.1 134.9 L 157.2 134.9 L 157.3 135.0 L 157.1 135.0 L 157.1 134.9 Z M 165.3 120.1 L 164.9 119.9 L 164.9 119.8 L 165.3 120.0 L 165.3 120.1 Z M 161.4 116.5 L 161.1 117.3 L 160.7 117.2 L 160.6 117.0 L 161.4 116.5 Z M 161.5 108.5 L 161.3 108.4 L 161.4 108.1 L 161.6 108.3 L 161.5 108.5 Z M 161.1 107.8 L 160.9 107.7 L 160.9 107.6 L 161.1 107.7 L 161.1 107.8 Z M 161.3 106.7 L 170.4 116.1 L 180.6 117.0 L 178.4 138.7 L 188.0 140.7 L 187.4 147.3 L 194.1 147.4 L 189.3 156.5 L 192.1 158.8 L 227.6 164.6 L 236.0 173.2 L 276.2 192.5 L 326.3 196.7 L 325.6 215.0 L 267.2 205.7 L 196.6 175.0 L 158.3 163.9 L 158.6 151.6 L 152.9 147.8 L 152.0 141.5 L 157.6 135.4 L 161.2 141.7 L 165.1 139.7 L 166.2 129.3 L 172.4 132.3 L 173.2 123.9 L 165.2 124.6 L 167.6 117.1 L 162.1 118.0 L 162.8 109.1 L 161.3 106.7 Z" fill="url(#kecGradSky)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Batu Putih');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Batu Putih - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-RanteAngin" data-kecamatan="Rante Angin" d="M 205.9 364.5 L 212.7 371.0 L 195.6 377.7 L 190.5 386.0 L 183.6 388.5 L 165.0 406.4 L 158.1 405.7 L 154.1 417.3 L 141.8 428.1 L 127.0 412.0 L 139.3 397.5 L 154.6 395.8 L 201.1 363.6 L 205.9 364.5 Z" fill="url(#kecGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Rante Angin');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Rante Angin - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Kodeoha" data-kecamatan="Kodeoha" d="M 108.9 273.0 L 112.3 277.3 L 110.2 281.7 L 116.2 286.1 L 197.0 328.2 L 187.5 334.2 L 115.6 316.4 L 86.9 296.0 L 108.9 273.0 Z" fill="url(#kecGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Kodeoha');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Kodeoha - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Ngapa" data-kecamatan="Ngapa" d="M 150.1 243.6 L 186.5 265.1 L 202.4 267.8 L 199.7 270.3 L 202.6 275.4 L 195.3 286.9 L 192.1 287.1 L 192.7 297.8 L 187.1 307.2 L 201.3 318.1 L 197.4 327.1 L 164.1 313.4 L 141.5 299.4 L 140.2 287.8 L 125.5 266.2 L 136.3 251.5 L 147.7 254.1 L 147.9 250.7 L 143.0 248.8 L 150.1 243.6 Z" fill="url(#kecGradSky)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Ngapa');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Ngapa - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Wawo" data-kecamatan="Wawo" d="M 211.5 371.0 L 237.0 391.9 L 244.4 415.9 L 191.5 439.1 L 178.1 455.0 L 169.7 441.3 L 141.8 428.1 L 154.1 417.3 L 158.1 405.7 L 165.0 406.4 L 183.6 388.5 L 190.5 386.0 L 195.6 377.7 L 211.5 371.0 Z" fill="url(#kecGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Wawo');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Wawo - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Lambai" data-kecamatan="Lambai" d="M 202.6 362.8 L 155.3 395.4 L 139.3 397.5 L 126.9 411.7 L 114.9 402.4 L 117.5 395.5 L 114.2 388.7 L 117.9 390.1 L 164.8 371.0 L 199.3 350.8 L 202.6 362.8 Z" fill="url(#kecGradEmerald1)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Lambai');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Lambai - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Watunohu" data-kecamatan="Watunohu" d="M 138.4 234.8 L 138.5 240.2 L 147.7 254.1 L 136.3 251.5 L 125.6 266.2 L 123.1 262.8 L 114.4 264.1 L 113.7 254.4 L 120.6 242.2 L 138.4 234.8 Z" fill="url(#kecGradEmerald1)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Watunohu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Watunohu - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-PakueTengah" data-kecamatan="Pakue Tengah" d="M 176.3 182.8 L 217.8 202.9 L 256.2 225.6 L 234.4 225.9 L 230.3 237.8 L 217.4 245.1 L 168.0 212.9 L 159.6 211.8 L 159.3 184.7 L 176.3 182.8 Z" fill="url(#kecGradTeal)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Tengah');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Pakue Tengah - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-PakueUtara" data-kecamatan="Pakue Utara" d="M 168.1 164.9 L 253.7 201.5 L 282.4 209.8 L 325.6 215.0 L 323.1 247.1 L 301.2 235.2 L 282.0 235.3 L 263.3 229.1 L 176.8 182.8 L 159.3 184.7 L 152.7 171.8 L 158.3 163.9 L 168.1 164.9 Z" fill="url(#kecGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Pakue Utara');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Pakue Utara - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Porehu" data-kecamatan="Porehu" d="M 227.1 68.2 L 232.6 67.7 L 234.7 75.2 L 241.2 77.8 L 244.1 84.0 L 264.1 92.8 L 265.3 100.6 L 278.7 113.8 L 292.3 119.8 L 296.0 130.5 L 292.2 148.1 L 303.0 159.7 L 304.3 168.4 L 314.8 173.8 L 316.9 188.6 L 326.3 196.7 L 276.2 192.5 L 236.0 173.2 L 227.6 164.6 L 189.3 156.5 L 194.8 148.6 L 187.2 147.0 L 187.2 140.2 L 178.4 138.7 L 180.6 117.0 L 200.3 118.8 L 204.3 117.1 L 201.2 109.7 L 211.4 111.5 L 226.0 61.8 L 227.1 68.2 Z" fill="url(#kecGradEmerald1)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Porehu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Porehu - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Katoi" data-kecamatan="Katoi" d="M 87.1 296.4 L 115.6 316.4 L 187.5 334.2 L 187.9 342.6 L 164.4 345.8 L 101.5 332.1 L 75.4 334.3 L 73.7 315.0 L 86.8 303.7 L 87.1 296.4 Z" fill="url(#kecGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Katoi');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Katoi - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Tiwu" data-kecamatan="Tiwu" d="M 122.7 262.8 L 140.2 287.8 L 141.5 299.4 L 110.2 281.7 L 112.3 277.3 L 108.8 272.8 L 113.8 271.4 L 115.2 263.7 L 122.7 262.8 Z" fill="url(#kecGradEmerald2)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tiwu');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Tiwu - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <path id="svgKec-Tolala" data-kecamatan="Tolala" d="M 166.4 110.0 L 166.3 110.0 L 166.3 109.9 L 166.4 109.9 L 166.4 110.0 Z M 163.9 108.2 L 163.6 108.1 L 163.7 107.8 L 164.0 108.0 L 163.9 108.2 Z M 163.9 106.6 L 163.7 106.5 L 164.1 106.4 L 164.1 106.5 L 163.9 106.6 Z M 161.9 106.1 L 161.9 106.0 L 161.9 106.0 L 162.0 106.1 L 161.9 106.1 Z M 118.5 41.4 L 114.1 43.5 L 113.0 41.7 L 117.3 40.1 L 118.5 41.4 Z M 176.6 30.9 L 190.4 34.7 L 200.5 42.4 L 205.7 57.5 L 215.2 55.4 L 221.6 62.1 L 226.0 61.8 L 211.4 111.5 L 201.2 109.7 L 204.3 117.1 L 200.3 118.8 L 170.4 116.1 L 166.3 113.4 L 161.7 107.4 L 168.8 112.9 L 172.8 91.4 L 167.5 84.0 L 168.2 79.2 L 164.8 80.3 L 165.6 61.9 L 160.3 62.9 L 161.2 71.1 L 153.2 65.7 L 149.3 40.2 L 144.9 58.7 L 140.0 53.6 L 129.1 54.9 L 137.3 66.2 L 128.5 55.6 L 130.5 49.5 L 142.3 44.3 L 146.9 33.2 L 163.0 31.1 L 169.2 25.0 L 176.6 30.9 Z" fill="url(#kecGradNavy)" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" class="transition-all duration-300 hover:brightness-125 hover:stroke-[2.5] hover:opacity-95 cursor-pointer" onclick="if(window.PresisiEngine){window.PresisiEngine.onKecamatanChange('Tolala');document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});}">
+                                            <title>Kecamatan Tolala - Kabupaten Kolaka Utara</title>
+                                        </path>
+                                        <!-- Ibu Kota Lasusua Marker Pin -->
+                                        <g transform="translate(126.4, 359.4)" class="pointer-events-none">
+                                            <circle r="6" fill="#f59e0b" fill-opacity="0.3" class="animate-ping" />
+                                            <circle r="3.5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
+                                        </g>
+                                    </g>
+
+                                    <!-- Compass Rose Micro Graphic (Top-Right) -->
+                                    <g transform="translate(345, 45)" opacity="0.75">
+                                        <circle r="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+                                        <path d="M 0 -11 L 3.5 0 L 0 11 L -3.5 0 Z" fill="#0b2545" />
+                                        <path d="M 0 -11 L 3.5 0 L 0 0 Z" fill="#059669" />
+                                        <text x="0" y="-14" fill="#0b2545" font-size="8" font-weight="900" text-anchor="middle">U</text>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <!-- Footer Mini Bar Inside Card -->
+                            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+                                <span class="flex items-center gap-1 text-[#0D6E5B] font-bold">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                                    <span data-i18n="hero_card_foot">Peta Vektor Spasial 15 Kecamatan</span>
+                                </span>
+                                <span class="font-mono text-slate-500">Podes 2024–2025</span>
+                            </div>
+                        </div>
+
+                        
+
+                            <!-- FLOATING GLASSMORPHIC BADGES (COMPACT PROPORTIONAL SCALE) -->
+                            <div class="absolute -top-2.5 -right-1 z-30 bg-white/95 backdrop-blur-md border border-emerald-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-[#0b2545] animate-float-slow">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span data-i18n="hero_badge_spasial">100% Spasial Podes</span>
+                            </div>
+                            <div class="absolute -bottom-2.5 -left-1 z-30 bg-white/95 backdrop-blur-md border border-blue-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5 text-[10px] font-bold text-[#0b2545] animate-float-delayed">
+                                <span class="w-2 h-2 rounded-full bg-[#005ea6]"></span>
+                                <span data-i18n="hero_badge_desa">133 Desa Madani</span>
+                            </div>
+                            <div class="absolute top-1/2 -right-1 z-30 bg-white/95 backdrop-blur-md border border-amber-200 px-2.5 py-1 rounded-full shadow-md flex items-center gap-1 text-[9px] font-bold text-amber-900 animate-float-reverse">
+                                <svg class="w-3 h-3 text-amber-500 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <span data-i18n="hero_badge_sejahtera">Kolaka Utara Sejahtera</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- ========================================================================= -->
     <!-- 2. HERO SECTION ASIMETRIS (FULL-WIDTH 80-90VH)                             -->
     <!-- Kiri: Judul 2 Baris • Kanan: Indikator 01-05 • Bawah: Grid 3 Kolom & CTA  -->
     <!-- ========================================================================= -->
