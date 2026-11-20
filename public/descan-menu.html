@@ -1641,12 +1641,12 @@
                 </div></div>
 
                 <!-- ===================================================================== -->
-                <!-- 2. PROFIL DESA (MONOGRAFI, SDM APARAT & POTENSI UNGGULAN)             -->
+                <!-- 2. PROFIL DESA (MONOGRAFI, SDM APARAT & POTENSI UNGGULAN - 3D ISOMETRIC)-->
                 <!-- ===================================================================== -->
                 <div id="view-tentang" class="menu-view-container hidden space-y-6 animate-in fade-in duration-300 select-none">
                     
                     <!-- ============================================================== -->
-                    <!-- 3D EDITORIAL PROFIL DESA (KEPOS NATURE & 3D MOTION STYLE)     -->
+                    <!-- 3D EDITORIAL PROFIL DESA (ISOMETRIC 3D & DIAMOND RHOMBUS STYLE)-->
                     <!-- ============================================================== -->
                     <div class="dc-profil-shell p-5 sm:p-10 lg:p-12 space-y-10 relative overflow-hidden bg-[#f6f3ec] border border-[#e6e1d5] rounded-3xl shadow-sm">
                         
@@ -1665,318 +1665,254 @@
                             </div>
                         </div>
 
-                        <!-- 1. HERO EDITORIAL TYPOGRAPHY & 3D ORGANIC BRANCH OVERLAY -->
-                        <div class="relative py-4 sm:py-8">
+                        <!-- 1. HERO SECTION (ISOMETRIC 3D BANNER DENGAN BOOTSTRAP ICON) -->
+                        <div class="relative py-4 sm:py-6">
                             
-                            <!-- 3D Organic Nature Decorative Graphic (Floating Parallax with Organic Motion) -->
-                            <div class="absolute right-0 top-1/2 -translate-y-1/2 z-20 pointer-events-none w-48 sm:w-80 lg:w-[420px] opacity-90 animate-float-3d">
-                                <div class="relative w-full h-36 sm:h-52 rounded-full filter drop-shadow-[0_20px_25px_rgba(20,50,30,0.35)]">
-                                    <svg viewBox="0 0 400 160" class="w-full h-full text-emerald-800" fill="none">
-                                        <!-- Organic 3D Curved Tree Root / Moss Branch Path -->
-                                        <defs>
-                                            <linearGradient id="branchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#4a3520"/>
-                                                <stop offset="35%" stop-color="#2d5236"/>
-                                                <stop offset="70%" stop-color="#163829"/>
-                                                <stop offset="100%" stop-color="#0f261c"/>
-                                            </linearGradient>
-                                            <linearGradient id="mossGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                <stop offset="0%" stop-color="#84cc16"/>
-                                                <stop offset="50%" stop-color="#22c55e"/>
-                                                <stop offset="100%" stop-color="#15803d"/>
-                                            </linearGradient>
-                                            <filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%">
-                                                <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#0a1f16" flood-opacity="0.45"/>
-                                            </filter>
-                                        </defs>
-                                        <!-- 3D Root Stem -->
-                                        <path d="M10,130 C80,40 180,150 260,70 C310,20 370,60 395,40" stroke="url(#branchGrad)" stroke-width="26" stroke-linecap="round" filter="url(#shadow3d)"/>
-                                        <path d="M10,130 C80,40 180,150 260,70 C310,20 370,60 395,40" stroke="url(#mossGrad)" stroke-width="8" stroke-dasharray="8 14" stroke-linecap="round"/>
-                                        <!-- Leaf Tufts -->
-                                        <circle cx="95" cy="65" r="14" fill="#65a30d" opacity="0.85"/>
-                                        <circle cx="115" cy="55" r="10" fill="#84cc16" opacity="0.9"/>
-                                        <circle cx="215" cy="115" r="16" fill="#15803d" opacity="0.85"/>
-                                        <circle cx="235" cy="105" r="12" fill="#4ade80" opacity="0.9"/>
-                                        <circle cx="325" cy="40" r="12" fill="#84cc16" opacity="0.9"/>
-                                    </svg>
+                            <!-- 3D Isometric Decorative Graphic (Pengganti Gambar Pohon - Menggunakan 3D Cards & Bootstrap Icons) -->
+                            <div class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 z-20 pointer-events-none w-80 lg:w-[380px]">
+                                <div class="relative w-full p-6 rounded-3xl bg-gradient-to-br from-white/90 via-[#f0f8f3]/90 to-emerald-50/80 border-2 border-emerald-300/60 shadow-2xl backdrop-blur-md space-y-3 transform -rotate-1 hover:rotate-0 transition duration-500">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-black tracking-widest text-emerald-800 uppercase flex items-center gap-1.5">
+                                            <i class="bi bi-shield-check text-emerald-600 text-sm"></i>
+                                            <span>SDI STATISTIK DESA</span>
+                                        </span>
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 pt-1">
+                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0f6b4a] to-[#10b981] text-white flex items-center justify-center text-xl shadow-lg shadow-emerald-700/25">
+                                            <i class="bi bi-buildings-fill"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-black text-slate-900 uppercase">Monografi Terintegrasi</div>
+                                            <div class="text-[10px] font-semibold text-slate-500">Kec. Kodeoha, Kolut</div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-emerald-100 text-[10px]">
+                                        <div class="p-2 rounded-xl bg-white/80 border border-emerald-100">
+                                            <span class="text-slate-400 block font-semibold">Tingkat Mandiri</span>
+                                            <b class="text-emerald-700 font-black">98% Terverifikasi</b>
+                                        </div>
+                                        <div class="p-2 rounded-xl bg-white/80 border border-emerald-100">
+                                            <span class="text-slate-400 block font-semibold">Regsosek / PODES</span>
+                                            <b class="text-slate-800 font-black">Satu Data RI</b>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Typography Overlap -->
-                            <div class="relative z-10 max-w-3xl space-y-3">
+                            <!-- Typography Hero -->
+                            <div class="relative z-10 max-w-2xl space-y-3">
                                 <span class="text-[11px] sm:text-xs font-black tracking-[0.25em] text-[#0f6b4a] uppercase block">
-                                    PROFIL MONOGRAFI WILAYAH
+                                    PROFIL MONOGRAFI & INDIKATOR WILAYAH
                                 </span>
-                                <h1 id="profil3dHeroDesaName" class="text-4xl sm:text-6xl lg:text-7xl font-serif font-black tracking-tight text-[#163829] leading-[1.05] drop-shadow-xs">
+                                <h1 id="profil3dHeroDesaName" class="text-4xl sm:text-6xl font-black tracking-tight text-[#163829] leading-[1.05] uppercase">
                                     Desa Kamisi
                                 </h1>
                                 <p id="profil3dHeroKecamatan" class="text-xs sm:text-sm font-bold text-[#4e6459] max-w-xl leading-relaxed">
                                     Kecamatan Kodeoha, Kabupaten Kolaka Utara • Terintegrasi Potensi Desa (PODES) 2025 BPS RI
                                 </p>
-                                <div class="pt-2 flex items-center gap-3">
-                                    <button type="button" onclick="document.getElementById('secProfilTentang').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-emerald-50 text-[#163829] font-extrabold text-xs border border-[#ded8c8] shadow-xs transition cursor-pointer">
-                                        <span>Jelajahi Profil Wilayah</span>
-                                        <i class="bi bi-chevron-down text-emerald-700"></i>
+                                <div class="pt-3 flex flex-wrap items-center gap-3">
+                                    <button type="button" onclick="document.getElementById('secProfilTentang').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0f6b4a] hover:bg-[#0a5238] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition cursor-pointer">
+                                        <i class="bi bi-grid-fill text-emerald-200"></i>
+                                        <span>Jelajahi Indikator Wilayah</span>
+                                        <i class="bi bi-chevron-down text-xs"></i>
                                     </button>
-                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#163829] hover:bg-[#0f281d] text-white font-extrabold text-xs shadow-xs transition cursor-pointer">
-                                        <i class="bi bi-file-earmark-pdf-fill text-amber-300"></i>
+                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-[#163829] font-extrabold text-xs border border-[#ded8c8] shadow-xs transition cursor-pointer">
+                                        <i class="bi bi-file-earmark-pdf-fill text-amber-500"></i>
                                         <span>Buku Monografi</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 2. INFOGRAFIS KARAKTERISTIK & KONDISI GEOGRAFIS DESA -->
-                        <div id="secProfilTentang" class="relative w-full rounded-3xl overflow-hidden p-6 sm:p-10 bg-white border border-[#e6e2d6] shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <!-- 3D ANGLED ISOMETRIC CHEVRON DIVIDER (Gaya Garis 3D Rumput pada Gambar Inspirasi) -->
+                        <div class="w-full relative h-3 bg-gradient-to-r from-emerald-600 via-teal-500 to-[#0f6b4a] rounded-full shadow-md overflow-hidden">
+                            <div class="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.2)_10px,rgba(255,255,255,0.2)_20px)]"></div>
+                        </div>
+
+                        <!-- 2. FRAMED RHOMBUS / DIAMOND COLLAGE SECTION (Sesuai Desain Kotak Belah Ketupat pada Gambar) -->
+                        <div id="secProfilTentang" class="relative rounded-3xl border-2 border-emerald-600/30 bg-white p-6 sm:p-10 pt-12 shadow-xl transition-all duration-300">
+                            
                             <!-- Hidden dummy for JS compatibility (setSrc in script) -->
                             <img id="profil3dLandscapeBg" src="" alt="" class="hidden" style="display:none;">
+                            <img id="profil3dHeroPhoto" src="" alt="" class="hidden" style="display:none;">
 
-                            <!-- Subtle Ambient Infographic Background Accents (Pure CSS, No Image) -->
-                            <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-100/40 blur-3xl pointer-events-none"></div>
-                            <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-teal-100/30 blur-3xl pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-[radial-gradient(#0f6b4a_0.6px,transparent_0.6px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none"></div>
+                            <!-- Border Top Title Notch (Gaya Judul di Tengah Garis Bingkai pada Gambar) -->
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#f6f3ec] px-5 py-1 rounded-full border border-emerald-500/40 shadow-sm flex items-center gap-2 text-xs sm:text-sm font-black text-[#163829] tracking-wider uppercase whitespace-nowrap">
+                                <i class="bi bi-geo-alt-fill text-emerald-600"></i>
+                                <span>KARAKTERISTIK & KONDISI GEOGRAFIS DESA</span>
+                            </div>
 
-                            <!-- Content Wrapper -->
-                            <div class="relative z-10 space-y-6">
-                                <!-- Header Section (Infographic Title & Description) -->
-                                <div class="text-center max-w-2xl mx-auto space-y-3">
-                                    <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-[#0f6b4a] text-[11px] font-black uppercase tracking-wider border border-emerald-200/70 shadow-2xs">
-                                        <i class="bi bi-geo-alt-fill text-emerald-600"></i>
-                                        <span>Karakteristik & Kondisi Geografis</span>
-                                    </div>
-                                    <h3 class="text-2xl sm:text-3xl font-serif font-black text-[#163829] tracking-tight">
-                                        Kedaulatan Data & Keasrian Wilayah
-                                    </h3>
-                                    <p id="profil3dDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto">
-                                        Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.
-                                    </p>
-                                </div>
+                            <!-- Decorative Subtle Corner Accents -->
+                            <div class="absolute -top-1.5 -left-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
+                            <div class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
+                            <div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
+                            <div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-emerald-600 rounded-sm"></div>
 
-                                <!-- Infographic 4-Grid Key Metrics Cards -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                            <!-- BARIS BELAH KETUPAT (DIAMOND / RHOMBUS 3D CARDS DENGAN BOOTSTRAP ICONS) -->
+                            <div class="py-6 sm:py-10">
+                                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-10">
                                     
-                                    <!-- Metric 1: Luas Wilayah -->
-                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-emerald-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#0f6b4a] to-[#10b981] text-white flex items-center justify-center text-lg shadow-md shadow-emerald-700/20 group-hover:scale-110 transition-transform duration-300">
-                                                <i class="bi bi-map-fill"></i>
-                                            </div>
-                                            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-full border border-emerald-200/60">Spasial</span>
-                                        </div>
-                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Luas Wilayah</span>
-                                        <div class="text-xl sm:text-2xl font-black text-[#163829] tracking-tight mt-0.5">
-                                            <b id="profil3dLuas">14,80 km²</b>
-                                        </div>
-                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
-                                            <span>Cakupan Area</span>
-                                            <span class="font-bold text-[#0f6b4a] flex items-center gap-1"><i class="bi bi-check2-circle"></i> Terpetakan</span>
+                                    <!-- Rhombus 1: Luas Wilayah -->
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rotate-45 rounded-3xl bg-gradient-to-br from-white to-emerald-50/70 border-2 border-emerald-400 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
+                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
+                                            <i class="bi bi-map-fill text-2xl sm:text-3xl text-emerald-600 group-hover:scale-110 transition-transform"></i>
+                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Luas</span>
+                                            <b id="profil3dLuas" class="text-xs sm:text-sm font-black text-[#163829] leading-tight">14,80 km²</b>
                                         </div>
                                     </div>
 
-                                    <!-- Metric 2: Penduduk -->
-                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-sky-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-blue-500"></div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-600 to-blue-500 text-white flex items-center justify-center text-lg shadow-md shadow-sky-600/20 group-hover:scale-110 transition-transform duration-300">
-                                                <i class="bi bi-people-fill"></i>
-                                            </div>
-                                            <span class="text-[10px] font-black uppercase tracking-wider text-sky-800 bg-sky-100/70 px-2 py-0.5 rounded-full border border-sky-200/60">Demografi</span>
-                                        </div>
-                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Penduduk</span>
-                                        <div class="text-xl sm:text-2xl font-black text-[#163829] tracking-tight mt-0.5">
-                                            <b id="profil3dPop">1.576 Jiwa</b>
-                                        </div>
-                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
-                                            <span>Validitas SDI</span>
-                                            <span class="font-bold text-sky-600 flex items-center gap-1"><i class="bi bi-shield-check"></i> 100% Jiwa</span>
+                                    <!-- Rhombus 2: Penduduk -->
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rotate-45 rounded-3xl bg-gradient-to-br from-white to-sky-50/70 border-2 border-sky-400 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
+                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
+                                            <i class="bi bi-people-fill text-2xl sm:text-3xl text-sky-600 group-hover:scale-110 transition-transform"></i>
+                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Penduduk</span>
+                                            <b id="profil3dPop" class="text-xs sm:text-sm font-black text-[#163829] leading-tight">1.576 Jiwa</b>
                                         </div>
                                     </div>
 
-                                    <!-- Metric 3: Keluarga -->
-                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-amber-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-400"></div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center text-lg shadow-md shadow-amber-500/20 group-hover:scale-110 transition-transform duration-300">
-                                                <i class="bi bi-house-heart-fill"></i>
-                                            </div>
-                                            <span class="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-full border border-amber-200/60">Keluarga</span>
-                                        </div>
-                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Keluarga</span>
-                                        <div class="text-xl sm:text-2xl font-black text-amber-700 tracking-tight mt-0.5">
-                                            <b id="profil3dKK">394 KK</b>
-                                        </div>
-                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
-                                            <span>Basis Data</span>
-                                            <span class="font-bold text-amber-700 flex items-center gap-1"><i class="bi bi-database-check"></i> Regsosek</span>
+                                    <!-- Rhombus 3: Keluarga (KK) -->
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rotate-45 rounded-3xl bg-gradient-to-br from-white to-amber-50/70 border-2 border-amber-400 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
+                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
+                                            <i class="bi bi-house-heart-fill text-2xl sm:text-3xl text-amber-500 group-hover:scale-110 transition-transform"></i>
+                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Keluarga</span>
+                                            <b id="profil3dKK" class="text-xs sm:text-sm font-black text-amber-700 leading-tight">394 KK</b>
                                         </div>
                                     </div>
 
-                                    <!-- Metric 4: Struktur RT -->
-                                    <div class="group relative bg-[#faf9f5] hover:bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e4d8] hover:border-teal-300 shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400"></div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-600 to-emerald-500 text-white flex items-center justify-center text-lg shadow-md shadow-teal-600/20 group-hover:scale-110 transition-transform duration-300">
-                                                <i class="bi bi-diagram-3-fill"></i>
-                                            </div>
-                                            <span class="text-[10px] font-black uppercase tracking-wider text-teal-800 bg-teal-100/70 px-2 py-0.5 rounded-full border border-teal-200/60">Wilayah</span>
+                                    <!-- Rhombus 4: Struktur RT/Dusun -->
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rotate-45 rounded-3xl bg-gradient-to-br from-white to-teal-50/70 border-2 border-teal-400 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer">
+                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
+                                            <i class="bi bi-diagram-3-fill text-2xl sm:text-3xl text-teal-600 group-hover:scale-110 transition-transform"></i>
+                                            <span class="text-[9px] font-black uppercase text-slate-400 mt-1 tracking-wider">Struktur</span>
+                                            <b id="profil3dDusunCount" class="text-[10px] sm:text-xs font-black text-[#163829] leading-tight">3 Dusun • 8 RT</b>
                                         </div>
-                                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mt-3.5">Struktur RT</span>
-                                        <div class="text-base sm:text-lg font-black text-[#163829] tracking-tight mt-1 truncate">
-                                            <b id="profil3dDusunCount">3 Dusun • 8 RT</b>
-                                        </div>
-                                        <div class="mt-3 pt-2.5 border-t border-[#eee9dc] flex items-center justify-between text-[10px] text-slate-400">
-                                            <span>Administrasi</span>
-                                            <span class="font-bold text-teal-700 flex items-center gap-1"><i class="bi bi-diagram-2"></i> Komunitas</span>
+                                    </div>
+
+                                    <!-- Rhombus 5: Komoditas Basis (Center Dark 3D Rhombus) -->
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rotate-45 rounded-3xl bg-gradient-to-br from-[#163829] to-[#0f6b4a] border-2 border-emerald-300 shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group cursor-pointer text-white">
+                                        <div class="-rotate-45 text-center flex flex-col items-center justify-center p-2">
+                                            <i class="bi bi-boxes text-2xl sm:text-3xl text-emerald-300 group-hover:scale-110 transition-transform"></i>
+                                            <span class="text-[8px] font-black uppercase text-emerald-200 mt-1 tracking-wider">Komoditas</span>
+                                            <span id="profil3dKomoditas" class="text-[9px] sm:text-[10px] font-black text-white leading-tight block line-clamp-2">Kakao & Perikanan</span>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
+
+                            <!-- CHECKLIST SPESIFIKASI DATA (Sesuai Gaya Bullet Points List pada Gambar) -->
+                            <div class="space-y-3.5 pt-6 pb-4 border-t border-[#eee9dc] max-w-3xl mx-auto text-xs sm:text-[13px] text-slate-700 font-medium">
+                                <div class="flex items-start gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
+                                    <div><b class="text-[#163829]">Karakteristik & Profil Wilayah:</b> <span id="profil3dDesc">Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.</span></div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
+                                    <div><b class="text-[#163829]">Batas Administrasi Terverifikasi SDI:</b> Sebelah Utara berbatasan dengan <span id="profil3dBatasUtara" class="font-bold text-[#0f6b4a]">Desa Koroha</span>, Selatan dengan <span id="profil3dBatasSelatan" class="font-bold text-[#0f6b4a]">Kecamatan Tiwu</span>, Barat dengan <span id="profil3dBatasBarat" class="font-bold text-[#0f6b4a]">Pesisir Teluk Bone</span>, dan Timur dengan <span id="profil3dBatasTimur" class="font-bold text-[#0f6b4a]">Pegunungan Kodeoha</span>.</div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
+                                    <div><b class="text-[#0f6b4a]">Rekomendasi Pembinaan BPS Kolut:</b> <span id="profil3dCatatanBps">Kategori Mandiri dengan kualitas data monografi dan SDI tertinggi di Kecamatan Kodeoha.</span></div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-2.5 h-2.5 rounded-xs bg-emerald-600 rotate-45 shrink-0 mt-1 shadow-2xs"></span>
+                                    <div><b class="text-[#163829]">Sektor Komoditas Unggulan:</b> <span id="profil3dAgri" class="font-bold text-[#0f6b4a]">Pesisir & Kakao 190 Ha</span> terintegrasi dengan basis survei Potensi Desa (PODES) 2025.</div>
+                                </div>
+                            </div>
+
+                            <!-- Tombol Aksi di Bawah Kotak (Gaya Tombol pada Gambar) -->
+                            <div class="text-center pt-4">
+                                <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#0f6b4a] hover:bg-[#0a5238] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition cursor-pointer">
+                                    <i class="bi bi-file-earmark-arrow-down-fill text-amber-300"></i>
+                                    <span>UNDUH DOKUMEN MONOGRAFI RESMI</span>
+                                </button>
+                            </div>
+
                         </div>
 
-                        <!-- 3. "LA NOSTRA MISSIONE" SECTION: SPLIT VISI, MISI & BATAS ADMINISTRASI -->
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                            
-                            <!-- Left: Visi, Misi & Evaluasi BPS -->
-                            <div class="lg:col-span-6 space-y-4">
-                                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-[#0f6b4a] block">
-                                    ARAH KEBIJAKAN & KOMITMEN STATISTIK
+                        <!-- 3. SEKTOR BASIS & KOMODITAS UNGGULAN (Sesuai Gaya 'НАШ АССОРТИМЕНТ' pada Gambar) -->
+                        <div class="space-y-6 pt-2">
+                            <div class="text-center max-w-2xl mx-auto space-y-2">
+                                <span class="text-[10px] font-black uppercase text-[#0f6b4a] tracking-widest block">
+                                    POTENSI EKONOMI PRODUKTIF
                                 </span>
-                                <h3 class="text-2xl sm:text-3xl font-serif font-black text-[#163829] leading-tight">
-                                    Visi & Standarisasi Desa Cantik
+                                <h3 class="text-2xl sm:text-3xl font-black text-[#163829] tracking-tight uppercase">
+                                    Komoditas & Sektor Unggulan Desa
                                 </h3>
-                                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                                    Mewujudkan tata kelola desa berbasis data statistik sektoral yang akurat, mutakhir, terpadu, dan dapat dipertanggungjawabkan guna mendukung perencanaan pembangunan desa berkelanjutan.
+                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                                    Data statistik sektoral PODES 2025 BPS Kolaka Utara mengelompokkan potensi ekonomi desa ke dalam 3 pilar produktif unggulan.
                                 </p>
-
-                                <div class="p-4 rounded-2xl bg-white border border-[#e2ded5] shadow-xs space-y-2">
-                                    <div class="flex items-center gap-2 text-xs font-black text-[#0f6b4a]">
-                                        <i class="bi bi-shield-check text-base"></i>
-                                        <span>Rekomendasi Pembinaan BPS Kolaka Utara</span>
-                                    </div>
-                                    <p id="profil3dCatatanBps" class="text-xs text-slate-600 leading-relaxed font-medium">
-                                        Kategori Mandiri dengan kualitas data monografi dan SDI tertinggi di Kecamatan Kodeoha.
-                                    </p>
-                                </div>
                             </div>
 
-                            <!-- Right: Layered 3D Cards (Batas Wilayah + Komoditas) -->
-                            <div class="lg:col-span-6 space-y-4">
-                                
-                                <!-- Card 1: Batas Administrasi Wilayah (with compass icons) -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-[#e2ded5] space-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-[10px] font-black uppercase text-[#0f6b4a] tracking-wider flex items-center gap-1.5">
-                                            <i class="bi bi-compass text-sm"></i>
-                                            <span>Batas Administrasi Wilayah</span>
-                                        </span>
-                                        <span class="text-[10px] font-bold text-slate-400">Verifikasi Spasial SDI</span>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-2 text-xs">
-                                        <div class="p-2.5 rounded-2xl bg-[#f7f5ef] border border-[#e8e4d8]">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Utara:</span>
-                                            <span id="profil3dBatasUtara" class="font-extrabold text-[#163829] text-xs">Desa Koroha</span>
-                                        </div>
-                                        <div class="p-2.5 rounded-2xl bg-[#f7f5ef] border border-[#e8e4d8]">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Selatan:</span>
-                                            <span id="profil3dBatasSelatan" class="font-extrabold text-[#163829] text-xs">Kecamatan Tiwu</span>
-                                        </div>
-                                        <div class="p-2.5 rounded-2xl bg-[#f7f5ef] border border-[#e8e4d8]">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Barat:</span>
-                                            <span id="profil3dBatasBarat" class="font-extrabold text-[#163829] text-xs">Pesisir Teluk Bone</span>
-                                        </div>
-                                        <div class="p-2.5 rounded-2xl bg-[#f7f5ef] border border-[#e8e4d8]">
-                                            <span class="text-[10px] font-bold text-slate-400 block uppercase">Timur:</span>
-                                            <span id="profil3dBatasTimur" class="font-extrabold text-[#163829] text-xs">Pegunungan Kodeoha</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Card 2: Komoditas Utama (Photo Thumbnail Card) -->
-                                <div class="tilt-card-3d bg-white rounded-3xl p-4 sm:p-5 shadow-md border border-[#e2ded5] flex items-center gap-4">
-                                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-slate-900 shrink-0 shadow-inner">
-                                        <img id="profil3dHeroPhoto" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=350&q=80" alt="Komoditas" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="min-w-0 flex-1">
-                                        <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-100 text-amber-900">
-                                            Komoditas Basis Desa
-                                        </span>
-                                        <h4 id="profil3dKomoditas" class="text-sm sm:text-base font-black text-[#163829] truncate mt-1">
-                                            Kakao, Kelapa, Perikanan Tangkap
-                                        </h4>
-                                        <p id="profil3dAgri" class="text-xs text-slate-500 font-semibold truncate mt-0.5">
-                                            Pesisir & Kakao 190 Ha
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- 4. "I NOSTRI PROGETTI" SECTION: DEEP FOREST GREEN POTENSI UNGGULAN -->
-                        <div class="nature-card-dark rounded-3xl p-6 sm:p-10 text-white space-y-6 shadow-2xl relative overflow-hidden">
-                            <!-- Foliage Ambient Accents -->
-                            <div class="absolute -right-8 -top-8 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-                            <div class="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-white/10 pb-4">
-                                <div>
-                                    <span class="text-[10px] font-black uppercase text-emerald-400 tracking-widest block">
-                                        SEKTOR BASIS & POTENSI EKSPOR
-                                    </span>
-                                    <h3 class="text-2xl sm:text-3xl font-serif font-black text-white mt-1">
-                                        Komoditas Unggulan Sektoral
-                                    </h3>
-                                </div>
-                                <span class="text-xs text-emerald-300 font-bold bg-white/10 px-3 py-1 rounded-full border border-white/10">
-                                    PODES 2025 Terintegrasi
-                                </span>
-                            </div>
-
-                            <!-- 3D Card Grid of 3 Pillars -->
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 relative z-10">
+                            <!-- 3D Pillar Cards dengan Bootstrap Icons (Tanpa Gambar Pohon / Tanpa Foto) -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                                 
                                 <!-- Pillar 1: Perkebunan -->
-                                <div class="tilt-card-3d bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 space-y-3 hover:bg-white/15 transition">
-                                    <div class="h-32 rounded-xl overflow-hidden shadow-inner">
-                                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" alt="Perkebunan Kakao" class="w-full h-full object-cover">
+                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center text-2xl shadow-lg shadow-emerald-600/25 group-hover:scale-110 transition-transform">
+                                        <i class="bi bi-flower1"></i>
                                     </div>
-                                    <span class="text-[9px] font-black px-2 py-0.5 rounded bg-emerald-400 text-slate-950 uppercase">Perkebunan</span>
-                                    <h5 class="text-sm font-black text-white leading-snug">Sentra Kakao & Cengkeh Rakyat</h5>
-                                    <p class="text-xs text-slate-300 leading-relaxed">Pengembangan budidaya tanaman perkebunan sambung pucuk dengan sertifikasi bibit unggul.</p>
+                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-200">
+                                        Perkebunan Rakyat
+                                    </span>
+                                    <h4 class="text-base font-black text-[#163829] leading-snug">Sentra Kakao & Cengkeh</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                                        Pengembangan budidaya kakao sambung pucuk dan cengkeh rakyat dengan sertifikasi bibit unggul binaan dinas perkebunan.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-emerald-800">
+                                        <span>Status PODES:</span>
+                                        <span class="flex items-center gap-1"><i class="bi bi-patch-check-fill text-emerald-600"></i> 190+ Ha Produktif</span>
+                                    </div>
                                 </div>
 
-                                <!-- Pillar 2: Pesisir / Hasil Hutan -->
-                                <div class="tilt-card-3d bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 space-y-3 hover:bg-white/15 transition">
-                                    <div class="h-32 rounded-xl overflow-hidden shadow-inner">
-                                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Pesisir Laut" class="w-full h-full object-cover">
+                                <!-- Pillar 2: Kelautan & Pesisir -->
+                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-sky-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-cyan-400 text-white flex items-center justify-center text-2xl shadow-lg shadow-sky-600/25 group-hover:scale-110 transition-transform">
+                                        <i class="bi bi-water"></i>
                                     </div>
-                                    <span class="text-[9px] font-black px-2 py-0.5 rounded bg-sky-300 text-slate-950 uppercase">Pesisir & Perairan</span>
-                                    <h5 class="text-sm font-black text-white leading-snug">Perikanan Tangkap & Pesisir</h5>
-                                    <p class="text-xs text-slate-300 leading-relaxed">Pengolahan pengeringan ikan teri tradisional Teluk Bone serta budidaya pesisir berkelanjutan.</p>
+                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-sky-100 text-sky-900 border border-sky-200">
+                                        Pesisir & Kelautan
+                                    </span>
+                                    <h4 class="text-base font-black text-[#163829] leading-snug">Perikanan Tangkap & Teri</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                                        Sentra pengeringan ikan teri tradisional Teluk Bone, armada perahu nelayan pesisir, serta budidaya laut terpadu.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-sky-800">
+                                        <span>Wilayah Pesisir:</span>
+                                        <span class="flex items-center gap-1"><i class="bi bi-shield-check text-sky-600"></i> Armada Terdata</span>
+                                    </div>
                                 </div>
 
                                 <!-- Pillar 3: IKM & BUMDes -->
-                                <div class="tilt-card-3d bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 space-y-3 hover:bg-white/15 transition">
-                                    <div class="h-32 rounded-xl overflow-hidden shadow-inner">
-                                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80" alt="Industri Olahan" class="w-full h-full object-cover">
+                                <div class="tilt-card-3d bg-white rounded-3xl p-6 border-2 border-[#e6e2d6] hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 space-y-4 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-400 text-white flex items-center justify-center text-2xl shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform">
+                                        <i class="bi bi-shop-window"></i>
                                     </div>
-                                    <span class="text-[9px] font-black px-2 py-0.5 rounded bg-amber-300 text-slate-950 uppercase">IKM & Usaha Rakyat</span>
-                                    <h5 class="text-sm font-black text-white leading-snug">Usaha Olahan & BUMDes Aktif</h5>
-                                    <p class="text-xs text-slate-300 leading-relaxed">Pemberdayaan industri kecil menengah pengolahan pasca panen dan digitalisasi pasar desa.</p>
+                                    <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
+                                        IKM & Usaha Rakyat
+                                    </span>
+                                    <h4 class="text-base font-black text-[#163829] leading-snug">Usaha Olahan & BUMDes</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                                        Pemberdayaan industri kecil menengah pengolahan pasca panen kopi, kakao olahan, serta digitalisasi kios pasar desa.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-amber-800">
+                                        <span>Unit Usaha:</span>
+                                        <span class="flex items-center gap-1"><i class="bi bi-check-circle-fill text-amber-600"></i> Aktif Beroperasi</span>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
 
-                        <!-- 5. "NOTIZIE E AGGIORNAMENTI" SECTION: APARATUR PEMERINTAHAN & AGEN STATISTIK -->
-                        <div class="space-y-6">
+                        <!-- 4. APARATUR PEMERINTAHAN & AGEN DATA STATISTIK (DENGAN BOOTSTRAP AVATAR ORBS) -->
+                        <div class="space-y-6 pt-4">
                             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#e2ded5] pb-4">
                                 <div>
                                     <span class="text-[10px] font-black uppercase text-[#0f6b4a] tracking-widest block">
                                         STANDARISASI SUMBER DAYA MANUSIA
                                     </span>
-                                    <h3 class="text-2xl sm:text-3xl font-serif font-black text-[#163829] mt-1">
+                                    <h3 class="text-2xl sm:text-3xl font-black text-[#163829] mt-1 uppercase">
                                         Aparatur Pemerintahan & Agen SDI
                                     </h3>
                                 </div>
@@ -1986,13 +1922,13 @@
                                 </button>
                             </div>
 
-                            <!-- 4 Aparatur Cards Grid -->
+                            <!-- 4 Aparatur Cards Grid (Gaya 3D Card dengan Bootstrap Icons) -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                                 
                                 <!-- Kades -->
                                 <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-2 border-emerald-500 shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Kepala Desa" class="w-full h-full object-cover">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-emerald-600/30">
+                                        <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div>
                                         <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 uppercase">Kepala Desa / Lurah</span>
@@ -2007,8 +1943,8 @@
 
                                 <!-- Sekdes -->
                                 <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Sekretaris Desa" class="w-full h-full object-cover">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-blue-600/30">
+                                        <i class="bi bi-person-badge-fill"></i>
                                     </div>
                                     <div>
                                         <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 uppercase">Sekretaris Desa</span>
@@ -2023,8 +1959,8 @@
 
                                 <!-- Agen Statistik Desa -->
                                 <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-2 border-purple-500 shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=300&q=80" alt="Kaur Perencanaan" class="w-full h-full object-cover">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-purple-600/30">
+                                        <i class="bi bi-file-earmark-bar-graph-fill"></i>
                                     </div>
                                     <div>
                                         <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 uppercase">Agen Statistik Desa</span>
@@ -2039,8 +1975,8 @@
 
                                 <!-- Operator SDI -->
                                 <div class="tilt-card-3d bg-white rounded-3xl p-5 border border-[#e2ded5] shadow-sm text-center space-y-3">
-                                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-2 border-amber-500 shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Operator Data" class="w-full h-full object-cover">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-amber-500/30">
+                                        <i class="bi bi-laptop-fill"></i>
                                     </div>
                                     <div>
                                         <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Operator Monografi</span>
@@ -2056,13 +1992,13 @@
                             </div>
                         </div>
 
-                        <!-- 6. "COME DIVENTARE MEMBRO" & "CONTATTI" SECTION: SEBARAN DUSUN & PETA KONTAK -->
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <!-- 5. SEBARAN DUSUN & PETA KONTAK -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
                             
                             <!-- Left: Sebaran Dusun & Lingkungan -->
                             <div class="lg:col-span-6 space-y-4">
                                 <div class="flex items-center justify-between border-b border-[#e2ded5] pb-3">
-                                    <h4 class="text-lg font-serif font-black text-[#163829] flex items-center gap-2">
+                                    <h4 class="text-lg font-black text-[#163829] flex items-center gap-2 uppercase">
                                         <i class="bi bi-houses-fill text-emerald-700"></i>
                                         <span>Sebaran Dusun & Wilayah RT</span>
                                     </h4>
@@ -2087,7 +2023,7 @@
                             <div class="lg:col-span-6 space-y-4">
                                 <div class="tilt-card-3d bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-[#e2ded5] space-y-4">
                                     <div class="flex items-center justify-between border-b border-[#e8e4d8] pb-3">
-                                        <h4 class="text-base font-serif font-black text-[#163829] flex items-center gap-2">
+                                        <h4 class="text-base font-black text-[#163829] flex items-center gap-2 uppercase">
                                             <i class="bi bi-geo-alt-fill text-rose-600"></i>
                                             <span>Peta Geospasial & Kontak Pelayanan</span>
                                         </h4>
