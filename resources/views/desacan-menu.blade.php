@@ -200,42 +200,15 @@
         }
         .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
 
-        /* Individual Vibrant 3D Icon Gradients for Menu Identity */
-        #nav-dashboard .dc-ico { 
-            background: linear-gradient(135deg, #059669, #34d399); 
-            color: #ffffff; 
-            border-color: rgba(5, 150, 105, 0.25); 
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.28); 
+        /* Synchronized Emerald 3D Icon Gradients (Harmonized with Beranda) */
+        .nav-tab .dc-ico, .dc-nav-item .dc-ico { 
+            background: linear-gradient(135deg, #059669, #34d399) !important; 
+            color: #ffffff !important; 
+            border-color: rgba(5, 150, 105, 0.25) !important; 
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.28) !important; 
         }
-        #nav-tentang .dc-ico { 
-            background: linear-gradient(135deg, #4f46e5, #06b6d4); 
-            color: #ffffff; 
-            border-color: rgba(79, 70, 229, 0.25); 
-            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25); 
-        }
-        #nav-pembelajaran .dc-ico { 
-            background: linear-gradient(135deg, #0d9488, #10b981); 
-            color: #ffffff; 
-            border-color: rgba(13, 148, 136, 0.25); 
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25); 
-        }
-        button[onclick*="openManageDataModal"] .dc-ico { 
-            background: linear-gradient(135deg, #d97706, #f59e0b); 
-            color: #ffffff; 
-            border-color: rgba(217, 119, 6, 0.25); 
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25); 
-        }
-        #nav-monitoring .dc-ico { 
-            background: linear-gradient(135deg, #e11d48, #f43f5e); 
-            color: #ffffff; 
-            border-color: rgba(225, 29, 72, 0.25); 
-            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25); 
-        }
-        button[onclick*="openPstModal"] .dc-ico { 
-            background: linear-gradient(135deg, #0284c7, #38bdf8); 
-            color: #ffffff; 
-            border-color: rgba(2, 132, 199, 0.25); 
-            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25); 
+        .nav-tab .dc-ico i, .dc-nav-item .dc-ico i {
+            color: #ffffff !important;
         }
 
         /* Modern Interactive Hover State */
@@ -517,7 +490,7 @@
                 <span>Beranda</span>
             </button>
             <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-building"></i></span>
+                <span class="dc-ico"><i class="bi bi-buildings-fill"></i></span>
                 <span>Profil Desa</span>
             </button>
 
@@ -530,11 +503,11 @@
             </button>
             <div id="dcMateriSub" class="dc-sub hidden">
                 <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item">
-                    <i class="bi bi-play-circle-fill text-xs mr-1 text-rose-500"></i>
+                    <i class="bi bi-play-circle-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Video Tutorial</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item">
-                    <i class="bi bi-patch-question-fill text-xs mr-1 text-sky-600"></i>
+                    <i class="bi bi-patch-question-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Pre-test &amp; Post-test</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item">
