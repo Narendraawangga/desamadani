@@ -84,12 +84,30 @@
         :root { --dc-green:#0f6b4a; --dc-green-dark:#0a4d36; --dc-mint:#6ee7b7; --dc-mint-bg:#ecfdf5; --dc-line:#e5e9e7; --dc-ink:#0f1f1a; --dc-muted:#6b7a74; }
         body { background-color:#f4f7f5; }
         :root { --dc-sidebar-w: 260px; }
+        body.dc-shell { transition: padding-left .25s ease; }
+        #dcSidebar { 
+            position: fixed; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            width: var(--dc-sidebar-w); 
+            background: #fff; 
+            border-right: 1px solid var(--dc-line); 
+            z-index: 50; 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform .25s ease, box-shadow .25s ease; 
+        }
         @media (min-width: 1024px) {
             body.dc-shell { padding-left: var(--dc-sidebar-w) !important; }
-            #dcSidebar { transform: translateX(0) !important; width: var(--dc-sidebar-w) !important; display: flex !important; }
+            body.dc-shell.sidebar-collapsed { padding-left: 0 !important; }
+            #dcSidebar { transform: translateX(0); }
+            body.dc-shell.sidebar-collapsed #dcSidebar { transform: translateX(-100%) !important; }
         }
-        #dcSidebar { position:fixed; top:0; bottom:0; left:0; width:var(--dc-sidebar-w); background:#fff; border-right:1px solid var(--dc-line); z-index:50; display:flex; flex-direction:column; }
-        @media (max-width: 1023px) { #dcSidebar { transform:translateX(-100%); transition:transform .25s ease; } #dcSidebar.open { transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.25); } }
+        @media (max-width: 1023px) { 
+            #dcSidebar { transform: translateX(-100%); } 
+            #dcSidebar.open { transform: translateX(0); box-shadow: 0 0 40px rgba(0,0,0,.25); } 
+        }
         .dc-nav-label { display:flex; align-items:center; gap:.45rem; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#8a9a93; padding:0 .5rem; margin:1.2rem 0 .5rem; }
         .dc-nav-label::before { content:""; width:14px; height:3px; border-radius:99px; background:linear-gradient(90deg,#0f6b4a,#6ee7b7); }
         .nav-tab, .dc-nav-item {
@@ -233,21 +251,25 @@
     <!-- ===== SIDEBAR DESCAN ===== -->
     <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
     <aside id="dcSidebar">
-        <!-- 1. Header Sidebar: Penempatan Resmi Logo BPS & Kolaka Utara -->
-        <div class="px-4 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white">
-            <div class="flex items-center gap-2.5">
-                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs">
+        <!-- 1. Header Sidebar: Penempatan Resmi Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
+        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white relative">
+            <div class="flex items-center gap-2.5 min-w-0">
+                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs shrink-0">
                     <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
                     <div class="h-5 w-[1px] bg-slate-300"></div>
                     <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                 </div>
-                <div class="leading-tight">
+                <div class="leading-tight truncate">
                     <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
                     <div class="text-[9.5px] font-bold text-slate-500 uppercase tracking-wide">BPS KOLAKA UTARA</div>
                 </div>
             </div>
-            <button type="button" onclick="toggleDcSidebar()" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Tutup Sidebar">
-                <i class="bi bi-x-lg text-sm"></i>
+            
+            <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
+            <button type="button" onclick="toggleDcSidebar()" id="btnSidebarClose" 
+                class="w-7 h-7 rounded-xl border border-slate-200 hover:border-emerald-300 bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
+                title="Tutup / Sembunyikan Sidebar">
+                <i class="bi bi-chevron-left text-xs font-black"></i>
             </button>
         </div>
 
@@ -341,12 +363,20 @@
         </div>
     </aside>
 
+    <!-- Tombol Buka Sidebar (>) Muncul di Ujung Kiri saat Sidebar Tertutup -->
+    <button type="button" id="btnFloatingSidebarOpen" onclick="toggleDcSidebar()" 
+        class="hidden fixed left-0 top-14 sm:top-16 z-40 bg-white hover:bg-emerald-50 text-emerald-800 border-y border-r border-emerald-300 shadow-lg py-2.5 px-2 rounded-r-2xl transition-all duration-300 cursor-pointer active:scale-95 group flex items-center gap-1.5" 
+        title="Buka Sidebar Navigasi">
+        <i class="bi bi-chevron-right text-sm font-black text-emerald-600 group-hover:translate-x-0.5 transition-transform"></i>
+        <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
+    </button>
+
     <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
     <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
         <!-- Sisi Kiri: Tombol Toggle Mobile & Tombol Beranda (Bersih Tanpa Gambar) -->
         <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-            <!-- Tombol Buka Sidebar (Hanya Tampil di Layar Mobile/Tablet) -->
-            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="lg:hidden px-2.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka Sidebar Navigasi">
+            <!-- Tombol Buka/Tutup Sidebar di Header -->
+            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 hover:border-emerald-300 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka / Tutup Sidebar Navigasi">
                 <i class="bi bi-list text-xl leading-none"></i>
             </button>
 
@@ -4613,16 +4643,51 @@ function triggerPubDownload() {
 
         function toggleDcSidebar() {
             const isDesktop = window.innerWidth >= 1024;
+            const body = document.body;
             const sb = document.getElementById('dcSidebar');
             const bd = document.getElementById('dcBackdrop');
+            const floatBtn = document.getElementById('btnFloatingSidebarOpen');
+
             if (isDesktop) {
-                // Desktop: Sidebar tampil terus secara permanen
-                return;
+                body.classList.toggle('sidebar-collapsed');
+                const isCollapsed = body.classList.contains('sidebar-collapsed');
+                if (floatBtn) {
+                    if (isCollapsed) {
+                        floatBtn.classList.remove('hidden');
+                        floatBtn.classList.add('flex');
+                    } else {
+                        floatBtn.classList.add('hidden');
+                        floatBtn.classList.remove('flex');
+                    }
+                }
             } else {
                 if (!sb) return;
-                sb.classList.toggle('open');
-                if (bd) bd.classList.toggle('hidden', !sb.classList.contains('open'));
+                const isOpen = sb.classList.contains('open');
+                if (isOpen) {
+                    sb.classList.remove('open');
+                    if (bd) bd.classList.add('hidden');
+                    if (floatBtn) {
+                        floatBtn.classList.remove('hidden');
+                        floatBtn.classList.add('flex');
+                    }
+                } else {
+                    sb.classList.add('open');
+                    if (bd) bd.classList.remove('hidden');
+                    if (floatBtn) {
+                        floatBtn.classList.add('hidden');
+                        floatBtn.classList.remove('flex');
+                    }
+                }
             }
+
+            setTimeout(() => {
+                if (typeof dcCharts !== 'undefined') {
+                    Object.values(dcCharts).forEach(c => { try { c.resize(); } catch (e) {} });
+                }
+                if (typeof thematicLeafletMap !== 'undefined' && thematicLeafletMap) {
+                    thematicLeafletMap.invalidateSize();
+                }
+            }, 260);
         }
         const dcCharts = {};
         function dcMake(id, cfg) {
