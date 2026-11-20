@@ -1069,9 +1069,9 @@
                             <!-- Floating Bottom-Left Summary Demography Card (Exact desapresisi.id style) -->
                             <div id="mapFloatingDemographyCard" class="absolute bottom-5 left-5 z-[400] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-4 border border-slate-100/90 pointer-events-auto min-w-[145px]">
                                 <div class="text-[11px] font-semibold text-slate-500">Jumlah Jiwa</div>
-                                <div id="statJumlahJiwa" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">67.019</div>
+                                <div id="statJumlahJiwa" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">142.692</div>
                                 <div class="text-[11px] font-semibold text-slate-500 mt-2.5">Jumlah Keluarga</div>
-                                <div id="statJumlahKeluarga" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">19.749</div>
+                                <div id="statJumlahKeluarga" class="text-xl font-black text-slate-900 tracking-tight leading-tight mt-0.5">38.077</div>
                             </div>
 
                             <div id="mapPresisi" class="w-full h-full z-10" style="height: 100%; min-height: 580px;"></div>
