@@ -121,6 +121,26 @@
             #dcSidebar.open { transform: translateX(0); box-shadow: 0 0 50px rgba(0,0,0,.25); } 
         }
 
+        /* ============================================================== */
+        /* MODERN FLOW UI SIDEBAR - ATTRACTIVE 3D & HARMONIZED STYLING    */
+        /* ============================================================== */
+        #dcSidebar { 
+            position: fixed; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            width: var(--dc-sidebar-w); 
+            background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 60%, #f2f7f4 100%); 
+            border-right: 1px solid rgba(15, 107, 74, 0.12); 
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+            z-index: 50; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 4px 0 28px -4px rgba(15, 31, 26, 0.06), 1px 0 3px rgba(15, 31, 26, 0.02);
+            transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
+        }
+
         /* Section Heading Labels */
         .dc-nav-label { 
             display: flex; 
@@ -130,16 +150,17 @@
             font-weight: 800; 
             letter-spacing: .12em; 
             text-transform: uppercase; 
-            color: #0f6b4a; 
-            padding: 0 .6rem; 
+            color: #0d6e4d; 
+            padding: 0 .65rem; 
             margin: 1.15rem 0 .45rem; 
         }
         .dc-nav-label::before { 
             content: ""; 
             width: 14px; 
-            height: 3px; 
+            height: 3.5px; 
             border-radius: 99px; 
-            background: linear-gradient(90deg, #0f6b4a, #6ee7b7); 
+            background: linear-gradient(90deg, #0f6b4a, #34d399); 
+            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.4);
         }
 
         /* Nav Tab & Action Items */
@@ -149,21 +170,24 @@
             gap: .75rem; 
             width: 100%; 
             text-align: left;
-            padding: .52rem .75rem !important; 
-            border-radius: .85rem !important; 
-            margin-bottom: .22rem;
+            padding: .55rem .75rem !important; 
+            border-radius: .9rem !important; 
+            margin-bottom: .28rem;
             font-size: .835rem !important; 
             font-weight: 600 !important; 
             color: #334155 !important;
             background: transparent !important; 
             border: 1px solid transparent !important; 
             cursor: pointer; 
-            transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
+
+        /* Distinct 3D Icon Container */
         .dc-ico { 
-            width: 32px; 
-            height: 32px; 
-            border-radius: .65rem; 
+            width: 34px; 
+            height: 34px; 
+            border-radius: .75rem; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center; 
@@ -171,39 +195,87 @@
             background: #f1f5f3; 
             color: #475569; 
             border: 1px solid #e2e8e5;
-            transition: all .2s ease; 
+            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
-        .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+        .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
 
-        /* Hover State */
+        /* Individual Vibrant 3D Icon Gradients for Menu Identity */
+        #nav-dashboard .dc-ico { 
+            background: linear-gradient(135deg, #059669, #34d399); 
+            color: #ffffff; 
+            border-color: rgba(5, 150, 105, 0.25); 
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.28); 
+        }
+        #nav-tentang .dc-ico { 
+            background: linear-gradient(135deg, #4f46e5, #06b6d4); 
+            color: #ffffff; 
+            border-color: rgba(79, 70, 229, 0.25); 
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25); 
+        }
+        #nav-pembelajaran .dc-ico { 
+            background: linear-gradient(135deg, #0d9488, #10b981); 
+            color: #ffffff; 
+            border-color: rgba(13, 148, 136, 0.25); 
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25); 
+        }
+        button[onclick*="openManageDataModal"] .dc-ico { 
+            background: linear-gradient(135deg, #d97706, #f59e0b); 
+            color: #ffffff; 
+            border-color: rgba(217, 119, 6, 0.25); 
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25); 
+        }
+        #nav-monitoring .dc-ico { 
+            background: linear-gradient(135deg, #e11d48, #f43f5e); 
+            color: #ffffff; 
+            border-color: rgba(225, 29, 72, 0.25); 
+            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25); 
+        }
+        button[onclick*="openPstModal"] .dc-ico { 
+            background: linear-gradient(135deg, #0284c7, #38bdf8); 
+            color: #ffffff; 
+            border-color: rgba(2, 132, 199, 0.25); 
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25); 
+        }
+
+        /* Modern Interactive Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
-            background: #f0f7f3 !important; 
+            background: #f0f8f4 !important; 
             color: #0f6b4a !important;
-            border-color: #d8ece0 !important;
-            transform: translateX(3px);
+            border-color: #d1ecde !important;
+            transform: translateX(4px);
+            box-shadow: 0 2px 10px rgba(15, 107, 74, 0.07);
         }
-        .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: #dcf2e5; 
-            color: #0f6b4a; 
-            border-color: #b7e4cc;
+        .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
+            transform: scale(1.12);
         }
 
-        /* Active State - Flow UI Elevated Pill Harmonized with Dashboard */
+        /* Active State - Lush Elevated Pill */
         .nav-tab.active { 
-            background: linear-gradient(135deg, #0f6b4a 0%, #0a5238 100%) !important; 
+            background: linear-gradient(135deg, #0f6b4a 0%, #084c34 100%) !important; 
             color: #ffffff !important; 
             font-weight: 700 !important; 
             border: 1px solid #0f6b4a !important; 
-            box-shadow: 0 4px 14px -2px rgba(15, 107, 74, 0.35) !important; 
+            box-shadow: 0 6px 18px -2px rgba(15, 107, 74, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important; 
         }
         .nav-tab.active .dc-ico { 
-            background: rgba(255, 255, 255, 0.22); 
-            color: #ffffff; 
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.24) !important; 
+            color: #ffffff !important; 
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
         }
         .nav-tab.active .dc-caret {
             color: #ffffff !important;
+        }
+        .nav-tab.active::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 8px #34d399;
         }
 
         /* Active Parent State when child is selected */
@@ -212,11 +284,13 @@
             color: #0f6b4a !important; 
             font-weight: 700 !important;
             border: 1px solid #c0ebd2 !important; 
+            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.08);
         }
         .nav-tab.has-active .dc-ico { 
-            background: #0f6b4a; 
-            color: #ffffff; 
-            border-color: #0f6b4a;
+            background: linear-gradient(135deg, #0f6b4a, #10b981) !important; 
+            color: #ffffff !important; 
+            border-color: #0f6b4a !important;
+            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.3) !important;
         }
         .nav-tab.has-active .dc-caret {
             color: #0f6b4a !important;
@@ -234,11 +308,11 @@
         }
         .dc-caret.open { transform: rotate(180deg); color: #0f6b4a; }
 
-        /* Submenu Items (Indented with Dot Bullet) */
+        /* Submenu Items (Indented with Connecting Line) */
         .dc-sub { 
-            margin: .25rem 0 .45rem 1.35rem; 
-            padding-left: .75rem; 
-            border-left: 2px solid #d2e8dc; 
+            margin: .3rem 0 .5rem 1.35rem; 
+            padding-left: .85rem; 
+            border-left: 2px solid #a7d9be; 
         }
         .dc-sub-item { 
             display: flex; 
@@ -246,16 +320,16 @@
             gap: .65rem; 
             width: 100%; 
             text-align: left; 
-            padding: .46rem .7rem; 
-            border-radius: .65rem; 
+            padding: .48rem .75rem; 
+            border-radius: .7rem; 
             font-size: .8rem; 
             font-weight: 600; 
             color: #64748b; 
             background: transparent; 
             border: 1px solid transparent; 
             cursor: pointer; 
-            margin-bottom: .15rem; 
-            transition: all .18s ease; 
+            margin-bottom: .2rem; 
+            transition: all .2s ease; 
         }
         .dc-sub-item::before { 
             content: ""; 
@@ -267,18 +341,21 @@
             transition: all .18s; 
         }
         .dc-sub-item:hover { 
-            background: #f0f7f3; 
+            background: #f0f8f4; 
             color: #0f6b4a; 
-            transform: translateX(2px);
+            transform: translateX(3px);
+            border-color: #d8ede1;
         }
         .dc-sub-item:hover::before { 
             background: #0f6b4a; 
+            transform: scale(1.2);
         }
         .dc-sub-item.active { 
             background: #eaf7f0; 
             color: #0f6b4a; 
             font-weight: 700; 
             border-color: #c0ebd2; 
+            box-shadow: 0 1px 4px rgba(15, 107, 74, 0.1);
         }
         .dc-sub-item.active::before { 
             background: #0f6b4a; 
@@ -408,22 +485,25 @@
     <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 backdrop-blur-2xs z-40 lg:hidden"></div>
     <aside id="dcSidebar">
         <!-- 1. Header Sidebar: Penempatan Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
-        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-white relative">
+        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-gradient-to-r from-emerald-50/50 via-white to-white relative">
             <div class="flex items-center gap-2.5 min-w-0">
-                <div class="flex items-center gap-2 bg-slate-50/90 px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs shrink-0">
+                <div class="flex items-center gap-2 bg-white/95 px-2.5 py-1.5 rounded-2xl border border-slate-200/90 shadow-2xs shrink-0 ring-1 ring-slate-900/5">
                     <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
                     <div class="h-5 w-[1px] bg-slate-300"></div>
                     <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
                 </div>
                 <div class="leading-tight truncate">
-                    <div class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Sistem BPS Aktif"></span>
+                    </div>
                     <div class="text-[9.5px] font-extrabold text-[#0f6b4a] uppercase tracking-wider mt-0.5">BPS KOLAKA UTARA</div>
                 </div>
             </div>
             
             <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
             <button type="button" onclick="toggleDcSidebar()" id="btnSidebarClose" 
-                class="w-7 h-7 rounded-xl border border-slate-200 hover:border-emerald-300 bg-slate-50 hover:bg-emerald-50 text-slate-500 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
+                class="w-7 h-7 rounded-xl border border-slate-200/90 hover:border-emerald-300 bg-white hover:bg-emerald-50 text-slate-400 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
                 title="Tutup / Sembunyikan Sidebar">
                 <i class="bi bi-chevron-left text-xs font-black"></i>
             </button>
@@ -482,14 +562,26 @@
             </button>
         </div>
 
-        <!-- 3. Footer Sidebar: Akses Kembali ke 6 Desa & Keluar Akun -->
-        <div class="p-3 border-t border-[#e5e9e7] bg-[#fafcfb] space-y-2">
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
-                <i class="bi bi-grid-3x3-gap-fill text-xs text-slate-500"></i>
+        <!-- 3. Footer Sidebar: Mini Status SDI, Akses Kembali ke 6 Desa & Keluar Akun -->
+        <div class="p-3 border-t border-[#e5e9e7] bg-gradient-to-b from-[#fafcfb] to-[#f4f8f6] space-y-2">
+            <!-- Mini Live Status Satu Data Indonesia -->
+            <div class="px-3 py-2 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/5 border border-emerald-500/20 shadow-2xs flex items-center justify-between">
+                <div class="flex items-center gap-2 min-w-0">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></div>
+                    <div class="truncate leading-tight">
+                        <div class="text-[10px] font-extrabold text-emerald-950 uppercase tracking-wider">Satu Data Indonesia</div>
+                        <div class="text-[9px] text-emerald-700 font-medium">BPS Kolaka Utara 2026</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-black text-emerald-800 bg-emerald-100/90 border border-emerald-300/80 px-2 py-0.5 rounded-full shrink-0">Aktif</span>
+            </div>
+
+            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-slate-700 hover:text-emerald-800 bg-white hover:bg-emerald-50/90 border border-slate-200/90 hover:border-emerald-300 rounded-xl py-2.5 cursor-pointer transition shadow-2xs hover:shadow-xs group active:scale-98">
+                <i class="bi bi-grid-3x3-gap-fill text-xs text-emerald-600 group-hover:scale-110 transition-transform"></i>
                 <span>Kembali ke 6 Desa</span>
             </a>
-            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl py-2.5 cursor-pointer transition shadow-2xs">
-                <i class="bi bi-box-arrow-right text-xs text-rose-600"></i>
+            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[12px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50/80 hover:bg-rose-100 border border-rose-200/90 rounded-xl py-2.5 cursor-pointer transition shadow-2xs group active:scale-98">
+                <i class="bi bi-box-arrow-right text-xs text-rose-600 group-hover:translate-x-0.5 transition-transform"></i>
                 <span>Keluar Akun</span>
             </button>
         </div>
