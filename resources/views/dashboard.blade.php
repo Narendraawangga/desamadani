@@ -601,199 +601,217 @@
     <section id="sectionAgregatKecamatan" class="w-full max-w-full overflow-x-hidden bg-gradient-to-b from-[#F7F7F5] via-white to-[#F7F7F5] border-b border-slate-200/90 py-8 sm:py-10 lg:py-14 scroll-mt-20">
         <div class="max-w-[1720px] mx-auto px-4 lg:px-8 space-y-8">
             
-            <!-- HEADER SECTION -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-slate-200/80">
-                <div class="space-y-2 max-w-4xl">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-black tracking-wide uppercase">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span data-i18n="agregat_eyebrow" class="flex items-center gap-1.5"><svg class="w-3 h-3 text-[#0D6E5B]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>PODES BPS 2025 • AGREGAT LENGKAP 15 KECAMATAN KOLAKA UTARA</span>
+            <!-- HEADER SECTION: NATIONAL GEOGRAPHIC / MONOCLE EDITORIAL MASTHEAD -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#5A6B65]/20">
+                <div class="space-y-3 max-w-4xl">
+                    <div class="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                        <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
+                        <span data-i18n="agregat_eyebrow">DOKUMENTER POTENSI DESA • BPS KABUPATEN KOLAKA UTARA 2025 • VOL. XV</span>
                     </div>
-                    <div class="w-10 h-1 bg-[#0D6E5B] rounded-full mb-1"></div>
-                    <h2 data-i18n="agregat_title" class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0D6E5B] tracking-tight">
-                        Panorama Statistik & Komparasi Agregat 15 Kecamatan
+                    <div class="w-12 h-0.5 bg-[#0D6E5B]"></div>
+                    <h2 data-i18n="agregat_title" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-[#0D6E5B] tracking-tight leading-tight">
+                        Panorama Statistik &amp; Komparasi Agregat 15 Kecamatan
                     </h2>
+                    <p class="text-xs sm:text-sm font-serif italic text-[#5A6B65] max-w-3xl leading-relaxed">
+                        Telaah empiris bentang geografis pesisir dan daratan: profil ekonomi 3.622 sentra industri mikro, elektrifikasi 38.077 keluarga, serta disparitas sarana pendidikan dan kesehatan dari Tolala di utara hingga Wawo di ujung selatan.
+                    </p>
                 </div>
-                <div class="flex items-center gap-2.5 shrink-0">
-                    <a href="#sectionPeta" class="px-4 py-2.5 rounded-xl bg-[#0D6E5B] hover:bg-[#133966] text-white text-xs font-bold transition flex items-center gap-2 shadow-sm transform hover:scale-[1.02] active:scale-[0.98]">
-                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="#sectionPeta" class="px-5 py-2.5 rounded-full border border-[#0D6E5B] bg-[#0D6E5B] text-white hover:bg-[#095244] text-xs font-serif font-bold transition flex items-center gap-2 shadow-xs group">
+                        <svg class="w-4 h-4 text-emerald-300 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                         <span data-i18n="agregat_btn_gis">Jelajah Peta Spasial ↓</span>
                     </a>
                 </div>
             </div>
 
-            <!-- 1. EXECUTIVE MACRO METRIC STRIP (EDITORIAL STAT RIBBON - NO AI BOXES, BESPOKE SVGS) -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-                <!-- KPI 1: Administrasi -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi1_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">Administrasi</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <!-- 1. EXECUTIVE MACRO METRIC STRIP: NATIONAL GEOGRAPHIC GAZETTE DATELINE (SINGLE CONTINUOUS STRIP) -->
+            <div class="w-full bg-[#FDFDFB] border-y-2 border-[#0D6E5B]/40 py-6 px-4 sm:px-8 shadow-[0_2px_15px_rgba(13,110,91,0.03)] rounded-2xl">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-y md:divide-y-0 lg:divide-x divide-[#5A6B65]/15 gap-y-4 lg:gap-y-0">
+                    
+                    <!-- KPI 1: Administrasi -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">I.</span>
+                            <span data-i18n="agregat_kpi1_title">Administrasi</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            15 <span data-i18n="agregat_kpi1_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">Kecamatan</span>
+                        </div>
+                        <div data-i18n="agregat_kpi1_sub" class="text-[11px] font-serif text-[#5A6B65]">127 Desa • 6 Kelurahan</div>
+                        <div class="text-[9px] font-mono text-emerald-700 font-semibold uppercase">100% Terdata Lengkap</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">15 <span data-i18n="agregat_kpi1_unit" class="text-xs font-semibold text-[#5A6B65]">Kec</span></div>
-                    <div data-i18n="agregat_kpi1_sub" class="text-[11px] text-[#5A6B65] mt-0.5">127 Desa • 6 Kelurahan</div>
-                </div>
 
-                <!-- KPI 2: Sentra IMK -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi2_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">Sentra & IMK</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <!-- KPI 2: Sentra IMK -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">II.</span>
+                            <span data-i18n="agregat_kpi2_title">Sentra &amp; IMK</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            3.622 <span data-i18n="agregat_kpi2_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">Unit Usaha</span>
+                        </div>
+                        <div data-i18n="agregat_kpi2_sub" class="text-[11px] font-serif text-[#5A6B65]">Juara: Porehu (1.440)</div>
+                        <div class="text-[9px] font-mono text-amber-700 font-semibold uppercase">Klaster Kakao &amp; Pangan</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">3.622 <span data-i18n="agregat_kpi2_unit" class="text-xs font-semibold text-[#5A6B65]">Unit</span></div>
-                    <div data-i18n="agregat_kpi2_sub" class="text-[11px] text-[#5A6B65] mt-0.5">Juara: Porehu (1.440)</div>
-                </div>
 
-                <!-- KPI 3: Listrik PLN -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi3_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">Listrik PLN</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <!-- KPI 3: Listrik PLN -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">III.</span>
+                            <span data-i18n="agregat_kpi3_title">Listrik PLN</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            38.077 <span data-i18n="agregat_kpi3_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">Keluarga</span>
+                        </div>
+                        <div data-i18n="agregat_kpi3_sub" class="text-[11px] font-serif text-[#5A6B65]">Rasio 91,5% Terlistriki</div>
+                        <div class="text-[9px] font-mono text-emerald-700 font-semibold uppercase">Lasusua 8.463 KK</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">38.077 <span data-i18n="agregat_kpi3_unit" class="text-xs font-semibold text-[#5A6B65]">KK</span></div>
-                    <div data-i18n="agregat_kpi3_sub" class="text-[11px] text-[#5A6B65] mt-0.5">Rasio 91,5% Elektrifikasi</div>
-                </div>
 
-                <!-- KPI 4: Pendidikan -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi4_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">Pendidikan</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/></svg>
+                    <!-- KPI 4: Pendidikan Formal -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">IV.</span>
+                            <span data-i18n="agregat_kpi4_title">Pendidikan Formal</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            205 <span data-i18n="agregat_kpi4_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">Sekolah</span>
+                        </div>
+                        <div data-i18n="agregat_kpi4_sub" class="text-[11px] font-serif text-[#5A6B65]">124 SD • 54 SMP • 27 SMA/K</div>
+                        <div class="text-[9px] font-mono text-blue-700 font-semibold uppercase">Disparitas 3,3x Antar-Kec</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">205 <span data-i18n="agregat_kpi4_unit" class="text-xs font-semibold text-[#5A6B65]">Sek</span></div>
-                    <div data-i18n="agregat_kpi4_sub" class="text-[11px] text-[#5A6B65] mt-0.5">124 SD/MI • 54 SMP • 26 SMA/K</div>
-                </div>
 
-                <!-- KPI 5: Kesehatan -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi5_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">Kesehatan</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m-2-2h4"/></svg>
+                    <!-- KPI 5: Fasilitas Kesehatan -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">V.</span>
+                            <span data-i18n="agregat_kpi5_title">Sarana Medis</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            174 <span data-i18n="agregat_kpi5_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">Faskes</span>
+                        </div>
+                        <div data-i18n="agregat_kpi4_sub" class="text-[11px] font-serif text-[#5A6B65]">1 RS • 16 Puskesmas • 28 Pustu</div>
+                        <div class="text-[9px] font-mono text-emerald-700 font-semibold uppercase">129 Poskesdes &amp; Praktik</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">174 <span data-i18n="agregat_kpi5_unit" class="text-xs font-semibold text-[#5A6B65]">Faskes</span></div>
-                    <div data-i18n="agregat_kpi5_sub" class="text-[11px] text-[#5A6B65] mt-0.5">1 RS • 16 Puskesmas • 28 Pustu</div>
-                </div>
 
-                <!-- KPI 6: BUMDes & Aparat -->
-                <div class="p-4 rounded-3xl bg-[#FDFDFB] hover:bg-white border border-[#5A6B65]/20 hover:border-[#0D6E5B] shadow-[0_2px_10px_rgba(13,110,91,0.04)] hover:shadow-md transition-all duration-300 group">
-                    <div class="flex items-center justify-between text-slate-400 mb-2.5">
-                        <span data-i18n="agregat_kpi6_title" class="text-[10px] font-bold tracking-wider uppercase text-[#5A6B65]">BUMDes & Aparat</span>
-                        <div class="w-8 h-8 rounded-full bg-[#0D6E5B]/10 text-[#0D6E5B] flex items-center justify-center group-hover:bg-[#0D6E5B] group-hover:text-white transition-colors duration-300">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <!-- KPI 6: BUMDes & Aparat -->
+                    <div class="px-3 sm:px-4 py-2 space-y-1">
+                        <div class="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase text-[#5A6B65] font-bold">
+                            <span class="text-[#0D6E5B]">VI.</span>
+                            <span data-i18n="agregat_kpi6_title">BUMDes &amp; Aparat</span>
                         </div>
+                        <div class="text-3xl font-serif font-black text-[#0D6E5B] tracking-tight">
+                            134 <span data-i18n="agregat_kpi6_unit" class="text-xs font-serif font-normal italic text-[#5A6B65]">BUMDes</span>
+                        </div>
+                        <div data-i18n="agregat_kpi6_sub" class="text-[11px] font-serif text-[#5A6B65]">1.164 Aparatur Desa Aktif</div>
+                        <div class="text-[9px] font-mono text-purple-700 font-semibold uppercase">Kemandirian Finansial</div>
                     </div>
-                    <div class="text-2xl font-black text-[#0D6E5B]">134 <span data-i18n="agregat_kpi6_unit" class="text-xs font-semibold text-[#5A6B65]">BUMDes</span></div>
-                    <div data-i18n="agregat_kpi6_sub" class="text-[11px] text-[#5A6B65] mt-0.5">1.164 Aparatur Desa Aktif</div>
-                </div>
-            </div>
 
-            <!-- 2. EXECUTIVE HIGHLIGHTS (SOROTAN TIGA WILAYAH UNGGULAN - ELEGAN & RINGKAS) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <!-- Highlight 1: Sentra IMK -->
-                <div onclick="window.PresisiEngine.onKecamatanChange('Porehu'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                     class="cursor-pointer group flex items-center justify-between p-3.5 rounded-2xl bg-white hover:bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] shadow-2xs hover:shadow-sm transition-all duration-200">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0 border border-amber-500/20">
-                            #1
-                        </div>
-                        <div class="min-w-0">
-                            <div data-i18n="agregat_h1_title" class="text-[10px] font-bold uppercase tracking-wider text-[#5A6B65]">Sentra Industri Mikro</div>
-                            <div class="text-xs font-black text-slate-800 group-hover:text-[#0D6E5B] transition-colors truncate">
-                                Kec. Porehu <span data-i18n="agregat_h1_desa" class="font-normal text-[#5A6B65]">• 8 Desa</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-right shrink-0 pl-2">
-                        <span class="text-sm font-black text-amber-800">1.440</span>
-                        <span data-i18n="agregat_h1_unit" class="block text-[9px] font-semibold text-[#5A6B65]">Unit IMK</span>
-                    </div>
-                </div>
-
-                <!-- Highlight 2: Listrik & Populasi -->
-                <div onclick="window.PresisiEngine.onKecamatanChange('Lasusua'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                     class="cursor-pointer group flex items-center justify-between p-3.5 rounded-2xl bg-white hover:bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] shadow-2xs hover:shadow-sm transition-all duration-200">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-[#0D6E5B] font-extrabold text-xs flex items-center justify-center shrink-0 border border-emerald-500/20">
-                            #1
-                        </div>
-                        <div class="min-w-0">
-                            <div data-i18n="agregat_h2_title" class="text-[10px] font-bold uppercase tracking-wider text-[#5A6B65]">Populasi & Elektrifikasi</div>
-                            <div class="text-xs font-black text-slate-800 group-hover:text-[#0D6E5B] transition-colors truncate">
-                                Kec. Lasusua <span data-i18n="agregat_h2_desa" class="font-normal text-[#5A6B65]">• Ibu Kota</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-right shrink-0 pl-2">
-                        <span class="text-sm font-black text-[#0D6E5B]">8.463</span>
-                        <span data-i18n="agregat_h2_unit" class="block text-[9px] font-semibold text-[#5A6B65]">KK Listrik</span>
-                    </div>
-                </div>
-
-                <!-- Highlight 3: Layanan Sosial -->
-                <div onclick="window.PresisiEngine.onKecamatanChange('Lasusua'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
-                     class="cursor-pointer group flex items-center justify-between p-3.5 rounded-2xl bg-white hover:bg-[#FDFDFB] border border-[#5A6B65]/15 hover:border-[#0D6E5B] shadow-2xs hover:shadow-sm transition-all duration-200">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-700 font-extrabold text-xs flex items-center justify-center shrink-0 border border-blue-500/20">
-                            #1
-                        </div>
-                        <div class="min-w-0">
-                            <div data-i18n="agregat_h3_title" class="text-[10px] font-bold uppercase tracking-wider text-[#5A6B65]">Fasilitas Pendidikan & Faskes</div>
-                            <div class="text-xs font-black text-slate-800 group-hover:text-[#0D6E5B] transition-colors truncate">
-                                Kec. Lasusua <span data-i18n="agregat_h3_desa" class="font-normal text-[#5A6B65]">• Sentra Sosial</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-right shrink-0 pl-2">
-                        <span class="text-sm font-black text-blue-800">33 Sek • 19 Fas</span>
-                        <span data-i18n="agregat_h3_unit" class="block text-[9px] font-semibold text-[#5A6B65]">Layanan Terlengkap</span>
-                    </div>
                 </div>
             </div>
 
-            <!-- 3. INTERACTIVE CONTROL BAR (SEKTOR TABS, SEARCH BAR, SORTING) -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-2xs p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <!-- Left: Sektor Tabs Filter Pills -->
+            <!-- 2. CATATAN EKSPEDISI LAPANGAN: 3 DISPATCH WILAYAH UNGGULAN -->
+            <div class="bg-gradient-to-r from-emerald-50/70 via-[#FDFDFB] to-blue-50/70 border border-[#5A6B65]/20 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-3">
+                <div class="flex items-center justify-between pb-3 border-b border-[#5A6B65]/15 flex-wrap gap-2">
+                    <span class="text-[10px] font-mono uppercase tracking-widest font-black text-[#0D6E5B] flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        CATATAN UTAMA LAPANGAN (REGIONAL DISPATCHES)
+                    </span>
+                    <span class="text-[10px] font-serif italic text-[#5A6B65]">Sorotan 3 Pilar Unggulan Berbasis PODES 2025</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                    <!-- Dispatch 1: Porehu -->
+                    <div onclick="window.PresisiEngine.onKecamatanChange('Porehu'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
+                         class="cursor-pointer group p-3.5 rounded-xl bg-white/90 hover:bg-white border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all duration-200 space-y-1.5 shadow-2xs hover:shadow-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-amber-800 uppercase tracking-wider">DISPATCH I • EKONOMI</span>
+                            <span class="text-xs font-mono font-black text-amber-800">1.440 IMK</span>
+                        </div>
+                        <h4 class="text-sm font-serif font-black text-slate-900 group-hover:text-[#0D6E5B] transition-colors">
+                            Kecamatan Porehu: Episentrum Industri Rakyat
+                        </h4>
+                        <p class="text-xs font-serif text-[#5A6B65] leading-relaxed">
+                            Pusat klaster pengolahan kakao, lada, dan pangan rakyat terbesar di Kolaka Utara (menyumbang 39,8% total IMK kabupaten).
+                        </p>
+                        <div class="text-[10px] font-serif italic text-[#0D6E5B] group-hover:underline flex items-center gap-1 pt-1">
+                            <span>Buka Etape Porehu di Peta WebGIS</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Dispatch 2: Lasusua (Ibu Kota) -->
+                    <div onclick="window.PresisiEngine.onKecamatanChange('Lasusua'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
+                         class="cursor-pointer group p-3.5 rounded-xl bg-white/90 hover:bg-white border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all duration-200 space-y-1.5 shadow-2xs hover:shadow-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-[#0D6E5B] uppercase tracking-wider">DISPATCH II • ELEKTRIFIKASI</span>
+                            <span class="text-xs font-mono font-black text-[#0D6E5B]">8.463 KK</span>
+                        </div>
+                        <h4 class="text-sm font-serif font-black text-slate-900 group-hover:text-[#0D6E5B] transition-colors">
+                            Kecamatan Lasusua: Ibu Kota &amp; Elektrifikasi
+                        </h4>
+                        <p class="text-xs font-serif text-[#5A6B65] leading-relaxed">
+                            Pusat kepadatan penduduk dan penerangan dengan 8.463 keluarga berlistrik PLN (98% elektrifikasi) serta konsentrasi aparatur pemerintahan.
+                        </p>
+                        <div class="text-[10px] font-serif italic text-[#0D6E5B] group-hover:underline flex items-center gap-1 pt-1">
+                            <span>Buka Etape Lasusua di Peta WebGIS</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Dispatch 3: Lasusua & Kodeoha (Sosial) -->
+                    <div onclick="window.PresisiEngine.onKecamatanChange('Lasusua'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});"
+                         class="cursor-pointer group p-3.5 rounded-xl bg-white/90 hover:bg-white border border-[#5A6B65]/15 hover:border-[#0D6E5B] transition-all duration-200 space-y-1.5 shadow-2xs hover:shadow-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-blue-800 uppercase tracking-wider">DISPATCH III • LAYANAN SOSIAL</span>
+                            <span class="text-xs font-mono font-black text-blue-800">33 Sek • 19 Fas</span>
+                        </div>
+                        <h4 class="text-sm font-serif font-black text-slate-900 group-hover:text-[#0D6E5B] transition-colors">
+                            Pusat Rujukan Medis &amp; Satuan Pendidikan
+                        </h4>
+                        <p class="text-xs font-serif text-[#5A6B65] leading-relaxed">
+                            Pusat layanan sosial terlengkap dengan RSUD Kelas C Kolaka Utara, Puskesmas Perawatan, 1 Perguruan Tinggi, dan 33 satuan pendidikan formal.
+                        </p>
+                        <div class="text-[10px] font-serif italic text-[#0D6E5B] group-hover:underline flex items-center gap-1 pt-1">
+                            <span>Buka Etape Layanan Sosial di Peta WebGIS</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. INTERACTIVE EDITORIAL CONTROL BAR (SEKTOR TABS, SEARCH, SORTING) -->
+            <div class="bg-[#FDFDFB] rounded-2xl border border-[#5A6B65]/20 shadow-xs p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <!-- Sektor Filter Tabs -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="agregatSectorPills">
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('all')" data-sec="all" class="agregat-sec-btn active px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shrink-0 bg-[#0D6E5B] text-white shadow-xs">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg><span data-i18n="agregat_sec_all">Semua Sektor</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('all')" data-sec="all" class="agregat-sec-btn active px-4 py-2 rounded-full text-xs font-serif font-bold transition flex items-center gap-1.5 shrink-0 bg-[#0D6E5B] text-white shadow-xs">
+                        <span data-i18n="agregat_sec_all">Semua Sektor (15)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('ekonomi')" data-sec="ekonomi" class="agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span data-i18n="agregat_sec_ekonomi">Ekonomi & 3.622 IMK</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('ekonomi')" data-sec="ekonomi" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-serif font-semibold transition flex items-center gap-1.5 shrink-0 bg-white hover:bg-emerald-50 text-[#5A6B65] border border-[#5A6B65]/20">
+                        <span data-i18n="agregat_sec_ekonomi">Ekonomi &amp; 3.622 IMK</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('lingkungan')" data-sec="lingkungan" class="agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span data-i18n="agregat_sec_lingkungan">Kelistrikan & Lingkungan</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('lingkungan')" data-sec="lingkungan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-serif font-semibold transition flex items-center gap-1.5 shrink-0 bg-white hover:bg-emerald-50 text-[#5A6B65] border border-[#5A6B65]/20">
+                        <span data-i18n="agregat_sec_lingkungan">Kelistrikan &amp; Lingkungan</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pendidikan')" data-sec="pendidikan" class="agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/></svg><span data-i18n="agregat_sec_pendidikan">Pendidikan (205 Unit)</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pendidikan')" data-sec="pendidikan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-serif font-semibold transition flex items-center gap-1.5 shrink-0 bg-white hover:bg-emerald-50 text-[#5A6B65] border border-[#5A6B65]/20">
+                        <span data-i18n="agregat_sec_pendidikan">Pendidikan (205 Unit)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('kesehatan')" data-sec="kesehatan" class="agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m-2-2h4"/></svg><span data-i18n="agregat_sec_kesehatan">Kesehatan (174 Unit)</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('kesehatan')" data-sec="kesehatan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-serif font-semibold transition flex items-center gap-1.5 shrink-0 bg-white hover:bg-emerald-50 text-[#5A6B65] border border-[#5A6B65]/20">
+                        <span data-i18n="agregat_sec_kesehatan">Kesehatan (174 Unit)</span>
                     </button>
-                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pemerintahan')" data-sec="pemerintahan" class="agregat-sec-btn px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-1.5 shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
-                        <svg class="w-3.5 h-3.5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span data-i18n="agregat_sec_pemerintahan">BUMDes & Pemerintahan</span>
+                    <button type="button" onclick="window.PresisiEngine.setAgregatSector('pemerintahan')" data-sec="pemerintahan" class="agregat-sec-btn px-4 py-2 rounded-full text-xs font-serif font-semibold transition flex items-center gap-1.5 shrink-0 bg-white hover:bg-emerald-50 text-[#5A6B65] border border-[#5A6B65]/20">
+                        <span data-i18n="agregat_sec_pemerintahan">BUMDes &amp; Pemerintahan</span>
                     </button>
                 </div>
 
-                <!-- Right: Search & Sort Controls -->
-                <div class="flex items-center gap-2.5 shrink-0 flex-wrap sm:flex-nowrap">
-                    <!-- Search Input -->
-                    <div class="relative w-full sm:w-60">
-                        <svg class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <input id="inputSearchKecamatanCard" data-i18n-ph="agregat_search_ph" type="text" oninput="window.PresisiEngine.onSearchKecamatanCard(this.value)" placeholder="Cari kecamatan..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0D6E5B]">
+                <!-- Right Search & Sorting -->
+                <div class="flex items-center gap-3 shrink-0 flex-wrap sm:flex-nowrap">
+                    <div class="relative w-full sm:w-64">
+                        <svg class="w-3.5 h-3.5 text-[#5A6B65] absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <input id="inputSearchKecamatanCard" data-i18n-ph="agregat_search_ph" type="text" oninput="window.PresisiEngine.onSearchKecamatanCard(this.value)" placeholder="Cari kecamatan..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-[#5A6B65]/30 rounded-full font-serif text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0D6E5B]">
                     </div>
 
-                    <!-- Sort Dropdown -->
-                    <select id="selectSortKecamatanCard" onchange="window.PresisiEngine.onSortKecamatanCard(this.value)" class="text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-[#0D6E5B]">
-                        <option value="geo" data-i18n="agregat_sort_geo">Urutkan: Geografis (Utara-Selatan)</option>
+                    <select id="selectSortKecamatanCard" onchange="window.PresisiEngine.onSortKecamatanCard(this.value)" class="text-xs bg-white border border-[#5A6B65]/30 rounded-full px-3.5 py-1.5 font-serif font-bold text-[#5A6B65] focus:outline-none focus:border-[#0D6E5B]">
+                        <option value="geo" data-i18n="agregat_sort_geo">Urutkan: Geografis (Utara - Selatan)</option>
                         <option value="imk" data-i18n="agregat_sort_imk">Urutkan: IMK Terbanyak</option>
                         <option value="pln" data-i18n="agregat_sort_pln">Urutkan: Listrik PLN Terbanyak</option>
                         <option value="desa" data-i18n="agregat_sort_desa">Urutkan: Jumlah Desa Terbanyak</option>
