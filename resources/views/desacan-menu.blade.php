@@ -154,7 +154,7 @@
             text-transform: uppercase; 
             color: #0f6b4a; 
             padding: 0 0.75rem !important; /* Lurus vertikal dengan padding kiri item menu (px-3) */
-            margin-top: 1.25rem !important; /* mt-5 pemisah tegas antar grup menu */
+            margin-top: 1.5rem !important; /* mt-6 pemisah tegas antar grup menu */
             margin-bottom: 0.35rem !important; 
         }
         .dc-nav-label:first-child, .dc-nav-label.mt-first {
@@ -166,14 +166,14 @@
             height: 2.5px; 
             border-radius: 99px; 
             background: #10b981; 
-            flex-shrink: 0;
+            flex-shrink: 0; 
         }
 
         /* Nav Tab & Action Items: Full-row pill with compact py-2 px-3 & gap-3 */
         .nav-tab, .dc-nav-item {
             display: flex !important; 
             align-items: center !important; 
-            gap: 0.75rem !important; /* gap-3 (12px) antara ikon dan teks */
+            gap: 0.75rem !important; /* gap-3 (12px) antara kotak ikon dan teks label */
             width: 100% !important; 
             text-align: left !important;
             padding: 0.5rem 0.75rem !important; /* py-2 px-3 */
@@ -191,73 +191,73 @@
             transform: none !important;
         }
 
-        /* 1. Hilangkan Kotak Solid pada Ikon (Gaya Minimalis Tanpa Box/Shadow) */
+        /* 1. Kotak Ikon Menu: 28px x 28px (w-7 h-7), rounded-lg (8px), Flat & Modern */
         .dc-ico { 
-            width: 20px !important; /* w-5 */
-            height: 20px !important; /* h-5 */
-            min-width: 20px !important;
-            border-radius: 0 !important; 
+            width: 28px !important; /* w-7 */
+            height: 28px !important; /* h-7 */
+            min-width: 28px !important;
+            border-radius: 8px !important; /* rounded-lg (8px) */
             display: inline-flex !important; 
             align-items: center !important; 
             justify-content: center !important; 
             flex-shrink: 0 !important; 
-            background: transparent !important; /* Hapus kotak background */
-            border: none !important; 
-            box-shadow: none !important; /* Hapus drop-shadow */
-            color: #64748b !important; /* Warna ikon non-aktif: slate / abu-abu gelap */
-            transition: color .18s ease !important; 
+            background: #ecfdf5 !important; /* Soft green tint untuk menu tidak aktif */
+            border: 1px solid #d1fae5 !important; 
+            box-shadow: none !important; /* Flat modern tanpa drop-shadow tebal */
+            color: #0f6b4a !important; /* Ikon hijau tua */
+            transition: all .18s ease-in-out !important; 
         }
         .dc-ico i { 
-            font-size: 1.15rem !important; /* 18px - 20px */
+            font-size: 14px !important; /* Proporsional dalam kotak 28px */
             line-height: 1 !important; 
             display: flex !important; 
             align-items: center !important; 
             justify-content: center !important; 
             color: inherit !important;
-            transition: color .18s ease !important;
+            transition: transform .18s ease, color .18s ease !important;
         }
 
-        /* 2. Styling Hover State: Background Halus, Teks & Ikon Hijau */
+        /* Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
             background: #f1f5f9 !important; /* Soft neutral / slate hover */
-            color: #0f6b4a !important; /* Hijau utama */
+            color: #0f6b4a !important; 
             border-color: transparent !important;
             box-shadow: none !important;
             transform: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            color: #0f6b4a !important; 
-            background: transparent !important;
+            background: #e2f7ed !important; 
+            border-color: #a7f3d0 !important;
+            color: #065f46 !important; 
             box-shadow: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
-            color: #0f6b4a !important;
-            transform: none !important;
+            transform: scale(1.1) !important;
         }
 
-        /* 2. Styling Active State: Full-Row Soft Green Background, Dark Green Semi-Bold Text & Dark Green Icon */
+        /* Active State: Kotak Ikon Hijau Solid & Full-Row Soft Green Background */
         .nav-tab.active { 
             background: #ecfdf5 !important; /* Hijau sangat lembut (emerald-50) */
-            color: #065f46 !important; /* Hijau tua */
-            font-weight: 600 !important; /* Semi-bold */
-            border: 1px solid #d1fae5 !important; /* Border emerald-100 lembut */
+            color: #065f46 !important; /* Teks hijau tua semi-bold */
+            font-weight: 600 !important; 
+            border: 1px solid #d1fae5 !important; 
             box-shadow: none !important; 
             transform: none !important;
         }
         .nav-tab.active .dc-ico { 
-            background: transparent !important; 
-            color: #0f6b4a !important; /* Ikon hijau tua utama */
-            border: none !important;
-            box-shadow: none !important;
+            background: #0f6b4a !important; /* Hijau solid hanya untuk menu aktif */
+            color: #ffffff !important; /* Ikon putih */
+            border: 1px solid #0f6b4a !important;
+            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
         }
         .nav-tab.active .dc-ico i {
-            color: #0f6b4a !important;
+            color: #ffffff !important;
         }
         .nav-tab.active .dc-caret {
             color: #0f6b4a !important;
         }
         .nav-tab.active::after {
-            display: none !important; /* Hapus elemen dot glowing */
+            display: none !important;
         }
 
         /* Active Parent State (Saat Submenu Dipilih) */
@@ -269,13 +269,13 @@
             box-shadow: none !important;
         }
         .nav-tab.has-active .dc-ico { 
-            background: transparent !important; 
-            color: #0f6b4a !important; 
-            border: none !important;
-            box-shadow: none !important;
+            background: #0f6b4a !important; 
+            color: #ffffff !important; 
+            border: 1px solid #0f6b4a !important;
+            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
         }
         .nav-tab.has-active .dc-ico i {
-            color: #0f6b4a !important;
+            color: #ffffff !important;
         }
         .nav-tab.has-active .dc-caret {
             color: #0f6b4a !important;
@@ -333,6 +333,9 @@
             color: #065f46 !important; 
             font-weight: 600 !important; 
             border-color: #d1fae5 !important;
+        }
+        .dc-sub-item.active i {
+            color: #0f6b4a !important;
         }
         /* Custom Modern Scrollbar for Sidebar Links */
         #topNavMenuLinks::-webkit-scrollbar { width: 4px; }
@@ -2249,12 +2252,12 @@
                             <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 backdrop-blur-md border border-emerald-400/30 text-xs">
                                 <span class="text-emerald-100 font-semibold text-[11px] flex items-center gap-1.5">
                                     <i class="bi bi-award-fill text-amber-300"></i>
-                                    <span>Progres Sertifikasi:</span>
+                                    <span>Progres Sertifikasi Anda:</span>
                                 </span>
                                 <div class="w-20 sm:w-28 h-2 rounded-full bg-black/40 border border-white/10 overflow-hidden">
                                     <div class="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full" style="width: 25%;"></div>
                                 </div>
-                                <span class="font-extrabold text-amber-300 text-[11px]">1/4 Selesai (25%)</span>
+                                <span class="font-extrabold text-amber-300 text-[11px]">1/4 Tahap Selesai (25%)</span>
                             </div>
                         </div>
 

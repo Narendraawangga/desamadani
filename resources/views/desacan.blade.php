@@ -104,11 +104,11 @@
                 /* ===== 3D MODERN STATS CARDS ===== */
         .stat-card-3d {
             position: relative;
-            background: linear-gradient(165deg, #ffffff 0%, #fbfdfc 100%);
-            border-radius: 24px;
-            border: 1px solid rgba(226, 232, 240, 0.85);
-            box-shadow: 0 14px 34px -8px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03), inset 0 2px 0 rgba(255, 255, 255, 1);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.02);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
         }
         .stat-card-3d::before {
@@ -117,26 +117,26 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3.5px;
             background: var(--accent-bar, linear-gradient(90deg, #10b981, #059669));
-            border-radius: 24px 24px 0 0;
+            border-radius: 20px 20px 0 0;
         }
         .stat-card-3d:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 26px 48px -12px rgba(15, 107, 74, 0.2), 0 4px 12px rgba(15, 23, 42, 0.04), inset 0 2px 0 rgba(255, 255, 255, 1);
-            border-color: rgba(16, 185, 129, 0.35);
+            transform: translateY(-5px); /* Subtle hover lift */
+            box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.04);
+            border-color: #cbd5e1;
         }
         .orb-3d {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.35s ease;
+            transition: all 0.25s ease;
         }
         .stat-card-3d:hover .orb-3d {
-            transform: scale(1.1) rotate(4deg);
+            transform: translateY(-2px) scale(1.05); /* Flat cohesive lift */
         }
 
         /* Chart & KPI Cards */
@@ -447,7 +447,7 @@
                 </h1>
 
                 <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-xl leading-relaxed">
-                    Pusat diseminasi data statistik sektoral dan pembinaan agen statistik mandiri untuk <b>6 desa binaan BPS Kabupaten Kolaka Utara</b> di wilayah Kecamatan Kodeoha.
+                    Pusat diseminasi data statistik sektoral dan pembinaan agen statistik mandiri untuk <b>6 desa binaan BPS Kabupaten Kolaka Utara</b> di wilayah Kecamatan Kodeoha &amp; Kecamatan Tiwu.
                 </p>
 
                 <!-- Action Buttons -->
@@ -467,29 +467,32 @@
                 <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl space-y-3">
                     <div class="flex items-center justify-between pb-2.5 border-b border-white/10">
                         <span class="text-xs font-black uppercase text-emerald-300 tracking-wider">Indikator Kunci Pembinaan</span>
-                        <span class="text-[10px] text-white/70 font-bold">Kec. Kodeoha</span>
+                        <span class="text-xs text-emerald-200 font-bold">Kec. Kodeoha &amp; Tiwu</span>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2.5">
-                        <div class="p-3.5 rounded-xl bg-white/10 text-center">
-                            <div class="text-2xl font-black text-white">6</div>
-                            <div class="text-[11px] text-emerald-300 font-bold mt-0.5">Desa Pilot</div>
-                            <div class="text-[10px] text-white/60">Binaan BPS</div>
+                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-2xl font-black text-amber-300">100%</div>
+                            <div class="text-xs text-white font-bold mt-1">Target Capaian 2026</div>
+                            <div class="text-xs text-emerald-200/90 font-medium">Target Mandiri SDI</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 text-center">
-                            <div class="text-2xl font-black text-amber-300">2.426</div>
-                            <div class="text-[11px] text-amber-200 font-bold mt-0.5">Keluarga (KK)</div>
-                            <div class="text-[10px] text-white/60">Terdata Penuh</div>
+                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-2xl font-black text-teal-300">TW-IV</div>
+                            <div class="text-xs text-white font-bold mt-1">Periode Pendataan</div>
+                            <div class="text-xs text-teal-200/90 font-medium">Tahun Berjalan 2026</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 text-center">
-                            <div class="text-2xl font-black text-teal-300">44</div>
-                            <div class="text-[11px] text-teal-200 font-bold mt-0.5">Variabel Makro</div>
-                            <div class="text-[10px] text-white/60">Standar BPS RI</div>
+                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-2xl font-black text-emerald-300">2 Kec.</div>
+                            <div class="text-xs text-white font-bold mt-1">Cakupan Wilayah</div>
+                            <div class="text-xs text-emerald-200/90 font-medium">Kodeoha &amp; Tiwu</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 text-center">
-                            <div class="text-2xl font-black text-emerald-300">84%</div>
-                            <div class="text-[11px] text-emerald-200 font-bold mt-0.5">Kemandirian</div>
-                            <div class="text-[10px] text-white/60">Kader Agen Desa</div>
+                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-xl sm:text-2xl font-black text-white flex items-center justify-center gap-1.5">
+                                <i class="bi bi-shield-fill-check text-emerald-400"></i>
+                                <span>SDI</span>
+                            </div>
+                            <div class="text-xs text-white font-bold mt-1">Status Portal</div>
+                            <div class="text-xs text-emerald-200/90 font-medium">Terintegrasi BPS RI</div>
                         </div>
                     </div>
                 </div>
@@ -514,7 +517,7 @@
             <!-- Kartu 1: Desa Pilot (3D Emerald Glow) -->
             <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
                 <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-emerald-400 via-[#0E7C5A] to-[#064e3b] shadow-[0_8px_20px_-3px_rgba(14,124,90,0.5)] ring-4 ring-emerald-50 mb-3.5">
+                <div class="orb-3d bg-gradient-to-br from-emerald-500 to-[#0E7C5A] shadow-sm ring-2 ring-emerald-100 mb-3.5">
                     <i class="bi bi-geo-alt-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
@@ -522,7 +525,7 @@
                     <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Desa Pilot</div>
                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10.5px] font-bold border border-emerald-200/80 shadow-2xs">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Kec. Kodeoha
+                        Kec. Kodeoha &amp; Kec. Tiwu
                     </span>
                 </div>
             </div>
@@ -530,7 +533,7 @@
             <!-- Kartu 2: Total Keluarga (3D Amber/Gold Glow) -->
             <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #f59e0b, #d97706);">
                 <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 shadow-[0_8px_20px_-3px_rgba(245,158,11,0.5)] ring-4 ring-amber-50 mb-3.5">
+                <div class="orb-3d bg-gradient-to-br from-amber-400 to-amber-600 shadow-sm ring-2 ring-amber-100 mb-3.5">
                     <i class="bi bi-people-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
@@ -545,7 +548,7 @@
             <!-- Kartu 3: Total Penduduk (3D Sky Blue Glow) -->
             <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #0ea5e9, #0284c7);">
                 <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 shadow-[0_8px_20px_-3px_rgba(14,165,233,0.5)] ring-4 ring-sky-50 mb-3.5">
+                <div class="orb-3d bg-gradient-to-br from-sky-400 to-sky-600 shadow-sm ring-2 ring-sky-100 mb-3.5">
                     <i class="bi bi-person-vcard-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
@@ -560,7 +563,7 @@
             <!-- Kartu 4: Rata-rata Progres (3D Teal/Mint Glow) -->
             <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #14b8a6, #0d9488);">
                 <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-teal-400 via-emerald-500 to-teal-800 shadow-[0_8px_20px_-3px_rgba(20,184,166,0.5)] ring-4 ring-teal-50 mb-3.5">
+                <div class="orb-3d bg-gradient-to-br from-teal-400 to-teal-600 shadow-sm ring-2 ring-teal-100 mb-3.5">
                     <i class="bi bi-graph-up-arrow text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
@@ -576,7 +579,7 @@
             <!-- Kartu 5: Indikator Terinput (3D Indigo/Royal Glow) -->
             <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group cursor-default" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
                 <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-indigo-400 via-blue-600 to-indigo-800 shadow-[0_8px_20px_-3px_rgba(99,102,241,0.5)] ring-4 ring-indigo-50 mb-3.5">
+                <div class="orb-3d bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-sm ring-2 ring-indigo-100 mb-3.5">
                     <i class="bi bi-database-fill-check text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
