@@ -364,11 +364,34 @@
         <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <!-- Indikator Status Satu Data Indonesia -->
-                        <!-- Tombol Galeri Desa di Header -->
-            <button type="button" onclick="openGaleriDesaModal()" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" title="Galeri Dokumentasi Desa">
-                <i class="bi bi-images text-purple-600 text-sm"></i>
-                <span class="hidden xs:inline">Galeri Desa</span>
-            </button>
+            <!-- Menu Galeri Foto Desa Premium & Interaktif di Header -->
+            <div class="relative flex items-center">
+                <button type="button" onclick="openGaleriDesaModal()" 
+                    class="group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50/70 to-fuchsia-50/60 hover:from-purple-100 hover:via-indigo-100 hover:to-fuchsia-100/90 text-purple-950 border border-purple-200/90 hover:border-purple-300 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95" 
+                    title="Buka Galeri Dokumentasi & Unggah Foto Baru Desa">
+                    
+                    <!-- Icon Box dengan Badge Pulse Berkedip -->
+                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-fuchsia-600 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                        <i class="bi bi-camera-fill text-xs sm:text-sm"></i>
+                        <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-full w-full bg-pink-500 ring-1 ring-white"></span>
+                        </span>
+                    </div>
+
+                    <!-- Label Teks Dua Tingkat Berkelas -->
+                    <div class="text-left hidden xs:block">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[9px] font-black uppercase tracking-wider text-purple-700 leading-none">Dokumentasi</span>
+                            <span id="topbarGaleriBadge" class="px-1.5 py-0.2 rounded-full bg-purple-200/80 text-purple-800 text-[9px] font-black leading-none">8 Foto</span>
+                        </div>
+                        <div class="text-xs font-black text-slate-800 group-hover:text-purple-700 transition leading-tight flex items-center gap-1 mt-0.5">
+                            <span>Galeri Desa</span>
+                            <i class="bi bi-chevron-right text-[10px] text-purple-400 group-hover:translate-x-0.5 transition-transform"></i>
+                        </div>
+                    </div>
+                </button>
+            </div>
 
             <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -2594,11 +2617,12 @@
             }
         }
 
+                // ==============================================================
+        // GALERI FOTO DESA RESMI & SISTEM UNGGAH DOKUMENTASI ADMIN
         // ==============================================================
-        // GALERI FOTO DESA RESMI
-        // ==============================================================
-        const galeriDatabase = [
+        const baseGaleriDatabase = [
             {
+                id: 'base_1',
                 cat: 'pembinaan',
                 title: 'Pelatihan Literasi Statistik Aparatur',
                 caption: 'Bimbingan teknis pengisian kuesioner PODES dan standarisasi metadata bersama BPS Kolaka Utara.',
@@ -2607,6 +2631,7 @@
                 date: 'Agustus 2025'
             },
             {
+                id: 'base_2',
                 cat: 'pembinaan',
                 title: 'Verifikasi & Rekonsiliasi Data Sektoral',
                 caption: 'Penyelarasan indikator kemiskinan ekstrem, penerima bansos, dan data desil bersama tim verifikator.',
@@ -2615,6 +2640,7 @@
                 date: 'Juli 2025'
             },
             {
+                id: 'base_3',
                 cat: 'potensi',
                 title: 'Sentra Perkebunan Kakao Rakyat',
                 caption: 'Perkebunan kakao produktif terintegrasi dengan metode sambung pucuk dan pembibitan unggul.',
@@ -2623,6 +2649,7 @@
                 date: '2025'
             },
             {
+                id: 'base_4',
                 cat: 'potensi',
                 title: 'Pengeringan Kakao Fermentasi Berkualitas',
                 caption: 'Kelompok tani desa mengoptimalkan nilai jual biji kakao kering siap ekspor dengan standar mutu SNI.',
@@ -2631,6 +2658,7 @@
                 date: '2025'
             },
             {
+                id: 'base_5',
                 cat: 'alam',
                 title: 'Pesisir Bahari & Armada Perahu Nelayan',
                 caption: 'Aktivitas nelayan pesisir Teluk Bone serta sentra pengeringan ikan teri tradisional.',
@@ -2639,6 +2667,7 @@
                 date: '2025'
             },
             {
+                id: 'base_6',
                 cat: 'alam',
                 title: 'Bentang Alam Perbukitan & Irigasi Subur',
                 caption: 'Topografi perbukitan alami yang menopang ketahanan pangan dan sumber mata air utama masyarakat.',
@@ -2647,6 +2676,7 @@
                 date: '2025'
             },
             {
+                id: 'base_7',
                 cat: 'pelayanan',
                 title: 'Pelayanan Adminduk Terpadu di Balai Desa',
                 caption: 'Pemanfaatan sistem informasi desa terpadu untuk pencatatan mutasi penduduk dan verifikasi bansos.',
@@ -2655,6 +2685,7 @@
                 date: '2025'
             },
             {
+                id: 'base_8',
                 cat: 'pelayanan',
                 title: 'Posyandu Terpadu Pencegahan Stunting',
                 caption: 'Pemantauan tumbuh kembang balita dan ibu hamil secara berkala yang terdata langsung pada dashboard desa.',
@@ -2664,44 +2695,156 @@
             }
         ];
 
-        function renderGaleriPhotos(category) {
+        let activeGaleriCategory = 'all';
+        let activeGaleriSearchQuery = '';
+        let uploadPhotoBase64Data = '';
+
+        // Mengambil foto custom yang diunggah oleh admin dari localStorage
+        function getCustomGaleriPhotos(villageKey) {
+            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            try {
+                const stored = localStorage.getItem('descan_custom_galeri_' + vKey);
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) {
+                console.error('Error reading custom galeri photos:', e);
+            }
+            return [];
+        }
+
+        // Menyimpan foto custom admin ke localStorage
+        function saveCustomGaleriPhotos(villageKey, photosArray) {
+            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            try {
+                localStorage.setItem('descan_custom_galeri_' + vKey, JSON.stringify(photosArray));
+            } catch (e) {
+                console.error('Error saving custom galeri photos:', e);
+            }
+        }
+
+        // Menggabungkan foto default dengan foto yang diunggah admin
+        function getCombinedGaleriPhotos(villageKey) {
+            const vKey = villageKey || currentTargetVillage || 'kamisi';
+            const customPhotos = getCustomGaleriPhotos(vKey);
+            return [...customPhotos, ...baseGaleriDatabase];
+        }
+
+        // Update indikator jumlah foto di topbar dan modal
+        function updateGaleriCountBadges(totalCount) {
+            const count = totalCount !== undefined ? totalCount : getCombinedGaleriPhotos().length;
+            const topbarBadge = document.getElementById('topbarGaleriBadge');
+            if (topbarBadge) {
+                topbarBadge.textContent = count + ' Foto';
+            }
+            const modalCount = document.getElementById('galeriCountInfo');
+            if (modalCount) {
+                modalCount.textContent = count + ' Foto';
+            }
+        }
+
+        function renderGaleriPhotos(category, searchQuery) {
             const grid = document.getElementById('galeriPhotosGrid');
             if (!grid) return;
             
-            const filtered = category === 'all' 
-                ? galeriDatabase 
-                : galeriDatabase.filter(p => p.cat === category);
+            if (category !== undefined) activeGaleriCategory = category;
+            if (searchQuery !== undefined) activeGaleriSearchQuery = searchQuery.trim().toLowerCase();
+            
+            const curVillage = currentTargetVillage || 'kamisi';
+            const allPhotos = getCombinedGaleriPhotos(curVillage);
+            
+            // Filter kategori
+            let filtered = activeGaleriCategory === 'all' 
+                ? allPhotos 
+                : (activeGaleriCategory === 'custom' 
+                    ? allPhotos.filter(p => p.isCustom) 
+                    : allPhotos.filter(p => p.cat === activeGaleriCategory));
                 
-            grid.innerHTML = filtered.map(p => `
-                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col">
+            // Filter pencarian
+            if (activeGaleriSearchQuery) {
+                filtered = filtered.filter(p => 
+                    (p.title && p.title.toLowerCase().includes(activeGaleriSearchQuery)) ||
+                    (p.caption && p.caption.toLowerCase().includes(activeGaleriSearchQuery)) ||
+                    (p.badge && p.badge.toLowerCase().includes(activeGaleriSearchQuery))
+                );
+            }
+
+            updateGaleriCountBadges(allPhotos.length);
+
+            // Empty state bila tidak ada foto
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 px-4 text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-50 text-purple-400 mx-auto flex items-center justify-center text-3xl mb-3 border border-purple-100">
+                            <i class="bi bi-images"></i>
+                        </div>
+                        <h4 class="font-extrabold text-slate-800 text-sm sm:text-base">Belum Ada Foto Sesuai Kriteria</h4>
+                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Tidak ditemukan foto dengan kata kunci atau kategori ini. Anda dapat mengunggah foto dokumentasi baru sebagai Admin Desa.</p>
+                        <div class="mt-4 flex items-center justify-center gap-2">
+                            <button type="button" onclick="resetGaleriFilters()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                                Reset Filter
+                            </button>
+                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                                <span>+ Unggah Foto Baru</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+                
+            grid.innerHTML = filtered.map(p => {
+                const isCustom = Boolean(p.isCustom);
+                const safeTitle = (p.title || '').replace(/'/g, "\'");
+                const safeCaption = (p.caption || '').replace(/'/g, "\'");
+                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\'");
+                const safeDate = (p.date || '2026').replace(/'/g, "\'");
+
+                return `
+                <div class="group bg-white rounded-2xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-sm' : 'border-slate-200 shadow-2xs'} hover:shadow-lg transition-all duration-300 flex flex-col">
                     <div class="relative overflow-hidden aspect-4/3 bg-slate-100">
-                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="viewPhotoFull('${p.img}', '${p.title.replace(/'/g, "\'")}')">
-                        <div class="absolute top-2.5 left-2.5">
-                            <span class="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-xs text-white text-[10px] font-black tracking-wide uppercase">
-                                ${p.badge}
+                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="viewPhotoFull('${p.img}', '${safeTitle}', '${safeCaption}', '${safeBadge}', '${safeDate}')">
+                        
+                        <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+                            <span class="px-2.5 py-1 rounded-lg ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white ring-1 ring-white/30' : 'bg-black/60 text-white'} backdrop-blur-xs text-[10px] font-black tracking-wide uppercase">
+                                ${isCustom ? '⭐ Unggahan Admin' : p.badge}
                             </span>
                         </div>
+                        
                         <div class="absolute bottom-2.5 right-2.5">
-                            <span class="px-2 py-0.5 rounded-md bg-black/50 text-white text-[10px] font-semibold">
+                            <span class="px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-semibold">
                                 ${p.date}
                             </span>
                         </div>
                     </div>
                     <div class="p-3.5 flex-1 flex flex-col justify-between">
                         <div>
-                            <h4 class="font-black text-slate-900 text-xs sm:text-sm group-hover:text-purple-700 transition leading-snug">${p.title}</h4>
-                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${p.caption}</p>
+                            <h4 class="font-black text-slate-900 text-xs sm:text-sm group-hover:text-purple-700 transition leading-snug line-clamp-2">${p.title}</h4>
+                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${p.caption}</p>
                         </div>
                         <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                            <span class="text-slate-400 font-medium">Dokumentasi Terbina BPS</span>
-                            <button type="button" onclick="viewPhotoFull('${p.img}', '${p.title.replace(/'/g, "\'")}')" class="text-purple-600 font-bold hover:underline flex items-center gap-1 cursor-pointer">
-                                <i class="bi bi-arrows-fullscreen text-xs"></i>
-                                <span>Perbesar</span>
-                            </button>
+                            <span class="text-slate-400 font-medium truncate max-w-[140px]">
+                                ${isCustom ? 'Admin ' + (villagesData[curVillage]?.title || 'Desa') : 'Dokumentasi Terbina BPS'}
+                            </span>
+                            <div class="flex items-center gap-2">
+                                ${isCustom ? `
+                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 p-1 rounded-md text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
+                                        <i class="bi bi-trash"></i>
+                                        <span class="hidden sm:inline">Hapus</span>
+                                    </button>
+                                ` : ''}
+                                <button type="button" onclick="viewPhotoFull('${p.img}', '${safeTitle}', '${safeCaption}', '${safeBadge}', '${safeDate}')" class="text-purple-600 font-bold hover:underline flex items-center gap-1 cursor-pointer">
+                                    <i class="bi bi-arrows-fullscreen text-xs"></i>
+                                    <span>Perbesar</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function filterGaleriPhotos(category, btn) {
@@ -2714,6 +2857,20 @@
                 btn.classList.add('bg-purple-600', 'text-white', 'shadow-2xs');
             }
             renderGaleriPhotos(category);
+        }
+
+        function searchGaleriPhotos(keyword) {
+            renderGaleriPhotos(undefined, keyword);
+        }
+
+        function resetGaleriFilters() {
+            activeGaleriCategory = 'all';
+            activeGaleriSearchQuery = '';
+            const searchInput = document.getElementById('galeriSearchInput');
+            if (searchInput) searchInput.value = '';
+            const allBtn = document.querySelector('.galeri-filter-btn');
+            if (allBtn) filterGaleriPhotos('all', allBtn);
+            else renderGaleriPhotos('all', '');
         }
 
         function openGaleriDesaModal() {
@@ -2729,7 +2886,7 @@
             const subEl = document.getElementById('galeriModalSub');
             if (subEl) subEl.textContent = `Dokumentasi pembinaan Desa Cantik, potensi ${vData.komoditas || 'unggulan'}, dan aktivitas di ${vTitle}`;
             
-            renderGaleriPhotos('all');
+            resetGaleriFilters();
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             if (document.body) document.body.classList.add('overflow-hidden');
@@ -2744,9 +2901,250 @@
             if (document.body) document.body.classList.remove('overflow-hidden');
         }
 
-        function viewPhotoFull(imgUrl, title) {
-            showToast(`🖼️ Menampilkan foto: ${title}`);
-            window.open(imgUrl, '_blank');
+        // ==============================================================
+        // FITUR TAMBAH / UNGGAH FOTO BARU OLEH ADMIN DESA
+        // ==============================================================
+        function openUploadFotoModal() {
+            const modal = document.getElementById('modalUploadFotoDesa');
+            if (!modal) return;
+
+            const curVillage = currentTargetVillage || 'kamisi';
+            const vData = villagesData[curVillage] || villagesData.kamisi || {};
+            const vTitle = vData.title || 'Desa Kamisi';
+
+            const villageBadge = document.getElementById('uploadModalVillageName');
+            if (villageBadge) villageBadge.textContent = vTitle;
+
+            // Reset form input
+            const form = document.getElementById('formUploadFotoDesa');
+            if (form) form.reset();
+            
+            uploadPhotoBase64Data = '';
+            const previewBox = document.getElementById('uploadPhotoPreviewBox');
+            if (previewBox) {
+                previewBox.classList.add('hidden');
+                previewBox.classList.remove('flex');
+            }
+            const previewImg = document.getElementById('uploadPhotoPreviewImg');
+            if (previewImg) previewImg.src = '';
+
+            // Set default date hari ini
+            const dateInput = document.getElementById('inputUploadDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeUploadFotoModal() {
+            const modal = document.getElementById('modalUploadFotoDesa');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function handlePhotoFileSelect(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                showToast('⚠️ Silakan pilih file gambar (JPG, PNG, WebP)!');
+                event.target.value = '';
+                return;
+            }
+
+            // Batas ukuran 5MB untuk file lokal
+            if (file.size > 5 * 1024 * 1024) {
+                showToast('⚠️ Ukuran gambar maksimal 5MB!');
+                event.target.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadPhotoBase64Data = e.target.result;
+                displayUploadPreview(uploadPhotoBase64Data, file.name + ' (' + Math.round(file.size / 1024) + ' KB)');
+                // Kosongkan URL jika file dipilih
+                const urlInput = document.getElementById('inputUploadUrl');
+                if (urlInput) urlInput.value = '';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handlePhotoUrlInput(url) {
+            const trimmed = (url || '').trim();
+            if (trimmed) {
+                uploadPhotoBase64Data = trimmed;
+                displayUploadPreview(trimmed, 'Gambar dari URL Web');
+                // Kosongkan file jika URL diketik
+                const fileInput = document.getElementById('inputUploadFile');
+                if (fileInput) fileInput.value = '';
+            }
+        }
+
+        function displayUploadPreview(imgSrc, infoText) {
+            const previewBox = document.getElementById('uploadPhotoPreviewBox');
+            const previewImg = document.getElementById('uploadPhotoPreviewImg');
+            const previewInfo = document.getElementById('uploadPhotoPreviewInfo');
+
+            if (previewImg && previewBox) {
+                previewImg.src = imgSrc;
+                if (previewInfo) previewInfo.textContent = infoText || 'Pratinjau Foto';
+                previewBox.classList.remove('hidden');
+                previewBox.classList.add('flex');
+            }
+        }
+
+        function removeUploadPreview() {
+            uploadPhotoBase64Data = '';
+            const previewBox = document.getElementById('uploadPhotoPreviewBox');
+            if (previewBox) {
+                previewBox.classList.add('hidden');
+                previewBox.classList.remove('flex');
+            }
+            const previewImg = document.getElementById('uploadPhotoPreviewImg');
+            if (previewImg) previewImg.src = '';
+            const fileInput = document.getElementById('inputUploadFile');
+            if (fileInput) fileInput.value = '';
+            const urlInput = document.getElementById('inputUploadUrl');
+            if (urlInput) urlInput.value = '';
+        }
+
+        function saveNewGaleriFoto(e) {
+            if (e) e.preventDefault();
+
+            const titleInput = document.getElementById('inputUploadTitle');
+            const catSelect = document.getElementById('inputUploadCat');
+            const dateInput = document.getElementById('inputUploadDate');
+            const captionInput = document.getElementById('inputUploadCaption');
+
+            const title = titleInput ? titleInput.value.trim() : '';
+            const cat = catSelect ? catSelect.value : 'pembinaan';
+            const rawDate = dateInput ? dateInput.value : '';
+            const caption = captionInput ? captionInput.value.trim() : '';
+
+            if (!title) {
+                showToast('⚠️ Harap isi judul foto dokumentasi!');
+                if (titleInput) titleInput.focus();
+                return;
+            }
+
+            if (!uploadPhotoBase64Data) {
+                showToast('⚠️ Silakan pilih berkas foto atau masukkan tautan URL gambar!');
+                return;
+            }
+
+            // Format tanggal Indonesia e.g. "20 November 2026"
+            let formattedDate = 'November 2026';
+            if (rawDate) {
+                try {
+                    const d = new Date(rawDate);
+                    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    formattedDate = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+                } catch(err) {
+                    formattedDate = rawDate;
+                }
+            }
+
+            const curVillage = currentTargetVillage || 'kamisi';
+            const newPhotoItem = {
+                id: 'custom_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+                cat: cat,
+                title: title,
+                caption: caption || 'Dokumentasi kegiatan dan pembinaan statistik desa terpadu.',
+                img: uploadPhotoBase64Data,
+                badge: 'Unggahan Admin',
+                date: formattedDate,
+                village: curVillage,
+                isCustom: true,
+                createdAt: new Date().toISOString()
+            };
+
+            const existingPhotos = getCustomGaleriPhotos(curVillage);
+            existingPhotos.unshift(newPhotoItem); // Tambahkan di urutan paling awal
+            saveCustomGaleriPhotos(curVillage, existingPhotos);
+
+            showToast('✅ Foto dokumentasi berhasil disimpan dan diterbitkan!');
+            closeUploadFotoModal();
+
+            // Refresh galeri view
+            renderGaleriPhotos('all', '');
+        }
+
+        function deleteCustomFoto(photoId, event) {
+            if (event) event.stopPropagation();
+            if (!confirm('Apakah Anda yakin ingin menghapus foto dokumentasi ini dari galeri desa?')) {
+                return;
+            }
+
+            const curVillage = currentTargetVillage || 'kamisi';
+            let existingPhotos = getCustomGaleriPhotos(curVillage);
+            existingPhotos = existingPhotos.filter(p => p.id !== photoId);
+            saveCustomGaleriPhotos(curVillage, existingPhotos);
+
+            showToast('🗑️ Foto dokumentasi berhasil dihapus.');
+            renderGaleriPhotos();
+        }
+
+        // ==============================================================
+        // LIGHTBOX VIEWER FOTO LENGKAP & UNDUH
+        // ==============================================================
+        function viewPhotoFull(imgUrl, title, caption, badge, date) {
+            const lightbox = document.getElementById('galeriLightboxModal');
+            if (!lightbox) {
+                window.open(imgUrl, '_blank');
+                return;
+            }
+
+            const imgEl = document.getElementById('lightboxImg');
+            const titleEl = document.getElementById('lightboxTitle');
+            const capEl = document.getElementById('lightboxCaption');
+            const badgeEl = document.getElementById('lightboxBadge');
+            const dateEl = document.getElementById('lightboxDate');
+            const downloadBtn = document.getElementById('lightboxDownloadBtn');
+
+            if (imgEl) imgEl.src = imgUrl;
+            if (titleEl) titleEl.textContent = title || 'Dokumentasi Desa';
+            if (capEl) capEl.textContent = caption || '';
+            if (badgeEl) badgeEl.textContent = badge || 'Dokumentasi';
+            if (dateEl) dateEl.textContent = date || '';
+
+            if (downloadBtn) {
+                downloadBtn.onclick = function() {
+                    downloadPhotoFile(imgUrl, title);
+                };
+            }
+
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            if (document.body) document.body.classList.add('overflow-hidden');
+        }
+
+        function closeGaleriLightbox() {
+            const lightbox = document.getElementById('galeriLightboxModal');
+            if (lightbox) {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }
+            if (document.body) document.body.classList.remove('overflow-hidden');
+        }
+
+        function downloadPhotoFile(imgUrl, title) {
+            try {
+                const a = document.createElement('a');
+                a.href = imgUrl;
+                a.download = (title || 'Dokumentasi_Desa').replace(/[^a-zA-Z0-9_-]/g, '_') + '.jpg';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showToast('📥 Mengunduh foto dokumentasi...');
+            } catch(e) {
+                window.open(imgUrl, '_blank');
+            }
         }
 
 function triggerPubDownload() {
@@ -7450,53 +7848,242 @@ function triggerPubDownload() {
     <!-- MODAL DETAIL PUBLIKASI DOKUMEN RESMI STATISTIK SEKTORAL        -->
     <!-- ============================================================== -->
         <!-- ============================================================== -->
-    <!-- MODAL GALERI FOTO DESA RESMI                                   -->
-    <!-- Menampilkan dokumentasi pembinaan, potensi, infrastruktur desa -->
+    <!-- MODAL GALERI FOTO DESA RESMI & INTERAKTIF                        -->
+    <!-- Menampilkan dokumentasi pembinaan, potensi, pencarian & upload  -->
     <!-- ============================================================== -->
-    <div id="galeriDesaModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+    <div id="galeriDesaModal" class="hidden fixed inset-0 z-50 bg-slate-900/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
         <div class="bg-white rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
             <!-- Modal Header -->
-            <div class="p-4 sm:p-6 border-b border-slate-200 flex items-center justify-between bg-gradient-to-r from-purple-50 via-white to-slate-50 shrink-0">
+            <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-gradient-to-r from-purple-50 via-white to-indigo-50 shrink-0">
                 <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl shrink-0">
-                        <i class="bi bi-images"></i>
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                        <i class="bi bi-camera-reels"></i>
                     </div>
                     <div>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 flex-wrap">
                             <h3 id="galeriModalTitle" class="text-base sm:text-lg font-black text-slate-900">Galeri Foto Desa Kamisi</h3>
-                            <span class="px-2 py-0.5 rounded-md bg-purple-100 text-purple-700 text-[10px] font-black uppercase">Dokumentasi BPS</span>
+                            <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-wider border border-purple-200">Dokumentasi Resmi BPS</span>
                         </div>
-                        <p id="galeriModalSub" class="text-xs text-slate-500 mt-0.5">Dokumentasi pembinaan Desa Cantik, potensi sentra kakao, bahari, dan aktivitas warga</p>
+                        <p id="galeriModalSub" class="text-xs text-slate-500 mt-0.5 line-clamp-1">Dokumentasi pembinaan Desa Cantik, potensi sentra kakao, bahari, dan aktivitas warga</p>
                     </div>
                 </div>
-                <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer" title="Tutup Galeri">
-                    <i class="bi bi-x-lg text-sm"></i>
-                </button>
+                
+                <div class="flex items-center gap-2">
+                    <!-- Tombol Tambah Foto Baru oleh Admin -->
+                    <button type="button" onclick="openUploadFotoModal()" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:to-indigo-800 text-white font-bold text-xs shadow-md shadow-purple-500/20 active:scale-95 transition cursor-pointer">
+                        <i class="bi bi-cloud-arrow-up-fill text-sm"></i>
+                        <span class="hidden sm:inline">+ Unggah Foto Baru</span>
+                        <span class="sm:hidden">+ Unggah</span>
+                    </button>
+                    <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer" title="Tutup Galeri">
+                        <i class="bi bi-x-lg text-sm"></i>
+                    </button>
+                </div>
             </div>
 
-            <!-- Category Filter Tabs -->
-            <div class="px-4 sm:px-6 py-2.5 border-b border-slate-200 bg-slate-50/70 flex items-center gap-2 overflow-x-auto shrink-0">
-                <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer">Semua Foto</button>
-                <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">Pembinaan BPS</button>
-                <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">Potensi &amp; UMKM</button>
-                <button type="button" onclick="filterGaleriPhotos('alam', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">Pesona Alam &amp; Pesisir</button>
-                <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">Layanan Desa</button>
+            <!-- Toolbar Interaktif: Filter Kategori & Pencarian -->
+            <div class="px-4 sm:px-6 py-2.5 border-b border-slate-200 bg-slate-50/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+                <!-- Category Filter Tabs -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                    <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer whitespace-nowrap">Semua Foto</button>
+                    <button type="button" onclick="filterGaleriPhotos('custom', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
+                        <span>⭐ Unggahan Admin</span>
+                    </button>
+                    <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Pembinaan BPS</button>
+                    <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Potensi &amp; UMKM</button>
+                    <button type="button" onclick="filterGaleriPhotos('alam', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Pesona Alam</button>
+                    <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">Layanan Desa</button>
+                </div>
+
+                <!-- Input Pencarian Foto -->
+                <div class="flex items-center gap-2 shrink-0">
+                    <div class="relative w-full sm:w-56">
+                        <i class="bi bi-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari foto dokumentasi..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition">
+                    </div>
+                    <span id="galeriCountInfo" class="text-xs font-extrabold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200 whitespace-nowrap hidden sm:inline">
+                        8 Foto
+                    </span>
+                </div>
             </div>
 
             <!-- Photo Grid -->
             <div id="galeriPhotosGrid" class="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Dynamically populated -->
+                <!-- Dynamically populated via renderGaleriPhotos() -->
             </div>
 
             <!-- Modal Footer -->
             <div class="p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 shrink-0">
                 <span class="flex items-center gap-1.5">
                     <i class="bi bi-info-circle text-purple-600"></i>
-                    <span>Klik perbesar untuk melihat resolusi penuh dokumentasi.</span>
+                    <span>Klik pada foto atau tombol perbesar untuk melihat ukuran resolusi penuh.</span>
                 </span>
-                <button type="button" onclick="closeGaleriDesaModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
-                    Tutup
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="openUploadFotoModal()" class="px-3.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 font-bold transition cursor-pointer flex items-center gap-1 text-xs">
+                        <i class="bi bi-cloud-arrow-up-fill"></i>
+                        <span>Unggah Foto</span>
+                    </button>
+                    <button type="button" onclick="closeGaleriDesaModal()" class="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL UNGGAH / TAMBAH FOTO BARU OLEH ADMIN DESA                -->
+    <!-- ============================================================== -->
+    <div id="modalUploadFotoDesa" class="hidden fixed inset-0 z-60 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200">
+        <div class="bg-white rounded-3xl w-full max-w-lg max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
+            <!-- Header Upload Modal -->
+            <div class="p-4 sm:p-5 border-b border-slate-200 bg-gradient-to-r from-purple-700 via-indigo-700 to-purple-800 text-white flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl shrink-0">
+                        <i class="bi bi-cloud-arrow-up text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-black text-white leading-tight">Unggah Dokumentasi Foto Desa</h3>
+                        <p class="text-xs text-purple-100/90 mt-0.5">
+                            Target: <span id="uploadModalVillageName" class="font-bold underline text-amber-300">Desa Kamisi</span>
+                        </p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeUploadFotoModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">
+                    ✕
                 </button>
+            </div>
+
+            <!-- Form Body -->
+            <form id="formUploadFotoDesa" onsubmit="saveNewGaleriFoto(event)" class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1 text-slate-800">
+                <!-- Judul Foto -->
+                <div>
+                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">
+                        Judul Dokumentasi Foto <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="text" id="inputUploadTitle" placeholder="Contoh: Bimtek Standarisasi Data PODES 2026" required
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
+
+                <!-- Grid Kategori & Tanggal -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">
+                            Kategori Kegiatan <span class="text-rose-500">*</span>
+                        </label>
+                        <select id="inputUploadCat" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                            <option value="pembinaan">Pembinaan Desa Cantik (BPS)</option>
+                            <option value="potensi">Potensi Wilayah &amp; UMKM</option>
+                            <option value="alam">Pesona Alam &amp; Pesisir</option>
+                            <option value="pelayanan">Layanan Desa &amp; Kesehatan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">
+                            Tanggal Dokumentasi <span class="text-rose-500">*</span>
+                        </label>
+                        <input type="date" id="inputUploadDate" required
+                            class="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    </div>
+                </div>
+
+                <!-- Pilihan Sumber Gambar -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider">
+                        Pilih / Masukkan Berkas Gambar <span class="text-rose-500">*</span>
+                    </label>
+                    
+                    <!-- File Input Dari Komputer / HP -->
+                    <div class="p-3.5 rounded-2xl border-2 border-dashed border-purple-200 bg-purple-50/40 hover:bg-purple-50/70 transition text-center">
+                        <input type="file" id="inputUploadFile" accept="image/*" onchange="handlePhotoFileSelect(event)" class="hidden">
+                        <label for="inputUploadFile" class="cursor-pointer block">
+                            <i class="bi bi-image text-2xl text-purple-600 block mb-1"></i>
+                            <span class="text-xs font-bold text-purple-700 block">Klik untuk memilih file gambar dari komputer/HP</span>
+                            <span class="text-[10px] text-slate-400 block mt-0.5">Format JPG, PNG, atau WebP (Maksimal 5MB)</span>
+                        </label>
+                    </div>
+
+                    <!-- Pilihan Alternatif Tautan / URL Online -->
+                    <div class="relative flex items-center">
+                        <div class="flex-grow border-t border-slate-200"></div>
+                        <span class="shrink-0 px-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">atau gunakan tautan / URL</span>
+                        <div class="flex-grow border-t border-slate-200"></div>
+                    </div>
+
+                    <div class="relative">
+                        <i class="bi bi-link-45deg absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+                        <input type="url" id="inputUploadUrl" oninput="handlePhotoUrlInput(this.value)" placeholder="https://images.unsplash.com/... (URL gambar web)"
+                            class="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-white text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                    </div>
+
+                    <!-- Live Image Preview Box -->
+                    <div id="uploadPhotoPreviewBox" class="hidden mt-2 relative rounded-2xl overflow-hidden border border-purple-200 bg-slate-900 aspect-video flex items-center justify-center">
+                        <img id="uploadPhotoPreviewImg" src="" alt="Pratinjau Foto" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-2.5 flex items-center justify-between text-white text-[11px]">
+                            <span id="uploadPhotoPreviewInfo" class="font-bold truncate max-w-[240px]">Pratinjau Foto</span>
+                            <button type="button" onclick="removeUploadPreview()" class="px-2 py-0.5 rounded-md bg-rose-600 hover:bg-rose-700 text-white text-[10px] font-bold transition cursor-pointer">
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deskripsi / Ringkasan Kegiatan -->
+                <div>
+                    <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">
+                        Keterangan Singkat / Ringkasan Dokumentasi
+                    </label>
+                    <textarea id="inputUploadCaption" rows="2" placeholder="Tuliskan keterangan kegiatan, aparatur yang hadir, atau hasil yang dicapai..."
+                        class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none"></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+                    <button type="button" onclick="closeUploadFotoModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:to-indigo-800 text-white text-xs font-black shadow-md shadow-purple-500/25 active:scale-95 transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="bi bi-check2-circle text-sm"></i>
+                        <span>Simpan ke Galeri Desa</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL LIGHTBOX FULLSCREEN ZOOM FOTO DOKUMENTASI                -->
+    <!-- ============================================================== -->
+    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-70 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 flex flex-col max-h-[95vh]">
+            <!-- Lightbox Topbar -->
+            <div class="p-3 sm:p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
+                <div class="flex items-center gap-2">
+                    <span id="lightboxBadge" class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-black uppercase tracking-wider">
+                        Dokumentasi
+                    </span>
+                    <span id="lightboxDate" class="text-xs text-slate-400 font-semibold">2026</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="lightboxDownloadBtn" type="button" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer" title="Unduh Foto Ini">
+                        <i class="bi bi-download"></i>
+                        <span class="hidden sm:inline">Unduh Foto</span>
+                    </button>
+                    <button type="button" onclick="closeGaleriLightbox()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer" title="Tutup">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lightbox Image Center -->
+            <div class="flex-1 overflow-hidden bg-black flex items-center justify-center p-2 sm:p-4 min-h-[300px]">
+                <img id="lightboxImg" src="" alt="Dokumentasi Penuh" class="max-h-[68vh] max-w-full object-contain rounded-xl shadow-lg">
+            </div>
+
+            <!-- Lightbox Caption Footer -->
+            <div class="p-4 bg-slate-900 border-t border-slate-800 text-white shrink-0">
+                <h4 id="lightboxTitle" class="font-black text-sm sm:text-base text-white">Judul Dokumentasi Foto</h4>
+                <p id="lightboxCaption" class="text-xs text-slate-400 mt-1 leading-relaxed">Keterangan dokumentasi kegiatan resmi desa.</p>
             </div>
         </div>
     </div>

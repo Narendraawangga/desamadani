@@ -370,11 +370,30 @@
                 </a>
             </nav>
 
-            <!-- Tombol Galeri di Sisi Kanan Header Descan -->
+            <!-- Menu Galeri Foto Desa Premium di Header -->
             <div class="flex items-center gap-2.5">
-                <button type="button" onclick="openDescanGaleriModal(event)" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" title="Galeri Dokumentasi & Foto Desa Cantik">
-                    <i class="bi bi-images text-purple-600 text-sm"></i>
-                    <span>Galeri Desa</span>
+                <button type="button" onclick="openDescanGaleriModal(event)" 
+                    class="group relative flex items-center gap-2.5 px-3.5 py-1.5 sm:py-2 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50/70 to-fuchsia-50/60 hover:from-purple-100 hover:via-indigo-100 hover:to-fuchsia-100/90 text-purple-950 border border-purple-200/90 hover:border-purple-300 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95" 
+                    title="Galeri Dokumentasi & Foto Desa Cantik">
+                    
+                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-fuchsia-600 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                        <i class="bi bi-camera-fill text-xs sm:text-sm"></i>
+                        <span class="absolute -top-1 -right-1 flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-full w-full bg-pink-500 ring-1 ring-white"></span>
+                        </span>
+                    </div>
+
+                    <div class="text-left hidden xs:block">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[9px] font-black uppercase tracking-wider text-purple-700 leading-none">Dokumentasi</span>
+                            <span class="px-1.5 py-0.2 rounded-full bg-purple-200/80 text-purple-800 text-[9px] font-black leading-none">6 Desa</span>
+                        </div>
+                        <div class="text-xs font-black text-slate-800 group-hover:text-purple-700 transition leading-tight flex items-center gap-1 mt-0.5">
+                            <span>Galeri Desa</span>
+                            <i class="bi bi-chevron-right text-[10px] text-purple-400 group-hover:translate-x-0.5 transition-transform"></i>
+                        </div>
+                    </div>
                 </button>
             </div>
 
@@ -2043,13 +2062,41 @@
             }
         ];
 
-        function renderDescanGaleri(category) {
+        let currentDescanGaleriCat = 'all';
+        let currentDescanGaleriSearch = '';
+
+        function renderDescanGaleri(category, search) {
             const grid = document.getElementById('descanGaleriGrid');
             if (!grid) return;
 
-            const filtered = category === 'all' 
+            if (category !== undefined) currentDescanGaleriCat = category;
+            if (search !== undefined) currentDescanGaleriSearch = search.trim().toLowerCase();
+
+            let filtered = currentDescanGaleriCat === 'all' 
                 ? descanGaleriDatabase 
-                : descanGaleriDatabase.filter(p => p.cat === category);
+                : descanGaleriDatabase.filter(p => p.cat === currentDescanGaleriCat);
+
+            if (currentDescanGaleriSearch) {
+                filtered = filtered.filter(p => 
+                    (p.title && p.title.toLowerCase().includes(currentDescanGaleriSearch)) ||
+                    (p.desc && p.desc.toLowerCase().includes(currentDescanGaleriSearch)) ||
+                    (p.desa && p.desa.toLowerCase().includes(currentDescanGaleriSearch)) ||
+                    (p.badge && p.badge.toLowerCase().includes(currentDescanGaleriSearch))
+                );
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-400 mx-auto flex items-center justify-center text-2xl mb-2">
+                            <i class="bi bi-images"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm">Tidak Ada Foto Ditemukan</h4>
+                        <p class="text-xs text-slate-500 mt-1">Coba kata kunci lain atau pilih filter Semua Foto.</p>
+                    </div>
+                `;
+                return;
+            }
 
             grid.innerHTML = filtered.map(p => `
                 <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col">
@@ -2093,6 +2140,10 @@
                 btn.classList.add('bg-purple-600', 'text-white', 'shadow-2xs');
             }
             renderDescanGaleri(category);
+        }
+
+        function searchDescanGaleri(val) {
+            renderDescanGaleri(undefined, val);
         }
 
         function openDescanGaleriModal(e) {
@@ -2198,23 +2249,30 @@
                 </button>
             </div>
 
-            <!-- Category Filter Tabs -->
-            <div class="px-5 py-3 border-b border-slate-200 bg-slate-50 flex items-center gap-2 overflow-x-auto shrink-0">
-                <button type="button" onclick="filterDescanGaleri('all', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer">
-                    Semua Foto (8)
-                </button>
-                <button type="button" onclick="filterDescanGaleri('pembinaan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
-                    Pembinaan BPS
-                </button>
-                <button type="button" onclick="filterDescanGaleri('potensi', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
-                    Potensi &amp; Kakao
-                </button>
-                <button type="button" onclick="filterDescanGaleri('bahari', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
-                    Pesona Bahari &amp; Alam
-                </button>
-                <button type="button" onclick="filterDescanGaleri('pelayanan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
-                    Pelayanan Desa
-                </button>
+            <!-- Category Filter Tabs & Live Search -->
+            <div class="px-5 py-3 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                    <button type="button" onclick="filterDescanGaleri('all', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer whitespace-nowrap">
+                        Semua Foto (8)
+                    </button>
+                    <button type="button" onclick="filterDescanGaleri('pembinaan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pembinaan BPS
+                    </button>
+                    <button type="button" onclick="filterDescanGaleri('potensi', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Potensi &amp; Kakao
+                    </button>
+                    <button type="button" onclick="filterDescanGaleri('bahari', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pesona Bahari &amp; Alam
+                    </button>
+                    <button type="button" onclick="filterDescanGaleri('pelayanan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pelayanan Desa
+                    </button>
+                </div>
+                <div class="relative w-full sm:w-56 shrink-0">
+                    <i class="bi bi-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                    <input type="text" id="descanGaleriSearch" oninput="searchDescanGaleri(this.value)" placeholder="Cari foto atau desa..." 
+                        class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                </div>
             </div>
 
             <!-- Photo Grid -->
