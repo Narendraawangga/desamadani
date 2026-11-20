@@ -364,10 +364,7 @@
     <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
         <!-- Sisi Kiri: Tombol Toggle Mobile & Tombol Beranda (Bersih Tanpa Gambar) -->
         <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-            <!-- Tombol Buka/Tutup Sidebar di Header -->
-            <button type="button" id="btnToggleDcSidebar" onclick="toggleDcSidebar()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 hover:border-emerald-300 bg-white hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 text-base leading-none transition cursor-pointer active:scale-95 flex items-center justify-center shrink-0" title="Buka / Tutup Sidebar Navigasi">
-                <i class="bi bi-list text-xl leading-none"></i>
-            </button>
+
 
             <!-- Identitas Portal Desa & Kartu Akun Desa Aktif di Header (Menggantikan Tulisan Desa Cantik) -->
             <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
