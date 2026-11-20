@@ -471,10 +471,6 @@
 
             <!-- 3. LAYANAN -->
             <div class="dc-nav-label">Layanan</div>
-            <button type="button" onclick="openMetadataModal()" class="dc-nav-item">
-                <span class="dc-ico"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
-                <span>Metadata SDI</span>
-            </button>
             <button type="button" onclick="openPstModal()" class="dc-nav-item">
                 <span class="dc-ico"><i class="bi bi-headset"></i></span>
                 <span>Layanan PST</span>
