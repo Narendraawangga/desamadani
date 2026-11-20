@@ -392,23 +392,34 @@
             </a>
 
             <!-- Navigasi Menu Header Descan (Rata Kanan & Sinkron) -->
-            <nav class="hidden md:flex items-center gap-7">
-                <a href="#beranda" class="nav-link">
-                    Beranda
-                </a>
-                <a href="#dashboard" class="nav-link">
-                    Dashboard &amp; Grafik
-                </a>
-                <a href="#desa" class="nav-link">
-                    6 Desa Binaan
-                </a>
-                <a href="#output" class="nav-link">
-                    Output Program
-                </a>
-                <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link cursor-pointer">
-                    Galeri
-                </a>
-            </nav>
+            <div class="flex items-center gap-4">
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#beranda" class="nav-link">
+                        Beranda
+                    </a>
+                    <a href="#dashboard" class="nav-link">
+                        Dashboard &amp; Grafik
+                    </a>
+                    <a href="#desa" class="nav-link">
+                        6 Desa Binaan
+                    </a>
+                    <a href="#output" class="nav-link">
+                        Output Program
+                    </a>
+                    <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link cursor-pointer">
+                        Galeri
+                    </a>
+                </nav>
+
+                <!-- Tombol Kembali ke Desa Madani di Ujung Kanan Header -->
+                <div class="pl-2 sm:pl-3 md:border-l md:border-slate-200">
+                    <a href="/portal" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-[#0f6b4a] font-bold text-xs border border-slate-200 hover:border-emerald-300 transition shadow-2xs group cursor-pointer" title="Kembali ke Portal Utama Desa Madani">
+                        <i class="bi bi-arrow-left-circle-fill text-emerald-600 text-sm group-hover:-translate-x-0.5 transition-transform"></i>
+                        <span class="hidden sm:inline">Kembali ke Desa Madani</span>
+                        <span class="sm:hidden">Desa Madani</span>
+                    </a>
+                </div>
+            </div>
 
 
         </div>
