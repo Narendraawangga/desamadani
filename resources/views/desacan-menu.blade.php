@@ -140,129 +140,142 @@
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
 
-        /* Section Heading Labels */
+        /* ============================================================== */
+        /* MINIMALIST MODERN SIDEBAR - CLEAN, COMPACT & REFINED           */
+        /* ============================================================== */
+        /* Section Heading Labels (Aligned with menu item padding px-3) */
         .dc-nav-label { 
             display: flex; 
             align-items: center; 
-            gap: .5rem; 
+            gap: 0.5rem; 
             font-size: 10px; 
             font-weight: 800; 
-            letter-spacing: .12em; 
+            letter-spacing: 0.12em; 
             text-transform: uppercase; 
-            color: #0d6e4d; 
-            padding: 0 .65rem; 
-            margin: 1.15rem 0 .45rem; 
+            color: #0f6b4a; 
+            padding: 0 0.75rem !important; /* Lurus vertikal dengan padding kiri item menu (px-3) */
+            margin-top: 1.25rem !important; /* mt-5 pemisah tegas antar grup menu */
+            margin-bottom: 0.35rem !important; 
+        }
+        .dc-nav-label:first-child, .dc-nav-label.mt-first {
+            margin-top: 0.5rem !important;
         }
         .dc-nav-label::before { 
             content: ""; 
-            width: 14px; 
-            height: 3.5px; 
+            width: 12px; 
+            height: 2.5px; 
             border-radius: 99px; 
-            background: linear-gradient(90deg, #0f6b4a, #34d399); 
-            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.4);
+            background: #10b981; 
+            flex-shrink: 0;
         }
 
-        /* Nav Tab & Action Items */
+        /* Nav Tab & Action Items: Full-row pill with compact py-2 px-3 & gap-3 */
         .nav-tab, .dc-nav-item {
             display: flex !important; 
-            align-items: center; 
-            gap: .75rem; 
-            width: 100%; 
-            text-align: left;
-            padding: .55rem .75rem !important; 
-            border-radius: .9rem !important; 
-            margin-bottom: .28rem;
-            font-size: .835rem !important; 
-            font-weight: 600 !important; 
+            align-items: center !important; 
+            gap: 0.75rem !important; /* gap-3 (12px) antara ikon dan teks */
+            width: 100% !important; 
+            text-align: left !important;
+            padding: 0.5rem 0.75rem !important; /* py-2 px-3 */
+            border-radius: 0.5rem !important; /* rounded-lg */
+            margin-bottom: 0.25rem !important; /* space-y-1 */
+            font-size: 0.835rem !important; 
+            font-weight: 500 !important; 
             color: #334155 !important;
             background: transparent !important; 
             border: 1px solid transparent !important; 
-            cursor: pointer; 
-            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
+            cursor: pointer !important; 
+            transition: all .18s ease-in-out !important;
+            position: relative !important;
+            box-shadow: none !important;
+            transform: none !important;
         }
 
-        /* Distinct 3D Icon Container */
+        /* 1. Hilangkan Kotak Solid pada Ikon (Gaya Minimalis Tanpa Box/Shadow) */
         .dc-ico { 
-            width: 34px; 
-            height: 34px; 
-            border-radius: .75rem; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            flex-shrink: 0; 
-            background: #f1f5f3; 
-            color: #475569; 
-            border: 1px solid #e2e8e5;
-            transition: all .22s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            width: 20px !important; /* w-5 */
+            height: 20px !important; /* h-5 */
+            min-width: 20px !important;
+            border-radius: 0 !important; 
+            display: inline-flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            flex-shrink: 0 !important; 
+            background: transparent !important; /* Hapus kotak background */
+            border: none !important; 
+            box-shadow: none !important; /* Hapus drop-shadow */
+            color: #64748b !important; /* Warna ikon non-aktif: slate / abu-abu gelap */
+            transition: color .18s ease !important; 
         }
-        .dc-ico i { font-size: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
-
-        /* Synchronized Emerald 3D Icon Gradients (Harmonized with Beranda) */
-        .nav-tab .dc-ico, .dc-nav-item .dc-ico { 
-            background: linear-gradient(135deg, #059669, #34d399) !important; 
-            color: #ffffff !important; 
-            border-color: rgba(5, 150, 105, 0.25) !important; 
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.28) !important; 
-        }
-        .nav-tab .dc-ico i, .dc-nav-item .dc-ico i {
-            color: #ffffff !important;
+        .dc-ico i { 
+            font-size: 1.15rem !important; /* 18px - 20px */
+            line-height: 1 !important; 
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            color: inherit !important;
+            transition: color .18s ease !important;
         }
 
-        /* Modern Interactive Hover State */
+        /* 2. Styling Hover State: Background Halus, Teks & Ikon Hijau */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
-            background: #f0f8f4 !important; 
-            color: #0f6b4a !important;
-            border-color: #d1ecde !important;
-            transform: translateX(4px);
-            box-shadow: 0 2px 10px rgba(15, 107, 74, 0.07);
+            background: #f1f5f9 !important; /* Soft neutral / slate hover */
+            color: #0f6b4a !important; /* Hijau utama */
+            border-color: transparent !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
+            color: #0f6b4a !important; 
+            background: transparent !important;
+            box-shadow: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
-            transform: scale(1.12);
+            color: #0f6b4a !important;
+            transform: none !important;
         }
 
-        /* Active State - Lush Elevated Pill */
+        /* 2. Styling Active State: Full-Row Soft Green Background, Dark Green Semi-Bold Text & Dark Green Icon */
         .nav-tab.active { 
-            background: linear-gradient(135deg, #0f6b4a 0%, #084c34 100%) !important; 
-            color: #ffffff !important; 
-            font-weight: 700 !important; 
-            border: 1px solid #0f6b4a !important; 
-            box-shadow: 0 6px 18px -2px rgba(15, 107, 74, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important; 
+            background: #ecfdf5 !important; /* Hijau sangat lembut (emerald-50) */
+            color: #065f46 !important; /* Hijau tua */
+            font-weight: 600 !important; /* Semi-bold */
+            border: 1px solid #d1fae5 !important; /* Border emerald-100 lembut */
+            box-shadow: none !important; 
+            transform: none !important;
         }
         .nav-tab.active .dc-ico { 
-            background: rgba(255, 255, 255, 0.24) !important; 
-            color: #ffffff !important; 
-            border-color: rgba(255, 255, 255, 0.35) !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+            background: transparent !important; 
+            color: #0f6b4a !important; /* Ikon hijau tua utama */
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .nav-tab.active .dc-ico i {
+            color: #0f6b4a !important;
         }
         .nav-tab.active .dc-caret {
-            color: #ffffff !important;
+            color: #0f6b4a !important;
         }
         .nav-tab.active::after {
-            content: "";
-            position: absolute;
-            right: 12px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #34d399;
-            box-shadow: 0 0 8px #34d399;
+            display: none !important; /* Hapus elemen dot glowing */
         }
 
-        /* Active Parent State when child is selected */
+        /* Active Parent State (Saat Submenu Dipilih) */
         .nav-tab.has-active { 
-            background: #eaf7f0 !important; 
-            color: #0f6b4a !important; 
-            font-weight: 700 !important;
-            border: 1px solid #c0ebd2 !important; 
-            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.08);
+            background: #f0fdf4 !important; 
+            color: #065f46 !important; 
+            font-weight: 600 !important;
+            border: 1px solid #dcfce7 !important; 
+            box-shadow: none !important;
         }
         .nav-tab.has-active .dc-ico { 
-            background: linear-gradient(135deg, #0f6b4a, #10b981) !important; 
-            color: #ffffff !important; 
-            border-color: #0f6b4a !important;
-            box-shadow: 0 2px 8px rgba(15, 107, 74, 0.3) !important;
+            background: transparent !important; 
+            color: #0f6b4a !important; 
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .nav-tab.has-active .dc-ico i {
+            color: #0f6b4a !important;
         }
         .nav-tab.has-active .dc-caret {
             color: #0f6b4a !important;
@@ -273,7 +286,7 @@
             margin-left: auto; 
             font-size: .75rem; 
             color: #94a3b8; 
-            transition: transform .22s ease; 
+            transition: transform .2s ease, color .2s ease; 
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -282,58 +295,37 @@
 
         /* Submenu Items (Indented with Connecting Line) */
         .dc-sub { 
-            margin: .3rem 0 .5rem 1.35rem; 
-            padding-left: .85rem; 
-            border-left: 2px solid #a7d9be; 
+            margin: .25rem 0 .4rem 1.25rem !important; 
+            padding-left: .75rem !important; 
+            border-left: 1.5px solid #d1fae5 !important; 
         }
         .dc-sub-item { 
-            display: flex; 
-            align-items: center; 
-            gap: .65rem; 
-            width: 100%; 
-            text-align: left; 
-            padding: .48rem .75rem; 
-            border-radius: .7rem; 
-            font-size: .8rem; 
-            font-weight: 600; 
-            color: #64748b; 
-            background: transparent; 
-            border: 1px solid transparent; 
-            cursor: pointer; 
-            margin-bottom: .2rem; 
-            transition: all .2s ease; 
-        }
-        .dc-sub-item::before { 
-            content: ""; 
-            width: 6px; 
-            height: 6px; 
-            border-radius: 50%; 
-            background: #94a3b8; 
-            flex-shrink: 0; 
-            transition: all .18s; 
+            display: flex !important; 
+            align-items: center !important; 
+            gap: .5rem !important; 
+            width: 100% !important; 
+            text-align: left !important; 
+            padding: .45rem .65rem !important; 
+            border-radius: .5rem !important; 
+            font-size: .8rem !important; 
+            font-weight: 500 !important; 
+            color: #64748b !important; 
+            background: transparent !important; 
+            border: 1px solid transparent !important; 
+            cursor: pointer !important; 
+            margin-bottom: .15rem !important; 
+            transition: all .18s ease !important; 
         }
         .dc-sub-item:hover { 
-            background: #f0f8f4; 
-            color: #0f6b4a; 
-            transform: translateX(3px);
-            border-color: #d8ede1;
-        }
-        .dc-sub-item:hover::before { 
-            background: #0f6b4a; 
-            transform: scale(1.2);
+            background: #f1f5f9 !important; 
+            color: #0f6b4a !important; 
         }
         .dc-sub-item.active { 
-            background: #eaf7f0; 
-            color: #0f6b4a; 
-            font-weight: 700; 
-            border-color: #c0ebd2; 
-            box-shadow: 0 1px 4px rgba(15, 107, 74, 0.1);
+            background: #ecfdf5 !important; 
+            color: #065f46 !important; 
+            font-weight: 600 !important; 
+            border-color: #d1fae5 !important;
         }
-        .dc-sub-item.active::before { 
-            background: #0f6b4a; 
-            box-shadow: 0 0 0 3px rgba(15, 107, 74, 0.25); 
-        }
-
         /* Custom Modern Scrollbar for Sidebar Links */
         #topNavMenuLinks::-webkit-scrollbar { width: 4px; }
         #topNavMenuLinks::-webkit-scrollbar-track { background: transparent; }
@@ -482,8 +474,8 @@
         </div>
 
         <!-- 2. Daftar Menu Navigasi Sidebar (Modern Flow UI Light Style - Rapi, Terstruktur, Terbaca Jelas) -->
-        <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 py-2 space-y-0.5">
-            <div class="dc-nav-label" style="margin-top:.35rem;">Menu Utama</div>
+        <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 py-2 space-y-1">
+            <div class="dc-nav-label mt-first">Menu Utama</div>
             <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active">
                 <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
                 <span>Beranda</span>
