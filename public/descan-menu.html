@@ -459,11 +459,13 @@
 
                 <!-- 1-Click Fast Access & Direct Viewer Bypass Button -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs">
-                    <button type="button" onclick="autoFillGateTarget()" class="py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1">
-                        <span>⚡ Isi Sandi Resmi</span>
+                    <button type="button" onclick="autoFillGateTarget()" class="py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1.5">
+                        <i class="bi bi-lightning-charge-fill text-slate-950"></i>
+                        <span>Isi Sandi Resmi</span>
                     </button>
-                    <button type="button" onclick="bypassGateAsViewer()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1">
-                        <span>👁️ Buka Langsung (Tamu)</span>
+                    <button type="button" onclick="bypassGateAsViewer()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1.5">
+                        <i class="bi bi-eye-fill text-white"></i>
+                        <span>Buka Langsung (Tamu)</span>
                     </button>
                 </div>
 
@@ -482,7 +484,7 @@
                         </label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
-                                ✉️
+                                <i class="bi bi-envelope-fill"></i>
                             </span>
                             <input type="email" id="gateInputEmail" required placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white">
                         </div>
@@ -495,11 +497,11 @@
                         </label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
-                                🔒
+                                <i class="bi bi-lock-fill"></i>
                             </span>
                             <input type="password" id="gateInputPassword" required placeholder="Masukkan kata sandi desa" class="w-full pl-9 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white">
-                            <button type="button" onclick="togglePasswordVisibility('gateInputPassword')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs" title="Lihat/Sembunyikan Sandi">
-                                👁️
+                            <button type="button" onclick="togglePasswordVisibility('gateInputPassword')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs cursor-pointer" title="Lihat/Sembunyikan Sandi">
+                                <i id="gateEyeIcon" class="bi bi-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -507,13 +509,14 @@
                     <!-- Submit Button -->
                     <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#0b2545] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 transform active:scale-98">
                         <span>Buka Dashboard Desa Sekarang</span>
-                        <span>→</span>
+                        <i class="bi bi-arrow-right"></i>
                     </button>
                 </form>
 
                 <div class="pt-2 text-center">
                     <a href="/descan" onclick="exitToDescanDashboard(event)" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#005ea6] transition">
-                        <span>← Kembali ke Pilihan 6 Desa Binaan</span>
+                        <i class="bi bi-arrow-left"></i>
+                        <span>Kembali ke Pilihan 6 Desa Binaan</span>
                     </a>
                 </div>
 
@@ -6405,8 +6408,8 @@ function triggerPubDownload() {
             const badgeEl = document.getElementById('menuNavUserBadge');
             if (badgeEl) {
                 badgeEl.innerHTML = `
-                    <div class="px-2.5 py-1 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 font-extrabold text-[11px] flex items-center gap-1 shadow-2xs">
-                        <span>🔒</span>
+                    <div class="px-2.5 py-1 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 font-extrabold text-[11px] flex items-center gap-1.5 shadow-2xs">
+                        <i class="bi bi-lock-fill"></i>
                         <span>Login Diperlukan</span>
                     </div>
                 `;
@@ -6499,8 +6502,15 @@ function triggerPubDownload() {
 
         function togglePasswordVisibility(inputId) {
             const inp = document.getElementById(inputId);
+            const icon = document.getElementById('gateEyeIcon');
             if (inp) {
-                inp.type = inp.type === 'password' ? 'text' : 'password';
+                if (inp.type === 'password') {
+                    inp.type = 'text';
+                    if (icon) icon.className = 'bi bi-eye-slash';
+                } else {
+                    inp.type = 'password';
+                    if (icon) icon.className = 'bi bi-eye';
+                }
             }
         }
 
@@ -6548,11 +6558,11 @@ function triggerPubDownload() {
                             
                             <div class="pt-2.5 border-t border-slate-100 space-y-2">
                                 <button type="button" onclick="openSwitchAccountModal()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                    <span>🔄</span>
+                                    <i class="bi bi-arrow-repeat"></i>
                                     <span>Ganti Akun Desa</span>
                                 </button>
                                 <button type="button" onclick="logoutFromMenu()" class="w-full py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                    <span>🚪</span>
+                                    <i class="bi bi-box-arrow-right"></i>
                                     <span>Keluar ke 6 Desa Binaan</span>
                                 </button>
                             </div>
@@ -6561,8 +6571,8 @@ function triggerPubDownload() {
                 `;
             } else {
                 badgeEl.innerHTML = `
-                    <button type="button" onclick="showVillageLoginGate(currentTargetVillage)" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold transition">
-                        <span>🔒</span>
+                    <button type="button" onclick="showVillageLoginGate(currentTargetVillage)" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold transition cursor-pointer">
+                        <i class="bi bi-lock-fill"></i>
                         <span>Login Desa</span>
                     </button>
                 `;

@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -172,14 +175,14 @@
 
                             <!-- 1-Click Fast Fill Button -->
                             <button type="button" onclick="autoFillActiveCredentials()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs shadow-xs hover:shadow transition cursor-pointer" title="Isi email dan sandi resmi desa ini otomatis">
-                                <span>⚡ Isi Sandi</span>
+                                <i class="bi bi-lightning-charge-fill text-slate-950"></i><span>Isi Sandi</span>
                             </button>
                         </div>
 
                         <!-- 1-Click Fast Fill Mobile Button -->
                         <div class="sm:hidden mt-2">
                             <button type="button" onclick="autoFillActiveCredentials()" class="w-full py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                <span>⚡ Isi Sandi Resmi Desa Ini</span>
+                                <i class="bi bi-lightning-charge-fill text-slate-950"></i><span>Isi Sandi Resmi Desa Ini</span>
                             </button>
                         </div>
 
@@ -198,9 +201,7 @@
                                     Email Akun Resmi Desa
                                 </label>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
-                                        ✉️
-                                    </span>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-envelope-fill"></i></span>
                                     <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
                                 </div>
                             </div>
@@ -214,13 +215,9 @@
                                     <span id="hintPasswordDisplay" class="text-[11px] font-mono text-slate-400"></span>
                                 </div>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
-                                        🔒
-                                    </span>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-lock-fill"></i></span>
                                     <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi desa" class="w-full pl-10 pr-12 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
-                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi">
-                                        👁️
-                                    </button>
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi"><i id="eyePassIconLogin" class="bi bi-eye"></i></button>
                                 </div>
                             </div>
 
@@ -239,7 +236,7 @@
                             <span id="hintCurrentEmail" class="font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-lg text-[11px] border border-slate-200"></span>
                         </div>
                         <button type="button" onclick="autoFillActiveCredentials()" class="text-[#005ea6] hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer">
-                            <span>⚡ Isi Sandi Otomatis</span>
+                            <i class="bi bi-lightning-charge-fill text-amber-600"></i><span>Isi Sandi Otomatis</span>
                         </button>
                     </div>
                 </div>
@@ -316,7 +313,16 @@
 
         function togglePassVisibility() {
             const inp = document.getElementById('inpPassword');
-            if (inp) inp.type = inp.type === 'password' ? 'text' : 'password';
+            const icon = document.getElementById('eyePassIconLogin');
+            if (inp) {
+                if (inp.type === 'password') {
+                    inp.type = 'text';
+                    if (icon) icon.className = 'bi bi-eye-slash';
+                } else {
+                    inp.type = 'password';
+                    if (icon) icon.className = 'bi bi-eye';
+                }
+            }
         }
 
         function handleMainLoginSubmit(e) {

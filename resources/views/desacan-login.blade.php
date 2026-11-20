@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -156,7 +159,7 @@
                             <div>
                                 <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">✉️</span>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-envelope-fill"></i></span>
                                     <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
                                 </div>
                             </div>
@@ -165,15 +168,15 @@
                             <div>
                                 <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata Sandi</label>
                                 <div class="relative">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sm">🔒</span>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-lock-fill"></i></span>
                                     <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
-                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi">👁️</button>
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi"><i id="eyePassIcon" class="bi bi-eye"></i></button>
                                 </div>
                             </div>
 
                             <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0f6b4a] to-[#0a4d36] hover:from-[#0d5c40] hover:to-[#083b2a] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 cursor-pointer">
                                 <span id="btnSubmitText">Masuk ke Dashboard</span>
-                                <span>→</span>
+                                <i class="bi bi-arrow-right text-sm"></i>
                             </button>
                         </form>
 
@@ -182,8 +185,8 @@
                         </div>
 
                         <div class="grid grid-cols-2 gap-2">
-                            <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-bold text-xs transition cursor-pointer">⚡ Isi Sandi Otomatis</button>
-                            <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-xs transition cursor-pointer">👁️ Masuk sebagai Tamu</button>
+                            <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5"><i class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi Otomatis</span></button>
+                            <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5"><i class="bi bi-eye-fill text-emerald-600 text-sm"></i><span>Masuk sebagai Tamu</span></button>
                         </div>
                     </div>
                 </div>
@@ -292,7 +295,16 @@
 
         function togglePassVisibility() {
             const inp = document.getElementById('inpPassword');
-            if (inp) inp.type = inp.type === 'password' ? 'text' : 'password';
+            const eyeIcon = document.getElementById('eyePassIcon');
+            if (inp) {
+                if (inp.type === 'password') {
+                    inp.type = 'text';
+                    if (eyeIcon) eyeIcon.className = 'bi bi-eye-slash';
+                } else {
+                    inp.type = 'password';
+                    if (eyeIcon) eyeIcon.className = 'bi bi-eye';
+                }
+            }
         }
 
         function handleMainLoginSubmit(e) {
