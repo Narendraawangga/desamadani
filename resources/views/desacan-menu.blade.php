@@ -273,18 +273,7 @@
             </button>
         </div>
 
-        <!-- 2. Kartu Identitas Akun Desa Aktif di Sidebar (Penempatan Benar & Rapi) -->
-        <div class="px-3 pt-3 pb-1">
-            <div class="p-2.5 rounded-xl bg-gradient-to-r from-emerald-50/90 to-teal-50/90 border border-emerald-200/80 flex items-center gap-2.5 shadow-2xs">
-                <div class="w-8 h-8 rounded-lg bg-[#0f6b4a] text-white flex items-center justify-center shrink-0 shadow-xs">
-                    <i class="bi bi-buildings-fill text-sm"></i>
-                </div>
-                <div class="min-w-0 flex-1 leading-tight">
-                    <div id="topBrandDesaTitle" class="text-xs font-black text-slate-900 uppercase truncate">AKUN DESA KOROHA</div>
-                    <div id="topBrandDesaKec" class="text-[10px] font-semibold text-emerald-800 truncate">(Kec. Kodeoha) • Terbina BPS</div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- 3. Daftar Menu Navigasi Sidebar (Bootstrap Icons Rapi & Konsisten) -->
         <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-3 pb-3">
@@ -380,11 +369,21 @@
                 <i class="bi bi-list text-xl leading-none"></i>
             </button>
 
-            <!-- Identitas Portal Desa di Header (Tanpa Tombol Beranda Dobel) -->
-            <div class="flex items-center gap-2">
-                <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">Portal Satu Data Desa</span>
-                <span class="text-slate-300 hidden sm:inline">•</span>
-                <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 hidden sm:inline">Desa Cantik 2026</span>
+            <!-- Identitas Portal Desa & Kartu Akun Desa Aktif di Header (Menggantikan Tulisan Desa Cantik) -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight hidden lg:inline">Portal Satu Data</span>
+                <span class="text-slate-300 hidden lg:inline">•</span>
+                
+                <!-- Kartu Identitas Akun Desa Aktif (Dipindahkan dari Sidebar) -->
+                <div class="px-2.5 py-1 rounded-xl bg-gradient-to-r from-emerald-50/90 to-teal-50/90 border border-emerald-200/80 flex items-center gap-2 shadow-2xs">
+                    <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#0f6b4a] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <i class="bi bi-buildings-fill text-xs"></i>
+                    </div>
+                    <div class="min-w-0 leading-tight">
+                        <div id="topBrandDesaTitle" class="text-[11px] sm:text-xs font-black text-slate-900 uppercase truncate">AKUN DESA LAPOLU</div>
+                        <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-emerald-800 truncate">(Kec. Tiwu) • Terbina BPS</div>
+                    </div>
+                </div>
             </div>
         </div>
 
