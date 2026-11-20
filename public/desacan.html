@@ -101,6 +101,44 @@
             overflow: hidden;
         }
 
+                /* ===== 3D MODERN STATS CARDS ===== */
+        .stat-card-3d {
+            position: relative;
+            background: linear-gradient(165deg, #ffffff 0%, #fbfdfc 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.85);
+            box-shadow: 0 14px 34px -8px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03), inset 0 2px 0 rgba(255, 255, 255, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .stat-card-3d::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-bar, linear-gradient(90deg, #10b981, #059669));
+            border-radius: 24px 24px 0 0;
+        }
+        .stat-card-3d:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 26px 48px -12px rgba(15, 107, 74, 0.2), 0 4px 12px rgba(15, 23, 42, 0.04), inset 0 2px 0 rgba(255, 255, 255, 1);
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+        .orb-3d {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s ease;
+        }
+        .stat-card-3d:hover .orb-3d {
+            transform: scale(1.1) rotate(4deg);
+        }
+
         /* Chart & KPI Cards */
         .card-surface {
             background: #ffffff;
@@ -447,71 +485,95 @@
             </div>
 
         </div>
+
+        <!-- 3D Organic Wave Divider -->
+        <div class="w-full overflow-hidden leading-none mt-8 -mb-12 sm:-mb-16">
+            <svg class="relative block w-full h-12 sm:h-20 text-[#f8fafc]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+                <path d="M0,0 C150,85 350,-35 500,45 C650,125 900,10 1200,45 L1200,120 L0,120 Z"></path>
+            </svg>
+        </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- 4. FLOATING STATS STRIP (5 Kartu Desain Modern Sesuai Mockup)   -->
+    <!-- 4. FLOATING STATS STRIP (5 Kartu 3D Modern, Kreatif & Berkelas) -->
     <!-- ============================================================== -->
-    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 lg:-mt-12 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5.5">
             
-            <!-- Kartu 1: Desa Pilot -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
-                    <i class="bi bi-geo-alt-fill text-2xl text-[#0E7C5A]"></i>
+            <!-- Kartu 1: Desa Pilot (3D Emerald Glow) -->
+            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
+                <!-- 3D Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-emerald-400 via-[#0E7C5A] to-[#064e3b] shadow-[0_8px_20px_-3px_rgba(14,124,90,0.5)] ring-4 ring-emerald-50 mb-3.5">
+                    <i class="bi bi-geo-alt-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
                     <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">6</div>
-                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Desa Pilot</div>
-                    <div class="text-xs text-emerald-700 font-bold">Kec. Kodeoha</div>
+                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Desa Pilot</div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10.5px] font-bold border border-emerald-200/80 shadow-2xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Kec. Kodeoha
+                    </span>
                 </div>
             </div>
 
-            <!-- Kartu 2: Total Keluarga -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
-                    <i class="bi bi-people-fill text-2xl text-[#0E7C5A]"></i>
+            <!-- Kartu 2: Total Keluarga (3D Amber/Gold Glow) -->
+            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #f59e0b, #d97706);">
+                <!-- 3D Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 shadow-[0_8px_20px_-3px_rgba(245,158,11,0.5)] ring-4 ring-amber-50 mb-3.5">
+                    <i class="bi bi-people-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
                     <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">2.426</div>
-                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Total Keluarga</div>
-                    <div class="text-[11px] text-slate-400 font-medium">Kepala Keluarga (KK)</div>
+                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Total Keluarga</div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10.5px] font-bold border border-amber-200/80 shadow-2xs">
+                        Kepala Keluarga (KK)
+                    </span>
                 </div>
             </div>
 
-            <!-- Kartu 3: Total Penduduk -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
-                    <i class="bi bi-person-vcard-fill text-2xl text-[#0E7C5A]"></i>
+            <!-- Kartu 3: Total Penduduk (3D Sky Blue Glow) -->
+            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #0ea5e9, #0284c7);">
+                <!-- 3D Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 shadow-[0_8px_20px_-3px_rgba(14,165,233,0.5)] ring-4 ring-sky-50 mb-3.5">
+                    <i class="bi bi-person-vcard-fill text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
                     <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">8.734</div>
-                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Total Penduduk</div>
-                    <div class="text-[11px] text-slate-400 font-medium">Jiwa Terdata</div>
+                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Total Penduduk</div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[10.5px] font-bold border border-sky-200/80 shadow-2xs">
+                        Jiwa Terdata
+                    </span>
                 </div>
             </div>
 
-            <!-- Kartu 4: Rata-rata Progres -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between group">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
-                    <i class="bi bi-graph-up-arrow text-2xl text-[#0E7C5A]"></i>
+            <!-- Kartu 4: Rata-rata Progres (3D Teal/Mint Glow) -->
+            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #14b8a6, #0d9488);">
+                <!-- 3D Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-teal-400 via-emerald-500 to-teal-800 shadow-[0_8px_20px_-3px_rgba(20,184,166,0.5)] ring-4 ring-teal-50 mb-3.5">
+                    <i class="bi bi-graph-up-arrow text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0E7C5A] tracking-tight leading-none mb-1.5">84%</div>
-                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Rata-rata Progres</div>
-                    <div class="text-xs text-emerald-600 font-semibold">Pendataan Selesai</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1.5">84%</div>
+                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Rata-rata Progres</div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[10.5px] font-bold border border-teal-200/80 shadow-2xs">
+                        <i class="bi bi-check-circle-fill text-[10px] text-teal-600"></i>
+                        Pendataan Selesai
+                    </span>
                 </div>
             </div>
 
-            <!-- Kartu 5: Indikator Terinput -->
-            <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:py-6 sm:px-4 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(14,124,90,0.12)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#edf7f1] border border-emerald-100/90 flex items-center justify-center text-[#0E7C5A] mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-[#e2f3e8] transition-all duration-300">
-                    <i class="bi bi-check2-circle text-2xl text-[#0E7C5A]"></i>
+            <!-- Kartu 5: Indikator Terinput (3D Indigo/Royal Glow) -->
+            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group cursor-default" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
+                <!-- 3D Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-indigo-400 via-blue-600 to-indigo-800 shadow-[0_8px_20px_-3px_rgba(99,102,241,0.5)] ring-4 ring-indigo-50 mb-3.5">
+                    <i class="bi bi-database-fill-check text-2xl text-white drop-shadow-sm"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-700 tracking-tight leading-none mb-1.5">223 / 264</div>
-                    <div class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1">Indikator Terinput</div>
-                    <div class="text-xs text-blue-600 font-semibold">44 Indikator / Desa</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1.5">223 / 264</div>
+                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Indikator Terinput</div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[10.5px] font-bold border border-indigo-200/80 shadow-2xs">
+                        44 Indikator / Desa
+                    </span>
                 </div>
             </div>
 
