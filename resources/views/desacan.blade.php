@@ -350,13 +350,13 @@
                 </div>
             </a>
 
-            <!-- EXACTLY 4 MENUS (Minimal, Bersih, Sesuai Instruksi User) -->
-            <nav class="hidden md:flex items-center gap-8">
+            <!-- Navigasi Menu Header Descan -->
+            <nav class="hidden md:flex items-center gap-7">
                 <a href="#beranda" class="nav-link">
                     Beranda
                 </a>
                 <a href="#dashboard" class="nav-link">
-                    Dashboard & Grafik
+                    Dashboard &amp; Grafik
                 </a>
                 <a href="#desa" class="nav-link">
                     6 Desa Binaan
@@ -364,7 +364,19 @@
                 <a href="#output" class="nav-link">
                     Output Program
                 </a>
+                <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link flex items-center gap-1.5 cursor-pointer">
+                    <i class="bi bi-images text-purple-600 text-xs"></i>
+                    <span>Galeri</span>
+                </a>
             </nav>
+
+            <!-- Tombol Galeri di Sisi Kanan Header Descan -->
+            <div class="flex items-center gap-2.5">
+                <button type="button" onclick="openDescanGaleriModal(event)" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer" title="Galeri Dokumentasi & Foto Desa Cantik">
+                    <i class="bi bi-images text-purple-600 text-sm"></i>
+                    <span>Galeri Desa</span>
+                </button>
+            </div>
 
 
         </div>
@@ -1960,6 +1972,149 @@
         window.addEventListener('resize', updateCoverflowCards);
 
 
+
+        // ==============================================================
+        // GALERI FOTO DESCAN RESMI
+        // ==============================================================
+        const descanGaleriDatabase = [
+            {
+                cat: 'pembinaan',
+                desa: 'Kec. Kodeoha',
+                title: 'Pelatihan Literasi Statistik Aparatur',
+                desc: 'Bimbingan teknis konsep, definisi, dan standarisasi kuesioner PODES bersama BPS Kolaka Utara.',
+                img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80',
+                badge: 'Pembinaan BPS'
+            },
+            {
+                cat: 'pembinaan',
+                desa: 'Kec. Tiwu',
+                title: 'Verifikasi & Rekonsiliasi Data Sektoral',
+                desc: 'Penyelarasan indikator kemiskinan ekstrem dan bansos P3KE bersama tim verifikator desa.',
+                img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=700&q=80',
+                badge: 'SDI Kolut'
+            },
+            {
+                cat: 'potensi',
+                desa: 'Desa Koroha & Tanggeawo',
+                title: 'Sentra Perkebunan Kakao Unggulan',
+                desc: 'Budidaya kakao rakyat sambung pucuk produktif dengan pembibitan varietas unggul Kolaka Utara.',
+                img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=700&q=80',
+                badge: 'Potensi Kakao'
+            },
+            {
+                cat: 'potensi',
+                desa: 'Desa Lapolu & Mattiro Bulu',
+                title: 'Agroindustri Cengkeh & Penyulingan Nilam',
+                desc: 'Hasil panen perkebunan cengkeh perbukitan serta pengolahan minyak atsiri nilam bernilai ekspor.',
+                img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=700&q=80',
+                badge: 'UMKM & Nilam'
+            },
+            {
+                cat: 'bahari',
+                desa: 'Desa Kamisi',
+                title: 'Pesisir Bahari & Sentra Teri Tradisional',
+                desc: 'Armada nelayan Teluk Bone dan penjemuran ikan teri asin tradisional pesisir Kodeoha.',
+                img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80',
+                badge: 'Pesona Bahari'
+            },
+            {
+                cat: 'bahari',
+                desa: 'Desa Mattiro Bulu',
+                title: 'Bentang Alam Perbukitan & Sumber Air',
+                desc: 'Panorama alam perbukitan asri yang menopang ketahanan pangan dan irigasi persawahan.',
+                img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=700&q=80',
+                badge: 'Panorama Alam'
+            },
+            {
+                cat: 'pelayanan',
+                desa: 'Kelurahan Mala-Mala',
+                title: 'Pelayanan Adminduk Terpadu Desa',
+                desc: 'Pusat layanan administrasi satu pintu dan pencatatan kependudukan digital presisi.',
+                img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=700&q=80',
+                badge: 'Layanan Publik'
+            },
+            {
+                cat: 'pelayanan',
+                desa: '6 Desa Binaan',
+                title: 'Posyandu Terpadu & Penanganan Stunting',
+                desc: 'Pemeriksaan rutin kesehatan ibu-anak dan pemantauan gizi balita terdata di dashboard desa.',
+                img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80',
+                badge: 'Kesehatan Warga'
+            }
+        ];
+
+        function renderDescanGaleri(category) {
+            const grid = document.getElementById('descanGaleriGrid');
+            if (!grid) return;
+
+            const filtered = category === 'all' 
+                ? descanGaleriDatabase 
+                : descanGaleriDatabase.filter(p => p.cat === category);
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="relative overflow-hidden aspect-4/3 bg-slate-100">
+                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" onclick="window.open('${p.img}', '_blank')">
+                        <div class="absolute top-2.5 left-2.5">
+                            <span class="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-xs text-white text-[9.5px] font-black uppercase">
+                                ${p.badge}
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2.5 right-2.5">
+                            <span class="px-2 py-0.5 rounded-md bg-black/60 text-emerald-300 text-[9.5px] font-bold">
+                                ${p.desa}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-black text-slate-900 text-xs group-hover:text-purple-700 transition leading-snug">${p.title}</h4>
+                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${p.desc}</p>
+                        </div>
+                        <div class="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-400 font-medium">Dokumentasi BPS</span>
+                            <button type="button" onclick="window.open('${p.img}', '_blank')" class="text-purple-600 font-bold hover:underline flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-arrows-fullscreen text-xs"></i>
+                                <span>Perbesar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterDescanGaleri(category, btn) {
+            document.querySelectorAll('.descan-galeri-btn').forEach(el => {
+                el.classList.remove('bg-purple-600', 'text-white', 'shadow-2xs');
+                el.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+            if (btn) {
+                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                btn.classList.add('bg-purple-600', 'text-white', 'shadow-2xs');
+            }
+            renderDescanGaleri(category);
+        }
+
+        function openDescanGaleriModal(e) {
+            if (e) e.preventDefault();
+            const modal = document.getElementById('descanGaleriModal');
+            if (modal) {
+                renderDescanGaleri('all');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                if (document.body) document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function closeDescanGaleriModal() {
+            const modal = document.getElementById('descanGaleriModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+            if (document.body) document.body.classList.remove('overflow-hidden');
+        }
+
 </script>
 
     <!-- ============================================================== -->
@@ -2008,6 +2163,74 @@
                         Tutup
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- MODAL GALERI FOTO & DOKUMENTASI DESA CANTIK KOLAKA UTARA       -->
+    <!-- ============================================================== -->
+    <div id="descanGaleriModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 flex flex-col max-h-[92vh] animate-in fade-in zoom-in duration-200">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-purple-900 via-purple-700 to-[#0b2545] text-white p-5 sm:p-6 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                        <i class="bi bi-images text-purple-200"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-base sm:text-xl font-black text-white leading-tight">
+                                Galeri Dokumentasi Desa Cantik Kolaka Utara
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-purple-300/20 text-purple-200 border border-purple-300/30 text-[10px] font-black uppercase tracking-wider">
+                                Dokumentasi Resmi
+                            </span>
+                        </div>
+                        <p class="text-xs text-purple-100/90 mt-1">
+                            Dokumentasi visual pembinaan statistik BPS, potensi perkebunan kakao, cengkeh, bahari, dan pelayanan 6 desa binaan.
+                        </p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeDescanGaleriModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm transition cursor-pointer" title="Tutup Galeri">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="px-5 py-3 border-b border-slate-200 bg-slate-50 flex items-center gap-2 overflow-x-auto shrink-0">
+                <button type="button" onclick="filterDescanGaleri('all', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-purple-600 text-white shadow-2xs cursor-pointer">
+                    Semua Foto (8)
+                </button>
+                <button type="button" onclick="filterDescanGaleri('pembinaan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
+                    Pembinaan BPS
+                </button>
+                <button type="button" onclick="filterDescanGaleri('potensi', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
+                    Potensi &amp; Kakao
+                </button>
+                <button type="button" onclick="filterDescanGaleri('bahari', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
+                    Pesona Bahari &amp; Alam
+                </button>
+                <button type="button" onclick="filterDescanGaleri('pelayanan', this)" class="descan-galeri-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-200 border border-slate-200 cursor-pointer">
+                    Pelayanan Desa
+                </button>
+            </div>
+
+            <!-- Photo Grid -->
+            <div id="descanGaleriGrid" class="p-5 sm:p-6 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
+                <!-- Injected via renderDescanGaleri() -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0">
+                <span class="flex items-center gap-1.5">
+                    <i class="bi bi-info-circle text-purple-600"></i>
+                    <span>Klik pada foto untuk melihat ukuran resolusi penuh.</span>
+                </span>
+                <button type="button" onclick="closeDescanGaleriModal()" class="px-5 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
+                    Tutup
+                </button>
             </div>
         </div>
     </div>
