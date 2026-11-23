@@ -99,13 +99,69 @@
   };
 
   const SECTORS = [
-    { id: 'demografi', name: 'Kependudukan', icon: 'bi-people-fill' },
-    { id: 'pendidikan', name: 'Pendidikan', icon: 'bi-mortarboard-fill' },
-    { id: 'kesehatan', name: 'Kesehatan', icon: 'bi-hospital-fill' },
-    { id: 'ekonomi', name: 'Ekonomi & Industri', icon: 'bi-buildings-fill' },
-    { id: 'lingkungan', name: 'Kelistrikan & Lingkungan', icon: 'bi-lightning-charge-fill' },
-    { id: 'keuangan', name: 'Keuangan & BUMDes', icon: 'bi-wallet2' },
-    { id: 'pemerintahan', name: 'Pemerintahan Desa', icon: 'bi-shield-check' }
+    { 
+      id: 'demografi', 
+      name: 'Kependudukan', 
+      icon: 'bi-people-fill',
+      badgeBg: 'bg-[#E6ECE6]',
+      badgeText: 'text-[#3B4D3B]',
+      badgeBorder: 'border-[#DCE3DD]',
+      accentBg: 'bg-[#F2F6F2]'
+    },
+    { 
+      id: 'pendidikan', 
+      name: 'Pendidikan', 
+      icon: 'bi-mortarboard-fill',
+      badgeBg: 'bg-[#E3EFE8]',
+      badgeText: 'text-[#285A43]',
+      badgeBorder: 'border-[#CCE3D5]',
+      accentBg: 'bg-[#F0F6F2]'
+    },
+    { 
+      id: 'kesehatan', 
+      name: 'Kesehatan', 
+      icon: 'bi-hospital-fill',
+      badgeBg: 'bg-[#E0EFEA]',
+      badgeText: 'text-[#1E5646]',
+      badgeBorder: 'border-[#C5E3D9]',
+      accentBg: 'bg-[#EFF7F4]'
+    },
+    { 
+      id: 'ekonomi', 
+      name: 'Ekonomi & Industri', 
+      icon: 'bi-buildings-fill',
+      badgeBg: 'bg-[#F7EFE1]',
+      badgeText: 'text-[#8C6226]',
+      badgeBorder: 'border-[#EBD6B5]',
+      accentBg: 'bg-[#FDF9F2]'
+    },
+    { 
+      id: 'lingkungan', 
+      name: 'Kelistrikan & Lingkungan', 
+      icon: 'bi-lightning-charge-fill',
+      badgeBg: 'bg-[#E2F2E5]',
+      badgeText: 'text-[#23683A]',
+      badgeBorder: 'border-[#C4E5CA]',
+      accentBg: 'bg-[#F0F8F2]'
+    },
+    { 
+      id: 'keuangan', 
+      name: 'Keuangan & BUMDes', 
+      icon: 'bi-wallet2',
+      badgeBg: 'bg-[#E2ECF0]',
+      badgeText: 'text-[#245366]',
+      badgeBorder: 'border-[#C3DCE5]',
+      accentBg: 'bg-[#EFF5F8]'
+    },
+    { 
+      id: 'pemerintahan', 
+      name: 'Pemerintahan Desa', 
+      icon: 'bi-shield-check',
+      badgeBg: 'bg-[#EBEFE2]',
+      badgeText: 'text-[#445E2A]',
+      badgeBorder: 'border-[#D5E2C4]',
+      accentBg: 'bg-[#F4F7EE]'
+    }
   ];
 
   // Helper: Clean parsing of population density (handles comma, spaces, nulls)
@@ -647,7 +703,7 @@
       `;
     }).join('');
 
-    // Generate content based on active sector
+    // Generate content based on active sector with colorful theme accents
     let sectorContentHtml = '';
 
     if (sec.id === 'demografi') {
@@ -658,26 +714,27 @@
       const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / TOTAL PENDUDUK</span>
             <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPop.toLocaleString('id-ID')}</div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}</span>
           </div>
-          <div class="px-3">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / KEPADATAN</span>
             <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${avgKepadatan}</div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Jiwa / km² (Rata-rata)</span>
           </div>
-          <div class="pl-3">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / RASIO GENDER</span>
             <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${sexRatio}</div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Laki-laki per 100 Perempuan</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Mencakup distribusi kependudukan di ${desaList.length} desa/kelurahan di Kecamatan ${k.nama}.
-        </p>
+        <div class="p-3 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} flex items-center justify-between text-xs my-2">
+          <span class="text-[#5E6B61] font-sans">Cakupan wilayah administrasi: <strong class="text-[#1D241E]">${desaList.length} Desa & Kelurahan</strong></span>
+          <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">100% Terdata</span>
+        </div>
       `;
     } else if (sec.id === 'pendidikan') {
       const totTK = desaList.reduce((a, b) => a + (b.pendidikan.tk || 0), 0);
@@ -689,36 +746,39 @@
       const totalSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
 
       sectorContentHtml = `
-        <div class="border-t border-b border-[#DCE3DD] py-5 my-6 space-y-4">
-          <div class="flex items-baseline justify-between">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">TOTAL FASILITAS PENDIDIKAN</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans">${totalSekolah} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#285A43]"></span>
+            <span class="text-xs font-bold text-[#1D241E] font-sans">Total Fasilitas Sekolah</span>
           </div>
-          <div class="grid grid-cols-6 divide-x divide-[#DCE3DD] text-center pt-2">
-            <div class="pr-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">TK/PAUD</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totTK}</span>
-            </div>
-            <div class="px-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">SD/MI</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSD}</span>
-            </div>
-            <div class="px-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">SMP/MTs</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMP}</span>
-            </div>
-            <div class="px-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">SMA/MA</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMA}</span>
-            </div>
-            <div class="px-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">SMK</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMK}</span>
-            </div>
-            <div class="pl-2">
-              <span class="text-[10px] font-mono text-[#8A9B86] block">PT</span>
-              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totPT}</span>
-            </div>
+          <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+            ${totalSekolah} <span class="text-xs font-semibold text-[#5E6B61]">Unit</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 text-center my-3">
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">TK/PAUD</span>
+            <span class="text-lg sm:text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-0.5 block">${totTK}</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">SD/MI</span>
+            <span class="text-lg sm:text-xl font-bold ${sec.badgeText} tabular-nums font-sans mt-0.5 block">${totSD}</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">SMP/MTs</span>
+            <span class="text-lg sm:text-xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-0.5 block">${totSMP}</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">SMA/MA</span>
+            <span class="text-lg sm:text-xl font-bold text-[#566B53] tabular-nums font-sans mt-0.5 block">${totSMA}</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">SMK</span>
+            <span class="text-lg sm:text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-0.5 block">${totSMK}</span>
+          </div>
+          <div class="bg-white p-2.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">PT</span>
+            <span class="text-lg sm:text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-0.5 block">${totPT}</span>
           </div>
         </div>
         <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
@@ -734,26 +794,27 @@
       const totPosbindu = desaList.reduce((a, b) => a + (b.kesehatan.posbindu || 0), 0);
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / RS & PUSKESMAS</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totRS + totPusk} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1E5646] tabular-nums font-sans mt-1">${totRS + totPusk} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Faskes Rujukan Utama</span>
           </div>
-          <div class="px-3">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PUSTU & POSKESDES</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPustu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <div class="text-2xl sm:text-3xl font-bold text-[#2F6E58] tabular-nums font-sans mt-1">${totPustu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Layanan Kesehatan Desa</span>
           </div>
-          <div class="pl-3">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / POSYANDU AKTIF</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totPosyandu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPosyandu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Posbindu: ${totPosbindu} • Apotek: ${totApotek}</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Kapasitas fasilitas dan tenaga medis dalam penanganan kesehatan masyarakat desa.
-        </p>
+        <div class="p-3 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} flex items-center justify-between text-xs my-2">
+          <span class="text-[#5E6B61] font-sans">Kapasitas penanganan kesehatan masyarakat desa:</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">${totPosyandu} Posyandu Aktif</span>
+        </div>
       `;
     } else if (sec.id === 'ekonomi') {
       const totIMK = desaList.reduce((a, b) => a + (b.ekonomi.imk || 0), 0);
@@ -764,26 +825,32 @@
       const totHotel = desaList.reduce((a, b) => a + (b.ekonomi.hotel + b.ekonomi.penginapan), 0);
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / SENTRA IMK</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totIMK.toLocaleString('id-ID')}</div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Unit Usaha Mikro/Kecil</span>
+        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
+              <i class="bi bi-shop"></i>
+            </span>
+            <div>
+              <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Sentra Industri Mikro & Kecil (IMK)</span>
+              <span class="text-xs text-[#5E6B61]">Pusat kerajinan & olahan pangan rakyat</span>
+            </div>
           </div>
-          <div class="px-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PASAR TRADISIONAL</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPasar} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
+          <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+            ${totIMK.toLocaleString('id-ID')} <span class="text-xs font-semibold ${sec.badgeText}/80">Unit</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 my-3">
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / PASAR TRADISIONAL</span>
+            <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPasar} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Minimarket / Toko: ${totMini}</span>
           </div>
-          <div class="pl-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / LEMBAGA KEUANGAN</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totBank + totKop} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / LEMBAGA KEUANGAN</span>
+            <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totBank + totKop} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bank: ${totBank} • Koperasi: ${totKop}</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Dukungan sarana perdagangan rakyat, lembaga keuangan perbankan, dan penginapan (${totHotel} unit).
-        </p>
       `;
     } else if (sec.id === 'lingkungan') {
       const totPLN = desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
@@ -794,26 +861,37 @@
       const bebasCemarDesa = desaList.filter(d => d.lingkungan.bebas_pencemaran).length;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / LISTRIK PLN</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPLN.toLocaleString('id-ID')} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Rasio Cakupan: ${rasioPLN}%</span>
+        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </span>
+            <div>
+              <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Pelanggan Listrik PLN</span>
+              <span class="text-xs text-[#5E6B61]">Elektrifikasi rumah tangga</span>
+            </div>
           </div>
-          <div class="px-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / NON-PLN & MANDIRI</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totNonPLN} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
+          <div class="text-right">
+            <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+              ${totPLN.toLocaleString('id-ID')} <span class="text-xs font-semibold ${sec.badgeText}/80">KK</span>
+            </div>
+            <span class="inline-block px-2 py-0.5 rounded-full ${sec.badgeBg} ${sec.badgeText} text-[10px] font-bold border ${sec.badgeBorder}">
+              Rasio ${rasioPLN}%
+            </span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 my-3">
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / NON-PLN & MANDIRI</span>
+            <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totNonPLN} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanpa Listrik: ${totTanpa} KK</span>
           </div>
-          <div class="pl-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / LINGKUNGAN HIDUP</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${bebasCemarDesa} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / LINGKUNGAN HIDUP</span>
+            <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${bebasCemarDesa} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bebas Pencemaran Air & Udara</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Kondisi sanitasi, kebersihan lingkungan perairan dan udara, serta kemandirian energi desa.
-        </p>
       `;
     } else if (sec.id === 'keuangan') {
       const totBumdes = desaList.reduce((a, b) => a + (b.pemerintahan.bumdes || 0), 0);
@@ -823,26 +901,32 @@
       const countSID = desaList.filter(d => d.pemerintahan.sid && d.pemerintahan.sid !== 'Tidak Ada').length;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / KEBERADAAN BUMDES</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totBumdes} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Penggerak Ekonomi Desa</span>
+        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
+              <i class="bi bi-wallet2"></i>
+            </span>
+            <div>
+              <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Keberadaan BUMDes</span>
+              <span class="text-xs text-[#5E6B61]">Penggerak ekonomi & kemandirian desa</span>
+            </div>
           </div>
-          <div class="px-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / DIGITALISASI (SID)</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${countSID} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
+          <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+            ${totBumdes} <span class="text-xs font-semibold ${sec.badgeText}/80">Unit</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 my-3">
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / DIGITALISASI (SID)</span>
+            <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${countSID} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">SISKEUDES: ${countSiskeudes} Desa</span>
           </div>
-          <div class="pl-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / ASET & WISATA</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totWisata} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / ASET & WISATA</span>
+            <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totWisata} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanah Kas Desa: ${totTanahKas} Unit</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Akuntabilitas tata kelola keuangan, digitalisasi sistem informasi desa, dan aset pendapatan desa.
-        </p>
       `;
     } else if (sec.id === 'pemerintahan') {
       const totAparat = desaList.reduce((a, b) => a + (b.pemerintahan.total_aparat || 0), 0);
@@ -851,26 +935,32 @@
       const kadesP = desaList.filter(d => d.pemerintahan.kades_gender === 'Perempuan').length;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
-          <div class="pr-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / APARATUR DESA</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totAparat} <span class="text-xs font-normal text-[#5E6B61]">Orang</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Kades, Sekdes & Perangkat</span>
+        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
+              <i class="bi bi-shield-check"></i>
+            </span>
+            <div>
+              <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Aparatur Pemerintahan Desa</span>
+              <span class="text-xs text-[#5E6B61]">Kades, Sekdes & seluruh perangkat</span>
+            </div>
           </div>
-          <div class="px-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PENDIDIKAN KADES</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${kadesS1} <span class="text-xs font-normal text-[#5E6B61]">Kades</span></div>
+          <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+            ${totAparat} <span class="text-xs font-semibold ${sec.badgeText}/80">Orang</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 my-3">
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / PENDIDIKAN KADES</span>
+            <div class="text-2xl font-bold ${sec.badgeText} tabular-nums font-sans mt-1">${kadesS1} <span class="text-xs font-normal text-[#5E6B61]">Kades</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Jenjang D-IV / S1 ke atas</span>
           </div>
-          <div class="pl-3">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / GENDER KADES</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${kadesL} L • ${kadesP} P</div>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
+            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / GENDER KADES</span>
+            <div class="text-2xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${kadesL} L • ${kadesP} P</div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Komposisi Kepemimpinan</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Kapasitas birokrasi dan profil kepemimpinan kepala desa di seluruh kecamatan.
-        </p>
       `;
     }
 
@@ -890,36 +980,43 @@
                 ${dotsHtml}
               </div>
               <div class="flex items-center gap-1 border-l border-[#DCE3DD] pl-3">
-                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-full border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer" title="Sektor Sebelumnya">
+                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Sebelumnya">
                   <i class="bi bi-chevron-left"></i>
                 </button>
-                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-full border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer" title="Sektor Selanjutnya">
+                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Selanjutnya">
                   <i class="bi bi-chevron-right"></i>
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="border-t border-[#DCE3DD] my-6"></div>
+          <div class="border-t border-[#DCE3DD] my-5"></div>
 
-          <!-- Active Sector Header -->
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center text-base shrink-0">
-              <i class="bi ${sec.icon}"></i>
+          <!-- Active Sector Card Container (Elevated Crisp Card with Color Badge) -->
+          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCE3DD] shadow-2xs">
+            <div class="flex items-center justify-between pb-3.5 border-b border-[#DCE3DD]/80">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} flex items-center justify-center text-lg shrink-0 shadow-2xs">
+                  <i class="bi ${sec.icon}"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono uppercase tracking-[0.18em] ${sec.badgeText} font-bold">SEKTOR PODES AKTIF</div>
+                  <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] uppercase tracking-wide mt-0.5">
+                    ${sec.name}
+                  </h4>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} text-xs font-semibold font-mono">
+                <span>${activeSectorIndex + 1} / 7</span>
+              </span>
             </div>
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">SEKTOR PODES AKTIF</div>
-              <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] uppercase tracking-wide mt-0.5">
-                ${sec.name}
-              </h4>
-            </div>
+
+            <!-- Dynamic Content for Active Sector -->
+            ${sectorContentHtml}
           </div>
-
-          <!-- Dynamic Content for Active Sector -->
-          ${sectorContentHtml}
         </div>
 
-        <!-- Bottom Sector Quick Chips (Senada & Minimalist) -->
+        <!-- Bottom Sector Quick Chips (Interactive Pill Bar with Sector Accents) -->
         <div class="mt-6 pt-4 border-t border-[#DCE3DD]">
           <div class="flex items-center justify-between mb-2.5">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">NAVIGASI 7 SEKTOR PODES</span>
@@ -927,8 +1024,8 @@
           </div>
           <div class="flex flex-wrap gap-1.5 sm:gap-2">
             ${SECTORS.map((s, idx) => `
-              <button onclick="window.setSectorSlide(${idx})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-2xs' : 'bg-[#E6ECE6]/60 hover:bg-[#E6ECE6] text-[#5E6B61] hover:text-[#1D241E]'}">
-                <i class="bi ${s.icon} ${idx === activeSectorIndex ? 'text-white' : 'text-[#3B4D3B]'}"></i>
+              <button onclick="window.setSectorSlide(${idx})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-xs' : 'bg-white hover:' + s.badgeBg + ' text-[#5E6B61] hover:' + s.badgeText + ' border border-[#DCE3DD] hover:' + s.badgeBorder + ' shadow-2xs'}">
+                <i class="bi ${s.icon} ${idx === activeSectorIndex ? 'text-white' : s.badgeText}"></i>
                 <span>${s.name}</span>
               </button>
             `).join('')}

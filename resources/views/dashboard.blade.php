@@ -748,7 +748,7 @@
                             </div>
 
                             <!-- Panel Kanan (Swipeable Card: Sektor Lainnya) -->
-                            <div id="kecDetailRightPanel" class="w-full h-full bg-white">
+                            <div id="kecDetailRightPanel" class="w-full h-full bg-[#F8FAF8]">
                                 <!-- Injected by podes_explorer.js -->
                             </div>
                         </div>
