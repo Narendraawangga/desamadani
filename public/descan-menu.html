@@ -502,7 +502,7 @@
             <div id="dcMateriSub" class="dc-sub hidden">
                 <button type="button" onclick="switchNavMenu('video')" id="sub-video" class="dc-sub-item">
                     <i class="bi bi-play-circle-fill text-xs mr-1 text-emerald-600"></i>
-                    <span>Video Tutorial</span>
+                    <span>Video Mikrolearning</span>
                 </button>
                 <button type="button" onclick="switchNavMenu('pretest')" id="sub-pretest" class="dc-sub-item">
                     <i class="bi bi-patch-question-fill text-xs mr-1 text-emerald-600"></i>
@@ -510,7 +510,7 @@
                 </button>
                 <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item">
                     <i class="bi bi-journal-bookmark-fill text-xs mr-1 text-emerald-600"></i>
-                    <span>Buku Panduan</span>
+                    <span>Buku Pedoman</span>
                 </button>
             </div>
 
@@ -757,10 +757,10 @@
                             <div class="lg:col-span-2 relative z-[1]">
                                 <span class="dc-chip mb-3"><span style="color:#6ee7b7;font-size:8px;">●</span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
                                 <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2" style="letter-spacing:-.02em;">Selamat Datang di Desa Cantik</h2>
-                                <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video tutorial, buku panduan, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
+                                <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video mikrolearning, buku pedoman, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint">✎ Lanjutkan Data PODES</button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Panduan</button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Pedoman</button>
                                 </div>
                             </div>
                             <div class="dc-status-card">
@@ -3089,7 +3089,7 @@
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <!-- Card 1: Video Tutorial Microlearning -->
+                                <!-- Card 1: Video Mikrolearning -->
                                 <div class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer" onclick="switchNavMenu('video')">
                                     <div>
                                         <!-- Top Preview Banner with 3D Play Visual -->
@@ -3105,7 +3105,7 @@
                                         </div>
 
                                         <!-- Title & 1-Line Description -->
-                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-emerald-700 transition">Video Tutorial Desa Cantik</h4>
+                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-emerald-700 transition">Video Mikrolearning Desa Cantik</h4>
                                         <p class="text-xs text-slate-500 mt-1 leading-relaxed line-clamp-1" title="Video microlearning tata cara pengumpulan data dan standarisasi statistik desa.">
                                             Video microlearning tata cara pengumpulan data dan standarisasi statistik desa.
                                         </p>
@@ -3158,7 +3158,7 @@
                                         <div class="h-28 sm:h-32 rounded-2xl bg-gradient-to-br from-[#b45309] via-[#d97706] to-[#059669] relative overflow-hidden flex items-center justify-center shadow-inner group-hover:scale-[1.02] transition duration-300">
                                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_70%)]"></div>
                                             <!-- Floating Tags -->
-                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-amber-100 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">BUKU PANDUAN</span>
+                                            <span class="absolute top-2.5 left-2.5 text-[9px] font-black uppercase tracking-wider text-amber-100 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">BUKU PEDOMAN</span>
                                             <span class="absolute top-2.5 right-2.5 text-[9px] font-black text-white bg-amber-950/60 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20">30 Lembar</span>
                                             <!-- Center 3D Book Icon -->
                                             <div class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition duration-300">
@@ -3167,7 +3167,7 @@
                                         </div>
 
                                         <!-- Title & 1-Line Description -->
-                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-amber-700 transition">Buku Panduan &amp; Rumus</h4>
+                                        <h4 class="font-black text-slate-900 text-sm mt-3 group-hover:text-amber-700 transition">Buku Pedoman &amp; Rumus</h4>
                                         <p class="text-xs text-slate-500 mt-1 leading-relaxed line-clamp-1" title="Pedoman teknis Excel terstandarisasi dan modul rumus statistik sektoral.">
                                             Pedoman teknis Excel terstandarisasi dan modul rumus statistik sektoral.
                                         </p>
@@ -3212,7 +3212,7 @@
                                     </div>
 
                                     <!-- Tahap 2: Video - SEDANG AKTIF / DIKERJAKAN (Border Kuning Menyala + Animasi) -->
-                                    <div onclick="switchNavMenu('video')" title="Tahap 2: Sedang Aktif - Tonton Video Tutorial" class="p-2 rounded-2xl bg-amber-500/20 border-2 border-amber-300 ring-2 ring-amber-400/40 text-amber-200 shadow-[0_0_18px_rgba(245,158,11,0.35)] flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-105 transition group relative animate-pulse">
+                                    <div onclick="switchNavMenu('video')" title="Tahap 2: Sedang Aktif - Tonton Video Mikrolearning" class="p-2 rounded-2xl bg-amber-500/20 border-2 border-amber-300 ring-2 ring-amber-400/40 text-amber-200 shadow-[0_0_18px_rgba(245,158,11,0.35)] flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-105 transition group relative animate-pulse">
                                         <div class="relative">
                                             <i class="bi bi-play-circle-fill text-amber-300 text-base"></i>
                                             <span class="absolute -top-1.5 -right-2 w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
@@ -3222,7 +3222,7 @@
                                     </div>
 
                                     <!-- Tahap 3: Posttest - TERKUNCI (Opacity Rendah + Ikon Gembok) -->
-                                    <div onclick="showToast('⚠️ Selesaikan materi video tutorial terlebih dahulu untuk membuka Post-test.')" title="Tahap 3: Post-test terkunci" class="p-2 rounded-2xl bg-white/5 border border-white/10 opacity-60 text-white/50 flex flex-col items-center justify-center gap-1 cursor-not-allowed hover:opacity-80 transition relative">
+                                    <div onclick="showToast('⚠️ Selesaikan materi video mikrolearning terlebih dahulu untuk membuka Post-test.')" title="Tahap 3: Post-test terkunci" class="p-2 rounded-2xl bg-white/5 border border-white/10 opacity-60 text-white/50 flex flex-col items-center justify-center gap-1 cursor-not-allowed hover:opacity-80 transition relative">
                                         <div class="relative">
                                             <i class="bi bi-patch-question-fill text-white/40 text-base"></i>
                                             <span class="absolute -top-1.5 -right-2 w-3.5 h-3.5 rounded-full bg-slate-800 text-amber-300 flex items-center justify-center text-[8px]"><i class="bi bi-lock-fill"></i></span>
@@ -3392,7 +3392,7 @@
     </div>
 
                 <div id="view-video" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
-                    <!-- 1. Header Video Tutorial (Ikon Lucide PlayCircle Hijau & Tombol Navigasi Tunggal) -->
+                    <!-- 1. Header Video Mikrolearning (Ikon Lucide PlayCircle Hijau & Tombol Navigasi Tunggal) -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 p-2.5 shadow-2xs shrink-0">
@@ -3402,7 +3402,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Tutorial</h2>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Mikrolearning</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
                             </div>
                         </div>
@@ -3868,7 +3868,7 @@
                 <!-- BUKU PANDUAN                                                          -->
                 <!-- ===================================================================== -->
                 <div id="view-buku" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
-                    <!-- 1. Header Buku Panduan (Ikon Lucide BookOpen Hijau + Pencarian Cepat + Tombol Menu Pembelajaran) -->
+                    <!-- 1. Header Buku Pedoman (Ikon Lucide BookOpen Hijau + Pencarian Cepat + Tombol Menu Pembelajaran) -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 p-2.5 shadow-2xs shrink-0">
@@ -3878,7 +3878,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buku Panduan</h2>
+                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buku Pedoman</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Buku pedoman Excel, rumus dasar statistik sektoral, dan SK Agen Statistik</p>
                             </div>
                         </div>
@@ -3889,7 +3889,7 @@
                                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
                                     <i class="bi bi-search"></i>
                                 </span>
-                                <input type="text" id="searchBukuInput" onkeyup="filterBukuKatalog()" placeholder="Cari buku panduan atau dokumen..." class="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
+                                <input type="text" id="searchBukuInput" onkeyup="filterBukuKatalog()" placeholder="Cari buku pedoman atau dokumen..." class="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
                             </div>
                             <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-800 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer shrink-0">
                                 <i class="bi bi-arrow-left text-sm"></i>
@@ -7155,7 +7155,7 @@ function triggerPubDownload() {
                         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                             ${isPre ? `
                                 <button type="button" onclick="closePretestModal(); switchPemTab('video');" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
-                                    <span>Lanjut ke Video Tutorial</span>
+                                    <span>Lanjut ke Video Mikrolearning</span>
                                     <i class="bi bi-arrow-right"></i>
                                 </button>
                                 <button type="button" onclick="closePretestModal();" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
