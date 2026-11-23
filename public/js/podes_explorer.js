@@ -240,7 +240,7 @@
   function scrollKecCarousel(direction) {
     const container = document.getElementById('kecamatanCarouselTrack');
     if (!container) return;
-    const scrollAmount = 280;
+    const scrollAmount = 340;
     container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     setTimeout(updateCarouselScrollIndicator, 300);
   }
@@ -263,42 +263,47 @@
     if (!track || !masterData) return;
 
     let html = '';
-    KEC_ORDER.forEach(kKey => {
+    KEC_ORDER.forEach((kKey, idx) => {
       const k = masterData.kecamatan[kKey];
       if (!k) return;
 
       const totL = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
       const totP = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
       const totPop = totL + totP;
+      const indexStr = String(idx + 1).padStart(2, '0');
 
       const meta = KEC_META[kKey] || {
         photo: '/images/jadesta/kebun_kakao_totallang.jpg'
       };
 
       html += `
-        <div class="kec-carousel-card relative w-[220px] sm:w-[250px] h-[340px] sm:h-[380px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none border border-white/10 flex flex-col justify-end" 
+        <div class="kec-carousel-card relative w-[290px] sm:w-[330px] h-[185px] sm:h-[210px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 select-none flex flex-col justify-end border border-slate-700/20" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
-             title="Klik untuk eksplorasi Kecamatan ${k.nama}">
+             title="Klik untuk melihat data Kecamatan ${k.nama}">
           
-          <!-- Full-Bleed Background Photo with Zoom on Hover -->
+          <!-- Full-Bleed Atmospheric Landscape Photo (Featured Work Style) -->
           <img src="${meta.photo}" 
                alt="Kecamatan ${k.nama}" 
-               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
                onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
 
-          <!-- Smooth Dark Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent pointer-events-none"></div>
+          <!-- Smooth Dark Gradient Overlay at Bottom -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
 
-          <!-- Bottom Area: Polos Hanya Nama dan Penduduk -->
-          <div class="relative z-10 p-5 sm:p-6">
-            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight uppercase group-hover:text-emerald-300 transition-colors drop-shadow-md">
-              ${k.nama}
-            </h3>
-            <p class="text-sm sm:text-base font-bold text-slate-200 mt-1 flex items-baseline gap-1.5 drop-shadow">
-              <span class="text-white text-base sm:text-lg font-black tabular-nums">${totPop.toLocaleString('id-ID')}</span>
-              <span class="text-xs text-slate-300 font-semibold uppercase tracking-wider">Jiwa</span>
-            </p>
+          <!-- Bottom Typography: Name on left, Subtitle underneath, Number on right -->
+          <div class="relative z-10 p-5 sm:p-5.5 w-full flex items-end justify-between">
+            <div>
+              <h3 class="font-editorial text-xl sm:text-2xl font-bold text-white tracking-wider uppercase leading-none group-hover:text-emerald-200 transition-colors drop-shadow-md">
+                ${k.nama}
+              </h3>
+              <p class="text-[10px] sm:text-[11px] font-semibold tracking-widest text-slate-300 uppercase mt-1.5 drop-shadow">
+                ${totPop.toLocaleString('id-ID')} PENDUDUK
+              </p>
+            </div>
+            <div class="text-xs sm:text-sm font-mono font-medium text-slate-300/80 tracking-widest drop-shadow pb-0.5">
+              ${indexStr}
+            </div>
           </div>
         </div>
       `;

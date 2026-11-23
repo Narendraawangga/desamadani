@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -73,7 +73,7 @@
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
     <script src="/js/desa_presisi_engine.js?v=20261123_03"></script>
-    <script src="/js/podes_explorer.js?v=20261123_05"></script>
+    <script src="/js/podes_explorer.js?v=20261123_06"></script>
 
     <style>
         html, body {
@@ -166,6 +166,12 @@
         .no-scrollbar {
             -ms-overflow-style: none !important;
             scrollbar-width: none !important;
+        }
+    
+    
+        .font-editorial {
+            font-family: 'Playfair Display', Didot, 'Bodoni MT', Georgia, serif;
+            letter-spacing: 0.04em;
         }
     
     </style>
