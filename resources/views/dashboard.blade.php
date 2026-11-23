@@ -71,8 +71,8 @@
 
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261123_08"></script>
-    <script src="/js/podes_explorer.js?v=20261123_08"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261123_09"></script>
+    <script src="/js/podes_explorer.js?v=20261123_09"></script>
 
     <style>
         html, body {
@@ -426,7 +426,7 @@
 </svg>
 
 
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
                         
                         <!-- Sisi Kiri: Tipografi Bold Desapresisi, Pill Buttons & 4 KPI Riil 2025 -->
@@ -595,7 +595,7 @@
             </div>
 
             <!-- Strip 3 Koridor Wilayah Pembangunan (Regional Dispatches) -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="text-center max-w-2xl mx-auto mb-8">
                     <span class="text-xs font-bold text-[#3B4D3B] uppercase tracking-wider">Kewilayahan PODES 2025</span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">3 Koridor Pembangunan Kolaka Utara</h2>
@@ -659,7 +659,7 @@
         <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (TWO-STAGE EXPLORATION) -->
         <!-- ========================================================================= -->
         <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full py-8 sm:py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #DCE3DD) -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DCE3DD] pb-6">
@@ -819,7 +819,7 @@
         <!-- HALAMAN 3: PETA TEMATIK INTERAKTIF (LEAFLET 15 KECAMATAN + 6 LAPISAN DATA)-->
         <!-- ========================================================================= -->
         <section id="portalPage3" class="portal-page {{ $curPage === 3 ? 'active' : '' }} w-full py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-5">
                     <div>
@@ -935,7 +935,7 @@
         <!-- HALAMAN 4: 6 DESA CANTIK (CINTA STATISTIK - 100% ANGKA RIIL PODES 2025)   -->
         <!-- ========================================================================= -->
         <section id="portalPage4" class="portal-page {{ $curPage === 4 ? 'active' : '' }} w-full py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
                     <div>
@@ -1775,7 +1775,7 @@
         <!-- HALAMAN 5: PUBLIKASI & TENTANG MADANI (KATALOG 9 BERKAS + ARSITEKTUR SDI) -->
         <!-- ========================================================================= -->
         <section id="portalPage5" class="portal-page {{ $curPage === 5 ? 'active' : '' }} w-full py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                 
                 <div class="border-b border-slate-200 pb-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#3B4D3B] text-xs font-bold mb-2">
@@ -1950,7 +1950,7 @@
 
     <!-- FOOTER RESMI -->
     <footer class="bg-white border-t border-slate-200 py-8 text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
                 <span class="font-extrabold text-slate-700">Desa Madani Kolaka Utara</span>
                 <span>•</span>
