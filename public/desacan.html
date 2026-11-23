@@ -652,10 +652,16 @@
                     </div>
                 </div>
 
-                <!-- Tab Switcher -->
+                <!-- View Switcher: Visualisasi Grafik vs Tabel Monografi -->
                 <div class="flex items-center gap-1 p-1 rounded-xl bg-white border border-slate-200 shadow-xs">
-                    <button type="button" onclick="switchVisualTab('dashboard')" id="btnTabDashboard" class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📊</span><span>Dashboard Makro</span></button>
-                    <button type="button" onclick="switchVisualTab('analytics')" id="btnTabAnalytics" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📈</span><span>Analitik Sektoral</span></button>
+                    <button type="button" onclick="switchDashboardMode('grafik')" id="btnModeGrafik" class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 bg-[#0E7C5A] text-white shadow-xs">
+                        <span>📊</span>
+                        <span>Visualisasi Grafik</span>
+                    </button>
+                    <button type="button" onclick="switchDashboardMode('monografi')" id="btnModeMonografi" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                        <span>📋</span>
+                        <span>Tabel Monografi</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -854,55 +860,879 @@
             </div>
         </div>
 
-        <!-- ============ TAB 2: ANALITIK SEKTORAL ============ -->
-        <div id="viewAnalytics" class="space-y-6 hidden">
+        <!-- ============ MODE 2: TABEL MONOGRAFI RESMI 6 DESA BINAAN ============ -->
+        <div id="viewMonografi" class="space-y-6 hidden">
 
-            <div class="card-surface p-4 sm:p-5">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
-                    <div class="text-[11px] font-black text-slate-500 uppercase tracking-wider">Pilih desa</div>
-                    <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 text-xs font-bold">
-                        <button type="button" onclick="filterAnalitikVillage('all')" id="pill-desa-all" class="pill-filter active px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Semua Desa (6)</button>
-                    <button type="button" onclick="filterAnalitikVillage('kamisi')" id="pill-desa-kamisi" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Kamisi (Kodeoha)</button>
-                    <button type="button" onclick="filterAnalitikVillage('koroha')" id="pill-desa-koroha" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Koroha (Kodeoha)</button>
-                    <button type="button" onclick="filterAnalitikVillage('malamala')" id="pill-desa-malamala" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Mala-Mala (Kodeoha)</button>
-                    <button type="button" onclick="filterAnalitikVillage('lapolu')" id="pill-desa-lapolu" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Lapolu (Tiwu)</button>
-                    <button type="button" onclick="filterAnalitikVillage('tanggeawo')" id="pill-desa-tanggeawo" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Tanggeawo (Tiwu)</button>
-                    <button type="button" onclick="filterAnalitikVillage('mattirobulu')" id="pill-desa-mattirobulu" class="pill-filter px-3.5 py-1.5 rounded-xl transition cursor-pointer shrink-0">Mattiro Bulu (Tiwu)</button>
+            <!-- ============================================================== -->
+            <!-- 1. KARTU REKAPITULASI MONOGRAFI 6 DESA BINAAN (SEMUA DESA)     -->
+            <!-- ============================================================== -->
+            <div id="monografi-card-all" class="monografi-village-card" style="display: block;">
+                <!-- Header Banner Rekapitulasi 6 Desa -->
+                <div class="bg-gradient-to-r from-emerald-800 via-teal-900 to-emerald-950 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg border border-emerald-700/50">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                                <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                            </div>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Rekapitulasi 6 Desa Binaan</h3>
+                            <p class="text-emerald-100 text-sm mt-1">Kecamatan Kodeoha &amp; Tiwu • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">5 Desa &amp; 1 Kelurahan</span></p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a href="#desa" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                                <span>Buka Portal DESCAN</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                            <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                <span>Cetak</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div id="analitikSubtext" class="text-[11px] text-slate-400 font-medium mt-2">Dasar perhitungan: 1.833 keluarga (3 Desa/Kelurahan di Kec. Kodeoha & 3 Desa di Kec. Tiwu). Terintegrasi PODES 2025 BPS Kolut.</div>
+
+                <!-- 4 Kolom Utama Monografi -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                    <!-- 1. Kependudukan -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                                <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                            </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                        </div>
+                        <div class="space-y-2.5 text-xs text-slate-600">
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">8.734 Jiwa</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Total Keluarga:</span><span class="font-semibold text-slate-700">2.426 KK</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">4.482 Jiwa</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">4.252 Jiwa</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio Rata-rata:</span><span class="font-semibold text-slate-700">105,41</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Ekonomi & IMK -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                                <h4 class="font-bold text-sm text-slate-800">Ekonomi &amp; IMK</h4>
+                            </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                        </div>
+                        <div class="space-y-2.5 text-xs text-slate-600">
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-700 text-sm">153 Unit</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Perkebunan &amp; Bahari</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Kakao, Cengkeh, Nilam</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">12 Unit</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-emerald-600">Tersedia di 6 Desa</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Elektrifikasi & Alam -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                                <h4 class="font-bold text-sm text-slate-800">Elektrifikasi &amp; Alam</h4>
+                            </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                        </div>
+                        <div class="space-y-2.5 text-xs text-slate-600">
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">2.426 KK (100%)</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">0 KK</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Seluruh Desa</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Pesisir &amp; Perbukitan</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Tata Kelola & Aset -->
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                                <h4 class="font-bold text-sm text-slate-800">Tata Kelola &amp; Aset</h4>
+                            </div>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                        </div>
+                        <div class="space-y-2.5 text-xs text-slate-600">
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">52 Orang</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">6 Unit Aktif</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">100% Diperbaharui</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Terpadu SDI</span></div>
+                            <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Lengkap 6 Desa</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Horizontal Bawah -->
+                <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🎓</span>
+                        <div>
+                            <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                            <div class="text-slate-500 mt-0.5">TK: 8 • SD/MI: 8 • SMP/MTs: 3 • SMA/SMK: 1 • Total: 20 unit pendidikan.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🏥</span>
+                        <div>
+                            <div class="font-bold text-slate-800">Layanan Kesehatan &amp; Posyandu</div>
+                            <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 6 • Posyandu Aktif: 12 • Posbindu: 6 • Bidan Siaga: 6.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">👤</span>
+                        <div>
+                            <div class="font-bold text-slate-800">Kepemimpinan &amp; Pembinaan BPS</div>
+                            <div class="text-slate-500 mt-0.5">6 Kepala Desa/Lurah terbina aktif • Forum Satu Data Desa terbit berkala • BPS Kolut 2025.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-start justify-between gap-2">
-                        <div><h3 class="panel-title"><span class="dot bg-sky-600"></span>Sumber Penerangan</h3><p class="panel-sub">Komposisi keluarga menurut sumber penerangan</p></div>
-                        <span id="badgePeneranganTotal" class="panel-pill text-blue-700 bg-blue-100">1.833 Total KK</span>
-                    </div>
-                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartPeneranganCanvas"></canvas></div>
+<div id="monografi-card-kamisi" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-start justify-between gap-2">
-                        <div><h3 class="panel-title"><span class="dot bg-emerald-600"></span>Jenis Lantai Terluas</h3><p class="panel-sub">Jumlah keluarga menurut jenis lantai bangunan</p></div>
-                        <span class="panel-pill text-emerald-800 bg-emerald-100">Fisik Rumah</span>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Kamisi</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Kodeoha • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Desa</span></p>
                     </div>
-                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartLantaiCanvas"></canvas></div>
-                </div>
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-start justify-between gap-2">
-                        <div><h3 class="panel-title"><span class="dot bg-amber-500"></span>Penerima Bantuan Pemerintah</h3><p class="panel-sub">Keluarga penerima PKH, BPNT, BLT-DD, dan PIP</p></div>
-                        <span class="panel-pill text-amber-800 bg-amber-100">Bantuan Sosial</span>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/kamisi" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
                     </div>
-                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartBansosCanvas"></canvas></div>
-                </div>
-                <div class="card-surface p-5 sm:p-6">
-                    <div class="flex items-start justify-between gap-2">
-                        <div><h3 class="panel-title"><span class="dot bg-teal-600"></span>Jaminan Kesehatan (BPJS)</h3><p class="panel-sub">Kepemilikan kartu BPJS: PBI, Mandiri, atau belum</p></div>
-                        <span class="panel-pill text-teal-800 bg-teal-100">Proteksi Kesehatan</span>
-                    </div>
-                    <div class="chart-box mt-4" style="height:270px;"><canvas id="chartBPJSCanvas"></canvas></div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">1,197 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">621 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">576 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">107.81</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">562.61 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">14 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Kakao</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">394 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">0 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Besar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Pesisir & Laut</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">8 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Diperbaharui</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 1 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 1.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Laki-laki, >= 55 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="monografi-card-koroha" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Koroha</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Kodeoha • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Desa</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/koroha" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">1,217 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">620 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">597 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">103.85</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">420.49 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">16 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Kakao</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">0 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">335 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">0 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Besar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Pesisir & Laut</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">8 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Diperbaharui</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 3 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 0 • Apotek: 0.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 25-34 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 25-34 Thn, Diploma IV/S1).</div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="monografi-card-malamala" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Mala Mala</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Kodeoha • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Kelurahan</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/malamala" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">1,155 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">545 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">610 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">89.34</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">1414.78 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">2 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Kakao</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">0 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">318 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">0 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Besar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Pesisir & Laut</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">10 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-slate-500">0 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 2 • SMP/MTs: 1 • Total: 6 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 45-54 Thn, Diploma IV/S1) • Sekdes (Perempuan, 45-54 Thn, Diploma IV/S1).</div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="monografi-card-lapolu" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Lapolu</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Tiwu • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Desa</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/lapolu" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">1,100 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">585 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">515 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">113.59</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">73.53 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">75 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Cengkeh</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">0 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">316 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">5 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Besar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Daratan</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">9 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">2 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Diperbaharui</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="monografi-card-tanggeawo" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Tanggeawo</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Tiwu • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Desa</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/tanggeawo" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">411 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">203 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">208 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">97.6</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">405.12 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">46 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Kakao</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">141 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">0 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Kecil</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Daratan</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">7 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Diperbaharui</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 0 • SD/MI: 1 • SMP/MTs: 0 • Total: 1 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Akademi/DIII) • Sekdes (Laki-laki, 35-44 Thn, SMU/Sederajat).</div>
+                    </div>
+                </div>
+            </div>
+        </div><div id="monografi-card-mattirobulu" class="monografi-village-card" style="display: none;">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-xs font-semibold mb-2">
+                            <span>⭐ DESA CINTA STATISTIK (DESCAN) BPS 2025</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Desa Mattiro Bulu</h3>
+                        <p class="text-emerald-100 text-sm mt-1">Kecamatan Tiwu • Kabupaten Kolaka Utara • Status: <span class="font-bold underline decoration-emerald-400">Desa</span></p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/descan/desa/mattirobulu" class="px-5 py-2.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                            <span>Buka Portal DESCAN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-700 text-white font-semibold text-xs border border-emerald-500/40 transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            <span>Cetak</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+                <!-- 1. Demografi & Kependudukan -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Total Penduduk:</span><span class="font-extrabold text-slate-800 text-sm">881 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Laki-laki:</span><span class="font-semibold text-slate-700">465 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Perempuan:</span><span class="font-semibold text-slate-700">416 Jiwa</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Sex Ratio:</span><span class="font-semibold text-slate-700">111.78</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Kepadatan:</span><span class="font-semibold text-slate-700">80.3 /km²</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Ekonomi & Industri Mikro (IMK) -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Industri Mikro (IMK):</span><span class="font-extrabold text-amber-600 text-sm">20 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Subsektor Utama:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Tanaman Perkebunan</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Komoditas:</span><span class="font-semibold text-slate-700">Cengkeh</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Minimarket/Toko:</span><span class="font-semibold text-slate-700">0 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Akses KUR/KUK:</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Lingkungan & Elektrifikasi -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-base">⚡</div>
+                            <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">TABEL 5.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Listrik PLN:</span><span class="font-extrabold text-emerald-700 text-sm">214 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Non-PLN / Mandiri:</span><span class="font-semibold text-slate-700">110 KK</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Penerangan Jalan:</span><span class="font-semibold text-slate-700 truncate max-w-[120px]">Ada, Sebagian Kecil</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Pencemaran:</span><span class="font-semibold text-emerald-600">Bebas Tercemar</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Bentang Alam:</span><span class="font-semibold text-slate-700">Daratan</span></div>
+                    </div>
+                </div>
+
+                <!-- 4. Pemerintahan & BUMDes -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
+                    </div>
+                    <div class="space-y-2.5 text-xs text-slate-600">
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Aparatur Desa:</span><span class="font-extrabold text-indigo-700 text-sm">9 Orang</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Keberadaan BUMDes:</span><span class="font-semibold text-emerald-600 font-bold">1 Unit</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SISKEUDES:</span><span class="font-semibold text-emerald-600">Diperbaharui</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Status SID:</span><span class="font-semibold text-slate-700">Tidak Ada</span></div>
+                        <div class="flex justify-between items-center"><span class="text-slate-500">Peraturan Desa (Perdes):</span><span class="font-semibold text-slate-700">Ada</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
+                        <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 4 unit pendidikan.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏥</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
+                        <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">👤</span>
+                    <div>
+                        <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
+                        <div class="text-slate-500 mt-0.5">Kades (Perempuan, 25-34 Thn, Akademi/DIII) • Sekdes (Laki-laki, 25-34 Thn, SMU/Sederajat).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
     </section>
@@ -1574,25 +2404,63 @@
             }, 3000);
         }
 
-        // Tab Switcher (Dashboard vs Analytics)
-        function switchVisualTab(tab) {
-            const vDash = document.getElementById('viewDashboard');
-            const vAnal = document.getElementById('viewAnalytics');
-            const btnDash = document.getElementById('btnTabDashboard');
-            const btnAnal = document.getElementById('btnTabAnalytics');
+        // Mode Switcher (Visualisasi Grafik vs Tabel Monografi)
+        let currentDashboardMode = 'grafik';
 
-            if (tab === 'dashboard') {
+        function switchDashboardMode(mode) {
+            currentDashboardMode = mode;
+            const vDash = document.getElementById('viewDashboard');
+            const vMono = document.getElementById('viewMonografi');
+            const btnGrafik = document.getElementById('btnModeGrafik');
+            const btnMono = document.getElementById('btnModeMonografi');
+
+            if (mode === 'grafik') {
                 if (vDash) vDash.classList.remove('hidden');
-                if (vAnal) vAnal.classList.add('hidden');
-                if (btnDash) btnDash.classList.add('active');
-                if (btnAnal) btnAnal.classList.remove('active');
+                if (vMono) vMono.classList.add('hidden');
+                if (btnGrafik) {
+                    btnGrafik.className = 'tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 bg-[#0E7C5A] text-white shadow-xs';
+                }
+                if (btnMono) {
+                    btnMono.className = 'tab-btn px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-50';
+                }
                 initDashboardCharts();
             } else {
                 if (vDash) vDash.classList.add('hidden');
-                if (vAnal) vAnal.classList.remove('hidden');
-                if (btnDash) btnDash.classList.remove('active');
-                if (btnAnal) btnAnal.classList.add('active');
-                initAnalyticsCharts('all');
+                if (vMono) vMono.classList.remove('hidden');
+                if (btnMono) {
+                    btnMono.className = 'tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 bg-[#0E7C5A] text-white shadow-xs';
+                }
+                if (btnGrafik) {
+                    btnGrafik.className = 'tab-btn px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-50';
+                }
+                // Sinkronkan kartu monografi dengan filter desa saat ini
+                const sel = document.getElementById('selectVillageFilter');
+                const activeKey = sel ? resolveVillageKey(sel.value) : 'all';
+                syncMonografiCard(activeKey);
+            }
+        }
+
+        // Helper untuk sinkronisasi kartu monografi
+        function syncMonografiCard(villageKey) {
+            const key = resolveVillageKey(villageKey || 'all');
+            const allCards = document.querySelectorAll('.monografi-village-card');
+            allCards.forEach(c => {
+                c.style.display = 'none';
+            });
+            const targetCard = (key === 'all')
+                ? document.getElementById('monografi-card-all')
+                : (document.getElementById('monografi-card-' + key) || document.getElementById('monografi-card-all'));
+            if (targetCard) {
+                targetCard.style.display = 'block';
+            }
+        }
+
+        // Alias kompatibilitas
+        function switchVisualTab(tab) {
+            if (tab === 'analytics' || tab === 'monografi') {
+                switchDashboardMode('monografi');
+            } else {
+                switchDashboardMode('grafik');
             }
         }
 
@@ -1739,6 +2607,9 @@
         function filterDashboardVillage(villageKey) {
             const rawKey = villageKey || 'all';
             villageKey = resolveVillageKey(rawKey);
+
+            // Sinkronkan kartu monografi jika sedang aktif maupun saat dibuka nanti
+            syncMonografiCard(villageKey);
 
             // 1. Sinkronkan nilai dropdown select
             const sel = document.getElementById('selectVillageFilter');
