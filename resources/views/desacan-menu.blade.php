@@ -2967,79 +2967,222 @@
                 <!-- ===================================================================== -->
                 <!-- PRE-TEST & POST-TEST                                                  -->
                 <!-- ===================================================================== -->
-                <div id="view-pretest" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dc-ico" style="--c:#0284c7;--cbg:#e0f2fe;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#0284c7,#38b6ee);color:#fff;"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+                <div id="view-pretest" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- 1. Header Halaman (Ikon ClipboardCheck Lucide Hijau + Tombol Navigasi & Mode Simulasi Jelas) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 p-2.5 shadow-2xs shrink-0">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                    <path d="m9 14 2 2 4-4"></path>
+                                </svg>
+                            </div>
                             <div>
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pre-test &amp; Post-test</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Evaluasi kompetensi aparatur desa dan sertifikat Agen Statistik</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 self-start sm:self-auto">
-                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
-                                <i class="bi bi-arrow-left"></i>
-                                <span>Kembali ke Materi Pembelajaran</span>
+                        <div class="flex items-center gap-2.5 self-start sm:self-auto flex-wrap">
+                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300/80 text-xs font-bold flex items-center gap-2 cursor-pointer transition shadow-2xs group" title="Mode simulasi: membuka seluruh modul pelatihan & evaluasi untuk eksplorasi aparatur desa">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                                <span>Mode Simulasi: Terbuka</span>
+                                <i class="bi bi-info-circle text-amber-700 text-xs"></i>
                             </button>
-                            <button type="button" onclick="unlockAllLmsModules()" class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer"><span>🔓</span><span>Unlock</span></button>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-800 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left text-sm"></i>
+                                <span>← Kembali ke Menu Pembelajaran</span>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-4">
-                            <!-- Step 1: PRE-TEST -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/40 flex flex-col justify-between space-y-4">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black">
-                                            [1. PRE-TEST] 🔒
-                                        </span>
-                                        <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
-                                            Siap Dikerjakan
-                                        </span>
+                    <!-- 2. Grid 2 Kolom Simetris: Pre-Test & Post-Test -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                        
+                        <!-- KARTU KIRI: [1. PRE-TEST] (Tes Kemampuan Awal Aparatur) -->
+                        <div class="p-5 sm:p-6 rounded-2xl border-2 border-blue-200 bg-white shadow-2xs flex flex-col justify-between space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#005ea6] text-white text-xs font-black flex items-center gap-1.5 shadow-2xs">
+                                        <i class="bi bi-pencil-square"></i>
+                                        <span>[1. PRE-TEST]</span>
+                                    </span>
+                                    <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-md flex items-center gap-1">
+                                        <i class="bi bi-check2-circle text-xs"></i>
+                                        <span>Siap Dikerjakan</span>
+                                    </span>
+                                </div>
+                                
+                                <h4 class="font-black text-slate-900 text-base sm:text-lg mt-3.5">
+                                    Tes Kemampuan Awal Aparatur
+                                </h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Wajib diisi sebelum materi video dan pengolahan data untuk mengukur pemahaman awal konsep statistik sektoral.
+                                </p>
+                                
+                                <!-- Kotak Ringkasan Informasi Simetris (4 Baris) -->
+                                <div class="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-xs text-slate-700 space-y-2">
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Jumlah Soal:</span>
+                                        <b class="text-slate-900 font-bold">10 Pertanyaan Pilihan Ganda</b>
                                     </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Tes Kemampuan Awal Aparatur</h5>
-                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                        Wajib diisi sebelum materi video dan pengolahan data untuk mengukur pemahaman awal konsep statistik sektoral.
-                                    </p>
-                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-blue-100 text-xs text-slate-600">
-                                        <div>• Soal: <b>10 Pertanyaan Pilihan Ganda</b></div>
-                                        <div>• Waktu: <b>15 Menit</b></div>
-                                        <div>• Standar: <b>BPS Satu Data Indonesia</b></div>
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Durasi Waktu:</span>
+                                        <b class="text-slate-900 font-bold">15 Menit</b>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Standar Baku:</span>
+                                        <b class="text-slate-900 font-bold">BPS Satu Data Indonesia</b>
+                                    </div>
+                                    <div class="flex justify-between items-center pt-0.5">
+                                        <span class="text-slate-500 font-medium">• Status / Skor Awal:</span>
+                                        <b class="text-emerald-700 font-extrabold flex items-center gap-1">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Sudah Diisi (Skor: 80)</span>
+                                        </b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="openPretestModal()" class="w-full py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                    <span>📝 Mulai Pre-Test</span>
+                            </div>
+                            
+                            <!-- Action Buttons Pre-Test -->
+                            <div class="space-y-2 pt-1">
+                                <button type="button" onclick="openPretestModal()" class="w-full py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs sm:text-sm font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]">
+                                    <i class="bi bi-pencil-square text-sm"></i>
+                                    <span>Mulai Pre-Test Mandiri</span>
+                                </button>
+                                <div class="text-[11px] text-center text-slate-400">
+                                    Hasil pre-test digunakan sebagai tolok ukur awal kompetensi aparatur.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KARTU KANAN: [3. POST-TEST] (Kuis Evaluasi Akhir & Sertifikat) -->
+                        <div class="p-5 sm:p-6 rounded-2xl border-2 border-emerald-300 bg-white shadow-2xs flex flex-col justify-between space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white text-xs font-black flex items-center gap-1.5 shadow-2xs">
+                                        <i class="bi bi-patch-check-fill text-amber-300"></i>
+                                        <span>[3. POST-TEST EVALUASI]</span>
+                                    </span>
+                                    <span id="badgePosttestStatus" class="text-[10px] font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-1 rounded-md flex items-center gap-1">
+                                        <i class="bi bi-check-circle-fill text-emerald-600"></i>
+                                        <span>Lulus Evaluasi</span>
+                                    </span>
+                                </div>
+                                
+                                <h4 class="font-black text-slate-900 text-base sm:text-lg mt-3.5">
+                                    Kuis Evaluasi Akhir &amp; Sertifikat
+                                </h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Kuis evaluasi pemahaman pasca pelatihan untuk mencetak Sertifikat Kompetensi Agen Statistik Desa.
+                                </p>
+                                
+                                <!-- Kotak Ringkasan Informasi Simetris (4 Baris) -->
+                                <div class="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-xs text-slate-700 space-y-2">
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Jumlah Soal:</span>
+                                        <b class="text-slate-900 font-bold">15 Pertanyaan Pilihan Ganda</b>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Durasi Waktu:</span>
+                                        <b class="text-slate-900 font-bold">20 Menit</b>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                        <span class="text-slate-500 font-medium">• Passing Grade:</span>
+                                        <b class="text-slate-900 font-bold">70 / 100</b>
+                                    </div>
+                                    <div class="flex justify-between items-center pt-0.5">
+                                        <span class="text-slate-500 font-medium">• Nilai Terakhir:</span>
+                                        <b id="valLastPostScore" class="text-emerald-700 font-extrabold flex items-center gap-1">
+                                            <i class="bi bi-trophy-fill text-amber-500"></i>
+                                            <span>85 / 100 (Lulus Kompetensi)</span>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons Post-Test (Lihat Sertifikat Utama + Ulangi Sekunder) -->
+                            <div class="space-y-2 pt-1">
+                                <button type="button" onclick="openSertifikatModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-[0.99]">
+                                    <i class="bi bi-award-fill text-amber-300"></i>
+                                    <span>Lihat &amp; Unduh Sertifikat Resmi</span>
+                                </button>
+                                <button type="button" onclick="openPosttestModal()" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-emerald-800 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-arrow-repeat text-slate-400"></i>
+                                    <span>Ulangi Post-Test (Tingkatkan Skor)</span>
                                 </button>
                             </div>
-                            <!-- Step 3: POST-TEST / KUIS EVALUASI -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50/40 flex flex-col justify-between space-y-4">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-indigo-700 text-white text-xs font-black">
-                                            [3. POST-TEST / KUIS EVALUASI] 🔒
-                                        </span>
-                                        <span id="badgePosttestStatus" class="text-[10px] font-black text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">
-                                            Kelulusan
-                                        </span>
-                                    </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Kuis Evaluasi Akhir & Sertifikat</h5>
-                                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                        Kuis evaluasi pemahaman pasca pelatihan untuk mencetak Sertifikat Kompetensi Agen Statistik Desa.
-                                    </p>
-                                    <div class="mt-3 p-2.5 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1">
-                                        <div class="flex justify-between"><span>Passing Grade:</span> <b class="text-indigo-700">70 / 100</b></div>
-                                        <div class="flex justify-between"><span>Nilai Terakhir:</span> <b id="valLastPostScore" class="text-emerald-700">85 (Lulus)</b></div>
-                                    </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 3. Banner Ringkasan Kelulusan & Sertifikat Kompetensi Agen Statistik Desa -->
+                    <div class="bg-gradient-to-br from-slate-900 via-[#0a3826] to-[#062417] text-white rounded-3xl p-6 sm:p-7 border border-emerald-500/30 shadow-xl relative overflow-hidden">
+                        <!-- Ambient Glow Decorative -->
+                        <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-teal-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                            <!-- Sisi Kiri: Informasi Sertifikasi & Tahapan -->
+                            <div class="space-y-3 max-w-xl">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[11px] font-black uppercase tracking-wider">
+                                    <i class="bi bi-award-fill text-amber-300"></i>
+                                    <span>Sertifikasi Terverifikasi BPS</span>
                                 </div>
-                                <div class="space-y-2">
-                                    <button type="button" onclick="openPosttestModal()" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                        <span>📝 Mulai Post-Test</span>
-                                    </button>
-                                    <button type="button" onclick="openSertifikatModal()" class="w-full py-2 rounded-xl bg-white hover:bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-black transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                        <span>👁️ Lihat Nilai & Status Sertifikat</span>
-                                    </button>
+                                <h3 class="text-lg sm:text-xl font-black text-white tracking-tight">
+                                    Sertifikat Kompetensi Agen Statistik Desa
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    Selamat! Anda telah memenuhi seluruh tahapan pembinaan Desa Cantik BPS Kabupaten Kolaka Utara dan dinyatakan <strong>Kompeten (Lulus)</strong> sebagai Agen Statistik Sektoral Desa.
+                                </p>
+
+                                <!-- 3 Tahapan Progres Kelulusan (Stepper Horizontal) -->
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 flex items-center gap-2.5">
+                                        <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                                        <div class="min-w-0">
+                                            <div class="text-[10px] text-emerald-300 font-extrabold uppercase">Tahap 1</div>
+                                            <div class="text-xs font-bold text-white truncate">Pre-test Selesai</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 flex items-center gap-2.5">
+                                        <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                                        <div class="min-w-0">
+                                            <div class="text-[10px] text-emerald-300 font-extrabold uppercase">Tahap 2</div>
+                                            <div class="text-xs font-bold text-white truncate">Video Microlearning</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-2.5 rounded-xl bg-emerald-500/30 border border-emerald-400/50 flex items-center gap-2.5">
+                                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-xs font-black shrink-0">★</span>
+                                        <div class="min-w-0">
+                                            <div class="text-[10px] text-amber-300 font-extrabold uppercase">Tahap 3</div>
+                                            <div class="text-xs font-bold text-white truncate">Post-test Lulus (85)</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- Sisi Kanan: Mini Preview Kartu Sertifikat & Tombol Aksi -->
+                            <div class="lg:w-72 w-full shrink-0 flex flex-col items-center justify-center p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 space-y-3.5 text-center">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-500 text-slate-950 flex items-center justify-center text-2xl shadow-lg ring-4 ring-amber-400/20">
+                                    🎓
+                                </div>
+                                <div>
+                                    <div class="text-xs font-black text-white">Sertifikat Siap Diterbitkan</div>
+                                    <div class="text-[11px] text-slate-300 font-mono mt-0.5">No: DESCAN-KOLUT/2026/042</div>
+                                </div>
+                                
+                                <div class="w-full space-y-2">
+                                    <button type="button" onclick="openSertifikatModal()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-black text-xs transition shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+                                        <i class="bi bi-printer-fill"></i>
+                                        <span>Pratinjau / Cetak Sertifikat</span>
+                                    </button>
+                                    <div class="text-[10px] text-slate-400">
+                                        Format resmi bertanda tangan digital BPS Kolaka Utara
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
