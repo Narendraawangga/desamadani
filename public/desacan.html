@@ -545,9 +545,9 @@
                     <i class="bi bi-geo-alt-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">6</div>
-                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Desa Pilot</div>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9.5px] sm:text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
+                    <div id="kpiCard1Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">6</div>
+                    <div id="kpiCard1Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Desa Pilot</div>
+                    <span id="kpiCard1Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9.5px] sm:text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         Kec. Kodeoha &amp; Tiwu
                     </span>
@@ -561,9 +561,9 @@
                     <i class="bi bi-people-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">2.426</div>
-                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Keluarga</div>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9.5px] sm:text-[10px] font-bold border border-amber-200/80 shadow-2xs">
+                    <div id="kpiCard2Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">2.426</div>
+                    <div id="kpiCard2Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Keluarga</div>
+                    <span id="kpiCard2Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9.5px] sm:text-[10px] font-bold border border-amber-200/80 shadow-2xs">
                         Kepala Keluarga (KK)
                     </span>
                 </div>
@@ -576,9 +576,9 @@
                     <i class="bi bi-person-vcard-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">8.734</div>
-                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Penduduk</div>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[9.5px] sm:text-[10px] font-bold border border-sky-200/80 shadow-2xs">
+                    <div id="kpiCard3Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">8.734</div>
+                    <div id="kpiCard3Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Penduduk</div>
+                    <span id="kpiCard3Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[9.5px] sm:text-[10px] font-bold border border-sky-200/80 shadow-2xs">
                         Jiwa Terdata
                     </span>
                 </div>
@@ -591,9 +591,9 @@
                     <i class="bi bi-graph-up-arrow text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1">84%</div>
-                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Rata-rata Progres</div>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[9.5px] sm:text-[10px] font-bold border border-teal-200/80 shadow-2xs">
+                    <div id="kpiCard4Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1">84%</div>
+                    <div id="kpiCard4Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Rata-rata Progres</div>
+                    <span id="kpiCard4Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[9.5px] sm:text-[10px] font-bold border border-teal-200/80 shadow-2xs">
                         <i class="bi bi-check-circle-fill text-[9px] text-teal-600"></i>
                         Pendataan Selesai
                     </span>
@@ -607,9 +607,9 @@
                     <i class="bi bi-database-fill-check text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1">223 / 264</div>
-                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Indikator Terinput</div>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[9.5px] sm:text-[10px] font-bold border border-indigo-200/80 shadow-2xs">
+                    <div id="kpiCard5Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1">223 / 264</div>
+                    <div id="kpiCard5Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Indikator Terinput</div>
+                    <span id="kpiCard5Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[9.5px] sm:text-[10px] font-bold border border-indigo-200/80 shadow-2xs">
                         44 Indikator / Desa
                     </span>
                 </div>
@@ -631,7 +631,7 @@
                     <span>Visualisasi Statistik Sektoral</span>
                 </div>
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Dashboard Data &amp; Analitik 6 Desa</h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-0.5 max-w-2xl">Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.</p>
+                <p id="dashSubTitle" class="text-xs sm:text-sm text-slate-500 mt-0.5 max-w-2xl">Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.</p>
             </div>
             
             <!-- Controls: Filter Dropdown + Tab Switcher Sejajar Horizontal -->
@@ -673,9 +673,9 @@
                         </div>
                         <span class="panel-pill text-emerald-800 bg-emerald-100">Standar SDI</span>
                     </div>
-                    <div class="space-y-4 py-5 flex-1">
+                    <div class="space-y-3.5 py-4 flex-1" id="dashVillageRanksList">
                         <!-- 1. Desa Kamisi (98%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-kamisi" onclick="filterDashboardVillage('kamisi')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Desa Kamisi">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">1</span>
@@ -693,7 +693,7 @@
                         </div>
 
                         <!-- 2. Kel. Mala-Mala (93%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-malamala" onclick="filterDashboardVillage('malamala')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Kel. Mala-Mala">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">2</span>
@@ -711,7 +711,7 @@
                         </div>
 
                         <!-- 3. Desa Lapolu (86%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-lapolu" onclick="filterDashboardVillage('lapolu')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Desa Lapolu">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">3</span>
@@ -729,7 +729,7 @@
                         </div>
 
                         <!-- 4. Desa Tanggeawo (82%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-tanggeawo" onclick="filterDashboardVillage('tanggeawo')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Desa Tanggeawo">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">4</span>
@@ -747,7 +747,7 @@
                         </div>
 
                         <!-- 5. Desa Mattiro Bulu (77%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-mattirobulu" onclick="filterDashboardVillage('mattirobulu')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Desa Mattiro Bulu">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0ea5e91a;color:#0ea5e9;">5</span>
@@ -765,7 +765,7 @@
                         </div>
 
                         <!-- 6. Desa Koroha (68%) -->
-                        <div class="rank-row">
+                        <div id="rankRow-koroha" onclick="filterDashboardVillage('koroha')" class="rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50" title="Klik untuk memfilter data Desa Koroha">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#f59e0b1a;color:#f59e0b;">6</span>
@@ -782,7 +782,7 @@
                             <div class="bar"><span style="width:68%;background:#f59e0b;"></span></div>
                         </div>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+                    <div id="rankSummaryText" class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
                         <span>Total: <b class="text-slate-800">223</b> dari 264 indikator</span>
                         <span class="text-[#0E7C5A] font-extrabold">Rata-rata 84%</span>
                     </div>
@@ -826,7 +826,7 @@
             </div>
 
             <!-- Baris 3: sorotan 3 kartu insight (Konsisten 100% dengan Data 6 Desa) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div id="dashInsightContainer" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div class="insight" style="background:#f0fdf6;border-color:#bbf0d4;">
                     <span class="ic bg-emerald-100 text-emerald-700">🏆</span>
                     <div class="leading-tight">
@@ -1579,18 +1579,179 @@
         };
 
         function filterDashboardVillage(villageKey) {
+            if (!villageKey) villageKey = 'all';
+
+            // 1. Sinkronkan nilai dropdown select
+            const sel = document.getElementById('selectVillageFilter');
+            if (sel && sel.value !== villageKey) sel.value = villageKey;
+
+            const isAll = (villageKey === 'all');
+            const vm = villagesMeta[villageKey] || null;
+
+            // 2. Perbarui 5 Kartu KPI Melayang di Bagian Atas
+            const setHtml = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+
+            if (isAll) {
+                setHtml('kpiCard1Val', '6');
+                setHtml('kpiCard1Label', 'Desa Pilot');
+                setHtml('kpiCard1Badge', '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Kec. Kodeoha &amp; Tiwu');
+
+                setHtml('kpiCard2Val', '2.426');
+                setHtml('kpiCard2Label', 'Total Keluarga');
+                setHtml('kpiCard2Badge', 'Kepala Keluarga (KK)');
+
+                setHtml('kpiCard3Val', '8.734');
+                setHtml('kpiCard3Label', 'Total Penduduk');
+                setHtml('kpiCard3Badge', 'Jiwa Terdata');
+
+                setHtml('kpiCard4Val', '84%');
+                setHtml('kpiCard4Label', 'Rata-rata Progres');
+                setHtml('kpiCard4Badge', '<i class="bi bi-check-circle-fill text-[9px] text-teal-600"></i> Pendataan Selesai');
+
+                setHtml('kpiCard5Val', '223 / 264');
+                setHtml('kpiCard5Label', 'Indikator Terinput');
+                setHtml('kpiCard5Badge', '44 Indikator / Desa');
+
+                setHtml('dashSubTitle', 'Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.');
+            } else if (vm) {
+                setHtml('kpiCard1Val', vm.shortName || vm.name);
+                setHtml('kpiCard1Label', 'Desa Terpilih');
+                setHtml('kpiCard1Badge', `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Kec. ${vm.kec}`);
+
+                setHtml('kpiCard2Val', fmt(vm.kk));
+                setHtml('kpiCard2Label', 'Jumlah Keluarga');
+                setHtml('kpiCard2Badge', `${fmt(vm.kk)} KK Terverifikasi`);
+
+                setHtml('kpiCard3Val', fmt(vm.pop));
+                setHtml('kpiCard3Label', 'Jumlah Penduduk');
+                setHtml('kpiCard3Badge', `${fmt(vm.pop)} Jiwa Terdata`);
+
+                setHtml('kpiCard4Val', `${vm.progress}%`);
+                setHtml('kpiCard4Label', 'Capaian Progres');
+                setHtml('kpiCard4Badge', '<i class="bi bi-check-circle-fill text-[9px] text-teal-600"></i> Standar SDI BPS');
+
+                setHtml('kpiCard5Val', `${vm.terisi} / ${vm.total}`);
+                setHtml('kpiCard5Label', 'Indikator Terisi');
+                setHtml('kpiCard5Badge', `Sisa ${vm.total - vm.terisi} Indikator`);
+
+                setHtml('dashSubTitle', `Menampilkan data statistik sektoral, demografi, sanitasi, dan monografi untuk ${vm.name} (Kecamatan ${vm.kec}).`);
+            }
+
+            // 3. Perbarui 3 Donut/Bar Distribusi (Rumah, Air, Penghasilan)
             const data = villageDistributions[villageKey] || villageDistributions['all'];
             donut('rumah', 'chartKepemilikanRumah', data.rumah.labels, data.rumah.data,
                 ['#0E7C5A', '#38bdf8', '#f59e0b'], data.rumah.center);
             donut('air', 'chartSumberAir', data.air.labels, data.air.data,
                 ['#0284c7', '#0d9488', '#7dd3fc'], data.air.center);
-            
             if (chartInstances['penghasilan']) {
                 chartInstances['penghasilan'].data.datasets[0].data = data.penghasilan;
                 chartInstances['penghasilan'].update();
             }
+
+            // 4. Perbarui Bar Chart "Penduduk & Keluarga per Desa" (Spotlight Desa Terpilih)
+            if (chartInstances['keluarga']) {
+                const order = ['kamisi', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu', 'koroha'];
+                if (isAll) {
+                    chartInstances['keluarga'].data.datasets[0].backgroundColor = order.map(() => '#0E7C5A');
+                    chartInstances['keluarga'].data.datasets[1].backgroundColor = order.map(() => '#38bdf8');
+                } else {
+                    chartInstances['keluarga'].data.datasets[0].backgroundColor = order.map(k => k === villageKey ? '#0E7C5A' : 'rgba(148, 163, 184, 0.28)');
+                    chartInstances['keluarga'].data.datasets[1].backgroundColor = order.map(k => k === villageKey ? '#0284c7' : 'rgba(203, 213, 225, 0.35)');
+                }
+                chartInstances['keluarga'].update();
+            }
+
+            // 5. Perbarui Highlighting Baris pada Daftar "Progres Pendataan per Desa"
+            const order = ['kamisi', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu', 'koroha'];
+            order.forEach(k => {
+                const row = document.getElementById('rankRow-' + k);
+                if (!row) return;
+                if (isAll) {
+                    row.className = 'rank-row p-2 -mx-2 rounded-xl transition cursor-pointer hover:bg-slate-50';
+                } else if (k === villageKey) {
+                    row.className = 'rank-row p-2.5 -mx-2 rounded-xl bg-emerald-50/90 border-2 border-emerald-500 shadow-xs transition cursor-pointer';
+                } else {
+                    row.className = 'rank-row p-2 -mx-2 rounded-xl opacity-40 hover:opacity-85 transition cursor-pointer hover:bg-slate-50';
+                }
+            });
+
+            const rankSummary = document.getElementById('rankSummaryText');
+            if (rankSummary) {
+                if (isAll) {
+                    rankSummary.innerHTML = '<span>Total: <b class="text-slate-800">223</b> dari 264 indikator</span><span class="text-[#0E7C5A] font-extrabold">Rata-rata 84%</span>';
+                } else if (vm) {
+                    rankSummary.innerHTML = `<span>${vm.name}: <b class="text-slate-800">${vm.terisi}</b> dari ${vm.total} indikator</span><span class="text-[#0E7C5A] font-extrabold">Capaian ${vm.progress}%</span>`;
+                }
+            }
+
+            // 6. Perbarui 3 Kartu Insight di Bagian Bawah
+            const insightBox = document.getElementById('dashInsightContainer');
+            if (insightBox) {
+                if (isAll) {
+                    insightBox.innerHTML = `
+                        <div class="insight" style="background:#f0fdf6;border-color:#bbf0d4;">
+                            <span class="ic bg-emerald-100 text-emerald-700">🏆</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Progres Tertinggi</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">Desa Kamisi · 98%</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">43 dari 44 indikator terisi (Pesisir Bahari)</div>
+                            </div>
+                        </div>
+                        <div class="insight" style="background:#eff6ff;border-color:#bfdbfe;">
+                            <span class="ic bg-blue-100 text-blue-700">⭐</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Pilot Utama</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">Kel. Mala-Mala · 93%</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">41 dari 44 indikator terisi · Pusat Layanan Kodeoha</div>
+                            </div>
+                        </div>
+                        <div class="insight" style="background:#fffbeb;border-color:#fde68a;">
+                            <span class="ic bg-amber-100 text-amber-700">🤝</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Perlu Pendampingan</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">Desa Koroha · 68%</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">30 dari 44 indikator · 14 indikator dalam pembinaan</div>
+                            </div>
+                        </div>
+                    `;
+                } else if (vm) {
+                    const avgKk = (vm.pop / vm.kk).toFixed(1);
+                    insightBox.innerHTML = `
+                        <div class="insight" style="background:#f0fdf6;border-color:#bbf0d4;">
+                            <span class="ic bg-emerald-100 text-emerald-700">🏆</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Status Capaian SDI</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">${vm.name} · ${vm.progress}%</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">${vm.terisi} dari ${vm.total} indikator terisi (${vm.karakter})</div>
+                            </div>
+                        </div>
+                        <div class="insight" style="background:#eff6ff;border-color:#bfdbfe;">
+                            <span class="ic bg-blue-100 text-blue-700">👥</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Basis Monografi</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">${fmt(vm.pop)} Jiwa · ${fmt(vm.kk)} KK</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">Kecamatan ${vm.kec} · Rata-rata ${avgKk} Jiwa per Keluarga</div>
+                            </div>
+                        </div>
+                        <div class="insight" style="background:#fffbeb;border-color:#fde68a;">
+                            <span class="ic bg-amber-100 text-amber-700">🌾</span>
+                            <div class="leading-tight">
+                                <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Sektor &amp; Potensi Desa</div>
+                                <div class="text-sm font-black text-slate-900 mt-0.5">Sentra ${vm.karakter}</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">${vm.ikm} Unit Usaha IKM · Terintegrasi PODES BPS</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // 7. Sinkronkan dengan Tab 2 Analitik Sektoral
+            if (typeof initAnalyticsCharts === 'function') {
+                initAnalyticsCharts(villageKey);
+            }
+
             const villageNames = { all: 'Semua Desa (6)', kamisi: 'Desa Kamisi', malamala: 'Kel. Mala-Mala', lapolu: 'Desa Lapolu', tanggeawo: 'Desa Tanggeawo', mattirobulu: 'Desa Mattiro Bulu', koroha: 'Desa Koroha' };
-            showToast(`Filter diperbarui: ${villageNames[villageKey] || villageKey}`, '📊');
+            showToast(`Data aktif: ${villageNames[villageKey] || villageKey}`, '📊');
         }
 
         // ===== Tab 1: Dashboard Makro =====
@@ -1612,6 +1773,14 @@
                     responsive: true, maintainAspectRatio: false,
                     layout: { padding: { top: 18 } },
                     interaction: { mode: 'index', intersect: false },
+                    onClick: (event, elements) => {
+                        if (elements && elements.length > 0) {
+                            const idx = elements[0].index;
+                            const order = ['kamisi', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu', 'koroha'];
+                            const selected = order[idx];
+                            if (selected) filterDashboardVillage(selected);
+                        }
+                    },
                     plugins: { 
                         legend: { position: 'top', align: 'end', labels: { font: { size: 11, weight: '700' } } },
                         valueLabel: { show: true },
