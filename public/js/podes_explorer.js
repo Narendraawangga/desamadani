@@ -267,80 +267,38 @@
       const k = masterData.kecamatan[kKey];
       if (!k) return;
 
-      const desaCount = (k.desa_list || []).length;
       const totL = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
       const totP = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
       const totPop = totL + totP;
-      const totIMK = (k.desa_list || []).reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
-      const dominantComm = getDominantCommodity(k.desa_list);
 
       const meta = KEC_META[kKey] || {
-        tag: dominantComm,
-        icon: '🌿',
         photo: '/images/jadesta/kebun_kakao_totallang.jpg'
       };
 
       html += `
-        <div class="kec-carousel-card relative w-[235px] sm:w-[265px] h-[375px] sm:h-[405px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none border border-slate-700/20 flex flex-col justify-between" 
+        <div class="kec-carousel-card relative w-[220px] sm:w-[250px] h-[340px] sm:h-[380px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none border border-white/10 flex flex-col justify-end" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
-             title="Klik untuk eksplorasi detail PODES Kecamatan ${k.nama}">
+             title="Klik untuk eksplorasi Kecamatan ${k.nama}">
           
-          <!-- Full-Bleed Background Photo with Zoom on Hover (Reference Image Style) -->
+          <!-- Full-Bleed Background Photo with Zoom on Hover -->
           <img src="${meta.photo}" 
                alt="Kecamatan ${k.nama}" 
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
 
-          <!-- Top Vignette for Frosted Badges Legibility -->
-          <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/75 via-black/35 to-transparent pointer-events-none"></div>
+          <!-- Smooth Dark Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent pointer-events-none"></div>
 
-          <!-- Deep Multi-Stage Dark Gradient for Crisp White Typography -->
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent pointer-events-none"></div>
-
-          <!-- Top Area: Frosted Badges -->
-          <div class="relative z-10 p-5 flex items-center justify-between gap-1">
-            <span class="px-2.5 py-1 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white/95 text-[10px] font-mono font-bold tracking-wider shadow-sm">
-              KODE: ${k.kode || '-'}
-            </span>
-            <span class="px-2.5 py-1 rounded-full bg-[#0D7A5F]/90 backdrop-blur-md border border-emerald-400/40 text-white text-[10px] font-extrabold tracking-wide shadow-sm">
-              ${desaCount} Desa/Kel
-            </span>
-          </div>
-
-          <!-- Bottom Area: Pure White Typography (Matches User Reference Image) -->
-          <div class="relative z-10 p-5 pt-0">
-            <!-- Tagline / Commodity Subtitle -->
-            <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300 mb-1 drop-shadow-sm">
-              <span>${meta.icon}</span>
-              <span class="truncate tracking-wide uppercase text-[11px] font-extrabold">${meta.tag}</span>
-            </div>
-
-            <!-- Big Bold White Kecamatan Name -->
-            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight uppercase group-hover:text-emerald-200 transition-colors drop-shadow-md">
+          <!-- Bottom Area: Polos Hanya Nama dan Penduduk -->
+          <div class="relative z-10 p-5 sm:p-6">
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight uppercase group-hover:text-emerald-300 transition-colors drop-shadow-md">
               ${k.nama}
             </h3>
-
-            <!-- 2 Concise Metrics in Clean Frosted Glass Pill -->
-            <div class="mt-2.5 py-1.5 px-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-between text-xs text-white">
-              <div>
-                <span class="text-[9px] uppercase font-bold text-slate-300 tracking-wider block">Penduduk</span>
-                <span class="font-extrabold text-white text-sm tabular-nums">${totPop.toLocaleString('id-ID')}</span> <span class="text-[10px] text-slate-300">Jiwa</span>
-              </div>
-              <div class="w-px h-5 bg-white/20"></div>
-              <div class="text-right">
-                <span class="text-[9px] uppercase font-bold text-slate-300 tracking-wider block">Unit IMK</span>
-                <span class="font-extrabold text-amber-300 text-sm tabular-nums">${totIMK.toLocaleString('id-ID')}</span> <span class="text-[10px] text-slate-300">Unit</span>
-              </div>
-            </div>
-
-            <!-- Action Prompt with Shift Animation -->
-            <div class="mt-3 flex items-center justify-between text-xs font-bold text-white/90 group-hover:text-emerald-300 transition-colors pt-2 border-t border-white/15">
-              <span class="text-[11px] tracking-wide font-semibold">Eksplorasi Sektor</span>
-              <span class="w-6 h-6 rounded-full bg-white/15 group-hover:bg-[#0D7A5F] text-white flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-sm">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-              </span>
-            </div>
+            <p class="text-sm sm:text-base font-bold text-slate-200 mt-1 flex items-baseline gap-1.5 drop-shadow">
+              <span class="text-white text-base sm:text-lg font-black tabular-nums">${totPop.toLocaleString('id-ID')}</span>
+              <span class="text-xs text-slate-300 font-semibold uppercase tracking-wider">Jiwa</span>
+            </p>
           </div>
         </div>
       `;
