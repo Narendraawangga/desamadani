@@ -1727,16 +1727,17 @@
                             
                             <!-- Top Ambient Badges -->
                             <div class="absolute top-4 sm:top-5 left-4 sm:left-6 right-4 sm:right-6 flex flex-wrap items-center justify-between gap-2.5 z-10">
-                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/70 border border-white/20 text-white text-[11px] font-bold backdrop-blur-md shadow-xs">
+                                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-white/25 text-white text-[11px] font-bold backdrop-blur-md shadow-md">
                                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                     <span>BPS KOLAKA UTARA • DESA CANTIK 2026</span>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span id="profil3dBadgeKategori" class="px-3 py-1 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] shadow-xs">
+                                    <span id="profil3dBadgeKategori" class="px-3.5 py-1.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] shadow-md">
                                         Perkotaan Mandiri (Nilai 93%)
                                     </span>
-                                    <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full bg-white/20 text-white text-[10.5px] font-bold backdrop-blur-md border border-white/20">
-                                        Satu Data Indonesia
+                                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 text-white text-[11px] font-bold backdrop-blur-md border border-white/25 shadow-md">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        <span>Satu Data Indonesia</span>
                                     </span>
                                 </div>
                             </div>
@@ -1760,19 +1761,20 @@
 
                                 <!-- Action Buttons in Panorama -->
                                 <div class="flex items-center gap-2 shrink-0 flex-wrap">
-                                    <button type="button" onclick="switchNavMenu('galeri')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white font-extrabold text-xs border border-white/20 backdrop-blur-md shadow-md transition cursor-pointer">
+                                    <button type="button" onclick="switchNavMenu('galeri')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 active:scale-95 text-white font-bold text-xs border border-white/25 backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer" title="Buka Galeri Foto Resmi Desa">
                                         <i class="bi bi-images text-amber-300"></i>
                                         <span class="hidden sm:inline">Galeri Foto Desa</span>
                                         <span class="sm:hidden">Galeri</span>
                                     </button>
-                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-[#0a4d36] font-extrabold text-xs shadow-md transition cursor-pointer">
+                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 active:scale-95 text-[#0a4d36] font-extrabold text-xs shadow-md hover:shadow-lg border border-white/40 transition-all duration-200 cursor-pointer" title="Buka Pratinjau Buku Monografi Resmi PDF">
                                         <i class="bi bi-file-earmark-pdf-fill text-rose-600 text-sm"></i>
                                         <span class="hidden sm:inline">Buku Monografi (PDF)</span>
                                         <span class="sm:hidden">Monografi</span>
                                     </button>
-                                    <button type="button" onclick="switchNavMenu('dashboard'); setTimeout(() => scrollToDashSection('sectionPeta'), 150);" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white font-extrabold text-xs border border-white/20 backdrop-blur-md shadow-md transition cursor-pointer">
+                                    <button type="button" onclick="scrollToDashSection('sectionPeta')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 active:scale-95 text-white font-bold text-xs border border-white/25 backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer" title="Lihat Peta Spasial WebGIS Desa">
                                         <i class="bi bi-map-fill text-emerald-300"></i>
                                         <span class="hidden sm:inline">Peta WebGIS</span>
+                                        <span class="sm:hidden">Peta</span>
                                     </button>
                                 </div>
                             </div>
@@ -1892,6 +1894,33 @@
                                 </div>
                             </div>
 
+                            <!-- Kartu Peta Spasial WebGIS Desa (Interaktif Leaflet) -->
+                            <div id="sectionPeta" class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xs space-y-3.5 relative overflow-hidden transition-all duration-300">
+                                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                                        <span class="text-xs font-black text-slate-800 tracking-wider uppercase">Peta Spasial WebGIS Tematik</span>
+                                    </div>
+                                    <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                        Leaflet GIS
+                                    </span>
+                                </div>
+                                <div class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
+                                    <div id="thematicVillageMap" class="w-full h-full z-0"></div>
+                                    <button type="button" onclick="resetThematicMapView()" class="absolute top-2.5 right-2.5 z-[400] px-2.5 py-1.5 bg-white/95 hover:bg-white text-slate-800 text-[10.5px] font-extrabold rounded-xl shadow-md border border-slate-200/80 backdrop-blur-md flex items-center gap-1.5 cursor-pointer transition active:scale-95" title="Pusatkan Peta">
+                                        <i class="bi bi-arrows-fullscreen text-emerald-600"></i>
+                                        <span>Reset Posisi</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                                    <span class="flex items-center gap-1.5">
+                                        <i class="bi bi-layers-half text-emerald-600"></i>
+                                        <span>Batas SLS Dusun &amp; Zonasi Densitas</span>
+                                    </span>
+                                    <span class="font-bold text-emerald-800">Standar SDI BPS</span>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- ============================================================== -->
@@ -1909,7 +1938,7 @@
                                 </div>
 
                                 <p id="profil3dDesc" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-                                    Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat binaan Badan Pusat Statistik Kabupaten Kolaka Utara.
+                                    Bentang alam perbukitan agraris subur beriklim sejuk dengan akses pesisir Teluk Bone, sentra perkebunan cengkeh dan kakao rakyat bersertifikat, klaster 75 unit IKM olahan kebun, serta hasil tangkapan nelayan pesisir.
                                 </p>
 
                                 <!-- Kotak Catatan Pembinaan BPS (Gaya Dokumen Akreditasi) -->
@@ -3988,8 +4017,10 @@
             const tagEl = document.getElementById('pubModalTag');
             const titleEl = document.getElementById('pubModalTitle');
             const bodyEl = document.getElementById('pubModalBody');
-            const curVillage = currentTargetVillage || 'kalukaluku';
-            const vTitle = villagesData[curVillage]?.title || 'Desa Kalu Kaluku';
+            const curVillage = currentTargetVillage || currentVillageKey || 'lapolu';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : (villagesData?.lapolu || {});
+            const vTitle = vData.title || 'Desa Lapolu';
+            const sData = (typeof getSectoralData === 'function') ? getSectoralData(curVillage) : (descanSectoralData[curVillage] || {});
 
             if (!modal) return;
 
@@ -3998,12 +4029,14 @@
                 if (tagEl) tagEl.textContent = 'BUKU PUBLIKASI RESMI • BPS KAB. KOLAKA UTARA';
                 if (titleEl) titleEl.textContent = `Monografi Statistik Sektoral ${vTitle} 2026`;
                 if (bodyEl) {
+                    const regCode = `BPS-7408-${(vData.kec || 'KODEOHA').toUpperCase()}-${(curVillage || 'DESA').toUpperCase()}-2026`;
+                    const kkVal = sData.kpi?.kk ? sData.kpi.kk + ' KK' : (vData.kk || '321 KK');
                     bodyEl.innerHTML = `
                         <div class="space-y-4">
                             <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-wrap items-center justify-between gap-2 text-xs">
                                 <div>
                                     <div class="text-[10px] font-black uppercase text-blue-800">Nomor Registrasi BPS</div>
-                                    <div class="font-bold text-slate-800 text-sm">BPS-7408-DESA-040-2026</div>
+                                    <div class="font-bold text-slate-800 text-sm">${regCode}</div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="px-2.5 py-1 rounded-md bg-blue-600 text-white text-[10px] font-black">Format PDF</span>
@@ -4017,19 +4050,19 @@
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                                     <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                                         <b>Bab I: Geografi & Batas Wilayah</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Batas administrasi, luas 18,45 km², topografi 4 dusun, dan peta tematik spasial.</p>
+                                        <p class="text-[11px] text-slate-500 mt-1">Batas administrasi, luas ${vData.luas || '16,40 km²'}, topografi ${vData.dusunCount || 3} dusun & ${vData.rtCount || 9} RT, dan peta tematik spasial WebGIS.</p>
                                     </div>
                                     <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
                                         <b>Bab II: Kependudukan & Piramida</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">4.150 Jiwa, 1.120 KK, rasio jenis kelamin 98,5%, kelompok umur produktif.</p>
+                                        <p class="text-[11px] text-slate-500 mt-1">${vData.pop || '1.264 Jiwa'}, ${kkVal}, rasio jenis kelamin terstandar, dan piramida penduduk kelompok usia produktif.</p>
                                     </div>
                                     <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Bab III: Pertanian, Kakao & Pesisir</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Sentra kakao 480 Ha, produksi 385 Ton/thn, armada tangkap nelayan Teluk Bone.</p>
+                                        <b>Bab III: Komoditas & Pesisir</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Sentra ${vData.komoditas || 'Cengkeh, Kakao, Agroindustri'}, hamparan produktif ${vData.agri || 'Sentra Komoditas'}, dan akses maritim Teluk Bone.</p>
                                     </div>
                                     <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Bab IV: Kesejahteraan & Sosial</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Desil P3KE, data penerima bansos (PKH, BPNT, BLT-DD), dan fasilitas desa.</p>
+                                        <b>Bab IV: Kesejahteraan & Monografi PODES</b>
+                                        <p class="text-[11px] text-slate-500 mt-1">Klaster UMKM ${vData.umkm || '16 Unit'}, verifikasi desil P3KE, dan profil sarana prasarana desa terintegrasi PODES 2025.</p>
                                     </div>
                                 </div>
                             </div>
@@ -4041,7 +4074,7 @@
                         </div>
                     `;
                 }
-                        } else if (docType === 'tabel') {
+            } else if (docType === 'tabel') {
                 if (iconEl) iconEl.innerHTML = '<i class="bi bi-table text-xl text-blue-200"></i>';
                 if (tagEl) tagEl.textContent = 'KOMPILASI TABEL STATISTIK SEKTORAL • BPS SDI';
                 if (titleEl) titleEl.textContent = `Tabel Statistik Sektoral ${vTitle} 2025`;
@@ -6476,7 +6509,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Desa Mandiri (Nilai 98%)",
                 rep: "Pemerintah Desa Kamisi",
-                desc: "Pusat perikanan tangkap pesisir, pengeringan teri tradisional, dan perkebunan kakao rakyat.",
+                desc: "Wilayah pesisir Teluk Bone dengan bentang alam maritim dan lereng agraris produktif, menjadi sentra perikanan tangkap teri tradisional terpadu serta perkebunan kakao dan kelapa rakyat binaan BPS.",
                 luas: "14,80 km²",
                 dusunCount: 3,
                 rtCount: 8,
@@ -6502,7 +6535,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Desa Berkembang (Nilai 72%)",
                 rep: "Pemerintah Desa Koroha",
-                desc: "Pengembangan perkebunan kakao sambung pucuk, cengkeh perbukitan dan budidaya perikanan laut.",
+                desc: "Bentang alam perbukitan subur yang terhubung ke pesisir Teluk Bone, memadukan sentra budidaya kakao sambung pucuk, cengkeh lereng bukit, serta perikanan laut dan budidaya rumput laut binaan BPS.",
                 luas: "15,50 km²",
                 dusunCount: 3,
                 rtCount: 9,
@@ -6528,7 +6561,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Perkotaan Mandiri (Nilai 93%)",
                 rep: "Pemerintah Kelurahan Mala-Mala",
-                desc: "Ibukota Kecamatan Kodeoha dengan fasilitas puskesmas rawat inap, perdagangan, dan 5 fasilitas pendidikan.",
+                desc: "Kawasan pesisir strategis sebagai pusat pemerintahan Kecamatan Kodeoha, sentra perdagangan dan fasilitas kesehatan rawat inap, didukung perkebunan kakao rakyat dan armada perikanan tangkap nelayan.",
                 luas: "12,20 km²",
                 dusunCount: 3,
                 rtCount: 10,
@@ -6556,7 +6589,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Desa Agro Mandiri (Nilai 88%)",
                 rep: "Pemerintah Desa Lapolu",
-                desc: "Sentra perkebunan cengkeh rakyat dan klaster 75 industri kecil menengah (IKM) pengolahan komoditas kebun.",
+                desc: "Bentang alam perbukitan agraris subur beriklim sejuk dengan akses pesisir Teluk Bone, sentra perkebunan cengkeh dan kakao rakyat bersertifikat, klaster 75 unit IKM olahan kebun, serta hasil tangkapan nelayan pesisir.",
                 luas: "16,40 km²",
                 dusunCount: 3,
                 rtCount: 9,
@@ -6582,7 +6615,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Desa Mandiri (Nilai 84%)",
                 rep: "Pemerintah Desa Tanggeawo",
-                desc: "Kawasan perkebunan kakao rakyat mandiri dengan 46 unit usaha IKM produktif dan koperasi tani.",
+                desc: "Kawasan lembah agraris dan perbukitan produktif dengan bentang alam perkebunan kakao rakyat mandiri, tanaman pangan hortikultura, serta 46 unit usaha IKM olahan berbasis koperasi binaan BPS.",
                 luas: "13,60 km²",
                 dusunCount: 3,
                 rtCount: 7,
@@ -6608,7 +6641,7 @@ function triggerPubDownload() {
                 photo: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=85",
                 kategori: "Desa Terbina Aktif (Nilai 79%)",
                 rep: "Pemerintah Desa Mattiro Bulu",
-                desc: "Sentra perkebunan dataran tinggi penghasil cengkeh, minyak nilam, dan tanaman hortikultura.",
+                desc: "Bentang alam dataran tinggi dan pegunungan berhawa sejuk, sentra perkebunan cengkeh rakyat, klaster penyulingan minyak atsiri nilam kualitas ekspor, serta komoditas hortikultura dan agroindustri mandiri.",
                 luas: "15,80 km²",
                 dusunCount: 3,
                 rtCount: 8,
@@ -6931,8 +6964,8 @@ function triggerPubDownload() {
                 return;
             }
             if (menuKey === 'peta') {
-                switchNavMenu('dashboard');
-                setTimeout(() => scrollToDashSection('sectionPeta'), 150);
+                switchNavMenu('tentang');
+                setTimeout(() => scrollToDashSection('sectionPeta'), 200);
                 return;
             }
             if (menuKey === 'pendidikan') {
@@ -8246,6 +8279,23 @@ function triggerPubDownload() {
         }
 
         function scrollToDashSection(targetId) {
+            if (targetId === 'sectionPeta') {
+                if (currentNavMenu !== 'tentang') {
+                    switchNavMenu('tentang');
+                }
+                setTimeout(() => {
+                    const el = document.getElementById('sectionPeta');
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        el.classList.add('ring-4', 'ring-emerald-500/80', 'transition-all', 'duration-500');
+                        setTimeout(() => el.classList.remove('ring-4', 'ring-emerald-500/80'), 2500);
+                        if (typeof thematicLeafletMap !== 'undefined' && thematicLeafletMap) {
+                            thematicLeafletMap.invalidateSize();
+                        }
+                    }
+                }, 200);
+                return;
+            }
             if (currentNavMenu !== 'dashboard') {
                 switchNavMenu('dashboard');
                 setTimeout(() => {
@@ -8573,6 +8623,13 @@ function triggerPubDownload() {
             }
 
             attach3DTiltListeners();
+
+            // Initialize or update Leaflet WebGIS Map for current village
+            setTimeout(() => {
+                if (typeof initOrUpdateThematicMap === 'function') {
+                    initOrUpdateThematicMap(villageKey);
+                }
+            }, 120);
         }
 
         function attach3DTiltListeners() {
