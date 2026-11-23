@@ -461,19 +461,11 @@
     <aside id="dcSidebar">
         <!-- 1. Header Sidebar: Penempatan Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
         <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-gradient-to-r from-emerald-50/50 via-white to-white relative">
-            <div class="flex items-center gap-2.5 min-w-0">
-                <div class="flex items-center gap-2 bg-white/95 px-2.5 py-1.5 rounded-2xl border border-slate-200/90 shadow-2xs shrink-0 ring-1 ring-slate-900/5">
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
-                    <div class="h-5 w-[1px] bg-slate-300"></div>
-                    <img src="/images/logo_kolaka_utara.png" alt="Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
-                </div>
-                <div class="leading-tight truncate">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[13px] font-black tracking-tight text-[#0f1f1a]">DESA CANTIK</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Sistem BPS Aktif"></span>
-                    </div>
-                    <div class="text-[9.5px] font-extrabold text-[#0f6b4a] uppercase tracking-wider mt-0.5">BPS KOLAKA UTARA</div>
-                </div>
+            <div class="flex items-center gap-2 bg-white/95 px-2.5 py-1.5 rounded-2xl border border-slate-200/90 shadow-2xs shrink-0 ring-1 ring-slate-900/5">
+                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
+                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                <div class="h-5 w-[1px] bg-slate-200"></div>
+                <img src="/logo-descan.png" alt="Desa Cantik" class="h-7 w-auto object-contain" title="Desa Cantik - Desa Cinta Statistik">
             </div>
             
             <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
@@ -5354,12 +5346,6 @@
                 btn.className = 'galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap';
             }
             renderGaleriPhotos(category);
-        });
-            if (btn) {
-                btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
-            }
-            renderGaleriPhotos(category);
         }
 
         function searchGaleriPhotos(keyword) {
@@ -5527,12 +5513,6 @@
             });
             if (btn) {
                 btn.className = 'page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap';
-            }
-            renderPageGaleriPhotos(category);
-        });
-            if (btn) {
-                btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
             }
             renderPageGaleriPhotos(category);
         }

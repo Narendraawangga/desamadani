@@ -397,20 +397,20 @@
     <header class="navbar-clean">
         <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
             
-            <!-- Brand Logo -->
-            <a href="/descan" class="flex items-center gap-3 group">
-                <div class="flex items-center gap-2 bg-white px-2 py-1.5 rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition">
+            <!-- Brand Logo Resmi (Pemkab Kolaka Utara, BPS & Logo Desa Cantik) -->
+            <a href="/descan" class="flex items-center gap-2.5 group">
+                <div class="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs group-hover:scale-105 transition">
                     <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-8 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
-                    <div class="h-5 w-[1.5px] bg-slate-200"></div>
-                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-8 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
+                    <div class="h-6 w-[1px] bg-slate-200"></div>
+                    <img src="/logo-descan.png" alt="Desa Cantik" class="h-9 w-auto object-contain" title="Desa Cantik - Desa Cinta Statistik">
                 </div>
-                <div>
-                    <div class="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none flex items-center gap-1.5">
-                        <span>DESCAN</span>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold">KODEOHA & TIWU</span>
+                <div class="flex flex-col justify-center leading-tight">
+                    <div>
+                        <span class="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-semibold tracking-wide border border-emerald-200/60">KODEOHA &amp; TIWU</span>
                     </div>
-                    <div class="text-[10px] text-slate-500 font-bold tracking-wide uppercase mt-0.5">
-                        Desa Cantik • Kolaka Utara
+                    <div class="text-[11px] font-medium text-slate-500 tracking-wider uppercase mt-0.5">
+                        KABUPATEN KOLAKA UTARA
                     </div>
                 </div>
             </a>
@@ -1120,7 +1120,7 @@
                                         <b class="text-xs font-black text-amber-300">14 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'kamisi')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'kamisi')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1164,7 +1164,7 @@
                                         <b class="text-xs font-black text-amber-300">16 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'koroha')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'koroha')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-sky-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1208,7 +1208,7 @@
                                         <b class="text-xs font-black text-amber-300">2 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'malamala')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'malamala')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-amber-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH KELURAHAN</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1252,7 +1252,7 @@
                                         <b class="text-xs font-black text-amber-300">75 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'lapolu')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'lapolu')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1296,7 +1296,7 @@
                                         <b class="text-xs font-black text-amber-300">46 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'tanggeawo')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'tanggeawo')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-indigo-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1340,7 +1340,7 @@
                                         <b class="text-xs font-black text-amber-300">20 Unit</b>
                                     </div>
                                 </div>
-                                <button type="button" onclick="handleDesaCardAccess(event, 'mattirobulu')" 
+                                <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'mattirobulu')" 
                                         class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-purple-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
@@ -1723,8 +1723,22 @@
             }
         };
 
+        function resolveVillageKey(input) {
+            if (!input) return 'all';
+            const str = input.toString().trim().toLowerCase();
+            if (str === 'all' || str.includes('semua')) return 'all';
+            if (str.includes('kamisi')) return 'kamisi';
+            if (str.includes('mala')) return 'malamala';
+            if (str.includes('lapolu')) return 'lapolu';
+            if (str.includes('tanggeawo')) return 'tanggeawo';
+            if (str.includes('mattiro') || str.includes('bulu')) return 'mattirobulu';
+            if (str.includes('koroha')) return 'koroha';
+            return 'all';
+        }
+
         function filterDashboardVillage(villageKey) {
-            if (!villageKey) villageKey = 'all';
+            const rawKey = villageKey || 'all';
+            villageKey = resolveVillageKey(rawKey);
 
             // 1. Sinkronkan nilai dropdown select
             const sel = document.getElementById('selectVillageFilter');
@@ -2602,6 +2616,11 @@
         }
         window.addEventListener('resize', updateCoverflowCards);
         window.addEventListener('load', updateCoverflowCards);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && !isCoverflowHovered) {
+                startCoverflowAutoplay();
+            }
+        });
 
         // ==============================================================
         // GALERI FOTO DESCAN RESMI & LIGHTBOX VIEWER
@@ -2847,8 +2866,6 @@
                 }
             }
         });
-            if (document.body) document.body.classList.remove('overflow-hidden');
-        }
 
 
         // Navbar ScrollSpy Active State Handler
