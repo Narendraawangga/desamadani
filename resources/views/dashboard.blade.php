@@ -662,13 +662,9 @@
             <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #DCE3DD) -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DCE3DD] pb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#DCE3DD] pb-5">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E6ECE6] border border-[#DCE3DD] text-[#3B4D3B] text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase font-sans mb-2">
-                            <span>📊 EKSPLORASI DETAIL PODES 2025</span>
-                        </div>
                         <h2 class="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D241E] tracking-tight leading-tight">Ringkasan & Eksplorasi 133 Desa</h2>
-                        <p class="text-slate-600 text-sm mt-1">Direktori 15 kecamatan dan telaah mendalam 7 sektor pembangunan PODES 2025 BPS Kabupaten Kolaka Utara.</p>
                     </div>
                     <div class="flex items-center gap-2.5">
                         <button id="btnExplorerExportCSV" onclick="window.exportActiveTableCSV()" class="px-5 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
