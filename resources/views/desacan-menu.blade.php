@@ -518,7 +518,7 @@
 
             <!-- 2. ADMINISTRASI & PENGISIAN DATA PODES -->
             <div class="dc-nav-label">Administrasi &amp; Data</div>
-            <button type="button" onclick="openManageDataModal('kpi')" class="dc-nav-item">
+            <button type="button" onclick="switchNavMenu('podes')" id="nav-podes" class="nav-tab dc-nav-item">
                 <span class="dc-ico"><i class="bi bi-pencil-square"></i></span>
                 <span>Pengisian Data PODES</span>
             </button>
@@ -1437,6 +1437,138 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- MENU: PENGISIAN DATA PODES (GOOGLE SPREADSHEET EMBED INTERAKTIF)      -->
+                <!-- ===================================================================== -->
+                <div id="view-podes" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    
+                    <!-- Content Top Header Banner -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-bold text-xl shadow-xs shrink-0">
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pengisian Data PODES</h2>
+                                    <span id="podesVillageBadge" class="podes-active-desa-name px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-300">Desa Kamisi</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Pemutakhiran data instrumen Potensi Desa (PODES) &amp; statistik sektoral terintegrasi Google Spreadsheet resmi BPS.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <a href="https://drive.google.com/drive/folders/1X24Nxer7Xva8zCJGjdxvGFjwPfMIN5d6" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#005ea6] border border-blue-200 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer">
+                                <i class="bi bi-folder-fill"></i>
+                                <span>Folder Drive PODES ↗</span>
+                            </a>
+                            <button type="button" onclick="loadDefaultPodesTemplate()" class="px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer">
+                                <i class="bi bi-file-earmark-diff-fill text-emerald-600"></i>
+                                <span>Gunakan Template PODES</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Input Link Google Spreadsheet & Tombol Terapkan (Bagian 1 & 2) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs space-y-3">
+                        <div class="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+                            <div class="relative flex-1 flex items-center">
+                                <span class="absolute left-3.5 text-slate-400 text-sm">
+                                    <i class="bi bi-link-45deg"></i>
+                                </span>
+                                <input type="url" id="podesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-xs font-medium text-slate-900 transition outline-none">
+                                <button type="button" onclick="clearPodesSheetInput('page')" class="absolute right-3 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer">
+                                    Hapus
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button type="button" onclick="applyPodesSpreadsheetUrl()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-play-circle-fill"></i>
+                                    <span>Tampilkan Spreadsheet</span>
+                                </button>
+                                <button type="button" onclick="openPodesInNewTab()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-200 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                    <span>Buka di Tab Baru ↗</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bar Keterangan Status -->
+                        <div class="flex flex-wrap items-center justify-between text-[11px] text-slate-500 pt-2 gap-2 border-t border-slate-100">
+                            <div class="flex items-center gap-2">
+                                <span class="inline-flex items-center gap-1 font-semibold text-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                    Desa Aktif: <b class="podes-active-desa-name text-slate-900 font-extrabold">Desa Kamisi</b>
+                                </span>
+                                <span class="text-slate-300">•</span>
+                                <span class="text-slate-500">Otomatis tersimpan per desa di peramban (localStorage)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400">Konversi otomatis anti-blokir: <code class="bg-slate-100 px-1 py-0.5 rounded text-[10px] text-emerald-700 font-mono">/edit?rm=minimal</code></span>
+                                <button type="button" onclick="clearPodesSpreadsheet()" class="text-rose-600 hover:text-rose-700 hover:underline font-bold text-[11px] cursor-pointer">
+                                    Reset Link Desa Ini
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Tampilan Spreadsheet: Full-Height Iframe Viewer (650px) -->
+                    <div class="relative w-full h-[650px] rounded-xl border border-slate-200 overflow-hidden bg-white shadow-sm">
+                        <!-- Empty State (Jika link belum dimasukkan) -->
+                        <div id="podesEmptyState" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-50/80 z-10 hidden">
+                            <div class="w-16 h-16 rounded-3xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-3xl mb-4 shadow-sm border border-emerald-200">
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                            </div>
+                            <h3 class="text-lg font-black text-slate-800">
+                                Google Spreadsheet PODES Belum Dihubungkan
+                            </h3>
+                            <p class="text-xs text-slate-500 max-w-md mt-1 mb-6">
+                                Hubungkan link Google Sheets instrumen PODES untuk <b class="podes-active-desa-name text-slate-800">Desa Kamisi</b> agar data statistik desa dapat diinput dan dimonitor secara langsung.
+                            </p>
+
+                            <!-- Panduan Singkat 3 Langkah -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl w-full text-left mb-6">
+                                <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white font-black text-[10px] flex items-center justify-center shrink-0">1</span>
+                                        <span class="text-xs font-bold text-slate-800">Buka File Spreadsheet</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500">Buka file Google Sheets PODES desa Anda atau buka template dari Google Drive.</p>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white font-black text-[10px] flex items-center justify-center shrink-0">2</span>
+                                        <span class="text-xs font-bold text-slate-800">Atur Akses Berbagi</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500">Klik tombol <b>Bagikan</b> di kanan atas, ubah ke "Siapa saja yang memiliki link dapat melihat/mengedit".</p>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white font-black text-[10px] flex items-center justify-center shrink-0">3</span>
+                                        <span class="text-xs font-bold text-slate-800">Salin &amp; Tempel Link</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500">Salin tautan Google Sheets lalu tempel pada kotak input di atas dan klik <b>Tampilkan Spreadsheet</b>.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tombol Aksi Cepat Empty State -->
+                            <div class="flex flex-wrap items-center justify-center gap-3">
+                                <button type="button" onclick="loadDefaultPodesTemplate()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                    <span>Gunakan Template Spreadsheet PODES</span>
+                                </button>
+                                <a href="https://drive.google.com/drive/folders/1X24Nxer7Xva8zCJGjdxvGFjwPfMIN5d6" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-xs shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-folder-symlink-fill text-blue-600"></i>
+                                    <span>Folder Drive Template PODES ↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Iframe Tampilan Spreadsheet Asli -->
+                        <iframe id="podesSheetIframe" src="" class="w-full h-full border-0" allow="autoplay; clipboard-write; encrypted-media" loading="lazy" title="Google Sheets PODES Viewer"></iframe>
+                    </div>
+
                 </div>
 
                 <!-- ===================================================================== -->
@@ -8031,6 +8163,9 @@ function triggerPubDownload() {
         function switchNavMenu(menuKey) {
             // Handle aliases & shortcuts
             if (menuKey === 'gallery') menuKey = 'galeri';
+            if (menuKey === 'podes' || menuKey === 'pengisian' || menuKey === 'kpi' || menuKey === 'spreadsheet') {
+                menuKey = 'podes';
+            }
             if (menuKey === 'kependudukan') {
                 switchNavMenu('dashboard');
                 setTimeout(() => scrollToDashSection('sectionPiramida'), 150);
@@ -8077,7 +8212,7 @@ function triggerPubDownload() {
             }
 
             // DAFTAR MENU RESMI DESCAN
-            const validMenus = ['dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan'];
+            const validMenus = ['dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
@@ -8130,6 +8265,7 @@ function triggerPubDownload() {
                 targetView.classList.remove('hidden');
                 if (menuKey === 'tentang') renderProfilDesa3D(currentTargetVillage);
                 if (menuKey === 'publikasi') renderPublikasiDesa(currentTargetVillage);
+                if (menuKey === 'podes') syncPodesSpreadsheetForVillage(currentTargetVillage);
                 syncPretestCardUI();
                 syncPosttestCardUI();
                 if (menuKey === 'galeri') renderPageGaleriPhotos('all', '');
@@ -8598,7 +8734,192 @@ function triggerPubDownload() {
             showToast('✅ Data statistik ' + (villagesData[villageKey]?.title || 'Desa') + ' berhasil disimpan & grafik diperbarui!');
         }
 
+        
+        // ==============================================================
+        // FITUR EMBED GOOGLE SPREADSHEET INTERAKTIF PODES
+        // ==============================================================
+        const PODES_DEFAULT_TEMPLATE_URL = 'https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit?usp=sharing';
+        const PODES_DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1X24Nxer7Xva8zCJGjdxvGFjwPfMIN5d6';
+
+        /**
+         * Konversi otomatis link Google Sheets agar anti-blokir iframe & rm=minimal
+         */
+        function convertGoogleSheetsToEmbedUrl(rawUrl) {
+            if (!rawUrl || typeof rawUrl !== 'string') return '';
+            let url = rawUrl.trim();
+            if (!url) return '';
+
+            // 1. Handle link publish Google Sheets (/pubhtml)
+            if (url.includes('/pubhtml')) {
+                try {
+                    const parsed = new URL(url);
+                    parsed.searchParams.set('widget', 'true');
+                    parsed.searchParams.set('headers', 'false');
+                    return parsed.toString();
+                } catch (e) {
+                    return url + (url.includes('?') ? '&' : '?') + 'widget=true&headers=false';
+                }
+            }
+
+            // 2. Handle link spreadsheet /spreadsheets/d/{ID}
+            const sheetMatch = url.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)(.*)/);
+            if (sheetMatch) {
+                const sheetId = sheetMatch[1];
+                const rest = sheetMatch[2] || '';
+                let gidPart = '';
+                const gidMatch = rest.match(/gid=([0-9]+)/);
+                if (gidMatch) {
+                    gidPart = `#gid=${gidMatch[1]}`;
+                }
+                return `https://docs.google.com/spreadsheets/d/${sheetId}/edit?rm=minimal${gidPart}`;
+            }
+
+            // 3. Handle link Google Drive file /file/d/{ID}
+            const driveFileMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9-_]+)/);
+            if (driveFileMatch) {
+                const fileId = driveFileMatch[1];
+                return `https://docs.google.com/spreadsheets/d/${fileId}/edit?rm=minimal`;
+            }
+
+            // 4. Fallback generic /edit
+            if (url.includes('/edit')) {
+                return url.replace(/\/edit(\?[^#]*)?/, '/edit?rm=minimal');
+            }
+
+            return url;
+        }
+
+        function getPodesStorageKey(villageKey) {
+            const key = (villageKey || currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            return 'podes_sheet_url_' + key;
+        }
+
+        function syncPodesSpreadsheetForVillage(villageKey) {
+            const key = (villageKey || currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const vData = (typeof villagesData !== 'undefined' && villagesData[key]) ? villagesData[key] : { title: 'Desa ' + key };
+            const desaName = vData.title || ('Desa ' + key.charAt(0).toUpperCase() + key.slice(1));
+
+            // Sync village text everywhere
+            document.querySelectorAll('.podes-active-desa-name').forEach(el => el.textContent = desaName);
+
+            // Read localStorage
+            const savedUrl = localStorage.getItem(getPodesStorageKey(key)) || '';
+
+            // Update input elements
+            const inPage = document.getElementById('podesSheetUrlInput');
+            if (inPage) inPage.value = savedUrl;
+            const inModal = document.getElementById('modalPodesSheetUrlInput');
+            if (inModal) inModal.value = savedUrl;
+
+            // Render iframe or empty state
+            const iframePage = document.getElementById('podesSheetIframe');
+            const emptyPage = document.getElementById('podesEmptyState');
+            const iframeModal = document.getElementById('modalPodesSheetIframe');
+            const emptyModal = document.getElementById('modalPodesEmptyState');
+
+            if (savedUrl) {
+                const embedUrl = convertGoogleSheetsToEmbedUrl(savedUrl);
+                if (iframePage) {
+                    if (iframePage.src !== embedUrl) iframePage.src = embedUrl;
+                }
+                if (emptyPage) emptyPage.classList.add('hidden');
+
+                if (iframeModal) {
+                    if (iframeModal.src !== embedUrl) iframeModal.src = embedUrl;
+                }
+                if (emptyModal) emptyModal.classList.add('hidden');
+            } else {
+                if (iframePage) iframePage.src = 'about:blank';
+                if (emptyPage) emptyPage.classList.remove('hidden');
+
+                if (iframeModal) iframeModal.src = 'about:blank';
+                if (emptyModal) emptyModal.classList.remove('hidden');
+            }
+        }
+
+        function applyPodesSpreadsheetUrl(customUrl = null) {
+            const key = (currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            let rawUrl = customUrl;
+            if (!rawUrl) {
+                const inPage = document.getElementById('podesSheetUrlInput');
+                const inModal = document.getElementById('modalPodesSheetUrlInput');
+                rawUrl = (inPage && inPage.value) ? inPage.value : (inModal ? inModal.value : '');
+            }
+            rawUrl = (rawUrl || '').trim();
+            if (!rawUrl) {
+                alert('Silakan masukkan link Google Spreadsheet terlebih dahulu.');
+                return;
+            }
+
+            localStorage.setItem(getPodesStorageKey(key), rawUrl);
+            syncPodesSpreadsheetForVillage(key);
+            if (typeof showToast === 'function') {
+                showToast('Link Google Spreadsheet PODES berhasil disimpan!', '📊');
+            }
+        }
+
+        function loadDefaultPodesTemplate() {
+            const key = (currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            localStorage.setItem(getPodesStorageKey(key), PODES_DEFAULT_TEMPLATE_URL);
+            syncPodesSpreadsheetForVillage(key);
+            if (typeof showToast === 'function') {
+                showToast('Template Spreadsheet PODES dimuat!', '📑');
+            }
+        }
+
+        function openPodesInNewTab() {
+            const key = (currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const savedUrl = localStorage.getItem(getPodesStorageKey(key));
+            if (savedUrl) {
+                window.open(savedUrl, '_blank');
+            } else {
+                window.open(PODES_DRIVE_FOLDER_URL, '_blank');
+            }
+        }
+
+        function clearPodesSpreadsheet() {
+            const key = (currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
+            localStorage.removeItem(getPodesStorageKey(key));
+            syncPodesSpreadsheetForVillage(key);
+            if (typeof showToast === 'function') {
+                showToast('Link Spreadsheet PODES desa ini telah di-reset.', '🔄');
+            }
+        }
+
+        function clearPodesSheetInput(scope = 'page') {
+            if (scope === 'modal') {
+                const el = document.getElementById('modalPodesSheetUrlInput');
+                if (el) el.value = '';
+            } else {
+                const el = document.getElementById('podesSheetUrlInput');
+                if (el) el.value = '';
+            }
+        }
+
         function openManageDataModal(activeTab = 'kpi') {
+            switchNavMenu('podes');
+        }
+
+        function openPodesModal() {
+            const modal = document.getElementById('manageDataModal');
+            if (!modal) { switchNavMenu('podes'); return; }
+            syncPodesSpreadsheetForVillage(currentTargetVillage);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeManageDataModal() {
+            const modal = document.getElementById('manageDataModal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        /* Old manage data functions kept as legacy fallback */
+        function _legacy_openManageDataModal(activeTab = 'kpi') {
+
             const modal = document.getElementById('manageDataModal');
             if (!modal) return;
             const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
@@ -9752,6 +10073,9 @@ function triggerPubDownload() {
 
             // 4. Update Sectoral Data & Charts
             renderDashboardCantik(key);
+            if (typeof syncPodesSpreadsheetForVillage === 'function') {
+                syncPodesSpreadsheetForVillage(key);
+            }
             if (currentNavMenu === 'galeri' && typeof renderPageGaleriPhotos === 'function') {
                 renderPageGaleriPhotos('all', '');
             }
@@ -10765,6 +11089,7 @@ function triggerPubDownload() {
             switchVillage(currentTargetVillage);
             switchNavMenu('dashboard');
             updateNavProfileWidget(currentTargetVillage);
+            if (typeof syncPodesSpreadsheetForVillage === 'function') syncPodesSpreadsheetForVillage(currentTargetVillage);
         }
 
         function togglePasswordVisibility(inputId) {
@@ -10954,6 +11279,7 @@ function triggerPubDownload() {
                 switchVillage(currentTargetVillage);
                 switchNavMenu(menuParam);
                 updateNavProfileWidget(currentTargetVillage);
+            if (typeof syncPodesSpreadsheetForVillage === 'function') syncPodesSpreadsheetForVillage(currentTargetVillage);
             }
             
             // Initialize Excel Guidebook Reader if available
@@ -11131,332 +11457,112 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
     <!-- MODAL GANTI AKUN RESMI DESA                                    -->
     <!-- ============================================================== -->
     
-    <!-- ============================================================== -->
-    <!-- MODAL KELOLA & EDIT DATA STATISTIK DESA (ADMIN DESA)           -->
-    <!-- Memungkinkan admin desa mengedit nilai grafik & menambah dusun -->
+        <!-- ============================================================== -->
+    <!-- MODAL PENGISIAN DATA PODES (EMBED GOOGLE SPREADSHEET)          -->
     <!-- ============================================================== -->
     <div id="manageDataModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
+        <div class="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200 flex flex-col max-h-[92vh]">
             
             <!-- Modal Header: Sinkron dengan Menu Sidebar Pengisian Data PODES -->
-            <div class="bg-gradient-to-r from-[#072448] via-[#0b2b52] to-[#072448] text-white p-5 sm:p-6 relative">
-                <button type="button" onclick="closeManageDataModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">
-                    ✕
-                </button>
-                <div class="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase text-emerald-300">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Admin Panel • Pengisian Data PODES</span>
+            <div class="bg-gradient-to-r from-[#072448] via-[#0b2b52] to-[#072448] text-white p-5 sm:p-6 relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0">
+                <div>
+                    <div class="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase text-emerald-300">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Admin Panel • Pengisian Data PODES</span>
+                    </div>
+                    <h3 class="text-xl font-black text-white mt-1">
+                        Pengisian Data PODES &amp; Statistik Desa
+                    </h3>
+                    <p class="text-xs text-blue-100/90 mt-0.5">
+                        Pemutakhiran instrumen PODES via Google Spreadsheet terintegrasi untuk <b id="modalAdminDesaTitle" class="text-amber-300 font-bold podes-active-desa-name">Desa Kamisi</b>.
+                    </p>
                 </div>
-                <h3 class="text-xl font-black text-white mt-1">
-                    Pengisian Data PODES &amp; Statistik Desa
-                </h3>
-                <p class="text-xs text-blue-100/90 mt-0.5">
-                    Pemutakhiran data monografi, indikator utama, dan dusun sasaran untuk <b id="modalAdminDesaTitle" class="text-amber-300 font-bold">Desa Lapolu</b>.
-                </p>
-
-                <!-- Modal Sub-Navigation Tabs -->
-                <div class="flex items-center gap-1.5 overflow-x-auto pt-4 mt-3 border-t border-white/10 scrollbar-none text-xs font-extrabold">
-                    <button type="button" onclick="switchManageModalTab('kpi')" id="modal-tab-kpi" class="modal-tab-btn active px-3.5 py-1.5 rounded-xl bg-white text-slate-900 transition shadow-xs cursor-pointer">
-                        📊 Indikator Utama (KPI)
+                <div class="flex items-center gap-2 self-end sm:self-auto">
+                    <button type="button" onclick="closeManageDataModal(); switchNavMenu('podes');" class="px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                        <span>Buka Halaman Penuh</span>
                     </button>
-                    <button type="button" onclick="switchManageModalTab('bansos')" id="modal-tab-bansos" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        🏛️ Bantuan Sosial
-                    </button>
-                    <button type="button" onclick="switchManageModalTab('dusun')" id="modal-tab-dusun" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        <i class="bi bi-houses-fill mr-1"></i> Kelola &amp; Tambah Dusun
-                    </button>
-                    <button type="button" onclick="switchManageModalTab('sosial')" id="modal-tab-sosial" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        <i class="bi bi-people-fill mr-1"></i> Sosial &amp; Pendidikan
+                    <button type="button" onclick="closeManageDataModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">
+                        ✕
                     </button>
                 </div>
             </div>
 
-            <!-- Modal Body Form -->
-            <form id="manageDataForm" onsubmit="saveManageDataForm(event)" class="p-5 sm:p-6 space-y-5">
-                
-                <!-- TAB 1: INDIKATOR UTAMA (KPI) - 8 Field Simetris (4 Baris x 2 Kolom) dengan Input Suffix Add-on -->
-                <div id="modal-panel-kpi" class="modal-panel-view space-y-4">
-                    <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 font-medium flex items-center gap-2">
-                        <span class="text-base">💡</span>
-                        <span>Angka berikut akan langsung mengubah kartu statistik utama di bagian paling atas dashboard desa.</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
-                        <!-- Baris 1: Total Penduduk & Total Keluarga -->
-                        <div>
-                            <label for="inputKpiPop" class="block mb-1 text-slate-800">Total Penduduk</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="1" id="inputKpiPop" required placeholder="1264" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    Jiwa
-                                </span>
-                            </div>
+            <!-- Modal Body: Embed Google Spreadsheet Interaktif -->
+            <div class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
+                <!-- Bar Input Link -->
+                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/90 space-y-3">
+                    <div class="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
+                        <div class="relative flex-1 flex items-center">
+                            <span class="absolute left-3.5 text-slate-400 text-sm">
+                                <i class="bi bi-link-45deg"></i>
+                            </span>
+                            <input type="url" id="modalPodesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-xs font-medium text-slate-900 transition outline-none">
+                            <button type="button" onclick="clearPodesSheetInput('modal')" class="absolute right-3 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer">
+                                Hapus
+                            </button>
                         </div>
-                        <div>
-                            <label for="inputKpiKk" class="block mb-1 text-slate-800">Total Keluarga</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="1" id="inputKpiKk" required placeholder="321" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    KK
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Baris 2: Rasio Beban Tanggungan & Keluarga Pre-Sejahtera -->
-                        <div>
-                            <label for="inputKpiRasio" class="block mb-1 text-slate-800">Rasio Beban Tanggungan</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="0.1" id="inputKpiRasio" required placeholder="40.0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    %
-                                </span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputKpiPre" class="block mb-1 text-slate-800">Keluarga Pre-Sejahtera</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="1" id="inputKpiPre" required placeholder="38" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    KK
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Baris 3: Rasio Jenis Kelamin & Penduduk Miskin P3KE -->
-                        <div>
-                            <label for="inputKpiSexRatio" class="block mb-1 text-slate-800">Rasio Jenis Kelamin (Sex Ratio)</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="0.1" id="inputKpiSexRatio" required placeholder="100.5" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    %
-                                </span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputKpiP3ke" class="block mb-1 text-slate-800">Penduduk Miskin P3KE</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="0.1" id="inputKpiP3ke" required placeholder="3.5" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    %
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Baris 4 (Simetris Genap 8 Field): Kasus Stunting Aktif & Fasilitas Kesehatan -->
-                        <div>
-                            <label for="inputKpiStunting" class="block mb-1 text-slate-800">Kasus Stunting Aktif</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="1" min="0" id="inputKpiStunting" required placeholder="2" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    Balita
-                                </span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputKpiFaskes" class="block mb-1 text-slate-800">Fasilitas Kesehatan / Posyandu</label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" step="1" min="0" id="inputKpiFaskes" required placeholder="4" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
-                                    Unit
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB 2: BANTUAN SOSIAL (BANSOS) -->
-                <div id="modal-panel-bansos" class="modal-panel-view hidden space-y-4">
-                    <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
-                        📊 Perbarui kuota dan data penerima bantuan sosial untuk grafik batang bertumpuk (Stacked Bar Chart).
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
-                        <div>
-                            <label for="inputBansosPkh" class="block mb-1 flex items-center gap-1.5 text-slate-800">
-                                <span class="w-2.5 h-2.5 rounded-xs bg-[#005ea6]"></span>
-                                <span>Penerima PKH</span>
-                            </label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#005ea6] focus-within:ring-2 focus-within:ring-blue-500/20 overflow-hidden transition">
-                                <input type="number" id="inputBansosPkh" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputBansosBpnt" class="block mb-1 flex items-center gap-1.5 text-slate-800">
-                                <span class="w-2.5 h-2.5 rounded-xs bg-[#10b981]"></span>
-                                <span>Penerima BPNT</span>
-                            </label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#10b981] focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
-                                <input type="number" id="inputBansosBpnt" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputBansosBlt" class="block mb-1 flex items-center gap-1.5 text-slate-800">
-                                <span class="w-2.5 h-2.5 rounded-xs bg-[#e11d48]"></span>
-                                <span>Penerima BLT Dana Desa</span>
-                            </label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#e11d48] focus-within:ring-2 focus-within:ring-rose-500/20 overflow-hidden transition">
-                                <input type="number" id="inputBansosBlt" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="inputBansosNon" class="block mb-1 flex items-center gap-1.5 text-slate-800">
-                                <span class="w-2.5 h-2.5 rounded-xs bg-[#f59e0b]"></span>
-                                <span>Non-Bansos / Mandiri</span>
-                            </label>
-                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#f59e0b] focus-within:ring-2 focus-within:ring-amber-500/20 overflow-hidden transition">
-                                <input type="number" id="inputBansosNon" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
-                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB 3: KELOLA & TAMBAH DUSUN -->
-                <div id="modal-panel-dusun" class="modal-panel-view hidden space-y-5">
-                    
-                    <!-- Subform Tambah Dusun Baru -->
-                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-xs font-black text-emerald-950 flex items-center gap-1.5">
-                                <span>➕</span>
-                                <span>Tambah Dusun / Wilayah Sasaran Baru</span>
-                            </h4>
-                            <span class="text-[10px] font-bold text-emerald-800">Geotagging SDI</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs font-bold text-slate-700">
-                            <div>
-                                <label for="newDusunName" class="block mb-1 text-[11px]">Nama Dusun</label>
-                                <input type="text" id="newDusunName" placeholder="contoh: Dusun V Mekar Asri" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-900 bg-white">
-                            </div>
-                            <div>
-                                <label for="newDusunPop" class="block mb-1 text-[11px]">Penduduk (Jiwa)</label>
-                                <input type="number" id="newDusunPop" placeholder="950" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-900 bg-white">
-                            </div>
-                            <div>
-                                <label for="newDusunKk" class="block mb-1 text-[11px]">Keluarga (KK)</label>
-                                <input type="number" id="newDusunKk" placeholder="280" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-900 bg-white">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold text-slate-700">
-                            <div>
-                                <label for="newDusunPre" class="block mb-1 text-[11px]">Keluarga Pre-Sejahtera (KK)</label>
-                                <input type="number" id="newDusunPre" placeholder="22" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-900 bg-white">
-                            </div>
-                            <div>
-                                <label for="newDusunKerawanan" class="block mb-1 text-[11px]">Status Kerawanan</label>
-                                <select id="newDusunKerawanan" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-medium text-slate-900 bg-white">
-                                    <option value="Rendah">Rendah (&lt; 500)</option>
-                                    <option value="Sedang" selected>Sedang (500 - 1000)</option>
-                                    <option value="Tinggi">Tinggi (&gt; 1000)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="pt-1 text-right">
-                            <button type="button" onclick="addNewDusunFromModal()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-xs transition inline-flex items-center gap-1.5 cursor-pointer">
-                                <span>➕</span>
-                                <span>Tambahkan Dusun Ini</span>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button type="button" onclick="applyPodesSpreadsheetUrl(document.getElementById('modalPodesSheetUrlInput').value)" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="bi bi-play-circle-fill"></i>
+                                <span>Tampilkan Spreadsheet</span>
+                            </button>
+                            <button type="button" onclick="openPodesInNewTab()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs border border-slate-200 transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                                <span>Buka di Tab Baru ↗</span>
                             </button>
                         </div>
                     </div>
-
-                    <!-- Tabel Daftar Dusun Terdaftar -->
-                    <div>
-                        <div class="text-xs font-black text-slate-900 mb-2 flex items-center justify-between">
-                            <span>Daftar Dusun Saat Ini</span>
-                            <span id="modalDusunCount" class="text-slate-400 font-bold">4 Dusun</span>
+                    <div class="flex flex-wrap items-center justify-between text-[11px] text-slate-500 pt-1 gap-2 border-t border-slate-200">
+                        <div class="flex items-center gap-2">
+                            <span>Desa Aktif: <b class="podes-active-desa-name text-slate-800 font-bold">Desa Kamisi</b></span>
+                            <span class="text-slate-300">•</span>
+                            <span>Tersimpan otomatis di peramban</span>
                         </div>
-                        <div class="border border-slate-200 rounded-xl overflow-hidden max-h-48 overflow-y-auto">
-                            <table class="w-full text-left text-xs">
-                                <thead class="bg-slate-100 text-slate-600 font-black text-[10px] uppercase border-b border-slate-200">
-                                    <tr>
-                                        <th class="p-2.5">Nama Dusun</th>
-                                        <th class="p-2.5">Penduduk</th>
-                                        <th class="p-2.5">KK</th>
-                                        <th class="p-2.5">Pre-Sejahtera</th>
-                                        <th class="p-2.5 text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="modalDusunTableBody" class="divide-y divide-slate-100 text-slate-800 font-medium">
-                                    <!-- Populated dynamically via JS -->
-                                </tbody>
-                            </table>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="loadDefaultPodesTemplate()" class="text-emerald-700 hover:underline font-bold">
+                                📑 Gunakan Template Default
+                            </button>
+                            <span class="text-slate-300">•</span>
+                            <a href="https://drive.google.com/drive/folders/1X24Nxer7Xva8zCJGjdxvGFjwPfMIN5d6" target="_blank" rel="noopener noreferrer" class="text-[#005ea6] hover:underline font-bold">
+                                📂 Folder Drive PODES ↗
+                            </a>
                         </div>
-                    </div>
-
-                </div>
-
-                <!-- TAB 4: SOSIAL, KESEHATAN & PENDIDIKAN -->
-                <div id="modal-panel-sosial" class="modal-panel-view hidden space-y-4">
-                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 font-medium">
-                        🏥 Atur persentase kesehatan/disabilitas dan sebaran jenjang pendidikan warga.
-                    </div>
-
-                    <!-- Disabilitas & Kesehatan -->
-                    <div class="space-y-2">
-                        <span class="text-xs font-black text-slate-900 block">Status Disabilitas &amp; Kesehatan (% Mandiri)</span>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold text-slate-700">
-                            <div>
-                                <label for="inputDisMaleMandiri" class="block mb-1">Laki-laki Mandiri / Sehat (%)</label>
-                                <input type="number" id="inputDisMaleMandiri" min="0" max="100" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold text-slate-900 bg-white">
-                            </div>
-                            <div>
-                                <label for="inputDisFemaleMandiri" class="block mb-1">Perempuan Mandiri / Sehat (%)</label>
-                                <input type="number" id="inputDisFemaleMandiri" min="0" max="100" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold text-slate-900 bg-white">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Jenjang Pendidikan Tertinggi -->
-                    <div class="space-y-2 pt-2 border-t border-slate-100">
-                        <span class="text-xs font-black text-slate-900 block">Jenjang Pendidikan Tertinggi (Jumlah Sampel / Dusun)</span>
-                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-bold text-slate-700">
-                            <div>
-                                <label for="inputEdu0" class="block mb-1 text-[10px] truncate">Tidak Sekolah</label>
-                                <input type="number" id="inputEdu0" min="0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white text-xs">
-                            </div>
-                            <div>
-                                <label for="inputEdu1" class="block mb-1 text-[10px] truncate">SD</label>
-                                <input type="number" id="inputEdu1" min="0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white text-xs">
-                            </div>
-                            <div>
-                                <label for="inputEdu2" class="block mb-1 text-[10px] truncate">SMP</label>
-                                <input type="number" id="inputEdu2" min="0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white text-xs">
-                            </div>
-                            <div>
-                                <label for="inputEdu3" class="block mb-1 text-[10px] truncate">SMA/SMK</label>
-                                <input type="number" id="inputEdu3" min="0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white text-xs">
-                            </div>
-                            <div>
-                                <label for="inputEdu4" class="block mb-1 text-[10px] truncate">Perguruan Tinggi</label>
-                                <input type="number" id="inputEdu4" min="0" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 font-bold text-slate-900 bg-white text-xs">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Modal Actions Footer (Konfirmasi Keamanan & Tombol Simpan) -->
-                <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <button type="button" onclick="resetSectoralDataToDefault()" class="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1.5 cursor-pointer hover:underline">
-                        <span>🔄</span>
-                        <span>Reset ke Nilai Standar BPS</span>
-                    </button>
-
-                    <div class="flex items-center gap-2 self-end sm:self-auto">
-                        <button type="button" onclick="closeManageDataModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
-                            Batal
-                        </button>
-                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center gap-1.5 cursor-pointer transform active:scale-95">
-                            <span>💾</span>
-                            <span>Simpan Perubahan Grafik</span>
-                        </button>
                     </div>
                 </div>
 
-            </form>
+                <!-- Modal Container Iframe (Height 550px) -->
+                <div class="relative w-full h-[550px] rounded-xl border border-slate-200 overflow-hidden bg-white shadow-sm">
+                    <div id="modalPodesEmptyState" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-slate-50/80 z-10 hidden">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mb-3 shadow-xs border border-emerald-200">
+                            <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                        </div>
+                        <h4 class="text-base font-black text-slate-800">
+                            Google Spreadsheet PODES Belum Dihubungkan
+                        </h4>
+                        <p class="text-xs text-slate-500 max-w-md mt-1 mb-4">
+                            Tempel tautan Google Sheets instrumen PODES untuk <b class="podes-active-desa-name text-slate-800">Desa Kamisi</b> di atas.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="loadDefaultPodesTemplate()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                                <span>Gunakan Template Spreadsheet PODES</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1X24Nxer7Xva8zCJGjdxvGFjwPfMIN5d6" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-bold text-xs shadow-2xs transition">
+                                <span>Buka Folder Drive ↗</span>
+                            </a>
+                        </div>
+                    </div>
+                    <iframe id="modalPodesSheetIframe" src="" class="w-full h-full border-0" allow="autoplay; clipboard-write; encrypted-media" loading="lazy" title="Modal Google Sheets PODES Viewer"></iframe>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-xs shrink-0">
+                <span class="text-slate-500 font-medium">BPS Kabupaten Kolaka Utara • DESCAN 2026</span>
+                <button type="button" onclick="closeManageDataModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 font-bold text-slate-700 cursor-pointer">
+                    Tutup
+                </button>
+            </div>
         </div>
     </div>
     <div id="switchAccountModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md overflow-y-auto">
