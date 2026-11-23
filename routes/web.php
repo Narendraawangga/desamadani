@@ -38,17 +38,41 @@ Route::get('/home', function () {
 Route::get('/portal/podes/table-data', [AdminController::class, 'getPodesTableData'])->name('portal.podes.table-data');
 Route::get('/portal/podes/catalog', [AdminController::class, 'getPodesCatalog'])->name('portal.podes.catalog');
 
-// Web Utama: Portal Satu Data, WebGIS & Analitik Kemandirian Desa Madani Kolaka Utara
+// Web Utama: Portal Satu Data, WebGIS & Analitik Kemandirian Desa Madani Kolaka Utara (5 Halaman Modular)
 Route::get('/portal', function () {
-    return view('dashboard');
+    return view('dashboard', ['activePage' => (int) request('page', 1)]);
+});
+Route::get('/portal/beranda', function () {
+    return view('dashboard', ['activePage' => 1]);
+});
+Route::get('/portal/agregat', function () {
+    return view('dashboard', ['activePage' => 2]);
+});
+Route::get('/portal/ringkasan', function () {
+    return view('dashboard', ['activePage' => 2]);
+});
+Route::get('/portal/peta', function () {
+    return view('dashboard', ['activePage' => 3]);
+});
+Route::get('/portal/spasial', function () {
+    return view('dashboard', ['activePage' => 3]);
+});
+Route::get('/portal/desa-cantik', function () {
+    return view('dashboard', ['activePage' => 4]);
+});
+Route::get('/portal/tentang', function () {
+    return view('dashboard', ['activePage' => 5]);
+});
+Route::get('/portal/publikasi', function () {
+    return view('dashboard', ['activePage' => 5]);
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', ['activePage' => (int) request('page', 1)]);
 });
 
 Route::get('/se2026', function () {
-    return view('dashboard');
+    return view('dashboard', ['activePage' => (int) request('page', 1)]);
 });
 
 // Dashboard Menu Utama DESCAN (Desa Cantik - 6 Desa Binaan)
