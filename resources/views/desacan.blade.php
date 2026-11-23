@@ -2462,7 +2462,7 @@
             const dotsContainer = document.getElementById('coverflowDots');
             if (dotsContainer) {
                 dotsContainer.innerHTML = coverflowVillages.map((v, i) => `
-                    <button type="button" onclick="userInteractGoTo(${i})" 
+                    <button type="button" onclick="userInteractGoTo(${i})" onmouseenter="handleCoverflowCardHover(${i})" 
                             class="h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === currentCoverflowIdx ? 'w-8 bg-[#0E7C5A]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}" 
                             title="${v.title}">
                     </button>
@@ -2492,13 +2492,20 @@
             pauseAndResumeAutoplay();
         }
 
-        // Jeda otomatis saat mouse hover tanpa merotasi sembarangan
+        // Bergerak otomatis ketika kursor diarahkan ke desa tertentu
+        let coverflowHoverTimer = null;
         function handleCoverflowCardHover(index) {
             isCoverflowHovered = true;
             stopCoverflowAutoplay();
+            if (index === currentCoverflowIdx) return;
+            clearTimeout(coverflowHoverTimer);
+            coverflowHoverTimer = setTimeout(() => {
+                goToCoverflow(index);
+            }, 80); // Respon cepat & halus saat kursor diarahkan ke kartu desa
         }
 
         function handleCoverflowCardLeave() {
+            clearTimeout(coverflowHoverTimer);
             isCoverflowHovered = false;
             startCoverflowAutoplay();
         }
