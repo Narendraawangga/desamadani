@@ -101,13 +101,13 @@
             overflow: hidden;
         }
 
-                /* ===== 3D MODERN STATS CARDS ===== */
+                /* ===== 3D MODERN STATS CARDS (FLAT, SUBTLE & COMPACT ABOVE-THE-FOLD) ===== */
         .stat-card-3d {
             position: relative;
             background: #ffffff;
-            border-radius: 20px;
+            border-radius: 18px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.02);
+            box-shadow: 0 3px 12px -3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
         }
@@ -117,26 +117,26 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3.5px;
+            height: 3px;
             background: var(--accent-bar, linear-gradient(90deg, #10b981, #059669));
-            border-radius: 20px 20px 0 0;
+            border-radius: 18px 18px 0 0;
         }
         .stat-card-3d:hover {
-            transform: translateY(-5px); /* Subtle hover lift */
-            box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.04);
+            transform: translateY(-4px); /* Subtle hover lift */
+            box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
             border-color: #cbd5e1;
         }
         .orb-3d {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.25s ease;
         }
         .stat-card-3d:hover .orb-3d {
-            transform: translateY(-2px) scale(1.05); /* Flat cohesive lift */
+            transform: translateY(-1.5px) scale(1.04);
         }
 
         /* Chart & KPI Cards */
@@ -428,17 +428,17 @@
     <!-- ============================================================== -->
     <!-- 3. HERO SECTION (Ringkas, Berisi, Tidak Ramai)                  -->
     <!-- ============================================================== -->
-    <section id="beranda" class="hero-banner py-12 sm:py-16">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <section id="beranda" class="hero-banner pt-7 pb-8 sm:pt-9 sm:pb-10 lg:pt-10 lg:pb-11">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
-            <!-- Left Column: Typography & Action -->
-            <div class="lg:col-span-7 space-y-4 text-left">
-                <div class="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-black tracking-widest uppercase text-emerald-300 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15">
+            <!-- Left Column: Typography & Action (Compact Above-The-Fold) -->
+            <div class="lg:col-span-7 space-y-3 sm:space-y-3.5 text-left">
+                <div class="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-black tracking-widest uppercase text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/15">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>Portal Satu Data Statistik Sektoral 2026</span>
                 </div>
 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black text-white tracking-tight leading-tight">
                     Desa Cantik. <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300">
                         Kedaulatan Data
@@ -446,52 +446,52 @@
                     <span class="font-normal text-slate-200"> Membangun Desa.</span>
                 </h1>
 
-                <p class="text-xs sm:text-sm text-slate-200 font-medium max-w-xl leading-relaxed">
+                <p class="text-xs sm:text-[13px] text-slate-200 font-medium max-w-xl leading-relaxed">
                     Pusat diseminasi data statistik sektoral dan pembinaan agen statistik mandiri untuk <b>6 desa binaan BPS Kabupaten Kolaka Utara</b> di wilayah Kecamatan Kodeoha &amp; Kecamatan Tiwu.
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="pt-2 flex flex-wrap items-center gap-3">
-                    <a href="#dashboard" class="px-6 py-3 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-lg transition flex items-center gap-2 transform hover:-translate-y-0.5">
+                <div class="pt-1.5 flex flex-wrap items-center gap-2.5">
+                    <a href="#dashboard" class="px-5 py-2.5 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5">
                         <span>📊 Lihat Data Grafik Visual</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </a>
-                    <a href="#desa" class="px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition flex items-center gap-2">
+                    <a href="#desa" class="px-4.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition flex items-center gap-2">
                         <span>🏘️ Pilih 6 Desa Binaan</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Right Column: Ringkasan 4 Pilar Inti -->
+            <!-- Right Column: Ringkasan 4 Pilar Inti (Compact) -->
             <div class="lg:col-span-5">
-                <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl space-y-3">
-                    <div class="flex items-center justify-between pb-2.5 border-b border-white/10">
+                <div class="p-4 sm:p-4.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl space-y-2.5">
+                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
                         <span class="text-xs font-black uppercase text-emerald-300 tracking-wider">Indikator Kunci Pembinaan</span>
                         <span class="text-xs text-emerald-200 font-bold">Kec. Kodeoha &amp; Tiwu</span>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2.5">
-                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-2xl font-black text-amber-300">100%</div>
-                            <div class="text-xs text-white font-bold mt-1">Target Capaian 2026</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-xl sm:text-2xl font-black text-amber-300">100%</div>
+                            <div class="text-xs text-white font-bold mt-0.5">Target Capaian 2026</div>
                             <div class="text-xs text-emerald-200/90 font-medium">Target Mandiri SDI</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-2xl font-black text-teal-300">TW-IV</div>
-                            <div class="text-xs text-white font-bold mt-1">Periode Pendataan</div>
+                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-xl sm:text-2xl font-black text-teal-300">TW-IV</div>
+                            <div class="text-xs text-white font-bold mt-0.5">Periode Pendataan</div>
                             <div class="text-xs text-teal-200/90 font-medium">Tahun Berjalan 2026</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-2xl font-black text-emerald-300">2 Kec.</div>
-                            <div class="text-xs text-white font-bold mt-1">Cakupan Wilayah</div>
+                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-xl sm:text-2xl font-black text-emerald-300">2 Kec.</div>
+                            <div class="text-xs text-white font-bold mt-0.5">Cakupan Wilayah</div>
                             <div class="text-xs text-emerald-200/90 font-medium">Kodeoha &amp; Tiwu</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-xl sm:text-2xl font-black text-white flex items-center justify-center gap-1.5">
+                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
+                            <div class="text-lg sm:text-xl font-black text-white flex items-center justify-center gap-1 mt-0.5">
                                 <i class="bi bi-shield-fill-check text-emerald-400"></i>
                                 <span>SDI</span>
                             </div>
-                            <div class="text-xs text-white font-bold mt-1">Status Portal</div>
+                            <div class="text-xs text-white font-bold mt-0.5">Status Portal</div>
                             <div class="text-xs text-emerald-200/90 font-medium">Terintegrasi BPS RI</div>
                         </div>
                     </div>
@@ -500,92 +500,92 @@
 
         </div>
 
-        <!-- 3D Organic Wave Divider -->
-        <div class="w-full overflow-hidden leading-none mt-8 -mb-12 sm:-mb-16">
-            <svg class="relative block w-full h-12 sm:h-20 text-[#f8fafc]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+        <!-- 3D Organic Wave Divider (Lighter, Compact & Elevated) -->
+        <div class="w-full overflow-hidden leading-none mt-4 sm:mt-5 -mb-8 sm:-mb-10">
+            <svg class="relative block w-full h-8 sm:h-12 text-[#f8fafc]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
                 <path d="M0,0 C150,85 350,-35 500,45 C650,125 900,10 1200,45 L1200,120 L0,120 Z"></path>
             </svg>
         </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- 4. FLOATING STATS STRIP (5 Kartu 3D Modern, Kreatif & Berkelas) -->
+    <!-- 4. FLOATING STATS STRIP (5 Kartu - Utuh & Langsung Tampak / Above-the-Fold) -->
     <!-- ============================================================== -->
-    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 lg:-mt-12 relative z-20">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5.5">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-3.5 lg:gap-4.5">
             
-            <!-- Kartu 1: Desa Pilot (3D Emerald Glow) -->
-            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
-                <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-emerald-500 to-[#0E7C5A] shadow-sm ring-2 ring-emerald-100 mb-3.5">
-                    <i class="bi bi-geo-alt-fill text-2xl text-white drop-shadow-sm"></i>
+            <!-- Kartu 1: Desa Pilot -->
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
+                <!-- Flat Subtle Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-emerald-500 to-[#0E7C5A] shadow-xs ring-1 ring-emerald-100 mb-2">
+                    <i class="bi bi-geo-alt-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">6</div>
-                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Desa Pilot</div>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10.5px] font-bold border border-emerald-200/80 shadow-2xs">
+                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">6</div>
+                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Desa Pilot</div>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9.5px] sm:text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Kec. Kodeoha &amp; Kec. Tiwu
+                        Kec. Kodeoha &amp; Tiwu
                     </span>
                 </div>
             </div>
 
-            <!-- Kartu 2: Total Keluarga (3D Amber/Gold Glow) -->
-            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #f59e0b, #d97706);">
-                <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-amber-400 to-amber-600 shadow-sm ring-2 ring-amber-100 mb-3.5">
-                    <i class="bi bi-people-fill text-2xl text-white drop-shadow-sm"></i>
+            <!-- Kartu 2: Total Keluarga -->
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #f59e0b, #d97706);">
+                <!-- Flat Subtle Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-amber-400 to-amber-600 shadow-xs ring-1 ring-amber-100 mb-2">
+                    <i class="bi bi-people-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">2.426</div>
-                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Total Keluarga</div>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10.5px] font-bold border border-amber-200/80 shadow-2xs">
+                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">2.426</div>
+                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Keluarga</div>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9.5px] sm:text-[10px] font-bold border border-amber-200/80 shadow-2xs">
                         Kepala Keluarga (KK)
                     </span>
                 </div>
             </div>
 
-            <!-- Kartu 3: Total Penduduk (3D Sky Blue Glow) -->
-            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #0ea5e9, #0284c7);">
-                <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-sky-400 to-sky-600 shadow-sm ring-2 ring-sky-100 mb-3.5">
-                    <i class="bi bi-person-vcard-fill text-2xl text-white drop-shadow-sm"></i>
+            <!-- Kartu 3: Total Penduduk -->
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #0ea5e9, #0284c7);">
+                <!-- Flat Subtle Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-sky-400 to-sky-600 shadow-xs ring-1 ring-sky-100 mb-2">
+                    <i class="bi bi-person-vcard-fill text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-none mb-1.5">8.734</div>
-                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Total Penduduk</div>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[10.5px] font-bold border border-sky-200/80 shadow-2xs">
+                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">8.734</div>
+                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Penduduk</div>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[9.5px] sm:text-[10px] font-bold border border-sky-200/80 shadow-2xs">
                         Jiwa Terdata
                     </span>
                 </div>
             </div>
 
-            <!-- Kartu 4: Rata-rata Progres (3D Teal/Mint Glow) -->
-            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between group cursor-default" style="--accent-bar: linear-gradient(90deg, #14b8a6, #0d9488);">
-                <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-teal-400 to-teal-600 shadow-sm ring-2 ring-teal-100 mb-3.5">
-                    <i class="bi bi-graph-up-arrow text-2xl text-white drop-shadow-sm"></i>
+            <!-- Kartu 4: Rata-rata Progres -->
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #14b8a6, #0d9488);">
+                <!-- Flat Subtle Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-teal-400 to-teal-600 shadow-xs ring-1 ring-teal-100 mb-2">
+                    <i class="bi bi-graph-up-arrow text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1.5">84%</div>
-                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Rata-rata Progres</div>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[10.5px] font-bold border border-teal-200/80 shadow-2xs">
-                        <i class="bi bi-check-circle-fill text-[10px] text-teal-600"></i>
+                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1">84%</div>
+                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Rata-rata Progres</div>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[9.5px] sm:text-[10px] font-bold border border-teal-200/80 shadow-2xs">
+                        <i class="bi bi-check-circle-fill text-[9px] text-teal-600"></i>
                         Pendataan Selesai
                     </span>
                 </div>
             </div>
 
-            <!-- Kartu 5: Indikator Terinput (3D Indigo/Royal Glow) -->
-            <div class="stat-card-3d p-5 sm:py-6 sm:px-4 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group cursor-default" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
-                <!-- 3D Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-sm ring-2 ring-indigo-100 mb-3.5">
-                    <i class="bi bi-database-fill-check text-2xl text-white drop-shadow-sm"></i>
+            <!-- Kartu 5: Indikator Terinput -->
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
+                <!-- Flat Subtle Orb Badge -->
+                <div class="orb-3d bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-xs ring-1 ring-indigo-100 mb-2">
+                    <i class="bi bi-database-fill-check text-xl text-white drop-shadow-xs"></i>
                 </div>
                 <div class="w-full">
-                    <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1.5">223 / 264</div>
-                    <div class="text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1.5">Indikator Terinput</div>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[10.5px] font-bold border border-indigo-200/80 shadow-2xs">
+                    <div class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1">223 / 264</div>
+                    <div class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Indikator Terinput</div>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[9.5px] sm:text-[10px] font-bold border border-indigo-200/80 shadow-2xs">
                         44 Indikator / Desa
                     </span>
                 </div>
