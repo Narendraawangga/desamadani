@@ -541,10 +541,10 @@
             </button>
         </div>
 
-        <!-- 3. Footer Sidebar: Mini Status SDI, Akses Kembali ke 6 Desa & Keluar Akun -->
-        <div class="p-3 border-t border-[#e5e9e7] bg-gradient-to-b from-[#fafcfb] to-[#f4f8f6] space-y-2">
+        <!-- 3. Footer Sidebar: Mini Status SDI, Akses Kembali ke 6 Desa & Keluar Akun (Solid White & Anti-Overlap) -->
+        <div class="p-3 border-t border-slate-200 bg-white space-y-2 shrink-0 z-20 relative rounded-br-[24px]">
             <!-- Mini Live Status Satu Data Indonesia -->
-            <div class="px-3 py-2 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/5 border border-emerald-500/20 shadow-2xs flex items-center justify-between">
+            <div class="px-3 py-2 rounded-2xl bg-emerald-50/80 border border-emerald-500/20 shadow-2xs flex items-center justify-between">
                 <div class="flex items-center gap-2 min-w-0">
                     <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></div>
                     <div class="truncate leading-tight">
@@ -2704,61 +2704,85 @@
         </div>
     </div>
 
-                <div id="view-video" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dc-ico" style="--c:#dc2626;--cbg:#fde8e8;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#dc2626,#f4676a);color:#fff;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+                <div id="view-video" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- 1. Header Video Tutorial (Ikon Lucide PlayCircle Hijau & Tombol Navigasi Tunggal) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 p-2.5 shadow-2xs shrink-0">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+                                </svg>
+                            </div>
                             <div>
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Tutorial</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-2 self-start sm:self-auto">
-                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
-                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
-                                <span>Putar Opening Desa</span>
-                            </button>
-                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
-                                <i class="bi bi-arrow-left"></i>
-                                <span>Menu Pembelajaran</span>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-800 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
+                                <i class="bi bi-arrow-left text-sm"></i>
+                                <span>← Kembali ke Menu Pembelajaran</span>
                             </button>
                         </div>
                     </div>
 
-                    <div class="max-w-4xl w-full">
-                            <!-- Step 2: TONTON VIDEO MICROLEARNING -->
-                            <div class="p-4 sm:p-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 flex flex-col justify-between space-y-4">
+                    <!-- 2. Konten Utama: 2 Kolom (Video Player + Playlist Materi) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                        
+                        <!-- Kolom Kiri (lg:col-span-2): Video Player + CTA + Poin Penting Pembelajaran -->
+                        <div class="lg:col-span-2 space-y-5">
+                            
+                            <!-- Card Pemutar Video Utama -->
+                            <div class="p-5 sm:p-6 rounded-2xl border-2 border-emerald-300/80 bg-white shadow-2xs space-y-4">
                                 <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white text-xs font-black">
+                                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                                        <span class="px-2.5 py-1 rounded-lg bg-emerald-700 text-white text-xs font-black tracking-wide">
                                             [2. TONTON VIDEO MICROLEARNING]
                                         </span>
-                                        <span class="text-[10px] font-black text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded-md">
-                                            Durasi: 5-7 Menit
+                                        <span id="currentVideoDurationBadge" class="text-[11px] font-black text-emerald-800 bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 rounded-lg">
+                                            Durasi: 4 Menit
                                         </span>
                                     </div>
-                                    <h5 class="font-black text-slate-900 text-sm mt-3">Video Edukasi Desa Cantik BPS</h5>
+                                    <h3 id="currentVideoTitle" class="font-black text-slate-900 text-base sm:text-lg mt-3">
+                                        Profil &amp; Pengenalan Desa Cantik
+                                    </h3>
+                                    <p id="currentVideoSubtitle" class="text-xs text-slate-500 mt-0.5">
+                                        Materi Seri 1 • Video Edukasi Desa Cantik BPS Kolaka Utara
+                                    </p>
                                     
                                     <!-- Video Embed Player Container with Click-to-Play Overlay -->
-                                    <div class="mt-2 relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 shadow-md border border-slate-200 group">
+                                    <div class="mt-3 relative w-full aspect-video rounded-xl overflow-hidden bg-slate-950 shadow-md border border-slate-200 group">
                                         <iframe id="mainVideoIframe" class="w-full h-full" src="https://www.youtube.com/embed/RXV4X0cOIA0?enablejsapi=1&rel=0" title="Video Edukasi Desa Cantik BPS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         
                                         <!-- Quick Click to Play Overlay (Langsung Berputar Otomatis Saat Diklik) -->
                                         <div id="videoPlayOverlay" onclick="playMicrolearningVideo(true)" class="absolute inset-0 bg-slate-950/45 hover:bg-slate-950/25 flex flex-col items-center justify-center cursor-pointer transition z-10">
-                                            <div class="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-xl shadow-xl transition transform group-hover:scale-110">
+                                            <div class="w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-xl transition transform group-hover:scale-110">
                                                 ▶
                                             </div>
-                                            <span class="text-[11px] font-black text-white mt-2 drop-shadow-md tracking-wide">Klik untuk Putar Otomatis</span>
+                                            <span class="text-xs font-black text-white mt-2.5 drop-shadow-md tracking-wide">Klik untuk Putar Video</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="space-y-2">
-                                    <button type="button" onclick="playMicrolearningVideo(true)" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-xs">
-                                        <span>▶ Putar Video Sekarang (Otomatis)</span>
+
+                                <!-- CTA & Kontrol Player -->
+                                <div class="space-y-3 pt-1">
+                                    <!-- CTA Utama Menuju Post-Test -->
+                                    <button type="button" onclick="completeVideoAndGoToPosttest()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-[0.99]">
+                                        <span>Tandai Selesai &amp; Lanjut ke Post-test →</span>
                                     </button>
-                                    <div class="flex items-center justify-between text-xs text-slate-600 pt-1">
-                                        <span class="font-bold">Kurikulum: BPS Kolaka Utara</span>
+
+                                    <!-- Sub Controls -->
+                                    <div class="flex items-center justify-between text-xs text-slate-600 pt-2 border-t border-slate-100 flex-wrap gap-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                            <span class="font-bold text-slate-700">Kurikulum: BPS Kolaka Utara</span>
+                                        </div>
                                         <div class="flex items-center gap-3">
+                                            <button type="button" onclick="startVillageVideoOpening(true)" class="font-bold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer flex items-center gap-1">
+                                                <i class="bi bi-play-btn-fill"></i>
+                                                <span>Putar Opening Desa</span>
+                                            </button>
                                             <button type="button" onclick="openVideoTheaterModal()" class="font-extrabold text-[#005ea6] hover:underline cursor-pointer flex items-center gap-1">
                                                 <span>⛶</span>
                                                 <span>Full Layar</span>
@@ -2771,6 +2795,172 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Kotak Ringkasan "Poin Penting Pembelajaran" (4 Poin Singkat) -->
+                            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-2xs space-y-3">
+                                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 text-xs font-black">💡</span>
+                                        <h4 class="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-800">Poin Penting Pembelajaran</h4>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">Standar Satu Data Indonesia</span>
+                                </div>
+                                <div id="videoLearningPointsContainer" class="grid sm:grid-cols-2 gap-3 text-xs text-slate-600 pt-1">
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-2.5">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">1</span>
+                                        <div class="leading-relaxed">
+                                            <strong class="text-slate-900 block mb-0.5">Prinsip Satu Data Indonesia (SDI)</strong>
+                                            Memahami standar data, metadata baku, serta kode referensi statistik desa yang interoperabel.
+                                        </div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-2.5">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">2</span>
+                                        <div class="leading-relaxed">
+                                            <strong class="text-slate-900 block mb-0.5">Peran Agen Statistik Desa</strong>
+                                            Aparatur desa bertindak sebagai garda terdepan pengumpul, verifikator, dan pembina basis data monografi.
+                                        </div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-2.5">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">3</span>
+                                        <div class="leading-relaxed">
+                                            <strong class="text-slate-900 block mb-0.5">Validasi &amp; Konsistensi PODES</strong>
+                                            Menjaga ketelitian pendataan lapangan guna menghindari anomali data fasilitas desa dan kependudukan.
+                                        </div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-2.5">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">4</span>
+                                        <div class="leading-relaxed">
+                                            <strong class="text-slate-900 block mb-0.5">Pemanfaatan Data Sektoral</strong>
+                                            Transformasi data statistik menjadi infografis potensi desa dan acuan penentuan kebijakan APBDes.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kolom Kanan (lg:col-span-1): Kartu "Daftar Materi Video (Playlist)" -->
+                        <div class="lg:col-span-1 space-y-4">
+                            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div>
+                                        <h4 class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
+                                            <i class="bi bi-collection-play-fill text-emerald-600"></i>
+                                            <span>Daftar Materi Video (Playlist)</span>
+                                        </h4>
+                                        <p class="text-[11px] text-slate-500 mt-0.5">4 Seri Modul Desa Cantik</p>
+                                    </div>
+                                    <span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                        4 Seri
+                                    </span>
+                                </div>
+
+                                <!-- Playlist List -->
+                                <div id="videoPlaylistList" class="space-y-2.5">
+                                    <!-- Video 1 (Default Aktif) -->
+                                    <div onclick="selectMicroVideo(0)" id="playlist-item-0" class="p-3 rounded-xl border border-emerald-300 bg-emerald-50/70 hover:bg-emerald-100/60 transition cursor-pointer flex items-center justify-between gap-3 group">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            <div id="playlist-badge-0" class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-black shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                                                ▶
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div id="playlist-title-0" class="text-xs font-black text-emerald-950 truncate">1. Profil &amp; Pengenalan Desa Cantik</div>
+                                                <div class="flex items-center gap-2 text-[10px] text-emerald-700 font-semibold mt-0.5">
+                                                    <span>Durasi: 4 Menit</span>
+                                                    <span>•</span>
+                                                    <span id="playlist-status-0" class="text-emerald-800 font-bold">Sedang Diputar</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="playlist-icon-0" class="text-emerald-600 shrink-0 text-sm">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </div>
+
+                                    <!-- Video 2 -->
+                                    <div onclick="selectMicroVideo(1)" id="playlist-item-1" class="p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition cursor-pointer flex items-center justify-between gap-3 group">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            <div id="playlist-badge-1" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition">
+                                                2
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div id="playlist-title-1" class="text-xs font-bold text-slate-800 truncate">2. Konsep Dasar Statistik Sektoral</div>
+                                                <div class="flex items-center gap-2 text-[10px] text-slate-600 mt-0.5">
+                                                    <span>Durasi: 6 Menit</span>
+                                                    <span>•</span>
+                                                    <span id="playlist-status-1">Seri Modul</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="playlist-icon-1" class="text-slate-300 shrink-0 text-sm group-hover:text-emerald-500">
+                                            <i class="bi bi-play-circle"></i>
+                                        </span>
+                                    </div>
+
+                                    <!-- Video 3 -->
+                                    <div onclick="selectMicroVideo(2)" id="playlist-item-2" class="p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition cursor-pointer flex items-center justify-between gap-3 group">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            <div id="playlist-badge-2" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition">
+                                                3
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div id="playlist-title-2" class="text-xs font-bold text-slate-800 truncate">3. Tata Cara Pengisian Data PODES</div>
+                                                <div class="flex items-center gap-2 text-[10px] text-slate-600 mt-0.5">
+                                                    <span>Durasi: 8 Menit</span>
+                                                    <span>•</span>
+                                                    <span id="playlist-status-2">Seri Modul</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="playlist-icon-2" class="text-slate-300 shrink-0 text-sm group-hover:text-emerald-500">
+                                            <i class="bi bi-play-circle"></i>
+                                        </span>
+                                    </div>
+
+                                    <!-- Video 4 -->
+                                    <div onclick="selectMicroVideo(3)" id="playlist-item-3" class="p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition cursor-pointer flex items-center justify-between gap-3 group">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            <div id="playlist-badge-3" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition">
+                                                4
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div id="playlist-title-3" class="text-xs font-bold text-slate-800 truncate">4. Praktik Pengolahan Data Excel</div>
+                                                <div class="flex items-center gap-2 text-[10px] text-slate-600 mt-0.5">
+                                                    <span>Durasi: 7 Menit</span>
+                                                    <span>•</span>
+                                                    <span id="playlist-status-3">Seri Modul</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="playlist-icon-3" class="text-slate-300 shrink-0 text-sm group-hover:text-emerald-500">
+                                            <i class="bi bi-play-circle"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Playlist Progress Summary -->
+                                <div class="pt-3 border-t border-slate-100">
+                                    <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 mb-1.5">
+                                        <span>Progres Seri Video:</span>
+                                        <span id="playlistProgressLabel" class="text-emerald-700">1 dari 4 Selesai (25%)</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                        <div id="playlistProgressBar" class="bg-emerald-600 h-2 rounded-full transition-all duration-300" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Tips Sertifikasi -->
+                            <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/80 text-xs text-emerald-950 space-y-2 shadow-2xs">
+                                <div class="flex items-center gap-2 font-black text-emerald-900">
+                                    <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">★</span>
+                                    <span>Syarat Kelulusan Agen Statistik</span>
+                                </div>
+                                <p class="text-[11px] text-emerald-800 leading-relaxed">
+                                    Selesaikan menonton seri video microlearning ini untuk membuka evaluasi <strong>Post-Test</strong>. Nilai minimal kelulusan sertifikasi adalah <strong>70 / 100</strong>.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -5178,6 +5368,178 @@ function triggerPubDownload() {
                 playMicrolearningVideo(true);
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+                // ==============================================================
+        // PLAYLIST & VIDEO MICROLEARNING HANDLER (4 SERI MODUL)
+        // ==============================================================
+        const microVideosList = [
+            {
+                id: "RXV4X0cOIA0",
+                title: "1. Profil & Pengenalan Desa Cantik",
+                displayTitle: "Profil & Pengenalan Desa Cantik",
+                subtitle: "Materi Seri 1 • Video Edukasi Desa Cantik BPS Kolaka Utara",
+                duration: "4 Menit",
+                points: [
+                    { title: "Prinsip Satu Data Indonesia (SDI)", desc: "Memahami standar data, metadata baku, serta kode referensi statistik desa yang interoperabel." },
+                    { title: "Peran Agen Statistik Desa", desc: "Aparatur desa bertindak sebagai garda terdepan pengumpul, verifikator, dan pembina basis data monografi." },
+                    { title: "Validasi & Konsistensi PODES", desc: "Menjaga ketelitian pendataan lapangan guna menghindari anomali data fasilitas desa dan kependudukan." },
+                    { title: "Pemanfaatan Data Sektoral", desc: "Transformasi data statistik menjadi infografis potensi desa dan acuan penentuan kebijakan APBDes." }
+                ]
+            },
+            {
+                id: "RXV4X0cOIA0",
+                title: "2. Konsep Dasar Statistik Sektoral",
+                displayTitle: "Konsep Dasar Statistik Sektoral",
+                subtitle: "Materi Seri 2 • Variabel Makro & Tata Kelola Statistik",
+                duration: "6 Menit",
+                points: [
+                    { title: "Klasifikasi Data Sektoral", desc: "Membedakan kebutuhan data statistik dasar nasional dengan data sektoral tingkat desa." },
+                    { title: "44 Variabel Makro Desa", desc: "Penguasaan 44 indikator kunci mencakup kependudukan, kesehatan, perumahan, dan ketenagakerjaan." },
+                    { title: "Instrumen Kuesioner Baku", desc: "Teknik wawancara terstandarisasi untuk mendapatkan respon akurat dari kepala keluarga (KK)." },
+                    { title: "Integrasi Portal SDI", desc: "Penyelarasan kode wilayah desa dengan sistem Satu Data Indonesia BPS RI." }
+                ]
+            },
+            {
+                id: "RXV4X0cOIA0",
+                title: "3. Tata Cara Pengisian Data PODES",
+                displayTitle: "Tata Cara Pengisian Data PODES",
+                subtitle: "Materi Seri 3 • Verifikasi Potensi & Sarana Prasarana Desa",
+                duration: "8 Menit",
+                points: [
+                    { title: "Katalog Fasilitas Publik", desc: "Pendataan sarana pendidikan, fasilitas kesehatan, dan sentra ekonomi perdagangan desa." },
+                    { title: "Deteksi Kerawanan Bencana", desc: "Pencatatan mitigasi resiko bencana alam dan kesiapsiagaan aparatur di lingkungan desa." },
+                    { title: "Verifikasi Keberadaan Komoditas", desc: "Inventarisasi potensi unggulan pertanian, perkebunan kakao, cengkeh, dan hasil laut." },
+                    { title: "Cek Silang Rekonsiliasi", desc: "Menghindari duplikasi pelaporan data antar dusun dan register kependudukan." }
+                ]
+            },
+            {
+                id: "RXV4X0cOIA0",
+                title: "4. Praktik Pengolahan Data Excel",
+                displayTitle: "Praktik Pengolahan Data Excel",
+                subtitle: "Materi Seri 4 • Standardisasi Format Tabel & Visualisasi",
+                duration: "7 Menit",
+                points: [
+                    { title: "Struktur Tabel Standar SDI", desc: "Format kolom, tipe data numeric/text, dan aturan penulisan kode baris di Microsoft Excel." },
+                    { title: "Rumus Kunci Statistik", desc: "Penerapan formula SUM, AVERAGE, COUNTIF, dan VLOOKUP untuk komputasi cepat monografi." },
+                    { title: "Pembersihan Data (Cleansing)", desc: "Menemukan nilai kosong (missing value), format tanggal yang keliru, dan anomali angka." },
+                    { title: "Grafik & Infografis Otomatis", desc: "Membuat piramida penduduk dan grafik donat distribusi fasilitas siap publikasi." }
+                ]
+            }
+        ];
+
+        let currentActiveVideoIndex = 0;
+        const videoCompletedFlags = [true, false, false, false];
+
+        function selectMicroVideo(index) {
+            if (index < 0 || index >= microVideosList.length) return;
+            currentActiveVideoIndex = index;
+            videoCompletedFlags[index] = true;
+            const vid = microVideosList[index];
+
+            // Update Header & Duration Badge
+            const titleEl = document.getElementById('currentVideoTitle');
+            const subEl = document.getElementById('currentVideoSubtitle');
+            const durEl = document.getElementById('currentVideoDurationBadge');
+            if (titleEl) titleEl.textContent = vid.displayTitle;
+            if (subEl) subEl.textContent = vid.subtitle;
+            if (durEl) durEl.textContent = 'Durasi: ' + vid.duration;
+
+            // Update Video Player iframe
+            const iframe = document.getElementById('mainVideoIframe');
+            if (iframe) {
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${vid.id}?autoplay=1&enablejsapi=1&rel=0`);
+            }
+            const overlay = document.getElementById('videoPlayOverlay');
+            if (overlay) overlay.classList.add('hidden');
+
+            // Update Poin Penting Pembelajaran
+            const ptsContainer = document.getElementById('videoLearningPointsContainer');
+            if (ptsContainer && vid.points) {
+                ptsContainer.innerHTML = vid.points.map((pt, i) => `
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-2.5">
+                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">${i + 1}</span>
+                        <div class="leading-relaxed">
+                            <strong class="text-slate-900 block mb-0.5">${pt.title}</strong>
+                            ${pt.desc}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update Playlist UI
+            for (let i = 0; i < microVideosList.length; i++) {
+                const itemEl = document.getElementById(`playlist-item-${i}`);
+                const badgeEl = document.getElementById(`playlist-badge-${i}`);
+                const titleTextEl = document.getElementById(`playlist-title-${i}`);
+                const statusEl = document.getElementById(`playlist-status-${i}`);
+                const iconEl = document.getElementById(`playlist-icon-${i}`);
+
+                if (i === index) {
+                    if (itemEl) {
+                        itemEl.className = 'p-3 rounded-xl border border-emerald-300 bg-emerald-50/70 hover:bg-emerald-100/60 transition cursor-pointer flex items-center justify-between gap-3 group';
+                    }
+                    if (badgeEl) {
+                        badgeEl.className = 'w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-black shrink-0 shadow-2xs group-hover:scale-105 transition-transform';
+                        badgeEl.innerHTML = '▶';
+                    }
+                    if (titleTextEl) {
+                        titleTextEl.className = 'text-xs font-black text-emerald-950 truncate';
+                    }
+                    if (statusEl) {
+                        statusEl.className = 'text-emerald-800 font-bold';
+                        statusEl.textContent = 'Sedang Diputar';
+                    }
+                    if (iconEl) {
+                        iconEl.className = 'text-emerald-600 shrink-0 text-sm';
+                        iconEl.innerHTML = '<i class="bi bi-check-circle-fill"></i>';
+                    }
+                } else {
+                    const isDone = videoCompletedFlags[i];
+                    if (itemEl) {
+                        itemEl.className = 'p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition cursor-pointer flex items-center justify-between gap-3 group';
+                    }
+                    if (badgeEl) {
+                        badgeEl.className = isDone
+                            ? 'w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs font-bold shrink-0'
+                            : 'w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition';
+                        badgeEl.innerHTML = `${i + 1}`;
+                    }
+                    if (titleTextEl) {
+                        titleTextEl.className = 'text-xs font-bold text-slate-800 truncate';
+                    }
+                    if (statusEl) {
+                        statusEl.className = isDone ? 'text-emerald-700 font-medium' : '';
+                        statusEl.textContent = isDone ? 'Selesai Ditonton' : 'Seri Modul';
+                    }
+                    if (iconEl) {
+                        iconEl.className = isDone ? 'text-emerald-600 shrink-0 text-sm' : 'text-slate-300 shrink-0 text-sm group-hover:text-emerald-500';
+                        iconEl.innerHTML = isDone ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-play-circle"></i>';
+                    }
+                }
+            }
+
+            // Update Progress Bar
+            const completedCount = videoCompletedFlags.filter(Boolean).length;
+            const pct = Math.round((completedCount / microVideosList.length) * 100);
+            const pBar = document.getElementById('playlistProgressBar');
+            const pText = document.getElementById('playlistProgressLabel');
+            if (pBar) pBar.style.width = pct + '%';
+            if (pText) pText.textContent = `${completedCount} dari 4 Selesai (${pct}%)`;
+
+            showToast(`Memutar materi: ${vid.displayTitle}`, '🎬');
+        }
+
+        function completeVideoAndGoToPosttest() {
+            videoCompletedFlags[currentActiveVideoIndex] = true;
+            if (typeof unlockAllLmsModules === 'function') {
+                unlockAllLmsModules();
+            }
+            showToast('✅ Modul video selesai! Melanjutkan ke tahap Post-test...', '🎓');
+            setTimeout(() => {
+                switchNavMenu('pretest');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 300);
         }
 
         function playMicrolearningVideo(unmute = true) {
