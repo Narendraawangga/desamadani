@@ -639,7 +639,7 @@
                 <!-- Dropdown Filter Desa -->
                 <div class="relative">
                     <select id="selectVillageFilter" onchange="filterDashboardVillage(this.value)" class="appearance-none bg-white border border-slate-300 hover:border-emerald-500 text-slate-800 text-xs font-bold py-2 pl-3 pr-8 rounded-xl shadow-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer transition">
-                        <option value="all">Filter: Semua Desa (6)</option>
+                        <option value="all" selected>Filter: Semua Desa (6)</option>
                         <option value="kamisi">Desa Kamisi (Kodeoha)</option>
                         <option value="malamala">Kel. Mala-Mala (Kodeoha)</option>
                         <option value="lapolu">Desa Lapolu (Tiwu)</option>
@@ -796,7 +796,7 @@
                         </div>
                         <span class="panel-pill text-blue-700 bg-blue-100">Monografi 2026</span>
                     </div>
-                    <div class="chart-box flex-1 mt-4" style="min-height:330px;"><canvas id="chartKeluargaPerDesa"></canvas></div>
+                    <div class="chart-box flex-1 mt-4 relative w-full" style="height: 330px; min-height: 330px;"><canvas id="chartKeluargaPerDesa"></canvas></div>
                 </div>
             </div>
 
@@ -807,21 +807,21 @@
                         <div><h4 class="panel-title"><span class="dot bg-[#0E7C5A]"></span>Kepemilikan Rumah</h4><p class="panel-sub">Status hunian keluarga</p></div>
                         <span class="panel-pill text-emerald-800 bg-emerald-100">Perumahan</span>
                     </div>
-                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartKepemilikanRumah"></canvas></div>
+                    <div class="chart-box mt-4 relative w-full" style="height: 260px; min-height: 260px;"><canvas id="chartKepemilikanRumah"></canvas></div>
                 </div>
                 <div class="card-surface p-5 sm:p-6">
                     <div class="flex items-start justify-between gap-2">
                         <div><h4 class="panel-title"><span class="dot bg-sky-600"></span>Sumber Air Minum</h4><p class="panel-sub">Akses air bersih rumah tangga</p></div>
                         <span class="panel-pill text-sky-800 bg-sky-100">Sanitasi</span>
                     </div>
-                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartSumberAir"></canvas></div>
+                    <div class="chart-box mt-4 relative w-full" style="height: 260px; min-height: 260px;"><canvas id="chartSumberAir"></canvas></div>
                 </div>
                 <div class="card-surface p-5 sm:p-6">
                     <div class="flex items-start justify-between gap-2">
                         <div><h4 class="panel-title"><span class="dot bg-amber-500"></span>Penghasilan Keluarga</h4><p class="panel-sub">Sebaran pendapatan per bulan</p></div>
                         <span class="panel-pill text-amber-800 bg-amber-100">Ekonomi</span>
                     </div>
-                    <div class="chart-box mt-4" style="height:230px;"><canvas id="chartPenghasilan"></canvas></div>
+                    <div class="chart-box mt-4 relative w-full" style="height: 260px; min-height: 260px;"><canvas id="chartPenghasilan"></canvas></div>
                 </div>
             </div>
 
@@ -1059,7 +1059,7 @@
         </div>
 
         <!-- Konten Utama 6 Desa Binaan (Berada di atas layer SVG: relative z-10) -->
-        <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
+        <div class="relative z-10 pointer-events-auto w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
 
         
         <!-- Header Section (Matching Image 2 Aesthetic) -->
@@ -1077,16 +1077,16 @@
         </div>
 
         <!-- 3D CAROUSEL CONTAINER (6 DESA BERJEJER SECARA HORIZONTAL) -->
-        <div class="relative w-full py-2 select-none overflow-hidden">
+        <div class="relative z-10 pointer-events-auto w-full py-2 select-none overflow-hidden">
             
             <!-- 3D Perspective Stage -->
-            <div id="coverflowStage" class="coverflow-stage" onmousedown="handleCoverflowDragStart(event)" ontouchstart="handleCoverflowTouchStart(event)">
+            <div id="coverflowStage" class="coverflow-stage relative z-10 pointer-events-auto" onmousedown="handleCoverflowDragStart(event)" ontouchstart="handleCoverflowTouchStart(event)">
                 
                 <!-- Track Horizontal yang Berisi Seluruh 6 Desa Berjejer -->
-                <div id="coverflowTrack" class="coverflow-track">
+                <div id="coverflowTrack" class="coverflow-track relative z-10 pointer-events-auto">
 
                     <!-- 1. DESA KAMISI (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 0, 'kamisi')" onmouseenter="handleCoverflowCardHover(0)"
+                    <div onclick="handleCoverflowCardClick(event, 0, 'kamisi')" onmouseenter="handleCoverflowCardHover(0)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 active" data-index="0" data-key="kamisi">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Kamisi" class="card-bg">
@@ -1130,7 +1130,7 @@
                     </div>
 
                     <!-- 2. DESA KOROHA (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 1, 'koroha')" onmouseenter="handleCoverflowCardHover(1)"
+                    <div onclick="handleCoverflowCardClick(event, 1, 'koroha')" onmouseenter="handleCoverflowCardHover(1)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 card-right" data-index="1" data-key="koroha">
                         <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Koroha" class="card-bg">
@@ -1174,7 +1174,7 @@
                     </div>
 
                     <!-- 3. KELURAHAN MALA-MALA (KEC. KODEOHA) -->
-                    <div onclick="handleCoverflowCardClick(event, 2, 'malamala')" onmouseenter="handleCoverflowCardHover(2)"
+                    <div onclick="handleCoverflowCardClick(event, 2, 'malamala')" onmouseenter="handleCoverflowCardHover(2)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 card-far-right" data-index="2" data-key="malamala">
                         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" 
                              alt="Kelurahan Mala-Mala" class="card-bg">
@@ -1218,7 +1218,7 @@
                     </div>
 
                     <!-- 4. DESA LAPOLU (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 3, 'lapolu')" onmouseenter="handleCoverflowCardHover(3)"
+                    <div onclick="handleCoverflowCardClick(event, 3, 'lapolu')" onmouseenter="handleCoverflowCardHover(3)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="3" data-key="lapolu">
                         <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Lapolu" class="card-bg">
@@ -1262,7 +1262,7 @@
                     </div>
 
                     <!-- 5. DESA TANGGEAWO (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 4, 'tanggeawo')" onmouseenter="handleCoverflowCardHover(4)"
+                    <div onclick="handleCoverflowCardClick(event, 4, 'tanggeawo')" onmouseenter="handleCoverflowCardHover(4)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="4" data-key="tanggeawo">
                         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Tanggeawo" class="card-bg">
@@ -1306,7 +1306,7 @@
                     </div>
 
                     <!-- 6. DESA MATTIRO BULU (KEC. TIWU) -->
-                    <div onclick="handleCoverflowCardClick(event, 5, 'mattirobulu')" onmouseenter="handleCoverflowCardHover(5)"
+                    <div onclick="handleCoverflowCardClick(event, 5, 'mattirobulu')" onmouseenter="handleCoverflowCardHover(5)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="5" data-key="mattirobulu">
                         <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" 
                              alt="Desa Mattiro Bulu" class="card-bg">
@@ -1901,7 +1901,12 @@
 
         // ===== Tab 1: Dashboard Makro =====
         function initDashboardCharts() {
-            if (typeof Chart === 'undefined') return;
+            if (typeof Chart === 'undefined') {
+                if (typeof safeInitDashboardCharts === 'function') {
+                    safeInitDashboardCharts();
+                }
+                return;
+            }
             const order = ['kamisi', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu', 'koroha'];
             const vm = order.map(k => villagesMeta[k]);
 
@@ -2355,21 +2360,31 @@
             }
         }
  
-        // Run on Page Load
-        document.addEventListener('DOMContentLoaded', () => {
+        // ==============================================================
+        // INISIALISASI ROBUST & TAHAN ASINKRONISITAS
+        // ==============================================================
+        let chartsInitAttempts = 0;
+        function safeInitDashboardCharts() {
+            if (typeof Chart === 'undefined') {
+                if (chartsInitAttempts < 40) {
+                    chartsInitAttempts++;
+                    setTimeout(safeInitDashboardCharts, 100);
+                }
+                return;
+            }
             initDashboardCharts();
-            // Pasang event listener hover otomatis ke semua kartu desa
-            document.querySelectorAll('.coverflow-card').forEach((card, idx) => {
-                card.addEventListener('mouseenter', () => handleCoverflowCardHover(idx));
-                card.addEventListener('pointerenter', () => handleCoverflowCardHover(idx));
-            });
-        });
-    
+        }
+
+        // Eksekusi inisialisasi grafik secepat mungkin saat DOM & library siap
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', safeInitDashboardCharts);
+        } else {
+            safeInitDashboardCharts();
+        }
+        window.addEventListener('load', safeInitDashboardCharts);
+
         // ==============================================================
-        // 3D COVERFLOW ENGINE (ROTATING CAROUSEL)
-        // ==============================================================
-        // ==============================================================
-        // 3D CAROUSEL ENGINE (6 DESA BERJEJER + BERGERAK OTOMATIS KE KIRI)
+        // 3D COVERFLOW ENGINE (ROTATING CAROUSEL 6 DESA BINAAN)
         // ==============================================================
         const coverflowVillages = [
             { key: 'kamisi', title: 'Desa Kamisi', kec: 'Kodeoha' },
@@ -2463,20 +2478,27 @@
             pauseAndResumeAutoplay();
         }
 
-        let coverflowHoverTimer = null;
+        // Jeda otomatis saat mouse hover tanpa merotasi sembarangan
         function handleCoverflowCardHover(index) {
-            if (index === currentCoverflowIdx) return;
-            clearTimeout(coverflowHoverTimer);
-            coverflowHoverTimer = setTimeout(() => {
-                goToCoverflow(index);
-                pauseAndResumeAutoplay();
-            }, 60); // Respon instan dan sangat halus saat kursor diarahkan ke desa
+            isCoverflowHovered = true;
+            stopCoverflowAutoplay();
         }
 
+        function handleCoverflowCardLeave() {
+            isCoverflowHovered = false;
+            startCoverflowAutoplay();
+        }
+
+        // Klik kartu: jika belum di tengah bergeser fokus ke tengah, jika sudah di tengah langsung buka dashboard
         function handleCoverflowCardClick(event, index, key) {
+            if (event && event.target && event.target.closest('button')) {
+                return; // Jika tombol PILIH DESA diklik, biarkan onclick tombol bekerja
+            }
             if (index !== currentCoverflowIdx) {
-                event.preventDefault();
-                event.stopPropagation();
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
                 userInteractGoTo(index);
             } else {
                 handleDesaCardAccess(event, key);
@@ -2489,10 +2511,10 @@
         function startCoverflowAutoplay() {
             stopCoverflowAutoplay();
             coverflowAutoplayTimer = setInterval(() => {
-                if (!isCoverflowHovered) {
-                    rotateCoverflow(1); // Terus bergerak ke kiri secara berkala
+                if (!isCoverflowHovered && !isDraggingCoverflow) {
+                    rotateCoverflow(1); // Terus bergerak otomatis ke kiri secara halus
                 }
-            }, 3000);
+            }, 3500);
         }
 
         function stopCoverflowAutoplay() {
@@ -2504,7 +2526,11 @@
 
         function pauseAndResumeAutoplay() {
             stopCoverflowAutoplay();
-            setTimeout(startCoverflowAutoplay, 5000); // jeda 5 detik saat interaksi pengguna lalu lanjut
+            setTimeout(() => {
+                if (!isCoverflowHovered) {
+                    startCoverflowAutoplay();
+                }
+            }, 4000);
         }
 
         // Drag & Touch Gestures
@@ -2543,8 +2569,14 @@
             }
         });
 
-        // Keyboard Navigation (Arrow Keys)
+        // Keyboard Navigation (Panah Kiri & Kanan)
         document.addEventListener('keydown', function(e) {
+            const desaSection = document.getElementById('desa');
+            if (!desaSection) return;
+            const rect = desaSection.getBoundingClientRect();
+            const isInView = (rect.top < window.innerHeight && rect.bottom > 0);
+            if (!isInView) return;
+
             if (e.key === 'ArrowLeft') {
                 userInteractRotate(-1);
             } else if (e.key === 'ArrowRight') {
@@ -2552,21 +2584,24 @@
             }
         });
 
-        // Initialize on load and resize
-        window.addEventListener('DOMContentLoaded', function() {
+        // Inisialisasi Carousel pada load dan resize
+        function initCoverflowEngine() {
             const stage = document.getElementById('coverflowStage');
             if (stage) {
-                stage.addEventListener('mouseenter', () => { isCoverflowHovered = true; });
-                stage.addEventListener('mouseleave', () => { isCoverflowHovered = false; });
+                stage.addEventListener('mouseenter', () => { isCoverflowHovered = true; stopCoverflowAutoplay(); });
+                stage.addEventListener('mouseleave', () => { isCoverflowHovered = false; startCoverflowAutoplay(); });
             }
-            setTimeout(() => {
-                updateCoverflowCards();
-                startCoverflowAutoplay();
-            }, 100);
-        });
+            updateCoverflowCards();
+            startCoverflowAutoplay();
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initCoverflowEngine);
+        } else {
+            initCoverflowEngine();
+        }
         window.addEventListener('resize', updateCoverflowCards);
-
-
+        window.addEventListener('load', updateCoverflowCards);
 
         // ==============================================================
         // GALERI FOTO DESCAN RESMI & LIGHTBOX VIEWER
@@ -2724,6 +2759,11 @@
         function searchDescanGaleri(val) {
             renderDescanGaleri(undefined, val);
         }
+
+        window.openGaleriDesaModal = function(e) { openDescanGaleriModal(e); };
+        window.openDescanGaleriModal = openDescanGaleriModal;
+        window.closeDescanGaleriModal = closeDescanGaleriModal;
+        window.closeGaleriDesaModal = closeDescanGaleriModal;
 
         function openDescanGaleriModal(e) {
             if (e) e.preventDefault();

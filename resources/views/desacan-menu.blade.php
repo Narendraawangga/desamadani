@@ -495,7 +495,7 @@
                 <span class="dc-ico"><i class="bi bi-buildings-fill"></i></span>
                 <span>Profil Desa</span>
             </button>
-            <button type="button" onclick="switchNavMenu('galeri')" id="nav-galeri" class="nav-tab">
+            <button type="button" onclick="openGaleriDesaModal()" id="nav-galeri" class="nav-tab">
                 <span class="dc-ico"><i class="bi bi-images"></i></span>
                 <span>Galeri Foto</span>
             </button>
@@ -606,7 +606,7 @@
             </button>
 
             <!-- Menu Galeri di Header -->
-            <button type="button" onclick="switchNavMenu('galeri')" id="header-nav-galeri" 
+            <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
                 class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 hover:text-[#0f6b4a] hover:bg-emerald-50 transition px-2.5 py-1.5 rounded-xl cursor-pointer" 
                 title="Buka Halaman Galeri Foto Desa">
                 <i class="bi bi-images text-emerald-600 text-xs"></i>
@@ -1745,7 +1745,7 @@
                             <!-- Bottom Identity Banner with Village Portrait -->
                             <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-10">
                                 <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                                    <img id="profil3dHeroPhoto" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80" alt="Foto Desa" onclick="switchNavMenu('galeri')" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 rounded-2xl object-cover border-3 border-white shadow-xl shrink-0 bg-slate-800 cursor-pointer hover:scale-105 transition-transform" title="Klik untuk membuka Galeri Foto Desa">
+                                    <img id="profil3dHeroPhoto" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80" alt="Foto Desa" onclick="openGaleriDesaModal()" class="w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 rounded-2xl object-cover border-3 border-white shadow-xl shrink-0 bg-slate-800 cursor-pointer hover:scale-105 transition-transform" title="Klik untuk membuka Galeri Foto Desa">
                                     <div class="min-w-0">
                                         <div class="text-[10.5px] sm:text-xs font-black tracking-widest text-emerald-300 uppercase">
                                             MONOGRAFI &amp; INDIKATOR PEMBANGUNAN WILAYAH
@@ -1761,7 +1761,7 @@
 
                                 <!-- Action Buttons in Panorama -->
                                 <div class="flex items-center gap-2 shrink-0 flex-wrap">
-                                    <button type="button" onclick="switchNavMenu('galeri')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 active:scale-95 text-white font-bold text-xs border border-white/25 backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer" title="Buka Galeri Foto Resmi Desa">
+                                    <button type="button" onclick="openGaleriDesaModal()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 active:scale-95 text-white font-bold text-xs border border-white/25 backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer" title="Buka Galeri Foto Resmi Desa">
                                         <i class="bi bi-images text-amber-300"></i>
                                         <span class="hidden sm:inline">Galeri Foto Desa</span>
                                         <span class="sm:hidden">Galeri</span>
@@ -5384,6 +5384,11 @@
             closeGaleriDesaModal();
         }
         
+        window.openDescanGaleriModal = function() { openGaleriDesaModal(); };
+        window.closeDescanGaleriModal = function() { closeGaleriDesaModal(); };
+        window.openGaleriDesaModal = openGaleriDesaModal;
+        window.closeGaleriDesaModal = closeGaleriDesaModal;
+
         function openGaleriDesaModal() {
             const modal = document.getElementById('galeriDesaModal');
             if (!modal) return;
@@ -11390,7 +11395,7 @@ function triggerPubDownload() {
     <!-- MODAL LIGHTBOX FULLSCREEN ZOOM FOTO DOKUMENTASI                -->
     <!-- Menampilkan foto resolusi penuh dengan navigasi (Next/Prev)    -->
     <!-- ============================================================== -->
-    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-[10000]" style="z-index: 10000;" bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
+    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-[10000] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200" style="z-index: 10000;">
         <div class="relative w-full max-w-5xl bg-slate-900/90 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex flex-col max-h-[96vh]">
             <!-- Lightbox Topbar -->
             <div class="p-3.5 sm:p-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
