@@ -477,8 +477,7 @@
         <div id="heroCardWrapper" class="relative z-30 px-4 sm:px-8 mt-8 sm:mt-14 lg:mt-20 mb-auto max-w-4xl mx-auto text-center opacity-0 -translate-y-4 pointer-events-none transition-all duration-1000 ease-out parallax-layer">
             <div id="heroCard" class="inline-flex flex-col items-center space-y-3 sm:space-y-4 pointer-events-auto transition-transform duration-300 ease-out">
                 
-                <div id="welcomeBadge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/60 backdrop-blur-2xl border border-white/25 text-white shadow-xl transition-all duration-700">
-                    <span class="text-xs">📍</span>
+                <div id="welcomeBadge" class="inline-flex items-center px-4 py-1.5 rounded-full bg-slate-900/60 backdrop-blur-2xl border border-white/25 text-white shadow-xl transition-all duration-700">
                     <span id="badgeText" class="tracking-widest uppercase text-[11px] font-bold text-white/95">SELAMAT DATANG DI DESA MADANI</span>
                 </div>
 
