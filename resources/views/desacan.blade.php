@@ -84,13 +84,37 @@
         /* Nav link active indicator */
         .nav-link {
             position: relative;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 13px;
             color: #475569;
-            transition: color 0.15s ease;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
         .nav-link:hover {
             color: #0E7C5A;
+            background: rgba(14, 124, 90, 0.06);
+        }
+        .nav-link.active {
+            color: #0E7C5A !important;
+            font-weight: 700 !important;
+            background: #ecfdf5 !important;
+            border: 1px solid #d1fae5 !important;
+            box-shadow: 0 1px 2px rgba(14, 124, 90, 0.05);
+        }
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2.5px;
+            border-radius: 99px;
+            background: #0E7C5A;
         }
 
         /* Hero */
@@ -393,11 +417,11 @@
 
             <!-- Navigasi Menu Header Descan (Rata Kanan & Sinkron) -->
             <div class="flex items-center gap-4">
-                <nav class="hidden md:flex items-center gap-6">
+                <nav id="descanNavLinks" class="hidden md:flex items-center gap-2">
                     <a href="#beranda" class="nav-link">
                         Beranda
                     </a>
-                    <a href="#dashboard" class="nav-link">
+                    <a href="#dashboard" class="nav-link active">
                         Dashboard &amp; Grafik
                     </a>
                     <a href="#desa" class="nav-link">
@@ -599,16 +623,40 @@
     <!-- ============================================================== -->
     <section id="dashboard" class="max-w-[1240px] mx-auto px-4 sm:px-6 pt-14 pb-16 space-y-7">
 
-        <!-- Header + tab -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <!-- Header + Tab Switcher + Filter Dropdown (Rapi & Sejajar Horizontal) -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-slate-200/60">
             <div>
-                <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">📊 Visualisasi Statistik Sektoral</span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">Dashboard Data &amp; Analitik 6 Desa</h2>
-                <p class="text-sm text-slate-500 mt-1 max-w-2xl">Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.</p>
+                <div class="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-[#0E7C5A] bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full mb-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Visualisasi Statistik Sektoral</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Dashboard Data &amp; Analitik 6 Desa</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5 max-w-2xl">Kondisi demografi, perumahan, sanitasi, dan ekonomi desa binaan BPS Kolaka Utara dalam satu tampilan.</p>
             </div>
-            <div class="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-slate-200 shadow-sm self-start md:self-auto">
-                <button type="button" onclick="switchVisualTab('dashboard')" id="btnTabDashboard" class="tab-btn active px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📊</span><span>Dashboard Makro</span></button>
-                <button type="button" onclick="switchVisualTab('analytics')" id="btnTabAnalytics" class="tab-btn px-4 py-2 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📈</span><span>Analitik Sektoral</span></button>
+            
+            <!-- Controls: Filter Dropdown + Tab Switcher Sejajar Horizontal -->
+            <div class="flex flex-wrap items-center gap-2.5 self-start lg:self-center shrink-0">
+                <!-- Dropdown Filter Desa -->
+                <div class="relative">
+                    <select id="selectVillageFilter" onchange="filterDashboardVillage(this.value)" class="appearance-none bg-white border border-slate-300 hover:border-emerald-500 text-slate-800 text-xs font-bold py-2 pl-3 pr-8 rounded-xl shadow-xs focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer transition">
+                        <option value="all">Filter: Semua Desa (6)</option>
+                        <option value="kamisi">Desa Kamisi (Kodeoha)</option>
+                        <option value="malamala">Kel. Mala-Mala (Kodeoha)</option>
+                        <option value="lapolu">Desa Lapolu (Tiwu)</option>
+                        <option value="tanggeawo">Desa Tanggeawo (Tiwu)</option>
+                        <option value="mattirobulu">Desa Mattiro Bulu (Tiwu)</option>
+                        <option value="koroha">Desa Koroha (Kodeoha)</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-500 text-xs">
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="flex items-center gap-1 p-1 rounded-xl bg-white border border-slate-200 shadow-xs">
+                    <button type="button" onclick="switchVisualTab('dashboard')" id="btnTabDashboard" class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📊</span><span>Dashboard Makro</span></button>
+                    <button type="button" onclick="switchVisualTab('analytics')" id="btnTabAnalytics" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-black transition cursor-pointer flex items-center gap-1.5"><span>📈</span><span>Analitik Sektoral</span></button>
+                </div>
             </div>
         </div>
 
@@ -626,13 +674,14 @@
                         <span class="panel-pill text-emerald-800 bg-emerald-100">Standar SDI</span>
                     </div>
                     <div class="space-y-4 py-5 flex-1">
+                        <!-- 1. Desa Kamisi (98%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">1</span>
                                     <div class="min-w-0 leading-tight">
                                         <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Kamisi</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Pesisir Bahari</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pesisir Bahari (Kodeoha)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -642,13 +691,15 @@
                             </div>
                             <div class="bar"><span style="width:98%;background:#0E7C5A;"></span></div>
                         </div>
+
+                        <!-- 2. Kel. Mala-Mala (93%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0E7C5A1a;color:#0E7C5A;">2</span>
                                     <div class="min-w-0 leading-tight">
-                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Kalu Kaluku</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Pilot Utama</div>
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Kel. Mala-Mala</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pilot Utama (Kodeoha)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -658,13 +709,15 @@
                             </div>
                             <div class="bar"><span style="width:93%;background:#0E7C5A;"></span></div>
                         </div>
+
+                        <!-- 3. Desa Lapolu (86%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">3</span>
                                     <div class="min-w-0 leading-tight">
-                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Lametuna</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Pertanian</div>
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Lapolu</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Perkebunan Cengkeh (Tiwu)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -674,13 +727,15 @@
                             </div>
                             <div class="bar"><span style="width:86%;background:#10b981;"></span></div>
                         </div>
+
+                        <!-- 4. Desa Tanggeawo (82%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#10b9811a;color:#10b981;">4</span>
                                     <div class="min-w-0 leading-tight">
-                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Awo</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Gula Aren & Nilam</div>
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Tanggeawo</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Pertanian &amp; Hortikultura (Tiwu)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -690,13 +745,15 @@
                             </div>
                             <div class="bar"><span style="width:82%;background:#10b981;"></span></div>
                         </div>
+
+                        <!-- 5. Desa Mattiro Bulu (77%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#0ea5e91a;color:#0ea5e9;">5</span>
                                     <div class="min-w-0 leading-tight">
-                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Sawangaoha</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Agroindustri</div>
+                                        <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Mattiro Bulu</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Agroindustri &amp; Ternak (Tiwu)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -706,13 +763,15 @@
                             </div>
                             <div class="bar"><span style="width:77%;background:#0ea5e9;"></span></div>
                         </div>
+
+                        <!-- 6. Desa Koroha (68%) -->
                         <div class="rank-row">
                             <div class="flex items-center justify-between gap-3 mb-1.5">
                                 <div class="flex items-center gap-2.5 min-w-0">
                                     <span class="w-6 h-6 rounded-lg text-[11px] font-black flex items-center justify-center shrink-0" style="background:#f59e0b1a;color:#f59e0b;">6</span>
                                     <div class="min-w-0 leading-tight">
                                         <div class="text-[13px] font-extrabold text-slate-800 truncate">Desa Koroha</div>
-                                        <div class="text-[10.5px] text-slate-400 truncate">Kakao & Laut</div>
+                                        <div class="text-[10.5px] text-slate-400 truncate">Perikanan &amp; Kakao (Kodeoha)</div>
                                     </div>
                                 </div>
                                 <div class="text-right shrink-0 leading-tight">
@@ -766,19 +825,31 @@
                 </div>
             </div>
 
-            <!-- Baris 3: sorotan -->
+            <!-- Baris 3: sorotan 3 kartu insight (Konsisten 100% dengan Data 6 Desa) -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div class="insight" style="background:#f0fdf6;border-color:#bbf0d4;">
                     <span class="ic bg-emerald-100 text-emerald-700">🏆</span>
-                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Progres Tertinggi</div><div class="text-sm font-black text-slate-900 mt-0.5">Desa Kamisi · 98%</div><div class="text-[11px] text-slate-500 mt-0.5">43 dari 44 indikator terisi</div></div>
+                    <div class="leading-tight">
+                        <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Progres Tertinggi</div>
+                        <div class="text-sm font-black text-slate-900 mt-0.5">Desa Kamisi · 98%</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5">43 dari 44 indikator terisi (Pesisir Bahari)</div>
+                    </div>
                 </div>
                 <div class="insight" style="background:#eff6ff;border-color:#bfdbfe;">
                     <span class="ic bg-blue-100 text-blue-700">⭐</span>
-                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Pilot Utama</div><div class="text-sm font-black text-slate-900 mt-0.5">Kel. Mala-Mala · 93%</div><div class="text-[11px] text-slate-500 mt-0.5">Pusat Layanan Kodeoha (Puskesmas RI & 5 Sekolah)</div></div>
+                    <div class="leading-tight">
+                        <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Pilot Utama</div>
+                        <div class="text-sm font-black text-slate-900 mt-0.5">Kel. Mala-Mala · 93%</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5">41 dari 44 indikator terisi · Pusat Layanan Kodeoha</div>
+                    </div>
                 </div>
                 <div class="insight" style="background:#fffbeb;border-color:#fde68a;">
                     <span class="ic bg-amber-100 text-amber-700">🤝</span>
-                    <div class="leading-tight"><div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Perlu Pendampingan</div><div class="text-sm font-black text-slate-900 mt-0.5">Desa Koroha · 72%</div><div class="text-[11px] text-slate-500 mt-0.5">12 indikator dalam pembinaan</div></div>
+                    <div class="leading-tight">
+                        <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">Perlu Pendampingan</div>
+                        <div class="text-sm font-black text-slate-900 mt-0.5">Desa Koroha · 68%</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5">14 indikator dalam pembinaan (30 dari 44 terisi)</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1325,20 +1396,20 @@
         // Global Chart Instances Holder
         let chartInstances = {};
 
-        // Data Asli 6 Desa Binaan Kecamatan Kodeoha
+        // Data Asli 6 Desa Binaan Single Source of Truth
         const villagesMeta = {
-            kamisi: { name: 'Kamisi', kec: 'Kodeoha', kk: 394, pop: 1576, ikm: 14, progress: 98, penerangan: { plnMeter: 310, plnTanpa: 84, nonPln: 0 }, lantai: { semen: 190, keramik: 155, kayu: 40, marmer: 9 } },
-            koroha: { name: 'Koroha', kec: 'Kodeoha', kk: 335, pop: 1340, ikm: 16, progress: 72, penerangan: { plnMeter: 260, plnTanpa: 75, nonPln: 0 }, lantai: { semen: 170, keramik: 125, kayu: 34, marmer: 6 } },
-            malamala: { name: 'Mala-Mala', kec: 'Kodeoha', kk: 318, pop: 1272, ikm: 2, progress: 93, penerangan: { plnMeter: 275, plnTanpa: 43, nonPln: 0 }, lantai: { semen: 110, keramik: 175, kayu: 25, marmer: 8 } },
-            lapolu: { name: 'Lapolu', kec: 'Tiwu', kk: 321, pop: 1264, ikm: 75, progress: 88, penerangan: { plnMeter: 250, plnTanpa: 66, nonPln: 5 }, lantai: { semen: 160, keramik: 120, kayu: 35, marmer: 6 } },
-            tanggeawo: { name: 'Tanggeawo', kec: 'Tiwu', kk: 141, pop: 564, ikm: 46, progress: 84, penerangan: { plnMeter: 115, plnTanpa: 26, nonPln: 0 }, lantai: { semen: 75, keramik: 48, kayu: 15, marmer: 3 } },
-            mattirobulu: { name: 'Mattiro Bulu', kec: 'Tiwu', kk: 324, pop: 856, ikm: 20, progress: 79, penerangan: { plnMeter: 180, plnTanpa: 34, nonPln: 110 }, lantai: { semen: 180, keramik: 85, kayu: 50, marmer: 9 } }
+            kamisi: { name: 'Desa Kamisi', shortName: 'Kamisi', kec: 'Kodeoha', kk: 394, pop: 1576, ikm: 14, progress: 98, terisi: 43, total: 44, karakter: 'Pesisir Bahari', penerangan: { plnMeter: 310, plnTanpa: 84, nonPln: 0 }, lantai: { semen: 190, keramik: 155, kayu: 40, marmer: 9 } },
+            malamala: { name: 'Kel. Mala-Mala', shortName: 'Mala-Mala', kec: 'Kodeoha', kk: 318, pop: 1272, ikm: 2, progress: 93, terisi: 41, total: 44, karakter: 'Pilot Utama', penerangan: { plnMeter: 275, plnTanpa: 43, nonPln: 0 }, lantai: { semen: 110, keramik: 175, kayu: 25, marmer: 8 } },
+            lapolu: { name: 'Desa Lapolu', shortName: 'Lapolu', kec: 'Tiwu', kk: 321, pop: 1264, ikm: 75, progress: 86, terisi: 38, total: 44, karakter: 'Perkebunan Cengkeh', penerangan: { plnMeter: 250, plnTanpa: 66, nonPln: 5 }, lantai: { semen: 160, keramik: 120, kayu: 35, marmer: 6 } },
+            tanggeawo: { name: 'Desa Tanggeawo', shortName: 'Tanggeawo', kec: 'Tiwu', kk: 141, pop: 564, ikm: 46, progress: 82, terisi: 36, total: 44, karakter: 'Pertanian & Hortikultura', penerangan: { plnMeter: 115, plnTanpa: 26, nonPln: 0 }, lantai: { semen: 75, keramik: 48, kayu: 15, marmer: 3 } },
+            mattirobulu: { name: 'Desa Mattiro Bulu', shortName: 'Mattiro Bulu', kec: 'Tiwu', kk: 324, pop: 856, ikm: 20, progress: 77, terisi: 34, total: 44, karakter: 'Agroindustri & Ternak', penerangan: { plnMeter: 180, plnTanpa: 34, nonPln: 110 }, lantai: { semen: 180, keramik: 85, kayu: 50, marmer: 9 } },
+            koroha: { name: 'Desa Koroha', shortName: 'Koroha', kec: 'Kodeoha', kk: 335, pop: 1340, ikm: 16, progress: 68, terisi: 30, total: 44, karakter: 'Perikanan & Kakao', penerangan: { plnMeter: 260, plnTanpa: 75, nonPln: 0 }, lantai: { semen: 170, keramik: 125, kayu: 34, marmer: 6 } }
         };
         // Aliases for compatibility
-        villagesMeta.kalukaluku = villagesMeta.kamisi;
-        villagesMeta.awo = villagesMeta.koroha;
+        villagesMeta.kalukaluku = villagesMeta.malamala;
+        villagesMeta.awo = villagesMeta.tanggeawo;
         villagesMeta.lametuna = villagesMeta.lapolu;
-        villagesMeta.sawangaoha = villagesMeta.tanggeawo;
+        villagesMeta.sawangaoha = villagesMeta.mattirobulu;
         villagesMeta.mattirowalie = villagesMeta.mattirobulu;
 
         // Toast Helper
@@ -1386,7 +1457,7 @@
             Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
             Chart.defaults.font.size = 11;
             Chart.defaults.color = '#64748b';
-            Chart.defaults.animation.duration = 700;
+            Chart.defaults.animation.duration = 600;
             Chart.defaults.plugins.tooltip.backgroundColor = '#0f172a';
             Chart.defaults.plugins.tooltip.padding = 10;
             Chart.defaults.plugins.tooltip.cornerRadius = 10;
@@ -1444,22 +1515,94 @@
             mk(key, id, {
                 type: 'doughnut',
                 data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 3, borderColor: '#ffffff', hoverOffset: 6 }] },
-                options: { responsive: true, maintainAspectRatio: false, cutout,
+                options: { 
+                    responsive: true, maintainAspectRatio: false, cutout,
                     layout: { padding: 4 },
-                    plugins: { legend: legendBottom, centerText: center } }
+                    plugins: { 
+                        legend: legendBottom, 
+                        centerText: center,
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: '#0f172a',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: (context) => ` ${context.label.split('·')[0].trim()}: ${context.parsed}% (${context.parsed} dari 100 KK)`
+                            }
+                        }
+                    } 
+                }
             });
+        }
+
+        // Distribusi data per desa untuk filter dropdown
+        const villageDistributions = {
+            all: {
+                rumah: { labels: ['Milik Sendiri · 81%', 'Sewa / Kontrak · 12%', 'Bebas Sewa · 7%'], data: [81, 12, 7], center: { text: '81%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 62%', 'Mata Air · 24%', 'PAM / BPSPAM · 14%'], data: [62, 24, 14], center: { text: '62%', sub: 'sumur terlindung' } },
+                penghasilan: [320, 1140, 710, 256]
+            },
+            kamisi: {
+                rumah: { labels: ['Milik Sendiri · 88%', 'Sewa / Kontrak · 8%', 'Bebas Sewa · 4%'], data: [88, 8, 4], center: { text: '88%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 74%', 'Mata Air · 16%', 'PAM / BPSPAM · 10%'], data: [74, 16, 10], center: { text: '74%', sub: 'sumur terlindung' } },
+                penghasilan: [42, 198, 115, 39]
+            },
+            malamala: {
+                rumah: { labels: ['Milik Sendiri · 84%', 'Sewa / Kontrak · 11%', 'Bebas Sewa · 5%'], data: [84, 11, 5], center: { text: '84%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 58%', 'Mata Air · 22%', 'PAM / BPSPAM · 20%'], data: [58, 22, 20], center: { text: '58%', sub: 'sumur terlindung' } },
+                penghasilan: [35, 142, 108, 33]
+            },
+            lapolu: {
+                rumah: { labels: ['Milik Sendiri · 80%', 'Sewa / Kontrak · 13%', 'Bebas Sewa · 7%'], data: [80, 13, 7], center: { text: '80%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 64%', 'Mata Air · 26%', 'PAM / BPSPAM · 10%'], data: [64, 26, 10], center: { text: '64%', sub: 'sumur terlindung' } },
+                penghasilan: [48, 155, 88, 30]
+            },
+            tanggeawo: {
+                rumah: { labels: ['Milik Sendiri · 78%', 'Sewa / Kontrak · 14%', 'Bebas Sewa · 8%'], data: [78, 14, 8], center: { text: '78%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 60%', 'Mata Air · 30%', 'PAM / BPSPAM · 10%'], data: [60, 30, 10], center: { text: '60%', sub: 'sumur terlindung' } },
+                penghasilan: [25, 68, 36, 12]
+            },
+            mattirobulu: {
+                rumah: { labels: ['Milik Sendiri · 82%', 'Sewa / Kontrak · 11%', 'Bebas Sewa · 7%'], data: [82, 11, 7], center: { text: '82%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 55%', 'Mata Air · 32%', 'PAM / BPSPAM · 13%'], data: [55, 32, 13], center: { text: '55%', sub: 'sumur terlindung' } },
+                penghasilan: [52, 160, 84, 28]
+            },
+            koroha: {
+                rumah: { labels: ['Milik Sendiri · 75%', 'Sewa / Kontrak · 16%', 'Bebas Sewa · 9%'], data: [75, 16, 9], center: { text: '75%', sub: 'milik sendiri' } },
+                air: { labels: ['Sumur Terlindung · 52%', 'Mata Air · 34%', 'PAM / BPSPAM · 14%'], data: [52, 34, 14], center: { text: '52%', sub: 'sumur terlindung' } },
+                penghasilan: [65, 172, 70, 28]
+            }
+        };
+
+        function filterDashboardVillage(villageKey) {
+            const data = villageDistributions[villageKey] || villageDistributions['all'];
+            donut('rumah', 'chartKepemilikanRumah', data.rumah.labels, data.rumah.data,
+                ['#0E7C5A', '#38bdf8', '#f59e0b'], data.rumah.center);
+            donut('air', 'chartSumberAir', data.air.labels, data.air.data,
+                ['#0284c7', '#0d9488', '#7dd3fc'], data.air.center);
+            
+            if (chartInstances['penghasilan']) {
+                chartInstances['penghasilan'].data.datasets[0].data = data.penghasilan;
+                chartInstances['penghasilan'].update();
+            }
+            const villageNames = { all: 'Semua Desa (6)', kamisi: 'Desa Kamisi', malamala: 'Kel. Mala-Mala', lapolu: 'Desa Lapolu', tanggeawo: 'Desa Tanggeawo', mattirobulu: 'Desa Mattiro Bulu', koroha: 'Desa Koroha' };
+            showToast(`Filter diperbarui: ${villageNames[villageKey] || villageKey}`, '📊');
         }
 
         // ===== Tab 1: Dashboard Makro =====
         function initDashboardCharts() {
             if (typeof Chart === 'undefined') return;
-            const order = ['kamisi', 'koroha', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu'];
+            const order = ['kamisi', 'malamala', 'lapolu', 'tanggeawo', 'mattirobulu', 'koroha'];
             const vm = order.map(k => villagesMeta[k]);
 
             mk('keluarga', 'chartKeluargaPerDesa', {
                 type: 'bar',
                 data: {
-                    labels: vm.map(v => v.name),
+                    labels: vm.map(v => v.shortName || v.name),
                     datasets: [
                         { label: 'Penduduk (jiwa)', data: vm.map(v => v.pop), backgroundColor: '#0E7C5A', borderRadius: 6, maxBarThickness: 26 },
                         { label: 'Keluarga (KK)', data: vm.map(v => v.kk), backgroundColor: '#38bdf8', borderRadius: 6, maxBarThickness: 26 }
@@ -1469,25 +1612,64 @@
                     responsive: true, maintainAspectRatio: false,
                     layout: { padding: { top: 18 } },
                     interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { position: 'top', align: 'end', labels: { font: { size: 11, weight: '700' } } },
-                               valueLabel: { show: true },
-                               tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${fmt(c.parsed.y)}` } } },
-                    scales: { y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
-                              x: { grid: { display: false }, ticks: { font: { weight: '700' } } } }
+                    plugins: { 
+                        legend: { position: 'top', align: 'end', labels: { font: { size: 11, weight: '700' } } },
+                        valueLabel: { show: true },
+                        tooltip: { 
+                            enabled: true,
+                            backgroundColor: '#0f172a',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: { 
+                                title: (items) => `Desa/Kelurahan: ${items[0].label}`,
+                                label: c => ` ${c.dataset.label}: ${fmt(c.parsed.y)} ${c.datasetIndex === 0 ? 'Jiwa' : 'KK'}` 
+                            } 
+                        } 
+                    },
+                    scales: { 
+                        y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
+                        x: { grid: { display: false }, ticks: { font: { weight: '700' } } } 
+                    }
                 }
             });
 
-            donut('rumah', 'chartKepemilikanRumah', ['Milik Sendiri · 81%', 'Sewa / Kontrak · 12%', 'Bebas Sewa · 7%'], [81, 12, 7],
-                ['#0E7C5A', '#38bdf8', '#f59e0b'], { text: '81%', sub: 'milik sendiri' });
-            donut('air', 'chartSumberAir', ['Sumur Terlindung · 62%', 'Mata Air · 24%', 'PAM / BPSPAM · 14%'], [62, 24, 14],
-                ['#0284c7', '#0d9488', '#7dd3fc'], { text: '62%', sub: 'sumur terlindung' });
+            // Inisialisasi 3 grafik distribusi sesuai filter saat ini
+            const currentFilter = document.getElementById('selectVillageFilter')?.value || 'all';
+            const curData = villageDistributions[currentFilter] || villageDistributions['all'];
+
+            donut('rumah', 'chartKepemilikanRumah', curData.rumah.labels, curData.rumah.data,
+                ['#0E7C5A', '#38bdf8', '#f59e0b'], curData.rumah.center);
+            donut('air', 'chartSumberAir', curData.air.labels, curData.air.data,
+                ['#0284c7', '#0d9488', '#7dd3fc'], curData.air.center);
 
             mk('penghasilan', 'chartPenghasilan', {
                 type: 'bar',
                 data: { labels: ['< 1,5 Jt', '1,5 – 3 Jt', '3 – 5 Jt', '> 5 Jt'],
-                        datasets: [{ label: 'Keluarga', data: [320, 1140, 710, 256], backgroundColor: ['#f59e0b', '#0E7C5A', '#0284c7', '#6366f1'], borderRadius: 6, maxBarThickness: 34 }] },
-                options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 16 } },
-                    plugins: { legend: { display: false }, valueLabel: { show: true } },
+                        datasets: [{ label: 'Keluarga (KK)', data: curData.penghasilan, backgroundColor: ['#f59e0b', '#0E7C5A', '#0284c7', '#6366f1'], borderRadius: 6, maxBarThickness: 34 }] },
+                options: { 
+                    responsive: true, maintainAspectRatio: false, layout: { padding: { top: 16 } },
+                    plugins: { 
+                        legend: { display: false }, 
+                        valueLabel: { show: true },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: '#0f172a',
+                            titleColor: '#ffffff',
+                            bodyColor: '#e2e8f0',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                title: (items) => `Rentang Pendapatan: ${items[0].label}`,
+                                label: (context) => ` Jumlah: ${fmt(context.parsed.y)} Kepala Keluarga (KK)`
+                            }
+                        }
+                    },
                     scales: { y: { beginAtZero: true, grid: GRID, border: { display: false }, ticks: { callback: v => fmt(v) } },
                               x: { grid: { display: false }, ticks: { font: { weight: '700' } } } } }
             });
@@ -2248,7 +2430,37 @@
             if (document.body) document.body.classList.remove('overflow-hidden');
         }
 
-</script>
+
+        // Navbar ScrollSpy Active State Handler
+        (function initScrollSpy() {
+            const navLinks = document.querySelectorAll('#descanNavLinks .nav-link');
+            if (!navLinks.length) return;
+
+            const sections = ['beranda', 'dashboard', 'desa', 'output'];
+            function updateActiveNav() {
+                let current = 'beranda';
+                sections.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const top = el.offsetTop - 120;
+                        const height = el.offsetHeight;
+                        if (window.pageYOffset >= top && window.pageYOffset < top + height) {
+                            current = id;
+                        }
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            updateActiveNav();
+        })();
+
+    </script>
 
     <!-- ============================================================== -->
     <!-- MODAL VIEWER DOKUMEN OUTPUT DESA CANTIK KOLAKA UTARA           -->
