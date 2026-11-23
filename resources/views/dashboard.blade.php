@@ -590,69 +590,150 @@
         </section>
 
         <!-- ========================================================================= -->
-        <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (FILTER, PIRAMIDA, TABEL, CSV) -->
+        <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (TWO-STAGE EXPLORATION) -->
         <!-- ========================================================================= -->
-        <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full py-10">
+        <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full py-8 sm:py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
+                <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #E2E8F0) -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E2E8F0] pb-6">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#0D6E5B] text-xs font-bold mb-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ECFDF5] border border-emerald-200/80 text-[#0D7A5F] text-xs font-bold mb-2">
                             <span>📊 EKSPLORASI DETAIL PODES 2025</span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Ringkasan & Eksplorasi 133 Desa</h2>
-                        <p class="text-slate-600 text-sm mt-1">Filter kecamatan, status, dan 7 sektor PODES lengkap dengan piramida penduduk dan unduh CSV data riil.</p>
+                        <h2 class="text-3xl sm:text-4xl font-black text-[#152e4d] tracking-tight">Ringkasan & Eksplorasi 133 Desa</h2>
+                        <p class="text-slate-600 text-sm mt-1">Direktori 15 kecamatan dan telaah mendalam 7 sektor pembangunan PODES 2025 BPS Kabupaten Kolaka Utara.</p>
                     </div>
-                    <div>
-                        <button id="btnExplorerExportCSV" onclick="window.exportActiveTableCSV()" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <button id="btnExplorerExportCSV" onclick="window.exportActiveTableCSV()" class="px-5 py-2.5 rounded-xl bg-[#0D7A5F] hover:bg-[#095244] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             <span>Unduh Data CSV (133 Desa)</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Filter Controls Bar -->
-                <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-                        <div class="sm:col-span-4">
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Filter Kecamatan:</label>
-                            <select id="explorerFilterKecamatan" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                                <option value="ALL">Semua Kecamatan (15 Wilayah)</option>
-                            </select>
-                        </div>
-                        <div class="sm:col-span-5">
-                            <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cari Desa / Kelurahan:</label>
-                            <div class="relative">
-                                <input type="text" id="explorerSearchInput" placeholder="Ketik nama desa atau kelurahan..." class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3.5 py-2 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <!-- =================================================================== -->
+                <!-- STATE 1: DIREKTORI 15 KECAMATAN (HORIZONTAL CARD CAROUSEL & SEARCH) -->
+                <!-- =================================================================== -->
+                <div id="podesStateDirectory" class="space-y-6">
+                    <!-- Search Bar Kapsul (Rounded-full) di Sisi Kiri dengan Ikon Kaca Pembesar di Kanan -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="relative w-full max-w-md">
+                            <input type="text" id="kecamatanPillSearch" placeholder="Cari kecamatan atau nama desa..." class="w-full bg-white border border-slate-300 rounded-full pl-5 pr-12 py-3 text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0D7A5F] focus:border-transparent shadow-xs transition-all">
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             </div>
                         </div>
-                        <div class="sm:col-span-3 flex sm:justify-end items-end h-full pt-4 sm:pt-0">
-                            <span id="explorerRowCountBadge" class="px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs border border-slate-200">
-                                133 Desa / Kelurahan Terpilih
-                            </span>
+
+                        <!-- Carousel Navigation Buttons & Scroll Indicator -->
+                        <div class="flex items-center gap-3 self-end sm:self-auto">
+                            <div class="hidden sm:flex items-center gap-1.5 text-xs text-slate-400 font-semibold mr-2">
+                                <span class="w-2 h-2 rounded-full bg-[#0D7A5F]"></span>
+                                <span>15 Kecamatan</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#0D7A5F] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri">
+                                    ‹
+                                </button>
+                                <button onclick="window.scrollKecCarousel(1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#0D7A5F] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kanan">
+                                    ›
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="pt-2 border-t border-slate-100 flex flex-wrap gap-1.5" id="explorerSectorTabs">
-                        <button data-tab="demografi" class="btn-podes-tab active px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-[#0D6E5B] text-white">Semua & Kependudukan</button>
-                        <button data-tab="pendidikan" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Pendidikan (205 Unit)</button>
-                        <button data-tab="kesehatan" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Kesehatan (174 Faskes)</button>
-                        <button data-tab="ekonomi" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Ekonomi (3.622 IMK)</button>
-                        <button data-tab="lingkungan" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Kelistrikan & Lingkungan</button>
-                        <button data-tab="keuangan" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Keuangan & BUMDes</button>
-                        <button data-tab="pemerintahan" class="btn-podes-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-700 hover:bg-emerald-50">Pemerintahan (1.164 Aparat)</button>
+                    <!-- Horizontal Carousel Container (Peeking Card Effect on the Right) -->
+                    <div class="relative w-full">
+                        <div id="kecamatanCarouselTrack" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1 cursor-grab select-none">
+                            <!-- Injected by podes_explorer.js -->
+                        </div>
+                        
+                        <div id="carouselNoResults" class="hidden py-12 text-center bg-white rounded-3xl border border-slate-200">
+                            <span class="text-3xl">🔍</span>
+                            <p class="text-sm font-bold text-slate-700 mt-2">Kecamatan atau desa tidak ditemukan</p>
+                            <p class="text-xs text-slate-400">Silakan periksa ejaan nama kecamatan atau desa yang dicari.</p>
+                        </div>
+
+                        <!-- Scroll Bar Indicator Line -->
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full mt-3 overflow-hidden">
+                            <div id="carouselScrollProgress" class="bg-[#0D7A5F] h-full rounded-full transition-all duration-150" style="width: 20%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Ringkasan Agregat Kabupaten Kolaka Utara (Below Carousel) -->
+                    <div class="pt-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#0D7A5F]"></span>
+                                <h3 class="font-extrabold text-sm uppercase tracking-wider text-slate-700">Ringkasan Agregat Kabupaten Kolaka Utara</h3>
+                            </div>
+                            <span class="text-[11px] font-semibold text-slate-500">BPS PODES 2025</span>
+                        </div>
+                        <div id="explorerAggregateSummary">
+                            <!-- Injected by podes_explorer.js -->
+                        </div>
                     </div>
                 </div>
 
-                <!-- KPI Metric Summary Bar for Filtered Selection -->
-                <div id="explorerMetricSummary" class="w-full"></div>
+                <!-- =================================================================== -->
+                <!-- STATE 2: DETAIL KECAMATAN (SPLIT-PANEL DUA KOLOM + SWIPEABLE CARD) -->
+                <!-- =================================================================== -->
+                <div id="podesStateDetail" class="space-y-6" style="display: none;">
+                    
+                    <!-- Split-Panel Dua Kolom Simetris (50:50 Desktop, Rounded-3xl, Border #E2E8F0) -->
+                    <div class="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm overflow-hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
+                            <!-- Panel Kiri (Statis: Sektor Unggulan) -->
+                            <div id="kecDetailLeftPanel" class="w-full h-full">
+                                <!-- Injected by podes_explorer.js -->
+                            </div>
 
-                <!-- Dual Charts: Piramida Penduduk (Sheet 2.2) + Grafik Komparasi 15 Kecamatan -->
-                <div id="explorerChartContainer" class="w-full"></div>
+                            <!-- Panel Kanan (Swipeable Card: Sektor Lainnya) -->
+                            <div id="kecDetailRightPanel" class="w-full h-full bg-slate-50/30">
+                                <!-- Injected by podes_explorer.js -->
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Interactive Table Container (133 Desa) -->
-                <div id="explorerTableContainer" class="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden"></div>
+                    <!-- Tabel Rincian Desa Khusus Kecamatan Terpilih -->
+                    <div class="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm p-6 sm:p-7 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-slate-100">
+                            <div>
+                                <h4 class="font-black text-lg sm:text-xl text-[#152e4d]">Rincian Desa / Kelurahan Konstituen</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
+                            </div>
+                            
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <div class="relative w-full sm:w-64">
+                                    <input type="text" id="detailDesaTableSearch" placeholder="Cari nama desa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0D7A5F]">
+                                    <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                                <button onclick="window.exportKecamatanCSV()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0D7A5F] border border-emerald-200 font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                    <span>Unduh CSV Kecamatan</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Table Tab Selector -->
+                        <div class="flex flex-wrap gap-1.5">
+                            <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-[#0D7A5F] text-white shadow-2xs">
+                                👥 Kependudukan & Demografi
+                            </button>
+                            <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                                🏭 Ekonomi, Komoditas & IMK
+                            </button>
+                            <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                                🏛️ Sekolah, Faskes & Lingkungan
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Village Table Container -->
+                        <div id="detailVillageTableContainer" class="w-full">
+                            <!-- Injected by podes_explorer.js -->
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Bottom Navigation Buttons for Page 2 -->
                 <div class="flex items-center justify-between pt-6 border-t border-slate-200">
@@ -660,7 +741,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                         <span>Halaman 1: Beranda</span>
                     </a>
-                    <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-6 py-2.5 rounded-xl bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
+                    <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-6 py-2.5 rounded-xl bg-[#0D7A5F] hover:bg-[#095244] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
                         <span>Halaman 3: WebGIS Peta Spasial</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>

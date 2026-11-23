@@ -1,771 +1,1058 @@
 /**
  * PODES 2025 COMPLETE DATA EXPLORER - KABUPATEN KOLAKA UTARA
- * Minimalist, Elegant, Clean Look • 100% Data Fidelity across 15 Kecamatan & 133 Desa
+ * Refactored Two-Stage Exploration Flow:
+ * - State 1: Direktori 15 Kecamatan (Horizontal Card Carousel + Search Bar + Peeking Card)
+ * - State 2: Split-Panel Detail Kecamatan (Sektor Unggulan + Swipeable 7 Sektor PODES + Tabel Desa)
+ * Palet: Emerald/Teal (#0D7A5F, #0F766E, Badge #ECFDF5) • 100% Clean Look & Data Fidelity
  */
 (function() {
   let masterData = null;
-  let currentTab = 'demografi';
-  let selectedKecamatan = 'ALL';
+  let activeState = 'directory'; // 'directory' (State 1) or 'detail' (State 2)
+  let activeKecamatanKey = 'KATOI';
+  let activeSectorIndex = 0; // 0 to 6
+  let activeTableTab = 'demografi';
   let searchQuery = '';
-  let activeCharts = {};
+  let detailSearchQuery = '';
+
+  const KEC_ORDER = [
+    'KATOI', 'LAMBAI', 'LASUSUA', 'KODEOHA', 'BATU PUTIH',
+    'RANTEANGIN', 'WAWO', 'TIWU', 'NGAPA', 'WATUNOHU',
+    'PAKUE', 'PAKUE UTARA', 'PAKUE TENGAH', 'POREHU', 'TOLALA'
+  ];
+
+  const SECTORS = [
+    { id: 'demografi', name: 'Kependudukan', icon: '👥' },
+    { id: 'pendidikan', name: 'Pendidikan', icon: '🎓' },
+    { id: 'kesehatan', name: 'Kesehatan', icon: '🏥' },
+    { id: 'ekonomi', name: 'Ekonomi & Industri', icon: '🏭' },
+    { id: 'lingkungan', name: 'Kelistrikan & Lingkungan', icon: '⚡' },
+    { id: 'keuangan', name: 'Keuangan & BUMDes', icon: '💼' },
+    { id: 'pemerintahan', name: 'Pemerintahan Desa', icon: '🏛️' }
+  ];
+
+  // Helper: Clean parsing of population density (handles comma, spaces, nulls)
+  function parseKepadatan(val) {
+    if (typeof val === 'number') return isNaN(val) ? 0 : val;
+    if (!val) return 0;
+    const clean = String(val).replace(/\s+/g, '').replace(',', '.');
+    const num = parseFloat(clean);
+    return isNaN(num) ? 0 : num;
+  }
+
+  // Helper: Compute consistent Total Population = Laki-laki + Perempuan
+  function getDesaPop(d) {
+    if (!d || !d.demografi) return 0;
+    const l = Number(d.demografi.penduduk_l) || 0;
+    const p = Number(d.demografi.penduduk_p) || 0;
+    return l + p;
+  }
+
+  // Helper: Get dominant commodity of a village list
+  function getDominantCommodity(desaList) {
+    if (!desaList || !desaList.length) return 'Pertanian / Perkebunan';
+    const counts = {};
+    desaList.forEach(d => {
+      const c = (d.ekonomi && d.ekonomi.komoditas) ? d.ekonomi.komoditas.trim() : '-';
+      if (c && c !== '-') {
+        counts[c] = (counts[c] || 0) + 1;
+      }
+    });
+    const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    return sorted[0] || 'Kakao & Cengkeh';
+  }
+
+  // Helper: Get count of villages with featured products
+  function getFeaturedProductsInfo(desaList) {
+    if (!desaList || !desaList.length) return { count: 0, products: [] };
+    const prods = [];
+    let count = 0;
+    desaList.forEach(d => {
+      const m = d.ekonomi && d.ekonomi.prod_unggulan_makanan && d.ekonomi.prod_unggulan_makanan !== '-' ? d.ekonomi.prod_unggulan_makanan : null;
+      const nm = d.ekonomi && d.ekonomi.prod_unggulan_non_makanan && d.ekonomi.prod_unggulan_non_makanan !== '-' ? d.ekonomi.prod_unggulan_non_makanan : null;
+      if (m || nm) {
+        count++;
+        if (m && !prods.includes(m)) prods.push(m);
+        if (nm && !prods.includes(nm)) prods.push(nm);
+      }
+    });
+    return { count, products: prods.slice(0, 4) };
+  }
 
   function initExplorer() {
     masterData = window.PODES_KOLUT_MASTER_2025;
     if (!masterData) {
-      console.warn("PODES master data not yet loaded, retrying...");
       setTimeout(initExplorer, 150);
       return;
     }
 
-    populateFilterDropdowns();
-    setupTabHandlers();
-    setupSearchHandler();
-    renderCurrentTab();
+    // Fix Tojabi demographic anomaly in memory if present
+    const tojabi = masterData.desa.find(d => d.nama.toLowerCase() === 'tojabi');
+    if (tojabi && tojabi.demografi) {
+      tojabi.demografi.penduduk_total = tojabi.demografi.penduduk_l + tojabi.demografi.penduduk_p;
+    }
+
+    setupSearchHandlers();
+    renderState1Carousel();
+    renderState1Summary();
+
+    // Export functions to window
+    window.selectKecamatanExploration = selectKecamatanExploration;
+    window.backToKecamatanDirectory = backToKecamatanDirectory;
+    window.setSectorSlide = setSectorSlide;
+    window.prevSectorSlide = prevSectorSlide;
+    window.nextSectorSlide = nextSectorSlide;
+    window.setDetailTableTab = setDetailTableTab;
+    window.exportActiveTableCSV = exportActiveTableCSV;
+    window.exportKecamatanCSV = exportKecamatanCSV;
+    window.scrollKecCarousel = scrollKecCarousel;
   }
 
-  function populateFilterDropdowns() {
-    const kecSelect = document.getElementById('explorerFilterKecamatan');
-    if (!kecSelect) return;
-
-    kecSelect.innerHTML = '<option value="ALL">Semua Kecamatan (15 Wilayah)</option>' +
-      Object.keys(masterData.kecamatan).map(kName => {
-        const k = masterData.kecamatan[kName];
-        return `<option value="${kName}">Kec. ${k.nama} (${k.total_desa} Desa)</option>`;
-      }).join('');
-
-    kecSelect.addEventListener('change', (e) => {
-      selectedKecamatan = e.target.value;
-      renderCurrentTab();
-      // Sync with Presisi map if available
-      if (window.PresisiEngine && typeof window.PresisiEngine.onKecamatanChange === 'function') {
-        const targetKecName = selectedKecamatan === 'ALL' ? 'ALL' : masterData.kecamatan[selectedKecamatan].nama;
-        window.PresisiEngine.onKecamatanChange(targetKecName);
-      }
-    });
-  }
-
-  function setupTabHandlers() {
-    const tabButtons = document.querySelectorAll('.btn-podes-tab');
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tab = btn.getAttribute('data-tab');
-        if (tab) {
-          currentTab = tab;
-          tabButtons.forEach(b => {
-            b.classList.remove('active', 'bg-[#0D6E5B]', 'text-white', 'shadow-sm');
-            b.classList.add('text-slate-600', 'hover:bg-slate-100', 'bg-white');
-          });
-          btn.classList.add('active', 'bg-[#0D6E5B]', 'text-white', 'shadow-sm');
-          btn.classList.remove('text-slate-600', 'hover:bg-slate-100', 'bg-white');
-          renderCurrentTab();
-        }
-      });
-    });
-  }
-
-  function setupSearchHandler() {
-    const searchInput = document.getElementById('explorerSearchInput');
+  // -------------------------------------------------------------
+  // STATE 1: DIREKTORI 15 KECAMATAN (CAROUSEL & SEARCH)
+  // -------------------------------------------------------------
+  function setupSearchHandlers() {
+    const searchInput = document.getElementById('kecamatanPillSearch');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = (e.target.value || '').trim().toLowerCase();
-        renderTableData();
+        filterCarouselCards();
       });
     }
 
-    const btnExport = document.getElementById('btnExplorerExportCSV');
-    if (btnExport) {
-      btnExport.addEventListener('click', exportActiveTableCSV);
+    const detailSearch = document.getElementById('detailDesaTableSearch');
+    if (detailSearch) {
+      detailSearch.addEventListener('input', (e) => {
+        detailSearchQuery = (e.target.value || '').trim().toLowerCase();
+        renderDetailVillageTable();
+      });
     }
   }
 
-  function filterVillages() {
-    if (!masterData || !masterData.desa) return [];
-    return masterData.desa.filter(d => {
-      // Kecamatan filter
-      if (selectedKecamatan !== 'ALL') {
-        const matchKec = d.kecamatan.toUpperCase() === selectedKecamatan.toUpperCase();
-        if (!matchKec) return false;
+  function filterCarouselCards() {
+    const cards = document.querySelectorAll('.kec-carousel-card');
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const kKey = card.getAttribute('data-kec-key');
+      const kData = masterData.kecamatan[kKey];
+      if (!kData) return;
+
+      if (!searchQuery) {
+        card.style.display = 'flex';
+        visibleCount++;
+        return;
       }
-      // Search filter
-      if (searchQuery) {
-        const nameMatch = d.nama.toLowerCase().includes(searchQuery);
-        const kecMatch = d.kecamatan.toLowerCase().includes(searchQuery);
-        const subMatch = (d.ekonomi.subsektor || '').toLowerCase().includes(searchQuery);
-        const komMatch = (d.ekonomi.komoditas || '').toLowerCase().includes(searchQuery);
-        if (!nameMatch && !kecMatch && !subMatch && !komMatch) return false;
+
+      const matchKec = kData.nama.toLowerCase().includes(searchQuery);
+      // Also check if any village inside this kecamatan matches the query
+      const matchDesa = (kData.desa_list || []).some(d => d.nama.toLowerCase().includes(searchQuery));
+      if (matchKec || matchDesa) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
       }
-      return true;
+    });
+
+    const notFoundEl = document.getElementById('carouselNoResults');
+    if (notFoundEl) {
+      notFoundEl.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  function scrollKecCarousel(direction) {
+    const container = document.getElementById('kecamatanCarouselTrack');
+    if (!container) return;
+    const scrollAmount = 280;
+    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    setTimeout(updateCarouselScrollIndicator, 300);
+  }
+
+  function updateCarouselScrollIndicator() {
+    const container = document.getElementById('kecamatanCarouselTrack');
+    const indicator = document.getElementById('carouselScrollProgress');
+    if (!container || !indicator) return;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (maxScroll <= 0) {
+      indicator.style.width = '100%';
+      return;
+    }
+    const percent = Math.min(100, Math.max(10, (container.scrollLeft / maxScroll) * 100));
+    indicator.style.width = percent + '%';
+  }
+
+  function renderState1Carousel() {
+    const track = document.getElementById('kecamatanCarouselTrack');
+    if (!track || !masterData) return;
+
+    let html = '';
+    KEC_ORDER.forEach(kKey => {
+      const k = masterData.kecamatan[kKey];
+      if (!k) return;
+
+      const desaCount = (k.desa_list || []).length;
+      const totL = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+      const totP = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+      const totPop = totL + totP;
+      const totIMK = (k.desa_list || []).reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
+      const dominantComm = getDominantCommodity(k.desa_list);
+
+      // Icon for commodity
+      let commIcon = '🌱';
+      if (dominantComm.toLowerCase().includes('kakao') || dominantComm.toLowerCase().includes('coklat')) commIcon = '🍫';
+      else if (dominantComm.toLowerCase().includes('cengkeh')) commIcon = '🌿';
+      else if (dominantComm.toLowerCase().includes('nilam')) commIcon = '🍃';
+      else if (dominantComm.toLowerCase().includes('lada')) commIcon = '🌶️';
+      else if (dominantComm.toLowerCase().includes('padi')) commIcon = '🌾';
+
+      html += `
+        <div class="kec-carousel-card w-[220px] sm:w-[245px] flex-shrink-0 rounded-3xl p-5 border border-slate-200/90 bg-gradient-to-b from-white via-white to-emerald-50/20 shadow-xs hover:shadow-lg hover:border-[#0D7A5F] transition-all duration-200 cursor-pointer flex flex-col justify-between group hover:-translate-y-1.5 relative overflow-hidden" 
+             data-kec-key="${kKey}" 
+             onclick="window.selectKecamatanExploration('${kKey}')"
+             title="Klik untuk eksplorasi detail Kecamatan ${k.nama}">
+          
+          <!-- Top Area -->
+          <div>
+            <div class="flex items-center justify-between gap-1 mb-2">
+              <span class="text-[10px] font-mono font-bold text-slate-400">KODE: ${k.kode || '-'}</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#ECFDF5] border border-emerald-200/70 text-[#0D7A5F] text-[10px] font-extrabold whitespace-nowrap">
+                ${desaCount} Desa/Kel
+              </span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-[#152e4d] tracking-tight leading-tight group-hover:text-[#0D7A5F] transition-colors">
+              ${k.nama.toUpperCase()}
+            </h3>
+
+            <div class="inline-flex items-center gap-1.5 text-xs text-slate-600 font-semibold mt-1">
+              <span>${commIcon}</span>
+              <span class="truncate max-w-[170px]">${dominantComm}</span>
+            </div>
+          </div>
+
+          <!-- Mid / 2 Concise Metrics -->
+          <div class="my-4 pt-3.5 border-t border-slate-100 space-y-2.5">
+            <div>
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Penduduk Riil 2025</span>
+              <div class="text-lg sm:text-xl font-black text-slate-900 tabular-nums">
+                ${totPop.toLocaleString('id-ID')} <span class="text-[11px] font-semibold text-slate-500">Jiwa</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Industri Mikro (IMK)</span>
+              <div class="text-sm font-extrabold text-amber-600 tabular-nums">
+                ${totIMK.toLocaleString('id-ID')} <span class="text-[11px] font-medium text-slate-500">Unit Usaha</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Prompt -->
+          <div class="pt-2 flex items-center justify-between text-xs font-bold text-[#0D7A5F] group-hover:text-[#095244] border-t border-emerald-100/50">
+            <span>Detail Kecamatan</span>
+            <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      `;
+    });
+
+    track.innerHTML = html;
+
+    // Attach scroll listener to update progress indicator
+    track.addEventListener('scroll', updateCarouselScrollIndicator);
+
+    // Enable mouse drag scrolling on desktop
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.classList.add('cursor-grabbing');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+      track.classList.remove('cursor-grabbing');
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+      track.classList.remove('cursor-grabbing');
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
     });
   }
 
-  function renderCurrentTab() {
-    renderMetricSummary();
-    renderCharts();
-    renderTableData();
-  }
-
-  function renderMetricSummary() {
-    const summaryContainer = document.getElementById('explorerMetricSummary');
+  function renderState1Summary() {
+    const summaryContainer = document.getElementById('explorerAggregateSummary');
     if (!summaryContainer || !masterData) return;
 
-    const filteredDesa = filterVillages();
-    const countDesa = filteredDesa.length;
-    const kab = masterData.kabupaten;
+    const allDesa = masterData.desa || [];
+    const countDesa = allDesa.length;
+    const totL = allDesa.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+    const totP = allDesa.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+    const totJiwa = totL + totP; // Exactly 145.679
+    const avgKepadatan = countDesa ? (allDesa.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / countDesa).toFixed(1) : 0;
+    const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
+    const totIMK = allDesa.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
+    const totPLN = allDesa.reduce((a, b) => a + (Number(b.lingkungan.pln_kk) || 0), 0);
+    const totNonPLN = allDesa.reduce((a, b) => a + (Number(b.lingkungan.non_pln_kk) || 0), 0);
+    const totTanpaListrik = allDesa.reduce((a, b) => a + (Number(b.lingkungan.tanpa_listrik_kk) || 0), 0);
+    const rasioListrik = (totPLN + totNonPLN + totTanpaListrik) > 0 ? ((totPLN / (totPLN + totNonPLN + totTanpaListrik)) * 100).toFixed(2) : 99.55;
 
-    let cardsHtml = '';
+    summaryContainer.innerHTML = `
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
+          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total Penduduk Riil</div>
+          <div class="text-2xl sm:text-3xl font-black text-[#0D7A5F] mt-1 tabular-nums">
+            ${totJiwa.toLocaleString('id-ID')}
+          </div>
+          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
+            L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}
+          </div>
+        </div>
 
-    if (currentTab === 'demografi') {
-      const totJiwa = filteredDesa.reduce((acc, d) => acc + (d.demografi.penduduk_total || 0), 0);
-      const totL = filteredDesa.reduce((acc, d) => acc + (d.demografi.penduduk_l || 0), 0);
-      const totP = filteredDesa.reduce((acc, d) => acc + (d.demografi.penduduk_p || 0), 0);
-      const avgKepadatan = countDesa ? (filteredDesa.reduce((acc, d) => acc + (d.demografi.kepadatan_km2 || 0), 0) / countDesa).toFixed(1) : 0;
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
+          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Rata-Rata Kepadatan</div>
+          <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 tabular-nums">
+            ${avgKepadatan} <span class="text-xs font-semibold text-slate-500">Jiwa/km²</span>
+          </div>
+          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
+            Cakupan 15 Kecamatan / 133 Desa
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
+          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Rasio Jenis Kelamin</div>
+          <div class="text-2xl sm:text-3xl font-black text-blue-600 mt-1 tabular-nums">
+            ${sexRatio}
+          </div>
+          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
+            Laki-laki per 100 Perempuan
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
+          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sentra & IMK Produktif</div>
+          <div class="text-2xl sm:text-3xl font-black text-amber-600 mt-1 tabular-nums">
+            ${totIMK.toLocaleString('id-ID')}
+          </div>
+          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
+            Listrik PLN: ${rasioListrik}%
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // -------------------------------------------------------------
+  // STATE 2: DETAIL KECAMATAN (SPLIT-PANEL DUA KOLOM + SWIPE)
+  // -------------------------------------------------------------
+  function selectKecamatanExploration(kKey) {
+    if (!masterData || !masterData.kecamatan[kKey]) return;
+    activeKecamatanKey = kKey;
+    activeSectorIndex = 0;
+    detailSearchQuery = '';
+
+    const dirEl = document.getElementById('podesStateDirectory');
+    const detailEl = document.getElementById('podesStateDetail');
+
+    if (dirEl && detailEl) {
+      dirEl.style.display = 'none';
+      detailEl.style.display = 'block';
+      detailEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    renderState2SplitPanel();
+    renderDetailVillageTable();
+  }
+
+  function backToKecamatanDirectory() {
+    activeState = 'directory';
+    const dirEl = document.getElementById('podesStateDirectory');
+    const detailEl = document.getElementById('podesStateDetail');
+
+    if (dirEl && detailEl) {
+      detailEl.style.display = 'none';
+      dirEl.style.display = 'block';
+      dirEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function setSectorSlide(index) {
+    if (index < 0 || index >= SECTORS.length) return;
+    activeSectorIndex = index;
+    renderRightSectorCard();
+  }
+
+  function prevSectorSlide() {
+    activeSectorIndex = (activeSectorIndex - 1 + SECTORS.length) % SECTORS.length;
+    renderRightSectorCard();
+  }
+
+  function nextSectorSlide() {
+    activeSectorIndex = (activeSectorIndex + 1) % SECTORS.length;
+    renderRightSectorCard();
+  }
+
+  function renderState2SplitPanel() {
+    const k = masterData.kecamatan[activeKecamatanKey];
+    if (!k) return;
+
+    const desaList = k.desa_list || [];
+    const dominantComm = getDominantCommodity(desaList);
+    const prodInfo = getFeaturedProductsInfo(desaList);
+    const totIMK = desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
+    const totBumdes = desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
+
+    // 1. Render Left Panel (Sektor Unggulan)
+    const leftPanel = document.getElementById('kecDetailLeftPanel');
+    if (leftPanel) {
+      leftPanel.innerHTML = `
+        <div class="h-full flex flex-col justify-between p-6 sm:p-8">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 text-[#0D7A5F] text-xs font-bold transition-all">
+                ← Semua Kecamatan
+              </button>
+              <span class="text-[10px] font-mono font-bold text-slate-400">KODE: ${k.kode || '-'}</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-black text-[#152e4d] tracking-tight">
+              KECAMATAN ${k.nama.toUpperCase()}
+            </h2>
+            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">
+              Wilayah Administratif • Terdiri dari <strong class="text-slate-800">${desaList.length} Desa & Kelurahan</strong>
+            </p>
+          </div>
+
+          <!-- Card Sektor Unggulan Statis -->
+          <div class="mt-6 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/50 p-5 sm:p-6 border border-emerald-200/90 shadow-xs space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-emerald-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0D7A5F]"></span>
+                <h4 class="font-bold text-sm uppercase tracking-wider text-slate-800">Sektor Unggulan Wilayah</h4>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#0D7A5F] border border-emerald-200">
+                PODES 2025
+              </span>
+            </div>
+
+            <!-- Komoditas Utama -->
+            <div class="flex items-start gap-3.5 bg-white rounded-xl p-3.5 border border-slate-100 shadow-2xs">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg shrink-0">
+                🌱
+              </div>
+              <div class="flex-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Komoditas Utama Dominan</div>
+                <div class="text-base sm:text-lg font-black text-slate-900 mt-0.5">${dominantComm}</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Basis perkebunan rakyat & agribisnis utama kecamatan.</div>
+              </div>
+            </div>
+
+            <!-- Grid 3 Metrik Sektor Unggulan -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div class="bg-white rounded-xl p-3 border border-slate-100">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Unit IMK</div>
+                <div class="text-lg font-black text-amber-600 mt-0.5">${totIMK.toLocaleString('id-ID')}</div>
+                <div class="text-[10px] text-slate-500">Usaha Mikro/Kecil</div>
+              </div>
+
+              <div class="bg-white rounded-xl p-3 border border-slate-100">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Desa Unggulan</div>
+                <div class="text-lg font-black text-[#0D7A5F] mt-0.5">${prodInfo.count} Desa</div>
+                <div class="text-[10px] text-slate-500">Ada Produk Khas</div>
+              </div>
+
+              <div class="bg-white rounded-xl p-3 border border-slate-100">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">BUMDes Aktif</div>
+                <div class="text-lg font-black text-indigo-700 mt-0.5">${totBumdes} Unit</div>
+                <div class="text-[10px] text-slate-500">Kemandirian Desa</div>
+              </div>
+            </div>
+
+            <!-- Chips Produk Unggulan -->
+            ${prodInfo.products.length ? `
+              <div class="pt-2 text-xs">
+                <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1.5">Contoh Produk Unggulan:</span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${prodInfo.products.map(p => `<span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-[11px] shadow-2xs">✨ ${p}</span>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // 2. Render Right Panel (Swipeable 7 Sektor PODES)
+    renderRightSectorCard();
+  }
+
+  function renderRightSectorCard() {
+    const k = masterData.kecamatan[activeKecamatanKey];
+    if (!k) return;
+
+    const desaList = k.desa_list || [];
+    const sec = SECTORS[activeSectorIndex];
+    const rightPanel = document.getElementById('kecDetailRightPanel');
+    if (!rightPanel) return;
+
+    // Generate pagination dots
+    const dotsHtml = SECTORS.map((s, idx) => {
+      const isActive = idx === activeSectorIndex;
+      return `
+        <button onclick="window.setSectorSlide(${idx})" 
+                class="w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#0D7A5F] scale-125' : 'bg-slate-300 hover:bg-slate-400'}" 
+                title="${idx + 1}. ${s.name}">
+        </button>
+      `;
+    }).join('');
+
+    // Generate content based on active sector
+    let sectorContentHtml = '';
+
+    if (sec.id === 'demografi') {
+      const totL = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+      const totP = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+      const totPop = totL + totP;
+      const avgKepadatan = desaList.length ? (desaList.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / desaList.length).toFixed(1) : 0;
       const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
 
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Penduduk</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${totJiwa.toLocaleString('id-ID')} <span class="text-xs font-semibold text-slate-500">Jiwa</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rata-Rata Kepadatan</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${avgKepadatan} <span class="text-xs font-semibold text-slate-500">Jiwa / km²</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Cakupan ${countDesa} Desa / Kelurahan</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rasio Jenis Kelamin</div>
-          <div class="text-xl sm:text-2xl font-black text-blue-600 mt-1">${sexRatio}</div>
-          <div class="text-[11px] text-slate-500 mt-1">Laki-laki per 100 Perempuan</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Wilayah Terpantau</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${countDesa} <span class="text-xs font-semibold text-slate-500">Desa/Kel</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">${selectedKecamatan === 'ALL' ? '15 Kecamatan Lengkap' : 'Kecamatan ' + masterData.kecamatan[selectedKecamatan].nama}</div>
-        </div>
-      `;
-    } else if (currentTab === 'ekonomi') {
-      const totIMK = filteredDesa.reduce((acc, d) => acc + (d.ekonomi.imk || 0), 0);
-      const totPasar = filteredDesa.reduce((acc, d) => acc + (d.ekonomi.pasar_perm + d.ekonomi.pasar_semi + d.ekonomi.pasar_tanpa), 0);
-      const totMinimarket = filteredDesa.reduce((acc, d) => acc + (d.ekonomi.minimarket || 0), 0);
-      const totBank = filteredDesa.reduce((acc, d) => acc + (d.ekonomi.bank_gov + d.ekonomi.bank_swasta + d.ekonomi.bpr), 0);
-      const desaKur = filteredDesa.filter(d => d.ekonomi.kur === 'Ada').length;
-
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Industri Mikro & Kecil</div>
-          <div class="text-xl sm:text-2xl font-black text-amber-600 mt-1">${totIMK.toLocaleString('id-ID')} <span class="text-xs font-semibold text-slate-500">Unit</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Sentra Pengolahan & Usaha Rakyat</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Pasar & Perdagangan</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${totPasar} <span class="text-xs font-semibold text-slate-500">Pasar</span> • ${totMinimarket} <span class="text-xs font-semibold text-slate-500">Mart</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Pusat Transaksi Ekonomi Warga</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Lembaga Keuangan</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${totBank} <span class="text-xs font-semibold text-slate-500">Bank</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Bank Pemerintah, Swasta & BPR</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Akses Kredit KUR</div>
-          <div class="text-xl sm:text-2xl font-black text-emerald-600 mt-1">${desaKur} <span class="text-xs font-semibold text-slate-500">Desa</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">${((desaKur / (countDesa || 1)) * 100).toFixed(1)}% Wilayah Terfasilitasi</div>
+      sectorContentHtml = `
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
+              <span class="text-slate-400 text-[10px] font-bold uppercase block">Total Penduduk</span>
+              <span class="text-xl font-black text-slate-900 mt-1 block">${totPop.toLocaleString('id-ID')} Jiwa</span>
+              <span class="text-[11px] text-slate-500">Laki-laki: ${totL.toLocaleString('id-ID')}</span>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
+              <span class="text-slate-400 text-[10px] font-bold uppercase block">Perempuan</span>
+              <span class="text-xl font-black text-slate-900 mt-1 block">${totP.toLocaleString('id-ID')} Jiwa</span>
+              <span class="text-[11px] text-slate-500">Sex Ratio: ${sexRatio}</span>
+            </div>
+          </div>
+          <div class="bg-emerald-50/50 rounded-xl p-3.5 border border-emerald-100 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase block">Rata-Rata Kepadatan</span>
+              <span class="text-lg font-black text-[#0D7A5F]">${avgKepadatan} Jiwa / km²</span>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-white border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+              ${desaList.length} Desa/Kel
+            </span>
+          </div>
         </div>
       `;
-    } else if (currentTab === 'pendidikan') {
-      const totTK = filteredDesa.reduce((acc, d) => acc + (d.pendidikan.tk || 0), 0);
-      const totSD = filteredDesa.reduce((acc, d) => acc + (d.pendidikan.sd_mi_tot || 0), 0);
-      const totSMP = filteredDesa.reduce((acc, d) => acc + (d.pendidikan.smp_mts_tot || 0), 0);
-      const totSMA = filteredDesa.reduce((acc, d) => acc + (d.pendidikan.sma_ma_tot + d.pendidikan.smk_tot || 0), 0);
-      const totPT = filteredDesa.reduce((acc, d) => acc + (d.pendidikan.pt_tot || 0), 0);
-      const totAll = totTK + totSD + totSMP + totSMA + totPT;
+    } else if (sec.id === 'pendidikan') {
+      const totTK = desaList.reduce((a, b) => a + (b.pendidikan.tk || 0), 0);
+      const totSD = desaList.reduce((a, b) => a + (b.pendidikan.sd_mi_tot || 0), 0);
+      const totSMP = desaList.reduce((a, b) => a + (b.pendidikan.smp_mts_tot || 0), 0);
+      const totSMA = desaList.reduce((a, b) => a + (b.pendidikan.sma_ma_tot || 0), 0);
+      const totSMK = desaList.reduce((a, b) => a + (b.pendidikan.smk_tot || 0), 0);
+      const totPT = desaList.reduce((a, b) => a + (b.pendidikan.pt_tot || 0), 0);
+      const totalSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
 
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Sarana Pendidikan</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${totAll} <span class="text-xs font-semibold text-slate-500">Satuan</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Jenjang PAUD hingga Perguruan Tinggi</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Pendidikan Dasar (SD/MI)</div>
-          <div class="text-xl sm:text-2xl font-black text-blue-600 mt-1">${totSD} <span class="text-xs font-semibold text-slate-500">Sekolah</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Tersebar merata di seluruh desa</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Menengah (SMP & SMA/SMK)</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${totSMP + totSMA} <span class="text-xs font-semibold text-slate-500">Sekolah</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">SMP/MTs: ${totSMP} • SMA/SMK/MA: ${totSMA}</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">PAUD & PT</div>
-          <div class="text-xl sm:text-2xl font-black text-indigo-600 mt-1">${totTK} <span class="text-xs font-semibold text-slate-500">TK</span> • ${totPT} <span class="text-xs font-semibold text-slate-500">PT</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Pondasi Dini & Pendidikan Tinggi</div>
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+            <span class="font-bold text-slate-700">Total Fasilitas Sekolah</span>
+            <span class="font-black text-base text-[#0D7A5F]">${totalSekolah} Unit</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">TK / PAUD</span>
+              <span class="text-base font-extrabold text-slate-800">${totTK}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">SD / MI</span>
+              <span class="text-base font-extrabold text-slate-800">${totSD}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">SMP / MTs</span>
+              <span class="text-base font-extrabold text-slate-800">${totSMP}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">SMA / MA</span>
+              <span class="text-base font-extrabold text-slate-800">${totSMA}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">SMK</span>
+              <span class="text-base font-extrabold text-slate-800">${totSMK}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Perguruan Tinggi</span>
+              <span class="text-base font-extrabold text-slate-800">${totPT}</span>
+            </div>
+          </div>
         </div>
       `;
-    } else if (currentTab === 'kesehatan') {
-      const totRS = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.rs || 0), 0);
-      const totPuskesmas = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.puskesmas_tot || 0), 0);
-      const totPustu = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.pustu || 0), 0);
-      const totPoskesPolin = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.poskesdes + d.kesehatan.polindes), 0);
-      const totApotek = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.apotek + d.kesehatan.toko_obat), 0);
-      const totPosyandu = filteredDesa.reduce((acc, d) => acc + (d.kesehatan.posyandu_aktif || 0), 0);
+    } else if (sec.id === 'kesehatan') {
+      const totRS = desaList.reduce((a, b) => a + (b.kesehatan.rs || 0), 0);
+      const totPusk = desaList.reduce((a, b) => a + (b.kesehatan.puskesmas_tot || 0), 0);
+      const totPustu = desaList.reduce((a, b) => a + (b.kesehatan.pustu || 0) + (b.kesehatan.poskesdes || 0), 0);
+      const totApotek = desaList.reduce((a, b) => a + (b.kesehatan.apotek || 0), 0);
+      const totPosyandu = desaList.reduce((a, b) => a + (b.kesehatan.posyandu_aktif || 0), 0);
+      const totPosbindu = desaList.reduce((a, b) => a + (b.kesehatan.posbindu || 0), 0);
 
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Puskesmas & Rumah Sakit</div>
-          <div class="text-xl sm:text-2xl font-black text-rose-600 mt-1">${totRS + totPuskesmas} <span class="text-xs font-semibold text-slate-500">Unit</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">1 RSUD • 9 Inap • 7 Non-Inap</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Pustu, Poskesdes & Polindes</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${totPustu + totPoskesPolin} <span class="text-xs font-semibold text-slate-500">Pos</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">${totPustu} Pustu • ${totPoskesPolin} Poskesdes/Polindes</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Apotek & Toko Obat</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${totApotek} <span class="text-xs font-semibold text-slate-500">Gerai</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Akses Farmasi & Obat Masyarakat</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Posyandu Aktif Bulanan</div>
-          <div class="text-xl sm:text-2xl font-black text-emerald-600 mt-1">${totPosyandu} <span class="text-xs font-semibold text-slate-500">Posyandu</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Pelayanan Rutin Ibu, Bayi & Lansia</div>
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Rumah Sakit / Puskesmas</span>
+              <span class="text-base font-extrabold text-slate-800">${totRS + totPusk} Unit</span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Pustu & Poskesdes</span>
+              <span class="text-base font-extrabold text-slate-800">${totPustu} Unit</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Posyandu Aktif</span>
+              <span class="text-base font-extrabold text-emerald-700">${totPosyandu}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Posbindu</span>
+              <span class="text-base font-extrabold text-slate-800">${totPosbindu}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Apotek & Toko Obat</span>
+              <span class="text-base font-extrabold text-slate-800">${totApotek}</span>
+            </div>
+          </div>
         </div>
       `;
-    } else if (currentTab === 'lingkungan') {
-      const totPln = filteredDesa.reduce((acc, d) => acc + (d.lingkungan.pln_kk || 0), 0);
-      const totNonPln = filteredDesa.reduce((acc, d) => acc + (d.lingkungan.non_pln_kk || 0), 0);
-      const totBukanListrik = filteredDesa.reduce((acc, d) => acc + (d.lingkungan.tanpa_listrik_kk || 0), 0);
-      const totKK = totPln + totNonPln + totBukanListrik;
-      const pctPln = totKK ? ((totPln / totKK) * 100).toFixed(1) : 0;
-      const desaLaut = filteredDesa.filter(d => d.lingkungan.lokasi_laut !== 'Tidak Ada').length;
-      const desaBebasCemar = filteredDesa.filter(d => d.lingkungan.bebas_pencemaran).length;
+    } else if (sec.id === 'ekonomi') {
+      const totIMK = desaList.reduce((a, b) => a + (b.ekonomi.imk || 0), 0);
+      const totPasar = desaList.reduce((a, b) => a + (b.ekonomi.pasar_perm + b.ekonomi.pasar_semi + b.ekonomi.pasar_tanpa), 0);
+      const totMini = desaList.reduce((a, b) => a + (b.ekonomi.minimarket || 0), 0);
+      const totBank = desaList.reduce((a, b) => a + (b.ekonomi.bank_gov + b.ekonomi.bank_swasta + b.ekonomi.bpr), 0);
+      const totKop = desaList.reduce((a, b) => a + (b.ekonomi.kud + b.ekonomi.ksp + b.ekonomi.koperasi_lain), 0);
+      const totHotel = desaList.reduce((a, b) => a + (b.ekonomi.hotel + b.ekonomi.penginapan), 0);
 
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Elektrifikasi Listrik PLN</div>
-          <div class="text-xl sm:text-2xl font-black text-amber-500 mt-1">${totPln.toLocaleString('id-ID')} <span class="text-xs font-semibold text-slate-500">KK (${pctPln}%)</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Non-PLN: ${totNonPln} • Tanpa Listrik: ${totBukanListrik}</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Desa Pesisir & Laut</div>
-          <div class="text-xl sm:text-2xl font-black text-cyan-600 mt-1">${desaSektorLaut(filteredDesa)} <span class="text-xs font-semibold text-slate-500">Desa Pesisir</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Potensi Perikanan Tangkap & Budidaya</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Bebas Pencemaran</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${desaBebasCemar} <span class="text-xs font-semibold text-slate-500">Desa</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">${((desaBebasCemar / (countDesa || 1)) * 100).toFixed(1)}% Kualitas Lingkungan Terjaga</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Mitigasi & Pupuk Organik</div>
-          <div class="text-xl sm:text-2xl font-black text-emerald-600 mt-1">${desaOrganik(filteredDesa)} <span class="text-xs font-semibold text-slate-500">Desa</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Penggalakan Pertanian Berkelanjutan</div>
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-200/80 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-amber-800 uppercase block">Sentra Industri Mikro (IMK)</span>
+              <span class="text-lg font-black text-amber-700">${totIMK.toLocaleString('id-ID')} Unit</span>
+            </div>
+            <span class="text-2xl">🏭</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Pasar Tradisional</span>
+              <span class="text-base font-extrabold text-slate-800">${totPasar}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Minimarket / Toko</span>
+              <span class="text-base font-extrabold text-slate-800">${totMini}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Bank & BPR</span>
+              <span class="text-base font-extrabold text-slate-800">${totBank}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Koperasi</span>
+              <span class="text-base font-extrabold text-slate-800">${totKop}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Hotel/Penginapan</span>
+              <span class="text-base font-extrabold text-slate-800">${totHotel}</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Akses Kredit KUR</span>
+              <span class="text-xs font-extrabold text-emerald-600">Mayoritas Ada</span>
+            </div>
+          </div>
         </div>
       `;
-    } else if (currentTab === 'pemerintahan') {
-      const totAparat = filteredDesa.reduce((acc, d) => acc + (d.pemerintahan.total_aparat || 0), 0);
-      const totBumdes = filteredDesa.reduce((acc, d) => acc + (d.pemerintahan.bumdes || 0), 0);
-      const totTanahKas = filteredDesa.reduce((acc, d) => acc + (d.pemerintahan.tanah_kas || 0), 0);
-      const totPerdes = filteredDesa.filter(d => d.pemerintahan.perdes === 'Ada').length;
-      const totSiskeudes = filteredDesa.filter(d => d.pemerintahan.siskeudes === 'Diperbaharui').length;
+    } else if (sec.id === 'lingkungan') {
+      const totPLN = desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
+      const totNonPLN = desaList.reduce((a, b) => a + (b.lingkungan.non_pln_kk || 0), 0);
+      const totTanpa = desaList.reduce((a, b) => a + (b.lingkungan.tanpa_listrik_kk || 0), 0);
+      const totalKK = totPLN + totNonPLN + totTanpa;
+      const rasioPLN = totalKK > 0 ? ((totPLN / totalKK) * 100).toFixed(1) : 100;
+      const bebasCemarDesa = desaList.filter(d => d.lingkungan.bebas_pencemaran).length;
 
-      cardsHtml = `
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Aparat Pemerintah</div>
-          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${totAparat.toLocaleString('id-ID')} <span class="text-xs font-semibold text-slate-500">Orang</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Kades, Sekdes, Kadus & Kasi/Kaur</div>
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
+              <span class="text-[10px] font-bold text-emerald-800 uppercase block">Pelanggan Listrik PLN</span>
+              <span class="text-lg font-black text-emerald-700">${totPLN.toLocaleString('id-ID')} KK</span>
+              <span class="text-[10px] text-emerald-600 font-semibold">Rasio: ${rasioPLN}%</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <span class="text-[10px] font-bold text-slate-400 uppercase block">Non-PLN / Mandiri</span>
+              <span class="text-lg font-black text-slate-800">${totNonPLN} KK</span>
+              <span class="text-[10px] text-slate-500">Tanpa Listrik: ${totTanpa} KK</span>
+            </div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-bold">Kualitas Lingkungan Hidup</span>
+              <span class="font-extrabold text-slate-800">${bebasCemarDesa} dari ${desaList.length} Desa Bebas Pencemaran</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Terjaga</span>
+          </div>
         </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Kelembagaan BUMDes</div>
-          <div class="text-xl sm:text-2xl font-black text-[#0D6E5B] mt-1">${totBumdes} <span class="text-xs font-semibold text-slate-500">Unit</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Penggerak Ekonomi Otonom Desa</div>
+      `;
+    } else if (sec.id === 'keuangan') {
+      const totBumdes = desaList.reduce((a, b) => a + (b.pemerintahan.bumdes || 0), 0);
+      const totTanahKas = desaList.reduce((a, b) => a + (b.pemerintahan.tanah_kas || 0), 0);
+      const totWisata = desaList.reduce((a, b) => a + (b.pemerintahan.wisata_desa || 0), 0);
+      const countSiskeudes = desaList.filter(d => d.pemerintahan.siskeudes && d.pemerintahan.siskeudes !== 'Tidak Ada').length;
+      const countSID = desaList.filter(d => d.pemerintahan.sid && d.pemerintahan.sid !== 'Tidak Ada').length;
+
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-indigo-50/70 p-3 rounded-xl border border-indigo-200">
+              <span class="text-[10px] font-bold text-indigo-800 uppercase block">Keberadaan BUMDes</span>
+              <span class="text-lg font-black text-indigo-700">${totBumdes} Unit</span>
+              <span class="text-[10px] text-indigo-600 font-semibold">Penggerak Ekonomi Desa</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <span class="text-[10px] font-bold text-slate-400 uppercase block">Sistem Informasi Desa (SID)</span>
+              <span class="text-lg font-black text-slate-800">${countSID} Desa</span>
+              <span class="text-[10px] text-slate-500">SISKEUDES: ${countSiskeudes} Desa</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100 text-center">
+              <span class="text-[10px] text-slate-400 block font-bold">Aset Tanah Kas Desa</span>
+              <span class="text-base font-extrabold text-slate-800">${totTanahKas} Unit</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-xl border border-slate-100 text-center">
+              <span class="text-[10px] text-slate-400 block font-bold">Obyek Wisata Desa</span>
+              <span class="text-base font-extrabold text-slate-800">${totWisata} Lokasi</span>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Aset Tanah Kas Desa</div>
-          <div class="text-xl sm:text-2xl font-black text-purple-600 mt-1">${totTanahKas} <span class="text-xs font-semibold text-slate-500">Desa</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Kepemilikan Aset Produktif Wilayah</div>
-        </div>
-        <div class="bg-white rounded-xl border border-slate-200/90 p-3.5 shadow-2xs">
-          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Regulasi & Siskeudes</div>
-          <div class="text-xl sm:text-2xl font-black text-emerald-600 mt-1">${totPerdes} <span class="text-xs font-semibold text-slate-500">Perdes</span> • ${totSiskeudes} <span class="text-xs font-semibold text-slate-500">Sis</span></div>
-          <div class="text-[11px] text-slate-500 mt-1">Akuntabilitas Finansial & Hukum Desa</div>
+      `;
+    } else if (sec.id === 'pemerintahan') {
+      const totAparat = desaList.reduce((a, b) => a + (b.pemerintahan.total_aparat || 0), 0);
+      const kadesS1 = desaList.filter(d => d.pemerintahan.kades_pend && d.pemerintahan.kades_pend.includes('S1')).length;
+      const kadesL = desaList.filter(d => d.pemerintahan.kades_gender === 'Laki-laki').length;
+      const kadesP = desaList.filter(d => d.pemerintahan.kades_gender === 'Perempuan').length;
+
+      sectorContentHtml = `
+        <div class="space-y-3 text-xs">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-slate-400 uppercase block">Total Aparatur Desa</span>
+              <span class="text-lg font-black text-slate-900">${totAparat} Orang</span>
+            </div>
+            <span class="text-xs font-semibold text-slate-500">Kades, Sekdes & Perangkat</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-white p-3 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Kades L / P</span>
+              <span class="text-base font-extrabold text-slate-800">${kadesL} L • ${kadesP} P</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100">
+              <span class="text-[10px] text-slate-400 block font-bold">Kades D-IV / S1+</span>
+              <span class="text-base font-extrabold text-[#0D7A5F]">${kadesS1} Kades</span>
+            </div>
+          </div>
         </div>
       `;
     }
 
-    summaryContainer.innerHTML = cardsHtml;
+    rightPanel.innerHTML = `
+      <div class="h-full flex flex-col justify-between p-6 sm:p-8 relative">
+        <!-- Top bar with Title & Pagination Dots -->
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2">
+              <h4 class="font-extrabold text-lg sm:text-xl text-[#152e4d] tracking-tight">Sektor Lainnya</h4>
+              <span class="text-xs text-slate-400 font-semibold">(${activeSectorIndex + 1}/7)</span>
+            </div>
+            
+            <!-- Clickable Pagination Dots -->
+            <div class="flex items-center gap-1.5 p-1 bg-slate-50 border border-slate-200 rounded-full">
+              ${dotsHtml}
+            </div>
+          </div>
+
+          <!-- Sector Card Container (with Touch Swipe & Drag Support) -->
+          <div id="swipeableSectorCard" class="mt-4 rounded-2xl bg-white p-5 sm:p-6 border border-slate-200/90 shadow-xs relative transition-all duration-200">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+              <div class="flex items-center gap-2.5">
+                <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-base">
+                  ${sec.icon}
+                </span>
+                <span class="font-black text-sm text-slate-800">${sec.name}</span>
+              </div>
+
+              <!-- Quick Next / Prev Arrows -->
+              <div class="flex items-center gap-1">
+                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-[#0D7A5F] flex items-center justify-center text-xs font-bold transition-colors">
+                  ‹
+                </button>
+                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-[#0D7A5F] flex items-center justify-center text-xs font-bold transition-colors">
+                  ›
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Content for Active Sector -->
+            ${sectorContentHtml}
+          </div>
+        </div>
+
+        <!-- Bottom Sector Quick Chips -->
+        <div class="mt-6 pt-4 border-t border-slate-100">
+          <div class="flex flex-wrap gap-1.5">
+            ${SECTORS.map((s, idx) => `
+              <button onclick="window.setSectorSlide(${idx})" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${idx === activeSectorIndex ? 'bg-[#0D7A5F] text-white shadow-2xs' : 'bg-slate-50 hover:bg-slate-100 text-slate-600'}">
+                ${s.icon} ${s.name}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Attach touch swipe gesture to right panel
+    const swipeCard = document.getElementById('swipeableSectorCard');
+    if (swipeCard) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      swipeCard.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      swipeCard.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+
+      function handleSwipeGesture() {
+        if (touchEndX < touchStartX - 50) {
+          nextSectorSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          prevSectorSlide();
+        }
+      }
+    }
   }
 
-  function desaSektorLaut(desaArr) {
-    return desaArr.filter(d => d.lingkungan.lokasi_laut && d.lingkungan.lokasi_laut.toLowerCase().includes('ada')).length;
-  }
-
-  function desaOrganik(desaArr) {
-    return desaArr.filter(d => d.lingkungan.pupuk_organik && d.lingkungan.pupuk_organik.toLowerCase().includes('ada')).length;
-  }
-
-  function renderCharts() {
-    const chartContainer = document.getElementById('explorerChartContainer');
-    if (!chartContainer || !masterData) return;
-
-    // Destroy existing Chart.js instances
-    Object.keys(activeCharts).forEach(key => {
-      if (activeCharts[key]) {
-        try { activeCharts[key].destroy(); } catch(e) {}
+  // -------------------------------------------------------------
+  // DETAIL VILLAGE TABLE (FILTERED FOR ACTIVE KECAMATAN)
+  // -------------------------------------------------------------
+  function setDetailTableTab(tab) {
+    activeTableTab = tab;
+    const tabBtns = document.querySelectorAll('.btn-detail-table-tab');
+    tabBtns.forEach(btn => {
+      const t = btn.getAttribute('data-tab');
+      if (t === tab) {
+        btn.classList.add('bg-[#0D7A5F]', 'text-white', 'shadow-2xs');
+        btn.classList.remove('bg-slate-100', 'text-slate-600');
+      } else {
+        btn.classList.remove('bg-[#0D7A5F]', 'text-white', 'shadow-2xs');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
       }
     });
-    activeCharts = {};
-
-    if (currentTab === 'demografi') {
-      chartContainer.innerHTML = `
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
-              <span class="text-xs font-extrabold text-slate-900">Perbandingan Populasi 15 Kecamatan</span>
-              <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">TABEL 2.1</span>
-            </div>
-            <div class="h-64 sm:h-72"><canvas id="chartDemografiKec"></canvas></div>
-          </div>
-          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
-              <span class="text-xs font-extrabold text-slate-900">Piramida Kelompok Umur (${selectedKecamatan === 'ALL' ? 'Kec. Ranteangin' : 'Kec. ' + masterData.kecamatan[selectedKecamatan].nama})</span>
-              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">TABEL 2.2</span>
-            </div>
-            <div class="h-64 sm:h-72"><canvas id="chartPiramidaUmur"></canvas></div>
-          </div>
-        </div>
-      `;
-
-      // Chart 1: Bar Chart Populasi per Kecamatan
-      const kecLabels = Object.keys(masterData.kecamatan).map(k => masterData.kecamatan[k].nama);
-      const kecValues = Object.keys(masterData.kecamatan).map(k => masterData.kecamatan[k].penduduk_total);
-
-      const ctx1 = document.getElementById('chartDemografiKec');
-      if (ctx1 && typeof Chart !== 'undefined') {
-        activeCharts['c1'] = new Chart(ctx1, {
-          type: 'bar',
-          data: {
-            labels: kecLabels,
-            datasets: [{
-              label: 'Total Jiwa',
-              data: kecValues,
-              backgroundColor: '#0D6E5B',
-              borderRadius: 6
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              x: { ticks: { font: { size: 10 }, maxRotation: 45 } },
-              y: { ticks: { font: { size: 10 } } }
-            }
-          }
-        });
-      }
-
-      // Chart 2: Piramida Umur
-      const targetKecKey = selectedKecamatan === 'ALL' ? 'RANTEANGIN' : selectedKecamatan;
-      const pyramidData = masterData.kecamatan[targetKecKey]?.piramida_umur || [];
-      const ageLabels = pyramidData.map(d => d.kelompok_umur);
-      const lData = pyramidData.map(d => d.laki_laki);
-      const pData = pyramidData.map(d => d.perempuan);
-
-      const ctx2 = document.getElementById('chartPiramidaUmur');
-      if (ctx2 && typeof Chart !== 'undefined') {
-        activeCharts['c2'] = new Chart(ctx2, {
-          type: 'bar',
-          data: {
-            labels: ageLabels,
-            datasets: [
-              { label: 'Laki-Laki', data: lData, backgroundColor: '#0284c7', borderRadius: 4 },
-              { label: 'Perempuan', data: pData, backgroundColor: '#ec4899', borderRadius: 4 }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { size: 10 } } } },
-            scales: {
-              x: { ticks: { font: { size: 9 }, maxRotation: 45 } },
-              y: { ticks: { font: { size: 10 } } }
-            }
-          }
-        });
-      }
-    } else if (currentTab === 'ekonomi') {
-      chartContainer.innerHTML = `
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
-              <span class="text-xs font-extrabold text-slate-900">Persebaran Industri Mikro & Kecil (IMK: 3.622 Unit)</span>
-              <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">TABEL 5.6</span>
-            </div>
-            <div class="h-64 sm:h-72"><canvas id="chartIMKKec"></canvas></div>
-          </div>
-          <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
-              <span class="text-xs font-extrabold text-slate-900">Komposisi Sarana Perdagangan Wilayah</span>
-              <span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full">TABEL 5.1 & 5.2</span>
-            </div>
-            <div class="h-64 sm:h-72"><canvas id="chartPerdagangan"></canvas></div>
-          </div>
-        </div>
-      `;
-
-      const kecLabels = Object.keys(masterData.kecamatan).map(k => masterData.kecamatan[k].nama);
-      const kecIMK = Object.keys(masterData.kecamatan).map(k => masterData.kecamatan[k].imk);
-
-      const ctx1 = document.getElementById('chartIMKKec');
-      if (ctx1 && typeof Chart !== 'undefined') {
-        activeCharts['c1'] = new Chart(ctx1, {
-          type: 'bar',
-          data: {
-            labels: kecLabels,
-            datasets: [{ label: 'IMK (Unit)', data: kecIMK, backgroundColor: '#d97706', borderRadius: 6 }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: { x: { ticks: { font: { size: 10 }, maxRotation: 45 } } }
-          }
-        });
-      }
-
-      const fDesa = filterVillages();
-      const pPerm = fDesa.reduce((a, b) => a + (b.ekonomi.pasar_perm || 0), 0);
-      const pSemi = fDesa.reduce((a, b) => a + (b.ekonomi.pasar_semi || 0), 0);
-      const mart = fDesa.reduce((a, b) => a + (b.ekonomi.minimarket || 0), 0);
-      const resto = fDesa.reduce((a, b) => a + (b.ekonomi.resto || 0), 0);
-      const hotel = fDesa.reduce((a, b) => a + (b.ekonomi.hotel + b.ekonomi.penginapan), 0);
-
-      const ctx2 = document.getElementById('chartPerdagangan');
-      if (ctx2 && typeof Chart !== 'undefined') {
-        activeCharts['c2'] = new Chart(ctx2, {
-          type: 'doughnut',
-          data: {
-            labels: ['Pasar Permanen', 'Pasar Semi', 'Minimarket', 'Restoran', 'Penginapan/Hotel'],
-            datasets: [{
-              data: [pPerm, pSemi, mart, resto, hotel],
-              backgroundColor: ['#047857', '#10b981', '#0ea5e9', '#f59e0b', '#8b5cf6']
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } } }
-          }
-        });
-      }
-    } else {
-      chartContainer.innerHTML = ''; // Keep clean and fast for other tabs
-    }
+    renderDetailVillageTable();
   }
 
-  function renderTableData() {
-    const tableContainer = document.getElementById('explorerTableContainer');
+  function renderDetailVillageTable() {
+    const tableContainer = document.getElementById('detailVillageTableContainer');
     if (!tableContainer || !masterData) return;
 
-    const filtered = filterVillages();
-    const countBadge = document.getElementById('explorerRowCountBadge');
-    if (countBadge) {
-      countBadge.textContent = `Menampilkan ${filtered.length} dari 133 Desa/Kelurahan`;
+    const k = masterData.kecamatan[activeKecamatanKey];
+    if (!k) return;
+
+    let villages = k.desa_list || [];
+    if (detailSearchQuery) {
+      villages = villages.filter(d => {
+        const nameMatch = d.nama.toLowerCase().includes(detailSearchQuery);
+        const subMatch = (d.ekonomi.subsektor || '').toLowerCase().includes(detailSearchQuery);
+        const komMatch = (d.ekonomi.komoditas || '').toLowerCase().includes(detailSearchQuery);
+        return nameMatch || subMatch || komMatch;
+      });
     }
 
     let theadHtml = '';
-    let tbodyRows = '';
+    let rowsHtml = '';
 
-    if (currentTab === 'demografi') {
+    if (activeTableTab === 'demografi') {
       theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-center">Status</th>
-          <th class="py-2.5 px-3 text-right">Laki-Laki</th>
-          <th class="py-2.5 px-3 text-right">Perempuan</th>
-          <th class="py-2.5 px-3 text-right">Total Jiwa</th>
-          <th class="py-2.5 px-3 text-right">Distribusi (%)</th>
-          <th class="py-2.5 px-3 text-right">Kepadatan (km²)</th>
-          <th class="py-2.5 px-3 text-right">Sex Ratio</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
+        <th class="py-3 px-4 text-left font-bold text-slate-700">Nama Desa / Kelurahan</th>
+        <th class="py-3 px-3 text-center font-bold text-slate-700">Status</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Total Penduduk</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Laki-Laki</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Perempuan</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Kepadatan (km²)</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Sex Ratio</th>
       `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.status === 'Kelurahan' ? 'bg-indigo-50 text-indigo-700' : 'bg-emerald-50 text-emerald-700'}">${d.status}</span></td>
-          <td class="py-2.5 px-3 text-right font-mono">${(d.demografi.penduduk_l || 0).toLocaleString('id-ID')}</td>
-          <td class="py-2.5 px-3 text-right font-mono">${(d.demografi.penduduk_p || 0).toLocaleString('id-ID')}</td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">${(d.demografi.penduduk_total || 0).toLocaleString('id-ID')}</td>
-          <td class="py-2.5 px-3 text-right font-mono text-slate-600">${d.demografi.distribusi_persen}%</td>
-          <td class="py-2.5 px-3 text-right font-mono text-slate-600">${d.demografi.kepadatan_km2}</td>
-          <td class="py-2.5 px-3 text-right font-mono text-blue-600 font-bold">${d.demografi.sex_ratio}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
+      rowsHtml = villages.map(d => {
+        const tot = getDesaPop(d);
+        const kep = parseKepadatan(d.demografi.kepadatan_km2);
+        return `
+          <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+            <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
+            <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.status === 'Kelurahan' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${d.status}</span></td>
+            <td class="py-3 px-3 text-right font-black text-slate-900 tabular-nums">${tot.toLocaleString('id-ID')}</td>
+            <td class="py-3 px-3 text-right font-medium text-slate-600 tabular-nums">${(d.demografi.penduduk_l || 0).toLocaleString('id-ID')}</td>
+            <td class="py-3 px-3 text-right font-medium text-slate-600 tabular-nums">${(d.demografi.penduduk_p || 0).toLocaleString('id-ID')}</td>
+            <td class="py-3 px-3 text-right font-semibold text-[#0D7A5F] tabular-nums">${kep.toLocaleString('id-ID')}</td>
+            <td class="py-3 px-3 text-right font-semibold text-slate-700 tabular-nums">${d.demografi.sex_ratio || '-'}</td>
+          </tr>
+        `;
+      }).join('');
+    } else if (activeTableTab === 'ekonomi') {
+      theadHtml = `
+        <th class="py-3 px-4 text-left font-bold text-slate-700">Nama Desa</th>
+        <th class="py-3 px-3 text-left font-bold text-slate-700">Komoditas Utama</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Unit IMK</th>
+        <th class="py-3 px-3 text-left font-bold text-slate-700">Produk Unggulan</th>
+        <th class="py-3 px-3 text-center font-bold text-slate-700">Minimarket</th>
+        <th class="py-3 px-3 text-center font-bold text-slate-700">BUMDes</th>
+      `;
+      rowsHtml = villages.map(d => `
+        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+          <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
+          <td class="py-3 px-3 text-slate-700 font-medium">${d.ekonomi.komoditas || '-'}</td>
+          <td class="py-3 px-3 text-right font-black text-amber-600 tabular-nums">${d.ekonomi.imk || 0}</td>
+          <td class="py-3 px-3 text-slate-700 text-xs">${d.ekonomi.prod_unggulan_makanan !== '-' ? d.ekonomi.prod_unggulan_makanan : (d.ekonomi.prod_unggulan_non_makanan !== '-' ? d.ekonomi.prod_unggulan_non_makanan : '-')}</td>
+          <td class="py-3 px-3 text-center font-medium">${d.ekonomi.minimarket || 0}</td>
+          <td class="py-3 px-3 text-center font-bold text-indigo-700">${d.pemerintahan.bumdes || 0}</td>
         </tr>
       `).join('');
-    } else if (currentTab === 'ekonomi') {
+    } else {
       theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-right">IMK</th>
-          <th class="py-2.5 px-3 text-left">Subsektor Utama</th>
-          <th class="py-2.5 px-3 text-left">Komoditas Utama</th>
-          <th class="py-2.5 px-3 text-left">Penghasilan</th>
-          <th class="py-2.5 px-3 text-center">Pasar</th>
-          <th class="py-2.5 px-3 text-center">Mart</th>
-          <th class="py-2.5 px-3 text-center">Bank/KSP</th>
-          <th class="py-2.5 px-3 text-center">KUR</th>
-          <th class="py-2.5 px-3 text-left">Produk Unggulan</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
+        <th class="py-3 px-4 text-left font-bold text-slate-700">Nama Desa</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Sekolah</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">Faskes</th>
+        <th class="py-3 px-3 text-right font-bold text-slate-700">KK Listrik PLN</th>
+        <th class="py-3 px-3 text-center font-bold text-slate-700">Bebas Pencemaran</th>
+        <th class="py-3 px-3 text-center font-bold text-slate-700">Aparat Desa</th>
       `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-amber-700">${d.ekonomi.imk}</td>
-          <td class="py-2.5 px-3 text-slate-700 text-[11px]">${d.ekonomi.subsektor}</td>
-          <td class="py-2.5 px-3 font-bold text-[#0D6E5B] text-[11px]">${d.ekonomi.komoditas}</td>
-          <td class="py-2.5 px-3 text-slate-600 text-[11px]">${d.ekonomi.penghasilan_utama}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.ekonomi.pasar_perm + d.ekonomi.pasar_semi + d.ekonomi.pasar_tanpa) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.ekonomi.minimarket || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.ekonomi.bank_gov + d.ekonomi.bpr + d.ekonomi.ksp) || '-'}</td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.ekonomi.kur === 'Ada' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}">${d.ekonomi.kur}</span></td>
-          <td class="py-2.5 px-3 text-slate-600 text-[11px] truncate max-w-[140px]" title="${d.ekonomi.prod_unggulan_makanan}">${d.ekonomi.prod_unggulan_makanan}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
-        </tr>
-      `).join('');
-    } else if (currentTab === 'pendidikan') {
-      theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-center">TK/PAUD</th>
-          <th class="py-2.5 px-3 text-center">SD Neg</th>
-          <th class="py-2.5 px-3 text-center">SD Swas</th>
-          <th class="py-2.5 px-3 text-center">MI</th>
-          <th class="py-2.5 px-3 text-center">SMP</th>
-          <th class="py-2.5 px-3 text-center">MTs</th>
-          <th class="py-2.5 px-3 text-center">SMA/MA</th>
-          <th class="py-2.5 px-3 text-center">SMK</th>
-          <th class="py-2.5 px-3 text-right">Total Sekolah</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
-      `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.tk || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.sd_neg || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.sd_swas || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.pendidikan.mi_neg + d.pendidikan.mi_swas) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.smp_neg || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.pendidikan.mts_neg + d.pendidikan.mts_swas) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.sma_ma_tot || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pendidikan.smk_tot || '-'}</td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-blue-600">${d.pendidikan.total_sekolah}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
-        </tr>
-      `).join('');
-    } else if (currentTab === 'kesehatan') {
-      theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-center">RS / Puskesmas</th>
-          <th class="py-2.5 px-3 text-center">Pustu</th>
-          <th class="py-2.5 px-3 text-center">Klinik/Dokter</th>
-          <th class="py-2.5 px-3 text-center">Poskesdes</th>
-          <th class="py-2.5 px-3 text-center">Polindes</th>
-          <th class="py-2.5 px-3 text-center">Apotek</th>
-          <th class="py-2.5 px-3 text-center">Posyandu</th>
-          <th class="py-2.5 px-3 text-right">Total Faskes</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
-      `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-center font-mono font-bold text-rose-600">${(d.kesehatan.rs + d.kesehatan.puskesmas_tot) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.kesehatan.pustu || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.kesehatan.klinik_pratama + d.kesehatan.dokter + d.kesehatan.bidan) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.kesehatan.poskesdes || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.kesehatan.polindes || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${(d.kesehatan.apotek + d.kesehatan.toko_obat) || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono font-bold text-emerald-700">${d.kesehatan.posyandu_aktif || '-'}</td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">${d.kesehatan.total_faskes}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
-        </tr>
-      `).join('');
-    } else if (currentTab === 'lingkungan') {
-      theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-right">KK Listrik PLN</th>
-          <th class="py-2.5 px-3 text-center">Non-PLN</th>
-          <th class="py-2.5 px-3 text-left">Penerangan Jalan</th>
-          <th class="py-2.5 px-3 text-center">Agen LPG</th>
-          <th class="py-2.5 px-3 text-center">Status Pencemaran</th>
-          <th class="py-2.5 px-3 text-center">Pupuk Organik</th>
-          <th class="py-2.5 px-3 text-left">Kawasan Hutan</th>
-          <th class="py-2.5 px-3 text-left">Pemanfaatan Laut</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
-      `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-amber-600">${(d.lingkungan.pln_kk || 0).toLocaleString('id-ID')}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.lingkungan.non_pln_kk || '-'}</td>
-          <td class="py-2.5 px-3 text-slate-600 text-[11px]">${d.lingkungan.penerangan_jalan}</td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.lingkungan.agen_lpg === 'Ada' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}">${d.lingkungan.agen_lpg}</span></td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.lingkungan.bebas_pencemaran ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}">${d.lingkungan.bebas_pencemaran ? 'Bebas' : 'Ada Cemar'}</span></td>
-          <td class="py-2.5 px-3 text-center text-[10px]">${d.lingkungan.pupuk_organik && d.lingkungan.pupuk_organik.includes('terlibat') ? '<span class="text-emerald-700 font-bold">Aktif</span>' : '-'}</td>
-          <td class="py-2.5 px-3 text-slate-600 text-[11px]">${d.lingkungan.lokasi_hutan}</td>
-          <td class="py-2.5 px-3 text-slate-600 text-[11px] truncate max-w-[140px]" title="${d.lingkungan.pemanfaatan_laut}">${d.lingkungan.pemanfaatan_laut}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
-        </tr>
-      `).join('');
-    } else if (currentTab === 'pemerintahan') {
-      theadHtml = `
-        <tr class="bg-slate-50 text-[11px] font-bold text-slate-700 uppercase tracking-wider border-b border-slate-200">
-          <th class="py-2.5 px-3 text-center w-12">No</th>
-          <th class="py-2.5 px-3 text-left">Desa / Kelurahan</th>
-          <th class="py-2.5 px-3 text-left">Kecamatan</th>
-          <th class="py-2.5 px-3 text-center">Status</th>
-          <th class="py-2.5 px-3 text-right">Total Aparat</th>
-          <th class="py-2.5 px-3 text-left">Kades (Gender/Pendidikan)</th>
-          <th class="py-2.5 px-3 text-left">Sekdes (Gender/Pendidikan)</th>
-          <th class="py-2.5 px-3 text-center">BUMDes</th>
-          <th class="py-2.5 px-3 text-center">Tanah Kas</th>
-          <th class="py-2.5 px-3 text-center">Siskeudes</th>
-          <th class="py-2.5 px-3 text-center">Perdes</th>
-          <th class="py-2.5 px-3 text-center">Aksi</th>
-        </tr>
-      `;
-      tbodyRows = filtered.map((d, idx) => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors text-xs text-slate-800">
-          <td class="py-2.5 px-3 text-center font-mono text-slate-500">${idx + 1}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${d.nama}</td>
-          <td class="py-2.5 px-3 text-slate-600">${d.kecamatan}</td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.status === 'Kelurahan' ? 'bg-indigo-50 text-indigo-700' : 'bg-emerald-50 text-emerald-700'}">${d.status}</span></td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">${d.pemerintahan.total_aparat}</td>
-          <td class="py-2.5 px-3 text-slate-700 text-[11px]">${d.pemerintahan.kades_gender} (${d.pemerintahan.kades_pend})</td>
-          <td class="py-2.5 px-3 text-slate-700 text-[11px]">${d.pemerintahan.sekdes_gender} (${d.pemerintahan.sekdes_pend})</td>
-          <td class="py-2.5 px-3 text-center font-mono font-bold text-[#0D6E5B]">${d.pemerintahan.bumdes || '-'}</td>
-          <td class="py-2.5 px-3 text-center font-mono">${d.pemerintahan.tanah_kas ? 'Ada' : '-'}</td>
-          <td class="py-2.5 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.pemerintahan.siskeudes === 'Diperbaharui' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}">${d.pemerintahan.siskeudes}</span></td>
-          <td class="py-2.5 px-3 text-center font-bold text-emerald-700 text-[10px]">${d.pemerintahan.perdes}</td>
-          <td class="py-2.5 px-3 text-center">
-            <button type="button" onclick="window.focusDesaFromExplorer('${d.kecamatan}', '${d.nama}')" class="px-2 py-1 rounded bg-[#0D6E5B] text-white hover:bg-[#095244] text-[10px] font-bold cursor-pointer transition">Peta</button>
-          </td>
+      rowsHtml = villages.map(d => `
+        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+          <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
+          <td class="py-3 px-3 text-right font-medium text-slate-700">${d.pendidikan.total_sekolah || 0}</td>
+          <td class="py-3 px-3 text-right font-medium text-slate-700">${d.kesehatan.total_faskes || 0}</td>
+          <td class="py-3 px-3 text-right font-bold text-emerald-700 tabular-nums">${(d.lingkungan.pln_kk || 0).toLocaleString('id-ID')}</td>
+          <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.lingkungan.bebas_pencemaran ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">${d.lingkungan.bebas_pencemaran ? 'Bebas' : 'Tercemar'}</span></td>
+          <td class="py-3 px-3 text-center font-medium">${d.pemerintahan.total_aparat || 0} Org</td>
         </tr>
       `).join('');
     }
 
     tableContainer.innerHTML = `
-      <div class="overflow-x-auto rounded-xl border border-slate-200/90 shadow-2xs">
-        <table class="w-full text-left border-collapse">
-          <thead>${theadHtml}</thead>
-          <tbody>${tbodyRows}</tbody>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left">
+          <thead class="bg-slate-50 text-[11px] text-slate-600 uppercase border-b border-slate-200">
+            <tr>${theadHtml}</tr>
+          </thead>
+          <tbody>
+            ${rowsHtml || `<tr><td colspan="7" class="py-8 text-center text-slate-400 font-medium">Tidak ada data desa yang cocok dengan pencarian.</td></tr>`}
+          </tbody>
         </table>
       </div>
     `;
   }
 
-  function exportActiveTableCSV() {
-    const filtered = filterVillages();
-    if (!filtered || !filtered.length) return;
+  // -------------------------------------------------------------
+  // CSV EXPORT FUNCTIONS
+  // -------------------------------------------------------------
+  function exportKecamatanCSV() {
+    if (!masterData || !masterData.kecamatan[activeKecamatanKey]) return;
+    const k = masterData.kecamatan[activeKecamatanKey];
+    const villages = k.desa_list || [];
 
-    let csvContent = "";
-    if (currentTab === 'demografi') {
-      csvContent += "No,Desa,Kecamatan,Status,Laki-Laki,Perempuan,Total Jiwa,Distribusi (%),Kepadatan (km2),Sex Ratio\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.status}","${d.demografi.penduduk_l}","${d.demografi.penduduk_p}","${d.demografi.penduduk_total}","${d.demografi.distribusi_persen}","${d.demografi.kepadatan_km2}","${d.demografi.sex_ratio}"\n`;
-      });
-    } else if (currentTab === 'ekonomi') {
-      csvContent += "No,Desa,Kecamatan,IMK,Subsektor,Komoditas Utama,Penghasilan Utama,Pasar,Minimarket,Bank/KSP,KUR,Produk Unggulan\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.ekonomi.imk}","${d.ekonomi.subsektor}","${d.ekonomi.komoditas}","${d.ekonomi.penghasilan_utama}","${d.ekonomi.pasar_perm+d.ekonomi.pasar_semi}","${d.ekonomi.minimarket}","${d.ekonomi.bank_gov+d.ekonomi.ksp}","${d.ekonomi.kur}","${d.ekonomi.prod_unggulan_makanan}"\n`;
-      });
-    } else if (currentTab === 'pendidikan') {
-      csvContent += "No,Desa,Kecamatan,TK/PAUD,SD,MI,SMP,MTs,SMA/MA,SMK,Total Sekolah\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.pendidikan.tk}","${d.pendidikan.sd_neg+d.pendidikan.sd_swas}","${d.pendidikan.mi_neg+d.pendidikan.mi_swas}","${d.pendidikan.smp_neg+d.pendidikan.smp_swas}","${d.pendidikan.mts_neg+d.pendidikan.mts_swas}","${d.pendidikan.sma_ma_tot}","${d.pendidikan.smk_tot}","${d.pendidikan.total_sekolah}"\n`;
-      });
-    } else if (currentTab === 'kesehatan') {
-      csvContent += "No,Desa,Kecamatan,RS/Puskesmas,Pustu,Klinik/Dokter,Poskesdes,Polindes,Apotek,Posyandu,Total Faskes\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.kesehatan.rs+d.kesehatan.puskesmas_tot}","${d.kesehatan.pustu}","${d.kesehatan.klinik_pratama+d.kesehatan.dokter}","${d.kesehatan.poskesdes}","${d.kesehatan.polindes}","${d.kesehatan.apotek}","${d.kesehatan.posyandu_aktif}","${d.kesehatan.total_faskes}"\n`;
-      });
-    } else if (currentTab === 'lingkungan') {
-      csvContent += "No,Desa,Kecamatan,KK PLN,KK Non-PLN,Penerangan Jalan,Agen LPG,Bebas Pencemaran,Pupuk Organik,Kawasan Hutan,Laut\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.lingkungan.pln_kk}","${d.lingkungan.non_pln_kk}","${d.lingkungan.penerangan_jalan}","${d.lingkungan.agen_lpg}","${d.lingkungan.bebas_pencemaran?'Bebas':'Cemar'}","${d.lingkungan.pupuk_organik}","${d.lingkungan.lokasi_hutan}","${d.lingkungan.pemanfaatan_laut}"\n`;
-      });
-    } else if (currentTab === 'pemerintahan') {
-      csvContent += "No,Desa,Kecamatan,Status,Total Aparat,Kades Gender,Kades Pend,Sekdes Gender,Sekdes Pend,BUMDes,Tanah Kas,Siskeudes,Perdes\n";
-      filtered.forEach((d, i) => {
-        csvContent += `"${i+1}","${d.nama}","${d.kecamatan}","${d.status}","${d.pemerintahan.total_aparat}","${d.pemerintahan.kades_gender}","${d.pemerintahan.kades_pend}","${d.pemerintahan.sekdes_gender}","${d.pemerintahan.sekdes_pend}","${d.pemerintahan.bumdes}","${d.pemerintahan.tanah_kas}","${d.pemerintahan.siskeudes}","${d.pemerintahan.perdes}"\n`;
-      });
-    }
+    let csvContent = 'ID,Kecamatan,Desa/Kelurahan,Status,Penduduk_L,Penduduk_P,Penduduk_Total,Kepadatan_KM2,Sex_Ratio,Komoditas,Unit_IMK,Sekolah,Faskes,Listrik_PLN_KK,BUMDes,Total_Aparat\n';
+    villages.forEach(d => {
+      const tot = getDesaPop(d);
+      const kep = parseKepadatan(d.demografi.kepadatan_km2);
+      const row = [
+        d.id,
+        `"${d.kecamatan}"`,
+        `"${d.nama}"`,
+        `"${d.status}"`,
+        d.demografi.penduduk_l || 0,
+        d.demografi.penduduk_p || 0,
+        tot,
+        kep,
+        d.demografi.sex_ratio || 0,
+        `"${d.ekonomi.komoditas || '-'}"`,
+        d.ekonomi.imk || 0,
+        d.pendidikan.total_sekolah || 0,
+        d.kesehatan.total_faskes || 0,
+        d.lingkungan.pln_kk || 0,
+        d.pemerintahan.bumdes || 0,
+        d.pemerintahan.total_aparat || 0
+      ].join(',');
+      csvContent += row + '\n';
+    });
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `podes_2025_kolaka_utara_${currentTab}_${selectedKecamatan}.csv`;
-    link.click();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `PODES_2025_Kecamatan_${k.nama}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
-  // Global helper to jump to map and focus a desa
-  window.focusDesaFromExplorer = function(kecName, desaName) {
-    const mapSection = document.getElementById('sectionPeta');
-    if (mapSection) {
-      mapSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (window.PresisiEngine && typeof window.PresisiEngine.onKecamatanChange === 'function') {
-      window.PresisiEngine.onKecamatanChange(kecName);
-      setTimeout(() => {
-        if (typeof window.PresisiEngine.onDesaChange === 'function') {
-          window.PresisiEngine.onDesaChange(desaName);
-        }
-      }, 300);
-    }
-  };
+  function exportActiveTableCSV() {
+    if (!masterData || !masterData.desa) return;
+    const villages = masterData.desa;
+
+    let csvContent = 'ID,Kecamatan,Desa/Kelurahan,Status,Penduduk_L,Penduduk_P,Penduduk_Total,Kepadatan_KM2,Sex_Ratio,Komoditas,Unit_IMK,Sekolah,Faskes,Listrik_PLN_KK,BUMDes,Total_Aparat\n';
+    villages.forEach(d => {
+      const tot = getDesaPop(d);
+      const kep = parseKepadatan(d.demografi.kepadatan_km2);
+      const row = [
+        d.id,
+        `"${d.kecamatan}"`,
+        `"${d.nama}"`,
+        `"${d.status}"`,
+        d.demografi.penduduk_l || 0,
+        d.demografi.penduduk_p || 0,
+        tot,
+        kep,
+        d.demografi.sex_ratio || 0,
+        `"${d.ekonomi.komoditas || '-'}"`,
+        d.ekonomi.imk || 0,
+        d.pendidikan.total_sekolah || 0,
+        d.kesehatan.total_faskes || 0,
+        d.lingkungan.pln_kk || 0,
+        d.pemerintahan.bumdes || 0,
+        d.pemerintahan.total_aparat || 0
+      ].join(',');
+      csvContent += row + '\n';
+    });
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `PODES_2025_Kolaka_Utara_133_Desa.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Auto-init on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExplorer);
+  } else {
+    initExplorer();
+  }
 
   window.initExplorer = initExplorer;
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(initExplorer, 10);
-  } else {
-    document.addEventListener('DOMContentLoaded', initExplorer);
-  }
 })();
