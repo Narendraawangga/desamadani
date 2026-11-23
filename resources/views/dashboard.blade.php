@@ -73,7 +73,7 @@
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
     <script src="/js/desa_presisi_engine.js?v=20261123_03"></script>
-    <script src="/js/podes_explorer.js?v=20261123_03"></script>
+    <script src="/js/podes_explorer.js?v=20261123_04"></script>
 
     <style>
         html, body {
@@ -159,6 +159,15 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+    
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+    
     </style>
 </head>
 
@@ -644,7 +653,7 @@
 
                     <!-- Horizontal Carousel Container (Peeking Card Effect on the Right) -->
                     <div class="relative w-full">
-                        <div id="kecamatanCarouselTrack" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1 cursor-grab select-none">
+                        <div id="kecamatanCarouselTrack" class="flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth py-4 px-2 cursor-grab select-none">
                             <!-- Injected by podes_explorer.js -->
                         </div>
                         
