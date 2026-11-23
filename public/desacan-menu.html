@@ -3036,10 +3036,7 @@
                                         <i class="bi bi-pencil-square"></i>
                                         <span>[1. PRE-TEST]</span>
                                     </span>
-                                    <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-700 bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-md flex items-center gap-1">
-                                        <i class="bi bi-check2-circle text-xs"></i>
-                                        <span>Siap Dikerjakan</span>
-                                    </span>
+                                    <span id="badgePretestStatus" class="text-[10px] font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-1 rounded-md flex items-center gap-1 shadow-2xs"><i class="bi bi-check-circle-fill text-emerald-600"></i><span>Sudah Dikerjakan</span></span>
                                 </div>
                                 
                                 <h4 class="font-black text-slate-900 text-base sm:text-lg mt-3.5">
@@ -3065,20 +3062,14 @@
                                     </div>
                                     <div class="flex justify-between items-center pt-0.5">
                                         <span class="text-slate-500 font-medium">• Status / Skor Awal:</span>
-                                        <b class="text-emerald-700 font-extrabold flex items-center gap-1">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Sudah Diisi (Skor: 80)</span>
-                                        </b>
+                                        <b id="valPretestScore" class="text-emerald-700 font-extrabold flex items-center gap-1"><i class="bi bi-check-circle-fill"></i><span>Sudah Diisi (Skor: 80)</span></b>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Action Buttons Pre-Test -->
                             <div class="space-y-2 pt-1">
-                                <button type="button" onclick="openPretestModal()" class="w-full py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs sm:text-sm font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]">
-                                    <i class="bi bi-pencil-square text-sm"></i>
-                                    <span>Mulai Pre-Test Mandiri</span>
-                                </button>
+                                <button type="button" id="btnStartPretest" onclick="openPretestModal()" class="w-full py-3 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs sm:text-sm font-black transition flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"><i class="bi bi-arrow-repeat text-sm"></i><span>Kerjakan Ulang Pre-Test</span></button>
                                 <div class="text-[11px] text-center text-slate-400">
                                     Hasil pre-test digunakan sebagai tolok ukur awal kompetensi aparatur.
                                 </div>
@@ -5966,18 +5957,328 @@ function triggerPubDownload() {
             }, 1200);
         }
 
+        // ==============================================================
+        // LMS EXAM ENGINE: PRE-TEST & POST-TEST (SOAL INTERAKTIF & SKOR)
+        // ==============================================================
+        const pretestQuestionsData = [
+            {
+                id: 1,
+                topic: "Program Desa Cantik",
+                q: "Apa tujuan utama diselenggarakannya program Pembinaan Desa Cinta Statistik (Desa Cantik) oleh Badan Pusat Statistik (BPS)?",
+                options: [
+                    "Menggantikan seluruh tugas pencatatan monografi desa secara manual",
+                    "Meningkatkan literasi, kapasitas, dan kemandirian aparatur desa dalam mengelola data statistik sektoral",
+                    "Menghitung anggaran belanja desa secara otomatis untuk pelaporan pajak",
+                    "Menyalurkan bantuan dana sosial langsung tunai kepada seluruh warga desa"
+                ],
+                answer: 1
+            },
+            {
+                id: 2,
+                topic: "Prinsip Satu Data Indonesia",
+                q: "Berdasarkan Perpres No. 39 Tahun 2019 tentang Satu Data Indonesia (SDI), berapa jumlah prinsip dasar Satu Data Indonesia yang wajib dipenuhi oleh produsen data?",
+                options: [
+                    "2 Prinsip (Standar Data dan Format Terbuka)",
+                    "3 Prinsip (Kecepatan, Akurasi, dan Efisiensi)",
+                    "4 Prinsip (Standar Data, Metadata, Interoperabilitas, dan Kode Referensi/Data Induk)",
+                    "6 Prinsip (Kerahasiaan, Keamanan, Kelengkapan, Legalitas, Audit, dan Kinerja)"
+                ],
+                answer: 2
+            },
+            {
+                id: 3,
+                topic: "Metadata Statistik",
+                q: "Informasi terstruktur yang menjelaskan, menggambarkan, dan mempermudah pencarian, penggunaan, serta pengelolaan suatu data statistik disebut...",
+                options: [
+                    "Interoperabilitas Data",
+                    "Metadata Statistik",
+                    "Diseminasi Data Sektoral",
+                    "Tabulasi Frekuensi"
+                ],
+                answer: 1
+            },
+            {
+                id: 4,
+                topic: "Agen Statistik Desa",
+                q: "Dalam ekosistem Desa Cantik, apa tugas dan tanggung jawab utama seorang Agen Statistik Desa yang ditunjuk oleh Pemerintah Desa?",
+                options: [
+                    "Mengaudit seluruh pembukuan anggaran keuangan kantor desa setiap akhir bulan",
+                    "Mengumpulkan, memvalidasi, dan mengolah data statistik sektoral desa terstandar BPS",
+                    "Mengelola akun media sosial promosi wisata desa",
+                    "Melakukan penarikan retribusi pasar dan izin usaha desa"
+                ],
+                answer: 1
+            },
+            {
+                id: 5,
+                topic: "Pendataan Potensi Desa (PODES)",
+                q: "Sensus/Pendataan Potensi Desa (PODES) yang dilaksanakan oleh BPS secara berkala menghasilkan data komprehensif mengenai...",
+                options: [
+                    "Ketersediaan sarana prasarana, infrastruktur fisik, sosial ekonomi, dan potensi kerawanan wilayah desa",
+                    "Daftar riwayat hidup seluruh warga desa secara mendalam",
+                    "Hasil panen harian seluruh rumah tangga petani",
+                    "Mutasi saldo rekening perbankan masyarakat desa"
+                ],
+                answer: 0
+            },
+            {
+                id: 6,
+                topic: "Interoperabilitas Data",
+                q: "Kemampuan sistem data untuk dapat dibagipakaikan dan dipertukarkan secara mulus antar sistem elektronik pemerintah dinamakan...",
+                options: [
+                    "Kode Referensi Wilayah",
+                    "Interoperabilitas Data",
+                    "Validitas Spasial",
+                    "Klasifikasi Baku Lapangan Usaha"
+                ],
+                answer: 1
+            },
+            {
+                id: 7,
+                topic: "Demografi & Monografi",
+                q: "Indikator demografi yang mengukur perbandingan antara jumlah penduduk laki-laki dengan jumlah penduduk perempuan dikalikan 100 dinamakan...",
+                options: [
+                    "Rasio Beban Tanggungan (Dependency Ratio)",
+                    "Rasio Jenis Kelamin (Sex Ratio)",
+                    "Angka Partisipasi Murni (APM)",
+                    "Angka Kelahiran Kasar (CBR)"
+                ],
+                answer: 1
+            },
+            {
+                id: 8,
+                topic: "Pemanfaatan Data",
+                q: "Mengapa pemutakhiran data monografi dan potensi desa sangat krusial dalam musyawarah perencanaan pembangunan desa (Musrenbangdes)?",
+                options: [
+                    "Agar berkas administrasi desa terlihat tebal saat pemeriksaan inspektorat",
+                    "Memastikan perencanaan program dan alokasi dana desa berbasis bukti (evidence-based planning) yang tepat sasaran",
+                    "Menghindari teguran lisan dari pihak kecamatan semata",
+                    "Memenuhi syarat formal kunjungan kerja dinas terkait"
+                ],
+                answer: 1
+            },
+            {
+                id: 9,
+                topic: "Kesejahteraan Sosial (P3KE)",
+                q: "Dalam data Pensasaran Percepatan Penghapusan Kemiskinan Ekstrem (P3KE), kelompok rumah tangga yang berada pada Desil 1 menggambarkan...",
+                options: [
+                    "Kelompok rumah tangga dengan tingkat kesejahteraan tertinggi (paling mampu)",
+                    "Kelompok rumah tangga dengan tingkat kesejahteraan terendah (10% termiskin prioritas intervensi)",
+                    "Kelompok keluarga pengusaha agribisnis beromzet di atas 100 juta rupiah",
+                    "Kelompok aparatur sipil negara dan perangkat desa"
+                ],
+                answer: 1
+            },
+            {
+                id: 10,
+                topic: "Publikasi Statistik Desa",
+                q: "Buku publikasi resmi yang memuat profil demografi, kondisi geografis, potensi ekonomi, dan infrastruktur desa berstandar SDI disebut...",
+                options: [
+                    "Dokumen Peraturan Desa (Perdes)",
+                    "Lembar Monografi Resmi & Publikasi Statistik Sektoral Desa",
+                    "Surat Pertanggungjawaban (SPJ) Dana Desa",
+                    "Formulir SPT Pajak Bumi dan Bangunan"
+                ],
+                answer: 1
+            }
+        ];
+
+        const posttestQuestionsData = [
+            {
+                id: 1,
+                topic: "Prinsip Satu Data Indonesia",
+                q: "Manakah di bawah ini yang merupakan 4 prinsip utama Satu Data Indonesia (SDI) sesuai Perpres 39/2019?",
+                options: [
+                    "Standar Data, Metadata Statistik, Interoperabilitas, dan Kode Referensi/Data Induk",
+                    "Kecepatan, Kemudahan, Akses Terbuka, dan Transparansi Anggaran",
+                    "Format Excel, Database MySQL, Penyimpanan Cloud, dan Backup Harddisk",
+                    "Sensus Penduduk, Survei Pertanian, Registrasi Sosial, dan Pajak Daerah"
+                ],
+                answer: 0
+            },
+            {
+                id: 2,
+                topic: "Rasio Ketergantungan",
+                q: "Rumus perhitungan Rasio Beban Tanggungan (Dependency Ratio) yang benar adalah...",
+                options: [
+                    "(Penduduk Usia 15-64 / Total Penduduk) × 100",
+                    "((Penduduk Usia 0-14 + Penduduk Usia 65+) / Penduduk Usia 15-64) × 100",
+                    "(Jumlah Penduduk Miskin / Total Penduduk Desa) × 100",
+                    "(Jumlah Penduduk Laki-laki / Penduduk Perempuan) × 100"
+                ],
+                answer: 1
+            },
+            {
+                id: 3,
+                topic: "Rasio Jenis Kelamin",
+                q: "Jika di Desa Lapolu terdapat 634 jiwa laki-laki dan 630 jiwa perempuan, berapakah Rasio Jenis Kelamin (Sex Ratio) desa tersebut?",
+                options: [
+                    "95,0",
+                    "98,2",
+                    "100,6",
+                    "105,4"
+                ],
+                answer: 2
+            },
+            {
+                id: 4,
+                topic: "Kode Referensi Wilayah",
+                q: "Kode wilayah BPS Kolaka Utara diawali dengan angka...",
+                options: [
+                    "71.02",
+                    "73.12",
+                    "74.08",
+                    "76.01"
+                ],
+                answer: 2
+            },
+            {
+                id: 5,
+                topic: "Satuan Lingkungan Setempat (SLS)",
+                q: "Tingkatan Satuan Lingkungan Setempat (SLS) terkecil di bawah desa dalam sistem pembinaan statistik adalah...",
+                options: [
+                    "Kecamatan",
+                    "Dusun / Rukun Tetangga (RT)",
+                    "Kabupaten",
+                    "Wilayah Adat"
+                ],
+                answer: 1
+            },
+            {
+                id: 6,
+                topic: "Metadata Kegiatan",
+                q: "Informasi mengenai penanggung jawab, tujuan pengumpulan data, metodologi, dan frekuensi kegiatan statistik disebut...",
+                options: [
+                    "Metadata Variabel",
+                    "Metadata Kegiatan",
+                    "Metadata Indikator",
+                    "Metadata Spasial"
+                ],
+                answer: 1
+            },
+            {
+                id: 7,
+                topic: "Verifikasi P3KE & Bansos",
+                q: "Keluarga yang tergolong dalam Desil 1 sampai Desil 2 pada data P3KE merupakan prioritas utama penerima...",
+                options: [
+                    "Bantuan Sosial Program Keluarga Harapan (PKH) & Bantuan Pangan Non-Tunai (BPNT)",
+                    "Izin Usaha Pertambangan Skala Besar",
+                    "Bantuan Kredit Usaha di atas 500 juta rupiah",
+                    "Tunjangan Kinerja Pegawai Negeri"
+                ],
+                answer: 0
+            },
+            {
+                id: 8,
+                topic: "Analisis Sektor Unggulan PODES",
+                q: "Dalam pendataan PODES, komoditas unggulan desa diklasifikasikan berdasarkan...",
+                options: [
+                    "Jumlah warga yang menyukai komoditas tersebut",
+                    "Luas panen, volume produksi tahunan, dan nilai tambah ekonomi bagi masyarakat desa",
+                    "Warna kemasan produk yang dijual di pasar desa",
+                    "Usia pohon tanaman tertua di perkebunan desa"
+                ],
+                answer: 1
+            },
+            {
+                id: 9,
+                topic: "Format Interoperabilitas",
+                q: "Format berkas tabel terbuka yang memenuhi standar interoperabilitas SDI dan mudah diolah aplikasi statistik adalah...",
+                options: [
+                    ".EXE (Executable)",
+                    ".CSV (Comma Separated Values) dan .XLSX",
+                    ".PSD (Photoshop)",
+                    ".MP4 (Video)"
+                ],
+                answer: 1
+            },
+            {
+                id: 10,
+                topic: "Validasi Anomali Data",
+                q: "Jika terdapat Nomor Kartu Keluarga (NKK) yang tidak memiliki anggota keluarga berusia di atas 17 tahun, apa tindakan Agen Statistik?",
+                options: [
+                    "Langsung menghapus baris data tersebut tanpa konfirmasi",
+                    "Melakukan verifikasi faktual lapangan (ground checking) ke kepala dusun/RT terkait",
+                    "Mengubah tanggal lahir anggota keluarga secara acak",
+                    "Membiarkan data apa adanya karena bukan urusan statistik"
+                ],
+                answer: 1
+            },
+            {
+                id: 11,
+                topic: "Visualisasi Data Monografi",
+                q: "Grafik yang paling tepat untuk menggambarkan komposisi penduduk menurut kelompok umur dan jenis kelamin secara simultan adalah...",
+                options: [
+                    "Piramida Penduduk (Population Pyramid)",
+                    "Grafik Garis Tren Waktu Tunggal",
+                    "Diagram Peta Panas (Heatmap)",
+                    "Diagram Venn Sederhana"
+                ],
+                answer: 0
+            },
+            {
+                id: 12,
+                topic: "Fungsi Pembina Data",
+                q: "Lembaga pemerintah yang bertindak sebagai Pembina Data Statistik di tingkat Kabupaten Kolaka Utara adalah...",
+                options: [
+                    "Dinas Pariwisata",
+                    "Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara",
+                    "Kantor Urusan Agama",
+                    "Pengadilan Negeri"
+                ],
+                answer: 1
+            },
+            {
+                id: 13,
+                topic: "Diseminasi Data Desa",
+                q: "Bagaimana cara terbaik mendiseminasikan data statistik desa agar dapat diakses terbuka oleh warga masyarakat dan pemangku kepentingan?",
+                options: [
+                    "Menyimpan dokumen cetak di laci kantor desa yang terkunci rapat",
+                    "Mempublikasikan melalui website / portal data desa, papan info statistik, dan WebGIS tematik",
+                    "Mengirimkan fotokopi satu per satu ke setiap rumah warga",
+                    "Hanya memperlihatkan data saat ada kunjungan bupati"
+                ],
+                answer: 1
+            },
+            {
+                id: 14,
+                topic: "Standarisasi 44 Variabel",
+                q: "Berapa jumlah variabel makro inti yang menjadi standar baku evaluasi Desa Cantik BPS Kolaka Utara?",
+                options: [
+                    "10 Variabel",
+                    "24 Variabel",
+                    "44 Variabel",
+                    "100 Variabel"
+                ],
+                answer: 2
+            },
+            {
+                id: 15,
+                topic: "Kemandirian Agen Statistik",
+                q: "Apa indikator utama yang menunjukkan bahwa sebuah desa binaan telah mencapai predikat Desa Cantik Mandiri?",
+                options: [
+                    "Aparatur desa mampu memutakhirkan monografi, mengolah indikator sektoral, dan menyusun publikasi mandiri secara rutin",
+                    "Kantor desa memiliki gedung mewah tiga lantai",
+                    "Seluruh warga desa memiliki akun media sosial resmi",
+                    "Desa tidak lagi membutuhkan koordinasi dengan pemerintah kecamatan"
+                ],
+                answer: 0
+            }
+        ];
+
+        // State Ujian
+        let currentExamMode = 'pretest'; // 'pretest' atau 'posttest'
+        let currentExamIndex = 0;
+        let examUserAnswers = {}; // { 0: optionIndex, 1: optionIndex, ... }
+        let examTimerSeconds = 900; // 15 menit default
+        let examTimerInterval = null;
+
         function openPretestModal() {
-            showToast('📝 Membuka Kuis Pre-Test Desa Cantik (Tampilan Layar Penuh)...');
-            const m = document.getElementById('pretestModal');
-            if (m) {
-                m.classList.remove('hidden');
-                m.classList.add('flex');
-            }
-            if (typeof document !== 'undefined' && document.body) {
-                document.body.classList.add('overflow-hidden');
-            }
+            startExam('pretest');
         }
+
         function closePretestModal() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
             const m = document.getElementById('pretestModal');
             if (m) {
                 m.classList.add('hidden');
@@ -5989,8 +6290,71 @@ function triggerPubDownload() {
         }
 
         function openPosttestModal() {
-            showToast('🎓 Membuka Ujian Evaluasi Post-Test Kelulusan (Tampilan Layar Penuh)...');
-            const m = document.getElementById('posttestModal');
+            startExam('posttest');
+        }
+
+        function closePosttestModal() {
+            closePretestModal();
+        }
+
+        function confirmCloseExamModal() {
+            const answeredCount = Object.keys(examUserAnswers).length;
+            if (answeredCount > 0) {
+                if (confirm(`Anda telah menjawab ${answeredCount} soal. Yakin ingin menutup lembar ujian? Progres pengerjaan saat ini tidak akan disimpan.`)) {
+                    closePretestModal();
+                }
+            } else {
+                closePretestModal();
+            }
+        }
+
+        function startExam(mode) {
+            currentExamMode = mode;
+            currentExamIndex = 0;
+            examUserAnswers = {};
+            
+            const isPre = (mode === 'pretest');
+            const totalQ = isPre ? pretestQuestionsData.length : posttestQuestionsData.length;
+            examTimerSeconds = isPre ? 15 * 60 : 20 * 60; // 15 menit atau 20 menit
+
+            // Set Header Texts & Icons
+            const hIcon = document.getElementById('examHeaderIcon');
+            const hTitle = document.getElementById('examHeaderTitle');
+            if (hIcon) hIcon.textContent = isPre ? '📝' : '🎓';
+            if (hTitle) hTitle.textContent = isPre 
+                ? '[1. PRE-TEST] Uji Kemampuan Awal Aparatur' 
+                : '[3. POST-TEST EVALUASI] Kuis Evaluasi Akhir & Sertifikasi';
+
+            // Reset Views
+            const qView = document.getElementById('examQuestionView');
+            const rView = document.getElementById('examResultView');
+            if (qView) qView.classList.remove('hidden');
+            if (rView) rView.classList.add('hidden');
+
+            // Render Number Pills
+            renderExamNumberPills();
+
+            // Render First Question
+            renderExamCurrentQuestion();
+
+            // Start Timer
+            if (examTimerInterval) clearInterval(examTimerInterval);
+            updateExamTimerDisplay();
+            examTimerInterval = setInterval(() => {
+                examTimerSeconds--;
+                if (examTimerSeconds <= 0) {
+                    clearInterval(examTimerInterval);
+                    examTimerSeconds = 0;
+                    updateExamTimerDisplay();
+                    alert('⏱️ Waktu pengerjaan ujian telah habis! Jawaban Anda akan otomatis dikirim.');
+                    submitExam();
+                } else {
+                    updateExamTimerDisplay();
+                }
+            }, 1000);
+
+            // Open Modal Screen
+            const m = document.getElementById('pretestModal');
             if (m) {
                 m.classList.remove('hidden');
                 m.classList.add('flex');
@@ -5998,15 +6362,310 @@ function triggerPubDownload() {
             if (typeof document !== 'undefined' && document.body) {
                 document.body.classList.add('overflow-hidden');
             }
+
+            showToast(isPre ? '📝 Lembar Pre-Test Mandiri dibuka (10 Soal • 15 Menit)' : '🎓 Lembar Post-Test Kelulusan dibuka (15 Soal • 20 Menit)', '⏱️');
         }
-        function closePosttestModal() {
-            const m = document.getElementById('posttestModal');
-            if (m) {
-                m.classList.add('hidden');
-                m.classList.remove('flex');
+
+        function updateExamTimerDisplay() {
+            const el = document.getElementById('examTimerText');
+            if (!el) return;
+            const m = Math.floor(examTimerSeconds / 60);
+            const s = examTimerSeconds % 60;
+            const strM = m < 10 ? '0' + m : m;
+            const strS = s < 10 ? '0' + s : s;
+            el.textContent = `Sisa Waktu: ${strM}:${strS}`;
+        }
+
+        function getActiveQuestions() {
+            return (currentExamMode === 'pretest') ? pretestQuestionsData : posttestQuestionsData;
+        }
+
+        function renderExamNumberPills() {
+            const container = document.getElementById('examNumberPills');
+            if (!container) return;
+            const questions = getActiveQuestions();
+
+            container.innerHTML = questions.map((q, idx) => {
+                const isCurrent = (idx === currentExamIndex);
+                const isAnswered = (examUserAnswers[idx] !== undefined);
+                let style = 'w-7 h-7 sm:w-8 sm:h-8 rounded-xl text-xs font-bold transition flex items-center justify-center cursor-pointer ';
+                if (isCurrent) {
+                    style += 'bg-[#005ea6] text-white shadow-md ring-2 ring-blue-300 scale-105';
+                } else if (isAnswered) {
+                    style += 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-extrabold';
+                } else {
+                    style += 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200';
+                }
+                return `<button type="button" onclick="jumpToExamQuestion(${idx})" class="${style}" title="Buka Soal No. ${idx + 1}">${idx + 1}</button>`;
+            }).join('');
+        }
+
+        function renderExamCurrentQuestion() {
+            const questions = getActiveQuestions();
+            const total = questions.length;
+            const q = questions[currentExamIndex];
+            if (!q) return;
+
+            // Header progress
+            const pText = document.getElementById('examProgressText');
+            if (pText) pText.textContent = `Soal ${currentExamIndex + 1} dari ${total}`;
+
+            // Progress bar
+            const pct = Math.round(((currentExamIndex + 1) / total) * 100);
+            const pBar = document.getElementById('examProgressBar');
+            const pLbl = document.getElementById('examPercentLabel');
+            if (pBar) pBar.style.width = pct + '%';
+            if (pLbl) pLbl.textContent = `${pct}% Selesai`;
+
+            // Question Details
+            const qBadge = document.getElementById('examQuestionBadge');
+            const qTopic = document.getElementById('examQuestionTopic');
+            const qText = document.getElementById('examQuestionText');
+
+            if (qBadge) qBadge.textContent = `Soal No. ${currentExamIndex + 1} / ${total}`;
+            if (qTopic) qTopic.textContent = q.topic || 'Statistik Sektoral BPS';
+            if (qText) qText.textContent = q.q;
+
+            // Options
+            const optContainer = document.getElementById('examOptionsContainer');
+            if (optContainer) {
+                const letters = ['A', 'B', 'C', 'D'];
+                const selectedOpt = examUserAnswers[currentExamIndex];
+
+                optContainer.innerHTML = q.options.map((optText, optIdx) => {
+                    const isSelected = (selectedOpt === optIdx);
+                    let cardClass = 'p-3.5 sm:p-4 rounded-2xl border transition-all flex items-start gap-3.5 cursor-pointer text-left ';
+                    if (isSelected) {
+                        cardClass += 'border-blue-600 bg-blue-50/90 shadow-xs ring-2 ring-blue-200';
+                    } else {
+                        cardClass += 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50/80';
+                    }
+
+                    let letterClass = 'w-7 h-7 sm:w-8 sm:h-8 rounded-xl font-black text-xs shrink-0 flex items-center justify-center transition-all ';
+                    if (isSelected) {
+                        letterClass += 'bg-[#005ea6] text-white shadow-xs';
+                    } else {
+                        letterClass += 'bg-slate-100 text-slate-700';
+                    }
+
+                    return `
+                        <div onclick="selectExamOption(${optIdx})" class="${cardClass}">
+                            <div class="${letterClass}">${letters[optIdx]}</div>
+                            <div class="text-xs sm:text-sm font-semibold text-slate-800 leading-snug pt-1 flex-1">
+                                ${optText}
+                            </div>
+                            <div class="pt-1 shrink-0">
+                                <span class="w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${isSelected ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300'}">
+                                    ${isSelected ? '<i class="bi bi-check text-xs"></i>' : ''}
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             }
-            if (typeof document !== 'undefined' && document.body) {
-                document.body.classList.remove('overflow-hidden');
+
+            // Buttons state
+            const btnPrev = document.getElementById('btnExamPrev');
+            const btnNext = document.getElementById('btnExamNext');
+            const btnSubmit = document.getElementById('btnExamSubmit');
+
+            if (btnPrev) btnPrev.disabled = (currentExamIndex === 0);
+
+            if (currentExamIndex === total - 1) {
+                if (btnNext) btnNext.classList.add('hidden');
+                if (btnSubmit) btnSubmit.classList.remove('hidden');
+            } else {
+                if (btnNext) btnNext.classList.remove('hidden');
+                if (btnSubmit) btnSubmit.classList.add('hidden');
+            }
+
+            renderExamNumberPills();
+        }
+
+        function selectExamOption(optIdx) {
+            examUserAnswers[currentExamIndex] = optIdx;
+            renderExamCurrentQuestion();
+        }
+
+        function navigateExamQuestion(delta) {
+            const questions = getActiveQuestions();
+            const newIdx = currentExamIndex + delta;
+            if (newIdx >= 0 && newIdx < questions.length) {
+                currentExamIndex = newIdx;
+                renderExamCurrentQuestion();
+            }
+        }
+
+        function jumpToExamQuestion(idx) {
+            const questions = getActiveQuestions();
+            if (idx >= 0 && idx < questions.length) {
+                currentExamIndex = idx;
+                renderExamCurrentQuestion();
+            }
+        }
+
+        function confirmSubmitExam() {
+            const questions = getActiveQuestions();
+            const total = questions.length;
+            const answeredCount = Object.keys(examUserAnswers).length;
+
+            if (answeredCount < total) {
+                if (!confirm(`Perhatian: Anda baru menjawab ${answeredCount} dari ${total} soal. Soal yang belum dijawab akan dihitung sebagai salah. Lanjutkan kirim jawaban sekarang?`)) {
+                    return;
+                }
+            } else {
+                if (!confirm(`Apakah Anda yakin ingin menyelesaikan dan mengirim jawaban ujian ini?`)) {
+                    return;
+                }
+            }
+            submitExam();
+        }
+
+        function submitExam() {
+            if (examTimerInterval) clearInterval(examTimerInterval);
+
+            const questions = getActiveQuestions();
+            const total = questions.length;
+            let correctCount = 0;
+
+            questions.forEach((q, idx) => {
+                if (examUserAnswers[idx] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const score = Math.round((correctCount / total) * 100);
+            const isPre = (currentExamMode === 'pretest');
+
+            // Simpan skor ke localStorage & state
+            if (isPre) {
+                try { localStorage.setItem('descan_pretest_score', score); } catch(e) {}
+                syncPretestCardUI(score);
+            } else {
+                try { localStorage.setItem('descan_posttest_score', score); } catch(e) {}
+                syncPosttestCardUI(score);
+            }
+
+            // Tampilkan Halaman Hasil
+            const qView = document.getElementById('examQuestionView');
+            const rView = document.getElementById('examResultView');
+            if (qView) qView.classList.add('hidden');
+            if (rView) {
+                rView.classList.remove('hidden');
+
+                const isLulus = score >= 70;
+                let badgeClass = isLulus ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-800 border-amber-300';
+                let iconHeader = isLulus ? '🏆' : '📚';
+
+                rView.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center text-4xl sm:text-5xl mx-auto shadow-lg shadow-emerald-500/20">
+                            ${iconHeader}
+                        </div>
+
+                        <div>
+                            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider border ${badgeClass}">
+                                <i class="bi bi-patch-check-fill"></i>
+                                <span>${isPre ? 'Pre-Test Berhasil Diselesaikan' : (isLulus ? 'Lulus Evaluasi Kompetensi' : 'Perlu Pendalaman Materi')}</span>
+                            </span>
+                            <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-3">
+                                ${isPre ? 'Hasil Evaluasi Kemampuan Awal Aparatur' : 'Hasil Evaluasi Akhir Sertifikasi Agen Statistik'}
+                            </h2>
+                            <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1">
+                                ${isPre 
+                                    ? 'Terima kasih telah menyelesaikan Pre-Test. Hasil ini digunakan oleh Tim Teknis BPS Kolaka Utara sebagai tolok ukur awal kurikulum pembinaan.' 
+                                    : (isLulus ? 'Selamat! Anda telah melampaui passing grade 70 dan berhak menerima Sertifikat Resmi Agen Statistik Desa.' : 'Nilai Anda belum mencapai passing grade 70. Silakan pelajari kembali modul video dan ulangi post-test.')
+                                }
+                            </p>
+                        </div>
+
+                        <!-- Kotak Skor Utama -->
+                        <div class="p-6 rounded-3xl bg-gradient-to-br from-slate-50 to-emerald-50/50 border border-emerald-200/80 max-w-md mx-auto space-y-3">
+                            <div class="text-xs font-extrabold text-slate-400 uppercase tracking-widest">Nilai Akhir Anda</div>
+                            <div class="text-5xl sm:text-6xl font-black text-emerald-700 tracking-tight">
+                                ${score}<span class="text-2xl text-slate-400 font-bold">/100</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-200/70 text-xs">
+                                <div class="p-2.5 rounded-xl bg-white border border-slate-200">
+                                    <span class="text-slate-400 block font-bold">Jawaban Benar</span>
+                                    <b class="text-emerald-700 text-sm">${correctCount} dari ${total} Soal</b>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-white border border-slate-200">
+                                    <span class="text-slate-400 block font-bold">Akurasi Jawaban</span>
+                                    <b class="text-blue-700 text-sm">${score}%</b>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tombol Tindakan Selesai -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                            ${isPre ? `
+                                <button type="button" onclick="closePretestModal(); switchPemTab('video');" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                                    <span>Lanjut ke Video Tutorial</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
+                                <button type="button" onclick="closePretestModal();" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
+                                    Kembali ke Menu
+                                </button>
+                            ` : `
+                                ${isLulus ? `
+                                    <button type="button" onclick="closePretestModal(); openSertifikatModal();" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                                        <i class="bi bi-award-fill text-amber-300"></i>
+                                        <span>Lihat &amp; Unduh Sertifikat Resmi</span>
+                                    </button>
+                                ` : ''}
+                                <button type="button" onclick="closePretestModal();" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
+                                    Kembali ke Menu
+                                </button>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function syncPretestCardUI(score) {
+            if (score === undefined || score === null) {
+                try {
+                    const saved = localStorage.getItem('descan_pretest_score');
+                    score = saved !== null ? parseInt(saved) : 80;
+                } catch(e) {
+                    score = 80;
+                }
+            }
+
+            // 1. Update Badge Pojok Kanan Atas Kartu [1. PRE-TEST]
+            const bStatus = document.getElementById('badgePretestStatus');
+            if (bStatus) {
+                bStatus.className = 'text-[10px] font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-1 rounded-md flex items-center gap-1 shadow-2xs';
+                bStatus.innerHTML = '<i class="bi bi-check-circle-fill text-emerald-600"></i><span>Sudah Dikerjakan</span>';
+            }
+
+            // 2. Update Nilai/Skor Awal
+            const vScore = document.getElementById('valPretestScore');
+            if (vScore) {
+                vScore.innerHTML = `<i class="bi bi-check-circle-fill text-emerald-600"></i><span>Sudah Diisi (Skor: ${score})</span>`;
+            }
+
+            // 3. Update Tombol Aksi Menjadi "Kerjakan Ulang Pre-Test"
+            const btn = document.getElementById('btnStartPretest');
+            if (btn) {
+                btn.innerHTML = '<i class="bi bi-arrow-repeat text-sm"></i><span>Kerjakan Ulang Pre-Test</span>';
+            }
+        }
+
+        function syncPosttestCardUI(score) {
+            if (score === undefined || score === null) {
+                try {
+                    const saved = localStorage.getItem('descan_posttest_score');
+                    score = saved !== null ? parseInt(saved) : 85;
+                } catch(e) {
+                    score = 85;
+                }
+            }
+            const el = document.getElementById('valLastPostScore');
+            if (el) {
+                el.innerHTML = `<i class="bi bi-trophy-fill text-amber-500"></i><span>${score} / 100 (${score >= 70 ? 'Lulus Kompetensi' : 'Perlu Peningkatan'})</span>`;
             }
         }
 
@@ -7048,6 +7707,8 @@ function triggerPubDownload() {
             if (targetView) {
                 targetView.classList.remove('hidden');
                 if (menuKey === 'tentang') renderProfilDesa3D(currentTargetVillage);
+            syncPretestCardUI();
+            syncPosttestCardUI();
                 if (menuKey === 'galeri') renderPageGaleriPhotos('all', '');
             }
             dcOnMenuChange(menuKey);
@@ -10519,41 +11180,109 @@ function triggerPubDownload() {
     </div>
 
     <!-- ============================================================== -->
-    <!-- MODAL LMS 1: PRE-TEST PEMBELAJARAN APARAT DESA (FULL SCREEN)   -->
+    <!-- MODAL LMS 1: PRE-TEST & POST-TEST INTERAKTIF (FULL SCREEN)        -->
+    <!-- Menampilkan Ujian Pilihan Ganda, Timer Hitung Mundur, & Hasil Skor -->
     <!-- ============================================================== -->
     <div id="pretestModal" class="fixed inset-0 z-[9999] hidden bg-slate-50 flex flex-col w-screen h-screen overflow-hidden animate-in fade-in duration-150" style="position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;">
-        <!-- Sticky Header Bar -->
-        <div class="shrink-0 bg-gradient-to-r from-[#005ea6] via-[#09487d] to-[#0b2545] text-white px-5 sm:px-8 py-4 flex items-center justify-between shadow-md z-20">
-            <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl shadow-inner">📝</div>
-                <div>
-                    <div class="text-[10px] font-black uppercase tracking-widest text-amber-300">LMS Desa Cantik BPS Kolaka Utara</div>
-                    <h3 class="text-base sm:text-lg font-black tracking-tight">[1. PRE-TEST] Uji Kemampuan Awal Aparatur</h3>
+        <!-- 1. Sticky Top Header Bar (Bersih, Rapi, Tanpa Elemen Nyasar) -->
+        <div class="shrink-0 bg-gradient-to-r from-[#005ea6] via-[#09487d] to-[#0b2545] text-white px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between shadow-md z-20">
+            <!-- Sisi Kiri: Identitas Tes -->
+            <div class="flex items-center gap-3 min-w-0">
+                <div id="examHeaderIcon" class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-xl shadow-inner shrink-0">📝</div>
+                <div class="min-w-0">
+                    <div class="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-amber-300 truncate">LMS Desa Cantik BPS Kolaka Utara</div>
+                    <h3 id="examHeaderTitle" class="text-sm sm:text-base lg:text-lg font-black tracking-tight truncate">[1. PRE-TEST] Uji Kemampuan Awal Aparatur</h3>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
-                <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 text-white text-xs font-semibold">
-                    <span>⏱️ Estimasi: 15 Menit</span>
-                        <option value="kab">B. Tingkat Kabupaten (Verifikasi BPS, Rekapitulasi Sektoral)</option>
-                    </select>
+
+            <!-- Sisi Kanan: Timer, Progres & Tombol Tutup -->
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <!-- Timer Hitung Mundur -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 text-amber-300 font-mono font-bold text-xs border border-white/15 shadow-2xs">
+                    <i class="bi bi-clock-history text-amber-400"></i>
+                    <span id="examTimerText">Sisa Waktu: 14:59</span>
                 </div>
+                <!-- Progres Soal -->
+                <div class="hidden sm:flex items-center px-3 py-1.5 rounded-xl bg-white/10 text-white font-bold text-xs border border-white/15 shadow-2xs">
+                    <span id="examProgressText">Soal 1 dari 10</span>
+                </div>
+                <!-- Tombol Tutup / Batal -->
+                <button type="button" onclick="confirmCloseExamModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-rose-600 active:scale-95 text-white font-bold text-xs transition border border-white/15 flex items-center gap-1.5 cursor-pointer shadow-2xs" title="Tutup / Batal Ujian">
+                    <i class="bi bi-x-lg text-sm"></i>
+                    <span class="hidden sm:inline">Tutup / Batal</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. Area Konten Lembar Ujian Utama (Terpusat & Responsif) -->
+        <div id="examSheetArea" class="flex-1 w-full overflow-y-auto bg-slate-100/70 p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-start">
+            
+            <!-- Panel Lembar Pertanyaan Aktif -->
+            <div id="examQuestionView" class="w-full max-w-3xl bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/90 flex flex-col justify-between space-y-6">
+                <!-- Bilah Indikator Progres Persentase -->
                 <div>
-                    <label class="block font-bold text-slate-700 mb-1">Nama Dokumen Bukti Dukung</label>
-                    <input type="text" id="buktiModalNama" required placeholder="Contoh: Laporan Pembinaan Triwulan III Excel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+                        <span id="examStepLabel">Progres Pengerjaan Soal</span>
+                        <span id="examPercentLabel" class="text-[#005ea6] font-black">10% Selesai</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                        <div id="examProgressBar" class="h-full bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full transition-all duration-300" style="width: 10%;"></div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Pilih File Dokumen (Excel / PDF / Foto)</label>
-                    <input type="file" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-slate-50 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-white hover:file:bg-emerald-700 cursor-pointer">
+
+                <!-- Kotak Pertanyaan & Topik -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <span id="examQuestionBadge" class="text-xs font-black uppercase tracking-wider text-blue-800 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">
+                            Soal No. 1
+                        </span>
+                        <span id="examQuestionTopic" class="text-xs font-bold text-slate-400">
+                            Prinsip Satu Data Indonesia
+                        </span>
+                    </div>
+
+                    <h2 id="examQuestionText" class="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                        Memuat pertanyaan...
+                    </h2>
+
+                    <!-- 4 Kartu Opsi Pilihan Jawaban (A, B, C, D) -->
+                    <div id="examOptionsContainer" class="space-y-3 pt-2">
+                        <!-- Diisi secara dinamis oleh JavaScript -->
+                    </div>
                 </div>
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Keterangan / Catatan Verifikasi</label>
-                    <textarea rows="2" placeholder="Catatan tambahan untuk tim verifikator BPS..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+
+                <!-- Navigasi Bawah & Pintasan Nomor Soal -->
+                <div class="pt-6 border-t border-slate-100 space-y-4">
+                    <!-- Deretan Tombol Pintasan Nomor Soal Cepat -->
+                    <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2" id="examNumberPills">
+                        <!-- Diisi secara dinamis (1..10 atau 1..15) -->
+                    </div>
+
+                    <!-- Tombol Navigasi Sebelumnya / Berikutnya / Selesai -->
+                    <div class="flex items-center justify-between gap-3 pt-2">
+                        <button type="button" id="btnExamPrev" onclick="navigateExamQuestion(-1)" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer disabled:opacity-30 disabled:pointer-events-none">
+                            <i class="bi bi-chevron-left"></i>
+                            <span>Soal Sebelumnya</span>
+                        </button>
+
+                        <button type="button" id="btnExamNext" onclick="navigateExamQuestion(1)" class="px-5 py-2.5 rounded-xl bg-[#005ea6] hover:bg-[#004e8a] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm">
+                            <span>Soal Berikutnya</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+
+                        <button type="button" id="btnExamSubmit" onclick="confirmSubmitExam()" class="hidden px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black transition flex items-center gap-1.5 cursor-pointer shadow-md">
+                            <i class="bi bi-check2-circle text-sm"></i>
+                            <span>Selesai &amp; Kirim Jawaban</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="pt-2 flex justify-end gap-2">
-                    <button type="button" onclick="closeAddBuktiModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-300 transition cursor-pointer">Batal</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-600 text-white font-black text-xs hover:bg-emerald-700 transition cursor-pointer shadow-md">Simpan & Unggah ✓</button>
-                </div>
-            </form>
+            </div>
+
+            <!-- Panel Ringkasan Hasil Nilai (Ditampilkan Setelah Selesai) -->
+            <div id="examResultView" class="hidden w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-9 shadow-xl border border-slate-200/90 text-center space-y-6 animate-in zoom-in-95 duration-200 my-auto">
+                <!-- Diisi secara dinamis oleh renderExamResult() -->
+            </div>
+
         </div>
     </div>
 
