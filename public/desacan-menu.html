@@ -3046,120 +3046,414 @@
                 <!-- ===================================================================== -->
                 <!-- BUKU PANDUAN                                                          -->
                 <!-- ===================================================================== -->
-                <div id="view-buku" class="menu-view-container hidden space-y-5 animate-in fade-in duration-200">
-                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dc-ico" style="--c:#059669;--cbg:#dcf5ea;width:44px;height:44px;border-radius:.8rem;background:linear-gradient(135deg,#059669,#2ec08f);color:#fff;"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                <div id="view-buku" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- 1. Header Buku Panduan (Ikon Lucide BookOpen Hijau + Pencarian Cepat + Tombol Menu Pembelajaran) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-emerald-600 p-2.5 shadow-2xs shrink-0">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
                             <div>
                                 <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Buku Panduan</h2>
                                 <p class="text-xs text-slate-500 mt-0.5">Buku pedoman Excel, rumus dasar statistik sektoral, dan SK Agen Statistik</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 self-start sm:self-auto">
-                            <button type="button" onclick="startVillageVideoOpening(true)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition shadow-2xs cursor-pointer" title="Putar Ulang Opening Video Sesuai Tema Desa Ini">
-                                <i class="bi bi-play-btn-fill text-emerald-600"></i>
-                                <span>Putar Opening Desa</span>
-                            </button>
-                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer">
-                                <i class="bi bi-arrow-left"></i>
-                                <span>Menu Pembelajaran</span>
+
+                        <!-- Right Controls: Input Pencarian Cepat + Navigasi Menu Pembelajaran -->
+                        <div class="flex items-center gap-3 self-start md:self-auto flex-wrap sm:flex-nowrap w-full md:w-auto">
+                            <div class="relative w-full sm:w-72">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="text" id="searchBukuInput" onkeyup="filterBukuKatalog()" placeholder="Cari buku panduan atau dokumen..." class="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition">
+                            </div>
+                            <button type="button" onclick="switchNavMenu('pembelajaran')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-800 text-slate-700 text-xs font-bold transition shadow-2xs cursor-pointer shrink-0">
+                                <i class="bi bi-arrow-left text-sm"></i>
+                                <span>← Menu Pembelajaran</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Section 2: BUKU PEDOMAN & RUMUS DASAR (Table of Resources) -->
-                    <div class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
-                        <div class="pb-3 border-b border-slate-100">
-                            <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
-                                <span>📚</span>
-                                <span>BUKU PEDOMAN & RUMUS DASAR (Mendukung Pembelajaran Independen) — Menu Tambahan</span>
-                            </h4>
-                            <p class="text-xs text-slate-500 mt-0.5">Daftar Modul, Rumus Resmi Statistik Sektoral, dan Surat Keputusan Agen Statistik Desa</p>
+                    <!-- 2. Katalog Rak Kartu Buku (Book Cover Cards Grid) -->
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs space-y-5">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-slate-100 gap-2">
+                            <div>
+                                <h4 class="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                    <span>📚</span>
+                                    <span>KATALOG BUKU PEDOMAN &amp; REFERENSI RESMI BPS</span>
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Daftar Modul, Rumus Resmi Statistik Sektoral, dan Surat Keputusan Agen Statistik Desa</p>
+                            </div>
+                            <span class="text-[11px] font-black text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full self-start sm:self-auto">
+                                4 Dokumen Tersedia
+                            </span>
                         </div>
 
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-xs text-left">
-                                <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
-                                    <tr>
-                                        <th class="py-3 px-4">Nama Dokumen Pembelajaran</th>
-                                        <th class="py-3 px-4">Nomor Referensi BPS / Kode</th>
-                                        <th class="py-3 px-4 text-center">Aksi Unduh / Baca</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100 font-medium text-slate-800">
-                                    <!-- Row 1: Buku Pedoman Excel -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📗</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Buku Pedoman Excel Desa (30 Lembar Praktik)</div>
-                                                    <div class="text-[11px] text-slate-400">Modul terstandarisasi pengolahan data monografi & agregasi Excel</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SDI-BPS-2026-EXCEL</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openExcelReaderModal()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
+                        <!-- Grid 4 Kartu Sampul Buku Digital -->
+                        <div id="gridBukuCards" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+                            
+                            <!-- BUKU 1: Buku Pedoman Excel Desa -->
+                            <div class="buku-card rounded-2xl border border-emerald-200 bg-white hover:border-emerald-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative p-5 bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-800 text-white min-h-[175px] flex flex-col justify-between overflow-hidden">
+                                    <!-- Book Spine Left Border Line -->
+                                    <div class="absolute left-0 top-0 bottom-0 w-2.5 bg-emerald-400/50 border-r border-white/20"></div>
+                                    <div class="pl-2">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <span class="px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-xs text-[10px] font-black uppercase tracking-wider text-emerald-100">
+                                                Modul Praktik
+                                            </span>
+                                            <span class="text-[10px] text-emerald-200 font-mono font-bold">SDI-BPS-2026</span>
+                                        </div>
+                                        <h5 class="font-black text-base sm:text-lg tracking-tight mt-3 text-white group-hover:text-amber-200 transition">
+                                            Buku Pedoman Excel Desa
+                                        </h5>
+                                        <p class="text-xs text-emerald-100 mt-0.5 line-clamp-1">30 Lembar Praktik Mandiri</p>
+                                    </div>
+                                    <div class="pl-2 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-200 font-medium">
+                                        <span>30 Halaman</span>
+                                        <span>• Format Digital / A4</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3.5 flex-1 flex flex-col justify-between bg-white">
+                                    <div class="space-y-1.5">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Nomor Referensi BPS:</span>
+                                        <div class="text-xs font-mono font-black text-slate-700 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">
+                                            SDI-BPS-2026-EXCEL
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                                            Modul terstandarisasi pengolahan data monografi, formula logika, pivot table, dan pelaporan Satu Data Indonesia.
+                                        </p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+                                        <button type="button" onclick="openEmbeddedBookReader('excel')" class="w-full py-2 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-book-half"></i>
+                                            <span>Baca Buku</span>
+                                        </button>
+                                        <button type="button" onclick="downloadBukuPdf('excel')" class="w-full py-2 px-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-download"></i>
+                                            <span>Unduh PDF</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <!-- Row 2: Rumus Dasar Statistik -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📐</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Rumus Dasar Statistik Sektoral Desa</div>
-                                                    <div class="text-[11px] text-slate-400">Formula Rasio Beban Tanggungan, Desil Kemiskinan, & Sex Ratio</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Excel: FORMULA-BPS-STAT-01</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openRumusStatistikModal()" class="px-4 py-1.5 rounded-lg bg-[#005ea6] hover:bg-[#004e8a] text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
+                            <!-- BUKU 2: Rumus Dasar Statistik Sektoral Desa -->
+                            <div class="buku-card rounded-2xl border border-blue-200 bg-white hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative p-5 bg-gradient-to-br from-blue-900 via-[#005ea6] to-cyan-800 text-white min-h-[175px] flex flex-col justify-between overflow-hidden">
+                                    <!-- Book Spine Left Border Line -->
+                                    <div class="absolute left-0 top-0 bottom-0 w-2.5 bg-cyan-300/50 border-r border-white/20"></div>
+                                    <div class="pl-2">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <span class="px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-xs text-[10px] font-black uppercase tracking-wider text-blue-100">
+                                                Formula Baku
+                                            </span>
+                                            <span class="text-[10px] text-cyan-200 font-mono font-bold">STAT-01</span>
+                                        </div>
+                                        <h5 class="font-black text-base sm:text-lg tracking-tight mt-3 text-white group-hover:text-amber-200 transition">
+                                            Rumus Dasar Statistik Desa
+                                        </h5>
+                                        <p class="text-xs text-blue-100 mt-0.5 line-clamp-1">Formula &amp; Studi Kasus BPS</p>
+                                    </div>
+                                    <div class="pl-2 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-blue-200 font-medium">
+                                        <span>14 Halaman</span>
+                                        <span>• Rumus Terapan</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3.5 flex-1 flex flex-col justify-between bg-white">
+                                    <div class="space-y-1.5">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Nomor Referensi BPS:</span>
+                                        <div class="text-xs font-mono font-black text-slate-700 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">
+                                            FORMULA-BPS-STAT-01
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                                            Formula perhitungan rasio beban tanggungan, desil kemiskinan, sex ratio, angka melek huruf, dan indeks kemandirian desa.
+                                        </p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+                                        <button type="button" onclick="openEmbeddedBookReader('rumus')" class="w-full py-2 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-book-half"></i>
+                                            <span>Baca Buku</span>
+                                        </button>
+                                        <button type="button" onclick="downloadBukuPdf('rumus')" class="w-full py-2 px-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-download"></i>
+                                            <span>Unduh PDF</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <!-- Row 3: SK Agen Statistik -->
-                                    <tr class="hover:bg-slate-50 transition">
-                                        <td class="py-3.5 px-4">
-                                            <div class="flex items-center gap-2.5">
-                                                <span class="text-base">📜</span>
-                                                <div>
-                                                    <div class="font-black text-slate-900">Surat Keputusan (SK) Agen Statistik Desa</div>
-                                                    <div class="text-[11px] text-slate-400">Legalitas pembentukan Agen Statistik Sektoral Desa Binaan BPS</div>
-                                                </div>
+                            <!-- BUKU 3: Surat Keputusan (SK) Agen Statistik Desa -->
+                            <div class="buku-card rounded-2xl border border-slate-300 bg-white hover:border-slate-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative p-5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white min-h-[175px] flex flex-col justify-between overflow-hidden">
+                                    <!-- Book Spine Left Border Line -->
+                                    <div class="absolute left-0 top-0 bottom-0 w-2.5 bg-amber-400/60 border-r border-white/20"></div>
+                                    <div class="pl-2">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <span class="px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-xs text-[10px] font-black uppercase tracking-wider text-amber-200">
+                                                Legalitas Resmi
+                                            </span>
+                                            <span class="text-[10px] text-amber-300 font-mono font-bold">SK-KOLUT-008</span>
+                                        </div>
+                                        <h5 class="font-black text-base sm:text-lg tracking-tight mt-3 text-white group-hover:text-amber-200 transition">
+                                            SK Agen Statistik Desa
+                                        </h5>
+                                        <p class="text-xs text-slate-300 mt-0.5 line-clamp-1">Format Baku BPS Kolut</p>
+                                    </div>
+                                    <div class="pl-2 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300 font-medium">
+                                        <span>8 Halaman</span>
+                                        <span>• Dokumen Regulasi</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3.5 flex-1 flex flex-col justify-between bg-white">
+                                    <div class="space-y-1.5">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Nomor Referensi BPS:</span>
+                                        <div class="text-xs font-mono font-black text-slate-700 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">
+                                            SK-BPS-KOLUT-008
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                                            Landasan legalitas pembentukan Agen Statistik Sektoral, tupoksi pengelola data desa, dan hak akses portal Desa Cantik.
+                                        </p>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+                                        <button type="button" onclick="openEmbeddedBookReader('sk')" class="w-full py-2 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-book-half"></i>
+                                            <span>Baca Buku</span>
+                                        </button>
+                                        <button type="button" onclick="downloadBukuPdf('sk')" class="w-full py-2 px-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                            <i class="bi bi-download"></i>
+                                            <span>Unduh PDF</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BUKU 4: Slot Placeholder Buku Saku Desa Cantik 2026 -->
+                            <div class="buku-card rounded-2xl border-2 border-dashed border-emerald-300 bg-emerald-50/20 hover:bg-emerald-50/50 hover:border-emerald-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                                <div class="relative p-5 bg-gradient-to-br from-emerald-100/70 to-teal-100/50 text-slate-800 min-h-[175px] flex flex-col justify-between border-b border-emerald-200/60">
+                                    <div class="absolute left-0 top-0 bottom-0 w-2.5 bg-emerald-400/40"></div>
+                                    <div class="pl-2">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider">
+                                                Slot Tambahan
+                                            </span>
+                                            <span class="text-[10px] text-emerald-800 font-mono font-bold">EDISI 2026</span>
+                                        </div>
+                                        <h5 class="font-black text-base sm:text-lg tracking-tight mt-3 text-emerald-950">
+                                            Buku Saku Desa Cantik
+                                        </h5>
+                                        <p class="text-xs text-emerald-800 font-medium mt-0.5">Segera Tersedia / Upload PDF</p>
+                                    </div>
+                                    <div class="pl-2 pt-2 border-t border-emerald-200/60 flex items-center justify-between text-[11px] text-emerald-800 font-bold">
+                                        <span>Tahap Sinkronisasi</span>
+                                        <span>• Siap Menampung PDF</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3.5 flex-1 flex flex-col justify-between bg-white/80">
+                                    <div class="space-y-1.5">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Status Berkas:</span>
+                                        <div class="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-1 rounded-lg border border-emerald-200 flex items-center justify-between">
+                                            <span>BPS-KOLUT-REV-2026</span>
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                        </div>
+                                        <p class="text-xs text-slate-500 leading-relaxed pt-1">
+                                            Slot khusus untuk menampung panduan saku aparatur desa dan dokumen publikasi sektoral terbaru yang akan diunggah berikutnya.
+                                        </p>
+                                    </div>
+                                    <div class="pt-2 border-t border-slate-100">
+                                        <button type="button" onclick="openPdfUploadSlotPrompt()" class="w-full py-2 px-3 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs">
+                                            <i class="bi bi-cloud-arrow-up-fill text-emerald-600"></i>
+                                            <span>Pasang URL Berkas PDF</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 3. Wadah Pembaca Buku Interaktif (Interactive Book Reader & PDF Container) -->
+                    <div id="sectionBookReader" class="bg-white rounded-3xl border border-slate-200/90 shadow-md overflow-hidden space-y-0 transition-all duration-300">
+                        <!-- Top Header Reader -->
+                        <div class="px-5 py-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white flex flex-wrap items-center justify-between gap-3 border-b border-slate-700">
+                            <div class="flex items-center gap-3">
+                                <span class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg shadow-inner">📖</span>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span id="readerActiveBadge" class="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                            Modul Praktik Mandiri
+                                        </span>
+                                        <span id="readerActiveRef" class="text-[10px] text-slate-400 font-mono">
+                                            SDI-BPS-2026-EXCEL
+                                        </span>
+                                    </div>
+                                    <h3 id="readerActiveTitle" class="text-sm sm:text-base font-black text-white tracking-tight mt-0.5">
+                                        Buku Pedoman Excel Desa (30 Lembar Praktik Mandiri)
+                                    </h3>
+                                </div>
+                            </div>
+                            
+                            <!-- Mode Switcher & Action Controls -->
+                            <div class="flex items-center gap-2.5 text-xs flex-wrap">
+                                <!-- Mode Switcher: Mode Preview Baca Digital vs Mode Slot Berkas PDF -->
+                                <div class="bg-white/10 p-0.5 rounded-xl border border-white/10 flex items-center">
+                                    <button type="button" onclick="setBookDisplayMode('html')" id="btnModeHtml" class="px-3 py-1.5 rounded-lg text-xs font-black bg-white text-slate-900 shadow-2xs transition cursor-pointer">
+                                        Preview Baca
+                                    </button>
+                                    <button type="button" onclick="setBookDisplayMode('pdf')" id="btnModePdf" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer">
+                                        Slot Berkas PDF
+                                    </button>
+                                </div>
+
+                                <!-- Tombol Unduh PDF -->
+                                <button type="button" onclick="triggerActiveBookDownload()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                                    <span>Unduh PDF</span>
+                                </button>
+                                
+                                <!-- Tombol Layar Penuh -->
+                                <button type="button" onclick="openExcelReaderModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition flex items-center gap-1 cursor-pointer" title="Perbesar Layar Penuh">
+                                    <span>⛶</span>
+                                    <span class="hidden sm:inline">Layar Penuh</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Reader Body: 2 Kolom (Sisi Kiri Daftar Isi/Bab + Area Bingkai Halaman Buku) -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
+                            <!-- Sisi Kiri: Daftar Isi & Bab Buku (lg:col-span-4) -->
+                            <div class="lg:col-span-4 border-r border-slate-200 bg-slate-50/80 p-4 sm:p-5 space-y-3.5 flex flex-col justify-between">
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+                                        <span class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                                            <i class="bi bi-list-nested text-emerald-600"></i>
+                                            <span>Daftar Isi &amp; Bab</span>
+                                        </span>
+                                        <span id="readerTocCount" class="text-[10px] font-bold text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                                            30 Lembar
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Filter Bab Cepat -->
+                                    <div class="relative">
+                                        <input type="text" id="filterTocInput" onkeyup="filterTocList()" placeholder="Cari bab atau materi..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                                        <i class="bi bi-search absolute left-2.5 top-2 text-slate-400 text-xs"></i>
+                                    </div>
+
+                                    <!-- Daftar Bab / Lembar Scrollable -->
+                                    <div id="readerTocList" class="space-y-1.5 max-h-[400px] overflow-y-auto pr-1">
+                                        <!-- Diinjeksi otomatis via JavaScript -->
+                                    </div>
+                                </div>
+
+                                <!-- Bagian Bawah: Ringkasan Progress Membaca -->
+                                <div class="pt-3 border-t border-slate-200 space-y-1.5">
+                                    <div class="flex items-center justify-between text-[11px] font-bold text-slate-600">
+                                        <span>Progres Membaca:</span>
+                                        <span id="readerProgressText" class="text-emerald-700 font-mono">Lembar 1 dari 30</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                                        <div id="readerProgressBar" class="bg-emerald-600 h-2 rounded-full transition-all duration-300" style="width: 3.3%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Area Utama: Bingkai Halaman Buku Digital (lg:col-span-8) -->
+                            <div class="lg:col-span-8 p-4 sm:p-6 bg-slate-100 flex flex-col justify-between space-y-4">
+                                
+                                <!-- MODE 1: Preview Baca Halaman Digital (HTML) -->
+                                <div id="readerHtmlContainer" class="flex-1 flex flex-col justify-between space-y-4">
+                                    <!-- Book Page Paper Frame with Subtle Shadow -->
+                                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-md min-h-[440px] relative flex flex-col justify-between">
+                                        <!-- Subtle Page Spine Fold Shadow on left edge -->
+                                        <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-slate-200/60 to-transparent pointer-events-none rounded-l-2xl"></div>
+                                        
+                                        <!-- Page Header Metadata -->
+                                        <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-xs text-slate-400">
+                                            <span id="readerPageSection" class="font-bold text-emerald-800">Bagian I: Pengenalan &amp; Standar Data Desa</span>
+                                            <span id="readerPageNumberBadge" class="bg-slate-100 text-slate-600 font-mono font-bold px-2 py-0.5 rounded">Halaman 1 / 30</span>
+                                        </div>
+
+                                        <!-- Dynamic Page Content -->
+                                        <div id="readerPageContent" class="py-4 text-xs sm:text-sm text-slate-700 leading-relaxed overflow-y-auto max-h-[380px]">
+                                            <!-- Injeksi konten buku -->
+                                        </div>
+
+                                        <!-- Page Footer Sign-off -->
+                                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-400">
+                                            <span>BPS Kabupaten Kolaka Utara • Pojok Literasi Statistik Desa</span>
+                                            <span class="font-mono text-slate-500">DESCAN-2026-REF</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Navigation Controls Below Page -->
+                                    <div class="flex items-center justify-between gap-3 pt-1 flex-wrap sm:flex-nowrap">
+                                        <button type="button" onclick="readerPrevPage()" id="btnReaderPrev" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold transition shadow-2xs flex items-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                                            <i class="bi bi-chevron-left"></i>
+                                            <span>← Halaman Sebelumnya</span>
+                                        </button>
+                                        
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-slate-500 font-bold hidden sm:inline">Lompat Lembar:</span>
+                                            <select id="readerJumpSelect" onchange="readerJumpToPage(this.value)" class="text-xs py-1.5 px-2.5 rounded-xl bg-white border border-slate-200 font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+                                                <!-- Dropdown options populated dynamically -->
+                                            </select>
+                                        </div>
+
+                                        <button type="button" onclick="readerNextPage()" id="btnReaderNext" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-2xs flex items-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                                            <span>Halaman Berikutnya →</span>
+                                            <i class="bi bi-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- MODE 2: Slot/Container Khusus Berkas PDF Resmi (Iframe PDF Viewer) -->
+                                <div id="readerPdfContainer" class="hidden flex-1 flex flex-col space-y-3">
+                                    <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-center justify-between flex-wrap gap-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-base">📌</span>
+                                            <span><strong>Slot Container Iframe PDF Resmi:</strong> Tempat dokumen PDF buku panduan asli ditampilkan dan dapat dipasang URL file PDF secara langsung.</span>
+                                        </div>
+                                        <button type="button" onclick="openPdfUploadSlotPrompt()" class="px-3 py-1 rounded-lg bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold text-[11px] transition cursor-pointer">
+                                            Pasang / Ganti URL PDF
+                                        </button>
+                                    </div>
+
+                                    <!-- PDF Viewer Frame -->
+                                    <div class="w-full h-[520px] rounded-2xl overflow-hidden border border-slate-300 bg-slate-900 shadow-inner relative">
+                                        <iframe id="readerPdfIframe" class="w-full h-full" src="" title="PDF Document Viewer"></iframe>
+                                        
+                                        <!-- Fallback placeholder when iframe source is empty -->
+                                        <div id="readerPdfPlaceholder" class="absolute inset-0 bg-slate-900/95 text-white flex flex-col items-center justify-center p-6 text-center space-y-3">
+                                            <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-3xl shadow-inner">
+                                                📄
                                             </div>
-                                        </td>
-                                        <td class="py-3.5 px-4 font-bold text-slate-600">Nomor Dasar Statistik: SK-BPS-KOLUT-008</td>
-                                        <td class="py-3.5 px-4 text-center">
-                                            <button type="button" onclick="openSkAgenModal()" class="px-4 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition shadow-2xs cursor-pointer">
-                                                UNDUH / DOWNLOAD
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            <h4 id="readerPdfDocTitle" class="text-base font-black text-white">Buku Pedoman Excel Desa</h4>
+                                            <p class="text-xs text-slate-400 max-w-md">
+                                                Berkas PDF siap disematkan langsung melalui URL berkas resmi BPS. Anda juga dapat membaca versi digital interaktif melalui tombol preview di atas.
+                                            </p>
+                                            <div class="flex items-center gap-3 pt-2">
+                                                <button type="button" onclick="triggerActiveBookDownload()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-md cursor-pointer">
+                                                    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                                                    <span>Unduh Berkas PDF Resmi</span>
+                                                </button>
+                                                <button type="button" onclick="setBookDisplayMode('html')" class="px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs transition cursor-pointer">
+                                                    <span>Beralih ke Preview Baca</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===================================================================== -->
-                
-
-        </div>
-    </main>
-
-    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl border border-slate-700 hidden">
-        Notifikasi info
-    </div>
-
-    <!-- CLIENT DATA & SCRIPT LOGIC (CRYSTAL CLEAR PREMIUM HD IMAGES) -->
+                <!-- CLIENT DATA & SCRIPT LOGIC (CRYSTAL CLEAR PREMIUM HD IMAGES) -->
     <script>
         // ==============================================================
         // GLOBAL STATE VARIABLES (SAFE TOP-LEVEL INITIALIZATION)
@@ -3171,6 +3465,341 @@
         let currentAnalitikDesa = 'kamisi';
         let currentMonevBuktiTab = 'desa';
         let currentExcelPage = 1;
+        let activeBookKey = 'excel';
+        let currentReaderPage = 1;
+        let readerDisplayMode = 'html';
+
+        const catalogBooksData = {
+            excel: {
+                id: 'excel',
+                badge: 'Modul Praktik Mandiri',
+                ref: 'SDI-BPS-2026-EXCEL',
+                title: 'Buku Pedoman Excel Desa (30 Lembar Praktik)',
+                sub: 'Modul terstandarisasi pengolahan data monografi & agregasi Excel',
+                pagesCount: 30,
+                pdfUrl: '/files/Buku_Pedoman_Excel_Desa_Cantik_2026.pdf',
+                chapters: [
+                    { page: 1, title: 'Bab 1: Cover & Identitas Buku Panduan Excel' },
+                    { page: 2, title: 'Bab 2: Standar Kompetensi Agen Statistik Desa' },
+                    { page: 3, title: 'Bab 3: Anatomi Antarmuka Microsoft Excel' },
+                    { page: 4, title: 'Bab 4: Format Data Standar Satu Data Indonesia' },
+                    { page: 5, title: 'Bab 5: Teknik Validasi NIK & Teks 16 Digit' },
+                    { page: 6, title: 'Bab 6: Formula Dasar: SUM, AVERAGE, COUNT' },
+                    { page: 7, title: 'Bab 7: Formula Logika: IF, AND, OR untuk Bansos' },
+                    { page: 8, title: 'Bab 8: Formula Statistik Khusus: COUNTIF & SUMIF' },
+                    { page: 9, title: 'Bab 9: Relasi Lintas Tabel: VLOOKUP & INDEX-MATCH' },
+                    { page: 10, title: 'Bab 10: Pembersihan Data (Data Cleansing)' },
+                    { page: 11, title: 'Bab 11: Analisis Piramida Penduduk' },
+                    { page: 12, title: 'Bab 12: Visualisasi Donat & Bar Chart' },
+                    { page: 13, title: 'Bab 13: Rekapitulasi Data PODES Desa' },
+                    { page: 14, title: 'Bab 14: Indeks Kemandirian & Desil Ekonomi' },
+                    { page: 15, title: 'Bab 15: Ekspor Laporan Resmi & Proteksi Data' }
+                ]
+            },
+            rumus: {
+                id: 'rumus',
+                badge: 'Formula Baku Statistik',
+                ref: 'FORMULA-BPS-STAT-01',
+                title: 'Rumus Dasar Statistik Sektoral Desa',
+                sub: 'Formula Rasio Beban Tanggungan, Desil Kemiskinan, & Sex Ratio',
+                pagesCount: 14,
+                pdfUrl: '/files/Rumus_Dasar_Statistik_Sektoral_Desa.pdf',
+                chapters: [
+                    { page: 1, title: 'Bab 1: Pengantar Variabel Makro Sektoral Desa' },
+                    { page: 2, title: 'Bab 2: Formula Rasio Jenis Kelamin (Sex Ratio)' },
+                    { page: 3, title: 'Bab 3: Formula Rasio Beban Tanggungan (Dependency Ratio)' },
+                    { page: 4, title: 'Bab 4: Klasifikasi Desil Kemiskinan & Seleksi Bansos' },
+                    { page: 5, title: 'Bab 5: Angka Melek Huruf & Partisipasi Sekolah' },
+                    { page: 6, title: 'Bab 6: Indikator Sanitasi Layak & Akses Air Minum' },
+                    { page: 7, title: 'Bab 7: Indeks Ketahanan Pangan & Komoditas Unggulan' }
+                ]
+            },
+            sk: {
+                id: 'sk',
+                badge: 'Legalitas & Regulasi',
+                ref: 'SK-BPS-KOLUT-008',
+                title: 'Surat Keputusan (SK) Agen Statistik Desa',
+                sub: 'Legalitas pembentukan Agen Statistik Sektoral Desa Binaan BPS',
+                pagesCount: 8,
+                pdfUrl: '/files/SK_Agen_Statistik_Desa_2026.pdf',
+                chapters: [
+                    { page: 1, title: 'Lembar 1: Surat Keputusan Kepala Desa' },
+                    { page: 2, title: 'Lembar 2: Konsideran Menimbang & Mengingat' },
+                    { page: 3, title: 'Lembar 3: Diktum Keputusan & Masa Tugas Agen' },
+                    { page: 4, title: 'Lembar 4: Lampiran I - Struktur Agen Statistik Desa' },
+                    { page: 5, title: 'Lembar 5: Lampiran II - Uraian Tugas & Wewenang' },
+                    { page: 6, title: 'Lembar 6: Lampiran III - Standar Operasional Prosedur' }
+                ]
+            }
+        };
+
+        function filterBukuKatalog() {
+            const query = (document.getElementById('searchBukuInput')?.value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('#gridBukuCards .buku-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (!query || text.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function openEmbeddedBookReader(bookKey) {
+            activeBookKey = bookKey || 'excel';
+            currentReaderPage = 1;
+            const book = catalogBooksData[activeBookKey] || catalogBooksData['excel'];
+
+            // Update Header Meta
+            const titleEl = document.getElementById('readerActiveTitle');
+            const badgeEl = document.getElementById('readerActiveBadge');
+            const refEl = document.getElementById('readerActiveRef');
+            const tocCountEl = document.getElementById('readerTocCount');
+            const pdfDocTitle = document.getElementById('readerPdfDocTitle');
+
+            if (titleEl) titleEl.textContent = book.title;
+            if (badgeEl) badgeEl.textContent = book.badge;
+            if (refEl) refEl.textContent = book.ref;
+            if (tocCountEl) tocCountEl.textContent = `${book.pagesCount} Lembar`;
+            if (pdfDocTitle) pdfDocTitle.textContent = book.title;
+
+            // Render Table of Contents on the left
+            renderReaderToc();
+
+            // Render Page Content
+            renderReaderCurrentPage();
+
+            // Smooth scroll to reader
+            const readerEl = document.getElementById('sectionBookReader');
+            if (readerEl) {
+                readerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            showToast(`📖 Membuka ${book.title}`, '📚');
+        }
+
+        function renderReaderToc() {
+            const book = catalogBooksData[activeBookKey] || catalogBooksData['excel'];
+            const container = document.getElementById('readerTocList');
+            const jumpSelect = document.getElementById('readerJumpSelect');
+            if (!container) return;
+
+            let chapters = book.chapters || [];
+            // If excel book and getExcelBookPages is available, use rich pages
+            if (activeBookKey === 'excel' && typeof getExcelBookPages === 'function') {
+                const excelPages = getExcelBookPages();
+                if (excelPages && excelPages.length) {
+                    chapters = excelPages.map(p => ({
+                        page: p.page,
+                        title: p.title.replace('Lembar ' + p.page + ': ', `Bab ${p.page}: `)
+                    }));
+                }
+            }
+
+            container.innerHTML = chapters.map(ch => `
+                <div onclick="readerJumpToPage(${ch.page})" id="toc-item-${ch.page}" class="p-2.5 rounded-xl border ${ch.page === currentReaderPage ? 'border-emerald-300 bg-emerald-50 text-emerald-950 font-black shadow-2xs' : 'border-slate-100 bg-white hover:bg-slate-50 text-slate-700 font-medium'} transition cursor-pointer flex items-center justify-between gap-2 text-xs group">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span class="w-5 h-5 rounded-md ${ch.page === currentReaderPage ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-700'} flex items-center justify-center text-[10px] font-bold shrink-0">${ch.page}</span>
+                        <span class="truncate">${ch.title}</span>
+                    </div>
+                    <i class="bi bi-chevron-right text-[11px] ${ch.page === currentReaderPage ? 'text-emerald-600' : 'text-slate-300 group-hover:text-slate-500'} shrink-0"></i>
+                </div>
+            `).join('');
+
+            if (jumpSelect) {
+                jumpSelect.innerHTML = chapters.map(ch => `
+                    <option value="${ch.page}" ${ch.page === currentReaderPage ? 'selected' : ''}>Hal ${ch.page}: ${ch.title.substring(0, 28)}...</option>
+                `).join('');
+            }
+
+            updateReaderProgress(book.pagesCount || 30);
+        }
+
+        function filterTocList() {
+            const q = (document.getElementById('filterTocInput')?.value || '').toLowerCase();
+            const items = document.querySelectorAll('#readerTocList > div');
+            items.forEach(el => {
+                const txt = el.textContent.toLowerCase();
+                el.style.display = (!q || txt.includes(q)) ? 'flex' : 'none';
+            });
+        }
+
+        function renderReaderCurrentPage() {
+            const book = catalogBooksData[activeBookKey] || catalogBooksData['excel'];
+            const contentEl = document.getElementById('readerPageContent');
+            const pageNumBadge = document.getElementById('readerPageNumberBadge');
+            const pageSection = document.getElementById('readerPageSection');
+            const btnPrev = document.getElementById('btnReaderPrev');
+            const btnNext = document.getElementById('btnReaderNext');
+
+            const totalPages = book.pagesCount || 30;
+            if (pageNumBadge) pageNumBadge.textContent = `Halaman ${currentReaderPage} / ${totalPages}`;
+            if (btnPrev) btnPrev.disabled = currentReaderPage <= 1;
+            if (btnNext) btnNext.disabled = currentReaderPage >= totalPages;
+
+            if (activeBookKey === 'excel' && typeof getExcelBookPages === 'function') {
+                const excelPages = getExcelBookPages();
+                const p = excelPages[currentReaderPage - 1];
+                if (p && contentEl) {
+                    if (pageSection) pageSection.textContent = p.section || 'Bagian Pembelajaran';
+                    contentEl.innerHTML = p.content;
+                }
+            } else if (activeBookKey === 'rumus') {
+                if (pageSection) pageSection.textContent = 'Formula & Komputasi Statistik Sektoral';
+                if (contentEl) {
+                    contentEl.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-950">
+                                <span class="text-xs font-black uppercase tracking-wider text-blue-700 block mb-1">Materi Bab ${currentReaderPage}</span>
+                                <h4 class="text-base font-black">${book.chapters[currentReaderPage - 1]?.title || 'Formula Statistik'}</h4>
+                                <p class="text-xs text-blue-800 mt-1">Standar BPS Satu Data Indonesia untuk Desa Cantik.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 text-xs space-y-2">
+                                <div class="font-bold text-slate-800">Formula Matematika Baku:</div>
+                                <div class="p-3 bg-slate-900 text-emerald-400 font-mono rounded-lg text-xs">= (Jumlah_Penduduk_Laki / Jumlah_Penduduk_Perempuan) * 100</div>
+                                <p class="text-slate-600 text-[11px] pt-1">Gunakan formula di atas untuk menghitung rasio jenis kelamin dengan akurasi dua angka di belakang koma.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                if (pageSection) pageSection.textContent = 'Dokumen Legalitas & Struktur Organisasi';
+                if (contentEl) {
+                    contentEl.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-900">
+                                <span class="text-xs font-black uppercase tracking-wider text-slate-500 block mb-1">Dokumen Resmi Lembar ${currentReaderPage}</span>
+                                <h4 class="text-base font-black">${book.chapters[currentReaderPage - 1]?.title || 'Surat Keputusan'}</h4>
+                                <p class="text-xs text-slate-600 mt-1">Regulasi pembentukan Agen Statistik Sektoral Desa BPS Kolaka Utara.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-2">
+                                <p>Menimbang bahwa dalam rangka mendukung percepatan Satu Data Indonesia di tingkat desa, perlu ditetapkan susunan keanggotaan Agen Statistik Desa Cantik 2026.</p>
+                                <p>Keputusan ini berlaku sejak tanggal ditetapkan dengan ketentuan apabila di kemudian hari terdapat kekeliruan akan diadakan perbaikan sebagaimana mestinya.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Sync TOC active item
+            document.querySelectorAll('#readerTocList > div').forEach(el => {
+                el.className = 'p-2.5 rounded-xl border border-slate-100 bg-white hover:bg-slate-50 text-slate-700 font-medium transition cursor-pointer flex items-center justify-between gap-2 text-xs group';
+            });
+            const activeToc = document.getElementById(`toc-item-${currentReaderPage}`);
+            if (activeToc) {
+                activeToc.className = 'p-2.5 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-950 font-black shadow-2xs transition cursor-pointer flex items-center justify-between gap-2 text-xs group';
+            }
+
+            // Sync Jump dropdown
+            const jumpSelect = document.getElementById('readerJumpSelect');
+            if (jumpSelect) jumpSelect.value = currentReaderPage;
+
+            updateReaderProgress(totalPages);
+        }
+
+        function updateReaderProgress(total) {
+            const pBar = document.getElementById('readerProgressBar');
+            const pText = document.getElementById('readerProgressText');
+            const pct = Math.round((currentReaderPage / total) * 100);
+            if (pBar) pBar.style.width = pct + '%';
+            if (pText) pText.textContent = `Lembar ${currentReaderPage} dari ${total} (${pct}%)`;
+        }
+
+        function readerPrevPage() {
+            if (currentReaderPage > 1) {
+                currentReaderPage--;
+                renderReaderCurrentPage();
+            }
+        }
+
+        function readerNextPage() {
+            const book = catalogBooksData[activeBookKey] || catalogBooksData['excel'];
+            if (currentReaderPage < (book.pagesCount || 30)) {
+                currentReaderPage++;
+                renderReaderCurrentPage();
+            }
+        }
+
+        function readerJumpToPage(page) {
+            currentReaderPage = parseInt(page) || 1;
+            renderReaderCurrentPage();
+        }
+
+        function setBookDisplayMode(mode) {
+            readerDisplayMode = mode;
+            const htmlBox = document.getElementById('readerHtmlContainer');
+            const pdfBox = document.getElementById('readerPdfContainer');
+            const btnHtml = document.getElementById('btnModeHtml');
+            const btnPdf = document.getElementById('btnModePdf');
+
+            if (mode === 'html') {
+                if (htmlBox) htmlBox.classList.remove('hidden');
+                if (pdfBox) pdfBox.classList.add('hidden');
+                if (btnHtml) {
+                    btnHtml.className = 'px-3 py-1.5 rounded-lg text-xs font-black bg-white text-slate-900 shadow-2xs transition cursor-pointer';
+                }
+                if (btnPdf) {
+                    btnPdf.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer';
+                }
+            } else {
+                if (htmlBox) htmlBox.classList.add('hidden');
+                if (pdfBox) pdfBox.classList.remove('hidden');
+                if (btnHtml) {
+                    btnHtml.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer';
+                }
+                if (btnPdf) {
+                    btnPdf.className = 'px-3 py-1.5 rounded-lg text-xs font-black bg-white text-slate-900 shadow-2xs transition cursor-pointer';
+                }
+
+                // Update PDF iframe if URL is set
+                const book = catalogBooksData[activeBookKey] || catalogBooksData['excel'];
+                const iframe = document.getElementById('readerPdfIframe');
+                const placeholder = document.getElementById('readerPdfPlaceholder');
+                if (book.pdfUrl && book.pdfUrl.endsWith('.pdf')) {
+                    if (iframe) iframe.src = book.pdfUrl;
+                    if (placeholder) placeholder.classList.add('hidden');
+                } else {
+                    if (placeholder) placeholder.classList.remove('hidden');
+                }
+            }
+        }
+
+        function openPdfUploadSlotPrompt() {
+            const currentUrl = catalogBooksData[activeBookKey]?.pdfUrl || '';
+            const newUrl = prompt('Masukkan URL file PDF buku panduan resmi (misal: /files/buku-panduan.pdf atau link Google Drive/Cloud):', currentUrl);
+            if (newUrl !== null && newUrl.trim() !== '') {
+                if (catalogBooksData[activeBookKey]) {
+                    catalogBooksData[activeBookKey].pdfUrl = newUrl.trim();
+                }
+                const iframe = document.getElementById('readerPdfIframe');
+                const placeholder = document.getElementById('readerPdfPlaceholder');
+                if (iframe) iframe.src = newUrl.trim();
+                if (placeholder) placeholder.classList.add('hidden');
+                setBookDisplayMode('pdf');
+                showToast('✅ Berkas PDF berhasil dihubungkan ke wadah pembaca!', '📄');
+            }
+        }
+
+        function triggerActiveBookDownload() {
+            downloadBukuPdf(activeBookKey);
+        }
+
+        function downloadBukuPdf(bookKey) {
+            const book = catalogBooksData[bookKey] || catalogBooksData['excel'];
+            showToast(`Mengunduh berkas PDF: ${book.title}...`, '📥');
+            if (bookKey === 'excel' && typeof triggerExcelBookPdfExport === 'function') {
+                triggerExcelBookPdfExport();
+            } else {
+                const link = document.createElement('a');
+                link.href = book.pdfUrl || '#';
+                link.setAttribute('download', `${book.title.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+        
         let bookViewMode = 'spread';
         let thematicLeafletMap = null;
         let thematicLayersGroup = null;
@@ -5616,6 +6245,9 @@ function triggerPubDownload() {
             if (typeof initExcelReader === 'function') {
                 initExcelReader();
             }
+            if (typeof openEmbeddedBookReader === 'function') {
+                openEmbeddedBookReader('excel');
+            }
         }
         function closeExcelBookModal() {
             const modal = document.getElementById('excelBookModal');
@@ -6255,6 +6887,11 @@ function triggerPubDownload() {
                 }, 200);
             }
 
+            if (menuKey === 'buku') {
+                if (typeof openEmbeddedBookReader === 'function') {
+                    openEmbeddedBookReader(activeBookKey || 'excel');
+                }
+            }
             if (menuKey === 'monitoring' || menuKey === 'monev') {
                 if (typeof renderBuktiDukungTables === 'function') {
                     renderBuktiDukungTables(currentTargetVillage);
@@ -9008,6 +9645,9 @@ function triggerPubDownload() {
             // Initialize Excel Guidebook Reader if available
             if (typeof initExcelReader === 'function') {
                 initExcelReader();
+            }
+            if (typeof openEmbeddedBookReader === 'function') {
+                openEmbeddedBookReader('excel');
             }
             if (typeof renderBuktiDukungTables === 'function') {
                 renderBuktiDukungTables(currentTargetVillage);
