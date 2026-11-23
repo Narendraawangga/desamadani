@@ -762,5 +762,10 @@
     }
   };
 
-  document.addEventListener('DOMContentLoaded', initExplorer);
+  window.initExplorer = initExplorer;
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initExplorer, 10);
+  } else {
+    document.addEventListener('DOMContentLoaded', initExplorer);
+  }
 })();

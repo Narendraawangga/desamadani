@@ -71,9 +71,9 @@
     <script src="/data/kolut_desa_polygons.js"></script>
 
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
-    <script src="/data/podes_kolut_complete_2025.js?v=20261123_02"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261123_02"></script>
-    <script src="/js/podes_explorer.js?v=20261123_02"></script>
+    <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261123_03"></script>
+    <script src="/js/podes_explorer.js?v=20261123_03"></script>
 
     <style>
         html, body {
@@ -137,7 +137,7 @@
         }
 
         .portal-page.active {
-            display: block;
+            display: block !important;
         }
 
         @keyframes fadeIn {
@@ -186,20 +186,20 @@
 
             <!-- Sisi Tengah: Menu Navigasi 5 Halaman Terpisah -->
             <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-bold text-slate-600 whitespace-nowrap shrink-0">
-                <a href="/portal" id="navLinkPage1" onclick="window.onNavClick(event, 1, '/portal')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative { $curPage === 1 ? 'active' : '' }">
+                <a href="/portal" id="navLinkPage1" onclick="window.onNavClick(event, 1, '/portal')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative {{ $curPage === 1 ? 'active' : '' }}">
                     Beranda
                 </a>
-                <a href="/portal/agregat" id="navLinkPage2" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative { $curPage === 2 ? 'active' : '' }">
+                <a href="/portal/agregat" id="navLinkPage2" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative {{ $curPage === 2 ? 'active' : '' }}">
                     Agregat 15 Kecamatan
                 </a>
-                <a href="/portal/peta" id="navLinkPage3" onclick="window.onNavClick(event, 3, '/portal/peta')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative flex items-center gap-1.5 { $curPage === 3 ? 'active' : '' }">
+                <a href="/portal/peta" id="navLinkPage3" onclick="window.onNavClick(event, 3, '/portal/peta')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative flex items-center gap-1.5 {{ $curPage === 3 ? 'active' : '' }}">
                     <svg class="w-3.5 h-3.5 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                     <span>WebGIS Peta Spasial</span>
                 </a>
-                <a href="/portal/desa-cantik" id="navLinkPage4" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative { $curPage === 4 ? 'active' : '' }">
+                <a href="/portal/desa-cantik" id="navLinkPage4" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative {{ $curPage === 4 ? 'active' : '' }}">
                     Desa Cantik (DESCAN)
                 </a>
-                <a href="/portal/tentang" id="navLinkPage5" onclick="window.onNavClick(event, 5, '/portal/tentang')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative { $curPage === 5 ? 'active' : '' }">
+                <a href="/portal/tentang" id="navLinkPage5" onclick="window.onNavClick(event, 5, '/portal/tentang')" class="portal-nav-link hover:text-[#0D6E5B] transition py-1 relative {{ $curPage === 5 ? 'active' : '' }}">
                     Tentang Madani
                 </a>
             </nav>
@@ -225,11 +225,11 @@
 
         <!-- Mobile Horizontal Scroll Menu -->
         <div class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t border-slate-100 no-scrollbar text-xs font-bold text-slate-600 w-full bg-white">
-            <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full { $curPage === 1 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }">Beranda</a>
-            <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full { $curPage === 2 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }">Agregat 15 Kec</a>
-            <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full { $curPage === 3 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }">WebGIS Peta</a>
-            <a href="/portal/desa-cantik" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" id="mNav4" class="whitespace-nowrap px-3 py-1 rounded-full { $curPage === 4 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }">Desa Cantik</a>
-            <a href="/portal/tentang" onclick="window.onNavClick(event, 5, '/portal/tentang')" id="mNav5" class="whitespace-nowrap px-3 py-1 rounded-full { $curPage === 5 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }">Tentang</a>
+            <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 1 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Beranda</a>
+            <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 2 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Agregat 15 Kec</a>
+            <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 3 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">WebGIS Peta</a>
+            <a href="/portal/desa-cantik" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" id="mNav4" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 4 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Desa Cantik</a>
+            <a href="/portal/tentang" onclick="window.onNavClick(event, 5, '/portal/tentang')" id="mNav5" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 5 ? 'bg-[#0D6E5B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Tentang</a>
             <a href="/descan" class="whitespace-nowrap px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">⭐ DESCAN</a>
         </div>
     </header>
@@ -242,7 +242,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 1: BERANDA / OPENING (KPI RIIL 2025 + PETA SVG INTERAKTIF KOLUT) -->
         <!-- ========================================================================= -->
-        <section id="portalPage1" class="portal-page { $curPage === 1 ? 'active' : '' } w-full">
+        <section id="portalPage1" class="portal-page {{ $curPage === 1 ? 'active' : '' }} w-full">
             <!-- Hero Section Asimetris -->
             <div class="w-full bg-gradient-to-b from-white via-[#f7faf8] to-[#edf5f1] border-b border-emerald-100/70 pt-8 sm:pt-14 pb-12 sm:pb-20 relative overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -493,7 +493,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (FILTER, PIRAMIDA, TABEL, CSV) -->
         <!-- ========================================================================= -->
-        <section id="portalPage2" class="portal-page { $curPage === 2 ? 'active' : '' } w-full py-10">
+        <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
@@ -572,7 +572,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 3: PETA TEMATIK INTERAKTIF (LEAFLET 15 KECAMATAN + 6 LAPISAN DATA)-->
         <!-- ========================================================================= -->
-        <section id="portalPage3" class="portal-page { $curPage === 3 ? 'active' : '' } w-full py-10">
+        <section id="portalPage3" class="portal-page {{ $curPage === 3 ? 'active' : '' }} w-full py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-5">
@@ -688,7 +688,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 4: 6 DESA CANTIK (CINTA STATISTIK - 100% ANGKA RIIL PODES 2025)   -->
         <!-- ========================================================================= -->
-        <section id="portalPage4" class="portal-page { $curPage === 4 ? 'active' : '' } w-full py-10">
+        <section id="portalPage4" class="portal-page {{ $curPage === 4 ? 'active' : '' }} w-full py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
@@ -755,7 +755,6 @@
                 <div class="w-full">
                     
         <div id="card-desacan-kamisi" class="desacan-detail-card" style="display: block;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -781,7 +780,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -856,7 +854,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -884,7 +881,6 @@
     
 
         <div id="card-desacan-koroha" class="desacan-detail-card" style="display: none;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -910,7 +906,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -985,7 +980,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -1013,7 +1007,6 @@
     
 
         <div id="card-desacan-malamala" class="desacan-detail-card" style="display: none;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1039,7 +1032,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -1114,7 +1106,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -1142,7 +1133,6 @@
     
 
         <div id="card-desacan-lapolu" class="desacan-detail-card" style="display: none;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1168,7 +1158,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -1243,7 +1232,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -1271,7 +1259,6 @@
     
 
         <div id="card-desacan-tanggeawo" class="desacan-detail-card" style="display: none;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1297,7 +1284,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -1372,7 +1358,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -1400,7 +1385,6 @@
     
 
         <div id="card-desacan-mattirobulu" class="desacan-detail-card" style="display: none;">
-            <!-- Header Kartu Desa -->
             <div class="bg-gradient-to-r from-emerald-800 to-teal-900 rounded-2xl p-6 sm:p-8 text-white mb-6 relative overflow-hidden shadow-lg">
                 <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                     <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1426,7 +1410,6 @@
                 </div>
             </div>
 
-            <!-- Grid 4 Pilar Monografi 100% Angka Riil PODES -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
                 <!-- 1. Demografi & Kependudukan -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-md transition-all">
@@ -1501,7 +1484,6 @@
                 </div>
             </div>
 
-            <!-- Detail Banner Informasi Tambahan Profil Desa Cantik -->
             <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
                     <span class="text-2xl">🎓</span>
@@ -1546,7 +1528,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 5: PUBLIKASI & TENTANG MADANI (KATALOG 9 BERKAS + ARSITEKTUR SDI) -->
         <!-- ========================================================================= -->
-        <section id="portalPage5" class="portal-page { $curPage === 5 ? 'active' : '' } w-full py-10">
+        <section id="portalPage5" class="portal-page {{ $curPage === 5 ? 'active' : '' }} w-full py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                 
                 <div class="border-b border-slate-200 pb-6">
@@ -1785,8 +1767,8 @@
                     $kecList = ['Tolala', 'Porehu', 'Batu Putih', 'Pakue Utara', 'Pakue Tengah', 'Pakue', 'Watunohu', 'Tiwu', 'Ngapa', 'Kodeoha', 'Katoi', 'Lasusua', 'Lambai', 'Rante Angin', 'Wawo'];
                 @endphp
                 @foreach($kecList as $kItem)
-                    <button onclick="window.selectKecamatanFromModal('{ $kItem }')" class="p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 hover:text-[#0D6E5B] border border-slate-200 text-left font-bold transition flex items-center justify-between">
-                        <span>{ $kItem }</span>
+                    <button onclick="window.selectKecamatanFromModal('{{ $kItem }}')" class="p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 hover:text-[#0D6E5B] border border-slate-200 text-left font-bold transition flex items-center justify-between">
+                        <span>{{ $kItem }}</span>
                         <span class="text-[10px] text-slate-400">→</span>
                     </button>
                 @endforeach
@@ -1798,7 +1780,7 @@
     <script>
     // 1. Metadata for SVG Hover & Click
     window.SVG_KEC_META = {"svg-kec-lasusua": {"nama": "Lasusua", "kode": "74.08.01", "pop": 26729, "imk": 237, "pln": 8463, "desa": 12, "sekolah": 54, "faskes": 41, "bumdes": 13, "potensi": "Pusat Perdagangan, Jasa, Perikanan Tangkap & Wisata Bahari", "komoditas": "Kakao, Ikan Cakalang, Kuliner Bahari, Olahan Cokelat"}, "svg-kec-pakue": {"nama": "Pakue", "kode": "74.08.02", "pop": 10757, "imk": 86, "pln": 2927, "desa": 11, "sekolah": 24, "faskes": 15, "bumdes": 9, "potensi": "Budidaya Tambak Udang & Bandeng, Perkebunan Kakao", "komoditas": "Udang Windu, Ikan Bandeng, Kakao, Kelapa Kopra"}, "svg-kec-batuputih": {"nama": "Batu Putih", "kode": "74.08.03", "pop": 9229, "imk": 226, "pln": 2379, "desa": 11, "sekolah": 27, "faskes": 20, "bumdes": 12, "potensi": "Perikanan Tangkap, Perkebunan Kelapa & Potensi Bahari", "komoditas": "Ikan Karang, Kelapa Dalam, Kakao, Cengkeh"}, "svg-kec-ranteangin": {"nama": "Rante Angin", "kode": "74.08.04", "pop": 6161, "imk": 39, "pln": 1673, "desa": 7, "sekolah": 16, "faskes": 11, "bumdes": 4, "potensi": "Perkebunan Kakao Rakyat & Padi Sawah Irigasi", "komoditas": "Biji Kakao, Beras Sawah, Ternak Sapi"}, "svg-kec-kodeoha": {"nama": "Kodeoha", "kode": "74.08.05", "pop": 11592, "imk": 234, "pln": 2960, "desa": 12, "sekolah": 30, "faskes": 15, "bumdes": 17, "potensi": "Sentra Utama Kakao Fermentasi & Perikanan Pesisir", "komoditas": "Kakao Super, Padi Sawah, Rumput Laut, Udang"}, "svg-kec-ngapa": {"nama": "Ngapa", "kode": "74.08.06", "pop": 17256, "imk": 502, "pln": 3353, "desa": 12, "sekolah": 25, "faskes": 21, "bumdes": 13, "potensi": "Lumbung Pangan (Padi/Jagung) & Perkebunan Kakao", "komoditas": "Beras Organik, Jagung Hibrida, Kakao, Peternakan"}, "svg-kec-wawo": {"nama": "Wawo", "kode": "74.08.07", "pop": 7188, "imk": 25, "pln": 1883, "desa": 7, "sekolah": 17, "faskes": 10, "bumdes": 9, "potensi": "Agrowisata Danau Biru & Perkebunan Cengkeh/Kopi", "komoditas": "Cengkeh, Kopi Robusta, Kakao, Pariwisata Alam"}, "svg-kec-lambai": {"nama": "Lambai", "kode": "74.08.08", "pop": 7195, "imk": 107, "pln": 1936, "desa": 7, "sekolah": 18, "faskes": 11, "bumdes": 7, "potensi": "Perkebunan Cengkeh, Minyak Nilam & Kakao", "komoditas": "Minyak Nilam, Bunga Cengkeh Kering, Kakao"}, "svg-kec-watunohu": {"nama": "Watunohu", "kode": "74.08.09", "pop": 7279, "imk": 64, "pln": 2107, "desa": 8, "sekolah": 18, "faskes": 11, "bumdes": 8, "potensi": "Hortikultura Sayur-Buah & Perkebunan Kakao", "komoditas": "Sayuran Dataran, Pisang, Kakao, Ternak Kambing"}, "svg-kec-pakuetengah": {"nama": "Pakue Tengah", "kode": "74.08.10", "pop": 7738, "imk": 49, "pln": 2089, "desa": 10, "sekolah": 27, "faskes": 14, "bumdes": 7, "potensi": "Pariwisata Bahari Pasir Putih & Perkebunan Kakao", "komoditas": "Kelapa, Kakao, Ikan Tongkol/Tenggiri"}, "svg-kec-pakueutara": {"nama": "Pakue Utara", "kode": "74.08.11", "pop": 8402, "imk": 257, "pln": 2212, "desa": 9, "sekolah": 22, "faskes": 16, "bumdes": 14, "potensi": "Perikanan Tangkap & Kelapa Kopra", "komoditas": "Ikan Layang, Kopra Putih, Kakao"}, "svg-kec-porehu": {"nama": "Porehu", "kode": "74.08.12", "pop": 6822, "imk": 1440, "pln": 1615, "desa": 8, "sekolah": 22, "faskes": 11, "bumdes": 8, "potensi": "Perkebunan Cengkeh, Kopi & Wisata Alam Air Terjun", "komoditas": "Cengkeh Grade A, Kopi Organik, Madu Hutan"}, "svg-kec-katoi": {"nama": "Katoi", "kode": "74.08.13", "pop": 7408, "imk": 71, "pln": 1877, "desa": 6, "sekolah": 17, "faskes": 11, "bumdes": 11, "potensi": "Kampung Nelayan Pesisir & Sentra Kakao", "komoditas": "Ikan Teri, Kakao, Olahan Ikan Asin, Kelapa"}, "svg-kec-tiwu": {"nama": "Tiwu", "kode": "74.08.14", "pop": 4849, "imk": 194, "pln": 1449, "desa": 7, "sekolah": 15, "faskes": 7, "bumdes": 8, "potensi": "Perkebunan Kakao, Kelapa & Rumput Laut", "komoditas": "Kakao, Rumput Laut Eucheuma, Kelapa"}, "svg-kec-tolala": {"nama": "Tolala", "kode": "74.08.15", "pop": 4087, "imk": 91, "pln": 1154, "desa": 6, "sekolah": 15, "faskes": 9, "bumdes": 6, "potensi": "Perikanan Bahari Teluk Bone & Hasil Hutan", "komoditas": "Ikan Tuna/Cakalang, Madu Lebah Liar, Kakao"}};
-    window.CURRENT_PORTAL_PAGE = { $curPage };
+    window.CURRENT_PORTAL_PAGE = {{ $curPage }};
 
     // 2. SVG Map Hover Handler
     window.onSvgKecHover = function(kecId) {
@@ -1967,7 +1949,7 @@
         if (lang === 'en') {
             if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs font-bold text-[11px]';
             if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
-        } else {
+        }} else {
             if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#0D6E5B] text-white shadow-2xs font-bold text-[11px]';
             if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
         }
