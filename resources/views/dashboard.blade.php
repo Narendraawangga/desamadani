@@ -226,20 +226,46 @@
             border-radius: 9999px;
         }
 
+        /* Header Transparent to White Smooth Scroll Transition */
+        #mainPortalHeader {
+            background-color: transparent;
+            border-bottom-color: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+        }
+        #mainPortalHeader.scrolled {
+            background-color: rgba(255, 255, 255, 0.96) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom-color: #DCE3DD !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+        }
+        #mobileNavMenu {
+            background-color: transparent;
+            border-top-color: transparent;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+        #mobileNavMenu.scrolled {
+            background-color: rgba(255, 255, 255, 0.96) !important;
+            border-top-color: #DCE3DD !important;
+        }
+
     </style>
 </head>
 
 <body class="bg-[#F8FAF8] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
 
-    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI) -->
-    <header class="bg-white/95 backdrop-blur-md text-slate-800 border-b border-slate-200 sticky top-0 z-50 transition-all min-h-[58px] flex items-center w-full max-w-full">
+    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI - TRANSPARAN DI ATAS, PUTIH SAAT SCROLL) -->
+    <header id="mainPortalHeader" class="sticky top-0 z-50 text-slate-800 border-b min-h-[58px] flex flex-col justify-center w-full max-w-full">
         <div class="w-full px-4 lg:px-8 py-2.5 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
             <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS -->
             <div class="flex items-center gap-3 shrink-0">
                 <a href="/portal" class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" title="Desa Madani Kabupaten Kolaka Utara">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B] animate-pulse"></span>
-                    <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-lg shadow-2xs">
+                    <div class="flex items-center gap-1.5 shrink-0 bg-white/90 border border-[#DCE3DD] px-1.5 py-0.5 rounded-lg shadow-2xs">
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
                         <div class="h-3.5 w-[1px] bg-slate-300"></div>
                         <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
@@ -273,7 +299,7 @@
 
             <!-- Sisi Kanan: 15 Kecamatan Modal, Kelola Data, Bahasa -->
             <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button onclick="window.toggleKecamatanModal()" id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#3B4D3B] text-slate-700 hover:text-[#3B4D3B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer">
+                <button onclick="window.toggleKecamatanModal()" id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[#DCE3DD] hover:border-[#3B4D3B] text-slate-700 hover:text-[#3B4D3B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer shadow-2xs">
                     <svg class="w-3.5 h-3.5 text-[#3B4D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                     <span>15 Kecamatan</span>
                 </button>
@@ -283,7 +309,7 @@
                     <span>Kelola Data</span>
                 </a>
 
-                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
+                <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
                     <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
                     <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
                 </div>
@@ -291,7 +317,15 @@
         </div>
 
         <!-- Mobile Horizontal Scroll Menu -->
-        <div class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t border-slate-100 no-scrollbar text-xs font-bold text-slate-600 w-full bg-white">
+        <div id="mobileNavMenu" class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t no-scrollbar text-xs font-bold text-slate-600 w-full">
+            <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 1 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Beranda</a>
+            <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 2 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Agregat 15 Kec</a>
+            <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 3 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">WebGIS Peta</a>
+            <a href="/portal/desa-cantik" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" id="mNav4" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 4 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Desa Cantik</a>
+            <a href="/portal/tentang" onclick="window.onNavClick(event, 5, '/portal/tentang')" id="mNav5" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 5 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Tentang</a>
+            <a href="/descan" class="whitespace-nowrap px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">⭐ DESCAN</a>
+        </div>
+    </header>
             <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 1 ? 'bg-[#3B4D3B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Beranda</a>
             <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 2 ? 'bg-[#3B4D3B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">Agregat 15 Kec</a>
             <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 3 ? 'bg-[#3B4D3B] text-white' : 'bg-slate-100 hover:bg-slate-200' }}">WebGIS Peta</a>
@@ -2199,14 +2233,31 @@
         if (lang === 'en') {
             if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
             if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
-        }} else {
+        } else {
             if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
             if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
         }
     };
 
+    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, White when Scrolled)
+    window.handlePortalHeaderScroll = function() {
+        const header = document.getElementById('mainPortalHeader');
+        const mNav = document.getElementById('mobileNavMenu');
+        const isScrolled = window.scrollY > 15;
+        if (header) {
+            header.classList.toggle('scrolled', isScrolled);
+        }
+        if (mNav) {
+            mNav.classList.toggle('scrolled', isScrolled);
+        }
+    };
+
+    window.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
+
     // Auto-detect page on initial load
     document.addEventListener('DOMContentLoaded', function() {
+        window.handlePortalHeaderScroll();
+
         const path = window.location.pathname.toLowerCase();
         const hash = window.location.hash.toLowerCase();
         
