@@ -494,8 +494,6 @@
                 <span>Galeri Foto</span>
             </button>
 
-            <!-- 1. KAPASITAS & EDUKASI -->
-            <div class="dc-nav-label">Kapasitas &amp; Edukasi</div>
             <button type="button" onclick="toggleMateriMenu()" id="nav-pembelajaran" class="nav-tab">
                 <span class="dc-ico"><i class="bi bi-book-half"></i></span>
                 <span>Materi Pembelajaran</span>
