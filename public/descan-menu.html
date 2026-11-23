@@ -2171,27 +2171,21 @@
                     <!-- Toolbar Filter Kategori & Pencarian Halaman Galeri -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <!-- Filter Pills -->
-                        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-                            <button type="button" onclick="filterPageGaleriPhotos('all', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-emerald-700 text-white shadow-sm border border-emerald-700 cursor-pointer whitespace-nowrap">Semua Foto</button>
-                            <button type="button" onclick="filterPageGaleriPhotos('pembinaan', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
-                                <i class="bi bi-mortarboard-fill text-emerald-600"></i>
-                                <span>Pembinaan BPS</span>
+                        <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none" id="pageGaleriFilterTabs">
+                            <button type="button" onclick="filterPageGaleriPhotos('all', this)" class="page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap">
+                                Semua Foto (8)
                             </button>
-                            <button type="button" onclick="filterPageGaleriPhotos('potensi', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
-                                <i class="bi bi-graph-up-arrow text-amber-600"></i>
-                                <span>Potensi &amp; UMKM</span>
+                            <button type="button" onclick="filterPageGaleriPhotos('pembinaan', this)" class="page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                                Pembinaan BPS
                             </button>
-                            <button type="button" onclick="filterPageGaleriPhotos('alam', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
-                                <i class="bi bi-tree-fill text-teal-600"></i>
-                                <span>Pesona Alam</span>
+                            <button type="button" onclick="filterPageGaleriPhotos('potensi', this)" class="page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                                Potensi &amp; Kakao
                             </button>
-                            <button type="button" onclick="filterPageGaleriPhotos('pelayanan', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
-                                <i class="bi bi-building-fill-check text-indigo-600"></i>
-                                <span>Layanan Desa</span>
+                            <button type="button" onclick="filterPageGaleriPhotos('bahari', this)" class="page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                                Pesona Bahari &amp; Alam
                             </button>
-                            <button type="button" onclick="filterPageGaleriPhotos('custom', this)" class="page-galeri-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5">
-                                <i class="bi bi-star-fill text-amber-500"></i>
-                                <span>Unggahan Admin</span>
+                            <button type="button" onclick="filterPageGaleriPhotos('pelayanan', this)" class="page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                                Pelayanan Desa
                             </button>
                         </div>
 
@@ -3392,8 +3386,9 @@
             {
                 id: 'base_1',
                 cat: 'pembinaan',
+                desa: 'Desa Kamisi',
                 title: 'Pelatihan Literasi Statistik Aparatur',
-                caption: 'Bimbingan teknis pengisian kuesioner PODES dan standarisasi metadata bersama BPS Kolaka Utara.',
+                caption: 'Bimbingan teknis konsep, definisi, dan standarisasi kuesioner PODES bersama BPS Kolaka Utara.',
                 img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
                 badge: 'Pembinaan BPS',
                 date: 'Agustus 2025'
@@ -3401,8 +3396,9 @@
             {
                 id: 'base_2',
                 cat: 'pembinaan',
+                desa: 'Desa Kalu Kaluku',
                 title: 'Verifikasi & Rekonsiliasi Data Sektoral',
-                caption: 'Penyelarasan indikator kemiskinan ekstrem, penerima bansos, dan data desil bersama tim verifikator BPS.',
+                caption: 'Penyelarasan indikator kemiskinan ekstrem dan bansos P3KE bersama tim verifikator desa.',
                 img: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80',
                 badge: 'SDI Kolut',
                 date: 'Juli 2025'
@@ -3410,44 +3406,49 @@
             {
                 id: 'base_3',
                 cat: 'potensi',
-                title: 'Sentra Perkebunan Kakao Rakyat Terpadu',
-                caption: 'Perkebunan kakao produktif terintegrasi dengan metode sambung pucuk dan pembibitan bibit unggul.',
+                desa: 'Desa Tanggeawo',
+                title: 'Sentra Perkebunan Kakao Unggulan',
+                caption: 'Budidaya kakao rakyat sambung pucuk produktif dengan pembibitan varietas unggul Kolaka Utara.',
                 img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
-                badge: 'Komoditas Unggulan',
+                badge: 'Potensi Kakao',
                 date: '2025'
             },
             {
                 id: 'base_4',
                 cat: 'potensi',
-                title: 'Pengeringan Biji Kakao Fermentasi SNI',
-                caption: 'Kelompok tani desa mengoptimalkan nilai jual biji kakao kering siap ekspor dengan standar mutu SNI.',
+                desa: 'Desa Lapolu',
+                title: 'Agroindustri Cengkeh & Penyulingan Nilam',
+                caption: 'Hasil panen perkebunan cengkeh perbukitan serta pengolahan minyak atsiri nilam bernilai ekspor.',
                 img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80',
-                badge: 'UMKM & IKM',
+                badge: 'Cengkeh & Nilam',
                 date: '2025'
             },
             {
                 id: 'base_5',
-                cat: 'alam',
-                title: 'Pesisir Bahari & Armada Perahu Nelayan',
-                caption: 'Aktivitas nelayan pesisir Teluk Bone serta sentra pengeringan ikan teri tradisional.',
+                cat: 'bahari',
+                desa: 'Desa Kamisi',
+                title: 'Pesisir Bahari & Sentra Teri Tradisional',
+                caption: 'Armada nelayan Teluk Bone dan penjemuran ikan teri asin tradisional pesisir Kodeoha.',
                 img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
                 badge: 'Pesona Bahari',
                 date: '2025'
             },
             {
                 id: 'base_6',
-                cat: 'alam',
-                title: 'Bentang Alam Perbukitan & Irigasi Subur',
-                caption: 'Topografi perbukitan alami yang menopang ketahanan pangan dan sumber mata air utama masyarakat.',
-                img: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80',
+                cat: 'bahari',
+                desa: 'Desa Mattiro Bulu',
+                title: 'Bentang Alam Perbukitan & Sumber Air',
+                caption: 'Panorama alam perbukitan asri yang menopang ketahanan pangan dan irigasi persawahan.',
+                img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
                 badge: 'Panorama Alam',
                 date: '2025'
             },
             {
                 id: 'base_7',
                 cat: 'pelayanan',
-                title: 'Pelayanan Adminduk Terpadu di Balai Desa',
-                caption: 'Pemanfaatan sistem informasi desa terpadu untuk pencatatan mutasi penduduk dan verifikasi bansos.',
+                desa: 'Kel. Mala-Mala',
+                title: 'Pelayanan Adminduk Terpadu Desa',
+                caption: 'Pusat layanan administrasi satu pintu dan pencatatan kependudukan digital presisi.',
                 img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
                 badge: 'Layanan Desa',
                 date: '2025'
@@ -3455,8 +3456,9 @@
             {
                 id: 'base_8',
                 cat: 'pelayanan',
-                title: 'Posyandu Terpadu Pencegahan Stunting',
-                caption: 'Pemantauan tumbuh kembang balita dan ibu hamil secara berkala yang terdata langsung pada dashboard desa.',
+                desa: 'Desa Lametuna',
+                title: 'Posyandu Terpadu & Penanganan Stunting',
+                caption: 'Pemeriksaan rutin kesehatan ibu-anak dan pemantauan gizi balita terdata di dashboard desa.',
                 img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
                 badge: 'Kesehatan Warga',
                 date: '2025'
@@ -4286,14 +4288,14 @@
             if (searchQuery !== undefined) activeGaleriSearchQuery = searchQuery.trim().toLowerCase();
             
             const curVillage = currentTargetVillage || 'kamisi';
-            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage };
-            const allPhotos = getCombinedGaleriPhotos(curVillage);
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage, kec: 'Kodeoha' };
+            const allPhotos = [...baseGaleriDatabase];
             
             // Filter kategori
             let filtered = activeGaleriCategory === 'all' 
                 ? allPhotos 
-                : (activeGaleriCategory === 'custom' 
-                    ? allPhotos.filter(p => p.isCustom) 
+                : (activeGaleriCategory === 'bahari' || activeGaleriCategory === 'alam'
+                    ? allPhotos.filter(p => p.cat === 'bahari' || p.cat === 'alam')
                     : allPhotos.filter(p => p.cat === activeGaleriCategory));
                 
             // Filter pencarian
@@ -4301,126 +4303,56 @@
                 filtered = filtered.filter(p => 
                     (p.title && p.title.toLowerCase().includes(activeGaleriSearchQuery)) ||
                     (p.caption && p.caption.toLowerCase().includes(activeGaleriSearchQuery)) ||
+                    (p.desa && p.desa.toLowerCase().includes(activeGaleriSearchQuery)) ||
                     (p.badge && p.badge.toLowerCase().includes(activeGaleriSearchQuery))
                 );
             }
 
-            // Simpan daftar foto aktif untuk navigasi lightbox (Next / Prev)
+            // Set lightbox list to current filtered items
             currentLightboxList = [...filtered];
 
-            updateGaleriCountBadges(allPhotos.length);
-
-            // Empty state bila tidak ada foto
             if (filtered.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full py-16 px-6 text-center bg-gradient-to-b from-slate-50 to-white rounded-3xl border border-dashed border-slate-300">
-                        <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-4xl mb-4 border border-emerald-100 shadow-sm">
+                    <div class="col-span-full py-16 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-2xl mb-2">
                             <i class="bi bi-images"></i>
                         </div>
-                        <h4 class="font-extrabold text-slate-900 text-base sm:text-lg">Belum Ada Dokumentasi Sesuai Kriteria</h4>
-                        <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1.5 leading-relaxed">
-                            Tidak ditemukan foto dengan kata kunci atau kategori yang dipilih. Anda dapat mereset filter atau mengunggah dokumentasi baru untuk ${vData.title}.
-                        </p>
-                        <div class="mt-5 flex items-center justify-center gap-3 flex-wrap">
-                            <button type="button" onclick="resetGaleriFilters()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
-                                <i class="bi bi-arrow-counterclockwise mr-1.5"></i>Reset Filter
-                            </button>
-                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-black transition shadow-sm cursor-pointer flex items-center gap-1.5">
-                                <i class="bi bi-cloud-arrow-up-fill"></i>
-                                <span>+ Unggah Foto Baru</span>
-                            </button>
-                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm">Tidak Ada Foto Ditemukan</h4>
+                        <p class="text-xs text-slate-500 mt-1">Coba kata kunci lain atau pilih filter Semua Foto.</p>
                     </div>
                 `;
                 return;
             }
-                
+
             grid.innerHTML = filtered.map((p, idx) => {
-                const isCustom = Boolean(p.isCustom);
-                const safeTitle = (p.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                const safeCaption = (p.caption || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\\'");
-                const safeDate = (p.date || '2025/2026').replace(/'/g, "\\'");
-
-                // Ikon dan warna badge kategori
-                let catIco = 'bi-camera';
-                let catColorClass = 'bg-slate-900/70 border-white/20 text-white';
-                if (p.cat === 'pembinaan') {
-                    catIco = 'bi-mortarboard-fill';
-                    catColorClass = 'bg-emerald-950/75 border-emerald-400/30 text-emerald-200';
-                } else if (p.cat === 'potensi') {
-                    catIco = 'bi-graph-up-arrow';
-                    catColorClass = 'bg-amber-950/75 border-amber-400/30 text-amber-200';
-                } else if (p.cat === 'alam') {
-                    catIco = 'bi-tree-fill';
-                    catColorClass = 'bg-teal-950/75 border-teal-400/30 text-teal-200';
-                } else if (p.cat === 'pelayanan') {
-                    catIco = 'bi-building-fill-check';
-                    catColorClass = 'bg-indigo-950/75 border-indigo-400/30 text-indigo-200';
-                }
-
+                const desaName = p.desa || vData.title || 'Desa Lapolu';
                 return `
-                <div class="group bg-white rounded-3xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-md' : 'border-slate-200 shadow-sm'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                    <!-- Image Card with Zoom and Overlay -->
-                    <div class="relative overflow-hidden aspect-[16/11] bg-slate-900 cursor-pointer" onclick="viewPhotoByIndex(${idx})">
-                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-108 transition-all duration-700 ease-out opacity-95 group-hover:opacity-100">
-                        
-                        <!-- Top Gradients for Text Legibility -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none"></div>
-
-                        <!-- Top Badges: Category & Date -->
-                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white border border-purple-300/40 shadow-sm' : catColorClass} backdrop-blur-md text-[10px] font-black uppercase tracking-wider border">
-                                <i class="bi ${isCustom ? 'bi-star-fill text-yellow-300' : catIco}"></i>
-                                <span>${isCustom ? 'Unggahan Admin' : p.badge}</span>
-                            </span>
-                            <span class="px-2 py-0.5 rounded-lg bg-black/60 backdrop-blur-md text-slate-200 text-[10px] font-semibold border border-white/10">
-                                ${p.date}
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer" onclick="viewPhotoByIndex(${idx})">
+                    <div class="relative overflow-hidden aspect-video w-full bg-slate-100">
+                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <div class="absolute top-2.5 left-2.5">
+                            <span class="px-2.5 py-1 rounded-lg bg-black/65 backdrop-blur-xs text-white text-[10px] font-bold shadow-xs flex items-center gap-1">
+                                <i class="bi bi-geo-alt-fill text-emerald-400 text-[9px]"></i>
+                                <span>${desaName}</span>
                             </span>
                         </div>
-
-                        <!-- Center Quick Action on Hover -->
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <i class="bi bi-arrows-fullscreen text-base"></i>
-                            </div>
-                        </div>
-
-                        <!-- Bottom Location attribution -->
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] text-white/90 font-medium pointer-events-none">
-                            <span class="truncate flex items-center gap-1">
-                                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
-                                <span>${vData.title}</span>
+                        <div class="absolute top-2.5 right-2.5">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-600/90 backdrop-blur-xs text-white text-[9.5px] font-black uppercase tracking-wide shadow-xs">
+                                ${p.badge}
                             </span>
-                            <span class="text-white/70 text-[9px] uppercase tracking-wider font-bold">BPS Kolut</span>
                         </div>
                     </div>
-
-                    <!-- Card Body -->
-                    <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div class="p-3.5 flex-1 flex flex-col justify-between">
                         <div>
-                            <h4 class="font-black text-slate-900 text-sm sm:text-[15px] group-hover:text-emerald-700 transition leading-snug line-clamp-2">${p.title}</h4>
-                            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.caption}</p>
+                            <h4 class="font-black text-slate-900 text-xs sm:text-sm group-hover:text-emerald-700 transition leading-snug line-clamp-1">${p.title}</h4>
+                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${p.caption || p.desc}</p>
                         </div>
-                        
-                        <!-- Card Footer Action -->
-                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
-                                <i class="bi ${isCustom ? 'bi-person-badge-fill text-purple-600' : 'bi-shield-check text-emerald-600'}"></i>
-                                <span>${isCustom ? 'Admin Desa' : 'Dokumentasi BPS'}</span>
-                            </span>
-                            <div class="flex items-center gap-2">
-                                ${isCustom ? `
-                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
-                                        <i class="bi bi-trash"></i>
-                                        <span class="hidden sm:inline">Hapus</span>
-                                    </button>
-                                ` : ''}
-                                <button type="button" onclick="viewPhotoByIndex(${idx})" class="text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
-                                    <i class="bi bi-arrows-fullscreen text-[11px]"></i>
-                                    <span>Perbesar</span>
-                                </button>
-                            </div>
+                        <div class="pt-2.5 mt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                            <span class="text-slate-400 font-medium">Dokumentasi BPS</span>
+                            <button type="button" onclick="event.stopPropagation(); viewPhotoByIndex(${idx})" class="text-emerald-600 hover:text-emerald-700 font-bold hover:underline flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-arrows-fullscreen text-xs"></i>
+                                <span>Perbesar</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -4430,9 +4362,13 @@
 
         function filterGaleriPhotos(category, btn) {
             document.querySelectorAll('.galeri-filter-btn').forEach(el => {
-                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
-                el.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                el.className = 'galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap';
             });
+            if (btn) {
+                btn.className = 'galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap';
+            }
+            renderGaleriPhotos(category);
+        });
             if (btn) {
                 btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
                 btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
@@ -4454,6 +4390,14 @@
             else renderGaleriPhotos('all', '');
         }
 
+        
+        function openDescanGaleriModal() {
+            openGaleriDesaModal();
+        }
+        function closeDescanGaleriModal() {
+            closeGaleriDesaModal();
+        }
+        
         function openGaleriDesaModal() {
             const modal = document.getElementById('galeriDesaModal');
             if (!modal) return;
@@ -4499,21 +4443,21 @@
             
             const curVillage = currentTargetVillage || 'kamisi';
             const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa ' + curVillage, kec: 'Kodeoha' };
-            const allPhotos = getCombinedGaleriPhotos(curVillage);
+            const allPhotos = [...baseGaleriDatabase];
             
             // Update Header Text on Page
             const titleEl = document.getElementById('pageGaleriTitle');
-            if (titleEl) titleEl.textContent = `Galeri Dokumentasi ${vData.title}`;
+            if (titleEl) titleEl.textContent = `Galeri Dokumentasi & Potensi Desa Cantik`;
             const subEl = document.getElementById('pageGaleriSub');
-            if (subEl) subEl.textContent = `Dokumentasi Resmi Terverifikasi BPS Kolaka Utara • Potensi ${vData.komoditas || 'Unggulan'}, Layanan, & Kegiatan di ${vData.title}`;
+            if (subEl) subEl.textContent = `Dokumentasi pembinaan BPS, potensi komoditas, dan pelayanan 6 desa binaan di wilayah Kecamatan Kodeoha & Tiwu.`;
             const kecBadge = document.getElementById('pageGaleriKecBadge');
-            if (kecBadge) kecBadge.textContent = `Kec. ${vData.kec || 'Kodeoha'}`;
+            if (kecBadge) kecBadge.textContent = `Kec. Kodeoha & Tiwu`;
 
             // Filter kategori
             let filtered = activePageGaleriCategory === 'all' 
                 ? allPhotos 
-                : (activePageGaleriCategory === 'custom' 
-                    ? allPhotos.filter(p => p.isCustom) 
+                : (activePageGaleriCategory === 'bahari' || activePageGaleriCategory === 'alam'
+                    ? allPhotos.filter(p => p.cat === 'bahari' || p.cat === 'alam')
                     : allPhotos.filter(p => p.cat === activePageGaleriCategory));
                 
             // Filter pencarian
@@ -4521,6 +4465,7 @@
                 filtered = filtered.filter(p => 
                     (p.title && p.title.toLowerCase().includes(activePageGaleriSearchQuery)) ||
                     (p.caption && p.caption.toLowerCase().includes(activePageGaleriSearchQuery)) ||
+                    (p.desa && p.desa.toLowerCase().includes(activePageGaleriSearchQuery)) ||
                     (p.badge && p.badge.toLowerCase().includes(activePageGaleriSearchQuery))
                 );
             }
@@ -4538,14 +4483,10 @@
                             <i class="bi bi-images"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 text-base">Belum Ada Dokumentasi Sesuai Kriteria</h4>
-                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Tidak ditemukan foto dengan kata kunci atau kategori ini. Anda dapat mereset filter atau mengunggah dokumentasi baru untuk ${vData.title}.</p>
+                        <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Tidak ditemukan foto dengan kata kunci atau kategori ini. Anda dapat memilih filter Semua Foto.</p>
                         <div class="mt-4 flex items-center justify-center gap-2">
-                            <button type="button" onclick="resetPageGaleriFilters()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                            <button type="button" onclick="resetPageGaleriFilters()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer">
                                 Reset Filter
-                            </button>
-                            <button type="button" onclick="openUploadFotoModal()" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
-                                <i class="bi bi-cloud-arrow-up-fill"></i>
-                                <span>+ Unggah Foto Baru</span>
                             </button>
                         </div>
                     </div>
@@ -4554,82 +4495,34 @@
             }
 
             grid.innerHTML = filtered.map((p, idx) => {
-                const isCustom = Boolean(p.isCustom);
-                const safeTitle = (p.title || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                const safeCaption = (p.caption || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                const safeBadge = (p.badge || 'Dokumentasi').replace(/'/g, "\\'");
-                const safeDate = (p.date || '2025/2026').replace(/'/g, "\\'");
-
-                let catIco = 'bi-camera';
-                let catColorClass = 'bg-slate-900/70 border-white/20 text-white';
-                if (p.cat === 'pembinaan') {
-                    catIco = 'bi-mortarboard-fill';
-                    catColorClass = 'bg-emerald-950/75 border-emerald-400/30 text-emerald-200';
-                } else if (p.cat === 'potensi') {
-                    catIco = 'bi-graph-up-arrow';
-                    catColorClass = 'bg-amber-950/75 border-amber-400/30 text-amber-200';
-                } else if (p.cat === 'alam') {
-                    catIco = 'bi-tree-fill';
-                    catColorClass = 'bg-teal-950/75 border-teal-400/30 text-teal-200';
-                } else if (p.cat === 'pelayanan') {
-                    catIco = 'bi-building-fill-check';
-                    catColorClass = 'bg-indigo-950/75 border-indigo-400/30 text-indigo-200';
-                }
-
+                const desaName = p.desa || vData.title || 'Desa Lapolu';
                 return `
-                <div class="group bg-white rounded-3xl overflow-hidden border ${isCustom ? 'border-purple-300 ring-2 ring-purple-400/20 shadow-md' : 'border-slate-200/90 shadow-2xs'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                    <div class="relative overflow-hidden aspect-[16/11] bg-slate-900 cursor-pointer" onclick="viewPhotoByIndex(${idx})">
-                        <img src="${p.img}" alt="${p.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-108 transition-all duration-700 ease-out opacity-95 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none"></div>
-
-                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${isCustom ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white border border-purple-300/40 shadow-sm' : catColorClass} backdrop-blur-md text-[10px] font-black uppercase tracking-wider border">
-                                <i class="bi ${isCustom ? 'bi-star-fill text-yellow-300' : catIco}"></i>
-                                <span>${isCustom ? 'Unggahan Admin' : p.badge}</span>
-                            </span>
-                            <span class="px-2 py-0.5 rounded-lg bg-black/60 backdrop-blur-md text-slate-200 text-[10px] font-semibold border border-white/10">
-                                ${p.date}
+                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer" onclick="viewPhotoByIndex(${idx})">
+                    <div class="relative overflow-hidden aspect-video w-full bg-slate-100">
+                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <div class="absolute top-2.5 left-2.5">
+                            <span class="px-2.5 py-1 rounded-lg bg-black/65 backdrop-blur-xs text-white text-[10px] font-bold shadow-xs flex items-center gap-1">
+                                <i class="bi bi-geo-alt-fill text-emerald-400 text-[9px]"></i>
+                                <span>${desaName}</span>
                             </span>
                         </div>
-
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div class="w-12 h-12 rounded-full bg-white/90 text-slate-900 flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                                <i class="bi bi-arrows-fullscreen text-base"></i>
-                            </div>
-                        </div>
-
-                        <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] text-white/90 font-medium pointer-events-none">
-                            <span class="truncate flex items-center gap-1">
-                                <i class="bi bi-geo-alt-fill text-emerald-400"></i>
-                                <span>${vData.title}</span>
+                        <div class="absolute top-2.5 right-2.5">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-600/90 backdrop-blur-xs text-white text-[9.5px] font-black uppercase tracking-wide shadow-xs">
+                                ${p.badge}
                             </span>
-                            <span class="text-white/70 text-[9px] uppercase tracking-wider font-bold">BPS Kolut</span>
                         </div>
                     </div>
-
-                    <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+                    <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
-                            <h4 class="font-black text-slate-900 text-sm sm:text-[15px] group-hover:text-emerald-700 transition leading-snug line-clamp-2">${p.title}</h4>
-                            <p class="text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.caption}</p>
+                            <h4 class="font-black text-slate-900 text-xs sm:text-sm group-hover:text-emerald-700 transition leading-snug line-clamp-1">${p.title}</h4>
+                            <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.caption || p.desc}</p>
                         </div>
-                        
-                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
-                                <i class="bi ${isCustom ? 'bi-person-badge-fill text-purple-600' : 'bi-shield-check text-emerald-600'}"></i>
-                                <span>${isCustom ? 'Admin Desa' : 'Dokumentasi BPS'}</span>
-                            </span>
-                            <div class="flex items-center gap-2">
-                                ${isCustom ? `
-                                    <button type="button" onclick="deleteCustomFoto('${p.id}', event)" class="text-rose-500 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Hapus Foto Ini">
-                                        <i class="bi bi-trash"></i>
-                                        <span class="hidden sm:inline">Hapus</span>
-                                    </button>
-                                ` : ''}
-                                <button type="button" onclick="viewPhotoByIndex(${idx})" class="text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer">
-                                    <i class="bi bi-arrows-fullscreen text-[11px]"></i>
-                                    <span>Perbesar</span>
-                                </button>
-                            </div>
+                        <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 text-[11px] font-medium">Dokumentasi BPS</span>
+                            <button type="button" onclick="event.stopPropagation(); viewPhotoByIndex(${idx})" class="text-emerald-600 hover:text-emerald-700 font-bold hover:underline flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-arrows-fullscreen text-xs"></i>
+                                <span>Perbesar</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -4639,9 +4532,13 @@
 
         function filterPageGaleriPhotos(category, btn) {
             document.querySelectorAll('.page-galeri-filter-btn').forEach(el => {
-                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
-                el.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                el.className = 'page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap';
             });
+            if (btn) {
+                btn.className = 'page-galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap';
+            }
+            renderPageGaleriPhotos(category);
+        });
             if (btn) {
                 btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
                 btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border-emerald-700');
@@ -9269,66 +9166,51 @@ function triggerPubDownload() {
     <!-- MODAL GALERI FOTO DESA RESMI & INTERAKTIF                        -->
     <!-- Menampilkan dokumentasi pembinaan, potensi, pencarian & upload  -->
     <!-- ============================================================== -->
-    <div id="galeriDesaModal" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 lg:p-6 animate-in fade-in duration-200">
+    <div id="galeriDesaModal" class="hidden fixed inset-0 z-[9999] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-5 lg:p-6 animate-in fade-in duration-200" style="z-index: 9999;">
         <div class="bg-white rounded-3xl w-full max-w-6xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200/90 ring-1 ring-black/5">
-            <!-- Modal Header: Estetik, Elegan, & Modern -->
-            <div class="p-4 sm:p-5 border-b border-emerald-900/60 bg-gradient-to-r from-slate-950 via-[#0a2f22] to-slate-950 text-white flex items-center justify-between shrink-0 relative overflow-hidden">
-                <!-- Ambient Glow Effect -->
-                <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none"></div>
-
-                <div class="flex items-center gap-3 sm:gap-3.5 relative z-10 min-w-0">
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-teal-500/10 border border-emerald-400/30 text-emerald-300 flex items-center justify-center text-xl shrink-0 shadow-inner">
-                        <i class="bi bi-camera-reels"></i>
+            <!-- Modal Header: Ringkas & Elegan (Bebas dari Navbar Duplikat) -->
+            <div class="bg-gradient-to-r from-emerald-800 via-teal-800 to-[#0b2545] text-white p-5 sm:p-6 flex items-center justify-between shrink-0 shadow-md">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-xl shrink-0 shadow-inner border border-white/15">
+                        <i class="bi bi-images text-emerald-200"></i>
                     </div>
-                    <div class="min-w-0">
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <h3 id="galeriModalTitle" class="text-base sm:text-lg font-black text-white tracking-tight truncate">Galeri Foto Resmi Desa Kamisi</h3>
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-black uppercase tracking-wider flex items-center gap-1 shrink-0">
-                                <i class="bi bi-shield-check text-emerald-400"></i>
-                                <span>Terverifikasi BPS</span>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-base sm:text-lg font-black text-white leading-tight">
+                                Galeri Dokumentasi &amp; Potensi Desa Cantik
+                            </h3>
+                            <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-400/30 text-[10px] font-black uppercase tracking-wider">
+                                Resmi BPS
                             </span>
                         </div>
-                        <p id="galeriModalSub" class="text-xs text-slate-300/90 mt-0.5 line-clamp-1 font-medium">Dokumentasi Terverifikasi Pembinaan Desa Cantik BPS &amp; Potensi Unggulan Wilayah</p>
+                        <p class="text-xs text-emerald-100/85 mt-0.5">
+                            Dokumentasi pembinaan BPS, potensi komoditas, dan pelayanan 6 desa binaan
+                        </p>
                     </div>
                 </div>
-                
-                <div class="flex items-center gap-2 relative z-10 shrink-0">
-                    <!-- Tombol Tambah Foto Baru oleh Admin -->
-                    <button type="button" onclick="openUploadFotoModal()" class="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs shadow-md shadow-emerald-950/40 active:scale-95 transition cursor-pointer">
-                        <i class="bi bi-cloud-arrow-up-fill text-sm"></i>
-                        <span class="hidden sm:inline">+ Unggah Foto Baru</span>
-                        <span class="sm:hidden">+ Unggah</span>
-                    </button>
-                    <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-slate-200 hover:text-white flex items-center justify-center transition cursor-pointer" title="Tutup Galeri">
-                        <i class="bi bi-x-lg text-sm"></i>
-                    </button>
-                </div>
+                <button type="button" onclick="closeGaleriDesaModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center font-bold text-sm transition cursor-pointer shadow-xs active:scale-95" title="Tutup Galeri">
+                    <i class="bi bi-x-lg"></i>
+                </button>
             </div>
 
             <!-- Toolbar Interaktif: Filter Kategori & Pencarian -->
-            <div class="px-4 sm:px-6 py-2.5 border-b border-slate-200 bg-slate-50/95 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+            <div class="px-5 py-3 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
                 <!-- Category Filter Tabs -->
-                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
-                    <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-emerald-700 text-white shadow-sm border border-emerald-700 cursor-pointer whitespace-nowrap">Semua Foto</button>
-                    <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <i class="bi bi-mortarboard-fill text-emerald-600"></i>
-                        <span>Pembinaan BPS</span>
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none" id="galeriModalFilterTabs">
+                    <button type="button" onclick="filterGaleriPhotos('all', this)" class="galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-600 text-white shadow-xs cursor-pointer whitespace-nowrap">
+                        Semua Foto (8)
                     </button>
-                    <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <i class="bi bi-graph-up-arrow text-amber-600"></i>
-                        <span>Potensi &amp; UMKM</span>
+                    <button type="button" onclick="filterGaleriPhotos('pembinaan', this)" class="galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pembinaan BPS
                     </button>
-                    <button type="button" onclick="filterGaleriPhotos('alam', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <i class="bi bi-tree-fill text-teal-600"></i>
-                        <span>Pesona Alam</span>
+                    <button type="button" onclick="filterGaleriPhotos('potensi', this)" class="galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Potensi &amp; Kakao
                     </button>
-                    <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <i class="bi bi-building-fill-check text-indigo-600"></i>
-                        <span>Layanan Desa</span>
+                    <button type="button" onclick="filterGaleriPhotos('bahari', this)" class="galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pesona Bahari &amp; Alam
                     </button>
-                    <button type="button" onclick="filterGaleriPhotos('custom', this)" class="galeri-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer whitespace-nowrap flex items-center gap-1">
-                        <i class="bi bi-star-fill text-amber-500"></i>
-                        <span>Unggahan Admin</span>
+                    <button type="button" onclick="filterGaleriPhotos('pelayanan', this)" class="galeri-filter-btn px-4 py-1.5 rounded-full text-xs font-bold transition bg-white text-slate-600 hover:bg-slate-50 border border-slate-200 cursor-pointer whitespace-nowrap">
+                        Pelayanan Desa
                     </button>
                 </div>
 
@@ -9336,36 +9218,28 @@ function triggerPubDownload() {
                 <div class="flex items-center gap-2 shrink-0">
                     <div class="relative w-full sm:w-60">
                         <i class="bi bi-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari dokumentasi kegiatan..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition">
+                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari foto atau desa..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition">
                     </div>
-                    <span id="galeriCountInfo" class="text-xs font-black text-emerald-800 bg-emerald-100/90 px-3 py-1 rounded-xl border border-emerald-300 whitespace-nowrap hidden sm:inline">
-                        8 Foto Dokumentasi
-                    </span>
                 </div>
             </div>
 
-            <!-- Photo Grid Kontainer Estetik -->
-            <div id="galeriPhotosGrid" class="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 bg-[#f8faf9]">
+            <!-- Photo Grid Kontainer Estetik (8 Kartu Lengkap 16:9 Thumbnail & Badge Desa) -->
+            <div id="galeriPhotosGrid" class="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-slate-50/50">
                 <!-- Dynamically populated via renderGaleriPhotos() -->
             </div>
 
             <!-- Modal Footer -->
-            <div class="p-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0">
                 <span class="flex items-center gap-1.5">
-                    <i class="bi bi-info-circle text-emerald-700"></i>
-                    <span>Klik pada foto atau tombol perbesar untuk melihat gambar resolusi tinggi dengan navigasi galeri.</span>
+                    <i class="bi bi-info-circle text-emerald-600"></i>
+                    <span>Klik pada foto atau tombol Perbesar untuk melihat resolusi penuh (Lightbox).</span>
                 </span>
-                <div class="flex items-center gap-2">
-                    <button type="button" onclick="openUploadFotoModal()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold transition cursor-pointer flex items-center gap-1 text-xs">
-                        <i class="bi bi-cloud-arrow-up-fill"></i>
-                        <span>Unggah Foto</span>
-                    </button>
-                    <button type="button" onclick="closeGaleriDesaModal()" class="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
-                        Tutup
-                    </button>
-                </div>
+                <button type="button" onclick="closeGaleriDesaModal()" class="px-5 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition cursor-pointer">
+                    Tutup
+                </button>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- ============================================================== -->
@@ -9492,7 +9366,7 @@ function triggerPubDownload() {
     <!-- MODAL LIGHTBOX FULLSCREEN ZOOM FOTO DOKUMENTASI                -->
     <!-- Menampilkan foto resolusi penuh dengan navigasi (Next/Prev)    -->
     <!-- ============================================================== -->
-    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-70 bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
+    <div id="galeriLightboxModal" class="hidden fixed inset-0 z-[10000]" style="z-index: 10000;" bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-2 sm:p-6 animate-in fade-in duration-200">
         <div class="relative w-full max-w-5xl bg-slate-900/90 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex flex-col max-h-[96vh]">
             <!-- Lightbox Topbar -->
             <div class="p-3.5 sm:p-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-white shrink-0">
