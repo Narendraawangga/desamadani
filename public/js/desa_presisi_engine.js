@@ -24,7 +24,7 @@ window.PresisiEngine = (function() {
     'ngapa': '#0d9488',       // Teal
     'kodeoha': '#14b8a6',     // Cyan Teal
     'katoi': '#0284c7',       // Ocean Sky Blue
-    'lasusua': '#0D6E5B',     // Signature Deep Emerald
+    'lasusua': '#3B4D3B',     // Signature Deep Emerald
     'lambai': '#84cc16',      // Lime Olive Chartreuse
     'ranteangin': '#8b5cf6',  // Light Violet
     'wawo': '#7c3aed'         // Purple
@@ -1514,7 +1514,7 @@ window.PresisiEngine = (function() {
     const cleanKec = kecNama.replace(/\s+/g, '').toLowerCase();
 
     // In macro view, assign distinct vibrant palette color (matching desapresisi.id reference Image 1)
-    const color = KECAMATAN_PALETTE[cleanKec] || '#0D6E5B';
+    const color = KECAMATAN_PALETTE[cleanKec] || '#3B4D3B';
 
     if (currentKecamatan !== 'ALL') {
       const isTarget = cleanKec === currentKecamatan.replace(/\s+/g, '').toLowerCase();
@@ -2550,7 +2550,7 @@ window.PresisiEngine = (function() {
       const sortedCols = [...activeCols].sort((a, b) => (colTotals[b.col] || 0) - (colTotals[a.col] || 0)).slice(0, 7);
       const c2Labels = sortedCols.map(c => `${c.label} (${(colTotals[c.col] || 0).toLocaleString('id-ID')})`);
       const c2Data = sortedCols.map(c => colTotals[c.col] || 0);
-      const c2Palette = ['#0D6E5B', '#10b981', '#06b6d4', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'];
+      const c2Palette = ['#3B4D3B', '#10b981', '#06b6d4', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6'];
 
       // 3. CHART 3: Top 5 vs Bottom 5 Wilayah (Horizontal Bar)
       let rankingList = [];
@@ -2581,7 +2581,7 @@ window.PresisiEngine = (function() {
         }
       });
       const data3 = combined3.map(i => i.val);
-      const colors3 = combined3.map((i, idx) => idx < topCount ? '#0D6E5B' : '#ea580c');
+      const colors3 = combined3.map((i, idx) => idx < topCount ? '#3B4D3B' : '#ea580c');
 
       // 4. CHART 4: Kolom Sekunder atau Sebaran Pendukung
       const secCol = (activeCols.length > 1 && activeCols[1] !== primCol) ? activeCols[1] : (activeCols[2] || primCol);
@@ -2619,7 +2619,7 @@ window.PresisiEngine = (function() {
             datasets: [{
               label: primCol.label,
               data: data1,
-              backgroundColor: '#0D6E5B',
+              backgroundColor: '#3B4D3B',
               borderRadius: 5
             }]
           },
@@ -2725,7 +2725,7 @@ window.PresisiEngine = (function() {
       }
     });
     const data3 = combined3.map(k => getFeatureMetricValue(k.nama, cat));
-    const colors3 = combined3.map((k, idx) => idx < 5 ? '#0D6E5B' : '#ea580c');
+    const colors3 = combined3.map((k, idx) => idx < 5 ? '#3B4D3B' : '#ea580c');
 
     switch (cat) {
       case 'ekonomi':
@@ -2743,7 +2743,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'IMK (Unit Usaha)',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -2790,7 +2790,7 @@ window.PresisiEngine = (function() {
               labels: ['Bank & BPR (23 Unit)', 'KSP / Koperasi (19 Unit)', 'Desa Penyalur KUR (114 Desa)'],
               datasets: [{
                 data: [kab.ekonomi.bank || 23, kab.ekonomi.ksp || 19, kab.ekonomi.kur || 114],
-                backgroundColor: ['#0D6E5B', '#3b82f6', '#f59e0b']
+                backgroundColor: ['#3B4D3B', '#3b82f6', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2812,7 +2812,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'Keluarga Pelanggan PLN',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -2829,7 +2829,7 @@ window.PresisiEngine = (function() {
               labels: ['PLN (38.077 KK)', 'Non-PLN (3.348 KK)', 'Bukan Listrik (188 KK)'],
               datasets: [{
                 data: [kab.lingkungan.pln, kab.lingkungan.nonPln, kab.lingkungan.bukanListrik],
-                backgroundColor: ['#0D6E5B', '#f59e0b', '#ef4444']
+                backgroundColor: ['#3B4D3B', '#f59e0b', '#ef4444']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2859,7 +2859,7 @@ window.PresisiEngine = (function() {
               labels: ['Bebas Pencemaran (133 Desa)', 'Pengolahan Sampah (24 Desa)', 'Pupuk Organik (58 Desa)'],
               datasets: [{
                 data: [kab.lingkungan.bebasPencemaran, kab.lingkungan.sampah, kab.lingkungan.pupukOrganik],
-                backgroundColor: ['#0D6E5B', '#06b6d4', '#10b981']
+                backgroundColor: ['#3B4D3B', '#06b6d4', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2881,7 +2881,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'Total Sarana Pendidikan (Unit)',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -2898,7 +2898,7 @@ window.PresisiEngine = (function() {
               labels: ['SD / MI (124)', 'SMP / MTs (54)', 'SMA / MA (21)', 'SMK (5)'],
               datasets: [{
                 data: [kab.sosial.totalSDMI, kab.sosial.totalSMPMTs, kab.sosial.totalSMAMA, kab.sosial.smk],
-                backgroundColor: ['#0D6E5B', '#3b82f6', '#f59e0b', '#ec4899']
+                backgroundColor: ['#3B4D3B', '#3b82f6', '#f59e0b', '#ec4899']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2928,7 +2928,7 @@ window.PresisiEngine = (function() {
               labels: ['Puskesmas (16)', 'Pustu (28)', 'Poskesdes (38)', 'Polindes (71)', 'Posyandu (133)'],
               datasets: [{
                 data: [kab.sosial.puskesmasRI + kab.sosial.puskesmasNonRI, kab.sosial.pustu, kab.sosial.poskesdes, kab.sosial.polindes, kab.sosial.posyandu],
-                backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b', '#10b981']
+                backgroundColor: ['#3B4D3B', '#06b6d4', '#3b82f6', '#f59e0b', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2950,7 +2950,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'BUMDes Aktif',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -2967,7 +2967,7 @@ window.PresisiEngine = (function() {
               labels: ['Tanah Kas Desa (112)', 'Tanpa Tanah Kas (21)'],
               datasets: [{
                 data: [kab.keuangan.tanahKas, 133 - kab.keuangan.tanahKas],
-                backgroundColor: ['#0D6E5B', '#f59e0b']
+                backgroundColor: ['#3B4D3B', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -2997,7 +2997,7 @@ window.PresisiEngine = (function() {
               labels: ['Siskeudes Online (133 Desa)', 'Regulasi Perdes Definitif (133 Desa)'],
               datasets: [{
                 data: [133, 133],
-                backgroundColor: ['#0D6E5B', '#3b82f6']
+                backgroundColor: ['#3B4D3B', '#3b82f6']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -3019,7 +3019,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'Luas Wilayah (km²)',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -3036,7 +3036,7 @@ window.PresisiEngine = (function() {
               labels: ['Desa (130)', 'Kelurahan (3)'],
               datasets: [{
                 data: [kab.umum.desa, kab.umum.kelurahan],
-                backgroundColor: ['#0D6E5B', '#f59e0b']
+                backgroundColor: ['#3B4D3B', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -3066,7 +3066,7 @@ window.PresisiEngine = (function() {
               labels: ['Pesisir Laut (60 Desa)', 'Bukan Pesisir (73 Desa)'],
               datasets: [{
                 data: [kab.umum.pesisirLaut, 133 - kab.umum.pesisirLaut],
-                backgroundColor: ['#06b6d4', '#0D6E5B']
+                backgroundColor: ['#06b6d4', '#3B4D3B']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -3088,7 +3088,7 @@ window.PresisiEngine = (function() {
               datasets: [{
                 label: 'Aparatur Pemerintahan Desa (Orang)',
                 data: data1,
-                backgroundColor: '#0D6E5B',
+                backgroundColor: '#3B4D3B',
                 borderRadius: 5
               }]
             },
@@ -3105,7 +3105,7 @@ window.PresisiEngine = (function() {
               labels: ['Kepala Desa/Lurah (130)', 'Sekdes (133)', 'Kadus (439)', 'Kaur/Kasi (509)'],
               datasets: [{
                 data: [kab.pemerintah.kades, kab.pemerintah.sekdes, kab.pemerintah.kadus, kab.pemerintah.kaur],
-                backgroundColor: ['#0D6E5B', '#06b6d4', '#3b82f6', '#f59e0b']
+                backgroundColor: ['#3B4D3B', '#06b6d4', '#3b82f6', '#f59e0b']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -3135,7 +3135,7 @@ window.PresisiEngine = (function() {
               labels: ['Kantor Desa Permanen (128 Desa)', 'Balai Pertemuan Warga (115 Desa)'],
               datasets: [{
                 data: [128, 115],
-                backgroundColor: ['#0D6E5B', '#10b981']
+                backgroundColor: ['#3B4D3B', '#10b981']
               }]
             },
             options: { responsive: true, maintainAspectRatio: false }
@@ -4389,7 +4389,7 @@ window.PresisiEngine = (function() {
             </div>
 
             <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
-              <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${k1.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});" class="px-4 py-2 rounded-xl bg-[#0D6E5B] hover:bg-[#095244] text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
+              <button type="button" onclick="window.PresisiEngine.onKecamatanChange('${k1.nama}'); document.getElementById('sectionPeta')?.scrollIntoView({behavior:'smooth'});" class="px-4 py-2 rounded-xl bg-[#0D6E5B] hover:bg-[#566B53] text-white text-xs font-bold transition shadow-xs cursor-pointer flex items-center gap-1.5">
                 <span>📍 Lihat ${k1.nama} di Peta</span>
               </button>
               ${!isAvg ? `

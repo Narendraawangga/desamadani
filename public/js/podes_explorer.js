@@ -3,7 +3,7 @@
  * Refactored Two-Stage Exploration Flow:
  * - State 1: Direktori 15 Kecamatan (Horizontal Card Carousel + Search Bar + Peeking Card)
  * - State 2: Split-Panel Detail Kecamatan (Sektor Unggulan + Swipeable 7 Sektor PODES + Tabel Desa)
- * Palet: Emerald/Teal (#0D7A5F, #0F766E, Badge #ECFDF5) • 100% Clean Look & Data Fidelity
+ * Palet: Emerald/Teal (#3B4D3B, #3B4D3B, Badge #E6ECE6) • 100% Clean Look & Data Fidelity
  */
 (function() {
   let masterData = null;
@@ -277,12 +277,12 @@
       };
 
       html += `
-        <div class="kec-carousel-card relative w-[290px] sm:w-[330px] h-[185px] sm:h-[210px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 select-none flex flex-col justify-end border border-slate-700/20" 
+                <div class="kec-carousel-card relative w-[290px] sm:w-[330px] h-[185px] sm:h-[210px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 select-none flex flex-col justify-end border border-[#DCE3DD]/20" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
              title="Klik untuk melihat data Kecamatan ${k.nama}">
           
-          <!-- Full-Bleed Atmospheric Landscape Photo (Featured Work Style) -->
+          <!-- Full-Bleed Atmospheric Landscape Photo -->
           <img src="${meta.photo}" 
                alt="Kecamatan ${k.nama}" 
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
@@ -291,17 +291,17 @@
           <!-- Smooth Dark Gradient Overlay at Bottom -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
 
-          <!-- Bottom Typography: Name on left, Subtitle underneath, Number on right -->
+          <!-- Bottom Typography: Cinzel for Name, Plus Jakarta Sans for Population & Index -->
           <div class="relative z-10 p-5 sm:p-5.5 w-full flex items-end justify-between">
             <div>
-              <h3 class="font-editorial text-xl sm:text-2xl font-bold text-white tracking-wider uppercase leading-none group-hover:text-emerald-200 transition-colors drop-shadow-md">
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white tracking-[0.05em] uppercase leading-none group-hover:text-[#E6ECE6] transition-colors drop-shadow-md">
                 ${k.nama}
               </h3>
-              <p class="text-[10px] sm:text-[11px] font-semibold tracking-widest text-slate-300 uppercase mt-1.5 drop-shadow">
+              <p class="font-sans text-[11px] sm:text-xs font-semibold tracking-widest text-slate-300 uppercase mt-1.5 drop-shadow tabular-nums">
                 ${totPop.toLocaleString('id-ID')} PENDUDUK
               </p>
             </div>
-            <div class="text-xs sm:text-sm font-mono font-medium text-slate-300/80 tracking-widest drop-shadow pb-0.5">
+            <div class="font-mono text-xs sm:text-sm font-medium text-slate-300/80 tracking-widest drop-shadow pb-0.5">
               ${indexStr}
             </div>
           </div>
@@ -370,76 +370,76 @@
     const rasioListrik = (totPLN + totNonPLN + totTanpaListrik) > 0 ? ((totPLN / (totPLN + totNonPLN + totTanpaListrik)) * 100).toFixed(2) : 99.55;
 
     summaryContainer.innerHTML = `
-      <div class="bg-white rounded-3xl border border-slate-200/90 shadow-2xs overflow-hidden">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/80">
+      <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-2xs overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE3DD]">
           
-          <!-- 01: Total Penduduk Riil (Emerald Green) -->
-          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+          <!-- 01: Total Penduduk Riil (Mountain Pine) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
-              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">01</div>
-              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+              <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">01</div>
+              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Total Penduduk Riil
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#0D7A5F] tracking-tight tabular-nums">
+              <div class="text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans">
                 ${totJiwa.toLocaleString('id-ID')}
               </div>
-              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+              <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}
               </p>
             </div>
           </div>
 
-          <!-- 02: Rata-Rata Kepadatan (Dark Slate / Navy) -->
-          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+          <!-- 02: Rata-Rata Kepadatan (Deep Pine Charcoal) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
-              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">02</div>
-              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+              <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">02</div>
+              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Rata-Rata Kepadatan
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight tabular-nums">
-                ${avgKepadatan} <span class="text-xs font-semibold text-slate-500">Jiwa/km²</span>
+              <div class="text-3xl sm:text-4xl font-black text-[#1D241E] tracking-tight tabular-nums font-sans">
+                ${avgKepadatan} <span class="text-xs font-semibold text-[#5E6B61]">Jiwa/km²</span>
               </div>
-              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+              <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Cakupan 15 Kecamatan / 133 Desa
               </p>
             </div>
           </div>
 
-          <!-- 03: Rasio Jenis Kelamin (Vibrant Blue) -->
-          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+          <!-- 03: Rasio Jenis Kelamin (Alpine Olive) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
-              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">03</div>
-              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+              <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">03</div>
+              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Rasio Jenis Kelamin
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#2563EB] tracking-tight tabular-nums">
+              <div class="text-3xl sm:text-4xl font-black text-[#566B53] tracking-tight tabular-nums font-sans">
                 ${sexRatio}
               </div>
-              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+              <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Laki-laki per 100 Perempuan
               </p>
             </div>
           </div>
 
-          <!-- 04: Sentra & IMK Produktif (Amber / Orange) -->
-          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+          <!-- 04: Sentra & IMK Produktif (Mountain Pine) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
-              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">04</div>
-              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+              <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">04</div>
+              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Sentra & IMK Produktif
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#D97706] tracking-tight tabular-nums">
+              <div class="text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans">
                 ${totIMK.toLocaleString('id-ID')}
               </div>
-              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+              <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Listrik PLN: ${rasioListrik}%
               </p>
             </div>
@@ -517,13 +517,13 @@
         <div class="h-full flex flex-col justify-between p-6 sm:p-8">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 text-[#0D7A5F] text-xs font-bold transition-all">
+              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6ECE6] hover:bg-[#E6ECE6] text-[#3B4D3B] text-xs font-bold transition-all">
                 ← Semua Kecamatan
               </button>
               <span class="text-[10px] font-mono font-bold text-slate-400">KODE: ${k.kode || '-'}</span>
             </div>
 
-            <h2 class="text-3xl sm:text-4xl font-black text-[#152e4d] tracking-tight">
+            <h2 class="text-3xl sm:text-4xl font-black text-[#1D241E] tracking-tight">
               KECAMATAN ${k.nama.toUpperCase()}
             </h2>
             <p class="text-slate-500 text-xs sm:text-sm mt-0.5">
@@ -532,20 +532,20 @@
           </div>
 
           <!-- Card Sektor Unggulan Statis -->
-          <div class="mt-6 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/50 p-5 sm:p-6 border border-emerald-200/90 shadow-xs space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-emerald-100">
+          <div class="mt-6 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/50 p-5 sm:p-6 border border-[#DCE3DD]/90 shadow-xs space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-[#DCE3DD]">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#0D7A5F]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B]"></span>
                 <h4 class="font-bold text-sm uppercase tracking-wider text-slate-800">Sektor Unggulan Wilayah</h4>
               </div>
-              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-[#0D7A5F] border border-emerald-200">
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] border border-[#DCE3DD]">
                 PODES 2025
               </span>
             </div>
 
             <!-- Komoditas Utama -->
             <div class="flex items-start gap-3.5 bg-white rounded-xl p-3.5 border border-slate-100 shadow-2xs">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg shrink-0">
+              <div class="w-10 h-10 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-lg shrink-0">
                 🌱
               </div>
               <div class="flex-1">
@@ -565,7 +565,7 @@
 
               <div class="bg-white rounded-xl p-3 border border-slate-100">
                 <div class="text-[10px] font-bold text-slate-400 uppercase">Desa Unggulan</div>
-                <div class="text-lg font-black text-[#0D7A5F] mt-0.5">${prodInfo.count} Desa</div>
+                <div class="text-lg font-black text-[#3B4D3B] mt-0.5">${prodInfo.count} Desa</div>
                 <div class="text-[10px] text-slate-500">Ada Produk Khas</div>
               </div>
 
@@ -608,7 +608,7 @@
       const isActive = idx === activeSectorIndex;
       return `
         <button onclick="window.setSectorSlide(${idx})" 
-                class="w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#0D7A5F] scale-125' : 'bg-slate-300 hover:bg-slate-400'}" 
+                class="w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#3B4D3B] scale-125 shadow-xs' : 'bg-[#8A9B86]/50 hover:bg-[#8A9B86]'}" 
                 title="${idx + 1}. ${s.name}">
         </button>
       `;
@@ -638,12 +638,12 @@
               <span class="text-[11px] text-slate-500">Sex Ratio: ${sexRatio}</span>
             </div>
           </div>
-          <div class="bg-emerald-50/50 rounded-xl p-3.5 border border-emerald-100 flex items-center justify-between text-xs">
+          <div class="bg-[#E6ECE6]/50 rounded-xl p-3.5 border border-[#DCE3DD] flex items-center justify-between text-xs">
             <div>
               <span class="text-[10px] font-bold text-slate-500 uppercase block">Rata-Rata Kepadatan</span>
-              <span class="text-lg font-black text-[#0D7A5F]">${avgKepadatan} Jiwa / km²</span>
+              <span class="text-lg font-black text-[#3B4D3B]">${avgKepadatan} Jiwa / km²</span>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-white border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+            <span class="px-2.5 py-1 rounded-full bg-white border border-[#DCE3DD] text-[#3B4D3B] text-[11px] font-bold">
               ${desaList.length} Desa/Kel
             </span>
           </div>
@@ -662,7 +662,7 @@
         <div class="space-y-3 text-xs">
           <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100">
             <span class="font-bold text-slate-700">Total Fasilitas Sekolah</span>
-            <span class="font-black text-base text-[#0D7A5F]">${totalSekolah} Unit</span>
+            <span class="font-black text-base text-[#3B4D3B]">${totalSekolah} Unit</span>
           </div>
           <div class="grid grid-cols-3 gap-2.5 text-center">
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
@@ -715,7 +715,7 @@
           <div class="grid grid-cols-3 gap-2.5 text-center">
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
               <span class="text-[10px] text-slate-400 block font-bold">Posyandu Aktif</span>
-              <span class="text-base font-extrabold text-emerald-700">${totPosyandu}</span>
+              <span class="text-base font-extrabold text-[#3B4D3B]">${totPosyandu}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
               <span class="text-[10px] text-slate-400 block font-bold">Posbindu</span>
@@ -768,7 +768,7 @@
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
               <span class="text-[10px] text-slate-400 block font-bold">Akses Kredit KUR</span>
-              <span class="text-xs font-extrabold text-emerald-600">Mayoritas Ada</span>
+              <span class="text-xs font-extrabold text-[#566B53]">Mayoritas Ada</span>
             </div>
           </div>
         </div>
@@ -784,10 +784,10 @@
       sectorContentHtml = `
         <div class="space-y-3 text-xs">
           <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
-              <span class="text-[10px] font-bold text-emerald-800 uppercase block">Pelanggan Listrik PLN</span>
-              <span class="text-lg font-black text-emerald-700">${totPLN.toLocaleString('id-ID')} KK</span>
-              <span class="text-[10px] text-emerald-600 font-semibold">Rasio: ${rasioPLN}%</span>
+            <div class="bg-[#E6ECE6]/70 p-3 rounded-xl border border-[#DCE3DD]">
+              <span class="text-[10px] font-bold text-[#3B4D3B] uppercase block">Pelanggan Listrik PLN</span>
+              <span class="text-lg font-black text-[#3B4D3B]">${totPLN.toLocaleString('id-ID')} KK</span>
+              <span class="text-[10px] text-[#566B53] font-semibold">Rasio: ${rasioPLN}%</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
               <span class="text-[10px] font-bold text-slate-400 uppercase block">Non-PLN / Mandiri</span>
@@ -800,7 +800,7 @@
               <span class="text-[10px] text-slate-400 block font-bold">Kualitas Lingkungan Hidup</span>
               <span class="font-extrabold text-slate-800">${bebasCemarDesa} dari ${desaList.length} Desa Bebas Pencemaran</span>
             </div>
-            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Terjaga</span>
+            <span class="px-2 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-[10px] font-bold">Terjaga</span>
           </div>
         </div>
       `;
@@ -859,7 +859,7 @@
             </div>
             <div class="bg-white p-3 rounded-xl border border-slate-100">
               <span class="text-[10px] text-slate-400 block font-bold">Kades D-IV / S1+</span>
-              <span class="text-base font-extrabold text-[#0D7A5F]">${kadesS1} Kades</span>
+              <span class="text-base font-extrabold text-[#3B4D3B]">${kadesS1} Kades</span>
             </div>
           </div>
         </div>
@@ -872,7 +872,7 @@
         <div>
           <div class="flex items-center justify-between gap-2 mb-3">
             <div class="flex items-center gap-2">
-              <h4 class="font-extrabold text-lg sm:text-xl text-[#152e4d] tracking-tight">Sektor Lainnya</h4>
+              <h4 class="font-extrabold text-lg sm:text-xl text-[#1D241E] tracking-tight">Sektor Lainnya</h4>
               <span class="text-xs text-slate-400 font-semibold">(${activeSectorIndex + 1}/7)</span>
             </div>
             
@@ -886,7 +886,7 @@
           <div id="swipeableSectorCard" class="mt-4 rounded-2xl bg-white p-5 sm:p-6 border border-slate-200/90 shadow-xs relative transition-all duration-200">
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
               <div class="flex items-center gap-2.5">
-                <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-base">
+                <span class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">
                   ${sec.icon}
                 </span>
                 <span class="font-black text-sm text-slate-800">${sec.name}</span>
@@ -894,10 +894,10 @@
 
               <!-- Quick Next / Prev Arrows -->
               <div class="flex items-center gap-1">
-                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-[#0D7A5F] flex items-center justify-center text-xs font-bold transition-colors">
+                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-[#E6ECE6] text-slate-600 hover:text-[#3B4D3B] flex items-center justify-center text-xs font-bold transition-colors">
                   ‹
                 </button>
-                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-[#0D7A5F] flex items-center justify-center text-xs font-bold transition-colors">
+                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-[#E6ECE6] text-slate-600 hover:text-[#3B4D3B] flex items-center justify-center text-xs font-bold transition-colors">
                   ›
                 </button>
               </div>
@@ -912,7 +912,7 @@
         <div class="mt-6 pt-4 border-t border-slate-100">
           <div class="flex flex-wrap gap-1.5">
             ${SECTORS.map((s, idx) => `
-              <button onclick="window.setSectorSlide(${idx})" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${idx === activeSectorIndex ? 'bg-[#0D7A5F] text-white shadow-2xs' : 'bg-slate-50 hover:bg-slate-100 text-slate-600'}">
+              <button onclick="window.setSectorSlide(${idx})" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-2xs' : 'bg-slate-50 hover:bg-slate-100 text-slate-600'}">
                 ${s.icon} ${s.name}
               </button>
             `).join('')}
@@ -956,10 +956,10 @@
     tabBtns.forEach(btn => {
       const t = btn.getAttribute('data-tab');
       if (t === tab) {
-        btn.classList.add('bg-[#0D7A5F]', 'text-white', 'shadow-2xs');
+        btn.classList.add('bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
         btn.classList.remove('bg-slate-100', 'text-slate-600');
       } else {
-        btn.classList.remove('bg-[#0D7A5F]', 'text-white', 'shadow-2xs');
+        btn.classList.remove('bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
         btn.classList.add('bg-slate-100', 'text-slate-600');
       }
     });
@@ -1000,13 +1000,13 @@
         const tot = getDesaPop(d);
         const kep = parseKepadatan(d.demografi.kepadatan_km2);
         return `
-          <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+          <tr class="border-b border-slate-100 hover:bg-[#E6ECE6]/40 transition-colors">
             <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
             <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.status === 'Kelurahan' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">${d.status}</span></td>
             <td class="py-3 px-3 text-right font-black text-slate-900 tabular-nums">${tot.toLocaleString('id-ID')}</td>
             <td class="py-3 px-3 text-right font-medium text-slate-600 tabular-nums">${(d.demografi.penduduk_l || 0).toLocaleString('id-ID')}</td>
             <td class="py-3 px-3 text-right font-medium text-slate-600 tabular-nums">${(d.demografi.penduduk_p || 0).toLocaleString('id-ID')}</td>
-            <td class="py-3 px-3 text-right font-semibold text-[#0D7A5F] tabular-nums">${kep.toLocaleString('id-ID')}</td>
+            <td class="py-3 px-3 text-right font-semibold text-[#3B4D3B] tabular-nums">${kep.toLocaleString('id-ID')}</td>
             <td class="py-3 px-3 text-right font-semibold text-slate-700 tabular-nums">${d.demografi.sex_ratio || '-'}</td>
           </tr>
         `;
@@ -1021,7 +1021,7 @@
         <th class="py-3 px-3 text-center font-bold text-slate-700">BUMDes</th>
       `;
       rowsHtml = villages.map(d => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+        <tr class="border-b border-slate-100 hover:bg-[#E6ECE6]/40 transition-colors">
           <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
           <td class="py-3 px-3 text-slate-700 font-medium">${d.ekonomi.komoditas || '-'}</td>
           <td class="py-3 px-3 text-right font-black text-amber-600 tabular-nums">${d.ekonomi.imk || 0}</td>
@@ -1040,12 +1040,12 @@
         <th class="py-3 px-3 text-center font-bold text-slate-700">Aparat Desa</th>
       `;
       rowsHtml = villages.map(d => `
-        <tr class="border-b border-slate-100 hover:bg-emerald-50/40 transition-colors">
+        <tr class="border-b border-slate-100 hover:bg-[#E6ECE6]/40 transition-colors">
           <td class="py-3 px-4 font-bold text-slate-900">${d.nama}</td>
           <td class="py-3 px-3 text-right font-medium text-slate-700">${d.pendidikan.total_sekolah || 0}</td>
           <td class="py-3 px-3 text-right font-medium text-slate-700">${d.kesehatan.total_faskes || 0}</td>
-          <td class="py-3 px-3 text-right font-bold text-emerald-700 tabular-nums">${(d.lingkungan.pln_kk || 0).toLocaleString('id-ID')}</td>
-          <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.lingkungan.bebas_pencemaran ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">${d.lingkungan.bebas_pencemaran ? 'Bebas' : 'Tercemar'}</span></td>
+          <td class="py-3 px-3 text-right font-bold text-[#3B4D3B] tabular-nums">${(d.lingkungan.pln_kk || 0).toLocaleString('id-ID')}</td>
+          <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${d.lingkungan.bebas_pencemaran ? 'bg-[#E6ECE6] text-[#3B4D3B]' : 'bg-red-100 text-red-800'}">${d.lingkungan.bebas_pencemaran ? 'Bebas' : 'Tercemar'}</span></td>
           <td class="py-3 px-3 text-center font-medium">${d.pemerintahan.total_aparat || 0} Org</td>
         </tr>
       `).join('');
