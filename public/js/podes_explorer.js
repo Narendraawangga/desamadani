@@ -99,13 +99,13 @@
   };
 
   const SECTORS = [
-    { id: 'demografi', name: 'Kependudukan', icon: '👥' },
-    { id: 'pendidikan', name: 'Pendidikan', icon: '🎓' },
-    { id: 'kesehatan', name: 'Kesehatan', icon: '🏥' },
-    { id: 'ekonomi', name: 'Ekonomi & Industri', icon: '🏭' },
-    { id: 'lingkungan', name: 'Kelistrikan & Lingkungan', icon: '⚡' },
-    { id: 'keuangan', name: 'Keuangan & BUMDes', icon: '💼' },
-    { id: 'pemerintahan', name: 'Pemerintahan Desa', icon: '🏛️' }
+    { id: 'demografi', name: 'Kependudukan', icon: 'bi-people-fill' },
+    { id: 'pendidikan', name: 'Pendidikan', icon: 'bi-mortarboard-fill' },
+    { id: 'kesehatan', name: 'Kesehatan', icon: 'bi-hospital-fill' },
+    { id: 'ekonomi', name: 'Ekonomi & Industri', icon: 'bi-buildings-fill' },
+    { id: 'lingkungan', name: 'Kelistrikan & Lingkungan', icon: 'bi-lightning-charge-fill' },
+    { id: 'keuangan', name: 'Keuangan & BUMDes', icon: 'bi-wallet2' },
+    { id: 'pemerintahan', name: 'Pemerintahan Desa', icon: 'bi-shield-check' }
   ];
 
   // Helper: Clean parsing of population density (handles comma, spaces, nulls)
@@ -126,6 +126,20 @@
   }
 
   // Helper: Get dominant commodity of a village list
+    // Helper: Get Bootstrap icon for commodity
+  function getCommodityIconClass(comm) {
+    if (!comm) return 'bi-flower2';
+    const c = comm.toLowerCase();
+    if (c.includes('kakao') || c.includes('coklat')) return 'bi-tree-fill';
+    if (c.includes('cengkeh')) return 'bi-flower1';
+    if (c.includes('nilam')) return 'bi-droplet-fill';
+    if (c.includes('lada')) return 'bi-fire';
+    if (c.includes('padi') || c.includes('beras') || c.includes('sawah')) return 'bi-sun-fill';
+    if (c.includes('ikan') || c.includes('bahari') || c.includes('laut') || c.includes('pantai')) return 'bi-water';
+    if (c.includes('kelapa') || c.includes('sawit')) return 'bi-tree';
+    return 'bi-flower2';
+  }
+
   function getDominantCommodity(desaList) {
     if (!desaList || !desaList.length) return 'Pertanian / Perkebunan';
     const counts = {};
@@ -510,78 +524,97 @@
     const totIMK = desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
     const totBumdes = desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
 
-    // 1. Render Left Panel (Sektor Unggulan)
+    // 1. Render Left Panel (Sektor Unggulan) - Polished SkillUI Layout
     const leftPanel = document.getElementById('kecDetailLeftPanel');
     if (leftPanel) {
+      const commIconClass = getCommodityIconClass(dominantComm);
+
       leftPanel.innerHTML = `
         <div class="h-full flex flex-col justify-between p-6 sm:p-8">
           <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6ECE6] hover:bg-[#E6ECE6] text-[#3B4D3B] text-xs font-bold transition-all">
-                ← Semua Kecamatan
+            <!-- Top Controls: Back Button & Regional Code -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6ECE6] hover:bg-[#DCE3DD] text-[#3B4D3B] text-xs font-bold transition-all shadow-2xs font-sans cursor-pointer group">
+                <i class="bi bi-arrow-left transition-transform group-hover:-translate-x-0.5"></i>
+                <span>Semua Kecamatan</span>
               </button>
-              <span class="text-[10px] font-mono font-bold text-slate-400">KODE: ${k.kode || '-'}</span>
-            </div>
-
-            <h2 class="text-3xl sm:text-4xl font-black text-[#1D241E] tracking-tight">
-              KECAMATAN ${k.nama.toUpperCase()}
-            </h2>
-            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">
-              Wilayah Administratif • Terdiri dari <strong class="text-slate-800">${desaList.length} Desa & Kelurahan</strong>
-            </p>
-          </div>
-
-          <!-- Card Sektor Unggulan Statis -->
-          <div class="mt-6 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/50 p-5 sm:p-6 border border-[#DCE3DD]/90 shadow-xs space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-[#DCE3DD]">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B]"></span>
-                <h4 class="font-bold text-sm uppercase tracking-wider text-slate-800">Sektor Unggulan Wilayah</h4>
-              </div>
-              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] border border-[#DCE3DD]">
-                PODES 2025
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 border border-[#DCE3DD] font-mono text-[11px] font-semibold text-[#5E6B61]">
+                <i class="bi bi-geo-alt-fill text-[#3B4D3B]"></i>
+                <span>KODE: ${k.kode || '-'}</span>
               </span>
             </div>
 
-            <!-- Komoditas Utama -->
-            <div class="flex items-start gap-3.5 bg-white rounded-xl p-3.5 border border-slate-100 shadow-2xs">
-              <div class="w-10 h-10 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-lg shrink-0">
-                🌱
+            <!-- Big Kecamatan Heading -->
+            <h2 class="font-cinzel text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#1D241E] tracking-[0.05em] uppercase leading-tight">
+              ${k.nama}
+            </h2>
+            <div class="font-sans text-xs sm:text-sm text-[#5E6B61] mt-1 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#3B4D3B]"></span>
+              <span>Wilayah Administratif • Terdiri dari <strong class="text-[#1D241E] font-extrabold">${desaList.length} Desa & Kelurahan</strong></span>
+            </div>
+          </div>
+
+          <!-- Card Sektor Unggulan Statis -->
+          <div class="mt-6 rounded-2xl bg-gradient-to-br from-[#E6ECE6]/40 via-white to-slate-50 p-5 sm:p-6 border border-[#DCE3DD] shadow-xs space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-[#DCE3DD]">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B]"></span>
+                <h4 class="font-cormorant font-bold text-lg uppercase tracking-wider text-[#1D241E]">Sektor Unggulan Wilayah</h4>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] border border-[#DCE3DD] font-sans">
+                <i class="bi bi-award-fill text-amber-600"></i>
+                <span>PODES 2025</span>
+              </span>
+            </div>
+
+            <!-- Komoditas Utama Box -->
+            <div class="flex items-center gap-4 bg-white rounded-xl p-4 border border-[#DCE3DD] shadow-2xs">
+              <div class="w-12 h-12 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center text-xl shrink-0 border border-[#DCE3DD]/80 shadow-2xs">
+                <i class="bi ${commIconClass}"></i>
               </div>
               <div class="flex-1">
-                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Komoditas Utama Dominan</div>
-                <div class="text-base sm:text-lg font-black text-slate-900 mt-0.5">${dominantComm}</div>
-                <div class="text-[11px] text-slate-500 mt-0.5">Basis perkebunan rakyat & agribisnis utama kecamatan.</div>
+                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider font-sans">Komoditas Utama Dominan</div>
+                <div class="text-xl sm:text-2xl font-bold text-[#1D241E] tracking-tight font-cinzel mt-0.5">${dominantComm}</div>
+                <div class="text-xs text-[#5E6B61] mt-0.5 font-sans">Basis perkebunan rakyat & agribisnis utama kecamatan.</div>
               </div>
             </div>
 
             <!-- Grid 3 Metrik Sektor Unggulan -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-              <div class="bg-white rounded-xl p-3 border border-slate-100">
-                <div class="text-[10px] font-bold text-slate-400 uppercase">Unit IMK</div>
-                <div class="text-lg font-black text-amber-600 mt-0.5">${totIMK.toLocaleString('id-ID')}</div>
-                <div class="text-[10px] text-slate-500">Usaha Mikro/Kecil</div>
+              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
+                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
+                  <i class="bi bi-shop text-[#3B4D3B]"></i>
+                  <span>Unit IMK</span>
+                </div>
+                <div class="text-2xl font-black text-[#3B4D3B] mt-1 tabular-nums font-sans">${totIMK.toLocaleString('id-ID')}</div>
+                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Usaha Mikro/Kecil</div>
               </div>
 
-              <div class="bg-white rounded-xl p-3 border border-slate-100">
-                <div class="text-[10px] font-bold text-slate-400 uppercase">Desa Unggulan</div>
-                <div class="text-lg font-black text-[#3B4D3B] mt-0.5">${prodInfo.count} Desa</div>
-                <div class="text-[10px] text-slate-500">Ada Produk Khas</div>
+              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
+                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
+                  <i class="bi bi-star-fill text-amber-500"></i>
+                  <span>Desa Unggulan</span>
+                </div>
+                <div class="text-2xl font-black text-[#1D241E] mt-1 tabular-nums font-sans">${prodInfo.count} Desa</div>
+                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Ada Produk Khas</div>
               </div>
 
-              <div class="bg-white rounded-xl p-3 border border-slate-100">
-                <div class="text-[10px] font-bold text-slate-400 uppercase">BUMDes Aktif</div>
-                <div class="text-lg font-black text-indigo-700 mt-0.5">${totBumdes} Unit</div>
-                <div class="text-[10px] text-slate-500">Kemandirian Desa</div>
+              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
+                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
+                  <i class="bi bi-briefcase-fill text-[#566B53]"></i>
+                  <span>BUMDes Aktif</span>
+                </div>
+                <div class="text-2xl font-black text-[#566B53] mt-1 tabular-nums font-sans">${totBumdes} Unit</div>
+                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Kemandirian Desa</div>
               </div>
             </div>
 
             <!-- Chips Produk Unggulan -->
             ${prodInfo.products.length ? `
               <div class="pt-2 text-xs">
-                <span class="text-[10px] font-bold text-slate-400 uppercase block mb-1.5">Contoh Produk Unggulan:</span>
+                <span class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider block mb-1.5 font-sans">Produk Unggulan Terdata:</span>
                 <div class="flex flex-wrap gap-1.5">
-                  ${prodInfo.products.map(p => `<span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold text-[11px] shadow-2xs">✨ ${p}</span>`).join('')}
+                  ${prodInfo.products.map(p => `<span class="px-2.5 py-1 rounded-lg bg-white border border-[#DCE3DD] text-[#1D241E] font-semibold text-[11px] shadow-2xs inline-flex items-center gap-1 font-sans"><i class="bi bi-patch-check-fill text-[#3B4D3B]"></i><span>${p}</span></span>`).join('')}
                 </div>
               </div>
             ` : ''}
@@ -628,19 +661,19 @@
         <div class="space-y-4">
           <div class="grid grid-cols-2 gap-3 text-xs">
             <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
-              <span class="text-slate-400 text-[10px] font-bold uppercase block">Total Penduduk</span>
+              <span class="text-[#5E6B61] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-people-fill text-[#3B4D3B]"></i><span>Total Penduduk</span></span>
               <span class="text-xl font-black text-slate-900 mt-1 block">${totPop.toLocaleString('id-ID')} Jiwa</span>
               <span class="text-[11px] text-slate-500">Laki-laki: ${totL.toLocaleString('id-ID')}</span>
             </div>
             <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
-              <span class="text-slate-400 text-[10px] font-bold uppercase block">Perempuan</span>
+              <span class="text-[#5E6B61] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-gender-female text-rose-600"></i><span>Perempuan</span></span>
               <span class="text-xl font-black text-slate-900 mt-1 block">${totP.toLocaleString('id-ID')} Jiwa</span>
               <span class="text-[11px] text-slate-500">Sex Ratio: ${sexRatio}</span>
             </div>
           </div>
           <div class="bg-[#E6ECE6]/50 rounded-xl p-3.5 border border-[#DCE3DD] flex items-center justify-between text-xs">
             <div>
-              <span class="text-[10px] font-bold text-slate-500 uppercase block">Rata-Rata Kepadatan</span>
+              <span class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-aspect-ratio text-[#3B4D3B]"></i><span>Rata-Rata Kepadatan</span></span>
               <span class="text-lg font-black text-[#3B4D3B]">${avgKepadatan} Jiwa / km²</span>
             </div>
             <span class="px-2.5 py-1 rounded-full bg-white border border-[#DCE3DD] text-[#3B4D3B] text-[11px] font-bold">
@@ -661,32 +694,32 @@
       sectorContentHtml = `
         <div class="space-y-3 text-xs">
           <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-            <span class="font-bold text-slate-700">Total Fasilitas Sekolah</span>
+            <span class="font-bold text-[#1D241E] flex items-center gap-1.5 font-sans"><i class="bi bi-mortarboard-fill text-[#3B4D3B]"></i><span>Total Fasilitas Sekolah</span></span>
             <span class="font-black text-base text-[#3B4D3B]">${totalSekolah} Unit</span>
           </div>
           <div class="grid grid-cols-3 gap-2.5 text-center">
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">TK / PAUD</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-backpack text-slate-400 block mb-0.5"></i>TK / PAUD</span>
               <span class="text-base font-extrabold text-slate-800">${totTK}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">SD / MI</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-book text-slate-400 block mb-0.5"></i>SD / MI</span>
               <span class="text-base font-extrabold text-slate-800">${totSD}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">SMP / MTs</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-journal-text text-slate-400 block mb-0.5"></i>SMP / MTs</span>
               <span class="text-base font-extrabold text-slate-800">${totSMP}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">SMA / MA</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-mortarboard text-slate-400 block mb-0.5"></i>SMA / MA</span>
               <span class="text-base font-extrabold text-slate-800">${totSMA}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">SMK</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-tools text-slate-400 block mb-0.5"></i>SMK</span>
               <span class="text-base font-extrabold text-slate-800">${totSMK}</span>
             </div>
             <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Perguruan Tinggi</span>
+              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-bank text-slate-400 block mb-0.5"></i>Perguruan Tinggi</span>
               <span class="text-base font-extrabold text-slate-800">${totPT}</span>
             </div>
           </div>

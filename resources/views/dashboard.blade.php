@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -683,7 +684,7 @@
                         <div class="relative w-full max-w-md">
                             <input type="text" id="kecamatanPillSearch" placeholder="Cari kecamatan atau nama desa..." class="w-full bg-white border border-slate-300 rounded-full pl-5 pr-12 py-3 text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] focus:border-transparent shadow-xs transition-all">
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <i class="bi bi-search text-[#5E6B61]"></i>
                             </div>
                         </div>
 
@@ -694,12 +695,8 @@
                                 <span>15 Kecamatan</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri">
-                                    ‹
-                                </button>
-                                <button onclick="window.scrollKecCarousel(1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kanan">
-                                    ›
-                                </button>
+                                <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-[#DCE3DD] hover:bg-[#E6ECE6] text-[#1D241E] hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri"><i class="bi bi-chevron-left"></i></button>
+                                <button onclick="window.scrollKecCarousel(1)" class="w-9 h-9 rounded-full bg-white border border-[#DCE3DD] hover:bg-[#E6ECE6] text-[#1D241E] hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kanan"><i class="bi bi-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -711,7 +708,7 @@
                         </div>
                         
                         <div id="carouselNoResults" class="hidden py-12 text-center bg-white rounded-3xl border border-slate-200">
-                            <span class="text-3xl">🔍</span>
+                            <span class="text-3xl"><i class="bi bi-search"></i></span>
                             <p class="text-sm font-bold text-slate-700 mt-2">Kecamatan atau desa tidak ditemukan</p>
                             <p class="text-xs text-slate-400">Silakan periksa ejaan nama kecamatan atau desa yang dicari.</p>
                         </div>
@@ -744,7 +741,7 @@
                     
                     <!-- Split-Panel Dua Kolom Simetris (50:50 Desktop, Rounded-3xl, Border #DCE3DD) -->
                     <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-sm overflow-hidden">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#DCE3DD]">
                             <!-- Panel Kiri (Statis: Sektor Unggulan) -->
                             <div id="kecDetailLeftPanel" class="w-full h-full">
                                 <!-- Injected by podes_explorer.js -->
@@ -780,13 +777,13 @@
                         <!-- Table Tab Selector -->
                         <div class="flex flex-wrap gap-1.5">
                             <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-[#3B4D3B] text-white shadow-2xs">
-                                👥 Kependudukan & Demografi
+                                <i class="bi bi-people-fill"></i> Kependudukan & Demografi
                             </button>
                             <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
-                                🏭 Ekonomi, Komoditas & IMK
+                                <i class="bi bi-buildings-fill"></i> Ekonomi, Komoditas & IMK
                             </button>
                             <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
-                                🏛️ Sekolah, Faskes & Lingkungan
+                                <i class="bi bi-shield-check"></i> Sekolah, Faskes & Lingkungan
                             </button>
                         </div>
 
@@ -820,7 +817,7 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-5">
                     <div>
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#3B4D3B] text-xs font-bold mb-2">
-                            <span>🗺️ WEBGIS TEMATIK PODES 2025</span>
+                            <span><i class="bi bi-map-fill"></i> WEBGIS TEMATIK PODES 2025</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Peta Tematik Interaktif 15 Kecamatan</h2>
                         <p class="text-slate-600 text-sm mt-1">Visualisasi 6 lapisan indikator spasial riil dan direktori desa/kelurahan konstituen.</p>
@@ -836,22 +833,22 @@
                 <div class="bg-white rounded-2xl p-3 border border-slate-200/90 shadow-xs flex flex-wrap gap-2 items-center">
                     <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider px-2">Pilih Lapisan:</span>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('jiwa')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        👥 Jumlah Penduduk
+                        <i class="bi bi-people-fill"></i> Jumlah Penduduk
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('pln')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
                         ⚡ Rasio Elektrifikasi PLN
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('imk')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-[#3B4D3B] text-white border border-emerald-700 shadow-xs">
-                        🏭 Sentra IMK (3.622 Unit)
+                        <i class="bi bi-buildings-fill"></i> Sentra IMK (3.622 Unit)
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('faskes')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        🏥 Faskes & Posyandu
+                        <i class="bi bi-hospital-fill"></i> Faskes & Posyandu
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('sid')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        💻 SID & Sistem Informasi
+                        <i class="bi bi-laptop"></i> SID & Sistem Informasi
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('bumdes')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        💼 Kemandirian BUMDes
+                        <i class="bi bi-wallet2"></i> Kemandirian BUMDes
                     </button>
                 </div>
 
@@ -1027,7 +1024,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1045,7 +1042,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1063,7 +1060,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1081,7 +1078,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1098,21 +1095,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 1 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 1.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, >= 55 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
@@ -1153,7 +1150,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1171,7 +1168,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1189,7 +1186,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1207,7 +1204,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1224,21 +1221,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 3 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 0 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 25-34 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 25-34 Thn, Diploma IV/S1).</div>
@@ -1279,7 +1276,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1297,7 +1294,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1315,7 +1312,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1333,7 +1330,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1350,21 +1347,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 2 • SMP/MTs: 1 • Total: 6 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 45-54 Thn, Diploma IV/S1) • Sekdes (Perempuan, 45-54 Thn, Diploma IV/S1).</div>
@@ -1405,7 +1402,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1423,7 +1420,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1441,7 +1438,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1459,7 +1456,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1476,21 +1473,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
@@ -1531,7 +1528,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1549,7 +1546,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1567,7 +1564,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1585,7 +1582,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1602,21 +1599,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 0 • SD/MI: 1 • SMP/MTs: 0 • Total: 1 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Akademi/DIII) • Sekdes (Laki-laki, 35-44 Thn, SMU/Sederajat).</div>
@@ -1657,7 +1654,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1675,7 +1672,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1693,7 +1690,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1711,7 +1708,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1728,21 +1725,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 4 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 25-34 Thn, Akademi/DIII) • Sekdes (Laki-laki, 25-34 Thn, SMU/Sederajat).</div>
@@ -1775,7 +1772,7 @@
                 
                 <div class="border-b border-slate-200 pb-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#3B4D3B] text-xs font-bold mb-2">
-                        <span>📚 KATALOG DATASET & ARSITEKTUR</span>
+                        <span><i class="bi bi-journal-bookmark-fill"></i> KATALOG DATASET & ARSITEKTUR</span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Publikasi PODES 2025 & Ekosistem Satu Data</h2>
                     <p class="text-slate-600 text-sm mt-1">Dokumentasi 9 berkas data sumber PODES BPS Kolaka Utara dan 5 tahapan integrasi Satu Data Desa.</p>
@@ -1971,7 +1968,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg">💡</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg"><i class="bi bi-lightbulb-fill"></i></div>
                 <div>
                     <h3 class="font-extrabold text-base text-slate-900">Pusat Bantuan & Panduan</h3>
                     <p class="text-xs text-slate-500">Portal Desa Madani Kolaka Utara</p>
@@ -1998,7 +1995,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg">🗺️</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg"><i class="bi bi-map-fill"></i></div>
                 <div>
                     <h3 class="font-extrabold text-base text-slate-900">Daftar 15 Kecamatan Kolaka Utara</h3>
                     <p class="text-xs text-slate-500">Pilih kecamatan untuk langsung menuju data spasial atau agregat</p>
