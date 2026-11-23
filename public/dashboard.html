@@ -9185,49 +9185,49 @@
                 <div id="podesStateDetail" class="space-y-6" style="display: none;">
                     
                     <!-- Split-Panel Dua Kolom Simetris (50:50 Desktop, Rounded-3xl, Border #DCE3DD) -->
-                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-sm overflow-hidden">
+                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs overflow-hidden">
                         <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#DCE3DD]">
                             <!-- Panel Kiri (Statis: Sektor Unggulan) -->
-                            <div id="kecDetailLeftPanel" class="w-full h-full">
+                            <div id="kecDetailLeftPanel" class="w-full h-full bg-white">
                                 <!-- Injected by podes_explorer.js -->
                             </div>
 
                             <!-- Panel Kanan (Swipeable Card: Sektor Lainnya) -->
-                            <div id="kecDetailRightPanel" class="w-full h-full bg-slate-50/30">
+                            <div id="kecDetailRightPanel" class="w-full h-full bg-white">
                                 <!-- Injected by podes_explorer.js -->
                             </div>
                         </div>
                     </div>
 
                     <!-- Tabel Rincian Desa Khusus Kecamatan Terpilih -->
-                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-sm p-6 sm:p-7 space-y-4">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-slate-100">
+                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs p-6 sm:p-8 space-y-5">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#DCE3DD]">
                             <div>
-                                <h4 class="font-black text-lg sm:text-xl text-[#1D241E]">Rincian Desa / Kelurahan Konstituen</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
+                                <h4 class="font-cormorant font-bold text-2xl sm:text-3xl text-[#1D241E]">Rincian Desa & Kelurahan Konstituen</h4>
+                                <p class="text-xs text-[#5E6B61] mt-0.5 font-sans">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
                             </div>
                             
                             <div class="flex flex-wrap items-center gap-2.5">
                                 <div class="relative w-full sm:w-64">
-                                    <input type="text" id="detailDesaTableSearch" placeholder="Cari nama desa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]">
-                                    <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                    <input type="text" id="detailDesaTableSearch" placeholder="Cari nama desa..." class="w-full bg-white border border-[#DCE3DD] rounded-full pl-8 pr-3 py-1.5 text-xs font-medium text-[#1D241E] placeholder-[#8A9B86] focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] font-sans">
+                                    <i class="bi bi-search text-[#8A9B86] absolute left-2.5 top-2.5 text-xs"></i>
                                 </div>
-                                <button onclick="window.exportKecamatanCSV()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#3B4D3B] border border-emerald-200 font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <button onclick="window.exportKecamatanCSV()" class="px-4 py-1.5 rounded-full bg-[#E6ECE6] hover:bg-[#DCE3DD] text-[#3B4D3B] border border-[#DCE3DD] font-semibold text-xs transition-all flex items-center gap-1.5 cursor-pointer font-sans">
+                                    <i class="bi bi-download"></i>
                                     <span>Unduh CSV Kecamatan</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Table Tab Selector -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-[#3B4D3B] text-white shadow-2xs">
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#3B4D3B] text-white shadow-2xs font-sans">
                                 <i class="bi bi-people-fill"></i> Kependudukan & Demografi
                             </button>
-                            <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                            <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#E6ECE6]/60 text-[#5E6B61] hover:bg-[#E6ECE6] hover:text-[#1D241E] font-sans">
                                 <i class="bi bi-buildings-fill"></i> Ekonomi, Komoditas & IMK
                             </button>
-                            <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                            <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#E6ECE6]/60 text-[#5E6B61] hover:bg-[#E6ECE6] hover:text-[#1D241E] font-sans">
                                 <i class="bi bi-shield-check"></i> Sekolah, Faskes & Lingkungan
                             </button>
                         </div>

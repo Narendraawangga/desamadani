@@ -524,101 +524,101 @@
     const totIMK = desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
     const totBumdes = desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
 
-    // 1. Render Left Panel (Sektor Unggulan) - Polished SkillUI Layout
+    // 1. Render Left Panel (Sektor Unggulan) - Minimalist Editorial Split
     const leftPanel = document.getElementById('kecDetailLeftPanel');
     if (leftPanel) {
-      const commIconClass = getCommodityIconClass(dominantComm);
-
       leftPanel.innerHTML = `
-        <div class="h-full flex flex-col justify-between p-6 sm:p-8">
+        <div class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10">
           <div>
             <!-- Top Controls: Back Button & Regional Code -->
-            <div class="flex items-center justify-between gap-2 mb-4">
-              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6ECE6] hover:bg-[#DCE3DD] text-[#3B4D3B] text-xs font-bold transition-all shadow-2xs font-sans cursor-pointer group">
-                <i class="bi bi-arrow-left transition-transform group-hover:-translate-x-0.5"></i>
+            <div class="flex items-center justify-between gap-2">
+              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-2 text-xs font-semibold text-[#5E6B61] hover:text-[#1D241E] transition-colors cursor-pointer group font-sans">
+                <i class="bi bi-arrow-left text-[#3B4D3B] transition-transform group-hover:-translate-x-1"></i>
                 <span>Semua Kecamatan</span>
               </button>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 border border-[#DCE3DD] font-mono text-[11px] font-semibold text-[#5E6B61]">
-                <i class="bi bi-geo-alt-fill text-[#3B4D3B]"></i>
-                <span>KODE: ${k.kode || '-'}</span>
+              <span class="font-mono text-xs tracking-wider text-[#8A9B86]">
+                KODE: ${k.kode || '-'}
               </span>
             </div>
 
             <!-- Big Kecamatan Heading -->
-            <h2 class="font-cinzel text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#1D241E] tracking-[0.05em] uppercase leading-tight">
+            <h2 class="font-cinzel text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1D241E] tracking-[0.05em] uppercase leading-tight mt-5">
               ${k.nama}
             </h2>
-            <div class="font-sans text-xs sm:text-sm text-[#5E6B61] mt-1 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#3B4D3B]"></span>
-              <span>Wilayah Administratif • Terdiri dari <strong class="text-[#1D241E] font-extrabold">${desaList.length} Desa & Kelurahan</strong></span>
-            </div>
-          </div>
+            <p class="font-sans text-xs sm:text-sm text-[#5E6B61] mt-1.5 flex items-center gap-2">
+              <span>Wilayah Administratif</span>
+              <span class="text-[#8A9B86]">•</span>
+              <span>Terdiri dari <strong class="text-[#1D241E] font-bold">${desaList.length} Desa & Kelurahan</strong></span>
+            </p>
 
-          <!-- Card Sektor Unggulan Statis -->
-          <div class="mt-6 rounded-2xl bg-gradient-to-br from-[#E6ECE6]/40 via-white to-slate-50 p-5 sm:p-6 border border-[#DCE3DD] shadow-xs space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-[#DCE3DD]">
+            <div class="border-t border-[#DCE3DD] my-6"></div>
+
+            <!-- Sektor Unggulan Header -->
+            <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B]"></span>
-                <h4 class="font-cormorant font-bold text-lg uppercase tracking-wider text-[#1D241E]">Sektor Unggulan Wilayah</h4>
+                <span class="w-2 h-2 rounded-full bg-[#3B4D3B]"></span>
+                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#5E6B61]">SEKTOR UNGGULAN WILAYAH</span>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] border border-[#DCE3DD] font-sans">
-                <i class="bi bi-award-fill text-amber-600"></i>
-                <span>PODES 2025</span>
-              </span>
+              <span class="font-mono text-xs text-[#8A9B86]">PODES 2025</span>
             </div>
 
-            <!-- Komoditas Utama Box -->
-            <div class="flex items-center gap-4 bg-white rounded-xl p-4 border border-[#DCE3DD] shadow-2xs">
-              <div class="w-12 h-12 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center text-xl shrink-0 border border-[#DCE3DD]/80 shadow-2xs">
-                <i class="bi ${commIconClass}"></i>
+            <!-- Dominant Commodity (Open, No Box) -->
+            <div class="mt-4">
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">KOMODITAS UTAMA DOMINAN</div>
+              <div class="font-cinzel text-2xl sm:text-3xl font-bold text-[#1D241E] tracking-tight uppercase mt-0.5">
+                ${dominantComm}
               </div>
-              <div class="flex-1">
-                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider font-sans">Komoditas Utama Dominan</div>
-                <div class="text-xl sm:text-2xl font-bold text-[#1D241E] tracking-tight font-cinzel mt-0.5">${dominantComm}</div>
-                <div class="text-xs text-[#5E6B61] mt-0.5 font-sans">Basis perkebunan rakyat & agribisnis utama kecamatan.</div>
-              </div>
+              <p class="text-xs text-[#5E6B61] mt-1 font-sans leading-relaxed">
+                Basis komoditas perkebunan rakyat dan agribisnis utama di wilayah Kecamatan ${k.nama}.
+              </p>
             </div>
 
-            <!-- Grid 3 Metrik Sektor Unggulan -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
-                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
-                  <i class="bi bi-shop text-[#3B4D3B]"></i>
-                  <span>Unit IMK</span>
+            <!-- 3 Column Metrics (Senada dengan 01 / 02 / 03 / 04) -->
+            <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+              <div class="pr-3">
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / UNIT IMK</span>
+                <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">
+                  ${totIMK.toLocaleString('id-ID')}
                 </div>
-                <div class="text-2xl font-black text-[#3B4D3B] mt-1 tabular-nums font-sans">${totIMK.toLocaleString('id-ID')}</div>
-                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Usaha Mikro/Kecil</div>
+                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Usaha Mikro/Kecil</span>
               </div>
 
-              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
-                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
-                  <i class="bi bi-star-fill text-amber-500"></i>
-                  <span>Desa Unggulan</span>
+              <div class="px-3">
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PRODUK KHAS</span>
+                <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">
+                  ${prodInfo.count} <span class="text-xs font-normal text-[#5E6B61]">Desa</span>
                 </div>
-                <div class="text-2xl font-black text-[#1D241E] mt-1 tabular-nums font-sans">${prodInfo.count} Desa</div>
-                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Ada Produk Khas</div>
+                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Desa Unggulan</span>
               </div>
 
-              <div class="bg-white rounded-xl p-3.5 border border-[#DCE3DD] shadow-2xs">
-                <div class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1">
-                  <i class="bi bi-briefcase-fill text-[#566B53]"></i>
-                  <span>BUMDes Aktif</span>
+              <div class="pl-3">
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / BUMDES</span>
+                <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">
+                  ${totBumdes} <span class="text-xs font-normal text-[#5E6B61]">Unit</span>
                 </div>
-                <div class="text-2xl font-black text-[#566B53] mt-1 tabular-nums font-sans">${totBumdes} Unit</div>
-                <div class="text-[10px] text-[#5E6B61] mt-0.5 font-sans">Kemandirian Desa</div>
+                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Kemandirian Desa</span>
               </div>
             </div>
-
-            <!-- Chips Produk Unggulan -->
-            ${prodInfo.products.length ? `
-              <div class="pt-2 text-xs">
-                <span class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider block mb-1.5 font-sans">Produk Unggulan Terdata:</span>
-                <div class="flex flex-wrap gap-1.5">
-                  ${prodInfo.products.map(p => `<span class="px-2.5 py-1 rounded-lg bg-white border border-[#DCE3DD] text-[#1D241E] font-semibold text-[11px] shadow-2xs inline-flex items-center gap-1 font-sans"><i class="bi bi-patch-check-fill text-[#3B4D3B]"></i><span>${p}</span></span>`).join('')}
-                </div>
-              </div>
-            ` : ''}
           </div>
+
+          <!-- Bottom: Featured Products (Subtle chips) -->
+          ${prodInfo.products.length ? `
+            <div class="pt-2">
+              <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block mb-2">PRODUK UNGGULAN TERDATA:</span>
+              <div class="flex flex-wrap gap-2">
+                ${prodInfo.products.map(p => `
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-xs font-medium font-sans">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B]"></span>
+                    <span>${p}</span>
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+          ` : `
+            <div class="text-xs text-[#8A9B86] font-sans">
+              Data dihimpun dari sensus Potensi Desa (PODES) 2025 BPS Kabupaten Kolaka Utara.
+            </div>
+          `}
         </div>
       `;
     }
@@ -641,7 +641,7 @@
       const isActive = idx === activeSectorIndex;
       return `
         <button onclick="window.setSectorSlide(${idx})" 
-                class="w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#3B4D3B] scale-125 shadow-xs' : 'bg-[#8A9B86]/50 hover:bg-[#8A9B86]'}" 
+                class="h-2 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#3B4D3B] w-4' : 'bg-[#DCE3DD] hover:bg-[#8A9B86] w-2'}" 
                 title="${idx + 1}. ${s.name}">
         </button>
       `;
@@ -658,29 +658,26 @@
       const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
 
       sectorContentHtml = `
-        <div class="space-y-4">
-          <div class="grid grid-cols-2 gap-3 text-xs">
-            <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
-              <span class="text-[#5E6B61] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-people-fill text-[#3B4D3B]"></i><span>Total Penduduk</span></span>
-              <span class="text-xl font-black text-slate-900 mt-1 block">${totPop.toLocaleString('id-ID')} Jiwa</span>
-              <span class="text-[11px] text-slate-500">Laki-laki: ${totL.toLocaleString('id-ID')}</span>
-            </div>
-            <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
-              <span class="text-[#5E6B61] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-gender-female text-rose-600"></i><span>Perempuan</span></span>
-              <span class="text-xl font-black text-slate-900 mt-1 block">${totP.toLocaleString('id-ID')} Jiwa</span>
-              <span class="text-[11px] text-slate-500">Sex Ratio: ${sexRatio}</span>
-            </div>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / TOTAL PENDUDUK</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPop.toLocaleString('id-ID')}</div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}</span>
           </div>
-          <div class="bg-[#E6ECE6]/50 rounded-xl p-3.5 border border-[#DCE3DD] flex items-center justify-between text-xs">
-            <div>
-              <span class="text-[10px] font-bold text-[#5E6B61] uppercase tracking-wider flex items-center gap-1 font-sans"><i class="bi bi-aspect-ratio text-[#3B4D3B]"></i><span>Rata-Rata Kepadatan</span></span>
-              <span class="text-lg font-black text-[#3B4D3B]">${avgKepadatan} Jiwa / km²</span>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-white border border-[#DCE3DD] text-[#3B4D3B] text-[11px] font-bold">
-              ${desaList.length} Desa/Kel
-            </span>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / KEPADATAN</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${avgKepadatan}</div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Jiwa / km² (Rata-rata)</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / RASIO GENDER</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${sexRatio}</div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Laki-laki per 100 Perempuan</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Mencakup distribusi kependudukan di ${desaList.length} desa/kelurahan di Kecamatan ${k.nama}.
+        </p>
       `;
     } else if (sec.id === 'pendidikan') {
       const totTK = desaList.reduce((a, b) => a + (b.pendidikan.tk || 0), 0);
@@ -692,38 +689,41 @@
       const totalSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-            <span class="font-bold text-[#1D241E] flex items-center gap-1.5 font-sans"><i class="bi bi-mortarboard-fill text-[#3B4D3B]"></i><span>Total Fasilitas Sekolah</span></span>
-            <span class="font-black text-base text-[#3B4D3B]">${totalSekolah} Unit</span>
+        <div class="border-t border-b border-[#DCE3DD] py-5 my-6 space-y-4">
+          <div class="flex items-baseline justify-between">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">TOTAL FASILITAS PENDIDIKAN</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans">${totalSekolah} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
           </div>
-          <div class="grid grid-cols-3 gap-2.5 text-center">
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-backpack text-slate-400 block mb-0.5"></i>TK / PAUD</span>
-              <span class="text-base font-extrabold text-slate-800">${totTK}</span>
+          <div class="grid grid-cols-6 divide-x divide-[#DCE3DD] text-center pt-2">
+            <div class="pr-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">TK/PAUD</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totTK}</span>
             </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-book text-slate-400 block mb-0.5"></i>SD / MI</span>
-              <span class="text-base font-extrabold text-slate-800">${totSD}</span>
+            <div class="px-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">SD/MI</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSD}</span>
             </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-journal-text text-slate-400 block mb-0.5"></i>SMP / MTs</span>
-              <span class="text-base font-extrabold text-slate-800">${totSMP}</span>
+            <div class="px-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">SMP/MTs</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMP}</span>
             </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-mortarboard text-slate-400 block mb-0.5"></i>SMA / MA</span>
-              <span class="text-base font-extrabold text-slate-800">${totSMA}</span>
+            <div class="px-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">SMA/MA</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMA}</span>
             </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-tools text-slate-400 block mb-0.5"></i>SMK</span>
-              <span class="text-base font-extrabold text-slate-800">${totSMK}</span>
+            <div class="px-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">SMK</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totSMK}</span>
             </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-[#5E6B61] block font-bold font-sans"><i class="bi bi-bank text-slate-400 block mb-0.5"></i>Perguruan Tinggi</span>
-              <span class="text-base font-extrabold text-slate-800">${totPT}</span>
+            <div class="pl-2">
+              <span class="text-[10px] font-mono text-[#8A9B86] block">PT</span>
+              <span class="text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-1 block">${totPT}</span>
             </div>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Ketersediaan sarana belajar dari jenjang usia dini hingga perguruan tinggi.
+        </p>
       `;
     } else if (sec.id === 'kesehatan') {
       const totRS = desaList.reduce((a, b) => a + (b.kesehatan.rs || 0), 0);
@@ -734,32 +734,26 @@
       const totPosbindu = desaList.reduce((a, b) => a + (b.kesehatan.posbindu || 0), 0);
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Rumah Sakit / Puskesmas</span>
-              <span class="text-base font-extrabold text-slate-800">${totRS + totPusk} Unit</span>
-            </div>
-            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Pustu & Poskesdes</span>
-              <span class="text-base font-extrabold text-slate-800">${totPustu} Unit</span>
-            </div>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / RS & PUSKESMAS</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totRS + totPusk} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Faskes Rujukan Utama</span>
           </div>
-          <div class="grid grid-cols-3 gap-2.5 text-center">
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Posyandu Aktif</span>
-              <span class="text-base font-extrabold text-[#3B4D3B]">${totPosyandu}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Posbindu</span>
-              <span class="text-base font-extrabold text-slate-800">${totPosbindu}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Apotek & Toko Obat</span>
-              <span class="text-base font-extrabold text-slate-800">${totApotek}</span>
-            </div>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PUSTU & POSKESDES</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPustu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Layanan Kesehatan Desa</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / POSYANDU AKTIF</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totPosyandu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Posbindu: ${totPosbindu} • Apotek: ${totApotek}</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Kapasitas fasilitas dan tenaga medis dalam penanganan kesehatan masyarakat desa.
+        </p>
       `;
     } else if (sec.id === 'ekonomi') {
       const totIMK = desaList.reduce((a, b) => a + (b.ekonomi.imk || 0), 0);
@@ -770,41 +764,26 @@
       const totHotel = desaList.reduce((a, b) => a + (b.ekonomi.hotel + b.ekonomi.penginapan), 0);
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="bg-amber-50/70 p-3 rounded-xl border border-amber-200/80 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-bold text-amber-800 uppercase block">Sentra Industri Mikro (IMK)</span>
-              <span class="text-lg font-black text-amber-700">${totIMK.toLocaleString('id-ID')} Unit</span>
-            </div>
-            <span class="text-2xl">🏭</span>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / SENTRA IMK</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totIMK.toLocaleString('id-ID')}</div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Unit Usaha Mikro/Kecil</span>
           </div>
-          <div class="grid grid-cols-3 gap-2.5 text-center">
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Pasar Tradisional</span>
-              <span class="text-base font-extrabold text-slate-800">${totPasar}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Minimarket / Toko</span>
-              <span class="text-base font-extrabold text-slate-800">${totMini}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Bank & BPR</span>
-              <span class="text-base font-extrabold text-slate-800">${totBank}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Koperasi</span>
-              <span class="text-base font-extrabold text-slate-800">${totKop}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Hotel/Penginapan</span>
-              <span class="text-base font-extrabold text-slate-800">${totHotel}</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Akses Kredit KUR</span>
-              <span class="text-xs font-extrabold text-[#566B53]">Mayoritas Ada</span>
-            </div>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PASAR TRADISIONAL</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPasar} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Minimarket / Toko: ${totMini}</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / LEMBAGA KEUANGAN</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totBank + totKop} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bank: ${totBank} • Koperasi: ${totKop}</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Dukungan sarana perdagangan rakyat, lembaga keuangan perbankan, dan penginapan (${totHotel} unit).
+        </p>
       `;
     } else if (sec.id === 'lingkungan') {
       const totPLN = desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
@@ -815,27 +794,26 @@
       const bebasCemarDesa = desaList.filter(d => d.lingkungan.bebas_pencemaran).length;
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-[#E6ECE6]/70 p-3 rounded-xl border border-[#DCE3DD]">
-              <span class="text-[10px] font-bold text-[#3B4D3B] uppercase block">Pelanggan Listrik PLN</span>
-              <span class="text-lg font-black text-[#3B4D3B]">${totPLN.toLocaleString('id-ID')} KK</span>
-              <span class="text-[10px] text-[#566B53] font-semibold">Rasio: ${rasioPLN}%</span>
-            </div>
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-              <span class="text-[10px] font-bold text-slate-400 uppercase block">Non-PLN / Mandiri</span>
-              <span class="text-lg font-black text-slate-800">${totNonPLN} KK</span>
-              <span class="text-[10px] text-slate-500">Tanpa Listrik: ${totTanpa} KK</span>
-            </div>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / LISTRIK PLN</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPLN.toLocaleString('id-ID')} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Rasio Cakupan: ${rasioPLN}%</span>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] text-slate-400 block font-bold">Kualitas Lingkungan Hidup</span>
-              <span class="font-extrabold text-slate-800">${bebasCemarDesa} dari ${desaList.length} Desa Bebas Pencemaran</span>
-            </div>
-            <span class="px-2 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-[10px] font-bold">Terjaga</span>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / NON-PLN & MANDIRI</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totNonPLN} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanpa Listrik: ${totTanpa} KK</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / LINGKUNGAN HIDUP</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${bebasCemarDesa} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bebas Pencemaran Air & Udara</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Kondisi sanitasi, kebersihan lingkungan perairan dan udara, serta kemandirian energi desa.
+        </p>
       `;
     } else if (sec.id === 'keuangan') {
       const totBumdes = desaList.reduce((a, b) => a + (b.pemerintahan.bumdes || 0), 0);
@@ -845,30 +823,26 @@
       const countSID = desaList.filter(d => d.pemerintahan.sid && d.pemerintahan.sid !== 'Tidak Ada').length;
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-indigo-50/70 p-3 rounded-xl border border-indigo-200">
-              <span class="text-[10px] font-bold text-indigo-800 uppercase block">Keberadaan BUMDes</span>
-              <span class="text-lg font-black text-indigo-700">${totBumdes} Unit</span>
-              <span class="text-[10px] text-indigo-600 font-semibold">Penggerak Ekonomi Desa</span>
-            </div>
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-              <span class="text-[10px] font-bold text-slate-400 uppercase block">Sistem Informasi Desa (SID)</span>
-              <span class="text-lg font-black text-slate-800">${countSID} Desa</span>
-              <span class="text-[10px] text-slate-500">SISKEUDES: ${countSiskeudes} Desa</span>
-            </div>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / KEBERADAAN BUMDES</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totBumdes} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Penggerak Ekonomi Desa</span>
           </div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100 text-center">
-              <span class="text-[10px] text-slate-400 block font-bold">Aset Tanah Kas Desa</span>
-              <span class="text-base font-extrabold text-slate-800">${totTanahKas} Unit</span>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-slate-100 text-center">
-              <span class="text-[10px] text-slate-400 block font-bold">Obyek Wisata Desa</span>
-              <span class="text-base font-extrabold text-slate-800">${totWisata} Lokasi</span>
-            </div>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / DIGITALISASI (SID)</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${countSID} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">SISKEUDES: ${countSiskeudes} Desa</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / ASET & WISATA</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${totWisata} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanah Kas Desa: ${totTanahKas} Unit</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Akuntabilitas tata kelola keuangan, digitalisasi sistem informasi desa, dan aset pendapatan desa.
+        </p>
       `;
     } else if (sec.id === 'pemerintahan') {
       const totAparat = desaList.reduce((a, b) => a + (b.pemerintahan.total_aparat || 0), 0);
@@ -877,76 +851,85 @@
       const kadesP = desaList.filter(d => d.pemerintahan.kades_gender === 'Perempuan').length;
 
       sectorContentHtml = `
-        <div class="space-y-3 text-xs">
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-bold text-slate-400 uppercase block">Total Aparatur Desa</span>
-              <span class="text-lg font-black text-slate-900">${totAparat} Orang</span>
-            </div>
-            <span class="text-xs font-semibold text-slate-500">Kades, Sekdes & Perangkat</span>
+        <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+          <div class="pr-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / APARATUR DESA</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totAparat} <span class="text-xs font-normal text-[#5E6B61]">Orang</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Kades, Sekdes & Perangkat</span>
           </div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-white p-3 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Kades L / P</span>
-              <span class="text-base font-extrabold text-slate-800">${kadesL} L • ${kadesP} P</span>
-            </div>
-            <div class="bg-white p-3 rounded-xl border border-slate-100">
-              <span class="text-[10px] text-slate-400 block font-bold">Kades D-IV / S1+</span>
-              <span class="text-base font-extrabold text-[#3B4D3B]">${kadesS1} Kades</span>
-            </div>
+          <div class="px-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PENDIDIKAN KADES</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${kadesS1} <span class="text-xs font-normal text-[#5E6B61]">Kades</span></div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Jenjang D-IV / S1 ke atas</span>
+          </div>
+          <div class="pl-3">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / GENDER KADES</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${kadesL} L • ${kadesP} P</div>
+            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Komposisi Kepemimpinan</span>
           </div>
         </div>
+        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+          Kapasitas birokrasi dan profil kepemimpinan kepala desa di seluruh kecamatan.
+        </p>
       `;
     }
 
     rightPanel.innerHTML = `
-      <div class="h-full flex flex-col justify-between p-6 sm:p-8 relative">
-        <!-- Top bar with Title & Pagination Dots -->
+      <div id="swipeableSectorCard" class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 select-none">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
+          <!-- Top Bar: Title & Slide Nav -->
+          <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2">
-              <h4 class="font-extrabold text-lg sm:text-xl text-[#1D241E] tracking-tight">Sektor Lainnya</h4>
-              <span class="text-xs text-slate-400 font-semibold">(${activeSectorIndex + 1}/7)</span>
+              <h3 class="font-cormorant text-2xl sm:text-3xl font-bold text-[#1D241E]">Sektor Lainnya</h3>
+              <span class="font-mono text-xs text-[#8A9B86]">(${activeSectorIndex + 1}/7)</span>
             </div>
-            
-            <!-- Clickable Pagination Dots -->
-            <div class="flex items-center gap-1.5 p-1 bg-slate-50 border border-slate-200 rounded-full">
-              ${dotsHtml}
-            </div>
-          </div>
 
-          <!-- Sector Card Container (with Touch Swipe & Drag Support) -->
-          <div id="swipeableSectorCard" class="mt-4 rounded-2xl bg-white p-5 sm:p-6 border border-slate-200/90 shadow-xs relative transition-all duration-200">
-            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
-              <div class="flex items-center gap-2.5">
-                <span class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">
-                  ${sec.icon}
-                </span>
-                <span class="font-black text-sm text-slate-800">${sec.name}</span>
+            <!-- Dots & Prev / Next Arrows -->
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-1.5">
+                ${dotsHtml}
               </div>
-
-              <!-- Quick Next / Prev Arrows -->
-              <div class="flex items-center gap-1">
-                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-[#E6ECE6] text-slate-600 hover:text-[#3B4D3B] flex items-center justify-center text-xs font-bold transition-colors">
-                  ‹
+              <div class="flex items-center gap-1 border-l border-[#DCE3DD] pl-3">
+                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-full border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer" title="Sektor Sebelumnya">
+                  <i class="bi bi-chevron-left"></i>
                 </button>
-                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-[#E6ECE6] text-slate-600 hover:text-[#3B4D3B] flex items-center justify-center text-xs font-bold transition-colors">
-                  ›
+                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-full border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer" title="Sektor Selanjutnya">
+                  <i class="bi bi-chevron-right"></i>
                 </button>
               </div>
             </div>
-
-            <!-- Dynamic Content for Active Sector -->
-            ${sectorContentHtml}
           </div>
+
+          <div class="border-t border-[#DCE3DD] my-6"></div>
+
+          <!-- Active Sector Header -->
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center text-base shrink-0">
+              <i class="bi ${sec.icon}"></i>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">SEKTOR PODES AKTIF</div>
+              <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] uppercase tracking-wide mt-0.5">
+                ${sec.name}
+              </h4>
+            </div>
+          </div>
+
+          <!-- Dynamic Content for Active Sector -->
+          ${sectorContentHtml}
         </div>
 
-        <!-- Bottom Sector Quick Chips -->
-        <div class="mt-6 pt-4 border-t border-slate-100">
-          <div class="flex flex-wrap gap-1.5">
+        <!-- Bottom Sector Quick Chips (Senada & Minimalist) -->
+        <div class="mt-6 pt-4 border-t border-[#DCE3DD]">
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">NAVIGASI 7 SEKTOR PODES</span>
+            <span class="text-[11px] text-[#5E6B61] font-sans">Pilih sektor untuk melihat data</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 sm:gap-2">
             ${SECTORS.map((s, idx) => `
-              <button onclick="window.setSectorSlide(${idx})" class="px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-2xs' : 'bg-slate-50 hover:bg-slate-100 text-slate-600'}">
-                ${s.icon} ${s.name}
+              <button onclick="window.setSectorSlide(${idx})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-2xs' : 'bg-[#E6ECE6]/60 hover:bg-[#E6ECE6] text-[#5E6B61] hover:text-[#1D241E]'}">
+                <i class="bi ${s.icon} ${idx === activeSectorIndex ? 'text-white' : 'text-[#3B4D3B]'}"></i>
+                <span>${s.name}</span>
               </button>
             `).join('')}
           </div>
@@ -990,10 +973,10 @@
       const t = btn.getAttribute('data-tab');
       if (t === tab) {
         btn.classList.add('bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
-        btn.classList.remove('bg-slate-100', 'text-slate-600');
+        btn.classList.remove('bg-[#E6ECE6]/60', 'text-[#5E6B61]');
       } else {
         btn.classList.remove('bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
-        btn.classList.add('bg-slate-100', 'text-slate-600');
+        btn.classList.add('bg-[#E6ECE6]/60', 'text-[#5E6B61]');
       }
     });
     renderDetailVillageTable();
