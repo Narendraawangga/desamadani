@@ -370,45 +370,81 @@
     const rasioListrik = (totPLN + totNonPLN + totTanpaListrik) > 0 ? ((totPLN / (totPLN + totNonPLN + totTanpaListrik)) * 100).toFixed(2) : 99.55;
 
     summaryContainer.innerHTML = `
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
-          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total Penduduk Riil</div>
-          <div class="text-2xl sm:text-3xl font-black text-[#0D7A5F] mt-1 tabular-nums">
-            ${totJiwa.toLocaleString('id-ID')}
+      <div class="bg-white rounded-3xl border border-slate-200/90 shadow-2xs overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/80">
+          
+          <!-- 01: Total Penduduk Riil (Emerald Green) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+            <div>
+              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">01</div>
+              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+                Total Penduduk Riil
+              </h4>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl sm:text-4xl font-black text-[#0D7A5F] tracking-tight tabular-nums">
+                ${totJiwa.toLocaleString('id-ID')}
+              </div>
+              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+                L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}
+              </p>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
-            L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}
-          </div>
-        </div>
 
-        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
-          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Rata-Rata Kepadatan</div>
-          <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 tabular-nums">
-            ${avgKepadatan} <span class="text-xs font-semibold text-slate-500">Jiwa/km²</span>
+          <!-- 02: Rata-Rata Kepadatan (Dark Slate / Navy) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+            <div>
+              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">02</div>
+              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+                Rata-Rata Kepadatan
+              </h4>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight tabular-nums">
+                ${avgKepadatan} <span class="text-xs font-semibold text-slate-500">Jiwa/km²</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+                Cakupan 15 Kecamatan / 133 Desa
+              </p>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
-            Cakupan 15 Kecamatan / 133 Desa
-          </div>
-        </div>
 
-        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
-          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Rasio Jenis Kelamin</div>
-          <div class="text-2xl sm:text-3xl font-black text-blue-600 mt-1 tabular-nums">
-            ${sexRatio}
+          <!-- 03: Rasio Jenis Kelamin (Vibrant Blue) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+            <div>
+              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">03</div>
+              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+                Rasio Jenis Kelamin
+              </h4>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl sm:text-4xl font-black text-[#2563EB] tracking-tight tabular-nums">
+                ${sexRatio}
+              </div>
+              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+                Laki-laki per 100 Perempuan
+              </p>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
-            Laki-laki per 100 Perempuan
-          </div>
-        </div>
 
-        <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all">
-          <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sentra & IMK Produktif</div>
-          <div class="text-2xl sm:text-3xl font-black text-amber-600 mt-1 tabular-nums">
-            ${totIMK.toLocaleString('id-ID')}
+          <!-- 04: Sentra & IMK Produktif (Amber / Orange) -->
+          <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/50 transition-colors">
+            <div>
+              <div class="text-xs font-mono font-medium text-slate-400 tracking-widest mb-2">04</div>
+              <h4 class="font-editorial text-sm sm:text-base font-bold tracking-wider uppercase text-slate-800 leading-snug">
+                Sentra & IMK Produktif
+              </h4>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl sm:text-4xl font-black text-[#D97706] tracking-tight tabular-nums">
+                ${totIMK.toLocaleString('id-ID')}
+              </div>
+              <p class="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+                Listrik PLN: ${rasioListrik}%
+              </p>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-500 font-medium mt-0.5">
-            Listrik PLN: ${rasioListrik}%
-          </div>
+
         </div>
       </div>
     `;
