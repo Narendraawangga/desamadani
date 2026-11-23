@@ -274,7 +274,7 @@
                         filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
                         box-shadow 0.65s ease;
             transform-style: preserve-3d;
-            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 20px 42px -12px rgba(15, 23, 42, 0.32), 0 8px 16px -6px rgba(15, 23, 42, 0.18);
             background: #0f172a;
             transform: scale(0.9) rotateY(0deg);
             opacity: 0.88;
@@ -283,7 +283,7 @@
         .coverflow-card.active {
             cursor: default;
             transform: scale(1.08) translateZ(40px) rotateY(0deg) !important;
-            box-shadow: 0 30px 65px -12px rgba(14, 124, 90, 0.55), 0 0 0 2.5px rgba(52, 211, 153, 0.9);
+            box-shadow: 0 32px 70px -15px rgba(14, 124, 90, 0.45), 0 0 0 2.5px rgba(16, 185, 129, 0.9), 0 12px 24px -6px rgba(0, 0, 0, 0.2);
             z-index: 40;
             opacity: 1 !important;
             filter: brightness(1) !important;
@@ -917,18 +917,161 @@
         <!-- ============================================================== -->
     <!-- 6. MENU 3: 6 DESA BINAAN (6 DESA BERJEJER & BERGERAK KE KIRI) -->
     <!-- ============================================================== -->
-    <section id="desa" class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-12 space-y-6">
+        <section id="desa" class="relative w-full bg-gradient-to-b from-white via-[#eef8f3] to-[#e4f4ec] py-16 sm:py-20 overflow-hidden border-t border-emerald-100/60">
+        <!-- ============================================================== -->
+        <!-- POLA VEKTOR SVG TOPOGRAFI & PESISIR TELUK BONE KOLAKA UTARA     -->
+        <!-- Elemen Latar Belakang Minimalis Kartografis & Geografis Resmi   -->
+        <!-- ============================================================== -->
+        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden w-full h-full select-none" aria-hidden="true">
+            <svg class="w-full h-full object-cover" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <!-- Pola Titik Grid Kartografi Presisi (BPS SDI) -->
+                    <pattern id="coordGridPattern" width="48" height="48" patternUnits="userSpaceOnUse">
+                        <circle cx="24" cy="24" r="1.1" fill="#059669" fill-opacity="0.09" />
+                    </pattern>
+                    <!-- Gradasi Halus Latar Pesisir Teluk Bone -->
+                    <linearGradient id="boneCoastWash" x1="1000" y1="0" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#059669" stop-opacity="0.02" />
+                        <stop offset="60%" stop-color="#059669" stop-opacity="0.045" />
+                        <stop offset="100%" stop-color="#047857" stop-opacity="0.07" />
+                    </linearGradient>
+                </defs>
+
+                <!-- 1. Lapisan Grid Koordinat Kartografi Halus -->
+                <rect width="100%" height="100%" fill="url(#coordGridPattern)" />
+
+                <!-- 2. GARIS KONTUR TOPOGRAFI PEGUNUNGAN KOLAKA UTARA (Kiri Atas & Latar Belakang) -->
+                <!-- Cincin Kontur Ketinggian Puncak Pegunungan Mengkoka & Kodeoha -->
+                <g class="topography-contours" stroke="#059669" stroke-width="1.2" fill="none">
+                    <!-- Ring Kontur Puncak Tertinggi (+1200m) -->
+                    <path d="M 175,100 C 230,85 265,115 250,155 C 235,195 185,200 145,175 C 115,150 125,115 175,100 Z" stroke-opacity="0.14" />
+                    <!-- Ring Kontur (+1000m) -->
+                    <path d="M 155,75 C 240,55 295,100 280,175 C 265,230 185,240 125,205 C 85,170 95,100 155,75 Z" stroke-opacity="0.13" />
+                    <!-- Ring Kontur (+800m) -->
+                    <path d="M 135,50 C 260,25 335,80 320,195 C 300,270 175,280 105,235 C 55,190 65,90 135,50 Z" stroke-opacity="0.12" />
+                    <!-- Ring Kontur (+600m) -->
+                    <path d="M 115,25 C 280,-5 375,65 360,215 C 340,310 165,325 85,265 C 30,210 40,75 115,25 Z" stroke-opacity="0.10" />
+                    <!-- Ring Kontur (+400m) -->
+                    <path d="M 95,0 C 300,-35 415,50 400,235 C 380,350 155,370 65,295 C 5,230 15,60 95,0 Z" stroke-opacity="0.08" />
+
+                    <!-- Garis Kontur Topografi Horizontal Membentang Sepanjang Wilayah -->
+                    <path d="M-60,70 C140,40 280,130 460,95 C640,60 760,140 940,105 C1120,70 1260,130 1500,90" stroke-opacity="0.13" />
+                    <path d="M-60,145 C160,115 310,200 500,165 C690,130 810,215 1000,180 C1190,145 1310,205 1500,170" stroke-opacity="0.12" />
+                    <path d="M-60,225 C180,190 330,275 530,240 C730,205 850,285 1050,250 C1240,215 1360,275 1500,245" stroke-opacity="0.12" />
+                    <path d="M-60,315 C190,280 360,355 560,325 C760,295 890,375 1090,335 C1280,295 1390,365 1500,330" stroke-opacity="0.11" />
+                    <path d="M-60,415 C210,380 390,460 600,425 C810,390 930,475 1140,435 C1320,395 1420,465 1500,435" stroke-opacity="0.10" />
+                    <path d="M-60,525 C230,485 420,565 640,530 C860,495 980,580 1190,540 C1360,500 1440,565 1500,535" stroke-opacity="0.09" />
+                    <path d="M-60,635 C250,595 450,675 680,640 C910,605 1020,690 1240,650 C1390,610 1460,675 1500,645" stroke-opacity="0.08" />
+                    <path d="M-60,745 C270,705 480,785 720,750 C960,715 1060,800 1290,760 C1420,720 1480,785 1500,755" stroke-opacity="0.07" />
+                </g>
+
+                <!-- Label Ketinggian Topografi (Kartografi Minimalis) -->
+                <g font-family="monospace" font-size="8.5" font-weight="700" fill="#059669" fill-opacity="0.28" letter-spacing="1">
+                    <text x="155" y="98">1200m</text>
+                    <text x="260" y="140">1000m</text>
+                    <text x="300" y="180">800m</text>
+                    <text x="480" y="88">600m</text>
+                    <text x="550" y="235">400m</text>
+                    <text x="60" y="32" font-family="sans-serif" font-size="9.5" font-weight="800" fill-opacity="0.22" letter-spacing="2">PEGUNUNGAN MENGKOKA / KODEOHA</text>
+                </g>
+
+                <!-- 3. SILUET GARIS PANTAI TELUK BONE KOLAKA UTARA (Sisi Kanan) -->
+                <!-- Area Arsir Transparan Perairan Teluk Bone -->
+                <path d="M1060,0 C1115,130 1175,250 1205,380 C1235,510 1295,670 1355,900 L1440,900 L1440,0 Z" fill="url(#boneCoastWash)" />
+
+                <!-- Garis Pesisir Pantai Utama & Sekunder -->
+                <path d="M1040,0 C1095,120 1155,240 1185,370 C1215,500 1275,660 1335,900" stroke="#059669" stroke-opacity="0.22" stroke-width="1.6" stroke-linecap="round" fill="none" />
+                <path d="M1055,0 C1110,125 1170,245 1200,375 C1230,505 1290,665 1350,900" stroke="#059669" stroke-opacity="0.14" stroke-width="1.2" stroke-dasharray="6 4" fill="none" />
+                <path d="M1020,0 C1075,115 1135,235 1165,365 C1195,495 1255,655 1315,900" stroke="#059669" stroke-opacity="0.09" stroke-width="1" fill="none" />
+
+                <!-- Riak Gelombang Halus Pesisir Teluk Bone -->
+                <g stroke="#059669" stroke-width="1.2" stroke-linecap="round" fill="none">
+                    <path d="M1250,95 C1275,90 1305,100 1330,95" stroke-opacity="0.2" />
+                    <path d="M1300,145 C1325,140 1355,150 1380,145" stroke-opacity="0.2" />
+                    <path d="M1220,240 C1245,235 1275,245 1300,240" stroke-opacity="0.16" />
+                    <path d="M1280,300 C1305,295 1335,305 1360,300" stroke-opacity="0.16" />
+                </g>
+
+                <!-- Label Teks Elegan Teluk Bone Kolaka Utara (Kanan Atas di Belakang Kartu) -->
+                <g transform="translate(1170, 80)">
+                    <rect x="-10" y="-16" width="235" height="42" rx="10" fill="#ffffff" fill-opacity="0.55" stroke="#059669" stroke-opacity="0.18" stroke-width="0.8" />
+                    <text x="6" y="2" font-size="11" font-family="sans-serif" font-weight="800" letter-spacing="2" fill="#065f46" fill-opacity="0.45" class="uppercase">TELUK BONE, KOLAKA UTARA</text>
+                    <text x="6" y="16" font-size="8.5" font-family="monospace" font-weight="600" letter-spacing="1" fill="#059669" fill-opacity="0.38">3°15'00"LS 121°02'30"BT • PESISIR SELATAN</text>
+                </g>
+
+                <!-- 4. JALUR PENGHUBUNG PUTUS-PUTUS & TITIK KOORDINAT 6 DESA BINAAN -->
+                <!-- Garis Jalur Penghubung Melengkung Halus (strokeDasharray="4 4") -->
+                <path d="M 40,630 C 260,560 480,690 720,600 C 960,510 1180,650 1420,580" stroke="#059669" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="4 4" fill="none" />
+                <path d="M 40,650 C 260,580 480,710 720,620 C 960,530 1180,670 1420,600" stroke="#059669" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="2 4" fill="none" />
+
+                <!-- Titik-Titik Koordinat 6 Desa Pilot Binaan BPS Kolaka Utara -->
+                <!-- 1. Desa Kamisi (Pesisir & Teri • Kodeoha) -->
+                <g transform="translate(160, 595)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">KMS • 3°18'S</text>
+                </g>
+
+                <!-- 2. Desa Kalu Kaluku (Pilot Utama • Kodeoha) -->
+                <g transform="translate(390, 630)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">KLK • 3°15'S</text>
+                </g>
+
+                <!-- 3. Kelurahan Mala-Mala (Pusat Layanan • Kodeoha) -->
+                <g transform="translate(640, 625)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">MLM • 3°14'S</text>
+                </g>
+
+                <!-- 4. Desa Lapolu (Sentra Cengkeh • Tiwu) -->
+                <g transform="translate(880, 565)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">LPL • 3°12'S</text>
+                </g>
+
+                <!-- 5. Desa Tanggeawo (Perkebunan Kakao • Tiwu) -->
+                <g transform="translate(1120, 580)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">TGW • 3°10'S</text>
+                </g>
+
+                <!-- 6. Desa Mattiro Bulu (Dataran Cengkeh • Tiwu) -->
+                <g transform="translate(1330, 600)">
+                    <circle cx="0" cy="0" r="10" stroke="#059669" stroke-opacity="0.2" stroke-width="1" fill="#059669" fill-opacity="0.05" />
+                    <circle cx="0" cy="0" r="3.5" fill="#059669" fill-opacity="0.5" />
+                    <text x="0" y="18" font-size="8" font-family="monospace" font-weight="700" fill="#065f46" fill-opacity="0.35" text-anchor="middle">MTB • 3°08'S</text>
+                </g>
+
+                <!-- Skala Peta & Referensi BPS Kolaka Utara (Kiri Bawah) -->
+                <g transform="translate(80, 835)">
+                    <line x1="0" y1="0" x2="110" y2="0" stroke="#059669" stroke-opacity="0.3" stroke-width="1.5" />
+                    <line x1="0" y1="-4" x2="0" y2="4" stroke="#059669" stroke-opacity="0.3" stroke-width="1.5" />
+                    <line x1="55" y1="-2.5" x2="55" y2="2.5" stroke="#059669" stroke-opacity="0.3" stroke-width="1" />
+                    <line x1="110" y1="-4" x2="110" y2="4" stroke="#059669" stroke-opacity="0.3" stroke-width="1.5" />
+                    <text x="0" y="-8" font-size="8" font-family="monospace" font-weight="700" fill="#059669" fill-opacity="0.32">SKALA KARTOGRAFI 1:50.000 • KEC. KODEOHA & TIWU</text>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Konten Utama 6 Desa Binaan (Berada di atas layer SVG: relative z-10) -->
+        <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
+
         
         <!-- Header Section (Matching Image 2 Aesthetic) -->
         <div class="text-center max-w-3xl mx-auto space-y-2.5">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-black uppercase tracking-wider shadow-2xs">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/90 backdrop-blur-xs border border-emerald-300 text-emerald-900 text-[11px] font-black uppercase tracking-wider shadow-2xs">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Wilayah Binaan BPS Kolaka Utara</span>
             </div>
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
                 <span class="font-serif italic font-normal text-[#0E7C5A]">Jelajahi</span> 6 Desa Binaan Desa Cantik
             </h2>
-            <p class="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+            <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
                 6 desa binaan statistik presisi berjejer di bawah ini. Kartu bergerak otomatis ke kiri, klik kartu mana saja untuk memutar ke tengah atau masuk ke dashboard desa.
             </p>
         </div>
@@ -1230,6 +1373,8 @@
             </div>
         </div>
 
+    
+        </div>
     </section>
 
     <!-- ============================================================== -->
