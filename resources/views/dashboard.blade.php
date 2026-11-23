@@ -243,67 +243,214 @@
         <!-- HALAMAN 1: BERANDA / OPENING (KPI RIIL 2025 + PETA SVG INTERAKTIF KOLUT) -->
         <!-- ========================================================================= -->
         <section id="portalPage1" class="portal-page {{ $curPage === 1 ? 'active' : '' }} w-full">
-            <!-- Hero Section Asimetris -->
-            <div class="w-full bg-gradient-to-b from-white via-[#f7faf8] to-[#edf5f1] border-b border-emerald-100/70 pt-8 sm:pt-14 pb-12 sm:pb-20 relative overflow-hidden">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    
+            <!-- Hero Section Desapresisi Style with Kolaka Utara Background Watermark -->
+            <div class="w-full bg-white border-b border-slate-200/80 pt-8 sm:pt-14 pb-12 sm:pb-20 relative overflow-hidden">
+                
+                <!-- Kolaka Utara Background Map Watermark (Identik dengan Desapresisi.id) -->
+                
+<svg class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="kolutBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#f8faf9" stop-opacity="0.75" />
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.9" />
+        </linearGradient>
+    </defs>
+    
+    
+    <!-- Lat / Lng Grid lines & coordinates -->
+    <line x1="200" y1="180" x2="1550" y2="180" stroke="#cbd5e1" stroke-width="0.75" stroke-dasharray="6,8" opacity="0.4" />
+    <text x="220" y="175" font-size="9" font-family="'JetBrains Mono', monospace" fill="#94a3b8" opacity="0.6">LAT 02°55'00"S</text>
+
+    <line x1="200" y1="450" x2="1550" y2="450" stroke="#cbd5e1" stroke-width="0.75" stroke-dasharray="6,8" opacity="0.4" />
+    <text x="220" y="445" font-size="9" font-family="'JetBrains Mono', monospace" fill="#94a3b8" opacity="0.6">LAT 03°15'00"S • IBU KOTA LASUSUA</text>
+
+    <line x1="200" y1="750" x2="1550" y2="750" stroke="#cbd5e1" stroke-width="0.75" stroke-dasharray="6,8" opacity="0.4" />
+    <text x="220" y="745" font-size="9" font-family="'JetBrains Mono', monospace" fill="#94a3b8" opacity="0.6">LAT 03°40'00"S</text>
+
+    <line x1="650" y1="50" x2="650" y2="880" stroke="#cbd5e1" stroke-width="0.75" stroke-dasharray="6,8" opacity="0.3" />
+    <text x="655" y="860" font-size="9" font-family="'JetBrains Mono', monospace" fill="#94a3b8" opacity="0.6">LONG 120°58'00"E</text>
+
+    <line x1="1100" y1="50" x2="1100" y2="880" stroke="#cbd5e1" stroke-width="0.75" stroke-dasharray="6,8" opacity="0.3" />
+    <text x="1105" y="860" font-size="9" font-family="'JetBrains Mono', monospace" fill="#94a3b8" opacity="0.6">LONG 121°15'00"E</text>
+
+    <!-- Geographic Labels in background -->
+    <text x="540" y="490" font-size="16" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#cbd5e1" letter-spacing="8" opacity="0.45">TELUK BONE</text>
+    <text x="1250" y="550" font-size="14" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#cbd5e1" letter-spacing="6" opacity="0.45" transform="rotate(45 1250 550)">PEGUNUNGAN MEKONGGA</text>
+
+    
+    <!-- Kolaka Utara 15 Kecamatan Silhouettes -->
+    <g class="kolut-regions" opacity="0.85">
+        
+        <g class="kolut-bg-polygon" data-kec="Lasusua">
+            <path d="M 929.6,621.6 L 1034.1,645.3 L 1090.7,641.0 L 1112.0,654.7 L 1048.2,693.7 L 961.6,729.3 L 954.8,726.7 L 960.7,739.3 L 956.0,752.1 L 943.9,747.0 L 935.7,726.3 L 912.1,710.9 L 907.0,702.2 L 916.4,704.0 L 891.7,672.5 L 885.8,647.1 L 883.2,625.4 L 929.6,621.6 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="977.2" y="672.1" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">LASUSUA</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Pakue">
+            <path d="M 1049.7,398.8 L 1145.2,459.5 L 1127.7,480.3 L 1119.5,477.7 L 1117.4,501.7 L 1088.1,496.7 L 1020.2,454.9 L 1008.7,465.5 L 996.5,442.4 L 1005.8,437.5 L 1014.1,410.5 L 1029.6,400.7 L 1042.7,406.9 L 1049.7,398.8 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1069.4" y="449.2" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">PAKUE</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Batu Putih">
+            <path d="M 1025.0,262.3 L 1024.1,261.8 L 1024.2,261.1 L 1025.2,261.8 L 1025.0,262.3 Z M 1033.8,254.4 L 1034.1,254.4 L 1034.2,254.7 L 1033.9,254.7 L 1033.8,254.4 Z M 1049.0,226.9 L 1048.3,226.6 L 1048.3,226.4 L 1049.0,226.7 L 1049.0,226.9 Z M 1041.7,220.3 L 1041.3,221.6 L 1040.4,221.6 L 1040.3,221.1 L 1041.7,220.3 Z M 1042.0,205.3 L 1041.6,205.1 L 1041.9,204.6 L 1042.2,205.0 L 1042.0,205.3 Z M 1041.2,204.0 L 1041.0,203.9 L 1041.0,203.7 L 1041.2,203.9 L 1041.2,204.0 Z M 1041.7,202.0 L 1058.4,219.5 L 1077.2,221.2 L 1073.1,261.5 L 1091.0,265.3 L 1089.8,277.5 L 1102.2,277.7 L 1093.3,294.7 L 1098.5,298.9 L 1163.9,309.8 L 1179.4,325.7 L 1253.5,361.6 L 1346.1,369.4 L 1344.7,403.5 L 1237.0,386.2 L 1106.8,329.0 L 1036.0,308.5 L 1036.7,285.5 L 1026.1,278.4 L 1024.6,266.7 L 1034.8,255.4 L 1041.5,267.1 L 1048.6,263.3 L 1050.7,244.1 L 1062.1,249.6 L 1063.6,233.9 L 1048.8,235.3 L 1053.2,221.3 L 1043.1,223.0 L 1044.4,206.4 L 1041.7,202.0 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1164.1" y="328.4" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">BATU PUTIH</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Rante Angin">
+            <path d="M 1124.0,681.6 L 1136.5,693.7 L 1104.9,706.2 L 1095.5,721.7 L 1082.7,726.2 L 1048.5,759.5 L 1035.8,758.4 L 1028.3,779.9 L 1005.6,799.9 L 978.4,769.9 L 1001.1,743.1 L 1029.2,739.9 L 1115.0,680.0 L 1124.0,681.6 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1046.0" y="741.6" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">RANTE ANGIN</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Kodeoha">
+            <path d="M 945.1,511.4 L 951.2,519.4 L 947.4,527.5 L 958.4,535.8 L 1107.5,614.1 L 1089.9,625.2 L 957.4,592.1 L 904.4,554.1 L 945.1,511.4 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="991.5" y="575.6" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">KODEOHA</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Ngapa">
+            <path d="M 1021.0,456.7 L 1088.1,496.7 L 1117.4,501.7 L 1112.5,506.4 L 1117.9,515.8 L 1104.3,537.2 L 1098.4,537.6 L 1099.6,557.5 L 1089.2,575.0 L 1115.4,595.2 L 1108.2,612.0 L 1046.8,586.6 L 1005.0,560.4 L 1002.7,538.9 L 975.5,498.7 L 995.5,471.3 L 1016.6,476.3 L 1016.9,469.9 L 1007.9,466.4 L 1021.0,456.7 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1049.8" y="530.2" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">NGAPA</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Wawo">
+            <path d="M 1134.2,693.8 L 1181.3,732.6 L 1195.0,777.3 L 1097.4,820.5 L 1072.7,850.0 L 1057.2,824.6 L 1005.6,799.9 L 1028.3,779.9 L 1035.8,758.4 L 1048.5,759.5 L 1082.7,726.2 L 1095.5,721.7 L 1104.9,706.2 L 1134.2,693.8 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1106.9" y="768.7" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">WAWO</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Lambai">
+            <path d="M 1117.8,678.5 L 1030.6,739.2 L 1001.1,743.1 L 978.2,769.5 L 956.0,752.1 L 960.7,739.3 L 954.8,726.7 L 961.6,729.3 L 1048.1,693.8 L 1111.7,656.2 L 1117.8,678.5 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1030.0" y="715.8" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">LAMBAI</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Watunohu">
+            <path d="M 999.4,440.3 L 999.7,450.4 L 1016.6,476.3 L 995.5,471.3 L 975.8,498.8 L 971.1,492.4 L 955.0,494.8 L 953.7,476.9 L 966.6,454.0 L 999.4,440.3 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="981.1" y="469.1" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">WATUNOHU</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Pakue Tengah">
+            <path d="M 1069.3,343.6 L 1145.8,380.9 L 1216.6,423.2 L 1176.4,423.9 L 1169.0,445.9 L 1145.2,459.5 L 1054.0,399.6 L 1038.4,397.5 L 1037.9,347.0 L 1069.3,343.6 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1110.5" y="398.1" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">PAKUE TENGAH</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Pakue Utara">
+            <path d="M 1054.1,310.3 L 1212.1,378.4 L 1265.0,393.8 L 1344.7,403.5 L 1340.2,463.3 L 1299.8,441.0 L 1264.3,441.3 L 1229.8,429.7 L 1070.3,343.6 L 1037.9,347.0 L 1025.7,323.1 L 1036.0,308.5 L 1054.1,310.3 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1203.5" y="387.9" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">PAKUE UTARA</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Porehu">
+            <path d="M 1163.0,130.3 L 1173.2,129.5 L 1177.0,143.3 L 1189.0,148.3 L 1194.4,159.8 L 1231.3,176.1 L 1233.5,190.6 L 1258.1,215.3 L 1283.4,226.4 L 1290.2,246.2 L 1283.2,279.0 L 1303.1,300.5 L 1305.4,316.8 L 1324.8,326.8 L 1328.7,354.3 L 1346.1,369.4 L 1253.5,361.6 L 1179.4,325.7 L 1163.9,309.8 L 1093.3,294.7 L 1103.5,279.9 L 1089.4,277.1 L 1089.4,264.3 L 1073.1,261.5 L 1077.2,221.2 L 1113.6,224.6 L 1120.9,221.3 L 1115.2,207.6 L 1134.1,210.8 L 1161.0,118.4 L 1163.0,130.3 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1204.2" y="263.2" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">POREHU</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Katoi">
+            <path d="M 904.7,554.9 L 957.4,592.1 L 1089.9,625.2 L 1090.7,641.0 L 1047.3,646.8 L 931.3,621.4 L 883.2,625.4 L 880.0,589.5 L 904.3,568.5 L 904.7,554.9 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="970.2" y="611.4" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">KATOI</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Tiwu">
+            <path d="M 970.4,492.4 L 1002.7,538.9 L 1005.0,560.4 L 947.4,527.5 L 951.2,519.4 L 944.8,511.0 L 954.0,508.5 L 956.6,494.0 L 970.4,492.4 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="974.9" y="525.0" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">TIWU</text>
+        </g>
+    
+        <g class="kolut-bg-polygon" data-kec="Tolala">
+            <path d="M 1051.0,208.1 L 1050.8,208.2 L 1050.8,207.9 L 1051.0,207.9 L 1051.0,208.1 Z M 1046.4,204.8 L 1045.8,204.5 L 1046.0,204.0 L 1046.5,204.4 L 1046.4,204.8 Z M 1046.4,201.8 L 1046.0,201.7 L 1046.8,201.4 L 1046.9,201.5 L 1046.4,201.8 Z M 1042.8,200.9 L 1042.7,200.7 L 1042.8,200.7 L 1042.9,200.9 L 1042.8,200.9 Z M 962.7,80.6 L 954.6,84.4 L 952.4,81.1 L 960.4,78.1 L 962.7,80.6 Z M 1069.8,61.0 L 1095.4,68.1 L 1113.9,82.4 L 1123.6,110.5 L 1141.1,106.6 L 1152.8,119.0 L 1161.0,118.4 L 1134.1,210.8 L 1115.2,207.6 L 1120.9,221.3 L 1113.6,224.6 L 1058.4,219.5 L 1050.8,214.4 L 1042.4,203.3 L 1055.5,213.5 L 1062.9,173.5 L 1053.1,159.8 L 1054.3,150.8 L 1048.2,152.9 L 1049.5,118.6 L 1039.7,120.5 L 1041.5,135.8 L 1026.7,125.7 L 1019.5,78.3 L 1011.3,112.7 L 1002.4,103.2 L 982.2,105.5 L 997.4,126.7 L 981.2,107.0 L 984.9,95.6 L 1006.5,85.9 L 1015.1,65.3 L 1044.7,61.3 L 1056.2,50.0 L 1069.8,61.0 Z" fill="#e8f0ec" fill-opacity="0.45" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4" />
+            <text x="1084.9" y="136.2" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#64748b" opacity="0.6" text-anchor="middle" pointer-events="none">TOLALA</text>
+        </g>
+    
+    </g>
+
+    <!-- Dashed Connectivity Trajectory Arcs (Identik dengan Desapresisi.id) -->
+    <path d="M 400,200 Q 750,450 977.2,672.1 Q 1300,700 1550,850" stroke="#0D6E5B" stroke-width="2.2" stroke-dasharray="9,9" fill="none" opacity="0.25" />
+    <path d="M 1084.9,136.2 Q 1159.5,232.29999999999998 1164.1,328.4 Q 1172.3,363.25 1110.5,398.1 Q 1078.85,535.1 977.2,672.1 Q 1008.7,641.75 970.2,611.4 Q 1073.5500000000002,690.05 1106.9,768.7" stroke="#1e293b" stroke-width="3" stroke-dasharray="10,8" fill="none" opacity="0.4" />
+    
+    <!-- Pulsing Trajectory Nodes -->
+    
+        <circle cx="1084.9" cy="136.2" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="1084.9" cy="136.2" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+        <circle cx="1164.1" cy="328.4" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="1164.1" cy="328.4" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+        <circle cx="1110.5" cy="398.1" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="1110.5" cy="398.1" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+        <circle cx="977.2" cy="672.1" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="977.2" cy="672.1" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+        <circle cx="970.2" cy="611.4" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="970.2" cy="611.4" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+        <circle cx="1106.9" cy="768.7" r="6" fill="#0D6E5B" opacity="0.8" />
+        <circle cx="1106.9" cy="768.7" r="12" fill="none" stroke="#0D6E5B" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6" />
+    
+</svg>
+
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <!-- Sisi Kiri: Deskripsi & 4 KPI Riil 2025 -->
+                        
+                        <!-- Sisi Kiri: Tipografi Bold Desapresisi, Pill Buttons & 4 KPI Riil 2025 -->
                         <div class="lg:col-span-7 space-y-6">
-                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-[#0D6E5B] text-xs font-bold tracking-wide">
+                            
+                            <!-- Subtitle Tracking Uppercase -->
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#0D6E5B] text-xs font-bold tracking-[0.2em] font-mono">
                                 <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
-                                <span>BPS PODES 2025 • PORTAL SATU DATA DESA PRESISI</span>
+                                <span>SOLUSI SATU DATA DESA PRESISI KABUPATEN KOLAKA UTARA</span>
                             </div>
 
-                            <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-none">
-                                AGREGAT 15<br>
-                                <span class="text-[#0D6E5B]">KECAMATAN</span>
+                            <!-- Huge Bold Geometric Typography (Identik dengan DATA DESA PRESISI) -->
+                            <h1 class="text-5xl sm:text-7xl lg:text-[84px] font-black text-[#152e4d] tracking-tight leading-[0.92]">
+                                DATA DESA<br>
+                                <span class="text-[#0D6E5B]">PRESISI</span>
                             </h1>
 
-                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-                                Telaah empiris bentang geografis pesisir dan daratan: profil ekonomi 3.622 sentra industri mikro, elektrifikasi 38.077 keluarga, serta disparitas sarana pendidikan dan kesehatan dari Tolala di utara hingga Wawo di ujung selatan.
+                            <p class="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
+                                Portal Resmi Satu Data Desa Madani Kolaka Utara — Kompilasi empiris 15 kecamatan dan 133 desa/kelurahan berbasis sensus PODES 2025 BPS untuk integrasi perencanaan spasial presisi.
                             </p>
 
-                            <!-- 4 KPI Riil 2025 Sesuai Permintaan User -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-                                <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all">
-                                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Penduduk 2025</div>
+                            <!-- Dua Tombol Kapsul Pill Buttons (Identik dengan Desapresisi.id) -->
+                            <div class="flex flex-wrap items-center gap-4 pt-1">
+                                <!-- Pill 1: Merah Crimson Kapsul "Portal Data" -->
+                                <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="px-8 py-3.5 sm:py-4 rounded-full bg-[#8A151B] hover:bg-[#721116] text-white font-extrabold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2.5 cursor-pointer group">
+                                    <span>Portal Data</span>
+                                    <svg class="w-4 h-4 text-white/90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+                                </a>
+
+                                <!-- Pill 2: Biru Gelap Navy Kapsul "WebGIS Peta Spasial" -->
+                                <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-8 py-3.5 sm:py-4 rounded-full bg-[#152e4d] hover:bg-[#0c1f35] text-white font-extrabold text-sm sm:text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2.5 cursor-pointer group">
+                                    <svg class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                                    <span>WebGIS Peta Spasial</span>
+                                </a>
+                            </div>
+
+                            <!-- 4 KPI Riil 2025 Sesuai Permintaan User (Cards Floating Elegan) -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-200/80">
+                                <div class="bg-white/85 backdrop-blur-sm rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:border-emerald-400 hover:shadow-md transition-all">
+                                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Penduduk 2025</div>
                                     <div class="text-2xl sm:text-3xl font-black text-[#0D6E5B] mt-1 tabular-nums">145.679</div>
                                     <div class="text-[11px] text-slate-500 font-medium mt-0.5">Jiwa Terdata Riil</div>
                                 </div>
-                                <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all">
-                                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Wilayah Adm</div>
+                                <div class="bg-white/85 backdrop-blur-sm rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:border-emerald-400 hover:shadow-md transition-all">
+                                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Wilayah Adm</div>
                                     <div class="text-2xl sm:text-3xl font-black text-slate-900 mt-1 tabular-nums">15 / 133</div>
                                     <div class="text-[11px] text-slate-500 font-medium mt-0.5">Kec / Desa-Kelurahan</div>
                                 </div>
-                                <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all">
-                                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rasio Listrik</div>
+                                <div class="bg-white/85 backdrop-blur-sm rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:border-emerald-400 hover:shadow-md transition-all">
+                                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Rasio Listrik</div>
                                     <div class="text-2xl sm:text-3xl font-black text-emerald-600 mt-1 tabular-nums">99,55%</div>
                                     <div class="text-[11px] text-slate-500 font-medium mt-0.5">38.077 KK Berlistrik</div>
                                 </div>
-                                <div class="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all">
-                                    <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Sentra & IMK</div>
+                                <div class="bg-white/85 backdrop-blur-sm rounded-2xl p-4 border border-slate-200/90 shadow-2xs hover:border-emerald-400 hover:shadow-md transition-all">
+                                    <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Sentra & IMK</div>
                                     <div class="text-2xl sm:text-3xl font-black text-amber-600 mt-1 tabular-nums">3.622</div>
                                     <div class="text-[11px] text-slate-500 font-medium mt-0.5">Unit Usaha Produktif</div>
                                 </div>
-                            </div>
-
-                            <!-- Tombol Aksi Cepat Hero -->
-                            <div class="flex flex-wrap items-center gap-3 pt-3">
-                                <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="px-6 py-3.5 rounded-xl bg-[#0D6E5B] hover:bg-[#095244] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer">
-                                    <span>Eksplorasi Ringkasan 133 Desa</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                                </a>
-                                <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold text-sm shadow-xs transition-all flex items-center gap-2 cursor-pointer">
-                                    <svg class="w-4 h-4 text-[#0D6E5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                                    <span>Buka Peta Tematik Spasial</span>
-                                </a>
                             </div>
                         </div>
 
                         <!-- Sisi Kanan: Peta SVG Interaktif Kolaka Utara & Live Inspection Panel -->
                         <div class="lg:col-span-5 flex flex-col items-center">
-                            <div class="w-full bg-white rounded-3xl p-5 sm:p-6 border border-emerald-100 shadow-md relative">
+                            <div class="w-full bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xl relative">
                                 <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-100">
                                     <div class="flex items-center gap-2">
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B]"></span>
