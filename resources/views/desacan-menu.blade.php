@@ -7484,15 +7484,28 @@ function triggerPubDownload() {
         function openManageDataModal(activeTab = 'kpi') {
             const modal = document.getElementById('manageDataModal');
             if (!modal) return;
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
             const sData = getSectoralData(curVillage);
-            const vData = villagesData[curVillage] || villagesData.cijati;
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa Lapolu' };
 
             // Update title
             const titleEl = document.getElementById('modalAdminDesaTitle');
             if (titleEl) titleEl.textContent = vData.title;
 
-            // Populate KPI inputs
+            // Helper to clean string to pure number
+            function cleanNum(val, fallback = '0') {
+                if (val === undefined || val === null || val === '') return fallback;
+                let s = String(val).trim().replace(/[^\d.,]/g, '');
+                if (/^\d{1,3}\.\d{3}$/.test(s)) {
+                    s = s.replace('.', '');
+                } else {
+                    s = s.replace(',', '.');
+                }
+                const parsed = parseFloat(s);
+                return isNaN(parsed) ? fallback : String(parsed);
+            }
+
+            // Populate KPI inputs with clean numeric values
             const inPop = document.getElementById('inputKpiPop');
             const inKk = document.getElementById('inputKpiKk');
             const inRasio = document.getElementById('inputKpiRasio');
@@ -7500,74 +7513,78 @@ function triggerPubDownload() {
             const inSex = document.getElementById('inputKpiSexRatio');
             const inP3ke = document.getElementById('inputKpiP3ke');
             const inStunting = document.getElementById('inputKpiStunting');
-            if (inPop) inPop.value = sData.kpi.pop;
-            if (inKk) inKk.value = sData.kpi.kk;
-            if (inRasio) inRasio.value = sData.kpi.rasio;
-            if (inPre) inPre.value = sData.kpi.pre;
-            if (inSex) inSex.value = sData.kpi.sexRatio || '98,5%';
-            if (inP3ke) inP3ke.value = sData.kpi.p3ke || '3,2%';
-            if (inStunting) inStunting.value = sData.kpi.stunting || '14 Balita';
+            const inFaskes = document.getElementById('inputKpiFaskes');
+
+            if (inPop) inPop.value = cleanNum(sData.kpi?.pop, '1264');
+            if (inKk) inKk.value = cleanNum(sData.kpi?.kk, '321');
+            if (inRasio) inRasio.value = cleanNum(sData.kpi?.rasio, '40.0');
+            if (inPre) inPre.value = cleanNum(sData.kpi?.pre, '38');
+            if (inSex) inSex.value = cleanNum(sData.kpi?.sexRatio, '100.5');
+            if (inP3ke) inP3ke.value = cleanNum(sData.kpi?.p3ke, '3.5');
+            if (inStunting) inStunting.value = cleanNum(sData.kpi?.stuntingVal || sData.kpi?.stunting, '2');
+            if (inFaskes) inFaskes.value = cleanNum(sData.kpi?.faskes, '4');
 
             // Populate Bansos inputs
-            const b0 = sData.bansos?.[0] || { pkh: 480, bpnt: 370, blt: 140, non: 0 };
+            const b = sData.bansos || [
+                { name: 'PKH', count: 480 },
+                { name: 'BPNT', count: 370 },
+                { name: 'BLT Dana Desa', count: 140 },
+                { name: 'Non-Bansos', count: 140 }
+            ];
             const inPkh = document.getElementById('inputBansosPkh');
             const inBpnt = document.getElementById('inputBansosBpnt');
             const inBlt = document.getElementById('inputBansosBlt');
             const inNon = document.getElementById('inputBansosNon');
-            if (inPkh) inPkh.value = b0.pkh;
-            if (inBpnt) inBpnt.value = b0.bpnt;
-            if (inBlt) inBlt.value = b0.blt;
-            if (inNon) inNon.value = sData.bansos?.[3]?.non || 140;
+            if (inPkh) inPkh.value = b[0]?.count || 480;
+            if (inBpnt) inBpnt.value = b[1]?.count || 370;
+            if (inBlt) inBlt.value = b[2]?.count || 140;
+            if (inNon) inNon.value = b[3]?.count || 140;
 
-            // Populate Disabilitas inputs
-            if (!sData.disabilitas) {
-                sData.disabilitas = { male: { mandiri: 78, rentan: 22 }, female: { mandiri: 65, rentan: 35 } };
+            // Render Dusun Table
+            renderModalDusunTable(sData.dusun || []);
+
+            // Populate Disabilitas
+            const inDisMale = document.getElementById('inputDisMaleMandiri');
+            const inDisFemale = document.getElementById('inputDisFemaleMandiri');
+            if (inDisMale) inDisMale.value = sData.disabilitas?.mandiriMale || 95;
+            if (inDisFemale) inDisFemale.value = sData.disabilitas?.mandiriFemale || 94;
+
+            // Populate Pendidikan
+            const eduVals = sData.pendidikan || [45, 280, 420, 510, 115];
+            for (let i = 0; i < 5; i++) {
+                const el = document.getElementById('inputEdu' + i);
+                if (el) el.value = eduVals[i] || 0;
             }
-            const inDisM = document.getElementById('inputDisMaleMandiri');
-            const inDisF = document.getElementById('inputDisFemaleMandiri');
-            if (inDisM) inDisM.value = sData.disabilitas?.male?.mandiri ?? 78;
-            if (inDisF) inDisF.value = sData.disabilitas?.female?.mandiri ?? 65;
-
-            // Populate Pendidikan inputs
-            sData.pendidikan.forEach((edu, idx) => {
-                const el = document.getElementById('inputEdu' + idx);
-                if (el) el.value = edu.val;
-            });
-
-            // Populate Dusun Table
-            renderModalDusunTable(sData.dusun);
 
             // Switch to requested tab
             switchManageModalTab(activeTab);
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
         }
 
         function closeManageDataModal() {
             const modal = document.getElementById('manageDataModal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
         }
 
         function switchManageModalTab(tabKey) {
-            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-white', 'text-slate-900', 'shadow-xs');
-                btn.classList.add('bg-white/15', 'text-white');
+            document.querySelectorAll('.modal-tab-btn').forEach(b => {
+                b.classList.remove('active', 'bg-white', 'text-slate-900', 'shadow-xs');
+                b.classList.add('bg-white/15', 'text-white');
             });
             const activeBtn = document.getElementById('modal-tab-' + tabKey);
             if (activeBtn) {
-                activeBtn.classList.remove('bg-white/15', 'text-white');
                 activeBtn.classList.add('active', 'bg-white', 'text-slate-900', 'shadow-xs');
+                activeBtn.classList.remove('bg-white/15', 'text-white');
             }
-
             document.querySelectorAll('.modal-panel-view').forEach(p => p.classList.add('hidden'));
             const activePanel = document.getElementById('modal-panel-' + tabKey);
-            if (activePanel) {
-                activePanel.classList.remove('hidden');
-            }
+            if (activePanel) activePanel.classList.remove('hidden');
         }
 
         function renderModalDusunTable(dusunList) {
@@ -7576,55 +7593,53 @@ function triggerPubDownload() {
             if (!tbody) return;
             if (countEl) countEl.textContent = `${dusunList.length} Dusun`;
 
-            let rows = '';
-            dusunList.forEach((d, idx) => {
-                rows += `
-                <tr class="hover:bg-slate-50 transition">
-                    <td class="p-2.5 font-bold text-slate-900">${d.name}</td>
-                    <td class="p-2.5">${d.pop.toLocaleString('id-ID')}</td>
-                    <td class="p-2.5">${d.kk.toLocaleString('id-ID')}</td>
-                    <td class="p-2.5 text-amber-700 font-bold">${d.pre}</td>
-                    <td class="p-2.5 text-center">
-                        <button type="button" onclick="deleteDusunItem('${d.id}')" class="text-rose-600 hover:text-rose-800 text-xs font-bold transition p-1 cursor-pointer" title="Hapus dusun ini">
-                            🗑️
-                        </button>
-                    </td>
-                </tr>`;
-            });
-            tbody.innerHTML = rows;
-        }
-
-        function addNewDusunFromModal() {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
-            const sData = getSectoralData(curVillage);
-
-            const name = document.getElementById('newDusunName')?.value?.trim();
-            const pop = parseInt(document.getElementById('newDusunPop')?.value, 10);
-            const kk = parseInt(document.getElementById('newDusunKk')?.value, 10);
-            const pre = parseInt(document.getElementById('newDusunPre')?.value, 10);
-            const kerawanan = document.getElementById('newDusunKerawanan')?.value || 'Sedang';
-
-            if (!name || isNaN(pop) || isNaN(kk)) {
-                alert('Silakan isi Nama Dusun, Jumlah Penduduk, dan Jumlah KK dengan benar.');
+            if (!dusunList.length) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-3 text-center text-slate-400">Belum ada data dusun sasaran.</td></tr>';
                 return;
             }
 
-            const newId = 'dusun_' + Date.now();
-            const center = sData.center || [-3.225, 121.048];
-            const offset = (sData.dusun.length + 1) * 0.007;
+            tbody.innerHTML = dusunList.map((d, idx) => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-2.5 font-bold text-slate-900">${d.name}</td>
+                    <td class="p-2.5 text-slate-700 font-mono">${(d.pop || 0).toLocaleString('id-ID')}</td>
+                    <td class="p-2.5 text-slate-700 font-mono">${(d.kk || 0).toLocaleString('id-ID')}</td>
+                    <td class="p-2.5 text-rose-600 font-bold">${d.pre || 0} KK</td>
+                    <td class="p-2.5 text-center">
+                        <button type="button" onclick="deleteDusunItem(${idx})" class="w-6 h-6 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 inline-flex items-center justify-center text-xs transition cursor-pointer" title="Hapus Dusun">✕</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function addNewDusunFromModal() {
+            const name = document.getElementById('newDusunName')?.value.trim();
+            const pop = parseInt(document.getElementById('newDusunPop')?.value, 10) || 0;
+            const kk = parseInt(document.getElementById('newDusunKk')?.value, 10) || 0;
+            const pre = parseInt(document.getElementById('newDusunPre')?.value, 10) || 0;
+            const kerawanan = document.getElementById('newDusunKerawanan')?.value || 'Sedang';
+
+            if (!name) {
+                alert('Silakan masukkan nama dusun terlebih dahulu.');
+                return;
+            }
+
+            const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
+            const sData = getSectoralData(curVillage);
+            if (!sData.dusun) sData.dusun = [];
 
             const newDusun = {
-                id: newId,
+                id: 'dusun_' + Date.now(),
                 name: name,
                 pop: pop,
                 kk: kk,
-                pre: isNaN(pre) ? Math.round(kk * 0.1) : pre,
+                pre: pre,
                 kerawanan: kerawanan,
-                lat: center[0] + offset * 0.7,
-                lng: center[1] + offset * 0.7
+                lat: (sData.center ? sData.center[0] : -3.415) + (Math.random() - 0.5) * 0.01,
+                lng: (sData.center ? sData.center[1] : 120.998) + (Math.random() - 0.5) * 0.01
             };
 
             sData.dusun.push(newDusun);
+            renderModalDusunTable(sData.dusun);
 
             // Clear inputs
             document.getElementById('newDusunName').value = '';
@@ -7632,41 +7647,46 @@ function triggerPubDownload() {
             document.getElementById('newDusunKk').value = '';
             document.getElementById('newDusunPre').value = '';
 
-            saveSectoralData(curVillage, sData);
-            renderModalDusunTable(sData.dusun);
-            populateDashDusunOptions(curVillage, newId);
-            showToast(`✅ Dusun "${name}" berhasil ditambahkan!`);
+            showToast(`✅ Dusun "${name}" berhasil ditambahkan ke daftar!`, '➕');
         }
 
-        function deleteDusunItem(dusunId) {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+        function deleteDusunItem(idx) {
+            const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
             const sData = getSectoralData(curVillage);
-            if (sData.dusun.length <= 1) {
-                alert('Desa harus memiliki minimal 1 dusun wilayah sasaran.');
-                return;
+            if (sData.dusun && sData.dusun[idx]) {
+                const deletedName = sData.dusun[idx].name;
+                if (!confirm(`Hapus data ${deletedName} dari daftar dusun?`)) return;
+                sData.dusun.splice(idx, 1);
+                renderModalDusunTable(sData.dusun);
+                showToast(`🗑️ Dusun "${deletedName}" telah dihapus.`, '🗑️');
             }
-            if (!confirm('Apakah Anda yakin ingin menghapus dusun ini?')) return;
-
-            sData.dusun = sData.dusun.filter(d => d.id !== dusunId);
-            saveSectoralData(curVillage, sData);
-            renderModalDusunTable(sData.dusun);
-            populateDashDusunOptions(curVillage, 'all');
-            showToast('🗑️ Dusun berhasil dihapus.');
         }
 
         function saveManageDataForm(e) {
             if (e) e.preventDefault();
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
+            const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
             const sData = getSectoralData(curVillage);
 
-            // Read KPI
-            sData.kpi.pop = document.getElementById('inputKpiPop')?.value || sData.kpi.pop;
-            sData.kpi.kk = document.getElementById('inputKpiKk')?.value || sData.kpi.kk;
-            sData.kpi.rasio = document.getElementById('inputKpiRasio')?.value || sData.kpi.rasio;
-            sData.kpi.pre = document.getElementById('inputKpiPre')?.value || sData.kpi.pre;
-            sData.kpi.sexRatio = document.getElementById('inputKpiSexRatio')?.value || sData.kpi.sexRatio || '98,5%';
-            sData.kpi.p3ke = document.getElementById('inputKpiP3ke')?.value || sData.kpi.p3ke || '3,2%';
-            sData.kpi.stunting = document.getElementById('inputKpiStunting')?.value || sData.kpi.stunting || '14 Balita';
+            // Read numeric KPI values cleanly
+            const rawPop = parseFloat(document.getElementById('inputKpiPop')?.value) || 1264;
+            const rawKk = parseFloat(document.getElementById('inputKpiKk')?.value) || 321;
+            const rawRasio = parseFloat(document.getElementById('inputKpiRasio')?.value) || 40.0;
+            const rawPre = parseFloat(document.getElementById('inputKpiPre')?.value) || 38;
+            const rawSex = parseFloat(document.getElementById('inputKpiSexRatio')?.value) || 100.5;
+            const rawP3ke = parseFloat(document.getElementById('inputKpiP3ke')?.value) || 3.5;
+            const rawStunting = parseFloat(document.getElementById('inputKpiStunting')?.value) || 2;
+            const rawFaskes = parseFloat(document.getElementById('inputKpiFaskes')?.value) || 4;
+
+            if (!sData.kpi) sData.kpi = {};
+            sData.kpi.pop = rawPop.toLocaleString('id-ID');
+            sData.kpi.kk = rawKk.toLocaleString('id-ID');
+            sData.kpi.rasio = rawRasio.toFixed(1).replace('.', ',') + '%';
+            sData.kpi.pre = rawPre.toString();
+            sData.kpi.sexRatio = rawSex.toFixed(1).replace('.', ',') + '%';
+            sData.kpi.p3ke = rawP3ke.toFixed(1).replace('.', ',') + '%';
+            sData.kpi.stunting = rawStunting + ' Balita';
+            sData.kpi.stuntingVal = rawStunting;
+            sData.kpi.faskes = rawFaskes + ' Unit';
 
             // Read Bansos
             const pkhVal = parseInt(document.getElementById('inputBansosPkh')?.value, 10) || 480;
@@ -7675,48 +7695,58 @@ function triggerPubDownload() {
             const nonVal = parseInt(document.getElementById('inputBansosNon')?.value, 10) || 140;
 
             sData.bansos = [
-                { category: "PKH", pkh: pkhVal, bpnt: Math.round(bpntVal * 0.8), blt: Math.round(bltVal * 0.9), non: 0 },
-                { category: "BPNT", pkh: Math.round(pkhVal * 0.65), bpnt: bpntVal, blt: Math.round(bltVal * 0.85), non: Math.round(nonVal * 0.4) },
-                { category: "BLT-DD", pkh: Math.round(pkhVal * 0.45), bpnt: Math.round(bpntVal * 0.7), blt: bltVal, non: Math.round(nonVal * 0.75) },
-                { category: "Non-Bansos", pkh: Math.round(pkhVal * 0.3), bpnt: Math.round(bpntVal * 0.9), blt: Math.round(bltVal * 0.65), non: nonVal }
+                { name: 'PKH', count: pkhVal, color: '#005ea6' },
+                { name: 'BPNT', count: bpntVal, color: '#10b981' },
+                { name: 'BLT Dana Desa', count: bltVal, color: '#e11d48' },
+                { name: 'Non-Bansos', count: nonVal, color: '#f59e0b' }
             ];
 
             // Read Disabilitas
-            if (!sData.disabilitas) {
-                sData.disabilitas = { male: { mandiri: 78, rentan: 22 }, female: { mandiri: 65, rentan: 35 } };
-            }
-            const disM = parseInt(document.getElementById('inputDisMaleMandiri')?.value, 10) || 78;
-            const disF = parseInt(document.getElementById('inputDisFemaleMandiri')?.value, 10) || 65;
-            sData.disabilitas.male.mandiri = Math.min(100, Math.max(0, disM));
-            sData.disabilitas.male.rentan = 100 - sData.disabilitas.male.mandiri;
-            sData.disabilitas.female.mandiri = Math.min(100, Math.max(0, disF));
-            sData.disabilitas.female.rentan = 100 - sData.disabilitas.female.mandiri;
+            if (!sData.disabilitas) sData.disabilitas = {};
+            sData.disabilitas.mandiriMale = parseInt(document.getElementById('inputDisMaleMandiri')?.value, 10) || 95;
+            sData.disabilitas.mandiriFemale = parseInt(document.getElementById('inputDisFemaleMandiri')?.value, 10) || 94;
 
             // Read Pendidikan
-            sData.pendidikan.forEach((edu, idx) => {
-                const el = document.getElementById('inputEdu' + idx);
-                if (el) {
-                    edu.val = parseInt(el.value, 10) || edu.val;
-                }
-            });
+            sData.pendidikan = [];
+            for (let i = 0; i < 5; i++) {
+                sData.pendidikan.push(parseInt(document.getElementById('inputEdu' + i)?.value, 10) || 0);
+            }
 
-            saveSectoralData(curVillage, sData);
+            // Save to localStorage
+            try {
+                localStorage.setItem('descan_custom_' + curVillage, JSON.stringify(sData));
+            } catch(e) {}
+
+            // Re-render dashboard
+            if (typeof renderDashboardCantik === 'function') {
+                renderDashboardCantik(curVillage);
+            }
+            if (typeof renderDashboard6Desa === 'function') {
+                renderDashboard6Desa();
+            }
+
             closeManageDataModal();
+            showToast('Data PODES berhasil disimpan dan grafik diperbarui!', '💾');
         }
 
         function resetSectoralDataToDefault() {
-            const curVillage = currentTargetVillage || currentVillageKey || 'cijati';
-            if (!confirm('Apakah Anda ingin mengembalikan seluruh data grafik ke nilai standar resmi BPS?')) return;
+            const curVillage = currentTargetVillage || currentVillageKey || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[curVillage]) ? villagesData[curVillage] : { title: 'Desa' };
+            const isConfirmed = confirm(
+                `⚠️ KONFIRMASI RESET DATA PODES\n\nApakah Anda yakin ingin mereset seluruh formulir dan grafik untuk ${vData.title} kembali ke nilai standar baku BPS Kolaka Utara?\n\nPerubahan yang telah disimpan akan dikembalikan ke data resmi.`
+            );
+            if (!isConfirmed) return;
+
             try {
                 localStorage.removeItem('descan_custom_' + curVillage);
             } catch(e) {}
-            renderDashboardCantik(curVillage);
+            if (typeof renderDashboardCantik === 'function') {
+                renderDashboardCantik(curVillage);
+            }
             closeManageDataModal();
-            showToast('🔄 Seluruh data statistik dikembalikan ke standar awal BPS.');
+            showToast(`🔄 Data PODES ${vData.title} berhasil dikembalikan ke standar resmi BPS!`, '🔄');
         }
 
-        // ===== DESCAN HOME: sidebar, navigasi, grafik =====
-        // ===== DESCAN SIDEBAR: submenu Materi Pembelajaran =====
         function dcSetSub(key) {
             document.querySelectorAll('.dc-sub-item').forEach(el => el.classList.remove('active'));
             const el = document.getElementById('sub-' + key);
@@ -9818,20 +9848,20 @@ function triggerPubDownload() {
     <div id="manageDataModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
         <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 animate-in fade-in zoom-in duration-200">
             
-            <!-- Modal Header -->
+            <!-- Modal Header: Sinkron dengan Menu Sidebar Pengisian Data PODES -->
             <div class="bg-gradient-to-r from-[#072448] via-[#0b2b52] to-[#072448] text-white p-5 sm:p-6 relative">
                 <button type="button" onclick="closeManageDataModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition cursor-pointer">
                     ✕
                 </button>
-                <div class="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase text-amber-300">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>Admin Panel • Pemutakhiran Data Desa Cantik</span>
+                <div class="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase text-emerald-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Admin Panel • Pengisian Data PODES</span>
                 </div>
                 <h3 class="text-xl font-black text-white mt-1">
-                    Kelola & Edit Data Statistik
+                    Pengisian Data PODES &amp; Statistik Desa
                 </h3>
                 <p class="text-xs text-blue-100/90 mt-0.5">
-                    Perbarui data grafik monografi dan tambah dusun sasaran untuk <b id="modalAdminDesaTitle" class="text-amber-300">Desa Cijati</b>.
+                    Pemutakhiran data monografi, indikator utama, dan dusun sasaran untuk <b id="modalAdminDesaTitle" class="text-amber-300 font-bold">Desa Lapolu</b>.
                 </p>
 
                 <!-- Modal Sub-Navigation Tabs -->
@@ -9843,10 +9873,10 @@ function triggerPubDownload() {
                         🏛️ Bantuan Sosial
                     </button>
                     <button type="button" onclick="switchManageModalTab('dusun')" id="modal-tab-dusun" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        <i class="bi bi-houses-fill mr-1"></i> Kelola & Tambah Dusun
+                        <i class="bi bi-houses-fill mr-1"></i> Kelola &amp; Tambah Dusun
                     </button>
                     <button type="button" onclick="switchManageModalTab('sosial')" id="modal-tab-sosial" class="modal-tab-btn px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white transition cursor-pointer">
-                        <i class="bi bi-people-fill mr-1"></i> Sosial & Pendidikan
+                        <i class="bi bi-people-fill mr-1"></i> Sosial &amp; Pendidikan
                     </button>
                 </div>
             </div>
@@ -9854,40 +9884,92 @@ function triggerPubDownload() {
             <!-- Modal Body Form -->
             <form id="manageDataForm" onsubmit="saveManageDataForm(event)" class="p-5 sm:p-6 space-y-5">
                 
-                <!-- TAB 1: INDIKATOR UTAMA (KPI) -->
+                <!-- TAB 1: INDIKATOR UTAMA (KPI) - 8 Field Simetris (4 Baris x 2 Kolom) dengan Input Suffix Add-on -->
                 <div id="modal-panel-kpi" class="modal-panel-view space-y-4">
-                    <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 font-medium">
-                        💡 Angka berikut akan langsung mengubah kartu statistik utama di bagian paling atas dashboard desa.
+                    <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 font-medium flex items-center gap-2">
+                        <span class="text-base">💡</span>
+                        <span>Angka berikut akan langsung mengubah kartu statistik utama di bagian paling atas dashboard desa.</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
+                        <!-- Baris 1: Total Penduduk & Total Keluarga -->
                         <div>
-                            <label for="inputKpiPop" class="block mb-1">Total Penduduk (Jiwa)</label>
-                            <input type="text" id="inputKpiPop" required placeholder="contoh: 4.520" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <label for="inputKpiPop" class="block mb-1 text-slate-800">Total Penduduk</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="1" id="inputKpiPop" required placeholder="1264" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    Jiwa
+                                </span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputKpiKk" class="block mb-1">Total Keluarga (KK)</label>
-                            <input type="text" id="inputKpiKk" required placeholder="contoh: 1.340" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <label for="inputKpiKk" class="block mb-1 text-slate-800">Total Keluarga</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="1" id="inputKpiKk" required placeholder="321" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    KK
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Baris 2: Rasio Beban Tanggungan & Keluarga Pre-Sejahtera -->
+                        <div>
+                            <label for="inputKpiRasio" class="block mb-1 text-slate-800">Rasio Beban Tanggungan</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="0.1" id="inputKpiRasio" required placeholder="40.0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    %
+                                </span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputKpiRasio" class="block mb-1">Rasio Beban Tanggungan (%)</label>
-                            <input type="text" id="inputKpiRasio" required placeholder="contoh: 42,5%" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <label for="inputKpiPre" class="block mb-1 text-slate-800">Keluarga Pre-Sejahtera</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="1" id="inputKpiPre" required placeholder="38" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    KK
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Baris 3: Rasio Jenis Kelamin & Penduduk Miskin P3KE -->
+                        <div>
+                            <label for="inputKpiSexRatio" class="block mb-1 text-slate-800">Rasio Jenis Kelamin (Sex Ratio)</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="0.1" id="inputKpiSexRatio" required placeholder="100.5" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    %
+                                </span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputKpiPre" class="block mb-1">Keluarga Pre-Sejahtera (KK)</label>
-                            <input type="text" id="inputKpiPre" required placeholder="contoh: 112" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <label for="inputKpiP3ke" class="block mb-1 text-slate-800">Penduduk Miskin P3KE</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="0.1" id="inputKpiP3ke" required placeholder="3.5" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    %
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Baris 4 (Simetris Genap 8 Field): Kasus Stunting Aktif & Fasilitas Kesehatan -->
+                        <div>
+                            <label for="inputKpiStunting" class="block mb-1 text-slate-800">Kasus Stunting Aktif</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="1" min="0" id="inputKpiStunting" required placeholder="2" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    Balita
+                                </span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputKpiSexRatio" class="block mb-1">Rasio Jenis Kelamin (Sex Ratio %)</label>
-                            <input type="text" id="inputKpiSexRatio" required placeholder="contoh: 98,5%" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
-                        </div>
-                        <div>
-                            <label for="inputKpiP3ke" class="block mb-1">Penduduk Miskin P3KE (%)</label>
-                            <input type="text" id="inputKpiP3ke" required placeholder="contoh: 3,2%" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
-                        </div>
-                        <div>
-                            <label for="inputKpiStunting" class="block mb-1">Kasus Stunting Aktif (Balita)</label>
-                            <input type="text" id="inputKpiStunting" required placeholder="contoh: 14 Balita" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <label for="inputKpiFaskes" class="block mb-1 text-slate-800">Fasilitas Kesehatan / Posyandu</label>
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" step="1" min="0" id="inputKpiFaskes" required placeholder="4" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">
+                                    Unit
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -9900,32 +9982,44 @@ function triggerPubDownload() {
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
                         <div>
-                            <label for="inputBansosPkh" class="block mb-1 flex items-center gap-1.5">
+                            <label for="inputBansosPkh" class="block mb-1 flex items-center gap-1.5 text-slate-800">
                                 <span class="w-2.5 h-2.5 rounded-xs bg-[#005ea6]"></span>
-                                <span>Penerima PKH (KK)</span>
+                                <span>Penerima PKH</span>
                             </label>
-                            <input type="number" id="inputBansosPkh" required min="0" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#005ea6] focus-within:ring-2 focus-within:ring-blue-500/20 overflow-hidden transition">
+                                <input type="number" id="inputBansosPkh" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputBansosBpnt" class="block mb-1 flex items-center gap-1.5">
+                            <label for="inputBansosBpnt" class="block mb-1 flex items-center gap-1.5 text-slate-800">
                                 <span class="w-2.5 h-2.5 rounded-xs bg-[#10b981]"></span>
-                                <span>Penerima BPNT (KK)</span>
+                                <span>Penerima BPNT</span>
                             </label>
-                            <input type="number" id="inputBansosBpnt" required min="0" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#10b981] focus-within:ring-2 focus-within:ring-emerald-500/20 overflow-hidden transition">
+                                <input type="number" id="inputBansosBpnt" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputBansosBlt" class="block mb-1 flex items-center gap-1.5">
+                            <label for="inputBansosBlt" class="block mb-1 flex items-center gap-1.5 text-slate-800">
                                 <span class="w-2.5 h-2.5 rounded-xs bg-[#e11d48]"></span>
-                                <span>Penerima BLT Dana Desa (KK)</span>
+                                <span>Penerima BLT Dana Desa</span>
                             </label>
-                            <input type="number" id="inputBansosBlt" required min="0" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#e11d48] focus-within:ring-2 focus-within:ring-rose-500/20 overflow-hidden transition">
+                                <input type="number" id="inputBansosBlt" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
+                            </div>
                         </div>
                         <div>
-                            <label for="inputBansosNon" class="block mb-1 flex items-center gap-1.5">
+                            <label for="inputBansosNon" class="block mb-1 flex items-center gap-1.5 text-slate-800">
                                 <span class="w-2.5 h-2.5 rounded-xs bg-[#f59e0b]"></span>
-                                <span>Non-Bansos / Mandiri (KK)</span>
+                                <span>Non-Bansos / Mandiri</span>
                             </label>
-                            <input type="number" id="inputBansosNon" required min="0" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] bg-slate-50 focus:bg-white transition">
+                            <div class="relative flex items-center rounded-xl border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:border-[#f59e0b] focus-within:ring-2 focus-within:ring-amber-500/20 overflow-hidden transition">
+                                <input type="number" id="inputBansosNon" required min="0" class="w-full px-3.5 py-2.5 font-bold text-slate-900 bg-transparent focus:outline-none text-xs">
+                                <span class="px-3 py-2.5 text-xs font-bold text-slate-500 bg-slate-100 border-l border-slate-200 shrink-0 select-none">KK</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -10012,7 +10106,7 @@ function triggerPubDownload() {
 
                     <!-- Disabilitas & Kesehatan -->
                     <div class="space-y-2">
-                        <span class="text-xs font-black text-slate-900 block">Status Disabilitas & Kesehatan (% Mandiri)</span>
+                        <span class="text-xs font-black text-slate-900 block">Status Disabilitas &amp; Kesehatan (% Mandiri)</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-bold text-slate-700">
                             <div>
                                 <label for="inputDisMaleMandiri" class="block mb-1">Laki-laki Mandiri / Sehat (%)</label>
@@ -10054,9 +10148,9 @@ function triggerPubDownload() {
 
                 </div>
 
-                <!-- Modal Actions Footer -->
+                <!-- Modal Actions Footer (Konfirmasi Keamanan & Tombol Simpan) -->
                 <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <button type="button" onclick="resetSectoralDataToDefault()" class="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1 cursor-pointer">
+                    <button type="button" onclick="resetSectoralDataToDefault()" class="text-xs font-bold text-rose-600 hover:text-rose-800 transition flex items-center gap-1.5 cursor-pointer hover:underline">
                         <span>🔄</span>
                         <span>Reset ke Nilai Standar BPS</span>
                     </button>
@@ -10065,7 +10159,7 @@ function triggerPubDownload() {
                         <button type="button" onclick="closeManageDataModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition cursor-pointer">
                             Batal
                         </button>
-                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#005ea6] to-[#072448] hover:from-[#004e8a] hover:to-[#051c38] text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center gap-1.5 cursor-pointer transform active:scale-95">
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs shadow-md hover:shadow-lg transition flex items-center gap-1.5 cursor-pointer transform active:scale-95">
                             <span>💾</span>
                             <span>Simpan Perubahan Grafik</span>
                         </button>
@@ -10075,7 +10169,6 @@ function triggerPubDownload() {
             </form>
         </div>
     </div>
-
     <div id="switchAccountModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md overflow-y-auto">
         <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-8">
             <div class="bg-gradient-to-r from-[#0b2545] via-[#005ea6] to-[#0b2545] text-white p-5 relative">
