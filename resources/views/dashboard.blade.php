@@ -448,125 +448,107 @@
                             </div>
                         </div>
 
-                        <!-- Sisi Kanan: Peta SVG Interaktif Kolaka Utara & Live Inspection Panel -->
-                        <div class="lg:col-span-5 flex flex-col items-center">
-                            <div class="w-full bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xl relative">
-                                <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-100">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#0D6E5B]"></span>
-                                        <h3 class="font-bold text-xs uppercase tracking-wider text-slate-700">Peta SVG Interaktif 15 Kecamatan</h3>
-                                    </div>
-                                    <span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Arahkan Kursor / Klik</span>
-                                </div>
-
-                                <!-- Container SVG Canvas -->
-                                <div class="w-full flex justify-center py-2 relative">
-                                    <svg viewBox="0 0 460 620" class="w-full max-h-[380px] sm:max-h-[420px] drop-shadow-sm select-none">
-                                        <rect width="460" height="620" rx="16" fill="#F8FAF8" stroke="#E2E8F0" stroke-width="1"/>
-                                        <text x="70" y="320" font-size="11" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#94A3B8" letter-spacing="3" transform="rotate(-90 70 320)" opacity="0.4">TELUK BONE</text>
-                                        
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-lasusua" data-kec="Lasusua" onmouseenter="window.onSvgKecHover('svg-kec-lasusua')" onclick="window.onSvgKecClick('svg-kec-lasusua')">
-            <path d="M 64.7,434.4 L 158.9,451.6 L 209.8,448.5 L 229.1,458.4 L 171.6,486.7 L 93.5,512.5 L 87.4,510.6 L 92.8,519.7 L 88.5,529.0 L 77.6,525.4 L 70.2,510.3 L 49.0,499.1 L 44.4,492.8 L 52.8,494.2 L 30.5,471.3 L 25.2,452.9 L 22.9,437.2 L 64.7,434.4 Z" fill="#0D6E5B" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="107.6" y="471.0" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Lasusua</text>
+                        <!-- Sisi Kanan: Peta SVG Interaktif 15 Kecamatan (Plos / Seamless Tanpa Kotak, Ukuran Lebih Besar) -->
+                        <div class="lg:col-span-5 flex flex-col items-center justify-center relative z-10 py-2 sm:py-4">
+                            <div class="w-full flex flex-col items-center justify-center relative">
+                                <svg viewBox="10 10 440 600" class="w-full h-auto max-h-[520px] sm:max-h-[600px] lg:max-h-[650px] drop-shadow-md select-none transition-transform duration-300 filter hover:scale-[1.02]">
+                                    
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-lasusua" data-kec="Lasusua" onmouseenter="window.onSvgKecHover('svg-kec-lasusua')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-lasusua')">
+            <title>Kecamatan Lasusua (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 64.7,434.4 L 158.9,451.6 L 209.8,448.5 L 229.1,458.4 L 171.6,486.7 L 93.5,512.5 L 87.4,510.6 L 92.8,519.7 L 88.5,529.0 L 77.6,525.4 L 70.2,510.3 L 49.0,499.1 L 44.4,492.8 L 52.8,494.2 L 30.5,471.3 L 25.2,452.9 L 22.9,437.2 L 64.7,434.4 Z" fill="#0D6E5B" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="107.6" y="471.0" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Lasusua</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakue" data-kec="Pakue" onmouseenter="window.onSvgKecHover('svg-kec-pakue')" onclick="window.onSvgKecClick('svg-kec-pakue')">
-            <path d="M 172.9,272.9 L 259.0,316.9 L 243.2,332.0 L 235.9,330.0 L 234.0,347.5 L 207.5,343.9 L 146.3,313.6 L 136.0,321.2 L 125.0,304.5 L 133.4,301.0 L 140.8,281.4 L 154.8,274.2 L 166.6,278.7 L 172.9,272.9 Z" fill="#38bdf8" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="190.6" y="309.5" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Pakue</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakue" data-kec="Pakue" onmouseenter="window.onSvgKecHover('svg-kec-pakue')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-pakue')">
+            <title>Kecamatan Pakue (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 172.9,272.9 L 259.0,316.9 L 243.2,332.0 L 235.9,330.0 L 234.0,347.5 L 207.5,343.9 L 146.3,313.6 L 136.0,321.2 L 125.0,304.5 L 133.4,301.0 L 140.8,281.4 L 154.8,274.2 L 166.6,278.7 L 172.9,272.9 Z" fill="#38bdf8" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="190.6" y="309.5" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Pakue</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-batuputih" data-kec="Batu Putih" onmouseenter="window.onSvgKecHover('svg-kec-batuputih')" onclick="window.onSvgKecClick('svg-kec-batuputih')">
-            <path d="M 150.7,173.9 L 149.8,173.5 L 149.9,173.1 L 150.9,173.5 L 150.7,173.9 Z M 158.6,168.2 L 158.9,168.2 L 159.0,168.4 L 158.7,168.4 L 158.6,168.2 Z M 172.3,148.3 L 171.7,148.0 L 171.7,147.9 L 172.3,148.1 L 172.3,148.3 Z M 165.8,143.5 L 165.4,144.4 L 164.6,144.4 L 164.4,144.1 L 165.8,143.5 Z M 166.0,132.6 L 165.7,132.4 L 165.9,132.1 L 166.2,132.3 L 166.0,132.6 Z M 165.3,131.6 L 165.1,131.5 L 165.1,131.5 L 165.3,131.6 L 165.3,131.6 Z M 165.7,130.2 L 180.8,142.9 L 197.7,144.1 L 194.0,173.4 L 210.1,176.1 L 209.1,185.0 L 220.2,185.1 L 212.3,197.4 L 216.9,200.5 L 275.9,208.3 L 289.9,219.9 L 356.6,245.9 L 440.0,251.5 L 438.7,276.3 L 341.7,263.7 L 224.4,222.3 L 160.6,207.4 L 161.2,190.8 L 151.7,185.6 L 150.3,177.1 L 159.5,168.9 L 165.5,177.4 L 171.9,174.7 L 173.8,160.7 L 184.1,164.7 L 185.5,153.3 L 172.1,154.3 L 176.1,144.2 L 167.0,145.4 L 168.2,133.4 L 165.7,130.2 Z" fill="#10b981" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="276.0" y="221.9" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Batu Putih</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-batuputih" data-kec="Batu Putih" onmouseenter="window.onSvgKecHover('svg-kec-batuputih')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-batuputih')">
+            <title>Kecamatan Batu Putih (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 150.7,173.9 L 149.8,173.5 L 149.9,173.1 L 150.9,173.5 L 150.7,173.9 Z M 158.6,168.2 L 158.9,168.2 L 159.0,168.4 L 158.7,168.4 L 158.6,168.2 Z M 172.3,148.3 L 171.7,148.0 L 171.7,147.9 L 172.3,148.1 L 172.3,148.3 Z M 165.8,143.5 L 165.4,144.4 L 164.6,144.4 L 164.4,144.1 L 165.8,143.5 Z M 166.0,132.6 L 165.7,132.4 L 165.9,132.1 L 166.2,132.3 L 166.0,132.6 Z M 165.3,131.6 L 165.1,131.5 L 165.1,131.5 L 165.3,131.6 L 165.3,131.6 Z M 165.7,130.2 L 180.8,142.9 L 197.7,144.1 L 194.0,173.4 L 210.1,176.1 L 209.1,185.0 L 220.2,185.1 L 212.3,197.4 L 216.9,200.5 L 275.9,208.3 L 289.9,219.9 L 356.6,245.9 L 440.0,251.5 L 438.7,276.3 L 341.7,263.7 L 224.4,222.3 L 160.6,207.4 L 161.2,190.8 L 151.7,185.6 L 150.3,177.1 L 159.5,168.9 L 165.5,177.4 L 171.9,174.7 L 173.8,160.7 L 184.1,164.7 L 185.5,153.3 L 172.1,154.3 L 176.1,144.2 L 167.0,145.4 L 168.2,133.4 L 165.7,130.2 Z" fill="#10b981" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="276.0" y="221.9" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Batu Putih</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-ranteangin" data-kec="Rante Angin" onmouseenter="window.onSvgKecHover('svg-kec-ranteangin')" onclick="window.onSvgKecClick('svg-kec-ranteangin')">
-            <path d="M 239.8,477.9 L 251.1,486.7 L 222.6,495.7 L 214.2,506.9 L 202.7,510.2 L 171.8,534.4 L 160.4,533.6 L 153.6,549.2 L 133.2,563.7 L 108.7,542.0 L 129.1,522.5 L 154.5,520.2 L 231.8,476.8 L 239.8,477.9 Z" fill="#8b5cf6" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="169.6" y="521.4" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Rante Angin</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-ranteangin" data-kec="Rante Angin" onmouseenter="window.onSvgKecHover('svg-kec-ranteangin')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-ranteangin')">
+            <title>Kecamatan Rante Angin (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 239.8,477.9 L 251.1,486.7 L 222.6,495.7 L 214.2,506.9 L 202.7,510.2 L 171.8,534.4 L 160.4,533.6 L 153.6,549.2 L 133.2,563.7 L 108.7,542.0 L 129.1,522.5 L 154.5,520.2 L 231.8,476.8 L 239.8,477.9 Z" fill="#8b5cf6" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="169.6" y="521.4" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Rante Angin</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-kodeoha" data-kec="Kodeoha" onmouseenter="window.onSvgKecHover('svg-kec-kodeoha')" onclick="window.onSvgKecClick('svg-kec-kodeoha')">
-            <path d="M 78.6,354.5 L 84.2,360.3 L 80.7,366.2 L 90.6,372.2 L 225.0,428.9 L 209.2,437.0 L 89.7,413.0 L 42.0,385.5 L 78.6,354.5 Z" fill="#84cc16" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="120.5" y="401.1" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Kodeoha</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-kodeoha" data-kec="Kodeoha" onmouseenter="window.onSvgKecHover('svg-kec-kodeoha')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-kodeoha')">
+            <title>Kecamatan Kodeoha (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 78.6,354.5 L 84.2,360.3 L 80.7,366.2 L 90.6,372.2 L 225.0,428.9 L 209.2,437.0 L 89.7,413.0 L 42.0,385.5 L 78.6,354.5 Z" fill="#84cc16" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="120.5" y="401.1" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Kodeoha</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-ngapa" data-kec="Ngapa" onmouseenter="window.onSvgKecHover('svg-kec-ngapa')" onclick="window.onSvgKecClick('svg-kec-ngapa')">
-            <path d="M 147.1,314.8 L 207.5,343.9 L 234.0,347.5 L 229.6,350.9 L 234.4,357.7 L 222.1,373.2 L 216.8,373.5 L 217.9,387.9 L 208.5,400.6 L 232.1,415.3 L 225.7,427.5 L 170.3,409.0 L 132.7,390.1 L 130.6,374.5 L 106.1,345.3 L 124.1,325.5 L 143.1,329.1 L 143.4,324.4 L 135.3,321.9 L 147.1,314.8 Z" fill="#fbbf24" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="173.0" y="368.2" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Ngapa</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-ngapa" data-kec="Ngapa" onmouseenter="window.onSvgKecHover('svg-kec-ngapa')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-ngapa')">
+            <title>Kecamatan Ngapa (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 147.1,314.8 L 207.5,343.9 L 234.0,347.5 L 229.6,350.9 L 234.4,357.7 L 222.1,373.2 L 216.8,373.5 L 217.9,387.9 L 208.5,400.6 L 232.1,415.3 L 225.7,427.5 L 170.3,409.0 L 132.7,390.1 L 130.6,374.5 L 106.1,345.3 L 124.1,325.5 L 143.1,329.1 L 143.4,324.4 L 135.3,321.9 L 147.1,314.8 Z" fill="#fbbf24" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="173.0" y="368.2" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Ngapa</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-wawo" data-kec="Wawo" onmouseenter="window.onSvgKecHover('svg-kec-wawo')" onclick="window.onSvgKecClick('svg-kec-wawo')">
-            <path d="M 249.0,486.8 L 291.5,514.9 L 303.9,547.3 L 215.9,578.6 L 193.7,600.0 L 179.7,581.6 L 133.2,563.7 L 153.6,549.2 L 160.4,533.6 L 171.8,534.4 L 202.7,510.2 L 214.2,506.9 L 222.6,495.7 L 249.0,486.8 Z" fill="#a855f7" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="224.5" y="541.1" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Wawo</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-wawo" data-kec="Wawo" onmouseenter="window.onSvgKecHover('svg-kec-wawo')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-wawo')">
+            <title>Kecamatan Wawo (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 249.0,486.8 L 291.5,514.9 L 303.9,547.3 L 215.9,578.6 L 193.7,600.0 L 179.7,581.6 L 133.2,563.7 L 153.6,549.2 L 160.4,533.6 L 171.8,534.4 L 202.7,510.2 L 214.2,506.9 L 222.6,495.7 L 249.0,486.8 Z" fill="#a855f7" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="224.5" y="541.1" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Wawo</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-lambai" data-kec="Lambai" onmouseenter="window.onSvgKecHover('svg-kec-lambai')" onclick="window.onSvgKecClick('svg-kec-lambai')">
-            <path d="M 234.3,475.6 L 155.7,519.6 L 129.1,522.5 L 108.5,541.7 L 88.5,529.0 L 92.8,519.7 L 87.4,510.6 L 93.5,512.5 L 171.5,486.7 L 228.8,459.5 L 234.3,475.6 Z" fill="#6366f1" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="155.2" y="502.7" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Lambai</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-lambai" data-kec="Lambai" onmouseenter="window.onSvgKecHover('svg-kec-lambai')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-lambai')">
+            <title>Kecamatan Lambai (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 234.3,475.6 L 155.7,519.6 L 129.1,522.5 L 108.5,541.7 L 88.5,529.0 L 92.8,519.7 L 87.4,510.6 L 93.5,512.5 L 171.5,486.7 L 228.8,459.5 L 234.3,475.6 Z" fill="#6366f1" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="155.2" y="502.7" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Lambai</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-watunohu" data-kec="Watunohu" onmouseenter="window.onSvgKecHover('svg-kec-watunohu')" onclick="window.onSvgKecClick('svg-kec-watunohu')">
-            <path d="M 127.6,303.0 L 127.8,310.3 L 143.1,329.1 L 124.1,325.5 L 106.3,345.4 L 102.1,340.8 L 87.6,342.4 L 86.5,329.5 L 98.1,312.9 L 127.6,303.0 Z" fill="#d97706" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="111.1" y="323.9" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Watunohu</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-watunohu" data-kec="Watunohu" onmouseenter="window.onSvgKecHover('svg-kec-watunohu')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-watunohu')">
+            <title>Kecamatan Watunohu (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 127.6,303.0 L 127.8,310.3 L 143.1,329.1 L 124.1,325.5 L 106.3,345.4 L 102.1,340.8 L 87.6,342.4 L 86.5,329.5 L 98.1,312.9 L 127.6,303.0 Z" fill="#d97706" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="111.1" y="323.9" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Watunohu</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakuetengah" data-kec="Pakue Tengah" onmouseenter="window.onSvgKecHover('svg-kec-pakuetengah')" onclick="window.onSvgKecClick('svg-kec-pakuetengah')">
-            <path d="M 190.6,232.9 L 259.5,259.9 L 323.4,290.5 L 287.1,291.0 L 280.4,307.0 L 259.0,316.9 L 176.8,273.5 L 162.8,271.9 L 162.3,235.4 L 190.6,232.9 Z" fill="#0ea5e9" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="227.7" y="272.3" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Pakue Tengah</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakuetengah" data-kec="Pakue Tengah" onmouseenter="window.onSvgKecHover('svg-kec-pakuetengah')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-pakuetengah')">
+            <title>Kecamatan Pakue Tengah (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 190.6,232.9 L 259.5,259.9 L 323.4,290.5 L 287.1,291.0 L 280.4,307.0 L 259.0,316.9 L 176.8,273.5 L 162.8,271.9 L 162.3,235.4 L 190.6,232.9 Z" fill="#0ea5e9" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="227.7" y="272.3" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Pakue Tengah</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakueutara" data-kec="Pakue Utara" onmouseenter="window.onSvgKecHover('svg-kec-pakueutara')" onclick="window.onSvgKecClick('svg-kec-pakueutara')">
-            <path d="M 176.9,208.7 L 319.3,258.1 L 367.0,269.3 L 438.7,276.3 L 434.7,319.6 L 398.3,303.5 L 366.4,303.7 L 335.2,295.3 L 191.5,232.9 L 162.3,235.4 L 151.3,218.0 L 160.6,207.4 L 176.9,208.7 Z" fill="#0284c7" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="311.5" y="265.0" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Pakue Utara</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-pakueutara" data-kec="Pakue Utara" onmouseenter="window.onSvgKecHover('svg-kec-pakueutara')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-pakueutara')">
+            <title>Kecamatan Pakue Utara (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 176.9,208.7 L 319.3,258.1 L 367.0,269.3 L 438.7,276.3 L 434.7,319.6 L 398.3,303.5 L 366.4,303.7 L 335.2,295.3 L 191.5,232.9 L 162.3,235.4 L 151.3,218.0 L 160.6,207.4 L 176.9,208.7 Z" fill="#0284c7" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="311.5" y="265.0" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Pakue Utara</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-porehu" data-kec="Porehu" onmouseenter="window.onSvgKecHover('svg-kec-porehu')" onclick="window.onSvgKecClick('svg-kec-porehu')">
-            <path d="M 275.0,78.2 L 284.2,77.6 L 287.7,87.7 L 298.5,91.3 L 303.3,99.6 L 336.6,111.4 L 338.5,121.9 L 360.8,139.8 L 383.5,147.9 L 389.7,162.3 L 383.3,186.0 L 401.3,201.6 L 403.3,213.4 L 420.8,220.7 L 424.4,240.6 L 440.0,251.5 L 356.6,245.9 L 289.9,219.9 L 275.9,208.3 L 212.3,197.4 L 221.4,186.7 L 208.7,184.6 L 208.7,175.3 L 194.0,173.4 L 197.7,144.1 L 230.5,146.6 L 237.1,144.2 L 232.0,134.3 L 249.0,136.6 L 273.3,69.6 L 275.0,78.2 Z" fill="#059669" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="312.2" y="174.6" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Porehu</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-porehu" data-kec="Porehu" onmouseenter="window.onSvgKecHover('svg-kec-porehu')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-porehu')">
+            <title>Kecamatan Porehu (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 275.0,78.2 L 284.2,77.6 L 287.7,87.7 L 298.5,91.3 L 303.3,99.6 L 336.6,111.4 L 338.5,121.9 L 360.8,139.8 L 383.5,147.9 L 389.7,162.3 L 383.3,186.0 L 401.3,201.6 L 403.3,213.4 L 420.8,220.7 L 424.4,240.6 L 440.0,251.5 L 356.6,245.9 L 289.9,219.9 L 275.9,208.3 L 212.3,197.4 L 221.4,186.7 L 208.7,184.6 L 208.7,175.3 L 194.0,173.4 L 197.7,144.1 L 230.5,146.6 L 237.1,144.2 L 232.0,134.3 L 249.0,136.6 L 273.3,69.6 L 275.0,78.2 Z" fill="#059669" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="312.2" y="174.6" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Porehu</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-katoi" data-kec="Katoi" onmouseenter="window.onSvgKecHover('svg-kec-katoi')" onclick="window.onSvgKecClick('svg-kec-katoi')">
-            <path d="M 42.2,386.1 L 89.7,413.0 L 209.2,437.0 L 209.8,448.5 L 170.8,452.7 L 66.3,434.2 L 22.9,437.2 L 20.0,411.2 L 41.9,395.9 L 42.2,386.1 Z" fill="#22c55e" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="101.3" y="427.0" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Katoi</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-katoi" data-kec="Katoi" onmouseenter="window.onSvgKecHover('svg-kec-katoi')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-katoi')">
+            <title>Kecamatan Katoi (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 42.2,386.1 L 89.7,413.0 L 209.2,437.0 L 209.8,448.5 L 170.8,452.7 L 66.3,434.2 L 22.9,437.2 L 20.0,411.2 L 41.9,395.9 L 42.2,386.1 Z" fill="#22c55e" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="101.3" y="427.0" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Katoi</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-tiwu" data-kec="Tiwu" onmouseenter="window.onSvgKecHover('svg-kec-tiwu')" onclick="window.onSvgKecClick('svg-kec-tiwu')">
-            <path d="M 101.5,340.7 L 130.6,374.5 L 132.7,390.1 L 80.7,366.2 L 84.2,360.3 L 78.4,354.2 L 86.7,352.4 L 89.0,341.9 L 101.5,340.7 Z" fill="#f59e0b" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="105.5" y="364.4" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Tiwu</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-tiwu" data-kec="Tiwu" onmouseenter="window.onSvgKecHover('svg-kec-tiwu')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-tiwu')">
+            <title>Kecamatan Tiwu (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 101.5,340.7 L 130.6,374.5 L 132.7,390.1 L 80.7,366.2 L 84.2,360.3 L 78.4,354.2 L 86.7,352.4 L 89.0,341.9 L 101.5,340.7 Z" fill="#f59e0b" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="105.5" y="364.4" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Tiwu</text>
         </g>
 
-        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-tolala" data-kec="Tolala" onmouseenter="window.onSvgKecHover('svg-kec-tolala')" onclick="window.onSvgKecClick('svg-kec-tolala')">
-            <path d="M 174.1,134.6 L 173.9,134.7 L 173.9,134.5 L 174.1,134.5 L 174.1,134.6 Z M 170.0,132.2 L 169.4,132.0 L 169.6,131.7 L 170.1,132.0 L 170.0,132.2 Z M 170.0,130.0 L 169.6,129.9 L 170.3,129.8 L 170.4,129.9 L 170.0,130.0 Z M 166.7,129.4 L 166.6,129.3 L 166.7,129.2 L 166.8,129.4 L 166.7,129.4 Z M 94.5,42.2 L 87.2,44.9 L 85.3,42.5 L 92.4,40.4 L 94.5,42.2 Z M 191.0,27.9 L 214.1,33.1 L 230.8,43.5 L 239.5,63.9 L 255.3,61.0 L 265.9,70.0 L 273.3,69.6 L 249.0,136.6 L 232.0,134.3 L 237.1,144.2 L 230.5,146.6 L 180.8,142.9 L 173.9,139.2 L 166.3,131.1 L 178.1,138.5 L 184.9,109.5 L 176.0,99.6 L 177.1,93.1 L 171.6,94.6 L 172.7,69.7 L 163.9,71.1 L 165.6,82.2 L 152.2,74.9 L 145.7,40.5 L 138.3,65.5 L 130.3,58.6 L 112.1,60.3 L 125.8,75.6 L 111.2,61.3 L 114.5,53.1 L 134.0,46.0 L 141.8,31.1 L 168.5,28.2 L 178.8,20.0 L 191.0,27.9 Z" fill="#0D6E5B" fill-opacity="0.82" stroke="#ffffff" stroke-width="1.8" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3] drop-shadow-xs"/>
-            <text x="204.7" y="82.5" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow-sm select-none">Tolala</text>
+        <g class="kec-svg-group cursor-pointer transition-all duration-200" id="svg-kec-tolala" data-kec="Tolala" onmouseenter="window.onSvgKecHover('svg-kec-tolala')" onmouseleave="window.onSvgKecLeave()" onclick="window.onSvgKecClick('svg-kec-tolala')">
+            <title>Kecamatan Tolala (Klik untuk eksplorasi di WebGIS)</title>
+            <path d="M 174.1,134.6 L 173.9,134.7 L 173.9,134.5 L 174.1,134.5 L 174.1,134.6 Z M 170.0,132.2 L 169.4,132.0 L 169.6,131.7 L 170.1,132.0 L 170.0,132.2 Z M 170.0,130.0 L 169.6,129.9 L 170.3,129.8 L 170.4,129.9 L 170.0,130.0 Z M 166.7,129.4 L 166.6,129.3 L 166.7,129.2 L 166.8,129.4 L 166.7,129.4 Z M 94.5,42.2 L 87.2,44.9 L 85.3,42.5 L 92.4,40.4 L 94.5,42.2 Z M 191.0,27.9 L 214.1,33.1 L 230.8,43.5 L 239.5,63.9 L 255.3,61.0 L 265.9,70.0 L 273.3,69.6 L 249.0,136.6 L 232.0,134.3 L 237.1,144.2 L 230.5,146.6 L 180.8,142.9 L 173.9,139.2 L 166.3,131.1 L 178.1,138.5 L 184.9,109.5 L 176.0,99.6 L 177.1,93.1 L 171.6,94.6 L 172.7,69.7 L 163.9,71.1 L 165.6,82.2 L 152.2,74.9 L 145.7,40.5 L 138.3,65.5 L 130.3,58.6 L 112.1,60.3 L 125.8,75.6 L 111.2,61.3 L 114.5,53.1 L 134.0,46.0 L 141.8,31.1 L 168.5,28.2 L 178.8,20.0 L 191.0,27.9 Z" fill="#0D6E5B" fill-opacity="0.88" stroke="#ffffff" stroke-width="2.2" class="kec-svg-path transition-all duration-200 hover:fill-opacity-100 hover:stroke-[#0D6E5B] hover:stroke-[3.5] drop-shadow-md"/>
+            <text x="204.7" y="82.5" font-size="9" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle" pointer-events="none" class="drop-shadow select-none">Tolala</text>
         </g>
-                                    </svg>
-                                </div>
+                                </svg>
 
-                                <!-- Live Inspection Card Under SVG -->
-                                <div id="svgKecInspectionBox" class="mt-3 p-4 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50/50 border border-emerald-200/90 transition-all duration-200">
-                                    <div class="flex items-start justify-between">
-                                        <div>
-                                            <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider" id="svgKecKode">KODE: 74.08.01</span>
-                                            <h4 class="text-lg font-black text-slate-900" id="svgKecNama">Kecamatan Lasusua (Ibu Kota)</h4>
-                                        </div>
-                                        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900" id="svgKecDesaCount">12 Desa/Kel</span>
-                                    </div>
-                                    <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-emerald-200/60 text-xs">
-                                        <div>
-                                            <span class="text-slate-500 text-[10px] block">Penduduk:</span>
-                                            <span class="font-extrabold text-slate-800" id="svgKecPop">26.729 Jiwa</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-slate-500 text-[10px] block">Listrik PLN:</span>
-                                            <span class="font-extrabold text-emerald-700" id="svgKecPln">8.463 KK</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-slate-500 text-[10px] block">IMK & Sentra:</span>
-                                            <span class="font-extrabold text-amber-600" id="svgKecImk">237 Unit</span>
-                                        </div>
-                                    </div>
-                                    <div class="mt-2.5 text-[11px] text-slate-600 line-clamp-1">
-                                        <span class="font-semibold text-slate-700">Potensi:</span> <span id="svgKecPotensi">Pusat Perdagangan, Jasa, Perikanan Tangkap & Wisata Bahari</span>
+                                <!-- Floating Live Indicator Badge (Plos & Elegan) -->
+                                <div class="mt-4 text-center">
+                                    <div id="svgKecFloatingBadge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-xs text-xs text-slate-600 transition-all">
+                                        <span class="w-2 h-2 rounded-full bg-[#0D6E5B] animate-pulse"></span>
+                                        <span id="svgKecFloatingText" class="font-medium">Klik salah satu kecamatan untuk buka di Peta WebGIS</span>
                                     </div>
                                 </div>
                             </div>
@@ -1933,6 +1915,10 @@
     window.onSvgKecHover = function(kecId) {
         const meta = window.SVG_KEC_META[kecId];
         if (!meta) return;
+        const elBadge = document.getElementById('svgKecFloatingText');
+        if (elBadge) {
+            elBadge.innerHTML = `<strong class="text-slate-900 font-extrabold">Kecamatan ${meta.nama}</strong> • <span class="text-[#0D6E5B] font-bold">${Number(meta.pop || 0).toLocaleString('id-ID')} Jiwa</span> • <span class="text-amber-600 font-bold">${meta.imk || 0} IMK</span> • <span class="text-slate-500">${meta.desa || '-'} Desa/Kel</span>`;
+        }
         const elNama = document.getElementById('svgKecNama');
         const elKode = document.getElementById('svgKecKode');
         const elPop = document.getElementById('svgKecPop');
@@ -1948,6 +1934,13 @@
         if (elImk) elImk.innerText = Number(meta.imk || 0).toLocaleString('id-ID') + ' Unit';
         if (elDesa) elDesa.innerText = (meta.desa || '-') + ' Desa/Kel';
         if (elPotensi) elPotensi.innerText = meta.potensi || '-';
+    };
+
+    window.onSvgKecLeave = function() {
+        const elBadge = document.getElementById('svgKecFloatingText');
+        if (elBadge) {
+            elBadge.innerHTML = 'Klik salah satu kecamatan untuk buka di Peta WebGIS';
+        }
     };
 
     // 3. SVG Map Click Handler
