@@ -375,7 +375,7 @@
     <!-- 1. TOP BAR BPS RESMI (Ringkas & Rapi)                           -->
     <!-- ============================================================== -->
     <div class="topbar-bps">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="font-bold text-white">BPS Kabupaten Kolaka Utara</span>
@@ -395,7 +395,7 @@
     <!-- 2. NAVBAR (Tepat 4 Menu Bersih, Tanpa Menu WebGIS)              -->
     <!-- ============================================================== -->
     <header class="navbar-clean">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-3 flex items-center justify-between gap-4">
             
             <!-- Brand Logo -->
             <a href="/descan" class="flex items-center gap-3 group">
@@ -453,7 +453,7 @@
     <!-- 3. HERO SECTION (Ringkas, Berisi, Tidak Ramai)                  -->
     <!-- ============================================================== -->
     <section id="beranda" class="hero-banner pt-7 pb-8 sm:pt-9 sm:pb-10 lg:pt-10 lg:pb-11">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
             <!-- Left Column: Typography & Action (Compact Above-The-Fold) -->
             <div class="lg:col-span-7 space-y-3 sm:space-y-3.5 text-left">
@@ -535,8 +535,8 @@
     <!-- ============================================================== -->
     <!-- 4. FLOATING STATS STRIP (5 Kartu - Utuh & Langsung Tampak / Above-the-Fold) -->
     <!-- ============================================================== -->
-    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-3.5 lg:gap-4.5">
+    <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
             
             <!-- Kartu 1: Desa Pilot -->
             <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
@@ -601,7 +601,7 @@
             </div>
 
             <!-- Kartu 5: Indikator Terinput -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between col-span-2 md:col-span-1 group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
+            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between col-span-1 sm:col-span-2 lg:col-span-1 group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
                 <!-- Flat Subtle Orb Badge -->
                 <div class="orb-3d bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-xs ring-1 ring-indigo-100 mb-2">
                     <i class="bi bi-database-fill-check text-xl text-white drop-shadow-xs"></i>
@@ -621,7 +621,7 @@
     <!-- ============================================================== -->
     <!-- 5. MENU 2: DASHBOARD & GRAFIK VISUAL (Paling Menonjol)         -->
     <!-- ============================================================== -->
-    <section id="dashboard" class="max-w-[1240px] mx-auto px-4 sm:px-6 pt-14 pb-16 space-y-7">
+    <section id="dashboard" class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 pt-8 sm:pt-9 lg:pt-10 pb-16 space-y-6">
 
         <!-- Header + Tab Switcher + Filter Dropdown (Rapi & Sejajar Horizontal) -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-slate-200/60">
@@ -917,7 +917,7 @@
         <!-- ============================================================== -->
     <!-- 6. MENU 3: 6 DESA BINAAN (6 DESA BERJEJER & BERGERAK KE KIRI) -->
     <!-- ============================================================== -->
-    <section id="desa" class="max-w-[1300px] mx-auto px-4 sm:px-6 py-12 space-y-6">
+    <section id="desa" class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-12 space-y-6">
         
         <!-- Header Section (Matching Image 2 Aesthetic) -->
         <div class="text-center max-w-3xl mx-auto space-y-2.5">
@@ -1236,7 +1236,7 @@
     <!-- 7. MENU 4: OUTPUT PROGRAM DESA CANTIK (#output)                -->
     <!-- ============================================================== -->
     <section class="py-14 bg-white border-t border-slate-200" id="output">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 space-y-8">
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-8">
             
             <div class="text-center max-w-xl mx-auto space-y-1.5">
                 <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
@@ -1346,7 +1346,7 @@
     <!-- 8. FOOTER RESMI BPS KOLAKA UTARA                               -->
     <!-- ============================================================== -->
     <footer class="bg-[#071b12] text-white pt-10 pb-8 text-xs border-t border-white/10">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 space-y-6">
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-white/10">
                 <div class="flex items-center gap-3">
                     <div class="flex items-center gap-2 bg-white px-2 py-1.5 rounded-xl shadow-md shrink-0">
