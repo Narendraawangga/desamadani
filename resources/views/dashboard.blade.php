@@ -322,9 +322,9 @@
     <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
         <div class="w-full px-4 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
-            <!-- Sisi Kiri: Logo + Menu Navigasi Berdampingan (Sesuai Foto 1) -->
-            <div class="flex items-center gap-6 lg:gap-8 xl:gap-10 shrink-0">
-                <a href="/portal" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] shrink-0" title="Desa Madani Kabupaten Kolaka Utara">
+            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Clean & Seamless Tanpa Dot / Background Box) -->
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="/portal" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" title="Desa Madani Kabupaten Kolaka Utara">
                     <div class="flex items-center gap-2 shrink-0">
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain">
                         <div class="h-4 w-[1px] bg-[#DCE3DD]"></div>
@@ -335,9 +335,11 @@
                         <span class="hidden sm:inline font-sans text-[11px] font-semibold text-[#5E6B61] ml-2 pl-2 border-l border-[#DCE3DD] tracking-[0.2em] uppercase">Kolaka Utara</span>
                     </div>
                 </a>
+            </div>
 
-                <!-- Nav Menu Berdampingan Langsung di Samping Logo (Sesuai Foto 1) -->
-                <nav class="hidden md:flex items-center gap-5 lg:gap-7 text-xs font-bold text-slate-600 whitespace-nowrap">
+            <!-- Sisi Kanan: Menu Navigasi Merapat ke Kanan + Bahasa -->
+            <div class="flex items-center gap-5 sm:gap-6 lg:gap-8 shrink-0">
+                <nav class="hidden md:flex items-center gap-5 sm:gap-6 lg:gap-8 text-xs font-bold text-slate-600 whitespace-nowrap">
                     <a href="/portal" id="navLinkPage1" onclick="window.onNavClick(event, 1, '/portal')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 1 ? 'active' : '' }}">
                         Beranda
                     </a>
@@ -354,17 +356,6 @@
                         Tentang Madani
                     </a>
                 </nav>
-            </div>
-
-            <!-- Sisi Kanan: Search Input Box + Bahasa (Sesuai Foto 1) -->
-            <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-                <!-- Search Box Persis Foto 1 -->
-                <div class="relative hidden sm:block">
-                    <input type="text" id="headerSearchInput" placeholder="Search" onkeydown="if(event.key==='Enter') (window.onHeaderSearch ? window.onHeaderSearch(this.value, event) : null)" class="w-36 md:w-44 lg:w-52 pl-3.5 pr-8 py-1.5 text-xs bg-slate-50/80 hover:bg-white focus:bg-white border border-[#DCE3DD] rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#3B4D3B] focus:ring-1 focus:ring-[#3B4D3B] shadow-2xs transition-all">
-                    <button type="button" onclick="const inp=document.getElementById('headerSearchInput'); if(window.onHeaderSearch) window.onHeaderSearch(inp?inp.value:'', {key:'Enter'});" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#3B4D3B] cursor-pointer" title="Search">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    </button>
-                </div>
 
                 <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
                     <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
@@ -2148,25 +2139,6 @@
                 window.PresisiEngine.selectKecamatan(meta.nama);
             }
         }, 200);
-    };
-
-    // 3b. Header Search Handler
-    window.onHeaderSearch = function(query, event) {
-        if (event && event.key && event.key !== 'Enter') return;
-        const q = (query || '').trim();
-        if (!q) return;
-        if (typeof window.switchPortalPage === 'function') {
-            window.switchPortalPage(2, '/portal/agregat');
-        }
-        setTimeout(function() {
-            const searchInput = document.getElementById('kecamatanPillSearch');
-            if (searchInput) {
-                searchInput.value = q;
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                searchInput.focus();
-            }
-        }, 250);
     };
 
     // 4. Client-side Navigation Handler
