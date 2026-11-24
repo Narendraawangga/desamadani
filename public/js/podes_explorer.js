@@ -310,7 +310,7 @@
   function scrollKecCarousel(direction) {
     const container = document.getElementById('kecamatanCarouselTrack');
     if (!container) return;
-    const scrollAmount = 340;
+    const scrollAmount = 285;
     container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     setTimeout(updateCarouselScrollIndicator, 300);
   }
@@ -347,7 +347,7 @@
       };
 
       html += `
-                <div class="kec-carousel-card relative w-[290px] sm:w-[330px] h-[185px] sm:h-[210px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 select-none flex flex-col justify-end border border-[#DCE3DD]/20" 
+        <div class="kec-carousel-card relative w-[220px] sm:w-[250px] lg:w-[265px] h-[330px] sm:h-[360px] lg:h-[385px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none flex flex-col justify-end border border-[#DCE3DD] hover:border-[#8A9B86]" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
              title="Klik untuk melihat data Kecamatan ${k.nama}">
@@ -358,20 +358,20 @@
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
                onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
 
-          <!-- Smooth Dark Gradient Overlay at Bottom -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
+          <!-- Subtle Dark Gradient for Photo Depth -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1D241E]/80 via-transparent to-black/15 pointer-events-none"></div>
 
-          <!-- Bottom Typography: Cinzel for Name, Plus Jakarta Sans for Population & Index -->
-          <div class="relative z-10 p-5 sm:p-5.5 w-full flex items-end justify-between">
+          <!-- Bottom Frosted Glass Card with Mountain Pine Tint & Blur (Warna Senada) -->
+          <div class="relative z-10 m-3 sm:m-3.5 p-4 rounded-2xl backdrop-blur-md bg-[#1D241E]/75 border border-white/20 shadow-lg flex items-end justify-between transition-all duration-300 group-hover:bg-[#1D241E]/85 group-hover:border-white/30">
             <div>
-              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white tracking-[0.05em] uppercase leading-none group-hover:text-[#E6ECE6] transition-colors drop-shadow-md">
+              <h3 class="font-cinzel text-lg sm:text-xl font-bold text-white tracking-[0.05em] uppercase leading-tight group-hover:text-[#E6ECE6] transition-colors drop-shadow-sm">
                 ${k.nama}
               </h3>
-              <p class="font-sans text-[11px] sm:text-xs font-semibold tracking-widest text-slate-300 uppercase mt-1.5 drop-shadow tabular-nums">
+              <p class="font-sans text-[11px] sm:text-xs font-semibold tracking-wider text-[#DCE3DD] uppercase mt-1 drop-shadow-xs tabular-nums">
                 ${totPop.toLocaleString('id-ID')} PENDUDUK
               </p>
             </div>
-            <div class="font-mono text-xs sm:text-sm font-medium text-slate-300/80 tracking-widest drop-shadow pb-0.5">
+            <div class="font-mono text-xs sm:text-sm font-bold text-[#8A9B86] group-hover:text-white tracking-widest pb-0.5 transition-colors">
               ${indexStr}
             </div>
           </div>
