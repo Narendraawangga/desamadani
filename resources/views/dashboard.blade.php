@@ -337,37 +337,26 @@
                 </a>
             </div>
 
-            <!-- Sisi Tengah: Menu Navigasi 5 Halaman Terpisah -->
-            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-bold text-slate-600 whitespace-nowrap shrink-0">
-                <a href="/portal" id="navLinkPage1" onclick="window.onNavClick(event, 1, '/portal')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 1 ? 'active' : '' }}">
-                    Beranda
-                </a>
-                <a href="/portal/agregat" id="navLinkPage2" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 2 ? 'active' : '' }}">
-                    Agregat 15 Kecamatan
-                </a>
-                <a href="/portal/peta" id="navLinkPage3" onclick="window.onNavClick(event, 3, '/portal/peta')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative flex items-center gap-1.5 {{ $curPage === 3 ? 'active' : '' }}">
-                    <svg class="w-3.5 h-3.5 text-[#3B4D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                    <span>WebGIS Peta Spasial</span>
-                </a>
-                <a href="/portal/desa-cantik" id="navLinkPage4" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 4 ? 'active' : '' }}">
-                    Desa Cantik (DESCAN)
-                </a>
-                <a href="/portal/tentang" id="navLinkPage5" onclick="window.onNavClick(event, 5, '/portal/tentang')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 5 ? 'active' : '' }}">
-                    Tentang Madani
-                </a>
-            </nav>
-
-            <!-- Sisi Kanan: 15 Kecamatan Modal, Kelola Data, Bahasa -->
-            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button onclick="window.toggleKecamatanModal()" id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[#DCE3DD] hover:border-[#3B4D3B] text-slate-700 hover:text-[#3B4D3B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer shadow-2xs">
-                    <svg class="w-3.5 h-3.5 text-[#3B4D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-                    <span>15 Kecamatan</span>
-                </button>
-
-                <a href="/descan/login" id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Kelola Data">
-                    <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                    <span>Kelola Data</span>
-                </a>
+            <!-- Sisi Kanan: Menu Navigasi Merapat ke Kanan + Bahasa -->
+            <div class="flex items-center gap-5 sm:gap-6 lg:gap-8 shrink-0">
+                <nav class="hidden md:flex items-center gap-5 sm:gap-6 lg:gap-8 text-xs font-bold text-slate-600 whitespace-nowrap">
+                    <a href="/portal" id="navLinkPage1" onclick="window.onNavClick(event, 1, '/portal')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 1 ? 'active' : '' }}">
+                        Beranda
+                    </a>
+                    <a href="/portal/agregat" id="navLinkPage2" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 2 ? 'active' : '' }}">
+                        Agregat 15 Kecamatan
+                    </a>
+                    <a href="/portal/peta" id="navLinkPage3" onclick="window.onNavClick(event, 3, '/portal/peta')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative flex items-center gap-1.5 {{ $curPage === 3 ? 'active' : '' }}">
+                        <svg class="w-3.5 h-3.5 text-[#3B4D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        <span>WebGIS Peta Spasial</span>
+                    </a>
+                    <a href="/portal/desa-cantik" id="navLinkPage4" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 4 ? 'active' : '' }}">
+                        Desa Cantik (DESCAN)
+                    </a>
+                    <a href="/portal/tentang" id="navLinkPage5" onclick="window.onNavClick(event, 5, '/portal/tentang')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 5 ? 'active' : '' }}">
+                        Tentang Madani
+                    </a>
+                </nav>
 
                 <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
                     <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
