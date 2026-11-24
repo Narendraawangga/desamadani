@@ -321,14 +321,13 @@
     <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[58px] flex flex-col justify-center w-full max-w-full">
         <div class="w-full px-4 lg:px-8 py-2.5 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
-            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS -->
+            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Clean & Seamless Tanpa Dot / Background Box) -->
             <div class="flex items-center gap-3 shrink-0">
-                <a href="/portal" class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" title="Desa Madani Kabupaten Kolaka Utara">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B] animate-pulse"></span>
-                    <div class="flex items-center gap-1.5 shrink-0 bg-white/90 border border-[#DCE3DD] px-1.5 py-0.5 rounded-lg shadow-2xs">
-                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
-                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
-                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
+                <a href="/portal" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" title="Desa Madani Kabupaten Kolaka Utara">
+                    <div class="flex items-center gap-2 shrink-0">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain">
+                        <div class="h-4 w-[1px] bg-[#DCE3DD]"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 w-auto object-contain">
                     </div>
                     <div class="text-base sm:text-lg font-bold text-[#1D241E] leading-none whitespace-nowrap font-cinzel tracking-[0.05em]">
                         DESA <span class="text-[#3B4D3B]">MADANI</span>
