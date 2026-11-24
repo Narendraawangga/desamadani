@@ -4918,57 +4918,11 @@
         function filterBukuCategory(cat) { selectPedomanTabPill(cat); }
         function togglePublikasiSubMenu() { selectPedomanTabPill('publikasi'); }
         function dcShowPublikasiSub() {}
+        function switchPublikasiOutput(type) { selectPedomanTabPill('publikasi'); }
+        function filterPublikasiOutput(type) {}
         function downloadSubItem(fileName, subId) {
             downloadTemplateDoc(subId || 'profil_desa');
-        }`, 'success');
-            } else {
-                alert(`Mengunduh berkas PDF: ${fileName}`);
-            }
         }
-
-        // Sidebar Submenu Handler untuk Buku Pedoman
-        function toggleBukuMenu() {
-            const sub = document.getElementById('dcBukuSub');
-            const caret = document.getElementById('dcBukuCaret');
-            const willOpen = sub ? sub.classList.contains('hidden') : true;
-            dcShowBukuSub(willOpen);
-            if (currentNavMenu !== 'buku') {
-                switchNavMenu('buku');
-            }
-        }
-        function dcShowBukuSub(show) {
-            const sub = document.getElementById('dcBukuSub');
-            const caret = document.getElementById('dcBukuCaret');
-            if (sub) sub.classList.toggle('hidden', !show);
-            if (caret) caret.classList.toggle('open', show);
-        }
-        function switchBukuSubMenu(category) {
-            if (currentNavMenu !== 'buku') {
-                switchNavMenu('buku');
-            }
-            dcShowBukuSub(true);
-            document.querySelectorAll('#dcBukuSub .dc-sub-item').forEach(el => el.classList.remove('active'));
-            const activeItem = document.getElementById('sub-buku-' + category);
-            if (activeItem) activeItem.classList.add('active');
-
-            const map = {
-                'descan': 'destin',
-                'destin': 'destin',
-                'pembinaan': 'pembinaan',
-                'pendataan': 'pendataan',
-                'pengolahan': 'pengolahan',
-                'publikasi': 'publikasi'
-            };
-            selectPedomanTab(map[category] || category);
-        }
-        function filterBukuCategory(cat) { selectPedomanTab(cat); }
-        function togglePublikasiSubMenu() { selectPedomanTab('publikasi'); }
-        function dcShowPublikasiSub() {}
-        function switchPublikasiOutput(type) { selectPedomanTab('publikasi'); }
-        function filterPublikasiOutput(type) {}
-        function openEmbeddedBookReader(bookKey) { selectPedomanTab(bookKey); }
-        function downloadBukuPdf(key) { downloadCurrentDigitalReaderPdf(); }
-        function downloadOutputDoc(type) { downloadCurrentDigitalReaderPdf(); }
     
 
         function openEmbeddedBookReader(bookKey) {
@@ -8978,7 +8932,7 @@ function triggerPubDownload() {
 
             if (menuKey === 'buku') {
                 if (typeof selectPedomanTab === 'function') {
-                    selectPedomanTab(activePedomanKey || 'publikasi');
+                    selectPedomanTab(typeof activePedomanPillKey !== 'undefined' ? activePedomanPillKey : 'madani');
                 }
             }
             if (menuKey === 'monitoring' || menuKey === 'monev') {
@@ -9695,13 +9649,7 @@ function triggerPubDownload() {
             document.body.classList.add('overflow-hidden');
         }
 
-        function closeManageDataModal() {
-            const modal = document.getElementById('manageDataModal');
-            if (!modal) return;
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.classList.remove('overflow-hidden');
-        }
+        // duplicate closeManageDataModal removed
 
         function switchManageModalTab(tabKey) {
             document.querySelectorAll('.modal-tab-btn').forEach(b => {
@@ -10365,7 +10313,7 @@ function triggerPubDownload() {
                         cutout: '62%'
                     }
                 });
-            } else {
+            } else if (canvas.parentElement) {
                 canvas.parentElement.innerHTML = `
                 <div class="flex items-center justify-center">
                     <svg viewBox="0 0 42 42" class="w-48 h-48">
