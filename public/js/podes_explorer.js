@@ -346,8 +346,15 @@
         photo: '/images/jadesta/kebun_kakao_totallang.jpg'
       };
 
+      // Tulisan menurun dari atas ke bawah (upright letters top-to-bottom)
+      const words = String(k.nama || '').trim().split(/\s+/);
+      const verticalTitleHtml = words.map(w => {
+        const letters = w.split('').map(char => `<span class="inline-block leading-tight">${char}</span>`).join('');
+        return `<div class="flex flex-col items-center font-cinzel text-lg sm:text-xl lg:text-[22px] font-bold text-white tracking-[0.18em] drop-shadow-md select-none group-hover:text-[#E6ECE6] transition-colors">${letters}</div>`;
+      }).join('');
+
       html += `
-        <div class="kec-carousel-card relative w-[220px] sm:w-[250px] lg:w-[265px] h-[330px] sm:h-[360px] lg:h-[385px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none flex flex-col justify-end border border-[#DCE3DD] hover:border-[#8A9B86]" 
+        <div class="kec-carousel-card relative w-[220px] sm:w-[250px] lg:w-[265px] h-[340px] sm:h-[370px] lg:h-[390px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none flex flex-col justify-between border border-[#DCE3DD]" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
              title="Klik untuk melihat data Kecamatan ${k.nama}">
@@ -358,21 +365,28 @@
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
                onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
 
-          <!-- Subtle Dark Gradient for Photo Depth -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#1D241E]/80 via-transparent to-black/15 pointer-events-none"></div>
+          <!-- Polos Clean Dark Gradient Overlay (Tanpa Kotak/Bingkai Terpisah) -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35 pointer-events-none"></div>
 
-          <!-- Bottom Frosted Glass Card with Mountain Pine Tint & Blur (Warna Senada) -->
-          <div class="relative z-10 m-3 sm:m-3.5 p-4 rounded-2xl backdrop-blur-md bg-[#1D241E]/75 border border-white/20 shadow-lg flex items-end justify-between transition-all duration-300 group-hover:bg-[#1D241E]/85 group-hover:border-white/30">
-            <div>
-              <h3 class="font-cinzel text-lg sm:text-xl font-bold text-white tracking-[0.05em] uppercase leading-tight group-hover:text-[#E6ECE6] transition-colors drop-shadow-sm">
-                ${k.nama}
-              </h3>
-              <p class="font-sans text-[11px] sm:text-xs font-semibold tracking-wider text-[#DCE3DD] uppercase mt-1 drop-shadow-xs tabular-nums">
+          <!-- Top Section: Tulisan Menurun dari Atas ke Bawah & Nomor Index -->
+          <div class="relative z-10 p-5 sm:p-6 flex items-start justify-between">
+            <!-- Tulisan Menurun dari Atas ke Bawah -->
+            <div class="flex items-start gap-2 sm:gap-2.5">
+              ${verticalTitleHtml}
+            </div>
+
+            <!-- Top Right: Nomor Index -->
+            <div class="font-mono text-xs sm:text-sm font-bold text-slate-300 tracking-widest drop-shadow-md">
+              ${indexStr}
+            </div>
+          </div>
+
+          <!-- Bottom Section: Penduduk Dipertahankan (Horizontal Polos di Bawah) -->
+          <div class="relative z-10 p-5 sm:p-6 pt-0">
+            <div class="border-t border-white/20 pt-3">
+              <p class="font-sans text-[11px] sm:text-xs font-bold tracking-widest text-slate-200 uppercase drop-shadow tabular-nums">
                 ${totPop.toLocaleString('id-ID')} PENDUDUK
               </p>
-            </div>
-            <div class="font-mono text-xs sm:text-sm font-bold text-[#8A9B86] group-hover:text-white tracking-widest pb-0.5 transition-colors">
-              ${indexStr}
             </div>
           </div>
         </div>
