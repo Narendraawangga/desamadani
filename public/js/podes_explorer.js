@@ -253,6 +253,7 @@
     window.exportActiveTableCSV = exportActiveTableCSV;
     window.exportKecamatanCSV = exportKecamatanCSV;
     window.scrollKecCarousel = scrollKecCarousel;
+    window.triggerSummaryCountUp = triggerSummaryCountUp;
   }
 
   // -------------------------------------------------------------
@@ -454,7 +455,7 @@
     const rasioListrik = (totPLN + totNonPLN + totTanpaListrik) > 0 ? ((totPLN / (totPLN + totNonPLN + totTanpaListrik)) * 100).toFixed(2) : 99.55;
 
     summaryContainer.innerHTML = `
-      <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-2xs overflow-hidden">
+      <div id="explorerAggregateSummaryCard" class="bg-white rounded-3xl border border-[#DCE3DD] shadow-2xs overflow-hidden transition-all duration-700 ease-out opacity-0 translate-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#DCE3DD]">
           
           <!-- 01: Total Penduduk Riil (Mountain Pine) -->
@@ -466,8 +467,8 @@
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans">
-                ${totJiwa.toLocaleString('id-ID')}
+              <div class="stat-count-up text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans" data-target="${totJiwa}" data-decimals="0">
+                0
               </div>
               <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 L: ${totL.toLocaleString('id-ID')} • P: ${totP.toLocaleString('id-ID')}
@@ -484,8 +485,8 @@
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#1D241E] tracking-tight tabular-nums font-sans">
-                ${avgKepadatan} <span class="text-xs font-semibold text-[#5E6B61]">Jiwa/km²</span>
+              <div class="stat-count-up text-3xl sm:text-4xl font-black text-[#1D241E] tracking-tight tabular-nums font-sans" data-target="${avgKepadatan}" data-decimals="1" data-suffix="Jiwa/km²">
+                0.0 <span class="text-xs font-semibold text-[#5E6B61]">Jiwa/km²</span>
               </div>
               <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Cakupan 15 Kecamatan / 133 Desa
@@ -502,8 +503,8 @@
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#566B53] tracking-tight tabular-nums font-sans">
-                ${sexRatio}
+              <div class="stat-count-up text-3xl sm:text-4xl font-black text-[#566B53] tracking-tight tabular-nums font-sans" data-target="${sexRatio}" data-decimals="1">
+                0.0
               </div>
               <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Laki-laki per 100 Perempuan
@@ -520,8 +521,8 @@
               </h4>
             </div>
             <div class="mt-4">
-              <div class="text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans">
-                ${totIMK.toLocaleString('id-ID')}
+              <div class="stat-count-up text-3xl sm:text-4xl font-black text-[#3B4D3B] tracking-tight tabular-nums font-sans" data-target="${totIMK}" data-decimals="0">
+                0
               </div>
               <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
                 Listrik PLN: ${rasioListrik}%
@@ -532,6 +533,90 @@
         </div>
       </div>
     `;
+
+    setupSummaryObserver();
+  }
+
+  function triggerSummaryCountUp() {
+    const summaryCard = document.getElementById('explorerAggregateSummaryCard');
+    if (summaryCard) {
+      summaryCard.classList.remove('opacity-0', 'translate-y-4');
+      summaryCard.classList.add('opacity-100', 'translate-y-0');
+    }
+
+    const statElements = document.querySelectorAll('.stat-count-up');
+    if (!statElements || statElements.length === 0) return;
+
+    statElements.forEach(el => {
+      const target = parseFloat(el.getAttribute('data-target')) || 0;
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1400; // ms
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // smooth cubic easeOut
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const currentVal = target * ease;
+
+        let formatted = '';
+        if (decimals > 0) {
+          formatted = currentVal.toFixed(decimals);
+        } else {
+          formatted = Math.round(currentVal).toLocaleString('id-ID');
+        }
+
+        if (suffix) {
+          el.innerHTML = `${formatted} <span class="text-xs font-semibold text-[#5E6B61]">${suffix}</span>`;
+        } else {
+          el.textContent = formatted;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          const finalVal = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString('id-ID');
+          if (suffix) {
+            el.innerHTML = `${finalVal} <span class="text-xs font-semibold text-[#5E6B61]">${suffix}</span>`;
+          } else {
+            el.textContent = finalVal;
+          }
+        }
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  function setupSummaryObserver() {
+    const summaryCard = document.getElementById('explorerAggregateSummaryCard');
+    if (!summaryCard) return;
+
+    if (!('IntersectionObserver' in window)) {
+      triggerSummaryCountUp();
+      return;
+    }
+
+    const rect = summaryCard.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setTimeout(triggerSummaryCountUp, 50);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          triggerSummaryCountUp();
+          obs.disconnect();
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    observer.observe(summaryCard);
   }
 
   // -------------------------------------------------------------
@@ -567,6 +652,7 @@
       dirEl.style.display = 'block';
       const offsetTop = dirEl.getBoundingClientRect().top + window.pageYOffset - 80;
       window.scrollTo({ top: Math.max(0, offsetTop), behavior: 'smooth' });
+      setTimeout(triggerSummaryCountUp, 150);
     }
   }
 

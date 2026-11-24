@@ -2273,7 +2273,10 @@
                 if (typeof window.initExplorer === 'function') {
                     window.initExplorer();
                 }
-            }, 50);
+                if (typeof window.triggerSummaryCountUp === 'function') {
+                    window.triggerSummaryCountUp();
+                }
+            }, 60);
         } else if (pageNum === 3) {
             setTimeout(function() {
                 if (window.PresisiEngine) {
