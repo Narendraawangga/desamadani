@@ -249,6 +249,8 @@
     window.setSectorSlide = setSectorSlide;
     window.prevSectorSlide = prevSectorSlide;
     window.nextSectorSlide = nextSectorSlide;
+    window.startSectorAutoSlide = startSectorAutoSlide;
+    window.stopSectorAutoSlide = stopSectorAutoSlide;
     window.setDetailTableTab = setDetailTableTab;
     window.exportActiveTableCSV = exportActiveTableCSV;
     window.exportKecamatanCSV = exportKecamatanCSV;
@@ -640,10 +642,12 @@
 
     renderState2SplitPanel();
     renderDetailVillageTable();
+    startSectorAutoSlide();
   }
 
   function backToKecamatanDirectory() {
     activeState = 'directory';
+    stopSectorAutoSlide();
     const dirEl = document.getElementById('podesStateDirectory');
     const detailEl = document.getElementById('podesStateDetail');
 
@@ -656,20 +660,96 @@
     }
   }
 
-  function setSectorSlide(index) {
+  // -------------------------------------------------------------
+  // AUTO-SLIDE & SMOOTH CAROUSEL CONTROLLER (4 DETIK INTERVAL)
+  // -------------------------------------------------------------
+  let sectorAutoSlideInterval = null;
+  const SECTOR_AUTOSLIDE_DELAY = 4000; // 4 detik
+
+  function startSectorAutoSlide() {
+    stopSectorAutoSlide();
+    const detailEl = document.getElementById('podesStateDetail');
+    if (!detailEl || detailEl.style.display === 'none') return;
+
+    sectorAutoSlideInterval = setInterval(() => {
+      const curDetail = document.getElementById('podesStateDetail');
+      if (!curDetail || curDetail.style.display === 'none') {
+        stopSectorAutoSlide();
+        return;
+      }
+      nextSectorSlide(false);
+    }, SECTOR_AUTOSLIDE_DELAY);
+  }
+
+  function stopSectorAutoSlide() {
+    if (sectorAutoSlideInterval) {
+      clearInterval(sectorAutoSlideInterval);
+      sectorAutoSlideInterval = null;
+    }
+  }
+
+  function restartSectorAutoSlide() {
+    stopSectorAutoSlide();
+    startSectorAutoSlide();
+  }
+
+  function setSectorSlide(index, userInitiated = false) {
     if (index < 0 || index >= SECTORS.length) return;
     activeSectorIndex = index;
-    renderRightSectorCard();
+
+    const track = document.getElementById('sectorSliderTrack');
+    if (track) {
+      // Hardware-accelerated sliding transition
+      track.style.transform = `translateX(-${activeSectorIndex * 100}%)`;
+
+      // Update counter text (n/7)
+      const counterEl = document.getElementById('sectorCounterText');
+      if (counterEl) {
+        counterEl.textContent = `(${activeSectorIndex + 1}/7)`;
+      }
+
+      // Update pagination dots
+      const dots = document.querySelectorAll('.sector-dot-btn');
+      dots.forEach((dot, idx) => {
+        const isActive = idx === activeSectorIndex;
+        if (isActive) {
+          dot.className = 'sector-dot-btn h-2 rounded-full transition-all duration-300 cursor-pointer bg-[#3B4D3B] w-4';
+        } else {
+          dot.className = 'sector-dot-btn h-2 rounded-full transition-all duration-300 cursor-pointer bg-[#DCE3DD] hover:bg-[#8A9B86] w-2';
+        }
+      });
+
+      // Update bottom quick chips
+      const chips = document.querySelectorAll('.sector-pill-btn');
+      chips.forEach((chip, idx) => {
+        const s = SECTORS[idx];
+        const isActive = idx === activeSectorIndex;
+        const icon = chip.querySelector('i');
+        if (isActive) {
+          chip.className = 'sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer bg-[#3B4D3B] text-white shadow-xs';
+          if (icon) icon.className = `bi ${s.icon} text-white`;
+        } else {
+          chip.className = `sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer bg-white hover:${s.badgeBg} text-[#5E6B61] hover:${s.badgeText} border border-[#DCE3DD] hover:${s.badgeBorder} shadow-2xs`;
+          if (icon) icon.className = `bi ${s.icon} ${s.badgeText}`;
+        }
+      });
+
+      if (userInitiated) {
+        restartSectorAutoSlide();
+      }
+    } else {
+      renderRightSectorCard();
+    }
   }
 
-  function prevSectorSlide() {
-    activeSectorIndex = (activeSectorIndex - 1 + SECTORS.length) % SECTORS.length;
-    renderRightSectorCard();
+  function prevSectorSlide(userInitiated = false) {
+    const nextIdx = (activeSectorIndex - 1 + SECTORS.length) % SECTORS.length;
+    setSectorSlide(nextIdx, userInitiated);
   }
 
-  function nextSectorSlide() {
-    activeSectorIndex = (activeSectorIndex + 1) % SECTORS.length;
-    renderRightSectorCard();
+  function nextSectorSlide(userInitiated = false) {
+    const nextIdx = (activeSectorIndex + 1) % SECTORS.length;
+    setSectorSlide(nextIdx, userInitiated);
   }
 
   function renderState2SplitPanel() {
@@ -785,27 +865,7 @@
     renderRightSectorCard();
   }
 
-  function renderRightSectorCard() {
-    const k = masterData.kecamatan[activeKecamatanKey];
-    if (!k) return;
-
-    const desaList = k.desa_list || [];
-    const sec = SECTORS[activeSectorIndex];
-    const rightPanel = document.getElementById('kecDetailRightPanel');
-    if (!rightPanel) return;
-
-    // Generate pagination dots
-    const dotsHtml = SECTORS.map((s, idx) => {
-      const isActive = idx === activeSectorIndex;
-      return `
-        <button onclick="window.setSectorSlide(${idx})" 
-                class="h-2 rounded-full transition-all cursor-pointer ${isActive ? 'bg-[#3B4D3B] w-4' : 'bg-[#DCE3DD] hover:bg-[#8A9B86] w-2'}" 
-                title="${idx + 1}. ${s.name}">
-        </button>
-      `;
-    }).join('');
-
-    // Generate content based on active sector with colorful theme accents
+  function getSectorContentHtml(sec, desaList) {
     let sectorContentHtml = '';
 
     if (sec.id === 'demografi') {
@@ -1066,6 +1126,59 @@
       `;
     }
 
+    return sectorContentHtml;
+  }
+
+  function getSectorSlideHtml(sec, idx, desaList) {
+    const contentHtml = getSectorContentHtml(sec, desaList);
+    return `
+      <div class="w-full shrink-0 min-w-full p-5 sm:p-6 flex flex-col justify-between" data-sector-slide-index="${idx}">
+        <div class="flex items-center justify-between pb-3.5 border-b border-[#DCE3DD]/80">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} flex items-center justify-center text-lg shrink-0 shadow-2xs">
+              <i class="bi ${sec.icon}"></i>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] ${sec.badgeText} font-bold">SEKTOR PODES AKTIF</div>
+              <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] uppercase tracking-wide mt-0.5">
+                ${sec.name}
+              </h4>
+            </div>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} text-xs font-semibold font-mono">
+            <span>${idx + 1} / 7</span>
+          </span>
+        </div>
+
+        <!-- Dynamic Content for Active Sector -->
+        ${contentHtml}
+      </div>
+    `;
+  }
+
+  function renderRightSectorCard() {
+    const k = masterData.kecamatan[activeKecamatanKey];
+    if (!k) return;
+
+    const desaList = k.desa_list || [];
+    const rightPanel = document.getElementById('kecDetailRightPanel');
+    if (!rightPanel) return;
+
+    // Generate pagination dots
+    const dotsHtml = SECTORS.map((s, idx) => {
+      const isActive = idx === activeSectorIndex;
+      return `
+        <button onclick="window.setSectorSlide(${idx}, true)" 
+                class="sector-dot-btn h-2 rounded-full transition-all duration-300 cursor-pointer ${isActive ? 'bg-[#3B4D3B] w-4' : 'bg-[#DCE3DD] hover:bg-[#8A9B86] w-2'}" 
+                data-dot-idx="${idx}"
+                title="${idx + 1}. ${s.name}">
+        </button>
+      `;
+    }).join('');
+
+    // Pre-render all 7 sector slides into the hardware-accelerated carousel track
+    const slidesHtml = SECTORS.map((s, idx) => getSectorSlideHtml(s, idx, desaList)).join('');
+
     rightPanel.innerHTML = `
       <div id="swipeableSectorCard" class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 select-none">
         <div>
@@ -1073,19 +1186,19 @@
           <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2">
               <h3 class="font-batangas text-2xl sm:text-3xl font-bold text-[#1D241E]">Sektor Lainnya</h3>
-              <span class="font-mono text-xs text-[#8A9B86]">(${activeSectorIndex + 1}/7)</span>
+              <span id="sectorCounterText" class="font-mono text-xs text-[#8A9B86]">(${activeSectorIndex + 1}/7)</span>
             </div>
 
             <!-- Dots & Prev / Next Arrows -->
             <div class="flex items-center gap-3">
-              <div class="flex items-center gap-1.5">
+              <div id="sectorDotsContainer" class="flex items-center gap-1.5">
                 ${dotsHtml}
               </div>
               <div class="flex items-center gap-1 border-l border-[#DCE3DD] pl-3">
-                <button onclick="window.prevSectorSlide()" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Sebelumnya">
+                <button onclick="window.prevSectorSlide(true)" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Sebelumnya">
                   <i class="bi bi-chevron-left"></i>
                 </button>
-                <button onclick="window.nextSectorSlide()" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Selanjutnya">
+                <button onclick="window.nextSectorSlide(true)" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Selanjutnya">
                   <i class="bi bi-chevron-right"></i>
                 </button>
               </div>
@@ -1094,27 +1207,13 @@
 
           <div class="border-t border-[#DCE3DD] my-5"></div>
 
-          <!-- Active Sector Card Container (Elevated Crisp Card with Color Badge) -->
-          <div class="bg-white rounded-2xl p-5 sm:p-6 border border-[#DCE3DD] shadow-2xs">
-            <div class="flex items-center justify-between pb-3.5 border-b border-[#DCE3DD]/80">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} flex items-center justify-center text-lg shrink-0 shadow-2xs">
-                  <i class="bi ${sec.icon}"></i>
-                </div>
-                <div>
-                  <div class="text-[10px] font-mono uppercase tracking-[0.18em] ${sec.badgeText} font-bold">SEKTOR PODES AKTIF</div>
-                  <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] uppercase tracking-wide mt-0.5">
-                    ${sec.name}
-                  </h4>
-                </div>
-              </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} text-xs font-semibold font-mono">
-                <span>${activeSectorIndex + 1} / 7</span>
-              </span>
+          <!-- Active Sector Card Container with Smooth Carousel Track -->
+          <div class="bg-white rounded-2xl border border-[#DCE3DD] shadow-2xs overflow-hidden relative">
+            <div id="sectorSliderTrack" 
+                 class="flex w-full will-change-transform" 
+                 style="transform: translateX(-${activeSectorIndex * 100}%); transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);">
+              ${slidesHtml}
             </div>
-
-            <!-- Dynamic Content for Active Sector -->
-            ${sectorContentHtml}
           </div>
         </div>
 
@@ -1124,9 +1223,11 @@
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">NAVIGASI 7 SEKTOR PODES</span>
             <span class="text-[11px] text-[#5E6B61] font-sans">Pilih sektor untuk melihat data</span>
           </div>
-          <div class="flex flex-wrap gap-1.5 sm:gap-2">
+          <div id="sectorChipsContainer" class="flex flex-wrap gap-1.5 sm:gap-2">
             ${SECTORS.map((s, idx) => `
-              <button onclick="window.setSectorSlide(${idx})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-xs' : 'bg-white hover:' + s.badgeBg + ' text-[#5E6B61] hover:' + s.badgeText + ' border border-[#DCE3DD] hover:' + s.badgeBorder + ' shadow-2xs'}">
+              <button onclick="window.setSectorSlide(${idx}, true)" 
+                      data-chip-idx="${idx}"
+                      class="sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-xs' : 'bg-white hover:' + s.badgeBg + ' text-[#5E6B61] hover:' + s.badgeText + ' border border-[#DCE3DD] hover:' + s.badgeBorder + ' shadow-2xs'}">
                 <i class="bi ${s.icon} ${idx === activeSectorIndex ? 'text-white' : s.badgeText}"></i>
                 <span>${s.name}</span>
               </button>
@@ -1136,30 +1237,37 @@
       </div>
     `;
 
-    // Attach touch swipe gesture to right panel
+    // Attach hover pause / resume and swipe gestures
     const swipeCard = document.getElementById('swipeableSectorCard');
     if (swipeCard) {
+      swipeCard.addEventListener('mouseenter', () => {
+        stopSectorAutoSlide();
+      });
+
+      swipeCard.addEventListener('mouseleave', () => {
+        startSectorAutoSlide();
+      });
+
       let touchStartX = 0;
       let touchEndX = 0;
 
       swipeCard.addEventListener('touchstart', (e) => {
+        stopSectorAutoSlide();
         touchStartX = e.changedTouches[0].screenX;
       }, { passive: true });
 
       swipeCard.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        handleSwipeGesture();
-      }, { passive: true });
-
-      function handleSwipeGesture() {
         if (touchEndX < touchStartX - 50) {
-          nextSectorSlide();
+          nextSectorSlide(true);
+        } else if (touchEndX > touchStartX + 50) {
+          prevSectorSlide(true);
         }
-        if (touchEndX > touchStartX + 50) {
-          prevSectorSlide();
-        }
-      }
+        startSectorAutoSlide();
+      }, { passive: true });
     }
+
+    startSectorAutoSlide();
   }
 
   // -------------------------------------------------------------
