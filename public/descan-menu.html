@@ -508,10 +508,36 @@
                     <i class="bi bi-patch-question-fill text-xs mr-1 text-emerald-600"></i>
                     <span>Pre-test &amp; Post-test</span>
                 </button>
-                <button type="button" onclick="switchNavMenu('buku')" id="sub-buku" class="dc-sub-item">
-                    <i class="bi bi-journal-bookmark-fill text-xs mr-1 text-emerald-600"></i>
-                    <span>Buku Panduan</span>
+                <button type="button" onclick="toggleBukuMenu()" id="sub-buku" class="dc-sub-item flex items-center justify-between">
+                    <span class="flex items-center gap-1.5">
+                        <i class="bi bi-journal-bookmark-fill text-xs text-emerald-600"></i>
+                        <span>Buku Pedoman</span>
+                    </span>
+                    <span id="dcBukuCaret" class="dc-caret text-[10px] ml-auto transition-transform"><i class="bi bi-chevron-down"></i></span>
                 </button>
+                <!-- Menu di dalam Buku Pedoman Tanpa Angka -->
+                <div id="dcBukuSub" class="dc-sub hidden" style="margin: 0.15rem 0 0.25rem 0.6rem !important; padding-left: 0.5rem !important; border-left: 1.5px solid #a7f3d0 !important;">
+                    <button type="button" onclick="switchBukuSubMenu('descan')" id="sub-buku-descan" class="dc-sub-item text-[11px] py-1">
+                        <i class="bi bi-file-earmark-check-fill text-[10px] text-emerald-600"></i>
+                        <span>Pedoman Descan</span>
+                    </button>
+                    <button type="button" onclick="switchBukuSubMenu('pembinaan')" id="sub-buku-pembinaan" class="dc-sub-item text-[11px] py-1">
+                        <i class="bi bi-person-video3 text-[10px] text-blue-600"></i>
+                        <span>Pedoman Pembinaan</span>
+                    </button>
+                    <button type="button" onclick="switchBukuSubMenu('pendataan')" id="sub-buku-pendataan" class="dc-sub-item text-[11px] py-1">
+                        <i class="bi bi-clipboard2-data-fill text-[10px] text-amber-600"></i>
+                        <span>Pedoman Pendataan</span>
+                    </button>
+                    <button type="button" onclick="switchBukuSubMenu('pengolahan')" id="sub-buku-pengolahan" class="dc-sub-item text-[11px] py-1">
+                        <i class="bi bi-calculator-fill text-[10px] text-teal-600"></i>
+                        <span>Pedoman Pengolahan</span>
+                    </button>
+                    <button type="button" onclick="switchBukuSubMenu('publikasi')" id="sub-buku-publikasi" class="dc-sub-item text-[11px] py-1">
+                        <i class="bi bi-file-earmark-bar-graph-fill text-[10px] text-rose-600"></i>
+                        <span>Pedoman Publikasi</span>
+                    </button>
+                </div>
             </div>
 
             <!-- 2. ADMINISTRASI & PENGISIAN DATA PODES -->
@@ -1269,7 +1295,7 @@
                             </div>
                         </div>
 
-                        <!-- 4. Leaflet Desa -->
+                        <!-- Leaflet Desa -->
                         <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
                             <div>
                                 <div class="flex items-start justify-between gap-3 mb-4">
@@ -3880,7 +3906,7 @@
                         <!-- Pedoman 1: Pendataan -->
                         <div id="tab-pedoman-pendataan" onclick="selectPedomanTab('pendataan')" class="pedoman-tab-card cursor-pointer rounded-2xl p-3 sm:p-3.5 border border-slate-200 bg-white hover:border-slate-300 transition shadow-2xs">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-xs font-bold text-slate-800 leading-tight">1. Pedoman Pendataan</span>
+                                <span class="text-xs font-bold text-slate-800 leading-tight">Pedoman Pendataan</span>
                                 <div id="pedoman-switch-pendataan" onclick="event.stopPropagation(); togglePedomanSwitch('pendataan')" class="w-9 h-5 bg-slate-300 rounded-full p-0.5 transition flex items-center justify-start cursor-pointer">
                                     <span class="w-4 h-4 bg-white rounded-full shadow-sm"></span>
                                 </div>
@@ -3894,7 +3920,7 @@
                         <!-- Pedoman 2: Pengolahan -->
                         <div id="tab-pedoman-pengolahan" onclick="selectPedomanTab('pengolahan')" class="pedoman-tab-card cursor-pointer rounded-2xl p-3 sm:p-3.5 border border-slate-200 bg-white hover:border-slate-300 transition shadow-2xs">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-xs font-bold text-slate-800 leading-tight">2. Pedoman Pengolahan</span>
+                                <span class="text-xs font-bold text-slate-800 leading-tight">Pedoman Pengolahan</span>
                                 <div id="pedoman-switch-pengolahan" onclick="event.stopPropagation(); togglePedomanSwitch('pengolahan')" class="w-9 h-5 bg-slate-300 rounded-full p-0.5 transition flex items-center justify-start cursor-pointer">
                                     <span class="w-4 h-4 bg-white rounded-full shadow-sm"></span>
                                 </div>
@@ -3908,7 +3934,7 @@
                         <!-- Pedoman 3: Destin -->
                         <div id="tab-pedoman-destin" onclick="selectPedomanTab('destin')" class="pedoman-tab-card cursor-pointer rounded-2xl p-3 sm:p-3.5 border border-slate-200 bg-white hover:border-slate-300 transition shadow-2xs">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-xs font-bold text-slate-800 leading-tight">3. Pedoman Destin</span>
+                                <span class="text-xs font-bold text-slate-800 leading-tight">Pedoman Destin</span>
                                 <div id="pedoman-switch-destin" onclick="event.stopPropagation(); togglePedomanSwitch('destin')" class="w-9 h-5 bg-slate-300 rounded-full p-0.5 transition flex items-center justify-start cursor-pointer">
                                     <span class="w-4 h-4 bg-white rounded-full shadow-sm"></span>
                                 </div>
@@ -3922,7 +3948,7 @@
                         <!-- Pedoman 4: Pembinaan -->
                         <div id="tab-pedoman-pembinaan" onclick="selectPedomanTab('pembinaan')" class="pedoman-tab-card cursor-pointer rounded-2xl p-3 sm:p-3.5 border border-slate-200 bg-white hover:border-slate-300 transition shadow-2xs">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-xs font-bold text-slate-800 leading-tight">4. Pedoman Pembinaan</span>
+                                <span class="text-xs font-bold text-slate-800 leading-tight">Pedoman Pembinaan</span>
                                 <div id="pedoman-switch-pembinaan" onclick="event.stopPropagation(); togglePedomanSwitch('pembinaan')" class="w-9 h-5 bg-slate-300 rounded-full p-0.5 transition flex items-center justify-start cursor-pointer">
                                     <span class="w-4 h-4 bg-white rounded-full shadow-sm"></span>
                                 </div>
@@ -3936,7 +3962,7 @@
                         <!-- Pedoman 5: Publikasi (Default Aktif Sesuai Referensi) -->
                         <div id="tab-pedoman-publikasi" onclick="selectPedomanTab('publikasi')" class="pedoman-tab-card cursor-pointer rounded-2xl p-3 sm:p-3.5 border-2 border-emerald-500 bg-emerald-50/70 shadow-2xs transition ring-1 ring-emerald-400/30">
                             <div class="flex items-center justify-between gap-1">
-                                <span class="text-xs font-bold text-slate-900 leading-tight">5. Pedoman Publikasi</span>
+                                <span class="text-xs font-bold text-slate-900 leading-tight">Pedoman Publikasi</span>
                                 <div id="pedoman-switch-publikasi" onclick="event.stopPropagation(); togglePedomanSwitch('publikasi')" class="w-11 h-5 bg-emerald-600 rounded-full p-0.5 transition flex items-center justify-between px-1.5 cursor-pointer">
                                     <span class="text-[9px] font-bold text-white uppercase tracking-wider">ON</span>
                                     <span class="w-4 h-4 bg-white rounded-full shadow-sm"></span>
@@ -3953,7 +3979,7 @@
                     <div class="border border-slate-200 rounded-2xl bg-white p-4 sm:p-5 shadow-2xs space-y-4">
                         <div class="flex items-center justify-between pb-3 border-b border-slate-100 cursor-pointer" onclick="toggleSubPanelCollapse()">
                             <h3 id="subPedomanPanelTitle" class="text-sm sm:text-base font-bold text-slate-900 tracking-tight">
-                                Isi &amp; Sub-Pedoman: 5. Pedoman Publikasi (Aktif)
+                                Isi &amp; Sub-Pedoman: Pedoman Publikasi (Aktif)
                             </h3>
                             <button type="button" class="text-slate-400 hover:text-slate-600 transition p-1">
                                 <i id="subPedomanChevron" class="bi bi-chevron-up text-sm"></i>
@@ -4028,7 +4054,7 @@
                                             <span id="docMetaRefCode" class="font-mono font-bold text-emerald-700">DESCAN-BPS-2026</span>
                                         </div>
                                         <h1 id="docMainTitle" class="text-base sm:text-lg font-black text-slate-900 tracking-tight">
-                                            5. PEDOMAN PUBLIKASI • 1. OUTPUT PODES
+                                            PEDOMAN PUBLIKASI • OUTPUT PODES
                                         </h1>
                                         <div class="text-xs text-slate-600 mt-1 flex items-center gap-2">
                                             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -4071,7 +4097,7 @@
                 const catalogBooksData = {
             descan: {
                 id: 'descan',
-                badge: '1. Pedoman Descan',
+                badge: 'Pedoman Descan',
                 ref: 'PEDOMAN-DESCAN-BPS-2026',
                 title: 'Buku Pedoman Descan (Pedoman Umum Program Desa Cantik)',
                 sub: 'Kerangka acuan resmi, filosofi desa cinta statistik, dan 44 variabel SDI',
@@ -4087,7 +4113,7 @@
             },
             pembinaan: {
                 id: 'pembinaan',
-                badge: '2. Pedoman Pembinaan',
+                badge: 'Pedoman Pembinaan',
                 ref: 'PEDOMAN-BIMTEK-BPS-002',
                 title: 'Buku Pedoman Pembinaan (Juknis Bimtek Desa Cantik)',
                 sub: 'Panduan kurikulum pelatihan, alur pembinaan bertahap, dan SK agen',
@@ -4103,7 +4129,7 @@
             },
             pendataan: {
                 id: 'pendataan',
-                badge: '3. Pedoman Pendataan',
+                badge: 'Pedoman Pendataan',
                 ref: 'PEDOMAN-DATA-PODES-2026',
                 title: 'Buku Pedoman Pendataan (Kuesioner PODES Sektoral)',
                 sub: 'Instrumen pencacahan lapangan, geotagging, dan definisi operasional',
@@ -4119,7 +4145,7 @@
             },
             pengolahan: {
                 id: 'pengolahan',
-                badge: '4. Pedoman Pengolahan',
+                badge: 'Pedoman Pengolahan',
                 ref: 'SDI-BPS-2026-EXCEL',
                 title: 'Buku Pedoman Pengolahan (30 Lembar Praktik Excel)',
                 sub: 'Formula baku Microsoft Excel pengolahan monografi dan statistik sektoral',
@@ -4145,7 +4171,7 @@
             },
             publikasi: {
                 id: 'publikasi',
-                badge: '5. Pedoman Publikasi',
+                badge: 'Pedoman Publikasi',
                 ref: 'PEDOMAN-PUBLIKASI-005',
                 title: 'Buku Pedoman Publikasi (Diseminasi & Monografi)',
                 sub: 'Standar penyusunan buku monografi, kaidah infografis dan rilis data resmi',
@@ -4188,58 +4214,58 @@
 
         const pedomanMasterData = {
             pendataan: {
-                title: '1. Pedoman Pendataan',
-                panelTitle: 'Isi & Sub-Pedoman: 1. Pedoman Pendataan (Aktif)',
+                title: 'Pedoman Pendataan',
+                panelTitle: 'Isi & Sub-Pedoman: Pedoman Pendataan (Aktif)',
                 ref: 'PEDOMAN-DATA-PODES-2026',
                 items: [
-                    { id: 'pendataan_podes', title: '1. Kuesioner PODES', icon: 'table', color: 'emerald', desc: 'Instrumen resmi pencacahan potensi desa 44 variabel inti.', file: 'Kuesioner_PODES_2026.pdf', hal: 42, active: true },
-                    { id: 'pendataan_geo', title: '2. Panduan Geotagging', icon: 'geo', color: 'blue', desc: 'Metode plotting titik koordinat sarpras dan batas dusun.', file: 'Juknis_Geotagging_Desa.pdf', hal: 28, active: true },
-                    { id: 'pendataan_sensus', title: '3. Instrumen Penduduk', icon: 'people', color: 'amber', desc: 'Survei kependudukan, desil ekonomi P3KE, dan sanitasi.', file: 'Form_Survei_Penduduk.pdf', hal: 34, active: true },
-                    { id: 'pendataan_qc', title: '4. Kontrol Kualitas', icon: 'shield', color: 'rose', desc: 'SOP verifikasi dan validasi data pencacahan lapangan BPS.', file: 'SOP_Validasi_Data_Desa.pdf', hal: 20, active: true }
+                    { id: 'pendataan_podes', title: 'Kuesioner PODES', icon: 'table', color: 'emerald', desc: 'Instrumen resmi pencacahan potensi desa 44 variabel inti.', file: 'Kuesioner_PODES_2026.pdf', hal: 42, active: true },
+                    { id: 'pendataan_geo', title: 'Panduan Geotagging', icon: 'geo', color: 'blue', desc: 'Metode plotting titik koordinat sarpras dan batas dusun.', file: 'Juknis_Geotagging_Desa.pdf', hal: 28, active: true },
+                    { id: 'pendataan_sensus', title: 'Instrumen Penduduk', icon: 'people', color: 'amber', desc: 'Survei kependudukan, desil ekonomi P3KE, dan sanitasi.', file: 'Form_Survei_Penduduk.pdf', hal: 34, active: true },
+                    { id: 'pendataan_qc', title: 'Kontrol Kualitas', icon: 'shield', color: 'rose', desc: 'SOP verifikasi dan validasi data pencacahan lapangan BPS.', file: 'SOP_Validasi_Data_Desa.pdf', hal: 20, active: true }
                 ]
             },
             pengolahan: {
-                title: '2. Pedoman Pengolahan',
-                panelTitle: 'Isi & Sub-Pedoman: 2. Pedoman Pengolahan (Aktif)',
+                title: 'Pedoman Pengolahan',
+                panelTitle: 'Isi & Sub-Pedoman: Pedoman Pengolahan (Aktif)',
                 ref: 'SDI-BPS-2026-EXCEL',
                 items: [
-                    { id: 'pengolahan_excel', title: '1. Modul Formula Excel', icon: 'table', color: 'emerald', desc: '30 Lembar Praktik Microsoft Excel komputasi data statistik sektoral.', file: 'Buku_Pedoman_Excel_Desa_Cantik_2026.pdf', hal: 30, active: true },
-                    { id: 'pengolahan_bansos', title: '2. Logika Bansos (IF/OR)', icon: 'cpu', color: 'blue', desc: 'Formula logika bertingkat untuk seleksi penerima bansos.', file: 'Logika_Bansos_Formula_Excel.pdf', hal: 24, active: true },
-                    { id: 'pengolahan_vlookup', title: '3. Relasi VLOOKUP SDI', icon: 'diagram', color: 'amber', desc: 'Penggabungan lintas tabel master data kependudukan.', file: 'Modul_Relasi_VLOOKUP_Desa.pdf', hal: 22, active: true },
-                    { id: 'pengolahan_cleansing', title: '4. Pembersihan Data', icon: 'broom', color: 'teal', desc: 'Teknik deteksi anomali, NIK ganda, dan format Satu Data.', file: 'Panduan_Data_Cleansing.pdf', hal: 18, active: true }
+                    { id: 'pengolahan_excel', title: 'Modul Formula Excel', icon: 'table', color: 'emerald', desc: '30 Lembar Praktik Microsoft Excel komputasi data statistik sektoral.', file: 'Buku_Pedoman_Excel_Desa_Cantik_2026.pdf', hal: 30, active: true },
+                    { id: 'pengolahan_bansos', title: 'Logika Bansos (IF/OR)', icon: 'cpu', color: 'blue', desc: 'Formula logika bertingkat untuk seleksi penerima bansos.', file: 'Logika_Bansos_Formula_Excel.pdf', hal: 24, active: true },
+                    { id: 'pengolahan_vlookup', title: 'Relasi VLOOKUP SDI', icon: 'diagram', color: 'amber', desc: 'Penggabungan lintas tabel master data kependudukan.', file: 'Modul_Relasi_VLOOKUP_Desa.pdf', hal: 22, active: true },
+                    { id: 'pengolahan_cleansing', title: 'Pembersihan Data', icon: 'broom', color: 'teal', desc: 'Teknik deteksi anomali, NIK ganda, dan format Satu Data.', file: 'Panduan_Data_Cleansing.pdf', hal: 18, active: true }
                 ]
             },
             destin: {
-                title: '3. Pedoman Destin',
-                panelTitle: 'Isi & Sub-Pedoman: 3. Pedoman Destin (Aktif)',
+                title: 'Pedoman Destin',
+                panelTitle: 'Isi & Sub-Pedoman: Pedoman Destin (Aktif)',
                 ref: 'PEDOMAN-DESCAN-BPS-2026',
                 items: [
-                    { id: 'destin_regulasi', title: '1. Regulasi Satu Data', icon: 'file-check', color: 'emerald', desc: 'Amanat Perpres 39/2019 dan standar data nasional.', file: 'Perpres_Satu_Data_Indonesia.pdf', hal: 48, active: true },
-                    { id: 'destin_indikator', title: '2. 44 Indikator Desa', icon: 'list-check', color: 'blue', desc: 'Kamus indikator kemandirian data demografi dan ekonomi.', file: 'Kamus_44_Indikator_Descan.pdf', hal: 36, active: true },
-                    { id: 'destin_agen', title: '3. Tata Kelola Agen', icon: 'people', color: 'amber', desc: 'Struktur tim pengelola data desa, SK Agen, dan alur kerja.', file: 'Tata_Kelola_Agen_Statistik.pdf', hal: 26, active: true },
-                    { id: 'destin_indeks', title: '4. Indeks Kemandirian', icon: 'award', color: 'rose', desc: 'Instrumen evaluasi: Desa Rintisan, Berkembang, Mandiri.', file: 'Instrumen_Indeks_Kemandirian.pdf', hal: 32, active: true }
+                    { id: 'destin_regulasi', title: 'Regulasi Satu Data', icon: 'file-check', color: 'emerald', desc: 'Amanat Perpres 39/2019 dan standar data nasional.', file: 'Perpres_Satu_Data_Indonesia.pdf', hal: 48, active: true },
+                    { id: 'destin_indikator', title: 'Indikator Desa', icon: 'list-check', color: 'blue', desc: 'Kamus indikator kemandirian data demografi dan ekonomi.', file: 'Kamus_44_Indikator_Descan.pdf', hal: 36, active: true },
+                    { id: 'destin_agen', title: 'Tata Kelola Agen', icon: 'people', color: 'amber', desc: 'Struktur tim pengelola data desa, SK Agen, dan alur kerja.', file: 'Tata_Kelola_Agen_Statistik.pdf', hal: 26, active: true },
+                    { id: 'destin_indeks', title: 'Indeks Kemandirian', icon: 'award', color: 'rose', desc: 'Instrumen evaluasi: Desa Rintisan, Berkembang, Mandiri.', file: 'Instrumen_Indeks_Kemandirian.pdf', hal: 32, active: true }
                 ]
             },
             pembinaan: {
-                title: '4. Pedoman Pembinaan',
-                panelTitle: 'Isi & Sub-Pedoman: 4. Pedoman Pembinaan (Aktif)',
+                title: 'Pedoman Pembinaan',
+                panelTitle: 'Isi & Sub-Pedoman: Pedoman Pembinaan (Aktif)',
                 ref: 'PEDOMAN-BIMTEK-BPS-002',
                 items: [
-                    { id: 'pembinaan_silabus', title: '1. Kurikulum Bimtek', icon: 'mortarboard', color: 'blue', desc: 'Silabus 4 modul pelatihan intensif literasi statistik aparatur desa.', file: 'Silabus_Pelatihan_Desa_Cantik.pdf', hal: 36, active: true },
-                    { id: 'pembinaan_sk', title: '2. Format SK Agen', icon: 'file-earmark', color: 'amber', desc: 'Template legalitas penetapan Agen Statistik Desa oleh Kepala Desa.', file: 'Template_SK_Agen_Statistik.pdf', hal: 12, active: true },
-                    { id: 'pembinaan_fasilitator', title: '3. Juknis Fasilitator', icon: 'person-badge', color: 'emerald', desc: 'Panduan instruktur BPS Kolaka Utara asistensi berkala desa.', file: 'Juknis_Fasilitator_BPS.pdf', hal: 28, active: true },
-                    { id: 'pembinaan_evaluasi', title: '4. Instrumen Monev', icon: 'graph-up', color: 'rose', desc: 'Formulir monitoring berkala progres pembinaan dan sertifikasi.', file: 'Form_Monev_Pembinaan.pdf', hal: 24, active: true }
+                    { id: 'pembinaan_silabus', title: 'Kurikulum Bimtek', icon: 'mortarboard', color: 'blue', desc: 'Silabus 4 modul pelatihan intensif literasi statistik aparatur desa.', file: 'Silabus_Pelatihan_Desa_Cantik.pdf', hal: 36, active: true },
+                    { id: 'pembinaan_sk', title: 'Format SK Agen', icon: 'file-earmark', color: 'amber', desc: 'Template legalitas penetapan Agen Statistik Desa oleh Kepala Desa.', file: 'Template_SK_Agen_Statistik.pdf', hal: 12, active: true },
+                    { id: 'pembinaan_fasilitator', title: 'Juknis Fasilitator', icon: 'person-badge', color: 'emerald', desc: 'Panduan instruktur BPS Kolaka Utara asistensi berkala desa.', file: 'Juknis_Fasilitator_BPS.pdf', hal: 28, active: true },
+                    { id: 'pembinaan_evaluasi', title: 'Instrumen Monev', icon: 'graph-up', color: 'rose', desc: 'Formulir monitoring berkala progres pembinaan dan sertifikasi.', file: 'Form_Monev_Pembinaan.pdf', hal: 24, active: true }
                 ]
             },
             publikasi: {
-                title: '5. Pedoman Publikasi',
-                panelTitle: 'Isi & Sub-Pedoman: 5. Pedoman Publikasi (Aktif)',
+                title: 'Pedoman Publikasi',
+                panelTitle: 'Isi & Sub-Pedoman: Pedoman Publikasi (Aktif)',
                 ref: 'OUTPUT-PUBLIKASI-BPS-7408',
                 items: [
-                    { id: 'publikasi_podes', title: '1. Output PODES', icon: 'table', color: 'emerald', desc: 'Kompilasi 44 tabel matriks hasil pencacahan Potensi Desa.', file: 'Output_Tabel_PODES_2026.pdf', hal: 44, active: true, docType: 'tabel' },
-                    { id: 'publikasi_profil', title: '2. Profil Desa', icon: 'chart', color: 'blue', desc: 'Buku profil komprehensif demografi, potensi bahari, dan pertanian.', file: 'Buku_Profil_Desa_2026.pdf', hal: 52, active: true, docType: 'statistik' },
-                    { id: 'publikasi_monografi', title: '3. Monografi', icon: 'book', color: 'amber', desc: 'Buku publikasi resmi 84 halaman standar BPS Kolaka Utara.', file: 'Monografi_Statistik_Sektoral_2026.pdf', hal: 84, active: true, docType: 'monografi' },
-                    { id: 'publikasi_leaflet', title: '4. Leaflet', icon: 'leaflet', color: 'rose', desc: 'Media publikasi visual lipat tiga (tri-fold HD) statistik desa.', file: 'Leaflet_Statistik_Desa_2026.pdf', hal: 6, active: true, docType: 'leaflet' }
+                    { id: 'publikasi_podes', title: 'Output PODES', icon: 'table', color: 'emerald', desc: 'Kompilasi 44 tabel matriks hasil pencacahan Potensi Desa.', file: 'Output_Tabel_PODES_2026.pdf', hal: 44, active: true, docType: 'tabel' },
+                    { id: 'publikasi_profil', title: 'Profil Desa', icon: 'chart', color: 'blue', desc: 'Buku profil komprehensif demografi, potensi bahari, dan pertanian.', file: 'Buku_Profil_Desa_2026.pdf', hal: 52, active: true, docType: 'statistik' },
+                    { id: 'publikasi_monografi', title: 'Monografi', icon: 'book', color: 'amber', desc: 'Buku publikasi resmi 84 halaman standar BPS Kolaka Utara.', file: 'Monografi_Statistik_Sektoral_2026.pdf', hal: 84, active: true, docType: 'monografi' },
+                    { id: 'publikasi_leaflet', title: 'Leaflet', icon: 'leaflet', color: 'rose', desc: 'Media publikasi visual lipat tiga (tri-fold HD) statistik desa.', file: 'Leaflet_Statistik_Desa_2026.pdf', hal: 6, active: true, docType: 'leaflet' }
                 ]
             }
         };
@@ -4598,10 +4624,41 @@
             }
         }
 
-        // Backward compatibility shims
-        function toggleBukuMenu() { switchNavMenu('buku'); }
-        function dcShowBukuSub() {}
-        function switchBukuSubMenu(cat) { selectPedomanTab(cat); }
+        // Sidebar Submenu Handler untuk Buku Pedoman
+        function toggleBukuMenu() {
+            const sub = document.getElementById('dcBukuSub');
+            const caret = document.getElementById('dcBukuCaret');
+            const willOpen = sub ? sub.classList.contains('hidden') : true;
+            dcShowBukuSub(willOpen);
+            if (currentNavMenu !== 'buku') {
+                switchNavMenu('buku');
+            }
+        }
+        function dcShowBukuSub(show) {
+            const sub = document.getElementById('dcBukuSub');
+            const caret = document.getElementById('dcBukuCaret');
+            if (sub) sub.classList.toggle('hidden', !show);
+            if (caret) caret.classList.toggle('open', show);
+        }
+        function switchBukuSubMenu(category) {
+            if (currentNavMenu !== 'buku') {
+                switchNavMenu('buku');
+            }
+            dcShowBukuSub(true);
+            document.querySelectorAll('#dcBukuSub .dc-sub-item').forEach(el => el.classList.remove('active'));
+            const activeItem = document.getElementById('sub-buku-' + category);
+            if (activeItem) activeItem.classList.add('active');
+
+            const map = {
+                'descan': 'destin',
+                'destin': 'destin',
+                'pembinaan': 'pembinaan',
+                'pendataan': 'pendataan',
+                'pengolahan': 'pengolahan',
+                'publikasi': 'publikasi'
+            };
+            selectPedomanTab(map[category] || category);
+        }
         function filterBukuCategory(cat) { selectPedomanTab(cat); }
         function togglePublikasiSubMenu() { selectPedomanTab('publikasi'); }
         function dcShowPublikasiSub() {}
@@ -10390,7 +10447,7 @@ function triggerPubDownload() {
             const heroBg = document.getElementById('heroTentangBg');
             if (heroBg && data.heroBg) heroBg.src = data.heroBg;
 
-            // 3. Monografi Title
+            // Monografi Title
             const elDesaTitle = document.getElementById('desaTitle');
             if (elDesaTitle) elDesaTitle.textContent = `Profil, Monografi, & Potensi ${data.title}`;
 
