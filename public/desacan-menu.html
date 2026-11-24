@@ -561,7 +561,7 @@
                 <span class="dc-ico"><i class="bi bi-buildings-fill"></i></span>
                 <span>Profil Desa</span>
             </button>
-            <button type="button" onclick="openGaleriDesaModal()" id="nav-galeri" class="nav-tab">
+            <button type="button" onclick="switchNavMenu('galeri')" id="nav-galeri" class="nav-tab">
                 <span class="dc-ico"><i class="bi bi-images"></i></span>
                 <span>Galeri Foto</span>
             </button>
@@ -1811,7 +1811,7 @@
                         </div>
                     </div>
 
-                </div></div>
+                </div>
 
                 <!-- ===================================================================== -->
                 <!-- MENU 3: PUBLIKASI & INFOGRAFIS STATISTIK DESA CANTIK BPS             -->
@@ -4424,6 +4424,10 @@
                         </div>
                     </div>
                 </div>
+            <!-- Tutup max-w-[1600px] -->
+        </div>
+    <!-- Tutup mainMenuContent -->
+    </main>
 
                 <!-- CLIENT DATA & SCRIPT LOGIC (CRYSTAL CLEAR PREMIUM HD IMAGES) -->
     <script>
