@@ -46,7 +46,8 @@
     </script>
 
     <!-- Buku Panduan Pelatihan Excel Data (30 Lembar) -->
-    <script src="/js/panduan-excel-data.js"></script>
+    <script src="/js/desa-portal.js"></script>
+<script src="/js/panduan-excel-data.js"></script>
     <script>
         if (typeof excelBookPages === 'undefined' && (typeof window === 'undefined' || !window.excelBookPages)) {
             document.write('<script src="js/panduan-excel-data.js"><\/script>');
@@ -637,70 +638,13 @@
         <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
     </button>
 
-    <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
-    <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
-        <!-- Sisi Kiri: Tombol Toggle Mobile & Tombol Beranda (Bersih Tanpa Gambar) -->
-        <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-
-
-            <!-- Identitas Portal Desa & Kartu Akun Desa Aktif di Header (Menggantikan Tulisan Desa Cantik) -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight hidden lg:inline">Portal Satu Data</span>
-                <span class="text-slate-300 hidden lg:inline">•</span>
-                
-                <!-- Identitas Wilayah Desa Aktif (Hanya Teks & Icon Bootstrap Tanpa Kata AKUN) -->
-                <div class="min-w-0 leading-tight py-0.5">
-                    <div class="flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-slate-900 uppercase tracking-tight truncate">
-                        <i class="bi bi-buildings-fill text-emerald-700 text-xs shrink-0"></i>
-                        <span id="topBrandDesaTitle" class="truncate">DESA LAPOLU</span>
-                    </div>
-                    <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator (Menu Teks Bersih Tanpa Kotak Hijau) -->
-        <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-            <!-- Menu Output Desa di Header (Hanya Menu Teks) -->
-            <button type="button" onclick="switchNavMenu('output')" id="header-nav-output" 
-                class="text-xs sm:text-[13px] font-bold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer" 
-                title="Buka Dokumen Output Desa">
-                <span>Output Desa</span>
-            </button>
-
-            <!-- Menu Galeri di Header -->
-            <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
-                class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 hover:text-[#0f6b4a] hover:bg-emerald-50 transition px-2.5 py-1.5 rounded-xl cursor-pointer" 
-                title="Buka Halaman Galeri Foto Desa">
-                <i class="bi bi-images text-emerald-600 text-xs"></i>
-                <span>Galeri</span>
-            </button>
-
-            <!-- Status Satu Data Indonesia (Hanya Teks Bersih) -->
-            <div class="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 px-2 py-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Satu Data Indonesia</span>
-            </div>
-
-            <!-- Language Switcher Pill -->
-            <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
-                <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
-                <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
-            </div>
-
-            <!-- Profil Ringkas Operator Desa -->
-            <div class="flex items-center gap-2 pl-1 sm:pl-2 sm:border-l sm:border-slate-200">
-                <div class="hidden md:block text-right leading-tight">
-                    <div class="text-xs font-bold text-slate-800">Operator Desa</div>
-                    <div class="text-[10px] text-slate-500 font-medium">Admin Data Presisi</div>
-                </div>
-                <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center ring-2 ring-emerald-500/20 shadow-xs">
-                    AD
-                </div>
-            </div>
-
-        </div>
-    </header>
+    <!-- ============================================================== -->
+    <!-- HEADER 3 TINGKAT RESMI WEBSITE DESA / KELURAHAN                -->
+    <!-- Tingkat 1: Top Branding, Judul Dinamis, Search, Kembali        -->
+    <!-- Tingkat 2: Navbar Hijau Tua #046A38 & 13 Menu Dropdown Lengkap  -->
+    <!-- Tingkat 3: Sekilas Info Running Text                           -->
+    <!-- ============================================================== -->
+    <div id="desaTopHeaderWrapper" class="w-full"></div>
     <!-- ============================================================== -->
     <!-- DEDICATED LOGIN GATE PER DESA                                  -->
     <!-- Setiap desa memiliki akun login terpisah (email & sandi unik)  -->
@@ -819,7 +763,12 @@
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
                 <!-- ===================================================================== -->
-                <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
+                <!-- ===================================================================== -->
+            <!-- 0. WEBSITE RESMI DESA TERINTEGRASI (TATA LETAK 2 KOLOM DINAMIS)       -->
+            <!-- ===================================================================== -->
+            <div id="view-portal-desa" class="menu-view-container space-y-6"></div>
+
+            <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
 
                     <!-- ============================================================== -->
                     <!-- 1. HERO SHOWCASE: DESA CANTIK + 3D FLOATING BULAT-BULAT CARDS   -->
@@ -8942,7 +8891,7 @@ function triggerPubDownload() {
             }
 
             // DAFTAR MENU RESMI DESCAN
-            const validMenus = ['dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
+            const validMenus = ['portal', 'beranda', 'dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
@@ -8990,9 +8939,17 @@ function triggerPubDownload() {
             document.querySelectorAll('.menu-view-container').forEach(el => {
                 el.classList.add('hidden');
             });
-            const targetView = document.getElementById('view-' + menuKey);
+            let targetViewId = 'view-' + menuKey;
+            if (menuKey === 'beranda' || menuKey === 'portal') {
+                targetViewId = 'view-portal-desa';
+            }
+            const targetView = document.getElementById(targetViewId);
             if (targetView) {
                 targetView.classList.remove('hidden');
+                if (menuKey === 'portal' || menuKey === 'beranda') {
+                    if (typeof initVillageHeader === 'function') initVillageHeader(currentTargetVillage);
+                    if (typeof renderVillageMainLayout === 'function') renderVillageMainLayout(currentTargetVillage, 'beranda', 'beranda');
+                }
                 if (menuKey === 'tentang') {
                     renderProfilDesa3D(currentTargetVillage);
                     if (typeof renderDashboardCantik === 'function') {
