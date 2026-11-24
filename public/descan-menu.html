@@ -682,6 +682,12 @@
                 <span>Satu Data Indonesia</span>
             </div>
 
+            <!-- Language Switcher Pill -->
+            <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
+                <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+            </div>
+
             <!-- Profil Ringkas Operator Desa -->
             <div class="flex items-center gap-2 pl-1 sm:pl-2 sm:border-l sm:border-slate-200">
                 <div class="hidden md:block text-right leading-tight">
@@ -13021,5 +13027,114 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
         </div>
     </div>
 
+    <!-- BILINGUAL TRANSLATION ENGINE (ID / EN) -->
+    <script>
+        window.DESACAN_MENU_I18N_PAIRS = [
+            ["Portal Satu Data", "One Data Portal"],
+            ["Output Desa", "Village Outputs"],
+            ["Galeri", "Gallery"],
+            ["Satu Data Indonesia", "One Data Indonesia"],
+            ["Operator Desa", "Village Operator"],
+            ["Admin Data Presisi", "Precision Data Admin"],
+            ["Autentikasi Mandiri Desa", "Independent Village Authentication"],
+            ["Monografi Desa", "Village Monograph"],
+            ["LMS Pembelajaran", "LMS Learning Center"],
+            ["Monev & Bukti Dukung", "Monitoring & Evidence"],
+            ["Unduh Berkas Lengkap", "Download Full Document"],
+            ["Tutup", "Close"],
+            ["Keluar Akun", "Sign Out"],
+            ["Pilih Desa Lain", "Select Another Village"],
+            ["Terbina BPS", "BPS Mentored"],
+            ["PUBLIKASI RESMI BPS KAB. KOLAKA UTARA", "OFFICIAL PUBLICATION OF BPS KOLAKA UTARA REGENCY"],
+            ["Monografi Statistik Sektoral", "Sectoral Statistical Monograph"],
+            ["BPS Kabupaten Kolaka Utara", "BPS Kolaka Utara Regency"],
+            ["Masuk ke Dashboard Desa", "Login to Village Dashboard"],
+            ["Kata Sandi", "Password"],
+            ["Status Pembinaan", "Mentoring Status"],
+            ["Terverifikasi BPS", "BPS Verified"]
+        ];
+
+        window.PORTAL_CURRENT_LANG = 'id';
+        try {
+            window.PORTAL_CURRENT_LANG = localStorage.getItem('portal_lang') || 'id';
+        } catch(e) {}
+
+        window.translateDesacanMenuToEn = function(text) {
+            if (!text || typeof text !== 'string') return text;
+            let res = text;
+            const pairs = window.DESACAN_MENU_I18N_PAIRS;
+            for (let i = 0; i < pairs.length; i++) {
+                const idText = pairs[i][0];
+                const enText = pairs[i][1];
+                if (idText === enText) continue;
+                if (res.trim() === idText) {
+                    return res.replace(idText, enText);
+                }
+                if (idText.length >= 4 && res.includes(idText)) {
+                    res = res.replaceAll(idText, enText);
+                }
+            }
+            return res;
+        };
+
+        window.applyPortalLanguage = function(lang) {
+            lang = (lang === 'en') ? 'en' : 'id';
+            window.PORTAL_CURRENT_LANG = lang;
+            try { localStorage.setItem('portal_lang', lang); } catch(e) {}
+
+            const btnID = document.getElementById('btnLangID');
+            const btnEN = document.getElementById('btnLangEN');
+            if (lang === 'en') {
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+            } else {
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+            }
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(node) {
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    const tag = parent.tagName.toLowerCase();
+                    if (tag === 'script' || tag === 'style') return NodeFilter.FILTER_REJECT;
+                    if (parent.closest('#btnLangID') || parent.closest('#btnLangEN')) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+
+            const textNodes = [];
+            while (walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+
+            textNodes.forEach(function(node) {
+                if (node.__origText === undefined) {
+                    node.__origText = node.nodeValue;
+                }
+                if (lang === 'en') {
+                    node.nodeValue = window.translateDesacanMenuToEn(node.__origText);
+                } else {
+                    node.nodeValue = node.__origText;
+                }
+            });
+        };
+
+        window.setPortalLanguage = function(lang) {
+            window.applyPortalLanguage(lang);
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const saved = localStorage.getItem('portal_lang');
+                if (saved === 'en') {
+                    window.setPortalLanguage('en');
+                }
+            } catch(e) {}
+        });
+    </script>
 </body>
 </html>

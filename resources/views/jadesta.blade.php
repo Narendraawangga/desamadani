@@ -460,9 +460,13 @@
                     </div>
                 </button>
 
-                <!-- Primary Entrance Button -->
+                <!-- Primary Entrance Button & Language Switcher -->
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <a href="/portal" class="px-6 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-[0_4px_20px_rgba(16,185,129,0.4)] backdrop-blur-md transition transform hover:scale-105 active:scale-95 flex items-center gap-2 group">
+                    <div class="flex items-center bg-white/90 backdrop-blur-md rounded-full p-0.5 text-xs font-bold border border-white/40 shrink-0 shadow-md">
+                        <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                        <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+                    </div>
+                    <a href="/portal" class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-[0_4px_20px_rgba(16,185,129,0.4)] backdrop-blur-md transition transform hover:scale-105 active:scale-95 flex items-center gap-2 group">
                         <span>Masuk Web Utama</span>
                         <span class="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center group-hover:translate-x-0.5 transition">
                             <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -2639,6 +2643,153 @@
         if (new URLSearchParams(window.location.search).has('login')) {
             window.openLoginModal();
         }
+
+        // BILINGUAL TRANSLATION ENGINE (ID / EN)
+        window.JADESTA_I18N_PAIRS = [
+            ["Masuk Web Utama", "Enter Main Web"],
+            ["Buka Web Utama Sekarang", "Open Main Web Now"],
+            ["SELAMAT DATANG DI DESA MADANI", "WELCOME TO DESA MADANI"],
+            ["Pesona & Potensi Unggul", "Charming & Superior Potential"],
+            ["Kabupaten Kolaka Utara", "Kolaka Utara Regency"],
+            ["Jelajahi Data & Potensi", "Explore Data & Potential"],
+            ["Portal Satu Data & Inisiatif Desa Madani", "One Data Portal & Desa Madani Initiative"],
+            ["Membangun Kolaka Utara", "Building Kolaka Utara"],
+            ["Dari Desa Madani", "From Desa Madani"],
+            ["Inovasi pemetaan spasial resolusi tinggi dan integrasi data Potensi Desa (Podes BPS 2024–2025) untuk mewujudkan Desa Mandiri, Maju, dan Sejahtera di Kabupaten Kolaka Utara.", "High-resolution spatial mapping innovation and Village Potential (PODES BPS 2024–2025) data integration to realize an Independent, Advanced, and Prosperous Village in Kolaka Utara Regency."],
+            ["Menghadirkan keterpaduan data statistik potensi kakao, perikanan Teluk Bone, destinasi wisata, serta sistem perencanaan pembangunan daerah berbasis bukti (evidence-based policy).", "Delivering statistical data coherence on cocoa potential, Gulf of Bone fisheries, tourist destinations, and an evidence-based regional development planning system."],
+            ["15 Kecamatan", "15 Sub-districts"],
+            ["133 Desa Terdata", "133 Surveyed Villages"],
+            ["Podes BPS 2024–2025", "BPS PODES 2024–2025"],
+            ["TELUK BONE", "GULF OF BONE"],
+            ["Jejaring Desa Wisata", "Tourism Village Network"],
+            ["5 Pilar Pengembangan Desa Wisata", "5 Pillars of Tourism Village Development"],
+            ["Standar Kemenparekraf RI", "Ministry of Tourism Standards"],
+            ["Kelembagaan & SDM", "Institutions & HR"],
+            ["Daya Tarik Wisata", "Tourist Attractions"],
+            ["Homestay & Kuliner", "Homestay & Culinary"],
+            ["Digital & Kreatif", "Digital & Creative"],
+            ["Resiliensi & Lingkungan", "Resilience & Environment"],
+            ["Desa Wisata Unggulan", "Featured Tourism Villages"],
+            ["Peta Sebaran & Eksplorasi Destinasi", "Distribution Map & Destination Exploration"],
+            ["Lihat Profil Lengkap", "View Full Profile"],
+            ["Kunjungi Portal", "Visit Portal"],
+            ["Unduh Data", "Download Data"],
+            ["Tutup", "Close"],
+            ["Masuk Form Login", "Open Login Form"],
+            ["Login Pengelola Desa", "Village Manager Login"],
+            ["Gunakan akun BPS / Pemda untuk masuk ke sistem administrasi", "Use BPS / Local Government account to log in to administration system"],
+            ["Email / Username", "Email / Username"],
+            ["Kata Sandi", "Password"],
+            ["Masuk Sekarang", "Log In Now"],
+            ["Kembali", "Back"]
+        ];
+
+        window.PORTAL_CURRENT_LANG = 'id';
+        try {
+            window.PORTAL_CURRENT_LANG = localStorage.getItem('portal_lang') || 'id';
+        } catch(e) {}
+
+        window.translateJadestaToEn = function(text) {
+            if (!text || typeof text !== 'string') return text;
+            let res = text;
+            const pairs = window.JADESTA_I18N_PAIRS;
+            for (let i = 0; i < pairs.length; i++) {
+                const idText = pairs[i][0];
+                const enText = pairs[i][1];
+                if (idText === enText) continue;
+                if (res.trim() === idText) {
+                    return res.replace(idText, enText);
+                }
+                if (idText.length >= 4 && res.includes(idText)) {
+                    res = res.replaceAll(idText, enText);
+                }
+            }
+            return res;
+        };
+
+        window.applyPortalLanguage = function(lang) {
+            lang = (lang === 'en') ? 'en' : 'id';
+            window.PORTAL_CURRENT_LANG = lang;
+            try { localStorage.setItem('portal_lang', lang); } catch(e) {}
+
+            const btnIDs = [document.getElementById('btnLangID'), document.getElementById('btnFloatLangID')];
+            const btnENs = [document.getElementById('btnLangEN'), document.getElementById('btnFloatLangEN')];
+            
+            btnIDs.forEach(b => {
+                if (!b) return;
+                b.className = (lang === 'id') 
+                    ? 'px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]'
+                    : 'px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+            });
+            btnENs.forEach(b => {
+                if (!b) return;
+                b.className = (lang === 'en') 
+                    ? 'px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]'
+                    : 'px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+            });
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(node) {
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    const tag = parent.tagName.toLowerCase();
+                    if (tag === 'script' || tag === 'style') return NodeFilter.FILTER_REJECT;
+                    if (parent.closest('#btnLangID') || parent.closest('#btnLangEN') || parent.closest('#btnFloatLangID') || parent.closest('#btnFloatLangEN')) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+
+            const textNodes = [];
+            while (walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+
+            textNodes.forEach(function(node) {
+                if (node.__origText === undefined) {
+                    node.__origText = node.nodeValue;
+                }
+                if (lang === 'en') {
+                    node.nodeValue = window.translateJadestaToEn(node.__origText);
+                } else {
+                    node.nodeValue = node.__origText;
+                }
+            });
+        };
+
+        window.setPortalLanguage = function(lang) {
+            window.applyPortalLanguage(lang);
+        };
+
+        // Scroll listener for floating toggle
+        window.addEventListener('scroll', function() {
+            const fl = document.getElementById('floatingLangToggle');
+            if (!fl) return;
+            if (window.scrollY > 350) {
+                fl.classList.remove('hidden');
+                fl.classList.add('flex');
+            } else {
+                fl.classList.add('hidden');
+                fl.classList.remove('flex');
+            }
+        }, { passive: true });
+
+        // Init language on DOM ready
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const saved = localStorage.getItem('portal_lang');
+                if (saved === 'en') {
+                    window.setPortalLanguage('en');
+                }
+            } catch(e) {}
+        });
     </script>
+    <!-- Floating Language Switcher for Scrolled View -->
+    <div id="floatingLangToggle" class="fixed top-5 right-5 z-[90] hidden items-center bg-white/95 backdrop-blur-md rounded-full p-1 text-xs font-bold border border-slate-200 shadow-lg transition-all duration-300">
+        <button type="button" id="btnFloatLangID" onclick="window.setPortalLanguage('id')" class="px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+        <button type="button" id="btnFloatLangEN" onclick="window.setPortalLanguage('en')" class="px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+    </div>
 </body>
 </html>
