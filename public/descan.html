@@ -255,7 +255,8 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 500ms ease-out;
+            transform: translate3d(0, 0, 0);
             transform-style: preserve-3d;
             will-change: transform;
             padding: 10px 0;
@@ -269,51 +270,44 @@
             overflow: hidden;
             cursor: pointer;
             flex-shrink: 0;
-            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
-                        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
-                        filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.65s ease;
+            will-change: transform;
+            transition: transform 500ms ease-out, opacity 500ms ease-out;
             transform-style: preserve-3d;
-            box-shadow: 0 20px 42px -12px rgba(15, 23, 42, 0.32), 0 8px 16px -6px rgba(15, 23, 42, 0.18);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.35);
             background: #0f172a;
-            transform: scale(0.9) rotateY(0deg);
-            opacity: 0.88;
+            transform: translate3d(0, 0, 0) scale(0.92);
+            opacity: 0.9;
         }
 
         .coverflow-card.active {
             cursor: default;
-            transform: scale(1.08) translateZ(40px) rotateY(0deg) !important;
-            box-shadow: 0 32px 70px -15px rgba(14, 124, 90, 0.45), 0 0 0 2.5px rgba(16, 185, 129, 0.9), 0 12px 24px -6px rgba(0, 0, 0, 0.2);
+            transform: translate3d(0, 0, 0) scale(1.08) !important;
+            box-shadow: 0 20px 45px -10px rgba(14, 124, 90, 0.5), 0 0 0 2.5px rgba(16, 185, 129, 0.9) !important;
             z-index: 40;
             opacity: 1 !important;
-            filter: brightness(1) !important;
         }
 
         .coverflow-card.card-left {
-            transform: scale(0.92) rotateY(18deg);
+            transform: translate3d(0, 0, 0) scale(0.94) rotateY(16deg);
             opacity: 0.92;
-            filter: brightness(0.88);
             z-index: 30;
         }
 
         .coverflow-card.card-right {
-            transform: scale(0.92) rotateY(-18deg);
+            transform: translate3d(0, 0, 0) scale(0.94) rotateY(-16deg);
             opacity: 0.92;
-            filter: brightness(0.88);
             z-index: 30;
         }
 
         .coverflow-card.card-far-left {
-            transform: scale(0.82) rotateY(30deg);
+            transform: translate3d(0, 0, 0) scale(0.85) rotateY(26deg);
             opacity: 0.82;
-            filter: brightness(0.72);
             z-index: 20;
         }
 
         .coverflow-card.card-far-right {
-            transform: scale(0.82) rotateY(-30deg);
+            transform: translate3d(0, 0, 0) scale(0.85) rotateY(-26deg);
             opacity: 0.82;
-            filter: brightness(0.72);
             z-index: 20;
         }
 
@@ -323,21 +317,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.5s ease-out;
         }
 
         .coverflow-card:hover img.card-bg {
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .coverflow-card .card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, 
-                rgba(15, 23, 42, 0.45) 0%, 
-                rgba(15, 23, 42, 0.1) 25%, 
-                rgba(15, 23, 42, 0.75) 60%, 
-                rgba(15, 23, 42, 0.98) 100%);
+            background: linear-gradient(to top, 
+                rgba(2, 6, 23, 0.92) 0%, 
+                rgba(15, 23, 42, 0.40) 45%, 
+                rgba(15, 23, 42, 0.05) 70%, 
+                transparent 100%);
+            pointer-events: none;
         }
 
         .coverflow-card .card-content {
@@ -1109,13 +1104,14 @@
                     <!-- 1. DESA KAMISI (KEC. KODEOHA) -->
                     <div onclick="handleCoverflowCardClick(event, 0, 'kamisi')" onmouseenter="handleCoverflowCardHover(0)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 active" data-index="0" data-key="kamisi">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" 
-                             alt="Desa Kamisi" class="card-bg">
+                        <img src="/images/desa/kamisi.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Desa Kamisi" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-emerald-300 font-black text-[10px] tracking-wide border border-white/15">
-                                    Pesisir &amp; Teri • Kodeoha
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-emerald-300 font-black text-[10px] tracking-wide border border-white/20">
+                                    Pesisir &amp; Bahari • Kodeoha
                                 </span>
                             </div>
                             <div>
@@ -1127,7 +1123,7 @@
                                     Desa Kamisi
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.576</b>
@@ -1142,7 +1138,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'kamisi')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -1153,12 +1149,13 @@
                     <!-- 2. DESA KOROHA (KEC. KODEOHA) -->
                     <div onclick="handleCoverflowCardClick(event, 1, 'koroha')" onmouseenter="handleCoverflowCardHover(1)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 card-right" data-index="1" data-key="koroha">
-                        <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80" 
-                             alt="Desa Koroha" class="card-bg">
+                        <img src="/images/desa/koroha.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Desa Koroha" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-sky-300 font-black text-[10px] tracking-wide border border-white/15">
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-sky-300 font-black text-[10px] tracking-wide border border-white/20">
                                     Kakao &amp; Pesisir • Kodeoha
                                 </span>
                             </div>
@@ -1171,7 +1168,7 @@
                                     Desa Koroha
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.340</b>
@@ -1186,7 +1183,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'koroha')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-sky-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-sky-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -1197,12 +1194,13 @@
                     <!-- 3. KELURAHAN MALA-MALA (KEC. KODEOHA) -->
                     <div onclick="handleCoverflowCardClick(event, 2, 'malamala')" onmouseenter="handleCoverflowCardHover(2)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20 card-far-right" data-index="2" data-key="malamala">
-                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" 
-                             alt="Kelurahan Mala-Mala" class="card-bg">
+                        <img src="/images/desa/malamala.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Kelurahan Mala-Mala" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 font-black text-[10px] tracking-wide border border-white/15">
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-amber-300 font-black text-[10px] tracking-wide border border-white/20">
                                     Pusat Layanan • Kodeoha
                                 </span>
                             </div>
@@ -1215,7 +1213,7 @@
                                     Kelurahan Mala-Mala
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.272</b>
@@ -1230,7 +1228,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'malamala')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-amber-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-amber-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH KELURAHAN</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -1241,12 +1239,13 @@
                     <!-- 4. DESA LAPOLU (KEC. TIWU) -->
                     <div onclick="handleCoverflowCardClick(event, 3, 'lapolu')" onmouseenter="handleCoverflowCardHover(3)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="3" data-key="lapolu">
-                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" 
-                             alt="Desa Lapolu" class="card-bg">
+                        <img src="/images/desa/lapolu.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Desa Lapolu" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-emerald-300 font-black text-[10px] tracking-wide border border-white/15">
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-emerald-300 font-black text-[10px] tracking-wide border border-white/20">
                                     Sentra Cengkeh &amp; IMK • Tiwu
                                 </span>
                             </div>
@@ -1259,7 +1258,7 @@
                                     Desa Lapolu
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">1.264</b>
@@ -1274,7 +1273,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'lapolu')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-emerald-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -1285,12 +1284,13 @@
                     <!-- 5. DESA TANGGEAWO (KEC. TIWU) -->
                     <div onclick="handleCoverflowCardClick(event, 4, 'tanggeawo')" onmouseenter="handleCoverflowCardHover(4)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="4" data-key="tanggeawo">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" 
-                             alt="Desa Tanggeawo" class="card-bg">
+                        <img src="/images/desa/tanggeawo.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Desa Tanggeawo" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-indigo-300 font-black text-[10px] tracking-wide border border-white/15">
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-indigo-300 font-black text-[10px] tracking-wide border border-white/20">
                                     Perkebunan Kakao • Tiwu
                                 </span>
                             </div>
@@ -1303,7 +1303,7 @@
                                     Desa Tanggeawo
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">564</b>
@@ -1318,7 +1318,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'tanggeawo')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-indigo-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-indigo-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -1329,12 +1329,13 @@
                     <!-- 6. DESA MATTIRO BULU (KEC. TIWU) -->
                     <div onclick="handleCoverflowCardClick(event, 5, 'mattirobulu')" onmouseenter="handleCoverflowCardHover(5)" onmouseleave="handleCoverflowCardLeave()"
                          class="coverflow-card group border border-white/20" data-index="5" data-key="mattirobulu">
-                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" 
-                             alt="Desa Mattiro Bulu" class="card-bg">
+                        <img src="/images/desa/mattirobulu.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=85';" 
+                             alt="Desa Mattiro Bulu" class="card-bg object-cover" loading="eager">
                         <div class="card-overlay"></div>
                         <div class="card-content">
                             <div class="flex items-center justify-between gap-2">
-                                <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-purple-300 font-black text-[10px] tracking-wide border border-white/15">
+                                <span class="px-3 py-1 rounded-full bg-slate-950/70 text-purple-300 font-black text-[10px] tracking-wide border border-white/20">
                                     Dataran Cengkeh &amp; Nilam • Tiwu
                                 </span>
                             </div>
@@ -1347,7 +1348,7 @@
                                     Desa Mattiro Bulu
                                 </h3>
 
-                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
+                                <div class="grid grid-cols-3 gap-1.5 p-2.5 rounded-2xl bg-slate-950/60 border border-white/15 text-center mt-3 mb-3.5 text-[10px]">
                                     <div>
                                         <span class="text-slate-300 block font-semibold">Penduduk</span>
                                         <b class="text-xs font-black text-white">856</b>
@@ -1362,7 +1363,7 @@
                                     </div>
                                 </div>
                                 <button type="button" onclick="event.stopPropagation(); handleDesaCardAccess(event, 'mattirobulu')" 
-                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-purple-50 text-slate-900 font-black text-xs tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+                                        class="w-full py-2.5 px-4 rounded-full bg-white hover:bg-purple-50 text-slate-900 font-black text-xs tracking-wider transition-transform duration-200 shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95">
                                     <span>PILIH DESA</span>
                                     <i class="bi bi-arrow-right font-black"></i>
                                 </button>
@@ -2465,7 +2466,7 @@
             const cardLeft = activeCard.offsetLeft;
             const targetTranslateX = (stageWidth / 2) - (cardLeft + (cardWidth / 2));
 
-            track.style.transform = `translateX(${targetTranslateX}px)`;
+            track.style.transform = `translate3d(${targetTranslateX}px, 0, 0)`;
 
             // Berikan efek 3D Coverflow miring ke tengah untuk kartu di samping
             cards.forEach((card, i) => {
