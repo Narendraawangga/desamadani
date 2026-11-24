@@ -447,7 +447,7 @@
           <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
               <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">01</div>
-              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
+              <h4 class="font-batangas text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Total Penduduk Riil
               </h4>
             </div>
@@ -465,7 +465,7 @@
           <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
               <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">02</div>
-              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
+              <h4 class="font-batangas text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Rata-Rata Kepadatan
               </h4>
             </div>
@@ -483,7 +483,7 @@
           <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
               <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">03</div>
-              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
+              <h4 class="font-batangas text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Rasio Jenis Kelamin
               </h4>
             </div>
@@ -501,7 +501,7 @@
           <div class="p-6 sm:p-7 flex flex-col justify-between hover:bg-[#E6ECE6]/20 transition-colors">
             <div>
               <div class="text-xs font-mono font-medium text-[#8A9B86] tracking-widest mb-2">04</div>
-              <h4 class="font-cormorant text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
+              <h4 class="font-batangas text-base sm:text-lg font-bold tracking-wider uppercase text-[#1D241E] leading-snug">
                 Sentra & IMK Produktif
               </h4>
             </div>
@@ -970,7 +970,7 @@
           <!-- Top Bar: Title & Slide Nav -->
           <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2">
-              <h3 class="font-cormorant text-2xl sm:text-3xl font-bold text-[#1D241E]">Sektor Lainnya</h3>
+              <h3 class="font-batangas text-2xl sm:text-3xl font-bold text-[#1D241E]">Sektor Lainnya</h3>
               <span class="font-mono text-xs text-[#8A9B86]">(${activeSectorIndex + 1}/7)</span>
             </div>
 

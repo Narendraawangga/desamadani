@@ -8,7 +8,43 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Local Batangas Display Font -->
+    <style>
+        @font-face {
+            font-family: 'Batangas';
+            src: url('/fonts/batangas/Batangas-Bold.otf') format('opentype'),
+                 url('/fonts/batangas/Batangas-Bold.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Batangas';
+            src: url('/fonts/batangas/Batangas-Bold.otf') format('opentype'),
+                 url('/fonts/batangas/Batangas-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Batangas';
+            src: url('/fonts/batangas/Batangas-Bold.otf') format('opentype'),
+                 url('/fonts/batangas/Batangas-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Batangas';
+            src: url('/fonts/batangas/Batangas-Bold.otf') format('opentype'),
+                 url('/fonts/batangas/Batangas-Bold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Tailwind CSS CDN -->
@@ -30,14 +66,14 @@
                     },
                     fontFamily: {
                         cinzel: ['"Cinzel"', 'serif'],
-                        cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        batangas: ['"Batangas"', 'sans-serif'],
+                        cormorant: ['"Batangas"', 'sans-serif'],
                         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
                     }
                 }
             }
-        }
-        }
+        };
     </script>
 
     <!-- Local Leaflet CSS & JS with CDN fallback -->
@@ -8624,7 +8660,7 @@
         }
     
     
-        /* Typography: Cinzel, Cormorant Garamond, Plus Jakarta Sans */
+        /* Typography: Cinzel (Header & Brand), Batangas (Secondary Display Titles), Plus Jakarta Sans (UI & Body) */
         .font-cinzel {
             font-family: 'Cinzel', serif !important;
             letter-spacing: 0.05em;
@@ -8635,13 +8671,17 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
+        .font-batangas {
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
+        }
         .font-cormorant {
-            font-family: 'Cormorant Garamond', Georgia, serif !important;
-            font-weight: 600;
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
         }
         .font-editorial {
-            font-family: 'Cormorant Garamond', Georgia, serif !important;
-            font-weight: 600;
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
         }
         .eyebrow-label {
             font-family: 'Plus Jakarta Sans', sans-serif !important;
@@ -9230,7 +9270,7 @@
                 <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #DCE3DD) -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#DCE3DD] pb-5">
                     <div>
-                        <h2 class="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D241E] tracking-tight leading-tight">Jelajah & Eksplorasi 133 Desa</h2>
+                        <h2 class="font-batangas text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D241E] tracking-tight leading-tight">Jelajah & Eksplorasi 133 Desa</h2>
                     </div>
                     <div class="flex items-center gap-2.5">
                         <button id="btnExplorerExportCSV" onclick="window.exportActiveTableCSV()" class="px-5 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
@@ -9323,7 +9363,7 @@
                     <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs p-6 sm:p-8 space-y-5">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#DCE3DD]">
                             <div>
-                                <h4 class="font-cormorant font-bold text-2xl sm:text-3xl text-[#1D241E]">Rincian Desa & Kelurahan Konstituen</h4>
+                                <h4 class="font-batangas font-bold text-2xl sm:text-3xl text-[#1D241E]">Rincian Desa & Kelurahan Konstituen</h4>
                                 <p class="text-xs text-[#5E6B61] mt-0.5 font-sans">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
                             </div>
                             
