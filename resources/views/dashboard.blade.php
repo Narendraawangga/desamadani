@@ -118,6 +118,7 @@
             width: 100%;
             box-sizing: border-box;
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -302,13 +303,13 @@
             border-top-color: #DCE3DD !important;
         }
         #headerSpacer {
-            height: 58px;
+            height: 64px;
             width: 100%;
             flex-shrink: 0;
         }
         @media (max-width: 767px) {
             #headerSpacer {
-                height: 98px;
+                height: 104px;
             }
         }
 
@@ -318,8 +319,8 @@
 <body class="bg-[#F8FAF8] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
 
     <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI - FIXED TRANSPARAN DI ATAS, PUTIH SAAT SCROLL) -->
-    <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[58px] flex flex-col justify-center w-full max-w-full">
-        <div class="w-full px-4 lg:px-8 py-2.5 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
+    <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
+        <div class="w-full px-4 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
             <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Clean & Seamless Tanpa Dot / Background Box) -->
             <div class="flex items-center gap-3 shrink-0">
@@ -806,7 +807,7 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (TWO-STAGE EXPLORATION) -->
         <!-- ========================================================================= -->
-        <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full py-8 sm:py-10">
+        <section id="portalPage2" class="portal-page {{ $curPage === 2 ? 'active' : '' }} w-full pt-6 sm:pt-8 pb-12">
             <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #DCE3DD) -->
@@ -825,7 +826,7 @@
                 <!-- =================================================================== -->
                 <!-- STATE 1: DIREKTORI 15 KECAMATAN (HORIZONTAL CARD CAROUSEL & SEARCH) -->
                 <!-- =================================================================== -->
-                <div id="podesStateDirectory" class="space-y-6">
+                <div id="podesStateDirectory" class="space-y-6 scroll-mt-24">
                     <!-- Search Bar Kapsul (Rounded-full) di Sisi Kiri dengan Ikon Kaca Pembesar di Kanan -->
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="relative w-full max-w-md">
@@ -884,7 +885,7 @@
                 <!-- =================================================================== -->
                 <!-- STATE 2: DETAIL KECAMATAN (SPLIT-PANEL DUA KOLOM + SWIPEABLE CARD) -->
                 <!-- =================================================================== -->
-                <div id="podesStateDetail" class="space-y-6" style="display: none;">
+                <div id="podesStateDetail" class="space-y-6 scroll-mt-24" style="display: none;">
                     
                     <!-- Split-Panel Dua Kolom Simetris (50:50 Desktop, Rounded-3xl, Border #DCE3DD) -->
                     <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs overflow-hidden">
@@ -2263,11 +2264,8 @@
             history.pushState({ page: pageNum }, '', targetUrl);
         }
 
-        // Scroll to top
-        const contentTop = document.getElementById('portal-content-top');
-        if (contentTop) {
-            contentTop.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Scroll window to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Special Initializations per Page
         if (pageNum === 2) {

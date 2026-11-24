@@ -535,7 +535,8 @@
     if (dirEl && detailEl) {
       dirEl.style.display = 'none';
       detailEl.style.display = 'block';
-      detailEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offsetTop = detailEl.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: Math.max(0, offsetTop), behavior: 'smooth' });
     }
 
     renderState2SplitPanel();
@@ -550,7 +551,8 @@
     if (dirEl && detailEl) {
       detailEl.style.display = 'none';
       dirEl.style.display = 'block';
-      dirEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offsetTop = dirEl.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: Math.max(0, offsetTop), behavior: 'smooth' });
     }
   }
 
