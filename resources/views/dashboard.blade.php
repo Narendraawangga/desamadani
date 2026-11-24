@@ -2458,7 +2458,9 @@
     window.onSvgKecLeave = function() {
         const elBadge = document.getElementById('svgKecFloatingText');
         if (elBadge) {
-            elBadge.innerHTML = 'Klik salah satu kecamatan untuk buka di Peta WebGIS';
+            elBadge.innerHTML = (window.PORTAL_CURRENT_LANG === 'en')
+                ? 'Click any sub-district to explore in WebGIS Map'
+                : 'Klik salah satu kecamatan untuk buka di Peta WebGIS';
         }
     };
 
@@ -2546,6 +2548,11 @@
                 }
             }, 150);
         }
+
+        if (window.PORTAL_CURRENT_LANG === 'en') {
+            setTimeout(function() { if (typeof window.applyPortalLanguage === 'function') window.applyPortalLanguage('en'); }, 60);
+            setTimeout(function() { if (typeof window.applyPortalLanguage === 'function') window.applyPortalLanguage('en'); }, 300);
+        }
     };
 
     // Handle Browser Back / Forward buttons
@@ -2601,17 +2608,220 @@
         }, 200);
     };
 
-    // 8. Language Switcher ID/EN
-    window.setPortalLanguage = function(lang) {
+    // 8. Robust Bilingual Language Switcher ID/EN (Across All Pages & Components)
+    window.PORTAL_I18N_PAIRS = [
+        // Navigation & Global Header
+        ["Beranda", "Home"],
+        ["Agregat 15 Kecamatan", "15 Sub-districts Aggregate"],
+        ["Agregat 15 Kec", "15 Districts"],
+        ["Peta dan Analisis", "Map and Analysis"],
+        ["Desa Cantik (DESCAN)", "Statistical Village (DESCAN)"],
+        ["Desa Cantik", "Desa Cantik"],
+        ["Tentang Madani", "About Madani"],
+        ["Tentang", "About"],
+        ["Kolaka Utara", "North Kolaka"],
+
+        // Page 1: Hero Section
+        ["KABUPATEN KOLAKA UTARA", "NORTH KOLAKA REGENCY"],
+        ["Lihat Seluruh Data", "Explore All Data"],
+        ["Penduduk 2025", "Population 2025"],
+        ["Jiwa Terdata Riil", "Real Census Data"],
+        ["Wilayah Adm", "Administrative Area"],
+        ["Kec / Desa-Kelurahan", "Districts / Villages"],
+        ["Rasio Listrik", "Electricity Ratio"],
+        ["38.077 KK Berlistrik", "38,077 Electrified Households"],
+        ["Sentra & IMK", "MSME & Industries"],
+        ["Unit Usaha Produktif", "Productive Units"],
+        ["Klik salah satu kecamatan untuk buka di Peta WebGIS", "Click any sub-district to open in WebGIS Map"],
+
+        // Page 1: 3 Koridor Pembangunan
+        ["Kewilayahan PODES 2025", "PODES 2025 Regional Zonation"],
+        ["3 Koridor Pembangunan Kolaka Utara", "3 Development Corridors of Kolaka Utara"],
+        ["Segmentasi strategis agregasi 15 kecamatan berdasarkan karakteristik agribisnis dan geografi.", "Strategic segmentation of 15 sub-districts based on agribusiness and geographical characteristics."],
+        ["KORIDOR I • UTARA", "CORRIDOR I • NORTH"],
+        ["Episentrum Industri & Pesisir", "Industrial & Coastal Epicenter"],
+        ["Sentra hilirisasi komoditas kakao, lada, nilam (1.440 IMK di Porehu) dan perikanan pesisir yang mencakup 38 desa di Tolala, Porehu, Batu Putih, dan Pakue Utara.", "Downstream hub for cocoa, pepper, patchouli (1,440 MSMEs in Porehu) and coastal fisheries covering 38 villages in Tolala, Porehu, Batu Putih, and Pakue Utara."],
+        ["KORIDOR II • TENGAH", "CORRIDOR II • CENTRAL"],
+        ["Ibukota, Pendidikan & Medis", "Capital, Education & Medical Center"],
+        ["Pusat pemerintahan Pemkab, RSUD rujukan utama Kelas C, 3 kampus perguruan tinggi, dan 8.463 KK berlistrik PLN di 67 desa/kelurahan Lasusua dan sekitarnya.", "Seat of Regency government, Class C referral hospital, 3 university campuses, and 8,463 electrified households across 67 villages in Lasusua and surroundings."],
+        ["KORIDOR III • SELATAN", "CORRIDOR III • SOUTH"],
+        ["Pertanian Sawah & Konservasi", "Paddy Farming & Conservation"],
+        ["Lumbung ketahanan pangan padi sawah, perkebunan cengkeh produktif, 224 aparatur desa aktif, dan geowisata karst Danau Biru di 28 desa wilayah selatan.", "Rice granary food security, productive clove plantations, 224 active village officials, and Lake Biru karst geotourism across 28 southern villages."],
+        ["Lanjut ke Halaman 2: Agregat 15 Kecamatan & Eksplorasi 133 Desa", "Proceed to Page 2: 15 Districts Aggregate & 133 Villages Exploration"],
+
+        // Page 2: Direktori & Eksplorasi 133 Desa
+        ["Jelajah & Eksplorasi 133 Desa", "Explore & Discover 133 Villages"],
+        ["Data spasial dan tematik PODES 2025 agregasi 15 kecamatan dan 133 desa se-Kabupaten Kolaka Utara", "Spatial and thematic PODES 2025 data across 15 sub-districts and 133 villages in Kolaka Utara Regency"],
+        ["Unduh Data CSV (133 Desa)", "Download CSV Data (133 Villages)"],
+        ["15 Kecamatan", "15 Sub-districts"],
+        ["133 Desa & Kelurahan", "133 Villages & Urban Wards"],
+        ["Podes BPS 2024–2025", "BPS Village Census 2024–2025"],
+        ["Cari kecamatan atau nama desa...", "Search sub-district or village name..."],
+        ["Kecamatan atau desa tidak ditemukan", "No district or village found"],
+        ["Kembali ke Ringkasan 15 Kecamatan", "Back to 15 Districts Overview"],
+        ["Pilih Kecamatan:", "Select Sub-district:"],
+        ["Eksplorasi Profil Desa Lengkap", "Explore Complete Village Profiles"],
+        ["Lanjut ke Halaman 3: WebGIS Peta Spasial", "Proceed to Page 3: WebGIS Spatial Map"],
+
+        // Page 3: Peta Tematik Interaktif
+        ["WEBGIS TEMATIK PODES 2025", "PODES 2025 THEMATIC WEBGIS"],
+        ["Peta Tematik Interaktif 15 Kecamatan", "Interactive Thematic Map of 15 Sub-districts"],
+        ["Visualisasi 6 lapisan indikator spasial riil dan direktori desa/kelurahan konstituen.", "Visualization of 6 real spatial indicator layers and constituent village directories."],
+        ["Kabupaten Kolaka Utara", "Kolaka Utara Regency"],
+        ["Pilih Lapisan:", "Select Layer:"],
+        ["Jumlah Penduduk", "Total Population"],
+        ["Rasio Elektrifikasi PLN", "PLN Electrification Ratio"],
+        ["Sentra IMK (3.622 Unit)", "MSME Centers (3,622 Units)"],
+        ["Faskes & Posyandu", "Health Clinics & Posyandu"],
+        ["SID & Sistem Informasi", "Village Information Systems"],
+        ["Kemandirian BUMDes", "BUMDes Independence"],
+        ["Legenda Peta", "Map Legend"],
+        ["Batas Administrasi", "Administrative Boundaries"],
+        ["Potensi Ekonomi", "Economic Potential"],
+        ["Lanjut ke Halaman 4: 6 Desa Cantik (DESCAN)", "Proceed to Page 4: 6 Desa Cantik (DESCAN)"],
+
+        // Page 4: 6 Desa Cantik (DESCAN)
+        ["PROGRAM PRIORITAS BPS", "BPS PRIORITY PROGRAM"],
+        ["Profil Monografi 6 Desa Cantik", "Monographic Profile of 6 Desa Cantik"],
+        ["Desa Cinta Statistik percontohan BPS Kabupaten Kolaka Utara dengan 100% data riil 9 berkas PODES 2025.", "Pilot Statistical Love Villages mentored by BPS Kolaka Utara with 100% authentic 2025 PODES data."],
+        ["Buka Menu Lengkap DESCAN", "Open Full DESCAN Menu"],
+        ["6 Desa Binaan Statistik", "6 Statistical Mentored Villages"],
+        ["Lanjut ke Halaman 5: Publikasi & Tentang Madani", "Proceed to Page 5: Publications & About Madani"],
+
+        // Page 5: Publikasi & Tentang Madani
+        ["KATALOG DATASET & ARSITEKTUR", "DATASET CATALOG & ARCHITECTURE"],
+        ["Publikasi PODES 2025 & Ekosistem Satu Data", "PODES 2025 Publications & One Data Ecosystem"],
+        ["Dokumentasi 9 berkas data sumber PODES BPS Kolaka Utara dan 5 tahapan integrasi Satu Data Desa.", "Documentation of 9 PODES source files from BPS Kolaka Utara and 5 integration stages of Village One Data."],
+        ["Katalog 9 Berkas Sumber Data PODES 2025", "Catalog of 9 PODES 2025 Source Data Files"],
+        ["41 Tabel Sensus Komprehensif", "41 Comprehensive Census Tables"],
+        ["Kependudukan & Piramida Umur", "Demographics & Age Pyramid"],
+        ["Tabel 2.1 (Penduduk L/P per Desa), Tabel 2.2 (Piramida Umur 16 Kelompok), Tabel 2.3 (Kepadatan Penduduk & Rasio Seks).", "Table 2.1 (M/F Population per Village), Table 2.2 (16-Group Age Pyramid), Table 2.3 (Population Density & Sex Ratio)."],
+        ["Sarana & Aksesibilitas Pendidikan", "Educational Facilities & Accessibility"],
+        ["Inventarisasi satuan PAUD/TK, SD/MI, SMP/MTs, SMA/MA/SMK, dan 3 kampus Perguruan Tinggi per kecamatan.", "Inventory of preschools, elementary, junior high, senior high schools, and 3 university campuses per sub-district."],
+        ["Fasilitas Kesehatan & Posyandu", "Health Facilities & Posyandu"],
+        ["Sentra Industri & BUMDes Aktif", "Industry Hubs & Active BUMDes"],
+        ["Pertanian & Perkebunan Unggulan", "Agriculture & Key Plantations"],
+        ["Infrastruktur Listrik & Energi", "Electrical Infrastructure & Energy"],
+        ["Transportasi & Komunikasi Desa", "Village Transport & Communications"],
+        ["Sosial Budaya & Keagamaan", "Socio-Cultural & Religious Data"],
+        ["Tata Kelola & Keuangan Desa", "Village Governance & Finance"],
+        ["Halaman 4: 6 Desa Cantik", "Page 4: 6 Desa Cantik"],
+        ["Kembali ke Halaman 1: Beranda", "Back to Page 1: Home"],
+
+        // Footer, Modals & Global
+        ["Desa Madani Kolaka Utara", "Desa Madani Kolaka Utara"],
+        ["Satu Data Desa Presisi © 2025", "Precision Village One Data © 2025"],
+        ["BPS Kabupaten Kolaka Utara & Pemerintah Daerah Kabupaten Kolaka Utara", "BPS Kolaka Utara Regency & Regional Government of Kolaka Utara"],
+        ["Pusat Bantuan", "Help Center"],
+        ["Pusat Bantuan & Panduan", "Help Center & Guidelines"],
+        ["Portal Desa Madani Kolaka Utara", "Desa Madani Portal Kolaka Utara"],
+        ["Silakan hubungi tim sekretariat Satu Data BPS Kolaka Utara jika Anda membutuhkan asistensi pengisian kuesioner atau integrasi dataset desa:", "Please contact the BPS Kolaka Utara One Data team if you require assistance with questionnaire completion or village dataset integration:"],
+        ["Daftar 15 Kecamatan Kolaka Utara", "List of 15 Sub-districts in Kolaka Utara"],
+        ["Pilih kecamatan untuk langsung menuju data spasial atau agregat", "Select a sub-district to jump directly to spatial or aggregate data"],
+        ["Tutup", "Close"],
+        ["Layanan:", "Service Hours:"],
+        ["Senin - Jumat (08.00 - 16.00 WITA)", "Monday - Friday (08.00 - 16.00 WITA)"],
+        ["Alamat:", "Address:"]
+    ];
+
+    window.PORTAL_CURRENT_LANG = 'id';
+    try {
+        window.PORTAL_CURRENT_LANG = localStorage.getItem('portal_lang') || 'id';
+    } catch(e) {}
+
+    window.translateTextToEn = function(text) {
+        if (!text || typeof text !== 'string') return text;
+        let res = text;
+        const pairs = window.PORTAL_I18N_PAIRS;
+        for (let i = 0; i < pairs.length; i++) {
+            const idText = pairs[i][0];
+            const enText = pairs[i][1];
+            if (idText === enText) continue;
+            
+            if (res.trim() === idText) {
+                return res.replace(idText, enText);
+            }
+            if (idText.length >= 4 && res.includes(idText)) {
+                res = res.replaceAll(idText, enText);
+            }
+        }
+        return res;
+    };
+
+    window.applyPortalLanguage = function(lang) {
+        lang = (lang === 'en') ? 'en' : 'id';
+        window.PORTAL_CURRENT_LANG = lang;
+        try { localStorage.setItem('portal_lang', lang); } catch(e) {}
+
         const btnID = document.getElementById('btnLangID');
         const btnEN = document.getElementById('btnLangEN');
         if (lang === 'en') {
-            if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
-            if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
+            if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
         } else {
-            if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
-            if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
+            if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
         }
+
+        const headerSearch = document.getElementById('headerSearchInput');
+        if (headerSearch) {
+            headerSearch.__origPlaceholder = headerSearch.__origPlaceholder || headerSearch.placeholder || 'Search';
+            headerSearch.placeholder = (lang === 'en') ? 'Search...' : headerSearch.__origPlaceholder;
+        }
+        const pillSearch = document.getElementById('kecamatanPillSearch');
+        if (pillSearch) {
+            pillSearch.__origPlaceholder = pillSearch.__origPlaceholder || pillSearch.placeholder || 'Cari kecamatan atau nama desa...';
+            pillSearch.placeholder = (lang === 'en') ? 'Search sub-district or village name...' : pillSearch.__origPlaceholder;
+        }
+
+        const scopeElements = [
+            document.getElementById('mainPortalHeader'),
+            document.getElementById('portalPage1'),
+            document.getElementById('portalPage2'),
+            document.getElementById('portalPage3'),
+            document.getElementById('portalPage4'),
+            document.getElementById('portalPage5'),
+            document.querySelector('footer'),
+            document.getElementById('modalPusatBantuan'),
+            document.getElementById('modalKecamatanList')
+        ];
+
+        scopeElements.forEach(function(root) {
+            if (!root) return;
+            const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(node) {
+                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                    const parent = node.parentElement;
+                    if (!parent) return NodeFilter.FILTER_REJECT;
+                    const tag = parent.tagName.toLowerCase();
+                    if (tag === 'script' || tag === 'style') return NodeFilter.FILTER_REJECT;
+                    if (parent.closest('svg') && !parent.classList.contains('kec-svg-group') && parent.id !== 'svgKecFloatingText') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+
+            const textNodes = [];
+            while (walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+
+            textNodes.forEach(function(node) {
+                if (node.__origText === undefined) {
+                    node.__origText = node.nodeValue;
+                }
+                if (lang === 'en') {
+                    node.nodeValue = window.translateTextToEn(node.__origText);
+                } else {
+                    node.nodeValue = node.__origText;
+                }
+            });
+        });
+    };
+
+    window.setPortalLanguage = function(lang) {
+        window.applyPortalLanguage(lang);
     };
 
     // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, White when Scrolled)
@@ -2645,6 +2855,13 @@
         else if (path.includes('tentang') || path.includes('publikasi') || hash.includes('tentang')) pNum = 5;
         
         window.switchPortalPage(pNum);
+
+        try {
+            const savedLang = localStorage.getItem('portal_lang');
+            if (savedLang === 'en') {
+                window.setPortalLanguage('en');
+            }
+        } catch(e) {}
     });
     </script>
 </body>
