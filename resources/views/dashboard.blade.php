@@ -290,11 +290,11 @@
             transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
         }
         #mainPortalHeader.scrolled {
-            background-color: rgba(255, 255, 255, 0.96) !important;
+            background-color: #ffffff !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
-            border-bottom-color: #DCE3DD !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+            border-bottom: 1px solid #DCE3DD !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
         }
         #mobileNavMenu {
             background-color: transparent;
@@ -302,8 +302,9 @@
             transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
         #mobileNavMenu.scrolled {
-            background-color: rgba(255, 255, 255, 0.96) !important;
-            border-top-color: #DCE3DD !important;
+            background-color: #ffffff !important;
+            border-top: 1px solid #DCE3DD !important;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05) !important;
         }
         #headerSpacer {
             height: 64px;
@@ -2460,7 +2461,6 @@
         if (elBadge) {
             elBadge.innerHTML = 'Klik salah satu kecamatan untuk buka di Peta WebGIS';
         }
-    }
     };
 
     // 3. SVG Map Click Handler
@@ -2618,12 +2618,12 @@
         }
     };
 
-    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, White when Scrolled)
+    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, Solid White when Scrolled)
     window.handlePortalHeaderScroll = function() {
         const header = document.getElementById('mainPortalHeader');
         const mNav = document.getElementById('mobileNavMenu');
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || (document.body ? document.body.scrollTop : 0) || 0;
-        const isScrolled = scrollPos > 15;
+        const isScrolled = scrollPos > 10;
         if (header) {
             header.classList.toggle('scrolled', isScrolled);
         }
@@ -2634,6 +2634,7 @@
 
     window.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
     document.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
+    window.handlePortalHeaderScroll();
 
     // Auto-detect page on initial load
     document.addEventListener('DOMContentLoaded', function() {
