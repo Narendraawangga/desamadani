@@ -380,102 +380,20 @@
             } catch(e) {}
         });
 
-        // BILINGUAL TRANSLATION ENGINE (ID / EN)
-        window.LOGIN_I18N_PAIRS = [
-            ["Kembali ke 6 Desa", "Back to 6 Villages"],
-            ["6 Desa", "6 Villages"],
-            ["Portal Login Resmi Desa Binaan (Kec. Kodeoha & Kec. Tiwu)", "Official Login Portal for Mentored Villages (Kodeoha & Tiwu Sub-districts)"],
-            ["Terverifikasi BPS", "BPS Verified"],
-            ["Masuk ke Dashboard Desa", "Login to Village Dashboard"],
-            ["Gunakan akun resmi desa binaan untuk melanjutkan.", "Use your official mentored village account to continue."],
-            ["Email atau kata sandi tidak cocok.", "Email or password does not match."],
-            ["Email Akun Desa", "Village Account Email"],
-            ["Kata Sandi", "Password"],
-            ["Masukkan kata sandi", "Enter password"],
-            ["Lihat/Sembunyikan Sandi", "Show/Hide Password"],
-            ["Masuk ke Dashboard", "Enter Dashboard"],
-            ["atau", "or"],
-            ["Isi Sandi Otomatis", "Auto-fill Password"],
-            ["Masuk sebagai Tamu", "Enter as Guest"],
-            ["Badan Pusat Statistik Kabupaten Kolaka Utara • Program Desa Cantik (DESCAN)", "Central Statistics Agency of Kolaka Utara Regency • Desa Cantik Program (DESCAN)"]
-        ];
-
-        window.PORTAL_CURRENT_LANG = 'id';
-        try {
-            window.PORTAL_CURRENT_LANG = localStorage.getItem('portal_lang') || 'id';
-        } catch(e) {}
-
-        window.translateLoginToEn = function(text) {
-            if (!text || typeof text !== 'string') return text;
-            let res = text;
-            const pairs = window.LOGIN_I18N_PAIRS;
-            if (!window._i18nPairsSorted) {
-                pairs.sort(function(a, b) { return b[0].length - a[0].length; });
-                window._i18nPairsSorted = true;
-            }
-            for (let i = 0; i < pairs.length; i++) {
-                const idText = pairs[i][0];
-                const enText = pairs[i][1];
-                if (idText === enText) continue;
-                if (res.trim() === idText) {
-                    return res.replace(idText, enText);
-                }
-                if (idText.length >= 3 && res.includes(idText)) {
-                    res = res.replaceAll(idText, enText);
-                }
-            }
-            return res;
-        };
-
-        window.applyPortalLanguage = function(lang) {
-            lang = (lang === 'en') ? 'en' : 'id';
-            window.PORTAL_CURRENT_LANG = lang;
-            try { localStorage.setItem('portal_lang', lang); } catch(e) {}
-
+                // Language Switcher ID/EN (Visual only - English disabled as requested)
+        window.setPortalLanguage = function(lang) {
+            try { localStorage.removeItem('portal_lang'); } catch(e) {}
             const btnID = document.getElementById('btnLangID');
             const btnEN = document.getElementById('btnLangEN');
             if (lang === 'en') {
-                if (btnEN) btnEN.className = 'px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
-                if (btnID) btnID.className = 'px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
             } else {
-                if (btnID) btnID.className = 'px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]';
-                if (btnEN) btnEN.className = 'px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
             }
-
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-                acceptNode: function(node) {
-                    if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                    const parent = node.parentElement;
-                    if (!parent) return NodeFilter.FILTER_REJECT;
-                    const tag = parent.tagName.toLowerCase();
-                    if (tag === 'script' || tag === 'style') return NodeFilter.FILTER_REJECT;
-                    if (parent.closest('#btnLangID') || parent.closest('#btnLangEN')) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-            });
-
-            const textNodes = [];
-            while (walker.nextNode()) {
-                textNodes.push(walker.currentNode);
-            }
-
-            textNodes.forEach(function(node) {
-                if (node.__origText === undefined) {
-                    node.__origText = node.nodeValue;
-                }
-                if (lang === 'en') {
-                    node.nodeValue = window.translateLoginToEn(node.__origText);
-                } else {
-                    node.nodeValue = node.__origText;
-                }
-            });
         };
 
-        window.setPortalLanguage = function(lang) {
-            window.applyPortalLanguage(lang);
-        };
     </script>
 </body>
 </html>
