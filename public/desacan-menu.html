@@ -750,26 +750,6 @@
 
                 <!-- =============== BERANDA BARU (DESCAN) =============== -->
                 <div id="dcHome" class="space-y-5">
-
-                    <!-- HERO -->
-                    <div class="dc-hero">
-                        <div class="grid lg:grid-cols-3 gap-6 items-center">
-                            <div class="lg:col-span-2 relative z-[1]">
-                                <span class="dc-chip mb-3"><span style="color:#6ee7b7;font-size:8px;">●</span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
-                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2" style="letter-spacing:-.02em;">Selamat Datang di Desa Cantik</h2>
-                                <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video mikrolearning, buku pedoman, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint">✎ Lanjutkan Data PODES</button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Pedoman</button>
-                                </div>
-                            </div>
-                            <div class="dc-status-card">
-                                <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-bold tracking-wider opacity-70">STATUS BINAAN</span><span class="dc-tag" style="background:#6ee7b7;color:#053b28;">Terdaftar</span></div>
-                                <div id="dcHeroDesaName" class="text-[2rem] font-extrabold leading-[1.05]" style="letter-spacing:-.02em;">Desa Kalu Kaluku</div>
-                                <div class="text-[11px] opacity-65 mt-1.5 mb-4">Pilot Utama Kec. Kodeoha</div>
-                                <div class="flex justify-between items-center pt-3 border-t border-white/15"><span class="text-xs flex items-center gap-1.5"><i class="bi bi-shield-check text-[#6ee7b7]"></i> Validasi BPS RI</span><b class="text-xl" style="color:#6ee7b7;">100%</b></div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- KPI -->
