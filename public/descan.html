@@ -450,104 +450,133 @@
     </header>
 
     <!-- ============================================================== -->
-    <!-- 3. HERO SECTION (Ringkas, Berisi, Tidak Ramai)                  -->
+    <!-- 3. HERO SECTION (ORGANIC SPLIT NATURE DESIGN - INSPIRASI TERBARU) -->
     <!-- ============================================================== -->
-    <section id="beranda" class="hero-banner pt-7 pb-8 sm:pt-9 sm:pb-10 lg:pt-10 lg:pb-11">
-        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+    <section id="beranda" class="relative bg-[#fbfdfa] text-slate-900 pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-14 lg:pb-24 overflow-hidden border-b border-slate-100">
+        
+        <!-- Sisi Kanan: Foto Udara Hutan Tropis & Perkebunan Kolut dengan Feathering Gradient Halus ke Sisi Kiri -->
+        <div class="absolute inset-y-0 right-0 w-full lg:w-[58%] xl:w-[54%] pointer-events-none select-none z-0 overflow-hidden">
+            <!-- Aerial Forest Background Image with High Resolution -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&q=80');"></div>
             
-            <!-- Left Column: Typography & Action (Compact Above-The-Fold) -->
-            <div class="lg:col-span-7 space-y-3 sm:space-y-3.5 text-left">
-                <div class="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-black tracking-widest uppercase text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/15">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Portal Satu Data Statistik Sektoral 2026</span>
-                </div>
-
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black text-white tracking-tight leading-tight">
-                    Desa Cantik. <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-300">
-                        Kedaulatan Data
-                    </span>
-                    <span class="font-normal text-slate-200"> Membangun Desa.</span>
-                </h1>
-
-                <p class="text-xs sm:text-[13px] text-slate-200 font-medium max-w-xl leading-relaxed">
-                    Pusat diseminasi data statistik sektoral dan pembinaan agen statistik mandiri untuk <b>6 desa binaan BPS Kabupaten Kolaka Utara</b> di wilayah Kecamatan Kodeoha &amp; Kecamatan Tiwu.
-                </p>
-
-                <!-- Action Buttons -->
-                <div class="pt-1.5 flex flex-wrap items-center gap-2.5">
-                    <a href="#dashboard" class="px-5 py-2.5 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-black text-xs shadow-md transition flex items-center gap-2 transform hover:-translate-y-0.5">
-                        <span>📊 Lihat Data Grafik Visual</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                    </a>
-                    <a href="#desa" class="px-4.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition flex items-center gap-2">
-                        <span>🏘️ Pilih 6 Desa Binaan</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right Column: Ringkasan 4 Pilar Inti (Compact) -->
-            <div class="lg:col-span-5">
-                <div class="p-4 sm:p-4.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-xl space-y-2.5">
-                    <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                        <span class="text-xs font-black uppercase text-emerald-300 tracking-wider">Indikator Kunci Pembinaan</span>
-                        <span class="text-xs text-emerald-200 font-bold">Kec. Kodeoha &amp; Tiwu</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-xl sm:text-2xl font-black text-amber-300">100%</div>
-                            <div class="text-xs text-white font-bold mt-0.5">Target Capaian 2026</div>
-                            <div class="text-xs text-emerald-200/90 font-medium">Target Mandiri SDI</div>
-                        </div>
-                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-xl sm:text-2xl font-black text-teal-300">TW-IV</div>
-                            <div class="text-xs text-white font-bold mt-0.5">Periode Pendataan</div>
-                            <div class="text-xs text-teal-200/90 font-medium">Tahun Berjalan 2026</div>
-                        </div>
-                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-xl sm:text-2xl font-black text-emerald-300">2 Kec.</div>
-                            <div class="text-xs text-white font-bold mt-0.5">Cakupan Wilayah</div>
-                            <div class="text-xs text-emerald-200/90 font-medium">Kodeoha &amp; Tiwu</div>
-                        </div>
-                        <div class="p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 text-center hover:bg-white/15 transition">
-                            <div class="text-lg sm:text-xl font-black text-white flex items-center justify-center gap-1 mt-0.5">
-                                <i class="bi bi-shield-fill-check text-emerald-400"></i>
-                                <span>SDI</span>
-                            </div>
-                            <div class="text-xs text-white font-bold mt-0.5">Status Portal</div>
-                            <div class="text-xs text-emerald-200/90 font-medium">Terintegrasi BPS RI</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Soft White Mist / Feather Gradient Overlay dari Kiri ke Kanan Persis Seperti Referensi -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#fbfdfa] via-[#fbfdfa]/80 md:via-[#fbfdfa]/40 to-transparent w-full lg:w-[60%]"></div>
+            
+            <!-- Soft Atmospheric Vignette -->
+            <div class="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/10"></div>
+            <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#fbfdfa] to-transparent"></div>
+            <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#fbfdfa] to-transparent"></div>
         </div>
 
-        <!-- 3D Organic Wave Divider (Lighter, Compact & Elevated) -->
-        <div class="w-full overflow-hidden leading-none mt-4 sm:mt-5 -mb-8 sm:-mb-10">
-            <svg class="relative block w-full h-8 sm:h-12 text-[#f8fafc]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
-                <path d="M0,0 C150,85 350,-35 500,45 C650,125 900,10 1200,45 L1200,120 L0,120 Z"></path>
-            </svg>
+        <!-- Kontainer Konten Utama -->
+        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Sisi Kiri (Col-span 7): Tipografi Editorial, Narasi & Input Aksi -->
+            <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
+                <!-- Pill Tag Top (🌱 TOGETHER FOR ONE DATA INDONESIA) -->
+                <div class="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold text-emerald-800 bg-emerald-50/90 border border-emerald-300/70 px-3.5 py-1.5 rounded-full shadow-2xs backdrop-blur-xs">
+                    <span class="text-sm">🌱</span>
+                    <span class="tracking-wide uppercase">PORTAL SATU DATA STATISTIK SEKTORAL 2026 • BPS KOLUT</span>
+                </div>
+
+                <!-- Headline Besar yang Gagah & Bersih Sesuai Referensi -->
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] font-black text-slate-900 tracking-tight leading-[1.12]">
+                    Desa Cantik,<br>
+                    <span class="text-emerald-700">Kedaulatan Data</span> Membangun Desa.
+                </h1>
+
+                <!-- Paragraf Deskripsi yang Rapi & Proporsional -->
+                <p class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-xl">
+                    Pusat diseminasi data statistik sektoral dan pembinaan agen statistik mandiri untuk <strong>6 desa binaan BPS Kabupaten Kolaka Utara</strong> di wilayah Kecamatan Kodeoha &amp; Kecamatan Tiwu.
+                </p>
+
+                <!-- Input Pencarian Cepat / Quick Village Jump Bar (Gaya Email Box Image 2) -->
+                <div class="flex items-center bg-white rounded-full p-1.5 pl-4 border border-slate-200/90 shadow-sm max-w-md focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500 transition">
+                    <i class="bi bi-search text-slate-400 mr-2 text-xs"></i>
+                    <input type="text" id="heroQuickSearch" onkeyup="handleHeroQuickSearch(this.value)" placeholder="Cari data desa atau indikator makro..." class="w-full text-xs sm:text-sm bg-transparent outline-none text-slate-800 placeholder-slate-400 font-medium">
+                    <a href="#dashboard" class="px-5 py-2.5 rounded-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs tracking-wide transition shadow-xs whitespace-nowrap flex items-center gap-1.5 cursor-pointer">
+                        <span>Jelajahi Data</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Social Proof: Avatar Stack & Indikator Warga Terdata -->
+                <div class="flex items-center gap-3 pt-1">
+                    <div class="flex -space-x-2 shrink-0">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover shadow-2xs" src="/images/descan/avatar-cijati.png" alt="Agen BPS 1">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover shadow-2xs" src="/images/descan/avatar-harapan.png" alt="Agen BPS 2">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover shadow-2xs" src="/images/descan/avatar-lestari.png" alt="Agen BPS 3">
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
+                        <span class="text-amber-500 text-sm">⭐</span>
+                        <span><strong>2.426+ Keluarga</strong> terdata di 6 Desa Binaan Mandiri SDI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan (Col-span 5): 3 Kartu Mengambang Kaca (Glassmorphic) & Tombol Play di Tengah Hutan -->
+            <div class="lg:col-span-5 relative flex flex-col justify-center min-h-[380px] lg:min-h-[440px]">
+                
+                <!-- Central Play Button Floating di Perbatasan Kabut Hutan -->
+                <div class="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 z-20 hidden sm:flex items-center">
+                    <button type="button" onclick="startVillageVideoOpening(true)" class="group flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-xl border border-white/90 hover:bg-white hover:scale-105 transition cursor-pointer">
+                        <span class="w-8 h-8 rounded-full bg-emerald-800 text-white flex items-center justify-center text-xs shadow-inner group-hover:bg-emerald-700 transition">
+                            <i class="bi bi-play-fill text-sm ml-0.5"></i>
+                        </span>
+                        <span class="text-xs font-bold text-slate-800 tracking-tight">Watch the Story</span>
+                    </button>
+                </div>
+
+                <!-- 3 Floating Glassmorphic Cards Stacked Vertically -->
+                <div class="space-y-3.5 max-w-sm ml-auto w-full">
+                    
+                    <!-- Kartu 1: Pesisir & Bahari (Ref: Reforestation) -->
+                    <div onclick="filterDesaBySector('bahari')" class="rounded-2xl bg-white/90 hover:bg-white backdrop-blur-md border border-white/80 p-3 sm:p-3.5 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-3.5 group">
+                        <img src="/images/jadesta/pantai_berova_pitulua.webp" alt="Pesisir & Bahari" class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl object-cover shrink-0 shadow-2xs group-hover:scale-105 transition">
+                        <div class="min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 tracking-tight group-hover:text-emerald-800 transition">Pesisir &amp; Bahari</h4>
+                            <p class="text-[11px] text-slate-500 leading-snug truncate mt-0.5">Perikanan tangkap, mangrove &amp; rumput laut.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 2: Agro Perkebunan (Ref: Clean Oceans) -->
+                    <div onclick="filterDesaBySector('perkebunan')" class="rounded-2xl bg-white/90 hover:bg-white backdrop-blur-md border border-white/80 p-3 sm:p-3.5 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-3.5 group">
+                        <img src="/images/jadesta/kebun_kakao_totallang.jpg" alt="Agro Perkebunan" class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl object-cover shrink-0 shadow-2xs group-hover:scale-105 transition">
+                        <div class="min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 tracking-tight group-hover:text-emerald-800 transition">Agro Perkebunan</h4>
+                            <p class="text-[11px] text-slate-500 leading-snug truncate mt-0.5">Cengkeh, nilam &amp; kakao unggulan Kolut.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 3: Satu Data Indonesia (Ref: Wildlife Protection) -->
+                    <div onclick="filterDesaBySector('sdi')" class="rounded-2xl bg-white/90 hover:bg-white backdrop-blur-md border border-white/80 p-3 sm:p-3.5 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 cursor-pointer flex items-center gap-3.5 group">
+                        <img src="/images/jadesta/kelurahan_lasusua.jpg" alt="Satu Data Indonesia" class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl object-cover shrink-0 shadow-2xs group-hover:scale-105 transition">
+                        <div class="min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-bold text-slate-900 tracking-tight group-hover:text-emerald-800 transition">Satu Data Indonesia</h4>
+                            <p class="text-[11px] text-slate-500 leading-snug truncate mt-0.5">44 Indikator makro &amp; tata kelola digital.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- ============================================================== -->
-    <!-- 4. FLOATING STATS STRIP (5 Kartu - Utuh & Langsung Tampak / Above-the-Fold) -->
+    <!-- 4. FLOATING STATS STRIP (5 Kartu Putih Bersih - Persis Image 2)   -->
     <!-- ============================================================== -->
-    <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 -mt-10 sm:-mt-12 lg:-mt-14 relative z-20">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
+    <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 -mt-8 sm:-mt-10 lg:-mt-12 relative z-20">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
             
             <!-- Kartu 1: Desa Pilot -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #10b981, #059669);">
-                <!-- Flat Subtle Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-emerald-500 to-[#0E7C5A] shadow-xs ring-1 ring-emerald-100 mb-2">
-                    <i class="bi bi-geo-alt-fill text-xl text-white drop-shadow-xs"></i>
+            <div class="rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div id="kpiCard1Val" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none">6 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Desa</span></div>
+                    <div id="kpiCard1Label" class="text-xs font-bold text-slate-600 mt-1">Desa Pilot Utama</div>
                 </div>
-                <div class="w-full">
-                    <div id="kpiCard1Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">6</div>
-                    <div id="kpiCard1Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Desa Pilot</div>
-                    <span id="kpiCard1Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9.5px] sm:text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
+                <div class="mt-3">
+                    <span id="kpiCard1Badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         Kec. Kodeoha &amp; Tiwu
                     </span>
@@ -555,62 +584,54 @@
             </div>
 
             <!-- Kartu 2: Total Keluarga -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #f59e0b, #d97706);">
-                <!-- Flat Subtle Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-amber-400 to-amber-600 shadow-xs ring-1 ring-amber-100 mb-2">
-                    <i class="bi bi-people-fill text-xl text-white drop-shadow-xs"></i>
+            <div class="rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div id="kpiCard2Val" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none">2.426 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">KK</span></div>
+                    <div id="kpiCard2Label" class="text-xs font-bold text-slate-600 mt-1">Total Keluarga</div>
                 </div>
-                <div class="w-full">
-                    <div id="kpiCard2Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">2.426</div>
-                    <div id="kpiCard2Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Keluarga</div>
-                    <span id="kpiCard2Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9.5px] sm:text-[10px] font-bold border border-amber-200/80 shadow-2xs">
+                <div class="mt-3">
+                    <span id="kpiCard2Badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10px] font-bold border border-amber-200/80 shadow-2xs">
                         Kepala Keluarga (KK)
                     </span>
                 </div>
             </div>
 
             <!-- Kartu 3: Total Penduduk -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #0ea5e9, #0284c7);">
-                <!-- Flat Subtle Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-sky-400 to-sky-600 shadow-xs ring-1 ring-sky-100 mb-2">
-                    <i class="bi bi-person-vcard-fill text-xl text-white drop-shadow-xs"></i>
+            <div class="rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div id="kpiCard3Val" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none">8.734 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Jiwa</span></div>
+                    <div id="kpiCard3Label" class="text-xs font-bold text-slate-600 mt-1">Total Penduduk</div>
                 </div>
-                <div class="w-full">
-                    <div id="kpiCard3Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-slate-900 tracking-tight leading-none mb-1">8.734</div>
-                    <div id="kpiCard3Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Total Penduduk</div>
-                    <span id="kpiCard3Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[9.5px] sm:text-[10px] font-bold border border-sky-200/80 shadow-2xs">
-                        Jiwa Terdata
+                <div class="mt-3">
+                    <span id="kpiCard3Badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 text-[10px] font-bold border border-sky-200/80 shadow-2xs">
+                        100% Jiwa Terdata
                     </span>
                 </div>
             </div>
 
             <!-- Kartu 4: Rata-rata Progres -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #14b8a6, #0d9488);">
-                <!-- Flat Subtle Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-teal-400 to-teal-600 shadow-xs ring-1 ring-teal-100 mb-2">
-                    <i class="bi bi-graph-up-arrow text-xl text-white drop-shadow-xs"></i>
+            <div class="rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div id="kpiCard4Val" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none">84% <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Done</span></div>
+                    <div id="kpiCard4Label" class="text-xs font-bold text-slate-600 mt-1">Rata-rata Progres</div>
                 </div>
-                <div class="w-full">
-                    <div id="kpiCard4Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-emerald-700 tracking-tight leading-none mb-1">84%</div>
-                    <div id="kpiCard4Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Rata-rata Progres</div>
-                    <span id="kpiCard4Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[9.5px] sm:text-[10px] font-bold border border-teal-200/80 shadow-2xs">
-                        <i class="bi bi-check-circle-fill text-[9px] text-teal-600"></i>
+                <div class="mt-3">
+                    <span id="kpiCard4Badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 text-[10px] font-bold border border-teal-200/80 shadow-2xs">
+                        <i class="bi bi-check-circle-fill text-[10px] text-teal-600"></i>
                         Pendataan Selesai
                     </span>
                 </div>
             </div>
 
-            <!-- Kartu 5: Indikator Terinput -->
-            <div class="stat-card-3d p-3.5 sm:py-4 sm:px-3 flex flex-col items-center text-center justify-between col-span-1 sm:col-span-2 lg:col-span-1 group cursor-default hover:-translate-y-1 transition-all duration-300" style="--accent-bar: linear-gradient(90deg, #6366f1, #3b82f6);">
-                <!-- Flat Subtle Orb Badge -->
-                <div class="orb-3d bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-xs ring-1 ring-indigo-100 mb-2">
-                    <i class="bi bi-database-fill-check text-xl text-white drop-shadow-xs"></i>
+            <!-- Kartu 5: Indikator Terinput / Mandiri SDI -->
+            <div class="rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 col-span-2 sm:col-span-1 lg:col-span-1 flex flex-col justify-between group">
+                <div>
+                    <div id="kpiCard5Val" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none">100% <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">SDI</span></div>
+                    <div id="kpiCard5Label" class="text-xs font-bold text-slate-600 mt-1">Target Mandiri 2026</div>
                 </div>
-                <div class="w-full">
-                    <div id="kpiCard5Val" class="text-xl sm:text-2xl lg:text-[28px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800 tracking-tight leading-none mb-1">223 / 264</div>
-                    <div id="kpiCard5Label" class="text-[10px] sm:text-[11px] font-black text-slate-700 uppercase tracking-wider mb-1">Indikator Terinput</div>
-                    <span id="kpiCard5Badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 text-[9.5px] sm:text-[10px] font-bold border border-indigo-200/80 shadow-2xs">
-                        44 Indikator / Desa
+                <div class="mt-3">
+                    <span id="kpiCard5Badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200/80 shadow-2xs">
+                        Terintegrasi BPS RI
                     </span>
                 </div>
             </div>
@@ -1538,6 +1559,19 @@
     <!-- SCRIPT: INTERAKTIVITAS & CHART.JS                              -->
     <!-- ============================================================== -->
     <script>
+                // Hero Quick Action Handlers (Inspirasi Image 2)
+        function handleHeroQuickSearch(query) {
+            if (!query) return;
+            const q = query.toLowerCase().trim();
+            const el = document.getElementById('dashboard');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function filterDesaBySector(sector) {
+            const el = document.getElementById('desa');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Global Chart Instances Holder
         let chartInstances = {};
 
