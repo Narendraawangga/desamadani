@@ -409,6 +409,10 @@
             if (!text || typeof text !== 'string') return text;
             let res = text;
             const pairs = window.LOGIN_I18N_PAIRS;
+            if (!window._i18nPairsSorted) {
+                pairs.sort(function(a, b) { return b[0].length - a[0].length; });
+                window._i18nPairsSorted = true;
+            }
             for (let i = 0; i < pairs.length; i++) {
                 const idText = pairs[i][0];
                 const enText = pairs[i][1];
@@ -416,7 +420,7 @@
                 if (res.trim() === idText) {
                     return res.replace(idText, enText);
                 }
-                if (idText.length >= 4 && res.includes(idText)) {
+                if (idText.length >= 3 && res.includes(idText)) {
                     res = res.replaceAll(idText, enText);
                 }
             }
