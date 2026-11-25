@@ -653,11 +653,13 @@ if (typeof window !== 'undefined') {
 // ==============================================================
 // 3. HEADER 3 TINGKAT BUILDER
 // ==============================================================
-function initVillageHeader(desaKey) {
+function initVillageHeader(desaKey, targetContainerId = null) {
     if (desaKey) currentPortalDesaKey = desaKey;
     const d = getActiveDesaData();
 
-    const headerContainer = document.getElementById('desaTopHeaderWrapper');
+    const headerContainer = (targetContainerId && document.getElementById(targetContainerId)) 
+        || document.getElementById('dedicatedVillageHeaderWrapper') 
+        || document.getElementById('desaTopHeaderWrapper');
     if (!headerContainer) return;
 
     // Build Potensi Dropdown Items dynamically based on village
@@ -707,10 +709,24 @@ function initVillageHeader(desaKey) {
                     </div>
                 </div>
 
-                <!-- Input Pencarian Instan & Tombol Navigasi Cepat -->
-                <div class="flex items-center gap-2 sm:gap-3 w-full md:w-auto justify-end">
+                <!-- Input Pencarian Instan, Pemilih 6 Desa, & Tombol Kembali -->
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto justify-end">
+                    
+                    <!-- Dropdown Pemilih 6 Desa Terbina (Village Switcher) -->
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <span class="text-[11px] font-black text-slate-500 uppercase tracking-wider hidden xl:inline">Pilih Desa:</span>
+                        <select id="villagePortalSwitcherSelect" onchange="switchDedicatedVillage(this.value)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-black text-slate-800 outline-none focus:ring-2 focus:ring-emerald-600 cursor-pointer transition shadow-2xs">
+                            <option value="lapolu" ${d.key === 'lapolu' ? 'selected' : ''}>🌾 Desa Lapolu (Kec. Tiwu)</option>
+                            <option value="tanggeawo" ${d.key === 'tanggeawo' ? 'selected' : ''}>🌱 Desa Tanggeawo (Kec. Tiwu)</option>
+                            <option value="mattirobulu" ${d.key === 'mattirobulu' ? 'selected' : ''}>🌊 Desa Mattiro Bulu (Kec. Tiwu)</option>
+                            <option value="kamisi" ${d.key === 'kamisi' ? 'selected' : ''}>🌴 Desa Kamisi (Kec. Kodeoha)</option>
+                            <option value="koroha" ${d.key === 'koroha' ? 'selected' : ''}>🏔️ Desa Koroha (Kec. Kodeoha)</option>
+                            <option value="malamala" ${d.key === 'malamala' ? 'selected' : ''}>🏛️ Kel. Mala-Mala (Kec. Kodeoha)</option>
+                        </select>
+                    </div>
+
                     <!-- Search Input -->
-                    <div class="relative flex-1 md:w-72 lg:w-84">
+                    <div class="relative flex-1 md:w-60 lg:w-72">
                         <input type="text" id="inputPortalSearch" oninput="filterVillagePortalContent(this.value)" 
                             placeholder="Cari info, regulasi, layanan..." 
                             class="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition-all placeholder:text-slate-400 font-medium">
@@ -719,9 +735,9 @@ function initVillageHeader(desaKey) {
                     </div>
 
                     <!-- Tombol Kembali ke Portal Utama DESCAN -->
-                    <a href="/descan" class="px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs font-bold transition flex items-center gap-1.5 shrink-0 border border-slate-200" title="Kembali ke Portal 6 Desa">
-                        <span>←</span> <span class="hidden sm:inline">Portal DESCAN</span>
-                    </a>
+                    <button type="button" onclick="closeDedicatedVillagePortal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 shrink-0 border border-slate-200 shadow-2xs hover:border-emerald-300" title="Kembali ke Beranda Utama Portal DESCAN 6 Desa">
+                        <span>←</span> <span class="hidden sm:inline">Portal Utama DESCAN</span>
+                    </button>
 
                     <!-- Tombol Masuk Mode Admin / Operator -->
                     <button type="button" onclick="toggleOperatorDashboardModal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center gap-1.5 shrink-0 shadow-sm" title="Buka Alat Operator Desa">
@@ -1095,8 +1111,8 @@ function renderVillageMainLayout(desaKey, activeMenu = 'beranda', activeSub = 'b
     currentPortalActiveSub = activeSub;
     const d = getActiveDesaData();
 
-    // Container for Village Portal in desacan-menu
-    const hostEl = document.getElementById('view-portal-desa');
+    // Container for Village Portal (dedicated view on main portal or inside desacan-menu)
+    const hostEl = document.getElementById('dedicatedVillageMainContentHost') || document.getElementById('view-portal-desa');
     if (!hostEl) return;
 
     hostEl.innerHTML = `
@@ -1130,168 +1146,159 @@ function renderVillageSidebarWidgets(d) {
     if (!sidebarEl) return;
 
     sidebarEl.innerHTML = `
-        <!-- WIDGET 1: KARTU HIJAU ZAMRUD "LAYANAN MANDIRI & POJOK STATISTIK" -->
-        <div class="rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-[#046A38] via-[#057A42] to-[#03532c] text-white shadow-xl border border-emerald-500/30 relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 w-36 h-36 rounded-full bg-white/5 pointer-events-none"></div>
-            <div class="relative z-10">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center text-sm shadow-inner">⚡</span>
-                    <div>
-                        <span class="text-[10px] font-black tracking-wider uppercase text-emerald-200">Layanan Online 24 Jam</span>
-                        <h3 class="text-base font-black leading-tight text-white">Layanan Mandiri Warga</h3>
-                    </div>
+        <!-- WIDGET 1: LAYANAN MANDIRI / ONLINE (PERSIS GAMBAR 4) -->
+        <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
+            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-base">🛡️</span>
+                    <h3 class="text-sm font-black tracking-tight">Layanan Online ${d.name}</h3>
                 </div>
-                <p class="text-xs text-emerald-100/90 mb-4 leading-relaxed">
-                    Pengajuan surat permohonan mandiri & akses data statistik sektoral ${d.name}.
+                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full text-emerald-100">Mandiri 24 Jam</span>
+            </div>
+            <div class="p-5 space-y-4">
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Silakan masukkan NIK dan PIN Anda untuk mengakses layanan administrasi online dan permohonan surat warga.
                 </p>
-
-                <!-- Form Cepat Pengajuan Surat -->
-                <form onsubmit="handleQuickServiceSubmit(event)" class="space-y-3 bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/15 text-slate-800">
+                <form onsubmit="handleQuickServiceSubmit(event)" class="space-y-3">
                     <div>
-                        <label class="block text-[10.5px] font-extrabold uppercase text-emerald-100 mb-1">Nomor Induk Kependudukan (NIK)</label>
-                        <input type="text" id="quickNik" maxlength="16" placeholder="16 digit NIK sesuai KTP..." required
-                            class="w-full px-3 py-2 text-xs rounded-xl bg-white text-slate-800 border-none outline-none focus:ring-2 focus:ring-amber-300 placeholder:text-slate-400 font-medium">
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">NIK / No. KTP</label>
+                        <input type="text" id="quickNik" maxlength="16" placeholder="16 Digit NIK KTP..." required
+                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
                     </div>
                     <div>
-                        <label class="block text-[10.5px] font-extrabold uppercase text-emerald-100 mb-1">Nama Lengkap Pemohon</label>
-                        <input type="text" id="quickNama" placeholder="Nama lengkap sesuai KTP..." required
-                            class="w-full px-3 py-2 text-xs rounded-xl bg-white text-slate-800 border-none outline-none focus:ring-2 focus:ring-amber-300 placeholder:text-slate-400 font-medium">
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">PIN Warga</label>
+                        <input type="password" id="quickPin" maxlength="6" placeholder="Masukkan 6 Digit PIN..." required
+                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
                     </div>
-                    <div>
-                        <label class="block text-[10.5px] font-extrabold uppercase text-emerald-100 mb-1">Pilihan Jenis Layanan Surat</label>
-                        <select id="quickJenisSurat" class="w-full px-3 py-2 text-xs rounded-xl bg-white text-slate-800 border-none outline-none focus:ring-2 focus:ring-amber-300 font-medium cursor-pointer">
-                            <option value="Surat Keterangan Usaha (SKU)">Surat Keterangan Usaha (SKU)</option>
-                            <option value="Surat Pengantar KTP-el">Surat Pengantar KTP-el</option>
-                            <option value="Surat Pengantar Kartu Keluarga">Surat Pengantar Kartu Keluarga</option>
-                            <option value="Surat Keterangan Domisili">Surat Keterangan Domisili</option>
-                            <option value="Surat Keterangan Tidak Mampu (SKTM)">Surat Keterangan Tidak Mampu (SKTM)</option>
-                            <option value="Surat Pengantar Akta Kelahiran">Surat Pengantar Akta Kelahiran</option>
-                            <option value="Layanan Konsultasi Pojok Statistik (PST)">Layanan Pojok Statistik (PST)</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-[#eab308] hover:bg-[#facc15] text-slate-900 font-black text-xs transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
-                        <span>Ajukan Surat Sekarang</span> <span>→</span>
+                    <button type="submit" class="w-full py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-black text-xs shadow-md transition active:scale-98">
+                        Masuk Layanan Mandiri
                     </button>
+                    <div class="text-center pt-1">
+                        <a href="javascript:void(0)" onclick="alert('Untuk mendapatkan PIN Layanan Mandiri, silakan hubungi Kantor Operator Desa ' + getActiveDesaData().name + ' dengan membawa KTP dan KK asli.')" class="text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 underline">
+                            Belum punya PIN / Lupa PIN?
+                        </a>
+                    </div>
                 </form>
-
-                <!-- Tombol Akses Cepat ke Dashboard Admin DESCAN -->
-                <div class="mt-4 pt-3 border-t border-white/15">
-                    <button type="button" onclick="openOperatorDESCANPortal()" class="w-full py-2.5 px-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center justify-between border border-white/20">
-                        <span class="flex items-center gap-2">
-                            <span>📊</span> <span>Portal Data DESCAN (Operator)</span>
-                        </span>
-                        <span class="text-[10px] bg-emerald-400 text-slate-950 font-black px-2 py-0.5 rounded">BPS SDI</span>
-                    </button>
-                </div>
             </div>
         </div>
 
-        <!-- WIDGET 2: STATISTIK RINGKAS REAL-TIME DESA BINAAN -->
-        <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-slate-200/90">
-            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+        <!-- WIDGET 2: WILAYAH KALURAHAN / PETA DESA (PERSIS GAMBAR 3 & 4) -->
+        <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
+            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center text-sm">📈</span>
-                    <div>
-                        <span class="text-[10px] font-black uppercase text-slate-400">Statistik Sektoral</span>
-                        <h4 class="text-xs font-black text-slate-800">Data Kunci ${d.name}</h4>
+                    <span class="text-base">📍</span>
+                    <h3 class="text-sm font-black tracking-tight">Wilayah ${d.name}</h3>
+                </div>
+                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full text-emerald-100">BPS Kolut</span>
+            </div>
+            <div class="p-5 space-y-3">
+                <div class="relative rounded-2xl overflow-hidden border border-slate-200 aspect-video bg-slate-900 group">
+                    <img src="/images/desa/${d.key}.jpg" alt="Peta ${d.name}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-3 text-white">
+                        <span class="text-[11px] font-extrabold truncate">${d.name}, Kec. ${d.kecamatan}</span>
+                        <span class="text-[9.5px] text-slate-300">Luas: ${d.profil.luasWilayah} • ${d.profil.jumlahDusun}</span>
+                    </div>
+                    <!-- Zoom Button Mockup -->
+                    <div class="absolute top-2 left-2 flex flex-col gap-1 bg-white/90 backdrop-blur-xs rounded-lg shadow-sm border border-slate-200 p-0.5 text-slate-800 font-bold text-xs">
+                        <button type="button" class="w-5 h-5 flex items-center justify-center hover:bg-slate-100 rounded">+</button>
+                        <button type="button" class="w-5 h-5 flex items-center justify-center hover:bg-slate-100 rounded">-</button>
                     </div>
                 </div>
-                <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800">
-                    2026
-                </span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
-                    <span class="text-[10px] text-slate-500 font-medium">Penduduk</span>
-                    <div class="text-base sm:text-lg font-black text-slate-900 mt-0.5">${d.stats.penduduk.toLocaleString('id-ID')}</div>
-                    <span class="text-[9.5px] text-emerald-700 font-semibold">Jiwa Terdata</span>
+                <div class="text-[11px] text-slate-600 flex justify-between pt-1">
+                    <span>Koordinat Pusat:</span>
+                    <span class="font-mono font-bold text-slate-800">-3.2458°, 121.0542°</span>
                 </div>
-                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
-                    <span class="text-[10px] text-slate-500 font-medium">Keluarga</span>
-                    <div class="text-base sm:text-lg font-black text-slate-900 mt-0.5">${d.stats.kk.toLocaleString('id-ID')}</div>
-                    <span class="text-[9.5px] text-emerald-700 font-semibold">KK Registrasi</span>
-                </div>
-                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
-                    <span class="text-[10px] text-slate-500 font-medium">Kemiskinan</span>
-                    <div class="text-base sm:text-lg font-black text-amber-600 mt-0.5">${d.stats.kemiskinan}</div>
-                    <span class="text-[9.5px] text-slate-500 font-medium">Data DTKS BPS</span>
-                </div>
-                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
-                    <span class="text-[10px] text-slate-500 font-medium">IKM Desa</span>
-                    <div class="text-base sm:text-lg font-black text-emerald-700 mt-0.5">${d.stats.ikm}</div>
-                    <span class="text-[9.5px] text-emerald-700 font-semibold">Unit Usaha</span>
-                </div>
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                <span class="text-slate-500">Kepatuhan DESCAN:</span>
-                <span class="text-emerald-700 font-black flex items-center gap-1">
-                    <span>🛡️</span> <span>${d.stats.descanStatus}</span>
-                </span>
+                <button type="button" onclick="selectVillageSubmenu('profil', 'profil-peta', event)" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center">
+                    Buka Peta Wilayah &amp; Batas Dusun →
+                </button>
             </div>
         </div>
 
-        <!-- WIDGET 3: APARATUR DESA / PETUGAS LAYANAN -->
-        <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-slate-200/90">
-            <div class="flex items-center gap-2 pb-3 mb-4 border-b border-slate-100">
-                <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center text-sm">👤</span>
-                <div>
-                    <span class="text-[10px] font-black uppercase text-slate-400">Pemerintahan</span>
-                    <h4 class="text-xs font-black text-slate-800">Aparatur & Layanan</h4>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-emerald-50/60 border border-emerald-100 mb-3">
-                <div class="w-12 h-12 rounded-xl bg-slate-200 overflow-hidden shrink-0 border border-emerald-200">
-                    <img src="${d.kades.foto}" alt="${d.kades.nama}" class="w-full h-full object-cover">
-                </div>
-                <div class="min-w-0">
-                    <span class="text-[9.5px] font-black uppercase text-emerald-800 tracking-wider">${d.kades.title}</span>
-                    <div class="text-xs font-black text-slate-900 truncate">${d.kades.nama}</div>
-                    <div class="text-[10px] text-slate-500">Masa Bakti ${d.kades.periode}</div>
-                </div>
-            </div>
-
-            <div class="space-y-2 text-xs">
-                ${d.perangkat.slice(0, 3).map(p => `
-                    <div class="flex items-center justify-between py-1.5 px-2 rounded-xl hover:bg-slate-50">
-                        <div class="truncate mr-2">
-                            <div class="font-bold text-slate-800 truncate">${p.nama}</div>
-                            <div class="text-[10px] text-slate-400 font-medium">${p.jabatan}</div>
-                        </div>
-                        <span class="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded-full shrink-0">Aktif</span>
-                    </div>
-                `).join('')}
-            </div>
-
-            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-perangkat', event)" class="w-full mt-3 py-2 text-center text-xs font-bold text-emerald-800 hover:text-emerald-950 transition">
-                Lihat Seluruh Aparatur Desa →
-            </button>
-        </div>
-
-        <!-- WIDGET 4: AGENDA KEGIATAN DESA -->
-        <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-md border border-slate-200/90">
-            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+        <!-- WIDGET 3: AGENDA DESA (PERSIS GAMBAR 2) -->
+        <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
+            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-xl bg-amber-50 text-amber-800 font-bold flex items-center justify-center text-sm">📅</span>
-                    <div>
-                        <span class="text-[10px] font-black uppercase text-slate-400">Kalender Kegiatan</span>
-                        <h4 class="text-xs font-black text-slate-800">Agenda ${d.name}</h4>
-                    </div>
+                    <span class="text-base">📅</span>
+                    <h3 class="text-sm font-black tracking-tight">Agenda</h3>
                 </div>
+                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full text-emerald-100">Tahun 2026</span>
+            </div>
+            
+            <!-- Tabs Baru / Lama -->
+            <div class="flex border-b border-slate-200 bg-slate-50 text-xs font-bold">
+                <button type="button" id="tabAgendaBaru" onclick="switchAgendaTab('baru')" class="flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white">
+                    Baru
+                </button>
+                <button type="button" id="tabAgendaLama" onclick="switchAgendaTab('lama')" class="flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800">
+                    Lama
+                </button>
             </div>
 
-            <div class="space-y-3">
-                ${d.agenda.map(ag => `
-                    <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70">
-                        <div class="flex items-center justify-between text-[10px] font-bold text-slate-500 mb-1">
-                            <span class="text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">${ag.tanggal}</span>
-                            <span>${ag.lokasi}</span>
-                        </div>
-                        <div class="text-xs font-bold text-slate-900 leading-snug">${ag.kegiatan}</div>
+            <div id="agendaContentList" class="p-5 space-y-3.5 max-h-[360px] overflow-y-auto text-xs">
+                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>30 Oktober 2026</span>
                     </div>
-                `).join('')}
+                    <div class="font-bold text-slate-900 leading-snug">Kunjungan Peserta Pelatihan Balai Pemerintah Desa</div>
+                    <div class="text-[11px] text-slate-500">Waktu: 09:00 WITA • Lokasi: Balai Pertemuan Desa</div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>15 November 2026</span>
+                    </div>
+                    <div class="font-bold text-slate-900 leading-snug">Sosialisasi Pembinaan Statistik Sektoral BPS DESCAN</div>
+                    <div class="text-[11px] text-slate-500">Waktu: 08:30 WITA • Lokasi: Kantor Desa ${d.name}</div>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>22 Desember 2026</span>
+                    </div>
+                    <div class="font-bold text-slate-900 leading-snug">Musyawarah Perencanaan Pembangunan Desa (Musrenbangdes)</div>
+                    <div class="text-[11px] text-slate-500">Waktu: 10:00 WITA • Lokasi: Aula Serbaguna</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WIDGET 4: STATISTIK RINGKAS DESA BINAAN (AUTHENTIC DESCAN DATA) -->
+        <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
+            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-base">📊</span>
+                    <h3 class="text-sm font-black tracking-tight">Statistik Ringkas ${d.name}</h3>
+                </div>
+                <span class="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full text-emerald-100">BPS 2026</span>
+            </div>
+            <div class="p-5 space-y-3">
+                <div class="grid grid-cols-2 gap-2.5 text-center">
+                    <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Penduduk</span>
+                        <div class="text-lg font-black text-slate-900 mt-0.5">${d.stats.penduduk.toLocaleString('id-ID')}</div>
+                        <span class="text-[9.5px] text-emerald-700 font-semibold">Jiwa</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Kepala Keluarga</span>
+                        <div class="text-lg font-black text-slate-900 mt-0.5">${d.stats.kk.toLocaleString('id-ID')}</div>
+                        <span class="text-[9.5px] text-emerald-700 font-semibold">KK</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-100">
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Kemiskinan</span>
+                        <div class="text-lg font-black text-amber-700 mt-0.5">${d.stats.kemiskinan}</div>
+                        <span class="text-[9.5px] text-slate-500">Rendah</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-blue-50/70 border border-blue-100">
+                        <span class="text-[10px] text-slate-500 font-bold uppercase">Stunting</span>
+                        <div class="text-lg font-black text-blue-700 mt-0.5">${d.stats.stunting}</div>
+                        <span class="text-[9.5px] text-slate-500">Balita</span>
+                    </div>
+                </div>
+                <button type="button" onclick="selectVillageSubmenu('profil', 'profil-demografi', event)" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition text-center mt-2">
+                    Lihat Piramida Penduduk &amp; Demografi →
+                </button>
             </div>
         </div>
     `;
@@ -1844,47 +1851,240 @@ function renderVillageSubmenu(menuKey, subKey) {
             return;
         }
 
-        // DEFAULT PROFIL UMUM
+        // DEFAULT PROFIL UMUM (PERSIS GAMBAR REFERENSI 2 & 3: SENDANGSARI STYLE)
         contentEl.innerHTML = `
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
-                <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Karakteristik Wilayah</span>
-                        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Profil Wilayah ${d.name}</h2>
+                
+                <!-- Breadcrumbs & Meta Tag -->
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 text-xs">
+                    <div class="flex items-center gap-1.5 text-slate-500 font-medium">
+                        <a href="javascript:void(0)" onclick="selectVillageSubmenu('beranda', 'beranda', event)" class="hover:text-emerald-800">Beranda</a>
+                        <span>/</span>
+                        <span class="text-slate-400">Profil</span>
+                        <span>/</span>
+                        <span class="text-emerald-800 font-bold">Profil Desa ${d.name}</span>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Terverifikasi BPS</span>
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        Terverifikasi BPS Kolaka Utara
+                    </span>
                 </div>
 
-                <div class="prose prose-sm text-slate-600 leading-relaxed">
+                <!-- Judul Artikel & Baris Meta Informasi -->
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">
+                        Profil Desa ${d.name}
+                    </h1>
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-slate-500 mt-2 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <i class="bi bi-calendar3 text-emerald-700"></i>
+                            <span>24 Januari 2026</span>
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <i class="bi bi-person-fill text-emerald-700"></i>
+                            <span>Operator BPS DESCAN &amp; Pemdes</span>
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <i class="bi bi-eye text-emerald-700"></i>
+                            <span>Dibaca 1.420 kali</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Banner Header Geometris / Hero Style (Persis Gambar 2 & 3) -->
+                <div class="relative rounded-2xl overflow-hidden border border-slate-200 bg-gradient-to-r from-[#8B1E1E] via-[#A82828] to-[#601212] p-6 sm:p-8 text-white shadow-inner flex items-center justify-between">
+                    <div class="relative z-10 max-w-xl space-y-2">
+                        <span class="px-2.5 py-1 rounded bg-white/20 text-white text-[10px] font-extrabold uppercase tracking-widest border border-white/30">
+                            DOKUMEN RESMI STATISTIK
+                        </span>
+                        <h3 class="text-lg sm:text-2xl font-black tracking-tight drop-shadow-sm">
+                            PROFIL ${d.upperTitle}
+                        </h3>
+                        <p class="text-xs text-rose-100/90 leading-relaxed font-medium">
+                            Kecamatan ${d.kecamatan}, Kabupaten Kolaka Utara, Provinsi Sulawesi Tenggara
+                        </p>
+                    </div>
+                    <div class="hidden md:flex items-center gap-2 opacity-30 text-6xl font-black">
+                        🏛️
+                    </div>
+                </div>
+
+                <!-- Bagian: Berikut Dokumen Profil Desa (3 Cover Buku Berjejer - Persis Gambar 3) -->
+                <div class="space-y-4 pt-2">
+                    <h3 class="text-center sm:text-left text-sm sm:text-base font-bold text-slate-700">
+                        Berikut Dokumen Profil Desa ${d.name}:
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+                        
+                        <!-- COVER 1: TAHUN 2025 -->
+                        <div class="flex flex-col items-center bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200 hover:shadow-lg transition-all group">
+                            <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-slate-300 group-hover:border-emerald-500 transition-colors bg-gradient-to-b from-[#d9eedb] via-[#bfe2c3] to-[#86b98e] flex flex-col justify-between p-3.5 text-center">
+                                <div class="flex items-center justify-between">
+                                    <img src="/images/logo_kolaka_utara.png" alt="Logo" class="w-6 h-6 object-contain">
+                                    <span class="text-[8.5px] font-black uppercase text-emerald-900 bg-white/70 px-1.5 py-0.5 rounded">BPS DESCAN</span>
+                                    <img src="/images/logo_bps.png" alt="BPS" class="w-6 h-6 object-contain">
+                                </div>
+                                <div class="my-auto py-2">
+                                    <div class="text-[10px] font-black uppercase text-emerald-950 tracking-wider">PEMERINTAH KAB. KOLAKA UTARA</div>
+                                    <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight mt-1 uppercase">
+                                        PROFIL DESA ${d.name.toUpperCase()}<br>TAHUN 2025
+                                    </h4>
+                                </div>
+                                <div class="rounded-lg overflow-hidden h-20 w-full relative">
+                                    <img src="/images/desa/${d.key}.jpg" alt="Ilustrasi Desa" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-emerald-900/20"></div>
+                                </div>
+                            </div>
+                            <button type="button" onclick="previewVillageDoc('${d.key}', 'profil-2025')" class="mt-3.5 px-5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 hover:text-emerald-900 font-extrabold text-xs border border-emerald-300 shadow-2xs hover:shadow-sm transition flex items-center gap-1.5">
+                                <i class="bi bi-download text-xs"></i>
+                                <span>Unduh Disini</span>
+                            </button>
+                        </div>
+
+                        <!-- COVER 2: TAHUN 2024 -->
+                        <div class="flex flex-col items-center bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200 hover:shadow-lg transition-all group">
+                            <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-slate-300 group-hover:border-amber-500 transition-colors bg-gradient-to-b from-[#fff2de] via-[#fae4c3] to-[#e4c28f] flex flex-col justify-between p-3.5 text-center">
+                                <div class="flex items-center justify-between">
+                                    <img src="/images/logo_kolaka_utara.png" alt="Logo" class="w-6 h-6 object-contain">
+                                    <span class="text-[8.5px] font-black uppercase text-amber-900 bg-white/70 px-1.5 py-0.5 rounded">ARSIP DATA</span>
+                                    <img src="/images/logo_bps.png" alt="BPS" class="w-6 h-6 object-contain">
+                                </div>
+                                <div class="my-auto py-2">
+                                    <div class="text-[10px] font-black uppercase text-amber-950 tracking-wider">PEMERINTAH KAB. KOLAKA UTARA</div>
+                                    <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight mt-1 uppercase">
+                                        PROFIL DESA ${d.name.toUpperCase()}<br>TAHUN 2024
+                                    </h4>
+                                </div>
+                                <div class="rounded-lg overflow-hidden h-20 w-full relative">
+                                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80" alt="Arsip Desa" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-amber-900/20"></div>
+                                </div>
+                            </div>
+                            <button type="button" onclick="previewVillageDoc('${d.key}', 'profil-2024')" class="mt-3.5 px-5 py-2 rounded-xl bg-white hover:bg-amber-50 text-amber-800 hover:text-amber-900 font-extrabold text-xs border border-amber-300 shadow-2xs hover:shadow-sm transition flex items-center gap-1.5">
+                                <i class="bi bi-download text-xs"></i>
+                                <span>Unduh Disini</span>
+                            </button>
+                        </div>
+
+                        <!-- COVER 3: TAHUN 2023 -->
+                        <div class="flex flex-col items-center bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200 hover:shadow-lg transition-all group">
+                            <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-slate-300 group-hover:border-blue-500 transition-colors bg-gradient-to-b from-[#e3f0fb] via-[#c6e1f7] to-[#8cbfe8] flex flex-col justify-between p-3.5 text-center">
+                                <div class="flex items-center justify-between">
+                                    <img src="/images/logo_kolaka_utara.png" alt="Logo" class="w-6 h-6 object-contain">
+                                    <span class="text-[8.5px] font-black uppercase text-blue-900 bg-white/70 px-1.5 py-0.5 rounded">HISTORI</span>
+                                    <img src="/images/logo_bps.png" alt="BPS" class="w-6 h-6 object-contain">
+                                </div>
+                                <div class="my-auto py-2">
+                                    <div class="text-[10px] font-black uppercase text-blue-950 tracking-wider">PEMERINTAH KAB. KOLAKA UTARA</div>
+                                    <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight mt-1 uppercase">
+                                        PROFIL DESA ${d.name.toUpperCase()}<br>TAHUN 2023
+                                    </h4>
+                                </div>
+                                <div class="rounded-lg overflow-hidden h-20 w-full relative">
+                                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=300&q=80" alt="Histori Desa" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-blue-900/20"></div>
+                                </div>
+                            </div>
+                            <button type="button" onclick="previewVillageDoc('${d.key}', 'profil-2023')" class="mt-3.5 px-5 py-2 rounded-xl bg-white hover:bg-blue-50 text-blue-800 hover:text-blue-900 font-extrabold text-xs border border-blue-300 shadow-2xs hover:shadow-sm transition flex items-center gap-1.5">
+                                <i class="bi bi-download text-xs"></i>
+                                <span>Unduh Disini</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Teks Narasi Lengkap Profil Desa Kolaka Utara -->
+                <div class="prose prose-sm text-slate-600 leading-relaxed space-y-4 pt-4 border-t border-slate-100">
+                    <h3 class="text-base font-black text-slate-900">1. Gambaran Umum Wilayah</h3>
                     <p>
-                        ${d.name} merupakan salah satu desa/kelurahan binaan Program Desa Cantik (Cinta Statistik) BPS di Kecamatan ${d.kecamatan}, Kabupaten Kolaka Utara. Wilayah ini memiliki karakteristik <b>${d.profil.topografi}</b> dengan luas total mencapai <b>${d.profil.luasWilayah}</b> yang terbagi ke dalam <b>${d.profil.jumlahDusun}</b>.
+                        <b>${d.name}</b> merupakan salah satu wilayah strategis di Kecamatan ${d.kecamatan}, Kabupaten Kolaka Utara, Provinsi Sulawesi Tenggara. Desa ini ditetapkan sebagai salah satu lokus binaan utama dalam program <b>Desa Cantik (Desa Cinta Statistik) BPS 2026</b> untuk mewujudkan tata kelola statistik sektoral desa yang presisi, mandiri, dan berstandar Satu Data Indonesia (SDI).
                     </p>
+                    <p>
+                        Secara topografi, ${d.name} memiliki bentang alam <b>${d.profil.topografi}</b> dengan luas wilayah mencapai <b>${d.profil.luasWilayah}</b> yang secara administratif terbagi menjadi <b>${d.profil.jumlahDusun}</b>. Batas wilayah sebelah Utara berbatasan dengan ${d.profil.batasUtara}, sebelah Selatan dengan ${d.profil.batasSelatan}, sebelah Timur dengan ${d.profil.batasTimur}, dan sebelah Barat berbatasan langsung dengan ${d.profil.batasBarat}.
+                    </p>
+
+                    <h3 class="text-base font-black text-slate-900 mt-6">2. Kependudukan &amp; Potensi Sosial Ekonomi</h3>
+                    <p>
+                        Berdasarkan hasil pemutakhiran data statistik sektoral BPS 2026, total penduduk ${d.name} tercatat sebanyak <b>${d.stats.penduduk.toLocaleString('id-ID')} jiwa</b> yang terhimpun dalam <b>${d.stats.kk.toLocaleString('id-ID')} Kepala Keluarga (KK)</b>. Komposisi penduduk didominasi oleh kelompok usia produktif (15 - 64 tahun) sebesar 68,2%, yang menjadi pendorong utama roda perekonomian lokal.
+                    </p>
+                    <p>
+                        Struktur perekonomian bertumpu pada sektor perkebunan rakyat lestari (komoditas unggulan kakao, cengkeh, dan nilam) serta aktivitas kelautan bahari pesisir Teluk Bone. Angka kemiskinan tercatat pada kategori rendah (${d.stats.kemiskinan}), dengan kasus stunting balita yang terkendali intensif (${d.stats.stunting} kasus terbina).
+                    </p>
+
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-slate-700 space-y-1">
+                        <span class="font-black text-emerald-950 block">Motto Pelayanan &amp; Visi Pembangunan:</span>
+                        <p class="italic text-emerald-800 font-semibold">"${d.motto}"</p>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                        <span class="font-black text-slate-900 block">Karakteristik Geografis:</span>
-                        <div class="flex justify-between py-1 border-b border-slate-200"><span class="text-slate-500">Topografi:</span><span class="font-bold text-slate-800">${d.profil.topografi}</span></div>
-                        <div class="flex justify-between py-1 border-b border-slate-200"><span class="text-slate-500">Luas Lahan:</span><span class="font-bold text-slate-800">${d.profil.luasWilayah}</span></div>
-                        <div class="flex justify-between py-1"><span class="text-slate-500">Jumlah Dusun:</span><span class="font-bold text-slate-800">${d.profil.jumlahDusun}</span></div>
-                    </div>
-                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                        <span class="font-black text-slate-900 block">Batas Wilayah:</span>
-                        <div class="flex justify-between py-1 border-b border-slate-200"><span class="text-slate-500">Utara:</span><span class="font-bold text-slate-800 truncate ml-2">${d.profil.batasUtara}</span></div>
-                        <div class="flex justify-between py-1 border-b border-slate-200"><span class="text-slate-500">Selatan:</span><span class="font-bold text-slate-800 truncate ml-2">${d.profil.batasSelatan}</span></div>
-                        <div class="flex justify-between py-1 border-b border-slate-200"><span class="text-slate-500">Timur:</span><span class="font-bold text-slate-800 truncate ml-2">${d.profil.batasTimur}</span></div>
-                        <div class="flex justify-between py-1"><span class="text-slate-500">Barat:</span><span class="font-bold text-slate-800 truncate ml-2">${d.profil.batasBarat}</span></div>
+                <!-- Tombol Cetak Artikel & Bagikan Media Sosial (Persis Gambar 2) -->
+                <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center gap-2 border border-slate-300 w-fit">
+                        <i class="bi bi-printer"></i>
+                        <span>Cetak Artikel</span>
+                    </button>
+
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-xs font-bold text-slate-500">Bagikan artikel ini:</span>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center text-xs transition shadow-sm">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('Profil Desa ' + d.name + ' - DESCAN Kolaka Utara')}&url=${encodeURIComponent(window.location.href)}" target="_blank" class="w-8 h-8 rounded-full bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center text-xs transition shadow-sm">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Profil Desa ' + d.name)}" target="_blank" class="w-8 h-8 rounded-full bg-sky-600 hover:bg-sky-700 text-white flex items-center justify-center text-xs transition shadow-sm">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Profil Desa ' + d.name + ': ' + window.location.href)}" target="_blank" class="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center text-xs transition shadow-sm">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="pt-4 border-t border-slate-100 flex flex-wrap gap-3">
-                    <button type="button" onclick="selectVillageSubmenu('profil', 'profil-peta', event)" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs">
-                        Lihat Peta Wilayah →
-                    </button>
-                    <button type="button" onclick="selectVillageSubmenu('profil', 'profil-demografi', event)" class="px-4 py-2 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-bold text-xs">
-                        Statistik Demografi Penduduk →
-                    </button>
+                <!-- Bagian Kirim Komentar (Persis Gambar 2) -->
+                <div class="pt-6 border-t border-slate-200 space-y-4">
+                    <h3 class="text-base font-black text-slate-900">Kirim Komentar</h3>
+                    
+                    <!-- Kotak Pemberitahuan Hijau -->
+                    <div class="p-3.5 rounded-xl bg-emerald-50 border-l-4 border-emerald-600 text-xs font-semibold text-emerald-900">
+                        Komentar baru terbit setelah disetujui Admin
+                    </div>
+
+                    <!-- Toast Notifikasi Sukses Kirim -->
+                    <div id="commentSuccessToast" class="hidden p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs font-bold text-blue-900">
+                        ✅ Terima kasih! Komentar Anda telah berhasil dikirim dan akan segera ditinjau oleh Administrator Desa.
+                    </div>
+
+                    <form onsubmit="handleCommentSubmit(event)" class="space-y-4 text-xs font-bold">
+                        <div>
+                            <label class="block text-slate-700 mb-1">Komentar *</label>
+                            <textarea id="commentText" rows="4" required placeholder="Tulis komentar atau aspirasi Anda di sini..."
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-slate-700 mb-1">Nama *</label>
+                                <input type="text" id="commentName" required placeholder="Nama Anda..."
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                            </div>
+                            <div>
+                                <label class="block text-slate-700 mb-1">Alamat Email *</label>
+                                <input type="email" id="commentEmail" required placeholder="email@contoh.com..."
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                            </div>
+                            <div>
+                                <label class="block text-slate-700 mb-1">No. HP *</label>
+                                <input type="tel" id="commentPhone" required placeholder="08xxxxxxxxxx..."
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                            </div>
+                        </div>
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-black text-xs shadow-md transition active:scale-98">
+                            Kirim Komentar
+                        </button>
+                    </form>
                 </div>
+
             </div>
         `;
         return;
@@ -3711,3 +3911,138 @@ window.renderDesaInteractiveChart = renderDesaInteractiveChart;
 window.switchDesaChartType = switchDesaChartType;
 window.selectDesaChartCategory = selectDesaChartCategory;
 
+
+// ==============================================================
+// 10. DEDICATED FULL-WIDTH VILLAGE PORTAL CONTROLLER (KELOPAK 02)
+// ==============================================================
+function openDedicatedVillagePortal(desaKey = 'lapolu') {
+    currentPortalDesaKey = desaKey;
+    currentPortalActiveMenu = 'profil';
+    currentPortalActiveSub = 'profil';
+
+    const landing = document.getElementById('mainPortalLanding') || document.querySelector('main');
+    const dedicatedView = document.getElementById('view-portal-profil-desa');
+    const topNav = document.getElementById('mainDescanNavbar') || document.querySelector('header');
+
+    if (landing) landing.style.display = 'none';
+    if (topNav) topNav.style.display = 'none';
+
+    if (dedicatedView) {
+        dedicatedView.classList.remove('hidden');
+        dedicatedView.style.display = 'block';
+        initVillageHeader(desaKey, 'dedicatedVillageHeaderWrapper');
+        renderVillageMainLayout(desaKey, 'profil', 'profil');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        // Fallback: navigate to dedicated page or switch tab
+        window.location.href = '/desacan-menu';
+    }
+}
+
+function closeDedicatedVillagePortal() {
+    const landing = document.getElementById('mainPortalLanding') || document.querySelector('main');
+    const dedicatedView = document.getElementById('view-portal-profil-desa');
+    const topNav = document.getElementById('mainDescanNavbar') || document.querySelector('header');
+
+    if (dedicatedView) {
+        dedicatedView.classList.add('hidden');
+        dedicatedView.style.display = 'none';
+    }
+    if (landing) landing.style.display = '';
+    if (topNav) topNav.style.display = '';
+
+    const statSec = document.getElementById('statistik-penduduk');
+    if (statSec) {
+        statSec.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+function switchDedicatedVillage(desaKey) {
+    currentPortalDesaKey = desaKey;
+    initVillageHeader(desaKey, 'dedicatedVillageHeaderWrapper');
+    renderVillageMainLayout(desaKey, currentPortalActiveMenu || 'profil', currentPortalActiveSub || 'profil');
+    const selector = document.getElementById('villagePortalSwitcherSelect');
+    if (selector) selector.value = desaKey;
+}
+
+function handleCommentSubmit(event) {
+    if (event) event.preventDefault();
+    const commentBox = document.getElementById('commentSuccessToast');
+    if (commentBox) {
+        commentBox.classList.remove('hidden');
+        setTimeout(() => commentBox.classList.add('hidden'), 5000);
+    } else {
+        alert('Terima kasih! Komentar Anda telah terkirim dan akan ditinjau oleh Administrator.');
+    }
+    event.target.reset();
+}
+
+function switchAgendaTab(tabKey) {
+    const btnBaru = document.getElementById('tabAgendaBaru');
+    const btnLama = document.getElementById('tabAgendaLama');
+    const content = document.getElementById('agendaContentList');
+    if (!content) return;
+    const d = getActiveDesaData();
+
+    if (tabKey === 'baru') {
+        if (btnBaru) {
+            btnBaru.className = 'flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white font-bold';
+        }
+        if (btnLama) {
+            btnLama.className = 'flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800 font-bold';
+        }
+        content.innerHTML = `
+            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>30 Oktober 2026</span>
+                </div>
+                <div class="font-bold text-slate-900 leading-snug">Kunjungan Peserta Pelatihan Balai Pemerintah Desa</div>
+                <div class="text-[11px] text-slate-500">Waktu: 09:00 WITA • Lokasi: Balai Pertemuan Desa</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>15 November 2026</span>
+                </div>
+                <div class="font-bold text-slate-900 leading-snug">Sosialisasi Pembinaan Statistik Sektoral BPS DESCAN</div>
+                <div class="text-[11px] text-slate-500">Waktu: 08:30 WITA • Lokasi: Kantor Desa ${d.name}</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>22 Desember 2026</span>
+                </div>
+                <div class="font-bold text-slate-900 leading-snug">Musyawarah Perencanaan Pembangunan Desa (Musrenbangdes)</div>
+                <div class="text-[11px] text-slate-500">Waktu: 10:00 WITA • Lokasi: Aula Serbaguna</div>
+            </div>
+        `;
+    } else {
+        if (btnLama) {
+            btnLama.className = 'flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white font-bold';
+        }
+        if (btnBaru) {
+            btnBaru.className = 'flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800 font-bold';
+        }
+        content.innerHTML = `
+            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1 opacity-80">
+                <div class="flex items-center gap-1.5 text-slate-500 font-extrabold">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>10 September 2026 (Selesai)</span>
+                </div>
+                <div class="font-bold text-slate-800 leading-snug">Bimbingan Teknis Metadata Statistik Desa Cantik</div>
+                <div class="text-[11px] text-slate-500">Waktu: 09:00 WITA • BPS Kabupaten Kolaka Utara</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1 opacity-80">
+                <div class="flex items-center gap-1.5 text-slate-500 font-extrabold">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>14 Agustus 2026 (Selesai)</span>
+                </div>
+                <div class="font-bold text-slate-800 leading-snug">Rembuk Stunting &amp; Verifikasi Data Balita Terintegrasi</div>
+                <div class="text-[11px] text-slate-500">Waktu: 08:30 WITA • Posyandu Desa ${d.name}</div>
+            </div>
+        `;
+    }
+}

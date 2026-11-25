@@ -883,13 +883,7 @@
         <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
     </button>
 
-    <!-- ============================================================== -->
-    <!-- HEADER 3 TINGKAT RESMI WEBSITE DESA / KELURAHAN                -->
-    <!-- Tingkat 1: Top Branding, Judul Dinamis, Search, Kembali        -->
-    <!-- Tingkat 2: Navbar Hijau Tua #046A38 & 13 Menu Dropdown Lengkap  -->
-    <!-- Tingkat 3: Sekilas Info Running Text                           -->
-    <!-- ============================================================== -->
-    <div id="desaTopHeaderWrapper" class="w-full"></div>
+    
     <!-- ============================================================== -->
     <!-- DEDICATED LOGIN GATE PER DESA                                  -->
     <!-- Setiap desa memiliki akun login terpisah (email & sandi unik)  -->
@@ -1011,7 +1005,10 @@
                 <!-- ===================================================================== -->
             <!-- 0. WEBSITE RESMI DESA TERINTEGRASI (TATA LETAK 2 KOLOM DINAMIS)       -->
             <!-- ===================================================================== -->
-            <div id="view-portal-desa" class="menu-view-container space-y-6"></div>
+            <div id="view-portal-desa" class="menu-view-container space-y-6">
+                <!-- HEADER 3 TINGKAT KHUSUS MENU PORTAL / PROFIL DESA -->
+                <div id="desaTopHeaderWrapper" class="w-full"></div>
+            </div>
 
             <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
 
@@ -9382,13 +9379,13 @@ function triggerPubDownload() {
                 el.classList.add('hidden');
             });
             let targetViewId = 'view-' + menuKey;
-            if (menuKey === 'beranda' || menuKey === 'portal') {
+            if (menuKey === 'portal') {
                 targetViewId = 'view-portal-desa';
             }
             const targetView = document.getElementById(targetViewId);
             if (targetView) {
                 targetView.classList.remove('hidden');
-                if (menuKey === 'portal' || menuKey === 'beranda') {
+                if (menuKey === 'portal') {
                     if (typeof initVillageHeader === 'function') initVillageHeader(currentTargetVillage);
                     if (typeof renderVillageMainLayout === 'function') renderVillageMainLayout(currentTargetVillage, 'beranda', 'beranda');
                 }

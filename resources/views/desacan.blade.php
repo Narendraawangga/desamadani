@@ -453,6 +453,7 @@
     <!-- ============================================================== -->
     <!-- 3. HERO SECTION (ORGANIC SPLIT NATURE DESIGN - INSPIRASI TERBARU) -->
     <!-- ============================================================== -->
+    <main id="mainPortalLanding" class="w-full">
     <section id="beranda" class="relative bg-[#fbfdfa] text-slate-900 pt-8 pb-16 sm:pt-12 sm:pb-20 lg:pt-14 lg:pb-24 overflow-hidden border-b border-slate-100">
         
         <!-- Sisi Kanan: Foto Udara Hutan Tropis & Perkebunan Kolut dengan Feathering Gradient Halus ke Sisi Kiri -->
@@ -1037,76 +1038,70 @@
                     <circle cx="300" cy="300" r="98" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3" />
                 </svg>
 
-                <!-- HTML INTERACTIVE OVERLAYS -->
+                                <!-- HTML INTERACTIVE OVERLAYS -->
 
                 <!-- KELOPAK 01: ATAS (HIJAU ZAMRUD - MONOGRAFI) -->
                 <div onclick="openOutputDoc('monografi')" 
                      onmouseenter="highlightStatistikDot(1)" onmouseleave="resetStatistikDots()"
                      id="petal-card-monografi"
-                     class="absolute top-[7%] left-[22%] w-[56%] h-[38%] flex flex-col items-center justify-start text-center text-white cursor-pointer z-10 transition-all duration-300 hover:scale-[1.03] group pt-1">
+                     class="absolute top-[4%] left-[26%] w-[48%] h-[26%] flex flex-col items-center justify-center text-center text-white cursor-pointer z-10 transition-all duration-300 hover:scale-[1.02] group px-2 select-none">
                     
-                    <!-- Ikon Buku di sudut kelopak -->
-                    <div class="absolute right-[12%] top-[8%] w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white text-base shadow-sm group-hover:scale-110 transition-transform">
-                        <i class="bi bi-journal-bookmark-fill"></i>
+                    <!-- Header Row: Nomor 01 & Ikon Buku -->
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <span class="text-2xl lg:text-3xl font-black tracking-tight text-emerald-100 drop-shadow-sm">01</span>
+                        <div class="w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white text-xs shadow-sm group-hover:scale-110 transition-transform">
+                            <i class="bi bi-journal-bookmark-fill"></i>
+                        </div>
                     </div>
-
-                    <!-- Nomor 01 -->
-                    <span class="text-3xl lg:text-4xl font-black tracking-tight text-emerald-100 opacity-90 drop-shadow-sm">01</span>
                     
                     <!-- Label Judul -->
-                    <h3 class="text-base lg:text-lg font-black text-white leading-tight mt-0.5 px-2 drop-shadow-sm group-hover:text-emerald-100 transition-colors">
+                    <h3 class="text-xs lg:text-sm font-black text-white leading-tight drop-shadow-sm group-hover:text-emerald-100 transition-colors">
                         Monografi Desa &amp; Kelurahan
                     </h3>
 
-                    <!-- Tag -->
-                    <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-wider text-emerald-100 border border-white/25 backdrop-blur-xs">
+                    <!-- Tag Komprehensif -->
+                    <span class="inline-block mt-0.5 px-2.5 py-0.5 rounded-full bg-white/20 text-[8.5px] lg:text-[9px] font-black uppercase tracking-wider text-emerald-100 border border-white/25 backdrop-blur-xs">
                         Publikasi Komprehensif
                     </span>
 
-                    <!-- Deskripsi Asli -->
-                    <p class="text-xs text-emerald-50/90 font-medium leading-relaxed max-w-[270px] mt-1.5 px-2">
+                    <!-- Deskripsi Asli Rapi Terkunci di Area Hijau -->
+                    <p class="text-[9.5px] lg:text-[10px] text-emerald-50/90 font-medium leading-tight max-w-[220px] mt-0.5 line-clamp-2">
                         Data statistik demografi, kependudukan, batas wilayah &amp; sarana desa
                     </p>
-
-                    <!-- Tombol Hover Interaktif -->
-                    <div class="mt-2 inline-flex items-center gap-1.5 text-[11px] font-bold text-white bg-emerald-800/80 hover:bg-emerald-800 px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-emerald-500/40">
-                        <span>Buka Buku Monografi</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </div>
                 </div>
 
                 <!-- KELOPAK 02: KANAN BAWAH (PUTIH BERSIH - PROFIL) -->
-                <div onclick="openOutputDoc('profil')" 
+                <div onclick="openDedicatedVillagePortal('lapolu')" 
                      onmouseenter="highlightStatistikDot(2)" onmouseleave="resetStatistikDots()"
                      id="petal-card-profil"
-                     class="absolute bottom-[7%] right-[4%] w-[49%] h-[40%] flex flex-col items-start justify-start text-left text-slate-800 cursor-pointer z-10 transition-all duration-300 hover:scale-[1.03] group pl-8 lg:pl-10 pt-5">
+                     class="absolute top-[52%] right-[5%] w-[40%] h-[32%] flex flex-col items-start justify-center text-left text-slate-800 cursor-pointer z-10 transition-all duration-300 hover:scale-[1.02] group pl-6 lg:pl-8 select-none">
                     
-                    <!-- Ikon Peta/Wilayah Hijau Zamrud di sudut kelopak -->
-                    <div class="absolute right-[12%] bottom-[12%] w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 text-base shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">
-                        <i class="bi bi-buildings-fill"></i>
+                    <!-- Header Row: Nomor 02 & Ikon Gedung -->
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <span class="text-2xl lg:text-3xl font-black tracking-tight text-slate-300 group-hover:text-emerald-600 transition-colors">02</span>
+                        <div class="w-7 h-7 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 text-xs shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                            <i class="bi bi-buildings-fill"></i>
+                        </div>
                     </div>
-
-                    <!-- Nomor 02 -->
-                    <span class="text-3xl lg:text-4xl font-black tracking-tight text-slate-300 group-hover:text-emerald-600 transition-colors">02</span>
                     
                     <!-- Label Judul -->
-                    <h3 class="text-base lg:text-lg font-black text-slate-900 leading-tight mt-0.5 group-hover:text-emerald-700 transition-colors">
+                    <h3 class="text-xs lg:text-sm font-black text-slate-900 leading-tight group-hover:text-emerald-700 transition-colors">
                         Profil Desa &amp; Kelurahan
                     </h3>
 
                     <!-- Tag -->
-                    <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-black uppercase tracking-wider text-emerald-800 border border-emerald-200/80">
+                    <span class="inline-block mt-0.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-[8.5px] lg:text-[9px] font-black uppercase tracking-wider text-emerald-800 border border-emerald-200/80">
                         Gambaran Kewilayahan
                     </span>
 
                     <!-- Deskripsi Asli -->
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed max-w-[240px] mt-1.5">
+                    <p class="text-[9.5px] lg:text-[10px] text-slate-500 font-medium leading-tight max-w-[210px] mt-0.5 line-clamp-2">
                         Karakteristik geografis, sosial kependudukan, dan kelembagaan desa
                     </p>
 
-                    <!-- Tombol Hover Interaktif -->
-                    <div class="mt-2 inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-800 bg-emerald-100/90 hover:bg-emerald-200 px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-emerald-300/60">
-                        <span>Lihat Profil Lengkap</span>
+                    <!-- Tombol Buka Portal Khusus -->
+                    <div class="mt-1.5 inline-flex items-center gap-1 text-[10px] font-extrabold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300/80 shadow-2xs">
+                        <span>Buka Portal Resmi Desa</span>
                         <i class="bi bi-arrow-right"></i>
                     </div>
                 </div>
@@ -1115,36 +1110,30 @@
                 <div onclick="openOutputDoc('potensi')" 
                      onmouseenter="highlightStatistikDot(3)" onmouseleave="resetStatistikDots()"
                      id="petal-card-potensi"
-                     class="absolute bottom-[7%] left-[4%] w-[49%] h-[40%] flex flex-col items-start justify-start text-left text-white cursor-pointer z-10 transition-all duration-300 hover:scale-[1.03] group pl-6 lg:pl-8 pt-5">
+                     class="absolute top-[34%] left-[6%] w-[38%] h-[32%] flex flex-col items-start justify-center text-left text-white cursor-pointer z-10 transition-all duration-300 hover:scale-[1.02] group pl-4 lg:pl-6 select-none">
                     
-                    <!-- Ikon Lampu Ide/Komoditas Putih di sudut kelopak -->
-                    <div class="absolute left-[10%] bottom-[12%] w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-300 text-base shadow-sm group-hover:scale-110 transition-transform">
-                        <i class="bi bi-lightbulb-fill"></i>
+                    <!-- Header Row: Nomor 03 & Ikon Lampu Ide -->
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <span class="text-2xl lg:text-3xl font-black tracking-tight text-slate-400 group-hover:text-amber-300 transition-colors">03</span>
+                        <div class="w-7 h-7 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-300 text-xs shadow-sm group-hover:scale-110 transition-transform">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
                     </div>
-
-                    <!-- Nomor 03 -->
-                    <span class="text-3xl lg:text-4xl font-black tracking-tight text-slate-500 group-hover:text-amber-300 transition-colors">03</span>
                     
                     <!-- Label Judul -->
-                    <h3 class="text-base lg:text-lg font-black text-white leading-tight mt-0.5 group-hover:text-amber-200 transition-colors">
+                    <h3 class="text-xs lg:text-sm font-black text-white leading-tight group-hover:text-amber-200 transition-colors">
                         Potensi Desa &amp; Kelurahan
                     </h3>
 
                     <!-- Tag -->
-                    <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-slate-800 text-[10px] font-black uppercase tracking-wider text-amber-300 border border-slate-700">
+                    <span class="inline-block mt-0.5 px-2.5 py-0.5 rounded-full bg-slate-800 text-[8.5px] lg:text-[9px] font-black uppercase tracking-wider text-amber-300 border border-slate-700">
                         Komoditas &amp; Ekonomi
                     </span>
 
-                    <!-- Deskripsi Asli -->
-                    <p class="text-xs text-slate-300 font-medium leading-relaxed max-w-[240px] mt-1.5">
+                    <!-- Deskripsi Asli Rapi Terkunci di Area Slate Gelap -->
+                    <p class="text-[9.5px] lg:text-[10px] text-slate-300 font-medium leading-tight max-w-[210px] mt-0.5 line-clamp-2">
                         Keunggulan pertanian kakao, cengkeh, nilam, perikanan bahari &amp; UMKM
                     </p>
-
-                    <!-- Tombol Hover Interaktif -->
-                    <div class="mt-2 inline-flex items-center gap-1.5 text-[11px] font-bold text-amber-300 bg-slate-800/90 hover:bg-slate-700 px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-slate-600">
-                        <span>Katalog Potensi Desa</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </div>
                 </div>
 
                 <!-- LINGKARAN PUSAT (CENTER HUB) -->
@@ -1223,7 +1212,7 @@
                 </div>
 
                 <!-- Kelopak 02 Mobile (Putih Bersih - Profil) -->
-                <div onclick="openOutputDoc('profil')" 
+                <div onclick="openDedicatedVillagePortal('lapolu')" 
                      class="group relative rounded-2xl overflow-hidden p-5 bg-white text-slate-800 shadow-lg border-2 border-slate-200 hover:border-emerald-400 cursor-pointer active:scale-98 transition-transform">
                     <div class="flex items-start justify-between gap-3">
                         <div class="flex items-center gap-2.5">
@@ -2023,6 +2012,20 @@
     <!-- ============================================================== -->
     <!-- 8. FOOTER RESMI BPS KOLAKA UTARA                               -->
     <!-- ============================================================== -->
+    </main>
+
+    <!-- ============================================================== -->
+    <!-- HALAMAN KHUSUS PORTAL PROFIL DESA & KELURAHAN (FULL WIDTH)     -->
+    <!-- Terbuka saat mengklik Kelopak 02 "Profil Desa & Kelurahan"      -->
+    <!-- ============================================================== -->
+    <div id="view-portal-profil-desa" class="hidden w-full min-h-screen bg-[#F8FAFC]">
+        <!-- Header 3 Tingkat Container -->
+        <div id="dedicatedVillageHeaderWrapper" class="w-full sticky top-0 z-40 bg-white shadow-sm"></div>
+
+        <!-- Main Content Host: 2 Kolom (lg:col-span-8 & lg:col-span-4) -->
+        <div id="dedicatedVillageMainContentHost" class="w-full"></div>
+    </div>
+
     <footer class="bg-[#071b12] text-white pt-10 pb-8 text-xs border-t border-white/10">
         <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-6">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-white/10">
@@ -3826,5 +3829,6 @@
             }
         };
 </script>
+    <script src="/js/desa-portal.js"></script>
 </body>
 </html>
