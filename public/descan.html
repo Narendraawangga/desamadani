@@ -363,6 +363,61 @@
         }
 
 </style>
+
+<style>
+/* ============================================================== */
+/* 3D REALISTIC BOOK SHOWCASE ENGINE (PERSISTENT & ULTRA-SMOOTH)  */
+/* ============================================================== */
+.book-3d-scene {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+}
+.book-3d-wrap {
+    transform-style: preserve-3d;
+    transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.book-3d-wrap.floating-anim {
+    animation: bookFloat3D 4.5s ease-in-out infinite;
+}
+@keyframes bookFloat3D {
+    0%, 100% {
+        transform: rotateY(-22deg) rotateX(7deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(-17deg) rotateX(11deg) translateY(-8px);
+    }
+}
+.book-spine-3d {
+    transform: rotateY(-90deg) translateZ(0px);
+    transform-origin: left center;
+}
+.book-pages-right {
+    transform: rotateY(90deg) translateZ(168px);
+    transform-origin: right center;
+    background: repeating-linear-gradient(to right, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-pages-top {
+    transform: rotateX(90deg) translateZ(0px);
+    transform-origin: top center;
+    background: repeating-linear-gradient(to bottom, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-cover-front {
+    transform: translateZ(14px);
+    box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.35), inset -2px 0 6px rgba(255, 255, 255, 0.25);
+}
+.book-cast-shadow {
+    transform: rotateX(85deg) translateZ(-130px) translateY(18px) scale(0.92);
+    filter: blur(14px);
+    opacity: 0.55;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.book-glare-overlay {
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.12) 80%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-200 selection:text-emerald-950">
 

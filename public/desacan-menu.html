@@ -758,6 +758,59 @@
     border-color: #046A38 !important;
 }
 
+
+/* ============================================================== */
+/* 3D REALISTIC BOOK SHOWCASE ENGINE (PERSISTENT & ULTRA-SMOOTH)  */
+/* ============================================================== */
+.book-3d-scene {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+}
+.book-3d-wrap {
+    transform-style: preserve-3d;
+    transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.book-3d-wrap.floating-anim {
+    animation: bookFloat3D 4.5s ease-in-out infinite;
+}
+@keyframes bookFloat3D {
+    0%, 100% {
+        transform: rotateY(-22deg) rotateX(7deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(-17deg) rotateX(11deg) translateY(-8px);
+    }
+}
+.book-spine-3d {
+    transform: rotateY(-90deg) translateZ(0px);
+    transform-origin: left center;
+}
+.book-pages-right {
+    transform: rotateY(90deg) translateZ(168px);
+    transform-origin: right center;
+    background: repeating-linear-gradient(to right, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-pages-top {
+    transform: rotateX(90deg) translateZ(0px);
+    transform-origin: top center;
+    background: repeating-linear-gradient(to bottom, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-cover-front {
+    transform: translateZ(14px);
+    box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.35), inset -2px 0 6px rgba(255, 255, 255, 0.25);
+}
+.book-cast-shadow {
+    transform: rotateX(85deg) translateZ(-130px) translateY(18px) scale(0.92);
+    filter: blur(14px);
+    opacity: 0.55;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.book-glare-overlay {
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.12) 80%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
 </style>
     <!-- Local Leaflet CSS & JS for Thematic Spasial Map -->
     <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
@@ -2344,49 +2397,127 @@
                                 </div>
                             </div>
 
-                            <!-- Kartu 2: Monografi Desa Terpilih -->
-                            <div class="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-50/40 via-white to-white p-5 flex flex-col justify-between hover:shadow-md transition-all group">
-                                <div>
-                                    <div class="flex items-center justify-between gap-2 mb-3">
-                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-600 text-white tracking-wide uppercase">Publikasi Utama</span>
-                                        <span class="text-[11px] font-bold text-slate-400">Q1 2026</span>
-                                    </div>
-                                    <!-- Book Mockup Preview -->
-                                    <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-emerald-800 to-teal-950 p-4 text-white flex flex-col justify-between shadow-xs mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
-                                        <div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
-                                            <i class="bi bi-journal-text text-8xl"></i>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex items-center gap-1.5">
-                                                <span class="text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-500/40 border border-emerald-400/30">BPS SDI</span>
-                                            </div>
-                                            <i class="bi bi-shield-check text-emerald-300 text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <div class="text-[11px] font-medium text-emerald-200">MONOGRAFI RESMI</div>
-                                            <div id="pubBookVillageTitle" class="text-lg font-black leading-tight text-white mt-0.5">Desa Kamisi 2026</div>
-                                            <div class="text-[10px] text-emerald-100/80 mt-1">Kabupaten Kolaka Utara &bull; Sulawesi Tenggara</div>
-                                        </div>
-                                    </div>
-                                    <h4 id="pubCard1Title" class="font-extrabold text-slate-800 text-sm leading-snug">Monografi Statistik Sektoral Desa Kamisi 2026</h4>
-                                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Kompilasi resmi hasil pendataan sensus PODES BPS memuat data demografi lengkap 3 dusun, potensi kakao, perikanan bahari, dan sanitasi keluarga.</p>
+                            <!-- Kartu 2: Pratinjau Publikasi Resmi (3D Interactive Moving Book) -->
+                            <div id="cardPratinjauPublikasi3D" class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group relative overflow-visible">
+                                
+                                <!-- Header Kartu (Persis Gambar Referensi) -->
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-2">
+                                    <h4 class="text-sm font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                                        <span>Pratinjau Publikasi Resmi</span>
+                                    </h4>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 flex items-center gap-1 shadow-2xs">
+                                        <i class="bi bi-badge-3d-fill text-xs"></i>
+                                        <span>3D Interaktif</span>
+                                    </span>
+                                </div>
+
+                                <!-- 3D Book Interactive Stage -->
+                                <div id="book3dStage" class="book-3d-scene relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none overflow-visible py-2">
                                     
-                                    <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-600">
-                                        <div class="flex justify-between"><span>Nomor Registrasi:</span><span class="font-bold text-slate-800">BPS-7408-DESCAN-2026</span></div>
-                                        <div class="flex justify-between"><span>Jumlah Halaman:</span><span class="font-bold text-slate-800">58 Halaman</span></div>
-                                        <div class="flex justify-between"><span>Ukuran File:</span><span class="font-bold text-slate-800">4,8 MB (PDF High-Res)</span></div>
+                                    <!-- Pod / Ground Shadow -->
+                                    <div id="book3dShadow" class="book-cast-shadow absolute bottom-2 w-[190px] h-[45px] rounded-[100%] bg-slate-950/75 pointer-events-none"></div>
+
+                                    <!-- 3D Book Assembly -->
+                                    <div id="book3dObject" class="book-3d-wrap floating-anim relative w-[176px] h-[252px] cursor-pointer" onclick="openPublikasiDocModal('monografi')" title="Klik untuk membuka Digital Reader">
+                                        
+                                        <!-- Book Spine (Ketebalan Punggung Kiri) -->
+                                        <div class="book-spine-3d absolute left-0 top-0 w-[26px] h-full bg-gradient-to-r from-[#022c1b] via-[#04522d] to-[#033b20] rounded-l-xs flex flex-col justify-between p-2 text-white shadow-inner">
+                                            <div class="flex flex-col items-center gap-1 opacity-75">
+                                                <span class="text-[7px] font-mono font-bold">BPS</span>
+                                                <span class="text-[6px]">★</span>
+                                            </div>
+                                            <div class="text-[7.5px] font-black tracking-widest uppercase opacity-85 text-emerald-200 transform -rotate-90 text-center whitespace-nowrap origin-center my-auto">
+                                                MONOGRAFI 2026 • KOLUT
+                                            </div>
+                                            <div class="text-[7px] text-center opacity-65 font-mono">2026</div>
+                                        </div>
+
+                                        <!-- Page Thickness Right (Halaman Kertas Samping Kanan) -->
+                                        <div class="book-pages-right absolute right-0 top-[3px] w-[24px] h-[246px] rounded-r-xs shadow-inner border-y border-slate-300"></div>
+
+                                        <!-- Page Thickness Top (Halaman Kertas Atas) -->
+                                        <div class="book-pages-top absolute top-0 left-[2px] w-[172px] h-[24px] rounded-t-xs shadow-inner border-x border-slate-300"></div>
+
+                                        <!-- Front Cover (Sampul Depan Utama - Persis Gambar Referensi) -->
+                                        <div class="book-cover-front absolute inset-0 rounded-r-md rounded-l-xs bg-gradient-to-br from-[#065f46] via-[#047857] to-[#022c22] p-4 text-white flex flex-col justify-between overflow-hidden border border-emerald-400/35">
+                                            
+                                            <!-- Dynamic Specular Glare / Kilau Cahaya 3D -->
+                                            <div id="book3dGlare" class="book-glare-overlay absolute inset-0"></div>
+
+                                            <!-- Geometric Light Rays Motif (Persis Cover Asli) -->
+                                            <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="170" cy="180" r="110" fill="none" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="4,4" />
+                                                <circle cx="170" cy="180" r="80" fill="none" stroke="#a7f3d0" stroke-width="1" />
+                                                <circle cx="170" cy="180" r="50" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.6" />
+                                                <path d="M 0 252 L 176 180" stroke="#34d399" stroke-width="1" opacity="0.4" />
+                                                <path d="M 0 210 L 176 150" stroke="#34d399" stroke-width="0.8" opacity="0.3" />
+                                            </svg>
+
+                                            <!-- Top Logos: Pemkab Kolut + BPS + Desa Cantik -->
+                                            <div class="relative z-10 flex items-center justify-between gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl shadow-md border border-white/50">
+                                                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolut" class="h-4.5 w-auto object-contain">
+                                                <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                                                <img src="/images/logo_bps.png" alt="BPS" class="h-4 w-auto object-contain">
+                                                <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                                                <img src="/images/logo_cantik.png" alt="Desa Cantik" class="h-4 w-auto object-contain">
+                                            </div>
+
+                                            <!-- Center Cover Typography: MONOGRAFI DESA {NAMA} DALAM ANGKA 2026 -->
+                                            <div class="relative z-10 my-auto text-center space-y-1 pt-2">
+                                                <div class="text-[9.5px] font-black uppercase tracking-[0.2em] text-emerald-200 drop-shadow-xs">
+                                                    MONOGRAFI
+                                                </div>
+                                                <div id="book3dCoverDesaName" class="text-base sm:text-lg font-black leading-tight text-white tracking-tight uppercase drop-shadow-md">
+                                                    DESA KAMISI
+                                                </div>
+                                                <div class="text-[9.5px] font-extrabold uppercase tracking-widest text-emerald-300 drop-shadow-xs">
+                                                    DALAM ANGKA
+                                                </div>
+                                                <div class="text-xl sm:text-2xl font-black text-amber-300 drop-shadow-md tracking-wider">
+                                                    2026
+                                                </div>
+                                            </div>
+
+                                            <!-- Center Watermark Logo BPS -->
+                                            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                                <img src="/images/logo_bps.png" alt="Watermark" class="w-28 h-28 object-contain filter invert">
+                                            </div>
+
+                                            <!-- Bottom Cover Text -->
+                                            <div class="relative z-10 text-center pt-2 border-t border-emerald-400/30">
+                                                <div class="text-[7.5px] font-black tracking-widest uppercase text-white/95 leading-tight">
+                                                    BADAN PUSAT STATISTIK
+                                                </div>
+                                                <div class="text-[7px] font-bold tracking-wider uppercase text-emerald-200 mt-0.5">
+                                                    KABUPATEN KOLAKA UTARA
+                                                </div>
+                                            </div>
+
+                                            <!-- Book Spine Crease Effect (Lipatan Punggung) -->
+                                            <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/40 via-black/10 to-transparent pointer-events-none"></div>
+                                            <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-l from-black/20 to-transparent pointer-events-none"></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Action Button & Subtitle (Persis Gambar Referensi) -->
+                                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-extrabold text-xs border border-slate-300 shadow-xs hover:shadow transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 group-hover:border-emerald-500">
+                                        <i class="bi bi-book-half text-emerald-700 text-sm"></i>
+                                        <span>Buka Digital Reader (Fullscreen)</span>
+                                    </button>
+                                    <div class="text-[10.5px] sm:text-[11px] text-slate-500 font-medium text-center flex items-center justify-center gap-1.5">
+                                        <span>Laporan PDF</span>
+                                        <span>•</span>
+                                        <span>124 Halaman</span>
+                                        <span>•</span>
+                                        <span class="text-emerald-700 font-bold">Terverifikasi BPS</span>
                                     </div>
                                 </div>
-                                <div class="mt-5 pt-3 flex items-center gap-2">
-                                    <button type="button" onclick="downloadPublicationDoc('Monografi_Desa_Kamisi_2026.pdf')" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                        <span>Unduh PDF</span>
-                                    </button>
-                                    <button type="button" onclick="openDocumentViewerModal('monografi')" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition flex items-center gap-1 cursor-pointer">
-                                        <i class="bi bi-eye-fill"></i>
-                                        <span>Baca</span>
-                                    </button>
-                                </div>
+
                             </div>
 
                             <!-- Kartu 3: Publikasi Tematik & Kompilasi Wilayah -->
@@ -12478,6 +12609,18 @@ function triggerPubDownload() {
     
         // ===== HELPER PUBLIKASI & INFOGRAFIS DESCAN BPS =====
         function renderPublikasiDesa(villageKey) {
+        const bookCoverTitle = document.getElementById('book3dCoverDesaName');
+        if (bookCoverTitle) {
+            const vNames = {
+                kamisi: 'DESA KAMISI',
+                koroha: 'DESA KOROHA',
+                malamala: 'KEL. MALA-MALA',
+                lapolu: 'DESA LAPOLU',
+                tanggeawo: 'DESA TANGGEAWO',
+                mattirobulu: 'DESA MATTIRO BULU'
+            };
+            bookCoverTitle.textContent = vNames[villageKey] || 'DESA KAMISI';
+        }
             const vKey = (villageKey || currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
             const vData = (typeof villagesData !== 'undefined' && villagesData[vKey]) ? villagesData[vKey] : (villagesData?.kamisi || {});
             const vTitle = vData.title || (vKey === 'malamala' ? 'Kelurahan Mala-Mala' : 'Desa ' + vKey.charAt(0).toUpperCase() + vKey.slice(1));
@@ -14836,6 +14979,80 @@ window.selectDesaChartCategory = selectDesaChartCategory;
 
     function printSektoralTable() {
         window.print();
+    }
+
+
+
+// ==============================================================
+    // 3D REALISTIC MOVING BOOK INTERACTIVE ENGINE
+    // Gerakan 3D Halus Mengikuti Kursor Mouse + Floating Idle Animasi
+    // ==============================================================
+    function init3DBookInteraction() {
+        const stage = document.getElementById('book3dStage');
+        const book = document.getElementById('book3dObject');
+        const shadow = document.getElementById('book3dShadow');
+        const glare = document.getElementById('book3dGlare');
+
+        if (!stage || !book) return;
+
+        let isHovered = false;
+
+        stage.addEventListener('mouseenter', () => {
+            isHovered = true;
+            book.classList.remove('floating-anim');
+            book.style.transition = 'transform 0.08s ease-out';
+        });
+
+        stage.addEventListener('mousemove', (e) => {
+            if (!isHovered) return;
+            const rect = stage.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width; // 0 to 1
+            const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+
+            const rotY = -22 + (x - 0.5) * 48; // rotate between -46deg and +2deg
+            const rotX = 8 - (y - 0.5) * 36;  // tilt up/down
+            const transY = (y - 0.5) * 16;
+
+            book.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(${transY}px) scale(1.04)`;
+
+            if (shadow) {
+                const shadowX = (x - 0.5) * 32;
+                const shadowScale = 0.9 + (1 - y) * 0.16;
+                shadow.style.transform = `rotateX(85deg) translateZ(-130px) translateX(${shadowX}px) translateY(18px) scale(${shadowScale})`;
+                shadow.style.opacity = (0.5 + y * 0.25).toString();
+            }
+
+            if (glare) {
+                const glarePos = x * 100;
+                glare.style.background = `linear-gradient(${105 + (x - 0.5) * 40}deg, rgba(255,255,255,${0.45 - Math.abs(x - 0.5) * 0.3}) ${glarePos - 20}%, rgba(255,255,255,0) ${glarePos + 25}%)`;
+            }
+        });
+
+        stage.addEventListener('mouseleave', () => {
+            isHovered = false;
+            book.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            book.style.transform = 'rotateY(-22deg) rotateX(7deg) translateY(0px) scale(1)';
+            setTimeout(() => {
+                if (!isHovered) {
+                    book.classList.add('floating-anim');
+                }
+            }, 600);
+
+            if (shadow) {
+                shadow.style.transform = 'rotateX(85deg) translateZ(-130px) translateY(18px) scale(0.92)';
+                shadow.style.opacity = '0.55';
+            }
+            if (glare) {
+                glare.style.background = 'linear-gradient(115deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.1) 80%)';
+            }
+        });
+    }
+
+    // Inisialisasi otomatis saat DOM siap
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init3DBookInteraction);
+    } else {
+        init3DBookInteraction();
     }
 
 </script>
