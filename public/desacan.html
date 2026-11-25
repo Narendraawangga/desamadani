@@ -418,6 +418,91 @@
     transition: opacity 0.3s ease;
 }
 </style>
+
+<style>
+/* 3D Moving Interactive Book Styles */
+.mono-perspective {
+    perspective: 1200px;
+}
+.mono-book-3d {
+    position: relative;
+    width: 170px;
+    height: 245px;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    cursor: pointer;
+}
+.mono-book-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 26px;
+    height: 100%;
+    transform: rotateY(-90deg) translateZ(13px);
+    background: linear-gradient(90deg, #022c1b 0%, #04522d 50%, #033b20 100%);
+    border-radius: 3px 0 0 3px;
+    box-shadow: inset -2px 0 5px rgba(0,0,0,0.4);
+}
+.mono-book-cover {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px 8px 8px 3px;
+    background: linear-gradient(135deg, #065f46 0%, #047857 50%, #022c22 100%);
+    transform: translateZ(13px);
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    overflow: hidden;
+}
+.mono-book-pages-right {
+    position: absolute;
+    right: 0;
+    top: 3px;
+    width: 24px;
+    height: 239px;
+    transform: rotateY(90deg) translateZ(157px);
+    background: repeating-linear-gradient(to right, #f8fafc 0px, #e2e8f0 1.5px, #f8fafc 3px);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.25);
+    border-radius: 1px;
+}
+.mono-book-pages-top {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 166px;
+    height: 24px;
+    transform: rotateX(90deg) translateZ(12px);
+    background: repeating-linear-gradient(to bottom, #f8fafc 0px, #e2e8f0 1.5px, #f8fafc 3px);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.25);
+    border-radius: 1px;
+}
+.mono-book-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px 3px 3px 8px;
+    background: #022c22;
+    transform: translateZ(-13px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.mono-book-shadow {
+    position: absolute;
+    bottom: -18px;
+    width: 180px;
+    height: 24px;
+    background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0) 70%);
+    border-radius: 50%;
+    transform: rotateX(80deg);
+    pointer-events: none;
+    transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+}
+@keyframes monoFloating {
+    0%, 100% { transform: translateY(0px) rotateY(-18deg) rotateX(6deg); }
+    50% { transform: translateY(-8px) rotateY(-14deg) rotateX(4deg); }
+}
+.mono-floating {
+    animation: monoFloating 4s ease-in-out infinite;
+}
+</style>
+
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-200 selection:text-emerald-950">
 
@@ -1589,6 +1674,486 @@
     <!-- HALAMAN KHUSUS PORTAL PROFIL DESA & KELURAHAN (FULL WIDTH)     -->
     <!-- Terbuka saat mengklik Kelopak 02 "Profil Desa & Kelurahan"      -->
     <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!-- HALAMAN KHUSUS: MONOGRAFI DIGITAL DESA & KELURAHAN (FULL WIDTH) -->
+    <!-- Desain Eksekutif BPS: Palet Hijau Zamrud #046A38, 3 Periode,    -->
+    <!-- Tab Kategori (Tanpa Romawi), Bento Grid 3 Kolom & 3D Book Cover -->
+    <!-- ============================================================== -->
+    <div id="view-monografi-digital" class="hidden w-full min-h-screen bg-[#F8FAFC]">
+        
+        <!-- 1. HERO BANNER ATAS & PENGELOMPOKAN PERIODE (TAHUN) -->
+        <header class="w-full bg-gradient-to-r from-[#022c22] via-[#046A38] to-[#022c22] text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-10 shadow-lg relative overflow-hidden border-b border-emerald-500/20">
+            <!-- Subtle Background Motif -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+            <div class="max-w-7xl mx-auto flex flex-col gap-5 relative z-10">
+                
+                <!-- Baris 1: Judul Halaman & Tombol Aksi Kanan -->
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-emerald-400/20">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-400/30 text-emerald-300 text-[11px] font-black uppercase tracking-wider mb-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Publikasi Statistik Sektoral Resmi • BPS Kolaka Utara</span>
+                        </div>
+                        <h1 id="monografiHeroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight uppercase drop-shadow-sm">
+                            MONOGRAFI DIGITAL DESA KAMISI
+                        </h1>
+                        <p id="monografiHeroSubtitle" class="text-xs sm:text-sm text-emerald-100/90 font-medium mt-1">
+                            Publikasi Statistik Terpadu • Kecamatan Kodeoha, Kabupaten Kolaka Utara
+                        </p>
+                    </div>
+
+                    <!-- Tombol Kembali & Download Banner -->
+                    <div class="flex items-center gap-2.5 shrink-0 flex-wrap">
+                        <button type="button" onclick="closeMonografiDigitalView()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white font-bold text-xs border border-white/20 backdrop-blur-md transition flex items-center gap-2 cursor-pointer shadow-sm">
+                            <i class="bi bi-arrow-left"></i>
+                            <span>Kembali ke Portal DESCAN</span>
+                        </button>
+                        <button type="button" onclick="downloadMonografiDoc()" class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 font-black text-xs shadow-md transition flex items-center gap-2 cursor-pointer">
+                            <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                            <span>Unduh Monografi (PDF / Excel)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Baris 2: Pemilih Desa & Pengelompokan Periode (Tahun) -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-1">
+                    
+                    <!-- Pemilih Desa (6 Desa Binaan) -->
+                    <div class="flex items-center gap-2.5 flex-wrap">
+                        <span class="text-xs font-black uppercase text-emerald-200 tracking-wider">Desa:</span>
+                        <div class="inline-flex rounded-xl bg-emerald-950/70 p-1 border border-emerald-400/25">
+                            <button type="button" id="monoVillageBtnActive" onclick="toggleMonoVillageDropdown()" class="px-3.5 py-1.5 rounded-lg bg-white text-emerald-950 font-black text-xs shadow-sm transition flex items-center gap-2 cursor-pointer">
+                                <span id="monoVillageActiveLabel">Desa Kamisi</span>
+                                <i class="bi bi-chevron-down text-[10px] text-emerald-700"></i>
+                            </button>
+                            <!-- Dropdown 6 Desa -->
+                            <div id="monoVillageDropdown" class="hidden absolute left-0 mt-9 w-52 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 text-slate-800 space-y-1">
+                                <button type="button" onclick="selectMonografiVillage('kamisi')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Desa Kamisi</span>
+                                    <span class="text-[10px] text-slate-400">Kodeoha</span>
+                                </button>
+                                <button type="button" onclick="selectMonografiVillage('koroha')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Desa Koroha</span>
+                                    <span class="text-[10px] text-slate-400">Kodeoha</span>
+                                </button>
+                                <button type="button" onclick="selectMonografiVillage('malamala')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Kel. Mala-Mala</span>
+                                    <span class="text-[10px] text-slate-400">Kodeoha</span>
+                                </button>
+                                <button type="button" onclick="selectMonografiVillage('lapolu')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Desa Lapolu</span>
+                                    <span class="text-[10px] text-slate-400">Tiwu</span>
+                                </button>
+                                <button type="button" onclick="selectMonografiVillage('tanggeawo')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Desa Tanggeawo</span>
+                                    <span class="text-[10px] text-slate-400">Tiwu</span>
+                                </button>
+                                <button type="button" onclick="selectMonografiVillage('mattirobulu')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-50 hover:text-emerald-800 transition flex items-center justify-between">
+                                    <span>Desa Mattiro Bulu</span>
+                                    <span class="text-[10px] text-slate-400">Tiwu</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pengelompokan Periode (Tahun) - 3 Tombol Pil -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black uppercase text-emerald-200 tracking-wider hidden sm:inline">Periode:</span>
+                        <div class="inline-flex rounded-xl bg-emerald-950/70 p-1 border border-emerald-400/25">
+                            <button type="button" onclick="selectMonografiPeriod(1, 2024)" id="monoPeriodBtn1" class="mono-period-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-100 hover:text-white transition cursor-pointer">
+                                Periode 1 (2024)
+                            </button>
+                            <button type="button" onclick="selectMonografiPeriod(2, 2025)" id="monoPeriodBtn2" class="mono-period-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-100 hover:text-white transition cursor-pointer">
+                                Periode 2 (2025)
+                            </button>
+                            <button type="button" onclick="selectMonografiPeriod(3, 2026)" id="monoPeriodBtn3" class="mono-period-btn px-3.5 py-1.5 rounded-lg text-xs font-black bg-white text-emerald-950 shadow-sm transition cursor-pointer">
+                                Periode 3 (2026)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- 2. NAVIGASI KATEGORI DATA (TANPA ANGKA ROMAWI) & SAKELAR TAMPILAN -->
+        <nav class="w-full bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row md:items-center justify-between gap-3 py-2.5">
+                
+                <!-- Bilah Tab Kategori (6 Kategori Bersih Tanpa Angka Romawi) -->
+                <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-none" id="monografiCategoryTabs">
+                    <button type="button" onclick="selectMonografiCategory('geografi')" id="monoCatBtn-geografi" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-black transition flex items-center gap-2 whitespace-nowrap bg-emerald-700 text-white shadow-xs">
+                        <i class="bi bi-geo-alt-fill text-emerald-300"></i>
+                        <span>Geografi &amp; Iklim</span>
+                    </button>
+                    <button type="button" onclick="selectMonografiCategory('pemerintahan')" id="monoCatBtn-pemerintahan" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70">
+                        <i class="bi bi-bank2"></i>
+                        <span>Pemerintahan</span>
+                    </button>
+                    <button type="button" onclick="selectMonografiCategory('kependudukan')" id="monoCatBtn-kependudukan" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Kependudukan</span>
+                    </button>
+                    <button type="button" onclick="selectMonografiCategory('sosial')" id="monoCatBtn-sosial" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                        <span>Sosial &amp; Kesra</span>
+                    </button>
+                    <button type="button" onclick="selectMonografiCategory('pertanian')" id="monoCatBtn-pertanian" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70">
+                        <i class="bi bi-tree-fill"></i>
+                        <span>Pertanian &amp; Bahari</span>
+                    </button>
+                    <button type="button" onclick="selectMonografiCategory('ekonomi')" id="monoCatBtn-ekonomi" class="mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <span>Ekonomi &amp; Infrastruktur</span>
+                    </button>
+                </div>
+
+                <!-- Sakelar Tampilan: Mode Grafik | Mode Tabel BPS -->
+                <div class="flex items-center gap-2 shrink-0 self-end md:self-auto">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tampilan:</span>
+                    <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200">
+                        <button type="button" onclick="setMonografiViewMode('grafik')" id="monoViewModeGrafik" class="px-3 py-1 rounded-lg text-xs font-black transition bg-emerald-700 text-white shadow-xs cursor-pointer flex items-center gap-1.5">
+                            <i class="bi bi-bar-chart-fill"></i>
+                            <span>Mode Grafik</span>
+                        </button>
+                        <button type="button" onclick="setMonografiViewMode('tabel')" id="monoViewModeTabel" class="px-3 py-1 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900 cursor-pointer flex items-center gap-1.5">
+                            <i class="bi bi-table"></i>
+                            <span>Mode Tabel BPS</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- 3. TATA LETAK BENTO GRID 3 BAGIAN (KOLOM KIRI, TENGAH, KANAN) -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <!-- KOLOM KIRI (lg:col-span-5): VISUALISASI & TABEL STATISTIK -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm space-y-4">
+                        
+                        <!-- Header Kolom Kiri -->
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                            <div>
+                                <h3 id="monografiLeftColTitle" class="text-sm font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                    <i class="bi bi-pie-chart-fill text-emerald-600"></i>
+                                    <span>Visualisasi &amp; Tabel Statistik</span>
+                                </h3>
+                                <p id="monografiLeftColSubtitle" class="text-[11px] text-slate-500 mt-0.5">
+                                    Komparasi Antar-Dusun • Periode <span id="monoLeftPeriodYear">3 (2026)</span>
+                                </p>
+                            </div>
+                            <span id="monografiBadgeKategori" class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase">
+                                Geografi
+                            </span>
+                        </div>
+
+                        <!-- 2 Grafik Mini Berdampingan (Donut & Bar) -->
+                        <div id="monografiChartsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            
+                            <!-- Grafik Donut 1 -->
+                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+                                <div class="text-[11px] font-black text-slate-800 truncate" id="monoChart1Title">
+                                    Persentase Luas Wilayah
+                                </div>
+                                <div class="relative h-40 w-full flex items-center justify-center my-1">
+                                    <canvas id="monoCanvasDonut"></canvas>
+                                </div>
+                                <div class="text-[10px] text-slate-400 text-center font-medium">Distribusi Dusun</div>
+                            </div>
+
+                            <!-- Grafik Bar 2 -->
+                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+                                <div class="text-[11px] font-black text-slate-800 truncate" id="monoChart2Title">
+                                    Kependudukan per Dusun
+                                </div>
+                                <div class="relative h-40 w-full flex items-center justify-center my-1">
+                                    <canvas id="monoCanvasBar"></canvas>
+                                </div>
+                                <div class="text-[10px] text-slate-400 text-center font-medium">Satuan: Jiwa</div>
+                            </div>
+
+                        </div>
+
+                        <!-- Tabel Statistik Resmi BPS (Lengkap Baris Dusun & Total) -->
+                        <div class="pt-2">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 id="monografiTableCaption" class="text-xs font-black text-slate-900 tracking-tight leading-tight">
+                                    Tabel 1.1 Luas Wilayah dan Pembagian Administratif menurut Dusun - Periode 3 (2026)
+                                </h4>
+                            </div>
+                            
+                            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
+                                <table class="w-full text-left text-xs border-collapse">
+                                    <thead class="bg-slate-900 text-white text-[11px] uppercase tracking-wider font-extrabold">
+                                        <tr id="monografiTableHeadRow">
+                                            <th class="py-2.5 px-3 text-center w-10">No.</th>
+                                            <th class="py-2.5 px-3">Nama Dusun</th>
+                                            <th class="py-2.5 px-3 text-right" id="monoColHeader3">Jumlah RT</th>
+                                            <th class="py-2.5 px-3 text-right" id="monoColHeader4">Luas Wilayah (km²)</th>
+                                            <th class="py-2.5 px-3 text-right" id="monoColHeader5">Persentase (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="monografiTableBody" class="divide-y divide-slate-200 bg-white text-slate-700">
+                                        <!-- Injected dynamically via renderMonografiBento() -->
+                                    </tbody>
+                                    <tfoot id="monografiTableFoot" class="bg-slate-100 font-black text-slate-900 border-t-2 border-slate-300">
+                                        <!-- Injected dynamically via renderMonografiBento() -->
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="text-[10px] text-slate-400 italic mt-1.5 flex items-center justify-between">
+                                <span>Sumber: BPS Kabupaten Kolaka Utara &amp; Registrasi Desa</span>
+                                <span>*Data Terstandar SDI</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- KOLOM TENGAH (lg:col-span-4): SOROTAN UTAMA & NARASI STATISTIK -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm space-y-4">
+                        
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                            <h4 class="text-sm font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                <i class="bi bi-chat-left-quote-fill text-emerald-600"></i>
+                                <span>Sorotan Utama &amp; Narasi Statistik</span>
+                            </h4>
+                            <span class="text-[10px] font-bold text-slate-400">Analisis Data</span>
+                        </div>
+
+                        <!-- Narasi Ringkasan -->
+                        <div class="space-y-3 text-xs leading-relaxed text-slate-700">
+                            <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-emerald-950">
+                                <h5 id="monografiNarasiSubtitle" class="font-black text-emerald-900 text-xs mb-1">
+                                    Sorotan Utama &amp; Narasi Statistik (Geografi &amp; Iklim)
+                                </h5>
+                                <p id="monografiNarasiLead" class="text-[11.5px] text-emerald-900/90 leading-relaxed font-medium">
+                                    Kondisi geografis Desa Kamisi berada di pesisir Teluk Bone Kecamatan Kodeoha, dengan bentang wilayah seluas 14,8 km² pada Periode 3 (2026).
+                                </p>
+                            </div>
+
+                            <!-- 3 Poin Sorotan Analisis Deskriptif -->
+                            <div class="space-y-2.5 pt-1" id="monografiBulletPoints">
+                                <!-- Injected dynamically via renderMonografiBento() -->
+                            </div>
+                        </div>
+
+                        <!-- Badge Legalitas Metadata BPS -->
+                        <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 flex items-center gap-2.5">
+                            <i class="bi bi-shield-check text-emerald-600 text-base shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-slate-800">Kompilasi Standar BPS Kolaka Utara</span>
+                                <p class="text-[10px] text-slate-400 mt-0.5">Seluruh variabel telah tervalidasi dalam kerangka Satu Data Indonesia.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN (lg:col-span-3): PRATINJAU PUBLIKASI & AKSES CEPAT (3D BOOK) -->
+                <div class="lg:col-span-3 space-y-4">
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-100 mb-2">
+                            <h4 class="text-sm font-black text-slate-900 tracking-tight flex items-center gap-1.5">
+                                <i class="bi bi-book-fill text-emerald-700"></i>
+                                <span>Pratinjau Publikasi &amp; Akses Cepat</span>
+                            </h4>
+                        </div>
+
+                        <!-- 3D Book Interactive Standing Cover (Persis Gambar Referensi) -->
+                        <div id="mono3dStage" class="mono-perspective relative w-full h-[290px] flex items-center justify-center select-none py-1 overflow-visible cursor-grab active:cursor-grabbing">
+                            
+                            <!-- Pod Ground Shadow -->
+                            <div id="mono3dShadow" class="mono-book-shadow"></div>
+
+                            <!-- 3D Book Object -->
+                            <div id="mono3dObject" class="mono-book-3d mono-floating relative" onclick="openMonografiFlipbookModal()" title="Klik untuk membuka Flipbook Monografi">
+                                
+                                <!-- Spine -->
+                                <div class="mono-book-spine flex flex-col justify-between p-1.5 text-white">
+                                    <span class="text-[6px] font-mono opacity-70">BPS</span>
+                                    <div class="text-[7px] font-black tracking-widest uppercase opacity-85 text-emerald-200 transform -rotate-90 text-center whitespace-nowrap origin-center my-auto">
+                                        MONOGRAFI • KOLUT
+                                    </div>
+                                    <span class="text-[6px] opacity-60" id="mono3dSpineYear">2026</span>
+                                </div>
+
+                                <!-- Paper edges right & top -->
+                                <div class="mono-book-pages-right"></div>
+                                <div class="mono-book-pages-top"></div>
+
+                                <!-- Back Cover -->
+                                <div class="mono-book-back"></div>
+
+                                <!-- Front Cover -->
+                                <div class="mono-book-cover p-3 text-white flex flex-col justify-between">
+                                    
+                                    <!-- Top Logos -->
+                                    <div class="flex items-center justify-between gap-1 bg-white/95 px-2 py-1 rounded-md shadow-xs border border-white/50">
+                                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab" class="h-3.5 w-auto object-contain" onerror="this.style.display='none'">
+                                        <div class="h-3 w-[1px] bg-slate-300"></div>
+                                        <img src="/images/logo_bps.png" alt="BPS" class="h-3 w-auto object-contain" onerror="this.style.display='none'">
+                                        <div class="h-3 w-[1px] bg-slate-300"></div>
+                                        <img src="/images/logo_cantik.png" alt="Cantik" class="h-3 w-auto object-contain" onerror="this.style.display='none'">
+                                    </div>
+
+                                    <!-- Center Typography -->
+                                    <div class="my-auto text-center space-y-0.5">
+                                        <div class="text-[8px] font-black uppercase tracking-[0.2em] text-emerald-200">
+                                            MONOGRAFI
+                                        </div>
+                                        <div id="mono3dCoverDesa" class="text-xs sm:text-sm font-black leading-tight text-white uppercase drop-shadow">
+                                            DESA KAMISI
+                                        </div>
+                                        <div class="text-[7.5px] font-extrabold uppercase tracking-widest text-emerald-300">
+                                            DALAM ANGKA
+                                        </div>
+                                        <div class="text-xs sm:text-sm font-black text-amber-300 tracking-wider">
+                                            PERIODE <span id="mono3dPeriodNum">3</span> (<span id="mono3dPeriodYear">2026</span>)
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom Subtitle -->
+                                    <div class="text-center pt-1 border-t border-emerald-400/30">
+                                        <div class="text-[6.5px] font-black tracking-widest uppercase text-white/95 leading-none">
+                                            BADAN PUSAT STATISTIK
+                                        </div>
+                                        <div class="text-[5.5px] font-bold tracking-wider uppercase text-emerald-200 mt-0.5">
+                                            KABUPATEN KOLAKA UTARA
+                                        </div>
+                                    </div>
+
+                                    <!-- Dark spine shadow overlay -->
+                                    <div class="absolute left-0 top-0 bottom-0 w-2.5 bg-gradient-to-r from-black/40 to-transparent pointer-events-none"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Tombol Baca Flipbook & Unduh -->
+                        <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                            <button type="button" onclick="openMonografiFlipbookModal()" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="bi bi-book-half text-emerald-400"></i>
+                                <span>Baca Flipbook</span>
+                            </button>
+                            <button type="button" onclick="downloadMonografiDoc()" class="w-full py-2 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 active:scale-95 text-emerald-800 border border-emerald-300 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="bi bi-download"></i>
+                                <span>Unduh PDF / Excel</span>
+                            </button>
+                            <div class="text-[10px] text-slate-500 font-medium text-center pt-1">
+                                Laporan Resmi BPS • PDF • 124 Halaman
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- MODAL FLIPBOOK / DIGITAL READER FULLSCREEN (MONOGRAFI DIGITAL) -->
+    <div id="monografiFlipbookModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+        <div class="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-4 flex flex-col max-h-[92vh] animate-in fade-in zoom-in duration-200">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-[#022c22] via-[#046A38] to-[#0b2545] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl text-emerald-300 shadow-inner">
+                        📖
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-black uppercase tracking-wider text-emerald-300">
+                            READER DIGITAL FLIPBOOK RESMI • BPS KOLAKA UTARA
+                        </div>
+                        <h3 id="flipbookModalTitle" class="text-base sm:text-lg font-black text-white leading-tight">
+                            Buku Monografi Desa Kamisi Dalam Angka — Periode 3 (2026)
+                        </h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeMonografiFlipbookModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm cursor-pointer">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Modal Content (Flipbook Preview & Bab Navigator) -->
+            <div class="p-6 overflow-y-auto space-y-5 text-xs text-slate-700 flex-1">
+                <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <div class="text-[10px] font-black uppercase text-emerald-800">Nomor Publikasi Resmi BPS</div>
+                        <div class="font-black text-slate-900 text-sm" id="flipbookPubNum">BPS-7408-MONOGRAFI-2026-KAMISI</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[10px] font-black">Format PDF HD</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-[10px] font-black">124 Halaman</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-200 text-slate-800 text-[10px] font-black">Terverifikasi BPS</span>
+                    </div>
+                </div>
+
+                <!-- Daftar Kategori & Pembahasan Monografi (Tanpa Angka Romawi) -->
+                <div class="space-y-3">
+                    <h4 class="font-black text-slate-900 text-sm">Daftar Isi &amp; Bab Pembahasan Monografi:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('geografi')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 1</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Geografi &amp; Iklim</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Batas wilayah koordinat GIS, topografi dataran rendah hingga pesisir Teluk Bone.</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('pemerintahan')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 2</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Pemerintahan</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Struktur perangkat desa, aparatur, BPD, pembagian dusun dan RT/RW.</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('kependudukan')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 3</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Kependudukan</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Dinamika jumlah jiwa, sex ratio, keluarga KK, dan piramida umur produktif.</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('sosial')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 4</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Sosial &amp; Kesra</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Pendidikan, sarana ibadah, kesehatan, desil kemiskinan dan bansos PKH/BPNT.</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('pertanian')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 5</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Pertanian &amp; Bahari</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Perkebunan kakao sambung pucuk, cengkeh, minyak nilam, dan perikanan teri.</p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 transition cursor-pointer" onclick="jumpToCategoryFromReader('ekonomi')">
+                            <span class="text-[10px] font-bold text-emerald-700">Kategori 6</span>
+                            <b class="text-slate-900 block text-xs mt-0.5">Ekonomi &amp; Infrastruktur</b>
+                            <p class="text-[11px] text-slate-500 mt-1">Unit BUMDes, pasar rakyat, industri rumah tangga IKM, dan akses jalan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0">
+                <span class="text-[11px] text-slate-500 font-semibold">
+                    Publikasi Resmi BPS Kabupaten Kolaka Utara • Memenuhi Kaidah Satu Data Indonesia
+                </span>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="downloadMonografiDoc()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="bi bi-download"></i>
+                        <span>Unduh Berkas Lengkap</span>
+                    </button>
+                    <button type="button" onclick="closeMonografiFlipbookModal()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="view-portal-profil-desa" class="hidden w-full min-h-screen bg-[#F8FAFC]">
         <!-- Header 3 Tingkat Container -->
         <div id="dedicatedVillageHeaderWrapper" class="w-full sticky top-0 z-40 bg-white shadow-sm"></div>
@@ -3844,5 +4409,1266 @@
     }
 
 </script>
+
+<script>
+// ==============================================================
+// MONOGRAFI DIGITAL DESA & KELURAHAN ENGINE (BPS KOLAKA UTARA)
+// ==============================================================
+(function() {
+    // 1. Data Store 6 Desa Binaan x 3 Periode (2024, 2025, 2026) x 6 Kategori
+    const MONOGRAFI_DATA = {
+        kamisi: {
+            name: "Desa Kamisi",
+            kecamatan: "Kodeoha",
+            dusuns: ["Dusun 1", "Dusun 2", "Dusun 3", "Dusun 4"],
+            periods: {
+                1: { year: 2024, totalPop: 1512, totalKK: 390, areaKm2: 14.8 },
+                2: { year: 2025, totalPop: 1548, totalKK: 402, areaKm2: 14.8 },
+                3: { year: 2026, totalPop: 1582, totalKK: 412, areaKm2: 14.8 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Dusun",
+                    chart1: { label: "Persentase Luas Wilayah", values: [28, 26, 24, 22] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [108, 102, 95, 88] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 4.14, pct: 28.0 },
+                        { d: "Dusun 2", val3: 2, val4: 3.85, pct: 26.0 },
+                        { d: "Dusun 3", val3: 2, val4: 3.55, pct: 24.0 },
+                        { d: "Dusun 4", val3: 2, val4: 3.26, pct: 22.0 }
+                    ],
+                    totalRow: { val3: 9, val4: 14.80, pct: 100.0 },
+                    lead: "Kondisi geografis Desa Kamisi terletak di pesisir Teluk Bone Kecamatan Kodeoha dengan bentang wilayah seluas 14,8 km².",
+                    bullets: [
+                        "<b>Topografi Pesisir & Dataran Subur:</b> Membentang dari garis pantai Teluk Bone hingga perbukitan perkebunan kakao dan kelapa.",
+                        "<b>Pembagian Administratif 4 Dusun:</b> Terbagi rata dalam 4 Dusun dan 9 RT dengan tata batas spasial yang telah dipetakan secara kartometrik BPS.",
+                        "<b>Konektivitas Trans Sulawesi:</b> Akses transportasi jalan poros beraspal memudahkan mobilisasi komoditas hasil perkebunan ke pusat pasar."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Desa dan Kelembagaan Masyarakat menurut Dusun",
+                    chart1: { label: "Komposisi Lembaga Desa", values: [35, 25, 20, 20] },
+                    chart2: { label: "Jumlah Pengurus RT/RW", values: [4, 3, 3, 3] },
+                    col3: "Perangkat Desa",
+                    col4: "Anggota BPD & LPM",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 4, val4: 5, pct: 31.0 },
+                        { d: "Dusun 2", val3: 3, val4: 4, pct: 24.1 },
+                        { d: "Dusun 3", val3: 3, val4: 4, pct: 24.1 },
+                        { d: "Dusun 4", val3: 3, val4: 3, pct: 20.8 }
+                    ],
+                    totalRow: { val3: 13, val4: 16, pct: 100.0 },
+                    lead: "Tata kelola pemerintahan Desa Kamisi didukung 13 perangkat desa aktif dan Badan Permusyawaratan Desa (BPD) berintegritas.",
+                    bullets: [
+                        "<b>Digitalisasi Pelayanan Surat:</b> Mengimplementasikan sistem administrasi kependudukan digital terintegrasi satu pintu.",
+                        "<b>Kemitraan BPD & LPM:</b> Keterlibatan lembaga desa dalam Musrenbangdes mencapai tingkat partisipasi aktif 94%.",
+                        "<b>Transparansi Tata Kelola:</b> Publikasi APBDes dan laporan realisasi fisik terpasang di papan infografis balai desa dan portal online."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Dusun",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [462, 410, 375, 335] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [122, 108, 98, 84] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 462, val4: 122, pct: 102.4 },
+                        { d: "Dusun 2", val3: 410, val4: 108, pct: 101.8 },
+                        { d: "Dusun 3", val3: 375, val4: 98, pct: 100.5 },
+                        { d: "Dusun 4", val3: 335, val4: 84, pct: 99.2 }
+                    ],
+                    totalRow: { val3: 1582, val4: 412, pct: 101.1 },
+                    lead: "Dinamika demografi Desa Kamisi menunjukkan struktur usia produktif yang dominan dengan rasio ketergantungan yang sehat.",
+                    bullets: [
+                        "<b>Bonus Demografi Usia 15-59 Tahun:</b> Mencapai 68,4% dari total penduduk, menjadi motor utama penggerak perekonomian desa.",
+                        "<b>Stabilitas Pertumbuhan Penduduk:</b> Laju pertumbuhan penduduk tercatat seimbang di angka 1,3% per tahun dengan registrasi SIAK tertib.",
+                        "<b>Keluarga Sejahtera Mandiri:</b> Rata-rata anggota keluarga berjumlah 3,8 jiwa per rumah tangga dengan cakupan kepemilikan KK 100%."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Dusun",
+                    chart1: { label: "Penerima Manfaat Bantuan", values: [38, 28, 22, 18] },
+                    chart2: { label: "Sarana Sosial & Ibadah", values: [5, 3, 3, 2] },
+                    col3: "Sarana Pendidikan & Ibadah",
+                    col4: "Keluarga Penerima Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 5, val4: 28, pct: 96.5 },
+                        { d: "Dusun 2", val3: 3, val4: 24, pct: 94.2 },
+                        { d: "Dusun 3", val3: 3, val4: 20, pct: 93.8 },
+                        { d: "Dusun 4", val3: 2, val4: 16, pct: 92.0 }
+                    ],
+                    totalRow: { val3: 13, val4: 88, pct: 94.4 },
+                    lead: "Taraf kesejahteraan masyarakat Desa Kamisi terus meningkat dengan akses jaminan kesehatan semesta dan sarana pendidikan yang lengkap.",
+                    bullets: [
+                        "<b>Akses Kesehatan Posyandu Terpadu:</b> Poskesdes dan 4 Posyandu aktif melayani imunisasi balita dan kesehatan lansia rutin bulanan.",
+                        "<b>Graduasi Kemiskinan Ekstrem:</b> Angka kemiskinan ekstrem turun signifikan menjadi 2,1% berkat intervensi bantuan modal BUMDes.",
+                        "<b>Pendidikan Dasar Tuntas:</b> Angka Partisipasi Sekolah (APS) usia 7-15 tahun mencapai 99,2% dengan fasilitas SD dan SMP terjangkau."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Perkebunan Kakao, Cengkeh, dan Tangkapan Ikan menurut Dusun",
+                    chart1: { label: "Produksi Kakao (Ton/Tahun)", values: [185, 142, 120, 95] },
+                    chart2: { label: "Armada Perahu Nelayan", values: [28, 14, 8, 4] },
+                    col3: "Produksi Kakao (Ton)",
+                    col4: "Nelayan Tangkap (Jiwa)",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 185, val4: 48, pct: 980 },
+                        { d: "Dusun 2", val3: 142, val4: 26, pct: 940 },
+                        { d: "Dusun 3", val3: 120, val4: 15, pct: 910 },
+                        { d: "Dusun 4", val3: 95, val4: 8, pct: 890 }
+                    ],
+                    totalRow: { val3: 542, val4: 97, pct: 935 },
+                    lead: "Sektor perkebunan kakao rakyat dan perikanan tangkap Teluk Bone merupakan fondasi utama mata pencaharian warga Desa Kamisi.",
+                    bullets: [
+                        "<b>Sentra Kakao Fermentasi Unggul:</b> Menghasilkan rata-rata 542 ton biji kakao kering per tahun dengan teknik sambung pucuk BPS/Distan.",
+                        "<b>Potensi Tangkapan Bahari Ikan Teri:</b> Dusun pesisir memproduksi ikan teri segar dan olahan kering berkualitas pasar regional.",
+                        "<b>Kelembagaan Gapoktan Kuat:</b> 6 kelompok tani aktif mengelola distribusi pupuk bersubsidi dan sertifikasi kebun berkelanjutan."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha BUMDes, IKM, dan Jaringan Jalan menurut Dusun",
+                    chart1: { label: "Sebaran Unit Usaha IKM", values: [24, 18, 14, 11] },
+                    chart2: { label: "Panjang Jalan Mantap (Km)", values: [3.8, 2.9, 2.5, 2.2] },
+                    col3: "Unit Usaha Mikro/IKM",
+                    col4: "Jalan Aspal/Rabat (Km)",
+                    col5: "Akses Internet (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 24, val4: 3.8, pct: 98.0 },
+                        { d: "Dusun 2", val3: 18, val4: 2.9, pct: 95.5 },
+                        { d: "Dusun 3", val3: 14, val4: 2.5, pct: 92.0 },
+                        { d: "Dusun 4", val3: 11, val4: 2.2, pct: 89.5 }
+                    ],
+                    totalRow: { val3: 67, val4: 11.4, pct: 94.2 },
+                    lead: "Aktivitas ekonomi desa digerakkan oleh unit BUMDes Kamisi Berkah serta 67 pelaku usaha mikro olahan komoditas lokal.",
+                    bullets: [
+                        "<b>Perputaran BUMDes Berdaya:</b> Unit simpan pinjam dan pengeringan gabah/kakao mencatatkan kontribusi PADes stabil tiap tahun.",
+                        "<b>Infrastruktur Jalan 100% Terbuka:</b> Total 11,4 km ruas jalan poros dan lorong dusun dalam kondisi mantap aspal beton dan rabat.",
+                        "<b>Akses Listrik & Telekomunikasi:</b> Cakupan elektrifikasi PLN mencapai 100% dan jaringan sinyal 4G telah melayani seluruh area permukiman."
+                    ]
+                }
+            }
+        },
+        koroha: {
+            name: "Desa Koroha",
+            kecamatan: "Kodeoha",
+            dusuns: ["Dusun 1", "Dusun 2", "Dusun 3"],
+            periods: {
+                1: { year: 2024, totalPop: 1198, totalKK: 310, areaKm2: 12.4 },
+                2: { year: 2025, totalPop: 1225, totalKK: 318, areaKm2: 12.4 },
+                3: { year: 2026, totalPop: 1248, totalKK: 326, areaKm2: 12.4 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Dusun",
+                    chart1: { label: "Persentase Luas Wilayah", values: [38, 34, 28] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [105, 98, 92] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 4.71, pct: 38.0 },
+                        { d: "Dusun 2", val3: 2, val4: 4.22, pct: 34.0 },
+                        { d: "Dusun 3", val3: 2, val4: 3.47, pct: 28.0 }
+                    ],
+                    totalRow: { val3: 7, val4: 12.40, pct: 100.0 },
+                    lead: "Desa Koroha berbatasan dengan perbukitan hijau Kodeoha dengan bentang wilayah seluas 12,4 km².",
+                    bullets: [
+                        "<b>Dataran Perbukitan Subur:</b> Sangat ideal bagi perkebunan cengkeh dan nilam bernilai ekonomi tinggi.",
+                        "<b>Tata Batas 3 Dusun:</b> Pengelolaan wilayah terbagi efisien dalam 3 Dusun dan 7 RT teratur.",
+                        "<b>Sumber Daya Air Alami:</b> Memiliki aliran sungai jernih yang menopang irigasi pertanian masyarakat."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Desa dan Kelembagaan Masyarakat menurut Dusun",
+                    chart1: { label: "Aparatur Desa", values: [4, 4, 3] },
+                    chart2: { label: "Pengurus RT", values: [3, 2, 2] },
+                    col3: "Perangkat Desa",
+                    col4: "Anggota BPD & LPM",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 2", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 3", val3: 3, val4: 3, pct: 27.2 }
+                    ],
+                    totalRow: { val3: 11, val4: 11, pct: 100.0 },
+                    lead: "Pemerintahan Desa Koroha dipimpin oleh aparatur desa yang profesional dengan dukungan kelembagaan yang solid.",
+                    bullets: [
+                        "<b>Pelayanan Prima Warga:</b> Jam kerja kantor desa terstruktur dengan standar respons cepat dokumen adminduk.",
+                        "<b>Sinergi BPD Aktif:</b> Rapat koordinasi berkala bersama masyarakat memastikan aspirasi pembangunan terserap utuh.",
+                        "<b>Akuntabilitas Keuangan:</b> Penyerapan dana desa terpantau tepat waktu dan diawasi secara partisipatif."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Dusun",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [478, 420, 350] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [126, 110, 90] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 478, val4: 126, pct: 101.5 },
+                        { d: "Dusun 2", val3: 420, val4: 110, pct: 100.2 },
+                        { d: "Dusun 3", val3: 350, val4: 90, pct: 99.4 }
+                    ],
+                    totalRow: { val3: 1248, val4: 326, pct: 100.5 },
+                    lead: "Populasi Desa Koroha berjumlah 1.248 jiwa dalam 326 kepala keluarga dengan kohesi sosial yang kuat.",
+                    bullets: [
+                        "<b>Kepadatan Penduduk Terkendali:</b> Kepadatan rata-rata 100,6 jiwa/km² menciptakan lingkungan hunian yang asri.",
+                        "<b>Komposisi Usia Produktif:</b> 65,8% penduduk berada dalam usia kerja dengan profesi utama di sektor agraris.",
+                        "<b>Migrasi Netto Seimbang:</b> Tingkat perpindahan penduduk relatif stabil dengan pencatatan berkala."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Dusun",
+                    chart1: { label: "Penerima Manfaat Bansos", values: [32, 26, 20] },
+                    chart2: { label: "Sarana Ibadah & Posyandu", values: [4, 3, 2] },
+                    col3: "Sarana Sosial & Ibadah",
+                    col4: "Keluarga Penerima Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 4, val4: 28, pct: 95.8 },
+                        { d: "Dusun 2", val3: 3, val4: 26, pct: 94.0 },
+                        { d: "Dusun 3", val3: 2, val4: 22, pct: 93.1 }
+                    ],
+                    totalRow: { val3: 9, val4: 76, pct: 94.5 },
+                    lead: "Layanan sosial dan keagamaan di Desa Koroha berjalan harmonis dengan sarana yang terawat.",
+                    bullets: [
+                        "<b>Kehidupan Gotong Royong:</b> Tradisi musyawarah dan kerja bakti desa rutin dilaksanakan tiap pekan.",
+                        "<b>Jaminan Kesehatan Masyarakat:</b> 94,5% warga telah terlindungi BPJS Kesehatan PBI dan mandiri.",
+                        "<b>Sarana Ibadah Lengkap:</b> Terdapat masjid dan mushola representatif di setiap dusun."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Kakao, Minyak Nilam, dan Cengkeh menurut Dusun",
+                    chart1: { label: "Produksi Kakao (Ton/Tahun)", values: [160, 135, 115] },
+                    chart2: { label: "Penyulingan Nilam (Unit)", values: [6, 4, 3] },
+                    col3: "Produksi Kakao (Ton)",
+                    col4: "Penyulingan Nilam",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 160, val4: 6, pct: 950 },
+                        { d: "Dusun 2", val3: 135, val4: 4, pct: 920 },
+                        { d: "Dusun 3", val3: 115, val4: 3, pct: 890 }
+                    ],
+                    totalRow: { val3: 410, val4: 13, pct: 923 },
+                    lead: "Komoditas minyak nilam dan kakao Desa Koroha terkenal dengan kadar rendemen yang tinggi di Kolaka Utara.",
+                    bullets: [
+                        "<b>Penyulingan Minyak Nilam Tradisional:</b> 13 unit ketel penyulingan aktif memproduksi minyak atsiri standar ekspor.",
+                        "<b>Sentra Kakao Berkelanjutan:</b> Panen raya kakao berlangsung teratur dengan penerapan bibit unggul bersertifikat.",
+                        "<b>Diversifikasi Cengkeh:</b> Petani membudidayakan cengkeh Zanzibar sebagai sumber pendapatan musiman bernilai tinggi."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha BUMDes, IKM, dan Jaringan Jalan menurut Dusun",
+                    chart1: { label: "Pelaku IKM Pengolahan", values: [18, 14, 10] },
+                    chart2: { label: "Jalan Mantap (Km)", values: [3.4, 2.8, 2.2] },
+                    col3: "Pelaku Usaha Mikro",
+                    col4: "Jalan Mantap (Km)",
+                    col5: "Akses Listrik (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 18, val4: 3.4, pct: 100.0 },
+                        { d: "Dusun 2", val3: 14, val4: 2.8, pct: 100.0 },
+                        { d: "Dusun 3", val3: 10, val4: 2.2, pct: 100.0 }
+                    ],
+                    totalRow: { val3: 42, val4: 8.4, pct: 100.0 },
+                    lead: "BUMDes Koroha Jaya aktif bermitra dengan pedagang komoditas dan memfasilitasi kebutuhan sarana produksi pertanian.",
+                    bullets: [
+                        "<b>Akses Listrik Paripurna:</b> 100% rumah tangga menikmati aliran listrik PLN 24 jam tanpa hambatan.",
+                        "<b>Jalan Usaha Tani Memadai:</b> Jalur transportasi antar kebun telah diperkeras untuk memangkas biaya angkut.",
+                        "<b>Koperasi Tani Terpadu:</b> Membantu stabilitas harga pembelian biji kakao dan minyak nilam di tingkat petani."
+                    ]
+                }
+            }
+        },
+        malamala: {
+            name: "Kel. Mala-Mala",
+            kecamatan: "Kodeoha",
+            dusuns: ["Lingkungan 1", "Lingkungan 2", "Lingkungan 3"],
+            periods: {
+                1: { year: 2024, totalPop: 1845, totalKK: 472, areaKm2: 11.2 },
+                2: { year: 2025, totalPop: 1890, totalKK: 485, areaKm2: 11.2 },
+                3: { year: 2026, totalPop: 1932, totalKK: 498, areaKm2: 11.2 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Lingkungan",
+                    chart1: { label: "Persentase Luas Wilayah", values: [40, 32, 28] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [185, 172, 160] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 4, val4: 4.48, pct: 40.0 },
+                        { d: "Lingkungan 2", val3: 3, val4: 3.58, pct: 32.0 },
+                        { d: "Lingkungan 3", val3: 3, val4: 3.14, pct: 28.0 }
+                    ],
+                    totalRow: { val3: 10, val4: 11.20, pct: 100.0 },
+                    lead: "Kelurahan Mala-Mala berkedudukan sebagai pusat perniagaan dan simpul pelayanan di Kecamatan Kodeoha.",
+                    bullets: [
+                        "<b>Kawasan Urban Aglomerasi:</b> Menjadi pusat interaksi perdagangan dan jasa bagi desa-desa sekitar.",
+                        "<b>Batas Spasial Tertata:</b> Terbagi dalam 3 Lingkungan dan 10 RT dengan fasilitas publik memadai.",
+                        "<b>Aksesibilitas Tinggi:</b> Dilewati jalur arteri utama dengan moda transportasi harian yang ramai."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Kelurahan dan Lembaga Kemasyarakatan menurut Lingkungan",
+                    chart1: { label: "Staf Kelurahan", values: [6, 4, 4] },
+                    chart2: { label: "Pengurus RT/RW", values: [4, 3, 3] },
+                    col3: "Aparatur Kelurahan",
+                    col4: "Pengurus LPMK & RT",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 6, val4: 8, pct: 43.8 },
+                        { d: "Lingkungan 2", val3: 4, val4: 6, pct: 31.2 },
+                        { d: "Lingkungan 3", val3: 4, val4: 5, pct: 25.0 }
+                    ],
+                    totalRow: { val3: 14, val4: 19, pct: 100.0 },
+                    lead: "Kelurahan Mala-Mala dikelola oleh aparatur sipil berdedikasi dengan sistem informasi kelurahan modern.",
+                    bullets: [
+                        "<b>Standar Pelayanan Publik PATEN:</b> Pelayanan administrasi terpadu kecamatan dan kelurahan berlangsung cepat.",
+                        "<b>Partisipasi LPMK Aktif:</b> Lembaga Pemberdayaan Masyarakat Kelurahan secara konsisten memonitor program.",
+                        "<b>Regulasi Tata Ruang Tertib:</b> Penataan permukiman dan fasilitas umum mengacu pada rencana detail tata ruang."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Lingkungan",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [752, 620, 560] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [194, 160, 144] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 752, val4: 194, pct: 101.8 },
+                        { d: "Lingkungan 2", val3: 620, val4: 160, pct: 100.9 },
+                        { d: "Lingkungan 3", val3: 560, val4: 144, pct: 99.8 }
+                    ],
+                    totalRow: { val3: 1932, val4: 498, pct: 101.0 },
+                    lead: "Kelurahan Mala-Mala memiliki populasi terpadat di antara wilayah binaan dengan 1.932 jiwa terdata.",
+                    bullets: [
+                        "<b>Kepadatan Tertinggi:</b> Mencapai 172,5 jiwa/km² dengan konsentrasi permukiman di sepanjang poros jalan utama.",
+                        "<b>Ragam Profesi Warga:</b> Dominasi pedagang, wirausaha, pegawai pemerintah, dan petani komoditas.",
+                        "<b>Tingkat Pendidikan Tinggi:</b> Rasio lulusan SLTA dan Perguruan Tinggi melampaui rata-rata kabupaten."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Lingkungan",
+                    chart1: { label: "Fasilitas Pelayanan", values: [6, 4, 3] },
+                    chart2: { label: "Penerima PKH/BPNT", values: [36, 28, 24] },
+                    col3: "Sekolah & Puskesmas",
+                    col4: "Penerima Manfaat Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 4, val4: 36, pct: 98.2 },
+                        { d: "Lingkungan 2", val3: 3, val4: 28, pct: 97.4 },
+                        { d: "Lingkungan 3", val3: 2, val4: 24, pct: 96.0 }
+                    ],
+                    totalRow: { val3: 9, val4: 88, pct: 97.3 },
+                    lead: "Fasilitas sosial di Kelurahan Mala-Mala lengkap mencakup puskesmas pembantu, sekolah, dan sarana rekreasi.",
+                    bullets: [
+                        "<b>Pusat Rujukan Kesehatan:</b> Akses mudah ke puskesmas rawat inap dan praktek tenaga kesehatan mandiri.",
+                        "<b>Pusat Pendidikan Terpadu:</b> Menampung siswa dari wilayah sekitarnya untuk jenjang dasar hingga menengah.",
+                        "<b>Bantuan Tepat Sasaran:</b> Validasi data DTKS BPS menjamin distribusi perlindungan sosial akurat."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Kakao, Sayuran, dan Ikan Tangkap menurut Lingkungan",
+                    chart1: { label: "Produksi Kakao (Ton/Tahun)", values: [120, 105, 95] },
+                    chart2: { label: "Hasil Perikanan (Ton)", values: [42, 28, 15] },
+                    col3: "Produksi Kakao (Ton)",
+                    col4: "Hasil Perikanan (Ton)",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 120, val4: 42, pct: 910 },
+                        { d: "Lingkungan 2", val3: 105, val4: 28, pct: 880 },
+                        { d: "Lingkungan 3", val3: 95, val4: 15, pct: 860 }
+                    ],
+                    totalRow: { val3: 320, val4: 85, pct: 887 },
+                    lead: "Meski berkarakter urban, Mala-Mala tetap mempertahankan sentra perkebunan kakao dan perikanan aktif.",
+                    bullets: [
+                        "<b>Sentra Holtikultura Pekarangan:</b> Pemanfaatan KRPL untuk tanaman sayuran dan buah segar bernilai ekonomi.",
+                        "<b>Perikanan Air Tawar & Pesisir:</b> Budidaya ikan lele dan hasil tangkap laut melengkapi pasokan pasar harian.",
+                        "<b>Kakao Rakyat Terawat:</b> Kebun kakao produktif menopang pendapatan keluarga di area lingkar luar kelurahan."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha, Perbankan, dan Sarana Perdagangan menurut Lingkungan",
+                    chart1: { label: "Kios & Toko Retail", values: [48, 35, 26] },
+                    chart2: { label: "Jalan Aspal Hotmix (Km)", values: [4.2, 3.1, 2.8] },
+                    col3: "Kios & Toko Dagang",
+                    col4: "Jalan Hotmix (Km)",
+                    col5: "Akses Perbankan (%)",
+                    dusunData: [
+                        { d: "Lingkungan 1", val3: 48, val4: 4.2, pct: 100.0 },
+                        { d: "Lingkungan 2", val3: 35, val4: 3.1, pct: 98.0 },
+                        { d: "Lingkungan 3", val3: 26, val4: 2.8, pct: 95.0 }
+                    ],
+                    totalRow: { val3: 109, val4: 10.1, pct: 98.1 },
+                    lead: "Aktivitas perdagangan di Mala-Mala berlangsung dinamis dengan 109 unit toko, agen BRILink, dan sentra kuliner.",
+                    bullets: [
+                        "<b>Pusat Perbankan Mikro:</b> Kemudahan transaksi keuangan melalui jaringan agen bank resmi dan ATM.",
+                        "<b>Pasar Tradisional Mingguan:</b> Menjadi magnet bertemunya petani produsen dan pedagang antardaerah.",
+                        "<b>Infrastruktur Digital Maju:</b> Jaringan fiber optic berkecepatan tinggi telah menjangkau fasilitas publik."
+                    ]
+                }
+            }
+        },
+        lapolu: {
+            name: "Desa Lapolu",
+            kecamatan: "Tiwu",
+            dusuns: ["Dusun 1", "Dusun 2", "Dusun 3"],
+            periods: {
+                1: { year: 2024, totalPop: 1015, totalKK: 278, areaKm2: 13.6 },
+                2: { year: 2025, totalPop: 1042, totalKK: 286, areaKm2: 13.6 },
+                3: { year: 2026, totalPop: 1068, totalKK: 294, areaKm2: 13.6 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Dusun",
+                    chart1: { label: "Persentase Luas Wilayah", values: [36, 34, 30] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [82, 78, 75] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 4.90, pct: 36.0 },
+                        { d: "Dusun 2", val3: 2, val4: 4.62, pct: 34.0 },
+                        { d: "Dusun 3", val3: 2, val4: 4.08, pct: 30.0 }
+                    ],
+                    totalRow: { val3: 7, val4: 13.60, pct: 100.0 },
+                    lead: "Desa Lapolu berada di kawasan lembah Tiwu yang dikelilingi hutan lindung dan perkebunan kakao seluas 13,6 km².",
+                    bullets: [
+                        "<b>Lanskap Hijau Berkelanjutan:</b> Memiliki udara sejuk dengan tutupan vegetasi hijau mencapai 74% luas wilayah.",
+                        "<b>3 Dusun Berwawasan Lingkungan:</b> Terbagi dalam Dusun 1, 2, dan 3 yang saling terkoneksi jembatan perdesaan.",
+                        "<b>Potensi Ekowisata Alam:</b> Memiliki sumber air terjun alami yang berpotensi dikembangkan sebagai destinasi wisata."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Desa dan Kelembagaan Masyarakat menurut Dusun",
+                    chart1: { label: "Perangkat Desa", values: [4, 4, 3] },
+                    chart2: { label: "Pengurus RT", values: [3, 2, 2] },
+                    col3: "Perangkat Desa",
+                    col4: "Anggota BPD & LPM",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 2", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 3", val3: 3, val4: 3, pct: 27.2 }
+                    ],
+                    totalRow: { val3: 11, val4: 11, pct: 100.0 },
+                    lead: "Struktur pemerintahan Desa Lapolu mengedepankan pelayanan ramah warga berbasis sistem administrasi cepat.",
+                    bullets: [
+                        "<b>Aparatur Desa Bersahaja:</b> Pelayanan administrasi surat pengantar dapat diakses langsung secara luring dan daring.",
+                        "<b>Konsensus Adat & Musyawarah:</b> Setiap kebijakan desa selalu dimusyawarahkan bersama tokoh adat dan pemuda.",
+                        "<b>Kanal Aduan Warga:</b> Tersedia kotak saran dan grup komunikasi digital warga untuk menyuarakan masukan pembangunan."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Dusun",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [405, 365, 298] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [112, 100, 82] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 405, val4: 112, pct: 101.2 },
+                        { d: "Dusun 2", val3: 365, val4: 100, pct: 100.5 },
+                        { d: "Dusun 3", val3: 298, val4: 82, pct: 99.8 }
+                    ],
+                    totalRow: { val3: 1068, val4: 294, pct: 100.6 },
+                    lead: "Jumlah penduduk Desa Lapolu mencapai 1.068 jiwa dalam 294 kepala keluarga dengan kehidupan sosial yang rukun.",
+                    bullets: [
+                        "<b>Struktur Penduduk Berimbang:</b> Rasio jenis kelamin seimbang (100,6) dengan persebaran keluarga merata.",
+                        "<b>Kekeluargaan Sangat Kuat:</b> Mayoritas warga terikat pertalian kekerabatan yang memperkokoh persaudaraan.",
+                        "<b>Tertib Administrasi Kependudukan:</b> Seluruh warga telah memiliki NIK terdaftar dan KTP elektronik."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Dusun",
+                    chart1: { label: "Penerima Manfaat Bansos", values: [28, 24, 18] },
+                    chart2: { label: "Sarana Ibadah & Posyandu", values: [3, 3, 2] },
+                    col3: "Sarana Sosial & Ibadah",
+                    col4: "Keluarga Penerima Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 28, pct: 95.2 },
+                        { d: "Dusun 2", val3: 3, val4: 24, pct: 94.0 },
+                        { d: "Dusun 3", val3: 2, val4: 18, pct: 92.8 }
+                    ],
+                    totalRow: { val3: 8, val4: 70, pct: 94.2 },
+                    lead: "Program perlindungan sosial di Desa Lapolu menjangkau seluruh keluarga rentan dengan pengawasan transparan.",
+                    bullets: [
+                        "<b>Penurunan Stunting Efektif:</b> Program pemberian makanan tambahan terpadu menekan angka risiko stunting hingga nihil.",
+                        "<b>Bina Keluarga Balita & Lansia:</b> Kader kesehatan aktif mendampingi posyandu siklus hidup di setiap dusun.",
+                        "<b>Rumah Ibadah Makmur:</b> Kegiatan keagamaan dan pengajian mingguan berlangsung teratur di masjid dusun."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Kakao, Lada, dan Tanaman Pangan menurut Dusun",
+                    chart1: { label: "Produksi Kakao (Ton/Tahun)", values: [155, 138, 112] },
+                    chart2: { label: "Luas Kebun Produktif (Ha)", values: [160, 142, 118] },
+                    col3: "Produksi Kakao (Ton)",
+                    col4: "Luas Kebun Kakao (Ha)",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 155, val4: 160, pct: 968 },
+                        { d: "Dusun 2", val3: 138, val4: 142, pct: 971 },
+                        { d: "Dusun 3", val3: 112, val4: 118, pct: 949 }
+                    ],
+                    totalRow: { val3: 405, val4: 420, pct: 964 },
+                    lead: "Desa Lapolu menjadi lumbung kakao organik Tiwu dengan produktivitas tinggi mencapai 964 kg/hektar.",
+                    bullets: [
+                        "<b>Penerapan GAP (Good Agricultural Practices):</b> Petani menerapkan pemangkasan teratur dan pemupukan berimbang.",
+                        "<b>Sentra Pembibitan Mandiri:</b> Kelompok tani memproduksi bibit kakao klon MCC 02 unggul untuk replanting mandiri.",
+                        "<b>Hasil Ikutan Lada & Kemiri:</b> Petani memaksimalkan tanaman tumpangsari untuk menambah pemasukan bulanan."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha BUMDes, IKM, dan Jaringan Jalan menurut Dusun",
+                    chart1: { label: "Usaha Kerajinan & Olahan", values: [16, 12, 8] },
+                    chart2: { label: "Jalan Rabat Beton (Km)", values: [3.2, 2.6, 2.1] },
+                    col3: "Unit Usaha Mikro",
+                    col4: "Jalan Rabat (Km)",
+                    col5: "Elektrifikasi (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 16, val4: 3.2, pct: 100.0 },
+                        { d: "Dusun 2", val3: 12, val4: 2.6, pct: 100.0 },
+                        { d: "Dusun 3", val3: 8, val4: 2.1, pct: 100.0 }
+                    ],
+                    totalRow: { val3: 36, val4: 7.9, pct: 100.0 },
+                    lead: "Infrastruktur jalan tani rabat beton di Desa Lapolu mendukung kelancaran distribusi panen kakao ke pasar.",
+                    bullets: [
+                        "<b>BUMDes Lapolu Mandiri:</b> Mengelola unit penyewaan alat pascapanen kakao dan pengadaan pupuk petani.",
+                        "<b>Industri Rumah Tangga Berkembang:</b> Olahan keripik pisang dan gula kelapa mulai merambah pasar luar desa.",
+                        "<b>Kemandirian Energi Listrik:</b> Seluruh dusun terhubung jaringan listrik PLN dan lampu penerangan jalan tenaga surya."
+                    ]
+                }
+            }
+        },
+        tanggeawo: {
+            name: "Desa Tanggeawo",
+            kecamatan: "Tiwu",
+            dusuns: ["Dusun 1", "Dusun 2"],
+            periods: {
+                1: { year: 2024, totalPop: 538, totalKK: 134, areaKm2: 9.8 },
+                2: { year: 2025, totalPop: 552, totalKK: 138, areaKm2: 9.8 },
+                3: { year: 2026, totalPop: 564, totalKK: 141, areaKm2: 9.8 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Dusun",
+                    chart1: { label: "Persentase Luas Wilayah", values: [55, 45] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [60, 55] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 2, val4: 5.39, pct: 55.0 },
+                        { d: "Dusun 2", val3: 2, val4: 4.41, pct: 45.0 }
+                    ],
+                    totalRow: { val3: 4, val4: 9.80, pct: 100.0 },
+                    lead: "Desa Tanggeawo memiliki wilayah seluas 9,8 km² yang didominasi hamparan kebun kakao rakyat yang tertata apik.",
+                    bullets: [
+                        "<b>Wilayah Kompak & Bersih:</b> Terbagi dalam 2 Dusun utama dengan akses jalan pemukiman yang tertib.",
+                        "<b>Topografi Landai:</b> Memudahkan pengolahan lahan perkebunan tanpa risiko erosi yang berarti.",
+                        "<b>Sistem Drainase Terawat:</b> Aliran air hujan tertampung baik sehingga bebas dari genangan air."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Desa dan Kelembagaan Masyarakat menurut Dusun",
+                    chart1: { label: "Aparatur Desa", values: [5, 4] },
+                    chart2: { label: "Pengurus RT", values: [2, 2] },
+                    col3: "Perangkat Desa",
+                    col4: "Anggota BPD & LPM",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 5, val4: 4, pct: 55.6 },
+                        { d: "Dusun 2", val3: 4, val4: 4, pct: 44.4 }
+                    ],
+                    totalRow: { val3: 9, val4: 8, pct: 100.0 },
+                    lead: "Aparatur Desa Tanggeawo mengedepankan pendekatan kekeluargaan dalam melayani administrasi warganya.",
+                    bullets: [
+                        "<b>Efisiensi Birokrasi Desa:</b> Seluruh urusan perizinan dan surat pengantar diselesaikan pada hari yang sama.",
+                        "<b>Musyawarah Dusun Rutin:</b> Warga terlibat aktif dalam menentukan prioritas alokasi dana desa.",
+                        "<b>Keterbukaan Informasi:</b> Realisasi anggaran desa ditempelkan di papan pengumuman balai pertemuan."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Dusun",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [312, 252] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [78, 63] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 312, val4: 78, pct: 101.3 },
+                        { d: "Dusun 2", val3: 252, val4: 63, pct: 100.0 }
+                    ],
+                    totalRow: { val3: 564, val4: 141, pct: 100.7 },
+                    lead: "Populasi Desa Tanggeawo berjumlah 564 jiwa dalam 141 KK dengan tingkat stabilitas sosial yang tinggi.",
+                    bullets: [
+                        "<b>Kepadatan Nyaman:</b> Kepadatan rata-rata 57,5 jiwa/km² menciptakan suasana perdesaan yang tenang dan akrab.",
+                        "<b>Keluarga Produktif Mandiri:</b> 84% kepala keluarga berstatus pemilik kebun kakao yang aktif berproduksi.",
+                        "<b>Cakupan Dokumen Adminduk 100%:</b> Seluruh warga memiliki akta kelahiran, kartu keluarga, dan KTP-el."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Dusun",
+                    chart1: { label: "Penerima Manfaat Bansos", values: [18, 14] },
+                    chart2: { label: "Sarana Ibadah & Posyandu", values: [2, 2] },
+                    col3: "Sarana Sosial & Ibadah",
+                    col4: "Keluarga Penerima Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 2, val4: 18, pct: 96.0 },
+                        { d: "Dusun 2", val3: 2, val4: 14, pct: 94.8 }
+                    ],
+                    totalRow: { val3: 4, val4: 32, pct: 95.5 },
+                    lead: "Kerukunan masyarakat Tanggeawo tercermin dalam keaktifan majelis taklim, karang taruna, dan kegiatan sosial.",
+                    bullets: [
+                        "<b>Posyandu Siaga Aktif:</b> Layanan terpadu untuk balita dan lansia berjalan dengan partisipasi warga 98%.",
+                        "<b>Kesejahteraan Meningkat:</b> Angka keluarga prasejahtera berkurang berkat kestabilan harga komoditas kakao.",
+                        "<b>Akses Pendidikan Aman:</b> Anak-anak menempuh pendidikan sekolah dasar di lingkungan desa dengan aman."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Kakao, Kelapa, dan Nilam menurut Dusun",
+                    chart1: { label: "Produksi Kakao (Ton/Tahun)", values: [128, 98] },
+                    chart2: { label: "Luas Lahan Kakao (Ha)", values: [135, 105] },
+                    col3: "Produksi Kakao (Ton)",
+                    col4: "Luas Lahan Kakao (Ha)",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 128, val4: 135, pct: 948 },
+                        { d: "Dusun 2", val3: 98, val4: 105, pct: 933 }
+                    ],
+                    totalRow: { val3: 226, val4: 240, pct: 941 },
+                    lead: "Tanggeawo dikenal sebagai sentra kakao intensif dengan teknik perawatan kebun percontohan di Kolaka Utara.",
+                    bullets: [
+                        "<b>Panen Kakao Berkesinambungan:</b> Memproduksi 226 ton biji kakao berkualitas per tahun dengan kadar air standar.",
+                        "<b>Tumpang Sari Tanaman Nilam:</b> Memanfaatkan sela-sela pohon kakao untuk tanaman nilam wangi bernilai tambah.",
+                        "<b>Bimbingan Teknis Desa Cantik BPS:</b> Petani terbiasa mencatat data panen dan biaya produksi secara mandiri."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha BUMDes, IKM, dan Jaringan Jalan menurut Dusun",
+                    chart1: { label: "Pelaku Usaha Mikro", values: [26, 20] },
+                    chart2: { label: "Jalan Mantap (Km)", values: [3.1, 2.5] },
+                    col3: "Unit Usaha Mikro/IKM",
+                    col4: "Jalan Mantap (Km)",
+                    col5: "Elektrifikasi (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 26, val4: 3.1, pct: 100.0 },
+                        { d: "Dusun 2", val3: 20, val4: 2.5, pct: 100.0 }
+                    ],
+                    totalRow: { val3: 46, val4: 5.6, pct: 100.0 },
+                    lead: "Sebanyak 46 unit usaha mikro berkembang di Tanggeawo didukung sarana jalan lingkungan yang 100% mulus.",
+                    bullets: [
+                        "<b>Akses Transportasi Lancar:</b> 5,6 km ruas jalan desa beraspal beton memudahkan mobilisasi hasil bumi.",
+                        "<b>BUMDes Tanggeawo Makmur:</b> Berperan sebagai agregator pembelian hasil panen petani dengan harga adil.",
+                        "<b>Konektivitas Seluler Stabil:</b> Sinyal telekomunikasi 4G telah menjangkau seluruh pekarangan rumah warga."
+                    ]
+                }
+            }
+        },
+        mattirobulu: {
+            name: "Desa Mattiro Bulu",
+            kecamatan: "Tiwu",
+            dusuns: ["Dusun 1", "Dusun 2", "Dusun 3"],
+            periods: {
+                1: { year: 2024, totalPop: 814, totalKK: 308, areaKm2: 15.2 },
+                2: { year: 2025, totalPop: 835, totalKK: 316, areaKm2: 15.2 },
+                3: { year: 2026, totalPop: 856, totalKK: 324, areaKm2: 15.2 }
+            },
+            categories: {
+                geografi: {
+                    title: "Geografi & Iklim",
+                    num: 1,
+                    tableTitle: "Luas Wilayah dan Pembagian Administratif menurut Dusun",
+                    chart1: { label: "Persentase Luas Wilayah", values: [42, 33, 25] },
+                    chart2: { label: "Kepadatan Penduduk (Jiwa/km²)", values: [62, 56, 50] },
+                    col3: "Jumlah RT",
+                    col4: "Luas Wilayah (km²)",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 6.38, pct: 42.0 },
+                        { d: "Dusun 2", val3: 2, val4: 5.02, pct: 33.0 },
+                        { d: "Dusun 3", val3: 2, val4: 3.80, pct: 25.0 }
+                    ],
+                    totalRow: { val3: 7, val4: 15.20, pct: 100.0 },
+                    lead: "Desa Mattiro Bulu memiliki bentang alam terluas di antara desa binaan seluas 15,2 km² di perbukitan Tiwu.",
+                    bullets: [
+                        "<b>Wilayah Terluas di Tiwu:</b> Menawarkan pemandangan pegunungan yang asri dan potensi perkebunan luas.",
+                        "<b>Tata Ruang 3 Dusun:</b> Terbagi teratur dalam 3 Dusun dan 7 RT dengan batas wilayah alam yang jelas.",
+                        "<b>Kekayaan Hayati Flora & Fauna:</b> Memiliki keanekaragaman hayati dan sumber air pegunungan yang melimpah."
+                    ]
+                },
+                pemerintahan: {
+                    title: "Pemerintahan",
+                    num: 2,
+                    tableTitle: "Aparatur Desa dan Kelembagaan Masyarakat menurut Dusun",
+                    chart1: { label: "Aparatur Desa", values: [4, 4, 3] },
+                    chart2: { label: "Pengurus RT", values: [3, 2, 2] },
+                    col3: "Perangkat Desa",
+                    col4: "Anggota BPD & LPM",
+                    col5: "Persentase (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 2", val3: 4, val4: 4, pct: 36.4 },
+                        { d: "Dusun 3", val3: 3, val4: 3, pct: 27.2 }
+                    ],
+                    totalRow: { val3: 11, val4: 11, pct: 100.0 },
+                    lead: "Pemerintah Desa Mattiro Bulu berkomitmen mewujudkan desa mandiri berbasis data statistik berkualitas.",
+                    bullets: [
+                        "<b>Integritas Aparatur:</b> Dedikasi tinggi perangkat desa dalam melayani warga hingga pelosok dusun.",
+                        "<b>Harmonisasi Kebijakan:</b> BPD dan Pemerintah Desa bersinergi dalam merancang program ketahanan pangan.",
+                        "<b>Pengelolaan Aset Desa:</b> Inventarisasi tanah kas desa dan sarana umum tercatat secara rapi dan akuntabel."
+                    ]
+                },
+                kependudukan: {
+                    title: "Kependudukan",
+                    num: 3,
+                    tableTitle: "Jumlah Penduduk, Kepala Keluarga, dan Kepadatan menurut Dusun",
+                    chart1: { label: "Distribusi Jiwa Penduduk", values: [356, 280, 220] },
+                    chart2: { label: "Jumlah Kepala Keluarga (KK)", values: [136, 106, 82] },
+                    col3: "Jumlah Penduduk (Jiwa)",
+                    col4: "Jumlah Kepala Keluarga (KK)",
+                    col5: "Rasio Gender (M/F)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 356, val4: 136, pct: 102.3 },
+                        { d: "Dusun 2", val3: 280, val4: 106, pct: 100.0 },
+                        { d: "Dusun 3", val3: 220, val4: 82, pct: 98.2 }
+                    ],
+                    totalRow: { val3: 856, val4: 324, pct: 100.5 },
+                    lead: "Jumlah penduduk Mattiro Bulu tercatat 856 jiwa dalam 324 keluarga dengan kepadatan 56,3 jiwa/km².",
+                    bullets: [
+                        "<b>Persebaran Pemukiman Nyaman:</b> Suasana pedesaan yang tenang dengan jarak antarrumah yang lapang.",
+                        "<b>Piramida Penduduk Sehat:</b> Kelompok usia muda dan produktif menjadi pilar utama pembangunan perdesaan.",
+                        "<b>Tingkat Partisipasi Komunitas:</b> Tradisi tolong-menolong dalam panen raya dan hajatan warga sangat kental."
+                    ]
+                },
+                sosial: {
+                    title: "Sosial & Kesra",
+                    num: 4,
+                    tableTitle: "Fasilitas Pendidikan, Kesehatan, dan Kesejahteraan Sosial menurut Dusun",
+                    chart1: { label: "Penerima Manfaat Bansos", values: [26, 20, 16] },
+                    chart2: { label: "Sarana Ibadah & Poskesdes", values: [3, 2, 2] },
+                    col3: "Sarana Sosial & Ibadah",
+                    col4: "Keluarga Penerima Bansos",
+                    col5: "Cakupan BPJS (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 3, val4: 26, pct: 94.8 },
+                        { d: "Dusun 2", val3: 2, val4: 20, pct: 93.5 },
+                        { d: "Dusun 3", val3: 2, val4: 16, pct: 92.0 }
+                    ],
+                    totalRow: { val3: 7, val4: 62, pct: 93.8 },
+                    lead: "Fasilitas sosial dasar di Mattiro Bulu menjamin pemenuhan hak kesehatan dan pendidikan seluruh warga.",
+                    bullets: [
+                        "<b>Kader Posyandu Terlatih:</b> Pengukuran antropometri balita dilakukan berkala dengan akurasi terstandar.",
+                        "<b>Pemberdayaan Perempuan TP-PKK:</b> Pelatihan keterampilan tata boga dan pemanfaatan pekarangan gizi.",
+                        "<b>Kesejahteraan Inklusif:</b> Lansia dan penyandang disabilitas mendapat pendampingan rutin dari petugas sosial."
+                    ]
+                },
+                pertanian: {
+                    title: "Pertanian & Bahari",
+                    num: 5,
+                    tableTitle: "Produksi Cengkeh, Nilam, dan Kakao menurut Dusun",
+                    chart1: { label: "Produksi Cengkeh (Ton/Tahun)", values: [75, 58, 42] },
+                    chart2: { label: "Produksi Minyak Nilam (Ton)", values: [4.2, 3.1, 2.5] },
+                    col3: "Produksi Cengkeh (Ton)",
+                    col4: "Produksi Nilam (Ton)",
+                    col5: "Produktivitas (Kg/Ha)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 75, val4: 4.2, pct: 680 },
+                        { d: "Dusun 2", val3: 58, val4: 3.1, pct: 650 },
+                        { d: "Dusun 3", val3: 42, val4: 2.5, pct: 620 }
+                    ],
+                    totalRow: { val3: 175, val4: 9.8, pct: 654 },
+                    lead: "Dataran tinggi Mattiro Bulu adalah penghasil cengkeh dan minyak nilam terkemuka di Kolaka Utara.",
+                    bullets: [
+                        "<b>Sentra Cengkeh Dataran Tinggi:</b> Menghasilkan 175 ton bunga cengkeh kering per tahun dengan aroma khas yang pekat.",
+                        "<b>Produksi Minyak Nilam Murni:</b> Kualitas minyak nilam Mattiro Bulu diakui industri parfum karena kadar PA tinggi.",
+                        "<b>Kakao Sambung Pucuk:</b> Tetap menjadi komoditas penyangga dengan panen rutin sepanjang tahun."
+                    ]
+                },
+                ekonomi: {
+                    title: "Ekonomi & Infrastruktur",
+                    num: 6,
+                    tableTitle: "Unit Usaha BUMDes, IKM, dan Jaringan Jalan menurut Dusun",
+                    chart1: { label: "Usaha Penyulingan & IKM", values: [10, 6, 4] },
+                    chart2: { label: "Jalan Aspal & Rabat (Km)", values: [4.5, 3.8, 3.2] },
+                    col3: "Unit Usaha Mikro/IKM",
+                    col4: "Jalan Mantap (Km)",
+                    col5: "Elektrifikasi (%)",
+                    dusunData: [
+                        { d: "Dusun 1", val3: 10, val4: 4.5, pct: 100.0 },
+                        { d: "Dusun 2", val3: 6, val4: 3.8, pct: 100.0 },
+                        { d: "Dusun 3", val3: 4, val4: 3.2, pct: 100.0 }
+                    ],
+                    totalRow: { val3: 20, val4: 11.5, pct: 100.0 },
+                    lead: "Sebanyak 20 unit industri kecil beroperasi di Mattiro Bulu didukung ruas jalan lingkar yang terus ditingkatkan.",
+                    bullets: [
+                        "<b>Jalan Lingkar Perkebunan 11,5 Km:</b> Mobilisasi komoditas hasil hutan dan perkebunan semakin efisien dan aman.",
+                        "<b>BUMDes Bulu Matiti:</b> Berfokus pada pengelolaan unit simpan pinjam dan kemitraan pascapanen nilam.",
+                        "<b>Kemandirian Finansial Warga:</b> Tingginya nilai jual komoditas rempah mendorong perputaran uang di tingkat desa."
+                    ]
+                }
+            }
+        }
+    };
+
+    // State Aplikasi Monografi Digital
+    let currentVillage = 'kamisi';
+    let currentPeriod = 3;
+    let currentCategory = 'geografi';
+    let currentViewMode = 'grafik'; // 'grafik' | 'tabel'
+    let donutChartInstance = null;
+    let barChartInstance = null;
+
+    // 2. Open / Close View Functions
+    window.openMonografiDigitalView = function(villageKey, periodNum) {
+        if (villageKey && MONOGRAFI_DATA[villageKey]) {
+            currentVillage = villageKey;
+        }
+        if (periodNum && [1, 2, 3].includes(Number(periodNum))) {
+            currentPeriod = Number(periodNum);
+        }
+
+        const mainPortal = document.querySelector('main');
+        const dedicatedPortal = document.getElementById('view-portal-profil-desa');
+        const monografiView = document.getElementById('view-monografi-digital');
+
+        if (mainPortal) mainPortal.style.display = 'none';
+        if (dedicatedPortal) {
+            dedicatedPortal.classList.add('hidden');
+            dedicatedPortal.style.display = 'none';
+        }
+
+        if (monografiView) {
+            monografiView.classList.remove('hidden');
+            monografiView.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderMonografiBento();
+            initMonografi3DBookInteraction();
+        }
+    };
+
+    window.closeMonografiDigitalView = function() {
+        const mainPortal = document.querySelector('main');
+        const monografiView = document.getElementById('view-monografi-digital');
+
+        if (monografiView) {
+            monografiView.classList.add('hidden');
+            monografiView.style.display = 'none';
+        }
+        if (mainPortal) {
+            mainPortal.style.display = '';
+        }
+
+        const outputSection = document.getElementById('output');
+        if (outputSection) {
+            outputSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    // 3. Selection Handlers
+    window.toggleMonoVillageDropdown = function() {
+        const dd = document.getElementById('monoVillageDropdown');
+        if (dd) dd.classList.toggle('hidden');
+    };
+
+    window.selectMonografiVillage = function(vKey) {
+        if (!MONOGRAFI_DATA[vKey]) return;
+        currentVillage = vKey;
+        const dd = document.getElementById('monoVillageDropdown');
+        if (dd) dd.classList.add('hidden');
+        renderMonografiBento();
+    };
+
+    window.selectMonografiPeriod = function(pNum, year) {
+        currentPeriod = Number(pNum);
+        [1, 2, 3].forEach(n => {
+            const btn = document.getElementById('monoPeriodBtn' + n);
+            if (btn) {
+                if (n === currentPeriod) {
+                    btn.className = "mono-period-btn px-3.5 py-1.5 rounded-lg text-xs font-black bg-white text-emerald-950 shadow-sm transition cursor-pointer";
+                } else {
+                    btn.className = "mono-period-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-emerald-100 hover:text-white transition cursor-pointer";
+                }
+            }
+        });
+        renderMonografiBento();
+    };
+
+    window.selectMonografiCategory = function(catKey) {
+        currentCategory = catKey;
+        const catKeys = ['geografi', 'pemerintahan', 'kependudukan', 'sosial', 'pertanian', 'ekonomi'];
+        catKeys.forEach(k => {
+            const btn = document.getElementById('monoCatBtn-' + k);
+            if (btn) {
+                if (k === currentCategory) {
+                    btn.className = "mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-black transition flex items-center gap-2 whitespace-nowrap bg-emerald-700 text-white shadow-xs";
+                } else {
+                    btn.className = "mono-cat-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/70";
+                }
+            }
+        });
+        renderMonografiBento();
+    };
+
+    window.setMonografiViewMode = function(mode) {
+        currentViewMode = mode;
+        const btnGrafik = document.getElementById('monoViewModeGrafik');
+        const btnTabel = document.getElementById('monoViewModeTabel');
+        const chartsWrap = document.getElementById('monografiChartsContainer');
+
+        if (mode === 'grafik') {
+            if (btnGrafik) btnGrafik.className = "px-3 py-1 rounded-lg text-xs font-black transition bg-emerald-700 text-white shadow-xs cursor-pointer flex items-center gap-1.5";
+            if (btnTabel) btnTabel.className = "px-3 py-1 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900 cursor-pointer flex items-center gap-1.5";
+            if (chartsWrap) chartsWrap.style.display = 'grid';
+        } else {
+            if (btnGrafik) btnGrafik.className = "px-3 py-1 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900 cursor-pointer flex items-center gap-1.5";
+            if (btnTabel) btnTabel.className = "px-3 py-1 rounded-lg text-xs font-black transition bg-emerald-700 text-white shadow-xs cursor-pointer flex items-center gap-1.5";
+            if (chartsWrap) chartsWrap.style.display = 'none';
+        }
+    };
+
+    // 4. Render Bento Grid Elements
+    window.renderMonografiBento = function() {
+        const vData = MONOGRAFI_DATA[currentVillage] || MONOGRAFI_DATA.kamisi;
+        const pData = vData.periods[currentPeriod] || vData.periods[3];
+        const cat = vData.categories[currentCategory] || vData.categories.geografi;
+        const yr = pData.year;
+
+        // Banner Elements
+        const heroTitle = document.getElementById('monografiHeroTitle');
+        const heroSub = document.getElementById('monografiHeroSubtitle');
+        const vLabel = document.getElementById('monoVillageActiveLabel');
+
+        if (heroTitle) heroTitle.textContent = "MONOGRAFI DIGITAL " + vData.name.toUpperCase();
+        if (heroSub) heroSub.textContent = "Publikasi Statistik Terpadu • Kecamatan " + vData.kecamatan + ", Kabupaten Kolaka Utara";
+        if (vLabel) vLabel.textContent = vData.name;
+
+        // Left Col Header
+        const leftTitle = document.getElementById('monografiLeftColTitle');
+        const leftSub = document.getElementById('monografiLeftColSubtitle');
+        const catBadge = document.getElementById('monografiBadgeKategori');
+        if (leftTitle) leftTitle.innerHTML = `<i class="bi bi-pie-chart-fill text-emerald-600"></i><span>Visualisasi & Tabel Statistik - ${cat.title}</span>`;
+        if (leftSub) leftSub.innerHTML = `Komparasi Antar-Dusun • Periode <span id="monoLeftPeriodYear">${currentPeriod} (${yr})</span>`;
+        if (catBadge) catBadge.textContent = cat.title;
+
+        // Table Caption & Columns (Tanpa Angka Romawi)
+        const tableCaption = document.getElementById('monografiTableCaption');
+        if (tableCaption) {
+            tableCaption.textContent = `Tabel ${cat.num}.1 ${cat.tableTitle} menurut Dusun - Periode ${currentPeriod} (${yr})`;
+        }
+        const col3 = document.getElementById('monoColHeader3');
+        const col4 = document.getElementById('monoColHeader4');
+        const col5 = document.getElementById('monoColHeader5');
+        if (col3) col3.textContent = cat.col3;
+        if (col4) col4.textContent = cat.col4;
+        if (col5) col5.textContent = cat.col5;
+
+        // Table Body Rows
+        const tbody = document.getElementById('monografiTableBody');
+        if (tbody) {
+            tbody.innerHTML = cat.dusunData.map((row, idx) => `
+                <tr class="hover:bg-slate-50/80 transition-colors">
+                    <td class="py-2.5 px-3 text-center font-bold text-slate-500">${idx + 1}</td>
+                    <td class="py-2.5 px-3 font-extrabold text-slate-800">${row.d}</td>
+                    <td class="py-2.5 px-3 text-right font-semibold text-slate-700">${typeof row.val3 === 'number' ? row.val3.toLocaleString('id-ID') : row.val3}</td>
+                    <td class="py-2.5 px-3 text-right font-semibold text-slate-700">${typeof row.val4 === 'number' ? row.val4.toLocaleString('id-ID') : row.val4}</td>
+                    <td class="py-2.5 px-3 text-right font-bold text-emerald-700">${row.pct.toFixed ? row.pct.toFixed(1) : row.pct}%</td>
+                </tr>
+            `).join('');
+        }
+
+        // Table Foot Row (Total)
+        const tfoot = document.getElementById('monografiTableFoot');
+        if (tfoot) {
+            tfoot.innerHTML = `
+                <tr>
+                    <td colspan="2" class="py-2.5 px-3 text-center uppercase tracking-wider">Jumlah / Total</td>
+                    <td class="py-2.5 px-3 text-right text-slate-900">${typeof cat.totalRow.val3 === 'number' ? cat.totalRow.val3.toLocaleString('id-ID') : cat.totalRow.val3}</td>
+                    <td class="py-2.5 px-3 text-right text-slate-900">${typeof cat.totalRow.val4 === 'number' ? cat.totalRow.val4.toLocaleString('id-ID') : cat.totalRow.val4}</td>
+                    <td class="py-2.5 px-3 text-right text-emerald-800">${cat.totalRow.pct.toFixed ? cat.totalRow.pct.toFixed(1) : cat.totalRow.pct}%</td>
+                </tr>
+            `;
+        }
+
+        // Middle Col: Narasi & Bullet Points
+        const narasiSub = document.getElementById('monografiNarasiSubtitle');
+        const narasiLead = document.getElementById('monografiNarasiLead');
+        const bulletsContainer = document.getElementById('monografiBulletPoints');
+
+        if (narasiSub) narasiSub.textContent = `Sorotan Utama & Narasi Statistik (${cat.title})`;
+        if (narasiLead) narasiLead.textContent = cat.lead + ` pada Periode ${currentPeriod} (${yr}).`;
+        if (bulletsContainer) {
+            bulletsContainer.innerHTML = cat.bullets.map(b => `
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-emerald-300 transition-colors">
+                    <div class="text-[11.5px] text-slate-700 leading-relaxed">${b}</div>
+                </div>
+            `).join('');
+        }
+
+        // Right Col: 3D Book Dynamic Labels
+        const coverDesa = document.getElementById('mono3dCoverDesa');
+        const periodNumEl = document.getElementById('mono3dPeriodNum');
+        const periodYearEl = document.getElementById('mono3dPeriodYear');
+        const spineYearEl = document.getElementById('mono3dSpineYear');
+
+        if (coverDesa) coverDesa.textContent = vData.name.toUpperCase();
+        if (periodNumEl) periodNumEl.textContent = currentPeriod;
+        if (periodYearEl) periodYearEl.textContent = yr;
+        if (spineYearEl) spineYearEl.textContent = yr;
+
+        // Render Charts with Chart.js
+        renderCharts(cat, vData.dusuns);
+    };
+
+    function renderCharts(cat, dusunLabels) {
+        if (typeof Chart === 'undefined') return;
+
+        // Chart 1: Donut / Doughnut Chart
+        const c1Title = document.getElementById('monoChart1Title');
+        if (c1Title) c1Title.textContent = cat.chart1.label;
+        const ctxDonut = document.getElementById('monoCanvasDonut');
+        if (ctxDonut) {
+            if (donutChartInstance) donutChartInstance.destroy();
+            donutChartInstance = new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: dusunLabels,
+                    datasets: [{
+                        data: cat.chart1.values,
+                        backgroundColor: ['#046A38', '#059669', '#10B981', '#34D399', '#6EE7B7'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '62%'
+                }
+            });
+        }
+
+        // Chart 2: Bar Chart
+        const c2Title = document.getElementById('monoChart2Title');
+        if (c2Title) c2Title.textContent = cat.chart2.label;
+        const ctxBar = document.getElementById('monoCanvasBar');
+        if (ctxBar) {
+            if (barChartInstance) barChartInstance.destroy();
+            barChartInstance = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: dusunLabels,
+                    datasets: [{
+                        label: cat.chart2.label,
+                        data: cat.chart2.values,
+                        backgroundColor: '#046A38',
+                        borderRadius: 6,
+                        barThickness: 14
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 9 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(226, 232, 240, 0.6)' },
+                            ticks: { font: { size: 9 } }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // 5. 3D Interactive Mouse Gyro Tilt on Book
+    function initMonografi3DBookInteraction() {
+        const stage = document.getElementById('mono3dStage');
+        const book = document.getElementById('mono3dObject');
+        const shadow = document.getElementById('mono3dShadow');
+        if (!stage || !book) return;
+
+        stage.addEventListener('mousemove', (e) => {
+            const rect = stage.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const rotY = (x / (rect.width / 2)) * 25 - 15;
+            const rotX = -(y / (rect.height / 2)) * 20 + 8;
+
+            book.classList.remove('mono-floating');
+            book.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) translateZ(10px)`;
+            if (shadow) {
+                shadow.style.transform = `rotateX(80deg) translateX(${x * 0.2}px)`;
+            }
+        });
+
+        stage.addEventListener('mouseleave', () => {
+            book.classList.add('mono-floating');
+            book.style.transform = '';
+            if (shadow) shadow.style.transform = '';
+        });
+    }
+
+    // 6. Flipbook Reader Modal
+    window.openMonografiFlipbookModal = function() {
+        const modal = document.getElementById('monografiFlipbookModal');
+        const titleEl = document.getElementById('flipbookModalTitle');
+        const pubNumEl = document.getElementById('flipbookPubNum');
+        const vData = MONOGRAFI_DATA[currentVillage] || MONOGRAFI_DATA.kamisi;
+        const pData = vData.periods[currentPeriod] || vData.periods[3];
+
+        if (titleEl) {
+            titleEl.textContent = `Buku Monografi ${vData.name} Dalam Angka — Periode ${currentPeriod} (${pData.year})`;
+        }
+        if (pubNumEl) {
+            pubNumEl.textContent = `BPS-7408-MONOGRAFI-${pData.year}-${currentVillage.toUpperCase()}`;
+        }
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeMonografiFlipbookModal = function() {
+        const modal = document.getElementById('monografiFlipbookModal');
+        if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+    };
+
+    window.jumpToCategoryFromReader = function(catKey) {
+        closeMonografiFlipbookModal();
+        selectMonografiCategory(catKey);
+    };
+
+    window.downloadMonografiDoc = function() {
+        const vData = MONOGRAFI_DATA[currentVillage] || MONOGRAFI_DATA.kamisi;
+        const pData = vData.periods[currentPeriod] || vData.periods[3];
+        const fileName = `Monografi_${vData.name.replace(/\s+/g, '_')}_Periode_${currentPeriod}_(${pData.year}).pdf`;
+
+        // Create virtual download anchor
+        const a = document.createElement('a');
+        a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(
+            `Kompilasi Resmi BPS Kolaka Utara - ${vData.name} Dalam Angka (${pData.year})
+` +
+            `Diterbitkan oleh Badan Pusat Statistik Kabupaten Kolaka Utara dalam kerangka Satu Data Indonesia.`
+        );
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        alert(`Mengunduh publikasi: ${fileName}
+Format resmi siap cetak & kompilasi tabel SDI.`);
+    };
+
+    // Hook into global openOutputDoc
+    const originalOpenOutputDoc = window.openOutputDoc;
+    window.openOutputDoc = function(docType) {
+        if (docType === 'monografi') {
+            window.openMonografiDigitalView(window.currentTargetVillage || 'kamisi', 3);
+            return;
+        }
+        if (typeof originalOpenOutputDoc === 'function') {
+            originalOpenOutputDoc(docType);
+        }
+    };
+
+})();
+</script>
+
 </body>
 </html>
