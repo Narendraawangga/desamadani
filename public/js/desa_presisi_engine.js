@@ -1724,20 +1724,15 @@ window.PresisiEngine = (function() {
   }
 
   function createThematicLegend() {
-    if (!map) return;
-    legendControl = L.control({ position: 'bottomright' });
-    legendControl.onAdd = function() {
-      const div = L.DomUtil.create('div', 'presisi-legend bg-white/95 backdrop-blur-md rounded-xl p-3 shadow-lg border border-slate-200 text-xs');
-      div.id = 'presisiMapLegend';
-      div.innerHTML = getLegendHTML();
-      return div;
-    };
-    legendControl.addTo(map);
+    // Legenda peta sengaja dihilangkan agar tampilan peta lebih bersih
+    const existing = document.getElementById('presisiMapLegend');
+    if (existing) existing.remove();
   }
 
   function updateLegendControl() {
+    // Tidak menampilkan kotak legenda pada peta
     const el = document.getElementById('presisiMapLegend');
-    if (el) el.innerHTML = getLegendHTML();
+    if (el) el.remove();
   }
 
   function getLegendHTML() {
