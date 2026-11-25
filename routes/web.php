@@ -61,10 +61,10 @@ Route::get('/portal/desa-cantik', function () {
     return view('dashboard', ['activePage' => 4]);
 });
 Route::get('/portal/tentang', function () {
-    return view('dashboard', ['activePage' => 5]);
+    return view('dashboard', ['activePage' => 5, 'activeSub' => 'madani']);
 });
 Route::get('/portal/publikasi', function () {
-    return view('dashboard', ['activePage' => 5]);
+    return view('dashboard', ['activePage' => 5, 'activeSub' => 'publikasi']);
 });
 
 Route::get('/dashboard', function () {

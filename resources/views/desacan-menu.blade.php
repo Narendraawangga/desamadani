@@ -400,7 +400,179 @@
             box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
             transition: all 0.25s ease;
         }
-                /* 3D Visual & Tropical Depth Styles (Inspired by Nature Destination Design) */
+
+        /* ===== DASHBOARD AUTOMATION & ENTRANCE MOTION ===== */
+        @keyframes viewMotionEnter {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 16px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .menu-view-container:not(.hidden) {
+            animation: viewMotionEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+            will-change: transform, opacity;
+        }
+
+        /* Topbar Entrance Motion */
+        @keyframes topbarSlideDown {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, -16px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .dc-topbar {
+            animation: topbarSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        /* Hero Card Living Aura & Motion */
+        @keyframes heroAuraDrift {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translate3d(24px, -18px, 0) scale(1.22);
+                opacity: 0.22;
+            }
+        }
+        .dc-hero {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dc-hero::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #6ee7b7 0%, rgba(16, 185, 129, 0) 70%);
+            animation: heroAuraDrift 14s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        .dc-hero:hover {
+            box-shadow: 0 16px 36px -8px rgba(10, 77, 54, 0.28);
+        }
+
+        /* Hero Status Card Shimmer Sweep */
+        .dc-status-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dc-status-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-2px);
+        }
+        .dc-status-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+            transform: skewX(-25deg);
+            animation: statusCardShimmer 8s ease-in-out infinite;
+        }
+        @keyframes statusCardShimmer {
+            0% { left: -120%; }
+            20%, 100% { left: 200%; }
+        }
+
+        /* KPI Card Motion & Stagger */
+        .dc-kpi-stagger-1 { animation: viewMotionEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both; }
+        .dc-kpi-stagger-2 { animation: viewMotionEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both; }
+        .dc-kpi-stagger-3 { animation: viewMotionEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both; }
+        .dc-kpi-stagger-4 { animation: viewMotionEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+
+        .dc-card {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .dc-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08);
+            border-color: #a7f3d0;
+        }
+
+        /* Quick Action Micro-Motion */
+        .dc-quick {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dc-quick:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px -4px rgba(15, 107, 74, 0.14);
+            border-color: #6ee7b7;
+            background: #f0fdf4;
+        }
+        .dc-quick:active {
+            transform: scale(0.97);
+        }
+        .dc-quick:hover .dc-icon {
+            transform: scale(1.1) rotate(-3deg);
+            transition: transform 0.2s ease;
+        }
+
+        /* Navigation Tabs Micro-Motion */
+        .nav-tab {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .nav-tab:hover {
+            transform: translateX(3px);
+        }
+        .nav-tab.active {
+            transform: translateX(4px);
+        }
+        .nav-tab:hover .dc-ico {
+            transform: scale(1.1);
+            transition: transform 0.2s ease;
+        }
+
+        /* Pulse Beacon for SDI & Live Status */
+        @keyframes liveBeaconPulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        .motion-beacon-pulse {
+            animation: liveBeaconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Morph Animation on Village Switch */
+        @keyframes villageMorphPulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.985);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .village-morph-active {
+            animation: villageMorphPulse 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        /* 3D Visual & Tropical Depth Styles (Inspired by Nature Destination Design) */
         @keyframes float-leaf {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-7px) rotate(1.5deg); }
@@ -753,16 +925,16 @@
                 <!-- =============== BERANDA BARU (DESCAN) =============== -->
                 <div id="dcHome" class="space-y-5">
 
-                    <!-- HERO -->
-                    <div class="dc-hero">
+                    <!-- HERO WITH LIVING AURA & MOTION -->
+                    <div class="dc-hero shadow-lg">
                         <div class="grid lg:grid-cols-3 gap-6 items-center">
                             <div class="lg:col-span-2 relative z-[1]">
-                                <span class="dc-chip mb-3"><span style="color:#6ee7b7;font-size:8px;">●</span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
-                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2" style="letter-spacing:-.02em;">Selamat Datang di Desa Cantik</h2>
+                                <span class="dc-chip mb-3"><span class="w-2 h-2 rounded-full bg-emerald-400 motion-beacon-pulse inline-block"></span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2 tracking-tight">Selamat Datang di Desa Cantik</h2>
                                 <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video tutorial, buku panduan, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint">✎ Lanjutkan Data PODES</button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Panduan</button>
+                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint hover:scale-105 active:scale-95 transition-all shadow-sm">✎ Lanjutkan Data PODES</button>
+                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost hover:scale-105 active:scale-95 transition-all"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Panduan</button>
                                 </div>
                             </div>
                             <div class="dc-status-card">
@@ -774,31 +946,31 @@
                         </div>
                     </div>
 
-                    <!-- KPI -->
+                    <!-- KPI (With Stagger Motion) -->
                     <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <div class="dc-card">
+                        <div class="dc-card dc-kpi-stagger-1 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                             <div class="flex justify-between items-center"><span class="dc-icon"><i class="bi bi-clipboard2-check-fill"></i></span><span class="dc-tag">93% Selesai</span></div>
                             <div class="dc-kpi-label">Pengisian PODES</div>
-                            <div class="dc-kpi-value">41 / 44 Indikator</div>
-                            <div class="dc-progress mt-3"><span style="width:93%;background:var(--dc-green);"></span></div>
+                            <div class="dc-kpi-value"><span id="dcKpiPodesVal">41</span> / 44 Indikator</div>
+                            <div class="dc-progress mt-3"><span style="width:93%;background:var(--dc-green);transition:width 1s ease;"></span></div>
                             <div class="dc-kpi-foot"><span>Kurang 3 variabel</span><b>Standar SDI</b></div>
                         </div>
-                        <div class="dc-card">
+                        <div class="dc-card dc-kpi-stagger-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                             <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eaf1fb;color:#2563eb;"><i class="bi bi-patch-check-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Tahap 3</span></div>
                             <div class="dc-kpi-label">Verifikasi BPS Kolut</div>
                             <div class="dc-kpi-value" style="color:var(--dc-green);">Terverifikasi</div>
                             <div class="dc-kpi-foot mt-4"><span>✓ Metadata Sah</span><span>Rev. 12 Okt 2026</span></div>
                         </div>
-                        <div class="dc-card">
+                        <div class="dc-card dc-kpi-stagger-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                             <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eef2f6;color:#334155;"><i class="bi bi-people-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Monografi 2026</span></div>
                             <div class="dc-kpi-label">Cakupan Kependudukan</div>
                             <div class="dc-kpi-value"><span id="dcKpiKK">1.120</span> KK</div>
                             <div class="dc-kpi-foot mt-4"><span><span id="dcKpiJiwa">3.840</span> Jiwa terdata</span><b><span id="dcKpiDusun">4</span> Dusun</b></div>
                         </div>
-                        <div class="dc-card">
+                        <div class="dc-card dc-kpi-stagger-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                             <div class="flex justify-between items-center"><span class="dc-icon" style="background:#fdf3e1;color:#d97706;"><i class="bi bi-award-fill"></i></span><span class="dc-tag" style="background:#fdf3e1;color:#b45309;">Grade A</span></div>
                             <div class="dc-kpi-label">Skor Rata-rata Evaluasi</div>
-                            <div class="dc-kpi-value">88.5 / 100</div>
+                            <div class="dc-kpi-value"><span id="dcKpiSkorEvaluasi">88.5</span> / 100</div>
                             <div class="dc-kpi-foot mt-4"><span>Pre-test &amp; Post-test</span><b>5 Operator</b></div>
                         </div>
                     </div>
@@ -8956,6 +9128,46 @@ function triggerPubDownload() {
             if (dcCharts[id]) dcCharts[id].destroy();
             dcCharts[id] = new Chart(el, cfg);
         }
+
+        /**
+         * Automated Smooth Counter Animation for KPI Numbers
+         */
+        function animateNumberCountUp(elementId, targetNumber, duration = 800, prefix = '', suffix = '') {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const strVal = String(targetNumber || '').trim();
+            const numVal = parseFloat(strVal.replace(/\./g, '').replace(/,/g, '.')) || 0;
+            const isInteger = Number.isInteger(numVal);
+            const startTime = performance.now();
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = numVal * ease;
+
+                let formatted;
+                if (isInteger) {
+                    formatted = Math.round(current).toLocaleString('id-ID');
+                } else {
+                    formatted = current.toFixed(1).replace('.', ',');
+                }
+                el.textContent = `${prefix}${formatted}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    if (isInteger) {
+                        el.textContent = `${prefix}${Math.round(numVal).toLocaleString('id-ID')}${suffix}`;
+                    } else {
+                        el.textContent = `${prefix}${numVal.toFixed(1).replace('.', ',')}${suffix}`;
+                    }
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
         function renderDescanHome(villageKey) {
             try {
                 const vData = (typeof villagesData !== 'undefined' && villagesData[villageKey]) || {};
@@ -8964,8 +9176,23 @@ function triggerPubDownload() {
                 const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
                 set('dcHeroDesaName', nama);
                 set('dcMonDesa', nama);
-                if (sData.kpi) { set('dcKpiKK', sData.kpi.kk); set('dcKpiJiwa', sData.kpi.pop); }
-                if (sData.dusun) set('dcKpiDusun', sData.dusun.length);
+
+                // Trigger smooth morph pulse on village change
+                const dcHomeEl = document.getElementById('dcHome');
+                if (dcHomeEl) {
+                    dcHomeEl.classList.remove('village-morph-active');
+                    void dcHomeEl.offsetWidth;
+                    dcHomeEl.classList.add('village-morph-active');
+                }
+
+                // Smooth Automated KPI Counter Motion
+                if (sData.kpi) {
+                    animateNumberCountUp('dcKpiKK', sData.kpi.kk);
+                    animateNumberCountUp('dcKpiJiwa', sData.kpi.pop);
+                }
+                if (sData.dusun) animateNumberCountUp('dcKpiDusun', sData.dusun.length);
+                animateNumberCountUp('dcKpiPodesVal', 41);
+                animateNumberCountUp('dcKpiSkorEvaluasi', 88.5);
 
                 if (typeof Chart === 'undefined') return;
                 Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
@@ -9053,17 +9280,17 @@ function triggerPubDownload() {
             const stuntingEl = document.getElementById('dashKpiStunting');
 
             if (activeDusunObj) {
-                if (popEl) popEl.textContent = activeDusunObj.pop.toLocaleString('id-ID');
-                if (kkEl) kkEl.textContent = activeDusunObj.kk.toLocaleString('id-ID');
+                animateNumberCountUp('dashKpiTotalPenduduk', activeDusunObj.pop);
+                animateNumberCountUp('dashKpiTotalKeluarga', activeDusunObj.kk);
                 if (sexEl) sexEl.textContent = sData.kpi.sexRatio || '98,5%';
                 if (miskinEl) miskinEl.textContent = sData.kpi.p3ke || '3,2%';
-                if (stuntingEl) stuntingEl.textContent = Math.round((sData.kpi.stuntingVal || 14) * multiplier);
+                animateNumberCountUp('dashKpiStunting', Math.round((sData.kpi.stuntingVal || 14) * multiplier));
             } else {
-                if (popEl) popEl.textContent = sData.kpi.pop || '24.150';
-                if (kkEl) kkEl.textContent = sData.kpi.kk || '6.840';
+                animateNumberCountUp('dashKpiTotalPenduduk', sData.kpi.pop || 4150);
+                animateNumberCountUp('dashKpiTotalKeluarga', sData.kpi.kk || 1120);
                 if (sexEl) sexEl.textContent = sData.kpi.sexRatio || '98,5%';
                 if (miskinEl) miskinEl.textContent = sData.kpi.p3ke || '3,2%';
-                if (stuntingEl) stuntingEl.textContent = (sData.kpi.stuntingVal || sData.kpi.stunting || '14');
+                animateNumberCountUp('dashKpiStunting', sData.kpi.stuntingVal || sData.kpi.stunting || 14);
             }
 
             // 3. Render Piramida Penduduk (Mirrored Horizontal Bar Chart with Male/Female)
