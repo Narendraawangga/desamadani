@@ -57,7 +57,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f1f6fa;
+            background-color: #faf5f7; color: #1c1917;
         }
         
         /* Profil Desa Modern Clean Editorial Styling */
@@ -68,30 +68,34 @@
             transition: all 0.2s ease;
         }
         .dc-profil-card:hover {
-            border-color: #a7f3d0;
+            border-color: #fbcfe8;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(122, 12, 46, 0.08);
         }
         .tilt-card-3d {
             transition: all 0.2s ease;
         }
         .tilt-card-3d:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(122, 12, 46, 0.08);
         }
 
         /* ===== DESCAN SIDEBAR THEME (Harmonized Light Style - Sinkron dengan Dashboard Desa) ===== */
         :root { 
-            --dc-green:#0f6b4a; 
-            --dc-green-dark:#0a4d36; 
-            --dc-mint:#6ee7b7; 
-            --dc-mint-bg:#ecfdf5; 
-            --dc-line:#e5e9e7; 
-            --dc-ink:#0f1f1a; 
-            --dc-muted:#6b7a74;
+            --dc-green:#7A0C2E; /* Primary Deep Wine Burgundy (Believe Therapy Theme) */
+            --dc-green-dark:#4c0519; /* Darkest Wine */
+            --dc-mint:#f472b6; /* Accent Rose */
+            --dc-mint-bg:#fdf2f8; /* Soft Blush Rose Background */
+            --dc-line:#f1e3ea; /* Soft Rose-tinted border line */
+            --dc-ink:#1c1917; /* Deep Slate / Charcoal */
+            --dc-muted:#785c69; /* Muted Berry Slate */
+            --dc-wine:#7A0C2E;
+            --dc-wine-dark:#4c0519;
+            --dc-wine-light:#9d174d;
+            --dc-rose-bg:#fdf2f8;
             --dc-sidebar-w: 265px; 
         }
-        body { background-color:#f4f7f5; }
+        body { background-color:#faf5f7; color:#1c1917; }
         body.dc-shell { transition: padding-left .25s ease; }
         
         #dcSidebar { 
@@ -107,7 +111,7 @@
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 4px 0 24px rgba(15, 31, 26, 0.05);
+            box-shadow: 4px 0 24px rgba(76, 5, 25, 0.05);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
         @media (min-width: 1024px) {
@@ -130,14 +134,14 @@
             bottom: 0; 
             left: 0; 
             width: var(--dc-sidebar-w); 
-            background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 60%, #f2f7f4 100%); 
-            border-right: 1px solid rgba(15, 107, 74, 0.12); 
+            background: linear-gradient(180deg, #ffffff 0%, #fdf9fb 60%, #faf3f6 100%); 
+            border-right: 1px solid rgba(122, 12, 46, 0.12); 
             border-top-right-radius: 24px;
             border-bottom-right-radius: 24px;
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 4px 0 28px -4px rgba(15, 31, 26, 0.06), 1px 0 3px rgba(15, 31, 26, 0.02);
+            box-shadow: 4px 0 28px -4px rgba(76, 5, 25, 0.06), 1px 0 3px rgba(76, 5, 25, 0.02);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
 
@@ -153,8 +157,7 @@
             font-weight: 800; 
             letter-spacing: 0.1em; 
             text-transform: uppercase; 
-            color: #0f6b4a; 
-            padding: 0 0.65rem !important; 
+            color: #7A0C2E; padding: 0 0.65rem !important; 
             margin-top: 0.65rem !important; /* Dirapatkan dari 1.5rem (24px) ke ~10px */
             margin-bottom: 0.18rem !important; 
         }
@@ -166,8 +169,7 @@
             width: 10px; 
             height: 2px; 
             border-radius: 99px; 
-            background: #10b981; 
-            flex-shrink: 0; 
+            background: #9d174d; flex-shrink: 0; 
         }
 
         /* Nav Tab & Action Items: Padding vertikal kompak py-1.5 px-2.5 & margin rapat */
@@ -202,10 +204,10 @@
             align-items: center !important; 
             justify-content: center !important; 
             flex-shrink: 0 !important; 
-            background: #ecfdf5 !important; 
-            border: 1px solid #d1fae5 !important; 
+            background: #fdf2f8 !important; 
+            border: 1px solid #fce7f3 !important; 
             box-shadow: none !important; 
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             transition: all .16s ease-in-out !important; 
         }
         .dc-ico i, .dc-ico svg { 
@@ -223,15 +225,15 @@
         /* Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
             background: #f1f5f9 !important; /* Soft neutral / slate hover */
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             border-color: transparent !important;
             box-shadow: none !important;
             transform: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: #e2f7ed !important; 
-            border-color: #a7f3d0 !important;
-            color: #065f46 !important; 
+            background: #fce7f3 !important; 
+            border-color: #fbcfe8 !important;
+            color: #7A0C2E !important; 
             box-shadow: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
@@ -240,24 +242,24 @@
 
         /* Active State: Kotak Ikon Hijau Solid & Full-Row Soft Green Background */
         .nav-tab.active { 
-            background: #ecfdf5 !important; /* Hijau sangat lembut (emerald-50) */
-            color: #065f46 !important; /* Teks hijau tua semi-bold */
+            background: #fdf2f8 !important; /* Hijau sangat lembut (emerald-50) */
+            color: #7A0C2E !important; /* Teks hijau tua semi-bold */
             font-weight: 600 !important; 
-            border: 1px solid #d1fae5 !important; 
+            border: 1px solid #fce7f3 !important; 
             box-shadow: none !important; 
             transform: none !important;
         }
         .nav-tab.active .dc-ico { 
-            background: #0f6b4a !important; /* Hijau solid hanya untuk menu aktif */
+            background: #7A0C2E !important; /* Hijau solid hanya untuk menu aktif */
             color: #ffffff !important; /* Ikon putih */
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            border: 1px solid #7A0C2E !important;
+            box-shadow: 0 2px 6px rgba(122, 12, 46, 0.22) !important;
         }
         .nav-tab.active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.active .dc-caret {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
         .nav-tab.active::after {
             display: none !important;
@@ -266,22 +268,22 @@
         /* Active Parent State (Saat Submenu Dipilih) */
         .nav-tab.has-active { 
             background: #f0fdf4 !important; 
-            color: #065f46 !important; 
+            color: #7A0C2E !important; 
             font-weight: 600 !important;
             border: 1px solid #dcfce7 !important; 
             box-shadow: none !important;
         }
         .nav-tab.has-active .dc-ico { 
-            background: #0f6b4a !important; 
+            background: #7A0C2E !important; 
             color: #ffffff !important; 
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            border: 1px solid #7A0C2E !important;
+            box-shadow: 0 2px 6px rgba(122, 12, 46, 0.22) !important;
         }
         .nav-tab.has-active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.has-active .dc-caret {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
 
         /* Caret for collapsible menu */
@@ -294,13 +296,13 @@
             align-items: center;
             justify-content: center;
         }
-        .dc-caret.open { transform: rotate(180deg); color: #0f6b4a; }
+        .dc-caret.open { transform: rotate(180deg); color: #7A0C2E; }
 
         /* Submenu Items (Indented with Connecting Line) */
         .dc-sub { 
             margin: .25rem 0 .4rem 1.25rem !important; 
             padding-left: .75rem !important; 
-            border-left: 1.5px solid #d1fae5 !important; 
+            border-left: 1.5px solid #fbcfe8 !important; 
         }
         .dc-sub-item { 
             display: flex !important; 
@@ -324,34 +326,58 @@
         }
         .dc-sub-item:hover { 
             background: #f1f5f9 !important; 
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             transform: translateX(3px) !important;
         }
         .dc-sub-item:hover i {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
             transform: scale(1.15) !important;
         }
         .dc-sub-item.active { 
-            background: #ecfdf5 !important; 
-            color: #065f46 !important; 
+            background: #fdf2f8 !important; 
+            color: #7A0C2E !important; 
             font-weight: 600 !important; 
-            border-color: #d1fae5 !important;
+            border-color: #fbcfe8 !important;
         }
         .dc-sub-item.active i {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
         /* Custom Modern Scrollbar for Sidebar Links */
         #topNavMenuLinks::-webkit-scrollbar { width: 4px; }
         #topNavMenuLinks::-webkit-scrollbar-track { background: transparent; }
         #topNavMenuLinks::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
-        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: #0f6b4a; }
+        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: #7A0C2E; }
         .dc-topbar { background:#fff; border-bottom:1px solid var(--dc-line); position:sticky; top:0; z-index:40; }
         .dc-pill { display:inline-flex; align-items:center; gap:.4rem; background:var(--dc-mint-bg); color:var(--dc-green); border:1px solid #b7e8d0; border-radius:999px; padding:.3rem .8rem; font-size:12px; font-weight:600; }
-        .dc-hero { background:linear-gradient(135deg,#0a4d36 0%,#0f6b4a 55%,#0c5a3f 100%); color:#fff; border-radius:1rem; padding:2rem; position:relative; overflow:hidden; }
-        .dc-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:rgba(110,231,183,.08); }
+        .dc-hero { 
+            background: linear-gradient(135deg, #4c0519 0%, #7A0C2E 55%, #881337 100%); 
+            color: #fff; 
+            border-radius: 1.25rem; 
+            padding: 2.25rem; 
+            position: relative; 
+            overflow: hidden; 
+            border: 1px solid rgba(251, 207, 232, 0.25);
+            box-shadow: 0 15px 35px -5px rgba(122, 12, 46, 0.25);
+        }
+        .dc-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(244,114,182,0.2) 0%, rgba(190,24,93,0.08) 60%, transparent 100%); }
         .dc-chip { display:inline-flex; align-items:center; gap:.4rem; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius:999px; padding:.25rem .7rem; }
         .dc-status-card { background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); border-radius:.9rem; padding:1.1rem 1.25rem; position:relative; z-index:1; }
-        .dc-btn-mint { background:#6ee7b7; color:#053b28; font-weight:700; border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; border:0; }
+        .dc-btn-mint { 
+            background: #ffffff; 
+            color: #7A0C2E; 
+            font-weight: 800; 
+            border-radius: .75rem; 
+            padding: .6rem 1.15rem; 
+            font-size: 13px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: .5rem; 
+            cursor: pointer; 
+            border: 1px solid #fbcfe8;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all .2s;
+        }
+        .dc-btn-mint:hover { background: #fdf2f8; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
         .dc-btn-mint:hover { background:#86efc5; }
         .dc-btn-ghost { background:rgba(255,255,255,.12); color:#fff; font-weight:600; border:1px solid rgba(255,255,255,.2); border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; }
         .dc-btn-ghost:hover { background:rgba(255,255,255,.2); }
@@ -377,7 +403,7 @@
         .dc-agenda.biru { border-left-color:#3b82f6; } .dc-agenda.amber { border-left-color:#f59e0b; }
         .dc-agenda .jenis { font-size:10px; font-weight:700; letter-spacing:.05em; color:var(--dc-muted); display:flex; justify-content:space-between; }
         .dc-agenda b { font-size:12.5px; display:block; margin:.15rem 0; } .dc-agenda small { font-size:11px; color:var(--dc-muted); }
-        .dc-help { background:linear-gradient(135deg,#0a4d36,#0f6b4a); color:#fff; border-radius:1rem; padding:1.1rem 1.25rem; }
+        .dc-help { background:linear-gradient(135deg,#4c0519,#7A0C2E); color:#fff; border-radius:1rem; padding:1.1rem 1.25rem; }
         .dc-avatar { width:34px; height:34px; border-radius:50%; background:#dff3e8; color:var(--dc-green-dark); font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .m-nav-tab.active {
             background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
@@ -503,7 +529,7 @@
         .dc-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08);
-            border-color: #a7f3d0;
+            border-color: #fbcfe8;
         }
 
         /* Quick Action Micro-Motion */
@@ -711,7 +737,7 @@
     transform: translateY(-1px);
 }
 .btn-pub-pill.active {
-    background: #046A38 !important;
+    background: #7A0C2E !important;
     border-color: #34d399 !important;
     color: #ffffff !important;
     box-shadow: 0 4px 14px rgba(4, 106, 56, 0.4);
@@ -746,16 +772,16 @@
     justify-content: space-between;
 }
 .chart-cat-item:hover {
-    color: #046A38;
-    background-color: #ecfdf5;
-    border-color: #a7f3d0;
+    color: #7A0C2E;
+    background-color: #fdf2f8;
+    border-color: #fbcfe8;
 }
 .chart-cat-item.active {
-    background: #046A38 !important;
+    background: #7A0C2E !important;
     color: #ffffff !important;
     font-weight: 800;
-    box-shadow: 0 4px 12px rgba(4, 106, 56, 0.25);
-    border-color: #046A38 !important;
+    box-shadow: 0 4px 12px rgba(122, 12, 46, 0.25);
+    border-color: #7A0C2E !important;
 }
 
 
@@ -1049,8 +1075,52 @@
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
         <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
-    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
+    <main id="mainMenuContent" class="w-full flex-1 bg-[#faf5f7] py-4 sm:py-5">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+            <!-- ============================================================== -->
+            <!-- EXECUTIVE WINE BURGUNDY TOPBAR (IDENTIK DENGAN THEME GAMBAR)    -->
+            <!-- Bilah Header Maroon/Burgundy #7A0C2E + White Pill Brand Logo   -->
+            <!-- ============================================================== -->
+            <header class="w-full bg-gradient-to-r from-[#4c0519] via-[#7A0C2E] to-[#4c0519] text-white py-3 px-4 sm:px-6 rounded-2xl shadow-lg border border-[#be185d]/30 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden mb-5">
+                <!-- Subtle organic rose aura like reference image -->
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-rose-500/15 pointer-events-none blur-xl"></div>
+                <div class="absolute left-1/3 -top-10 w-36 h-36 rounded-full bg-pink-400/10 pointer-events-none blur-lg"></div>
+
+                <!-- Left Nav Links (Persis Style Navbar di Gambar) -->
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 text-xs font-bold relative z-10">
+                    <button type="button" onclick="switchNavMenu('dashboard')" class="px-3.5 py-1.5 rounded-xl bg-white/15 text-white border-b-2 border-white hover:bg-white/20 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🏠</span> <span>Beranda</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('portal')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🏛️</span> <span>Profil Desa</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('podes')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📋</span> <span>Data PODES</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('monitoring')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📊</span> <span>Monitoring</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('publikasi')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📑</span> <span>Publikasi</span>
+                    </button>
+                    <button type="button" onclick="openPstModal()" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🎧</span> <span>Layanan PST</span>
+                    </button>
+                </div>
+
+                <!-- Right Brand Pill (Identik Pill Putih "Believe Therapy" di Gambar) -->
+                <div class="relative z-10 flex items-center gap-2.5">
+                    <div class="bg-white text-[#7A0C2E] px-4 py-2 rounded-2xl shadow-md border border-white/80 font-black flex items-center gap-3">
+                        <img src="/images/logo_cantik.png" alt="Desa Cantik" class="h-6 w-auto object-contain" onerror="this.style.display='none'">
+                        <div class="leading-tight text-right">
+                            <div class="text-[9px] font-black uppercase tracking-widest text-[#be185d]">DESA CANTIK BPS</div>
+                            <div class="text-xs sm:text-sm font-black text-slate-900 tracking-tight" id="topbarExecutiveDesaName">Desa Kamisi</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
@@ -11348,6 +11418,8 @@ function triggerPubDownload() {
             const brandKec = document.getElementById('topBrandDesaKec');
             if (brandKec) brandKec.textContent = '(Kec. ' + (data.kec || 'Kodeoha') + ') • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
+            const execName = document.getElementById('topbarExecutiveDesaName');
+            if (execName) execName.textContent = data.title;
             if (topBadge) topBadge.textContent = (data.title || 'Desa').toUpperCase();
 
             // 2. Hero Landscape Banner Profil Desa

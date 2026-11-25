@@ -46,7 +46,8 @@
     </script>
 
     <!-- Buku Panduan Pelatihan Excel Data (30 Lembar) -->
-    <script src="/js/panduan-excel-data.js"></script>
+    <script src="/js/desa-portal.js"></script>
+<script src="/js/panduan-excel-data.js"></script>
     <script>
         if (typeof excelBookPages === 'undefined' && (typeof window === 'undefined' || !window.excelBookPages)) {
             document.write('<script src="js/panduan-excel-data.js"><\/script>');
@@ -56,7 +57,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f1f6fa;
+            background-color: #faf5f7; color: #1c1917;
         }
         
         /* Profil Desa Modern Clean Editorial Styling */
@@ -67,30 +68,34 @@
             transition: all 0.2s ease;
         }
         .dc-profil-card:hover {
-            border-color: #a7f3d0;
+            border-color: #fbcfe8;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(122, 12, 46, 0.08);
         }
         .tilt-card-3d {
             transition: all 0.2s ease;
         }
         .tilt-card-3d:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(122, 12, 46, 0.08);
         }
 
         /* ===== DESCAN SIDEBAR THEME (Harmonized Light Style - Sinkron dengan Dashboard Desa) ===== */
         :root { 
-            --dc-green:#0f6b4a; 
-            --dc-green-dark:#0a4d36; 
-            --dc-mint:#6ee7b7; 
-            --dc-mint-bg:#ecfdf5; 
-            --dc-line:#e5e9e7; 
-            --dc-ink:#0f1f1a; 
-            --dc-muted:#6b7a74;
+            --dc-green:#7A0C2E; /* Primary Deep Wine Burgundy (Believe Therapy Theme) */
+            --dc-green-dark:#4c0519; /* Darkest Wine */
+            --dc-mint:#f472b6; /* Accent Rose */
+            --dc-mint-bg:#fdf2f8; /* Soft Blush Rose Background */
+            --dc-line:#f1e3ea; /* Soft Rose-tinted border line */
+            --dc-ink:#1c1917; /* Deep Slate / Charcoal */
+            --dc-muted:#785c69; /* Muted Berry Slate */
+            --dc-wine:#7A0C2E;
+            --dc-wine-dark:#4c0519;
+            --dc-wine-light:#9d174d;
+            --dc-rose-bg:#fdf2f8;
             --dc-sidebar-w: 265px; 
         }
-        body { background-color:#f4f7f5; }
+        body { background-color:#faf5f7; color:#1c1917; }
         body.dc-shell { transition: padding-left .25s ease; }
         
         #dcSidebar { 
@@ -106,7 +111,7 @@
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 4px 0 24px rgba(15, 31, 26, 0.05);
+            box-shadow: 4px 0 24px rgba(76, 5, 25, 0.05);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
         @media (min-width: 1024px) {
@@ -129,14 +134,14 @@
             bottom: 0; 
             left: 0; 
             width: var(--dc-sidebar-w); 
-            background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 60%, #f2f7f4 100%); 
-            border-right: 1px solid rgba(15, 107, 74, 0.12); 
+            background: linear-gradient(180deg, #ffffff 0%, #fdf9fb 60%, #faf3f6 100%); 
+            border-right: 1px solid rgba(122, 12, 46, 0.12); 
             border-top-right-radius: 24px;
             border-bottom-right-radius: 24px;
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 4px 0 28px -4px rgba(15, 31, 26, 0.06), 1px 0 3px rgba(15, 31, 26, 0.02);
+            box-shadow: 4px 0 28px -4px rgba(76, 5, 25, 0.06), 1px 0 3px rgba(76, 5, 25, 0.02);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
 
@@ -152,8 +157,7 @@
             font-weight: 800; 
             letter-spacing: 0.1em; 
             text-transform: uppercase; 
-            color: #0f6b4a; 
-            padding: 0 0.65rem !important; 
+            color: #7A0C2E; padding: 0 0.65rem !important; 
             margin-top: 0.65rem !important; /* Dirapatkan dari 1.5rem (24px) ke ~10px */
             margin-bottom: 0.18rem !important; 
         }
@@ -165,8 +169,7 @@
             width: 10px; 
             height: 2px; 
             border-radius: 99px; 
-            background: #10b981; 
-            flex-shrink: 0; 
+            background: #9d174d; flex-shrink: 0; 
         }
 
         /* Nav Tab & Action Items: Padding vertikal kompak py-1.5 px-2.5 & margin rapat */
@@ -201,10 +204,10 @@
             align-items: center !important; 
             justify-content: center !important; 
             flex-shrink: 0 !important; 
-            background: #ecfdf5 !important; 
-            border: 1px solid #d1fae5 !important; 
+            background: #fdf2f8 !important; 
+            border: 1px solid #fce7f3 !important; 
             box-shadow: none !important; 
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             transition: all .16s ease-in-out !important; 
         }
         .dc-ico i, .dc-ico svg { 
@@ -222,15 +225,15 @@
         /* Hover State */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
             background: #f1f5f9 !important; /* Soft neutral / slate hover */
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             border-color: transparent !important;
             box-shadow: none !important;
             transform: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: #e2f7ed !important; 
-            border-color: #a7f3d0 !important;
-            color: #065f46 !important; 
+            background: #fce7f3 !important; 
+            border-color: #fbcfe8 !important;
+            color: #7A0C2E !important; 
             box-shadow: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
@@ -239,24 +242,24 @@
 
         /* Active State: Kotak Ikon Hijau Solid & Full-Row Soft Green Background */
         .nav-tab.active { 
-            background: #ecfdf5 !important; /* Hijau sangat lembut (emerald-50) */
-            color: #065f46 !important; /* Teks hijau tua semi-bold */
+            background: #fdf2f8 !important; /* Hijau sangat lembut (emerald-50) */
+            color: #7A0C2E !important; /* Teks hijau tua semi-bold */
             font-weight: 600 !important; 
-            border: 1px solid #d1fae5 !important; 
+            border: 1px solid #fce7f3 !important; 
             box-shadow: none !important; 
             transform: none !important;
         }
         .nav-tab.active .dc-ico { 
-            background: #0f6b4a !important; /* Hijau solid hanya untuk menu aktif */
+            background: #7A0C2E !important; /* Hijau solid hanya untuk menu aktif */
             color: #ffffff !important; /* Ikon putih */
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            border: 1px solid #7A0C2E !important;
+            box-shadow: 0 2px 6px rgba(122, 12, 46, 0.22) !important;
         }
         .nav-tab.active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.active .dc-caret {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
         .nav-tab.active::after {
             display: none !important;
@@ -265,22 +268,22 @@
         /* Active Parent State (Saat Submenu Dipilih) */
         .nav-tab.has-active { 
             background: #f0fdf4 !important; 
-            color: #065f46 !important; 
+            color: #7A0C2E !important; 
             font-weight: 600 !important;
             border: 1px solid #dcfce7 !important; 
             box-shadow: none !important;
         }
         .nav-tab.has-active .dc-ico { 
-            background: #0f6b4a !important; 
+            background: #7A0C2E !important; 
             color: #ffffff !important; 
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            border: 1px solid #7A0C2E !important;
+            box-shadow: 0 2px 6px rgba(122, 12, 46, 0.22) !important;
         }
         .nav-tab.has-active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.has-active .dc-caret {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
 
         /* Caret for collapsible menu */
@@ -293,13 +296,13 @@
             align-items: center;
             justify-content: center;
         }
-        .dc-caret.open { transform: rotate(180deg); color: #0f6b4a; }
+        .dc-caret.open { transform: rotate(180deg); color: #7A0C2E; }
 
         /* Submenu Items (Indented with Connecting Line) */
         .dc-sub { 
             margin: .25rem 0 .4rem 1.25rem !important; 
             padding-left: .75rem !important; 
-            border-left: 1.5px solid #d1fae5 !important; 
+            border-left: 1.5px solid #fbcfe8 !important; 
         }
         .dc-sub-item { 
             display: flex !important; 
@@ -323,34 +326,58 @@
         }
         .dc-sub-item:hover { 
             background: #f1f5f9 !important; 
-            color: #0f6b4a !important; 
+            color: #7A0C2E !important; 
             transform: translateX(3px) !important;
         }
         .dc-sub-item:hover i {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
             transform: scale(1.15) !important;
         }
         .dc-sub-item.active { 
-            background: #ecfdf5 !important; 
-            color: #065f46 !important; 
+            background: #fdf2f8 !important; 
+            color: #7A0C2E !important; 
             font-weight: 600 !important; 
-            border-color: #d1fae5 !important;
+            border-color: #fbcfe8 !important;
         }
         .dc-sub-item.active i {
-            color: #0f6b4a !important;
+            color: #7A0C2E !important;
         }
         /* Custom Modern Scrollbar for Sidebar Links */
         #topNavMenuLinks::-webkit-scrollbar { width: 4px; }
         #topNavMenuLinks::-webkit-scrollbar-track { background: transparent; }
         #topNavMenuLinks::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
-        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: #0f6b4a; }
+        #topNavMenuLinks::-webkit-scrollbar-thumb:hover { background: #7A0C2E; }
         .dc-topbar { background:#fff; border-bottom:1px solid var(--dc-line); position:sticky; top:0; z-index:40; }
         .dc-pill { display:inline-flex; align-items:center; gap:.4rem; background:var(--dc-mint-bg); color:var(--dc-green); border:1px solid #b7e8d0; border-radius:999px; padding:.3rem .8rem; font-size:12px; font-weight:600; }
-        .dc-hero { background:linear-gradient(135deg,#0a4d36 0%,#0f6b4a 55%,#0c5a3f 100%); color:#fff; border-radius:1rem; padding:2rem; position:relative; overflow:hidden; }
-        .dc-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:rgba(110,231,183,.08); }
+        .dc-hero { 
+            background: linear-gradient(135deg, #4c0519 0%, #7A0C2E 55%, #881337 100%); 
+            color: #fff; 
+            border-radius: 1.25rem; 
+            padding: 2.25rem; 
+            position: relative; 
+            overflow: hidden; 
+            border: 1px solid rgba(251, 207, 232, 0.25);
+            box-shadow: 0 15px 35px -5px rgba(122, 12, 46, 0.25);
+        }
+        .dc-hero::after { content:""; position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(244,114,182,0.2) 0%, rgba(190,24,93,0.08) 60%, transparent 100%); }
         .dc-chip { display:inline-flex; align-items:center; gap:.4rem; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius:999px; padding:.25rem .7rem; }
         .dc-status-card { background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); border-radius:.9rem; padding:1.1rem 1.25rem; position:relative; z-index:1; }
-        .dc-btn-mint { background:#6ee7b7; color:#053b28; font-weight:700; border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; border:0; }
+        .dc-btn-mint { 
+            background: #ffffff; 
+            color: #7A0C2E; 
+            font-weight: 800; 
+            border-radius: .75rem; 
+            padding: .6rem 1.15rem; 
+            font-size: 13px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: .5rem; 
+            cursor: pointer; 
+            border: 1px solid #fbcfe8;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all .2s;
+        }
+        .dc-btn-mint:hover { background: #fdf2f8; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
         .dc-btn-mint:hover { background:#86efc5; }
         .dc-btn-ghost { background:rgba(255,255,255,.12); color:#fff; font-weight:600; border:1px solid rgba(255,255,255,.2); border-radius:.75rem; padding:.6rem 1rem; font-size:13px; display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; }
         .dc-btn-ghost:hover { background:rgba(255,255,255,.2); }
@@ -376,7 +403,7 @@
         .dc-agenda.biru { border-left-color:#3b82f6; } .dc-agenda.amber { border-left-color:#f59e0b; }
         .dc-agenda .jenis { font-size:10px; font-weight:700; letter-spacing:.05em; color:var(--dc-muted); display:flex; justify-content:space-between; }
         .dc-agenda b { font-size:12.5px; display:block; margin:.15rem 0; } .dc-agenda small { font-size:11px; color:var(--dc-muted); }
-        .dc-help { background:linear-gradient(135deg,#0a4d36,#0f6b4a); color:#fff; border-radius:1rem; padding:1.1rem 1.25rem; }
+        .dc-help { background:linear-gradient(135deg,#4c0519,#7A0C2E); color:#fff; border-radius:1rem; padding:1.1rem 1.25rem; }
         .dc-avatar { width:34px; height:34px; border-radius:50%; background:#dff3e8; color:var(--dc-green-dark); font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .m-nav-tab.active {
             background: linear-gradient(135deg, #0284c7 0%, #005ea6 100%) !important;
@@ -502,7 +529,7 @@
         .dc-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.08);
-            border-color: #a7f3d0;
+            border-color: #fbcfe8;
         }
 
         /* Quick Action Micro-Motion */
@@ -684,7 +711,133 @@
             transform: scale(1.08) rotate(5deg);
         }
 
-    </style>
+    
+/* Styling Tombol Publikasi Banner (Gambar 3) */
+.btn-pub-pill {
+    width: 100%;
+    text-align: left;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.875rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.025em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+.btn-pub-pill:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(52, 211, 153, 0.5);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+.btn-pub-pill.active {
+    background: #7A0C2E !important;
+    border-color: #34d399 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(4, 106, 56, 0.4);
+}
+.pub-pill-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #34d399;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+.btn-pub-pill:hover .pub-pill-dot {
+    transform: scale(1.3);
+}
+
+/* Styling Menu Kategori Sidebar Grafik (Gambar 1) */
+.chart-cat-item {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chart-cat-item:hover {
+    color: #7A0C2E;
+    background-color: #fdf2f8;
+    border-color: #fbcfe8;
+}
+.chart-cat-item.active {
+    background: #7A0C2E !important;
+    color: #ffffff !important;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(122, 12, 46, 0.25);
+    border-color: #7A0C2E !important;
+}
+
+
+/* ============================================================== */
+/* 3D REALISTIC BOOK SHOWCASE ENGINE (PERSISTENT & ULTRA-SMOOTH)  */
+/* ============================================================== */
+.book-3d-scene {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+}
+.book-3d-wrap {
+    transform-style: preserve-3d;
+    transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.book-3d-wrap.floating-anim {
+    animation: bookFloat3D 4.5s ease-in-out infinite;
+}
+@keyframes bookFloat3D {
+    0%, 100% {
+        transform: rotateY(-22deg) rotateX(7deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(-17deg) rotateX(11deg) translateY(-8px);
+    }
+}
+.book-spine-3d {
+    transform: rotateY(-90deg) translateZ(0px);
+    transform-origin: left center;
+}
+.book-pages-right {
+    transform: rotateY(90deg) translateZ(168px);
+    transform-origin: right center;
+    background: repeating-linear-gradient(to right, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-pages-top {
+    transform: rotateX(90deg) translateZ(0px);
+    transform-origin: top center;
+    background: repeating-linear-gradient(to bottom, #fdfcf9 0px, #f6f3ea 2px, #dfd8c8 3px, #f6f3ea 4px);
+}
+.book-cover-front {
+    transform: translateZ(14px);
+    box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.35), inset -2px 0 6px rgba(255, 255, 255, 0.25);
+}
+.book-cast-shadow {
+    transform: rotateX(85deg) translateZ(-130px) translateY(18px) scale(0.92);
+    filter: blur(14px);
+    opacity: 0.55;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.book-glare-overlay {
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.12) 80%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+</style>
     <!-- Local Leaflet CSS & JS for Thematic Spasial Map -->
     <link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
     <script src="/vendor/leaflet/leaflet.js"></script>
@@ -809,70 +962,7 @@
         <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
     </button>
 
-    <!-- ===== TOPBAR HEADER DESA (BERSIH & TERTATA) ===== -->
-    <header class="dc-topbar px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-2xs">
-        <!-- Sisi Kiri: Tombol Toggle Mobile & Tombol Beranda (Bersih Tanpa Gambar) -->
-        <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-
-
-            <!-- Identitas Portal Desa & Kartu Akun Desa Aktif di Header (Menggantikan Tulisan Desa Cantik) -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <span class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight hidden lg:inline">Portal Satu Data</span>
-                <span class="text-slate-300 hidden lg:inline">•</span>
-                
-                <!-- Identitas Wilayah Desa Aktif (Hanya Teks & Icon Bootstrap Tanpa Kata AKUN) -->
-                <div class="min-w-0 leading-tight py-0.5">
-                    <div class="flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-slate-900 uppercase tracking-tight truncate">
-                        <i class="bi bi-buildings-fill text-emerald-700 text-xs shrink-0"></i>
-                        <span id="topBrandDesaTitle" class="truncate">DESA LAPOLU</span>
-                    </div>
-                    <div id="topBrandDesaKec" class="text-[9px] sm:text-[10px] font-semibold text-slate-500 truncate">(Kec. Tiwu) • Terbina BPS</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sisi Kanan: Status SDI & Profil Ringkas Operator (Menu Teks Bersih Tanpa Kotak Hijau) -->
-        <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-            <!-- Menu Output Desa di Header (Hanya Menu Teks) -->
-            <button type="button" onclick="switchNavMenu('output')" id="header-nav-output" 
-                class="text-xs sm:text-[13px] font-bold text-slate-600 hover:text-slate-900 transition px-2 py-1 cursor-pointer" 
-                title="Buka Dokumen Output Desa">
-                <span>Output Desa</span>
-            </button>
-
-            <!-- Menu Galeri di Header -->
-            <button type="button" onclick="openGaleriDesaModal()" id="header-nav-galeri" 
-                class="flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 hover:text-[#0f6b4a] hover:bg-emerald-50 transition px-2.5 py-1.5 rounded-xl cursor-pointer" 
-                title="Buka Halaman Galeri Foto Desa">
-                <i class="bi bi-images text-emerald-600 text-xs"></i>
-                <span>Galeri</span>
-            </button>
-
-            <!-- Status Satu Data Indonesia (Hanya Teks Bersih) -->
-            <div class="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-slate-600 px-2 py-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Satu Data Indonesia</span>
-            </div>
-
-            <!-- Language Switcher Pill -->
-            <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
-                <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
-                <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
-            </div>
-
-            <!-- Profil Ringkas Operator Desa -->
-            <div class="flex items-center gap-2 pl-1 sm:pl-2 sm:border-l sm:border-slate-200">
-                <div class="hidden md:block text-right leading-tight">
-                    <div class="text-xs font-bold text-slate-800">Operator Desa</div>
-                    <div class="text-[10px] text-slate-500 font-medium">Admin Data Presisi</div>
-                </div>
-                <div class="w-8 h-8 rounded-full bg-[#083b2a] text-white font-bold text-xs flex items-center justify-center ring-2 ring-emerald-500/20 shadow-xs">
-                    AD
-                </div>
-            </div>
-
-        </div>
-    </header>
+    
     <!-- ============================================================== -->
     <!-- DEDICATED LOGIN GATE PER DESA                                  -->
     <!-- Setiap desa memiliki akun login terpisah (email & sandi unik)  -->
@@ -985,21 +1075,65 @@
 
     <!-- MAIN CONTAINER (Revealed ONLY after authentication for this village) -->
         <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
-    <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
+    <main id="mainMenuContent" class="w-full flex-1 bg-[#faf5f7] py-4 sm:py-5">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+            <!-- ============================================================== -->
+            <!-- EXECUTIVE WINE BURGUNDY TOPBAR (IDENTIK DENGAN THEME GAMBAR)    -->
+            <!-- Bilah Header Maroon/Burgundy #7A0C2E + White Pill Brand Logo   -->
+            <!-- ============================================================== -->
+            <header class="w-full bg-gradient-to-r from-[#4c0519] via-[#7A0C2E] to-[#4c0519] text-white py-3 px-4 sm:px-6 rounded-2xl shadow-lg border border-[#be185d]/30 flex flex-col md:flex-row items-center justify-between gap-4 relative overflow-hidden mb-5">
+                <!-- Subtle organic rose aura like reference image -->
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-rose-500/15 pointer-events-none blur-xl"></div>
+                <div class="absolute left-1/3 -top-10 w-36 h-36 rounded-full bg-pink-400/10 pointer-events-none blur-lg"></div>
+
+                <!-- Left Nav Links (Persis Style Navbar di Gambar) -->
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 text-xs font-bold relative z-10">
+                    <button type="button" onclick="switchNavMenu('dashboard')" class="px-3.5 py-1.5 rounded-xl bg-white/15 text-white border-b-2 border-white hover:bg-white/20 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🏠</span> <span>Beranda</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('portal')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🏛️</span> <span>Profil Desa</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('podes')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📋</span> <span>Data PODES</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('monitoring')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📊</span> <span>Monitoring</span>
+                    </button>
+                    <button type="button" onclick="switchNavMenu('publikasi')" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>📑</span> <span>Publikasi</span>
+                    </button>
+                    <button type="button" onclick="openPstModal()" class="px-3.5 py-1.5 rounded-xl text-rose-100 hover:text-white hover:bg-white/10 transition flex items-center gap-1.5 cursor-pointer">
+                        <span>🎧</span> <span>Layanan PST</span>
+                    </button>
+                </div>
+
+                <!-- Right Brand Pill (Identik Pill Putih "Believe Therapy" di Gambar) -->
+                <div class="relative z-10 flex items-center gap-2.5">
+                    <div class="bg-white text-[#7A0C2E] px-4 py-2 rounded-2xl shadow-md border border-white/80 font-black flex items-center gap-3">
+                        <img src="/images/logo_cantik.png" alt="Desa Cantik" class="h-6 w-auto object-contain" onerror="this.style.display='none'">
+                        <div class="leading-tight text-right">
+                            <div class="text-[9px] font-black uppercase tracking-widest text-[#be185d]">DESA CANTIK BPS</div>
+                            <div class="text-xs sm:text-sm font-black text-slate-900 tracking-tight" id="topbarExecutiveDesaName">Desa Kamisi</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
 
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
                 <!-- ===================================================================== -->
-                <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
+                <!-- ===================================================================== -->
+            <!-- 0. WEBSITE RESMI DESA TERINTEGRASI (TATA LETAK 2 KOLOM DINAMIS)       -->
+            <!-- ===================================================================== -->
+            <div id="view-portal-desa" class="menu-view-container space-y-6">
+                <!-- HEADER 3 TINGKAT KHUSUS MENU PORTAL / PROFIL DESA -->
+                <div id="desaTopHeaderWrapper" class="w-full"></div>
+            </div>
 
-                    <!-- ============================================================== -->
-                    <!-- 1. HERO SHOWCASE: DESA CANTIK + 3D FLOATING BULAT-BULAT CARDS   -->
-                    <!-- ============================================================== -->
-                    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-emerald-900/20 bg-gradient-to-br from-[#022c22] via-[#064e3b] to-[#043427] text-white p-6 sm:p-8 lg:p-10">
-                        <!-- Background Glow Decoration -->
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.25),transparent_60%)] pointer-events-none"></div>
-                        <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+            <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
 
                     <!-- HERO WITH LIVING AURA & MOTION -->
                     <div class="dc-hero shadow-lg">
@@ -1245,7 +1379,235 @@
                         </div>
                     </div>
 
+                    
                     <!-- ============================================================== -->
+                    <!-- 3. DATA PUBLIKASI & SISTEM GRAFIK INTERAKTIF DESA (GAMBAR 1 & 3) -->
+                    <!-- ============================================================== -->
+                    <div id="sectionDataGrafikDesa" class="space-y-6 pt-2">
+                        
+                        <!-- BANNER DATA PUBLIKASI DESA & STATISTIK PENDUDUK (GAMBAR 3) -->
+                        <div class="bg-gradient-to-r from-slate-900 via-[#043427] to-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-xl border border-emerald-500/30 relative overflow-hidden">
+                            <!-- Background Motif & Glow Decoration -->
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                            
+                            <!-- Header Bar: Logo Bulat 4 Warna (Kiri), Judul (Tengah), Icon Grafik (Kanan) -->
+                            <div class="flex items-center justify-between pb-4 border-b border-white/10 relative z-10">
+                                <!-- Logo Bulat 4 Warna Khas Gambar 3 -->
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-white shadow-md flex items-center justify-center shrink-0">
+                                        <div class="w-full h-full rounded-full grid grid-cols-2 grid-rows-2 overflow-hidden">
+                                            <div class="bg-amber-400 flex items-center justify-center text-[9px] text-slate-900 font-black"><i class="bi bi-lightbulb-fill"></i></div>
+                                            <div class="bg-fuchsia-600 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-bullseye"></i></div>
+                                            <div class="bg-rose-500 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-file-earmark-text-fill"></i></div>
+                                            <div class="bg-sky-500 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-graph-up"></i></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-black uppercase text-emerald-300 tracking-wider">PORTAL SATU DATA BPS KOLAKA UTARA</span>
+                                        <h3 class="text-base sm:text-xl font-black uppercase tracking-wider text-white">DATA PUBLIKASI &amp; STATISTIK PENDUDUK</h3>
+                                    </div>
+                                </div>
+
+                                <!-- Village Badge & Icon Dashboard Kanan (Gambar 3) -->
+                                <div class="hidden sm:flex items-center gap-2">
+                                    <span id="bannerActiveDesaPill" class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">
+                                        DESA BINAAN AKTIF
+                                    </span>
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 text-slate-950 flex items-center justify-center text-lg shadow-lg">
+                                        <i class="bi bi-bar-chart-steps"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 8 Pill Buttons (Persis Gambar 3) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 pt-4 relative z-10">
+                                <button type="button" onclick="selectDesaChartCategory('dusun')" id="btnPill-dusun" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT DUSUN</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('umur-rentang')" id="btnPill-umur-rentang" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT UMUR (RENTANG)</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('pendidikan')" id="btnPill-pendidikan" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT PENDIDIKAN (KK)</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('umur-kategori')" id="btnPill-umur-kategori" class="btn-pub-pill active group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT UMUR (KATEGORI)</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('pekerjaan')" id="btnPill-pekerjaan" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT PEKERJAAN</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('status-perkawinan')" id="btnPill-status-perkawinan" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT STATUS PERKAWINAN</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('agama')" id="btnPill-agama" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT AGAMA</span>
+                                </button>
+                                <button type="button" onclick="selectDesaChartCategory('jenis-kelamin')" id="btnPill-jenis-kelamin" class="btn-pub-pill group">
+                                    <span class="pub-pill-dot"></span>
+                                    <span class="truncate">JUMLAH PENDUDUK MENURUT JENIS KELAMIN</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CARD UTAMA STATISTIK: SIDEBAR KATEGORI (KIRI) + KANVAS GRAFIK (KANAN) (GAMBAR 1) -->
+                        <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xl space-y-6">
+                            
+                            <!-- 2-Column Grid -->
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                                
+                                <!-- KOLOM KIRI: MENU KATEGORI STATISTIK (PERSIS GAMBAR 1) -->
+                                <div class="lg:col-span-4 xl:col-span-3 space-y-3 border-b lg:border-b-0 lg:border-r border-slate-200 pb-5 lg:pb-0 lg:pr-5">
+                                    
+                                    <!-- Group 1: Statistik Penduduk -->
+                                    <div class="space-y-1">
+                                        <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                            <span class="flex items-center gap-1.5 text-emerald-800">
+                                                <i class="bi bi-people-fill text-sm"></i>
+                                                <span>Statistik Penduduk</span>
+                                            </span>
+                                            <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                        </div>
+                                        <div class="space-y-1 pl-1">
+                                            <button type="button" onclick="selectDesaChartCategory('umur-rentang')" id="catBtn-umur-rentang" class="chart-cat-item">
+                                                <span>Umur (Rentang)</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('umur-kategori')" id="catBtn-umur-kategori" class="chart-cat-item active">
+                                                <span>Umur (Kategori)</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('pendidikan')" id="catBtn-pendidikan" class="chart-cat-item">
+                                                <span>Pendidikan Dalam KK</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('pekerjaan')" id="catBtn-pekerjaan" class="chart-cat-item">
+                                                <span>Pekerjaan</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('status-perkawinan')" id="catBtn-status-perkawinan" class="chart-cat-item">
+                                                <span>Status Perkawinan</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('agama')" id="catBtn-agama" class="chart-cat-item">
+                                                <span>Agama</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('jenis-kelamin')" id="catBtn-jenis-kelamin" class="chart-cat-item">
+                                                <span>Jenis Kelamin</span>
+                                            </button>
+                                            <button type="button" onclick="selectDesaChartCategory('golongan-darah')" id="catBtn-golongan-darah" class="chart-cat-item">
+                                                <span>Golongan Darah</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Group 2: Statistik Keluarga & Wilayah -->
+                                    <div class="space-y-1 pt-2 border-t border-slate-100">
+                                        <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                            <span class="flex items-center gap-1.5 text-slate-700">
+                                                <i class="bi bi-house-door-fill text-sm text-teal-700"></i>
+                                                <span>Statistik Keluarga &amp; Wilayah</span>
+                                            </span>
+                                            <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                        </div>
+                                        <div class="space-y-1 pl-1">
+                                            <button type="button" onclick="selectDesaChartCategory('dusun')" id="catBtn-dusun" class="chart-cat-item">
+                                                <span>Sebaran Dusun / Wilayah</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Group 3: Statistik Bantuan Sosial -->
+                                    <div class="space-y-1 pt-2 border-t border-slate-100">
+                                        <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                            <span class="flex items-center gap-1.5 text-slate-700">
+                                                <i class="bi bi-gift-fill text-sm text-amber-600"></i>
+                                                <span>Statistik Bantuan Sosial</span>
+                                            </span>
+                                            <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                        </div>
+                                        <div class="space-y-1 pl-1">
+                                            <button type="button" onclick="selectDesaChartCategory('bantuan-sosial')" id="catBtn-bantuan-sosial" class="chart-cat-item">
+                                                <span>Penerima Bantuan Pemerintah</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Group 4: Sektor Basis & Komoditas -->
+                                    <div class="space-y-1 pt-2 border-t border-slate-100">
+                                        <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                            <span class="flex items-center gap-1.5 text-slate-700">
+                                                <i class="bi bi-tree-fill text-sm text-emerald-600"></i>
+                                                <span>Sektor Basis &amp; Komoditas</span>
+                                            </span>
+                                            <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                        </div>
+                                        <div class="space-y-1 pl-1">
+                                            <button type="button" onclick="selectDesaChartCategory('komoditas')" id="catBtn-komoditas" class="chart-cat-item">
+                                                <span>Komoditas Unggulan &amp; IKM</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- KOLOM KANAN: AREA GRAFIK DENGAN 2 TOMBOL BAR GRAPH & PIE GRAPH (PERSIS GAMBAR 1) -->
+                                <div class="lg:col-span-8 xl:col-span-9 space-y-4">
+                                    
+                                    <!-- Header Grafik: Judul Kategori & 2 Tombol Switch (Bar Graph / Pie Graph) -->
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                        <div>
+                                            <h3 id="desaChartMainTitle" class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
+                                                Demografi Berdasar Umur (Kategori)
+                                            </h3>
+                                            <p id="desaChartSubTitle" class="text-xs sm:text-sm font-semibold text-slate-500 mt-0.5">
+                                                Grafik Umur (Kategori) — <span id="desaChartActiveVillageName" class="text-emerald-800 font-extrabold">Desa Lapolu</span> (<span id="desaChartTotalJiwaBadge">1.284</span> Jiwa / <span id="desaChartTotalKkBadge">321</span> KK)
+                                            </p>
+                                        </div>
+
+                                        <!-- 2 TOMBOL GRAPH: BAR GRAPH & PIE GRAPH (PERSIS GAMBAR 1) -->
+                                        <div class="inline-flex items-center gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200 self-start sm:self-auto shrink-0 shadow-inner">
+                                            <button type="button" id="btnToggleBarGraph" onclick="switchDesaChartType('bar')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer">
+                                                <i class="bi bi-bar-chart-fill"></i>
+                                                <span>Bar Graph</span>
+                                            </button>
+                                            <button type="button" id="btnTogglePieGraph" onclick="switchDesaChartType('pie')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer">
+                                                <i class="bi bi-pie-chart-fill"></i>
+                                                <span>Pie Graph</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Garis Pemisah Putus-Putus (Persis Gambar 1) -->
+                                    <div class="border-b border-dashed border-slate-200"></div>
+
+                                    <!-- Kanvas Chart.js Responsif HD -->
+                                    <div class="relative w-full h-[340px] sm:h-[400px] bg-slate-50/50 rounded-2xl p-2 sm:p-4 border border-slate-100">
+                                        <canvas id="desaGraphicCanvas"></canvas>
+                                    </div>
+
+                                    <!-- Rincian Statistik / Legend Cards di Bawah Grafik -->
+                                    <div class="space-y-2 pt-2">
+                                        <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+                                            <span>Rincian Sebaran Data Terverifikasi:</span>
+                                            <span class="text-emerald-700 font-bold"><i class="bi bi-patch-check-fill text-xs mr-1"></i>Regsosek &amp; PODES 2026</span>
+                                        </div>
+                                        <div id="desaChartSummaryChips" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+                                            <!-- Diisi secara dinamis oleh renderDesaInteractiveChart() -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+<!-- ============================================================== -->
                     <!-- 3. JOURNEY PATHWAY: 4 BULAT-BULAT 3D SPHERES (GAMBAR 2)        -->
                     <!-- ============================================================== -->
                     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-6">
@@ -1369,7 +1731,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleMonografi" class="text-lg font-black text-slate-900 leading-snug">
-                                    Monografi Desa Kamisi
+                                    Monografi Desa
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Buku komprehensif monografi statistik sektoral desa mencakup batas geografis, dinamika demografi, profil pertanian kakao, perikanan, serta infrastruktur dan kesejahteraan sosial.
@@ -1404,7 +1766,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleTabel" class="text-lg font-black text-slate-900 leading-snug">
-                                    Tabel Statistik Sektoral Desa Kamisi
+                                    Publikasi Tematik
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Kompilasi tabulasi data sektoral per dusun dengan kode referensi baku, mencakup demografi umur produktif, keluarga desil bansos, produksi komoditas, dan sarana ibadah/kesehatan.
@@ -1439,7 +1801,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleStatistik" class="text-lg font-black text-slate-900 leading-snug">
-                                    Publikasi Statistik &amp; Indikator Makro Desa Kamisi
+                                    Leaflet
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Publikasi ringkas analisis perkembangan indikator makro pembangunan desa, rasio kemiskinan, penurunan stunting balita, dinamika ketenagakerjaan, dan evaluasi indeks desa.
@@ -1474,7 +1836,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleLeaflet" class="text-lg font-black text-slate-900 leading-snug">
-                                    Leaflet Infografis Tematik Desa Kamisi
+                                    Infografis
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Brosur infografis visual lipat tiga (Tri-Fold) format cetak resolusi tinggi untuk sosialisasi profil desa, potensi sentra kakao, layanan adminduk, dan pilar Desa Cantik ke masyarakat.
@@ -1492,7 +1854,7 @@
                                 </button>
                                 <button type="button" onclick="downloadOutputDoc('leaflet')" class="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
                                     <i class="bi bi-download"></i>
-                                    <span>Unduh Leaflet</span>
+                                    <span>Download Dokumen</span>
                                 </button>
                             </div>
                         </div>
@@ -2105,49 +2467,127 @@
                                 </div>
                             </div>
 
-                            <!-- Kartu 2: Monografi Desa Terpilih -->
-                            <div class="rounded-2xl border border-emerald-500/30 bg-gradient-to-b from-emerald-50/40 via-white to-white p-5 flex flex-col justify-between hover:shadow-md transition-all group">
-                                <div>
-                                    <div class="flex items-center justify-between gap-2 mb-3">
-                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-600 text-white tracking-wide uppercase">Publikasi Utama</span>
-                                        <span class="text-[11px] font-bold text-slate-400">Q1 2026</span>
-                                    </div>
-                                    <!-- Book Mockup Preview -->
-                                    <div class="w-full aspect-[4/3] rounded-xl bg-gradient-to-br from-emerald-800 to-teal-950 p-4 text-white flex flex-col justify-between shadow-xs mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
-                                        <div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
-                                            <i class="bi bi-journal-text text-8xl"></i>
-                                        </div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex items-center gap-1.5">
-                                                <span class="text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-500/40 border border-emerald-400/30">BPS SDI</span>
-                                            </div>
-                                            <i class="bi bi-shield-check text-emerald-300 text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <div class="text-[11px] font-medium text-emerald-200">MONOGRAFI RESMI</div>
-                                            <div id="pubBookVillageTitle" class="text-lg font-black leading-tight text-white mt-0.5">Desa Kamisi 2026</div>
-                                            <div class="text-[10px] text-emerald-100/80 mt-1">Kabupaten Kolaka Utara &bull; Sulawesi Tenggara</div>
-                                        </div>
-                                    </div>
-                                    <h4 id="pubCard1Title" class="font-extrabold text-slate-800 text-sm leading-snug">Monografi Statistik Sektoral Desa Kamisi 2026</h4>
-                                    <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">Kompilasi resmi hasil pendataan sensus PODES BPS memuat data demografi lengkap 3 dusun, potensi kakao, perikanan bahari, dan sanitasi keluarga.</p>
+                            <!-- Kartu 2: Pratinjau Publikasi Resmi (3D Interactive Moving Book) -->
+                            <div id="cardPratinjauPublikasi3D" class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group relative overflow-visible">
+                                
+                                <!-- Header Kartu (Persis Gambar Referensi) -->
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-2">
+                                    <h4 class="text-sm font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                                        <span>Pratinjau Publikasi Resmi</span>
+                                    </h4>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 flex items-center gap-1 shadow-2xs">
+                                        <i class="bi bi-badge-3d-fill text-xs"></i>
+                                        <span>3D Interaktif</span>
+                                    </span>
+                                </div>
+
+                                <!-- 3D Book Interactive Stage -->
+                                <div id="book3dStage" class="book-3d-scene relative w-full h-[320px] sm:h-[340px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none overflow-visible py-2">
                                     
-                                    <div class="mt-4 pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-600">
-                                        <div class="flex justify-between"><span>Nomor Registrasi:</span><span class="font-bold text-slate-800">BPS-7408-DESCAN-2026</span></div>
-                                        <div class="flex justify-between"><span>Jumlah Halaman:</span><span class="font-bold text-slate-800">58 Halaman</span></div>
-                                        <div class="flex justify-between"><span>Ukuran File:</span><span class="font-bold text-slate-800">4,8 MB (PDF High-Res)</span></div>
+                                    <!-- Pod / Ground Shadow -->
+                                    <div id="book3dShadow" class="book-cast-shadow absolute bottom-2 w-[190px] h-[45px] rounded-[100%] bg-slate-950/75 pointer-events-none"></div>
+
+                                    <!-- 3D Book Assembly -->
+                                    <div id="book3dObject" class="book-3d-wrap floating-anim relative w-[176px] h-[252px] cursor-pointer" onclick="openPublikasiDocModal('monografi')" title="Klik untuk membuka Digital Reader">
+                                        
+                                        <!-- Book Spine (Ketebalan Punggung Kiri) -->
+                                        <div class="book-spine-3d absolute left-0 top-0 w-[26px] h-full bg-gradient-to-r from-[#022c1b] via-[#04522d] to-[#033b20] rounded-l-xs flex flex-col justify-between p-2 text-white shadow-inner">
+                                            <div class="flex flex-col items-center gap-1 opacity-75">
+                                                <span class="text-[7px] font-mono font-bold">BPS</span>
+                                                <span class="text-[6px]">★</span>
+                                            </div>
+                                            <div class="text-[7.5px] font-black tracking-widest uppercase opacity-85 text-emerald-200 transform -rotate-90 text-center whitespace-nowrap origin-center my-auto">
+                                                MONOGRAFI 2026 • KOLUT
+                                            </div>
+                                            <div class="text-[7px] text-center opacity-65 font-mono">2026</div>
+                                        </div>
+
+                                        <!-- Page Thickness Right (Halaman Kertas Samping Kanan) -->
+                                        <div class="book-pages-right absolute right-0 top-[3px] w-[24px] h-[246px] rounded-r-xs shadow-inner border-y border-slate-300"></div>
+
+                                        <!-- Page Thickness Top (Halaman Kertas Atas) -->
+                                        <div class="book-pages-top absolute top-0 left-[2px] w-[172px] h-[24px] rounded-t-xs shadow-inner border-x border-slate-300"></div>
+
+                                        <!-- Front Cover (Sampul Depan Utama - Persis Gambar Referensi) -->
+                                        <div class="book-cover-front absolute inset-0 rounded-r-md rounded-l-xs bg-gradient-to-br from-[#065f46] via-[#047857] to-[#022c22] p-4 text-white flex flex-col justify-between overflow-hidden border border-emerald-400/35">
+                                            
+                                            <!-- Dynamic Specular Glare / Kilau Cahaya 3D -->
+                                            <div id="book3dGlare" class="book-glare-overlay absolute inset-0"></div>
+
+                                            <!-- Geometric Light Rays Motif (Persis Cover Asli) -->
+                                            <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="170" cy="180" r="110" fill="none" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="4,4" />
+                                                <circle cx="170" cy="180" r="80" fill="none" stroke="#a7f3d0" stroke-width="1" />
+                                                <circle cx="170" cy="180" r="50" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.6" />
+                                                <path d="M 0 252 L 176 180" stroke="#34d399" stroke-width="1" opacity="0.4" />
+                                                <path d="M 0 210 L 176 150" stroke="#34d399" stroke-width="0.8" opacity="0.3" />
+                                            </svg>
+
+                                            <!-- Top Logos: Pemkab Kolut + BPS + Desa Cantik -->
+                                            <div class="relative z-10 flex items-center justify-between gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl shadow-md border border-white/50">
+                                                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolut" class="h-4.5 w-auto object-contain">
+                                                <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                                                <img src="/images/logo_bps.png" alt="BPS" class="h-4 w-auto object-contain">
+                                                <div class="h-3.5 w-[1px] bg-slate-300"></div>
+                                                <img src="/images/logo_cantik.png" alt="Desa Cantik" class="h-4 w-auto object-contain">
+                                            </div>
+
+                                            <!-- Center Cover Typography: MONOGRAFI DESA {NAMA} DALAM ANGKA 2026 -->
+                                            <div class="relative z-10 my-auto text-center space-y-1 pt-2">
+                                                <div class="text-[9.5px] font-black uppercase tracking-[0.2em] text-emerald-200 drop-shadow-xs">
+                                                    MONOGRAFI
+                                                </div>
+                                                <div id="book3dCoverDesaName" class="text-base sm:text-lg font-black leading-tight text-white tracking-tight uppercase drop-shadow-md">
+                                                    DESA KAMISI
+                                                </div>
+                                                <div class="text-[9.5px] font-extrabold uppercase tracking-widest text-emerald-300 drop-shadow-xs">
+                                                    DALAM ANGKA
+                                                </div>
+                                                <div class="text-xl sm:text-2xl font-black text-amber-300 drop-shadow-md tracking-wider">
+                                                    2026
+                                                </div>
+                                            </div>
+
+                                            <!-- Center Watermark Logo BPS -->
+                                            <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                                                <img src="/images/logo_bps.png" alt="Watermark" class="w-28 h-28 object-contain filter invert">
+                                            </div>
+
+                                            <!-- Bottom Cover Text -->
+                                            <div class="relative z-10 text-center pt-2 border-t border-emerald-400/30">
+                                                <div class="text-[7.5px] font-black tracking-widest uppercase text-white/95 leading-tight">
+                                                    BADAN PUSAT STATISTIK
+                                                </div>
+                                                <div class="text-[7px] font-bold tracking-wider uppercase text-emerald-200 mt-0.5">
+                                                    KABUPATEN KOLAKA UTARA
+                                                </div>
+                                            </div>
+
+                                            <!-- Book Spine Crease Effect (Lipatan Punggung) -->
+                                            <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/40 via-black/10 to-transparent pointer-events-none"></div>
+                                            <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-l from-black/20 to-transparent pointer-events-none"></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Action Button & Subtitle (Persis Gambar Referensi) -->
+                                <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+                                    <button type="button" onclick="openPublikasiDocModal('monografi')" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-extrabold text-xs border border-slate-300 shadow-xs hover:shadow transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 group-hover:border-emerald-500">
+                                        <i class="bi bi-book-half text-emerald-700 text-sm"></i>
+                                        <span>Buka Digital Reader (Fullscreen)</span>
+                                    </button>
+                                    <div class="text-[10.5px] sm:text-[11px] text-slate-500 font-medium text-center flex items-center justify-center gap-1.5">
+                                        <span>Laporan PDF</span>
+                                        <span>•</span>
+                                        <span>124 Halaman</span>
+                                        <span>•</span>
+                                        <span class="text-emerald-700 font-bold">Terverifikasi BPS</span>
                                     </div>
                                 </div>
-                                <div class="mt-5 pt-3 flex items-center gap-2">
-                                    <button type="button" onclick="downloadPublicationDoc('Monografi_Desa_Kamisi_2026.pdf')" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                        <span>Unduh PDF</span>
-                                    </button>
-                                    <button type="button" onclick="openDocumentViewerModal('monografi')" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition flex items-center gap-1 cursor-pointer">
-                                        <i class="bi bi-eye-fill"></i>
-                                        <span>Baca</span>
-                                    </button>
-                                </div>
+
                             </div>
 
                             <!-- Kartu 3: Publikasi Tematik & Kompilasi Wilayah -->
@@ -5164,57 +5604,11 @@
         function filterBukuCategory(cat) { selectPedomanTabPill(cat); }
         function togglePublikasiSubMenu() { selectPedomanTabPill('publikasi'); }
         function dcShowPublikasiSub() {}
+        function switchPublikasiOutput(type) { selectPedomanTabPill('publikasi'); }
+        function filterPublikasiOutput(type) {}
         function downloadSubItem(fileName, subId) {
             downloadTemplateDoc(subId || 'profil_desa');
-        }`, 'success');
-            } else {
-                alert(`Mengunduh berkas PDF: ${fileName}`);
-            }
         }
-
-        // Sidebar Submenu Handler untuk Buku Pedoman
-        function toggleBukuMenu() {
-            const sub = document.getElementById('dcBukuSub');
-            const caret = document.getElementById('dcBukuCaret');
-            const willOpen = sub ? sub.classList.contains('hidden') : true;
-            dcShowBukuSub(willOpen);
-            if (currentNavMenu !== 'buku') {
-                switchNavMenu('buku');
-            }
-        }
-        function dcShowBukuSub(show) {
-            const sub = document.getElementById('dcBukuSub');
-            const caret = document.getElementById('dcBukuCaret');
-            if (sub) sub.classList.toggle('hidden', !show);
-            if (caret) caret.classList.toggle('open', show);
-        }
-        function switchBukuSubMenu(category) {
-            if (currentNavMenu !== 'buku') {
-                switchNavMenu('buku');
-            }
-            dcShowBukuSub(true);
-            document.querySelectorAll('#dcBukuSub .dc-sub-item').forEach(el => el.classList.remove('active'));
-            const activeItem = document.getElementById('sub-buku-' + category);
-            if (activeItem) activeItem.classList.add('active');
-
-            const map = {
-                'descan': 'destin',
-                'destin': 'destin',
-                'pembinaan': 'pembinaan',
-                'pendataan': 'pendataan',
-                'pengolahan': 'pengolahan',
-                'publikasi': 'publikasi'
-            };
-            selectPedomanTab(map[category] || category);
-        }
-        function filterBukuCategory(cat) { selectPedomanTab(cat); }
-        function togglePublikasiSubMenu() { selectPedomanTab('publikasi'); }
-        function dcShowPublikasiSub() {}
-        function switchPublikasiOutput(type) { selectPedomanTab('publikasi'); }
-        function filterPublikasiOutput(type) {}
-        function openEmbeddedBookReader(bookKey) { selectPedomanTab(bookKey); }
-        function downloadBukuPdf(key) { downloadCurrentDigitalReaderPdf(); }
-        function downloadOutputDoc(type) { downloadCurrentDigitalReaderPdf(); }
     
 
         function openEmbeddedBookReader(bookKey) {
@@ -5652,51 +6046,14 @@
                 }
             } else if (docType === 'tabel') {
                 if (iconEl) iconEl.innerHTML = '<i class="bi bi-table text-xl text-blue-200"></i>';
-                if (tagEl) tagEl.textContent = 'KOMPILASI TABEL STATISTIK SEKTORAL • BPS SDI';
-                if (titleEl) titleEl.textContent = `Tabel Statistik Sektoral ${vTitle} 2025`;
+                if (tagEl) tagEl.textContent = 'KOMPILASI TABEL STATISTIK SEKTORAL 3 PERIODE • BPS SDI';
+                if (titleEl) titleEl.textContent = `Tabel Statistik Sektoral ${vTitle} (3 Periode Excel & Grafik)`;
                 if (bodyEl) {
-                    bodyEl.innerHTML = `
-                        <div class="space-y-4">
-                            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 flex flex-wrap items-center justify-between gap-2 text-xs">
-                                <div>
-                                    <div class="text-[10px] font-black uppercase text-blue-800">Kode Wilayah Kemendagri & BPS</div>
-                                    <div class="font-bold text-slate-800 text-sm">74.08.KODEOHA.DESA</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="px-2.5 py-1 rounded-md bg-blue-600 text-white text-[10px] font-black">Format XLS / CSV</span>
-                                    <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black">32 Matriks Data</span>
-                                    <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-800 text-[10px] font-black">Standar SDI</span>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2">
-                                <h4 class="font-black text-slate-900 text-sm">Daftar Matriks Tabulasi Sektoral</h4>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Tabel 1: Demografi & Piramida Penduduk</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Distribusi umur, rasio jenis kelamin, dan kelompok usia kerja per dusun.</p>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Tabel 2: Profil Sosial & Desil P3KE</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Distribusi kepala keluarga berdasarkan desil kesejahteraan & bansos.</p>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Tabel 3: Pertanian Kakao & Kelautan</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Luas lahan panen, estimasi produksi tahunan, dan kelompok nelayan.</p>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <b>Tabel 4: Sarana Pendidikan & Kesehatan</b>
-                                        <p class="text-[11px] text-slate-500 mt-1">Ketersediaan poskesdes, posyandu, PAUD, SD, dan fasilitas ibadah.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-950 text-xs flex items-center gap-2">
-                                <span class="text-base">✓</span>
-                                <div><b>Metadata Baku SDI:</b> Setiap kolom tabel dilengkapi definisi operasional, satuan ukuran, dan metodologi baku BPS.</div>
-                            </div>
-                        </div>
-                    `;
+                    bodyEl.innerHTML = `<div id="pubSektoralStudioContainer" class="w-full"></div>`;
+                    if (typeof currentTargetVillage !== 'undefined' && currentTargetVillage) {
+                        currentSektoralState.villageFilter = currentTargetVillage;
+                    }
+                    renderSektoralStudio('pubSektoralStudioContainer');
                 }
             } else if (docType === 'statistik' || docType === 'brs') {
                 if (iconEl) iconEl.innerHTML = '<i class="bi bi-bar-chart-line-fill text-xl text-amber-200"></i>';
@@ -9137,7 +9494,7 @@ function triggerPubDownload() {
             }
 
             // DAFTAR MENU RESMI DESCAN
-            const validMenus = ['dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
+            const validMenus = ['portal', 'beranda', 'dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
@@ -9185,9 +9542,17 @@ function triggerPubDownload() {
             document.querySelectorAll('.menu-view-container').forEach(el => {
                 el.classList.add('hidden');
             });
-            const targetView = document.getElementById('view-' + menuKey);
+            let targetViewId = 'view-' + menuKey;
+            if (menuKey === 'portal') {
+                targetViewId = 'view-portal-desa';
+            }
+            const targetView = document.getElementById(targetViewId);
             if (targetView) {
                 targetView.classList.remove('hidden');
+                if (menuKey === 'portal') {
+                    if (typeof initVillageHeader === 'function') initVillageHeader(currentTargetVillage);
+                    if (typeof renderVillageMainLayout === 'function') renderVillageMainLayout(currentTargetVillage, 'beranda', 'beranda');
+                }
                 if (menuKey === 'tentang') {
                     renderProfilDesa3D(currentTargetVillage);
                     if (typeof renderDashboardCantik === 'function') {
@@ -9216,7 +9581,7 @@ function triggerPubDownload() {
 
             if (menuKey === 'buku') {
                 if (typeof selectPedomanTab === 'function') {
-                    selectPedomanTab(activePedomanKey || 'publikasi');
+                    selectPedomanTab(typeof activePedomanPillKey !== 'undefined' ? activePedomanPillKey : 'madani');
                 }
             }
             if (menuKey === 'monitoring' || menuKey === 'monev') {
@@ -9933,13 +10298,7 @@ function triggerPubDownload() {
             document.body.classList.add('overflow-hidden');
         }
 
-        function closeManageDataModal() {
-            const modal = document.getElementById('manageDataModal');
-            if (!modal) return;
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.classList.remove('overflow-hidden');
-        }
+        // duplicate closeManageDataModal removed
 
         function switchManageModalTab(tabKey) {
             document.querySelectorAll('.modal-tab-btn').forEach(b => {
@@ -10658,7 +11017,7 @@ function triggerPubDownload() {
                         cutout: '62%'
                     }
                 });
-            } else {
+            } else if (canvas.parentElement) {
                 canvas.parentElement.innerHTML = `
                 <div class="flex items-center justify-center">
                     <svg viewBox="0 0 42 42" class="w-48 h-48">
@@ -11059,6 +11418,8 @@ function triggerPubDownload() {
             const brandKec = document.getElementById('topBrandDesaKec');
             if (brandKec) brandKec.textContent = '(Kec. ' + (data.kec || 'Kodeoha') + ') • Terbina BPS';
             const topBadge = document.getElementById('topNavVillageBadge');
+            const execName = document.getElementById('topbarExecutiveDesaName');
+            if (execName) execName.textContent = data.title;
             if (topBadge) topBadge.textContent = (data.title || 'Desa').toUpperCase();
 
             // 2. Hero Landscape Banner Profil Desa
@@ -11084,6 +11445,15 @@ function triggerPubDownload() {
             }
             if (currentNavMenu === 'galeri' && typeof renderPageGaleriPhotos === 'function') {
                 renderPageGaleriPhotos('all', '');
+            }
+            if (typeof initVillageHeader === 'function') {
+                initVillageHeader(key);
+            }
+            if (typeof renderDesaInteractiveChart === 'function') {
+                renderDesaInteractiveChart(key, currentDesaChartCategory, currentDesaChartType);
+            }
+            if ((currentNavMenu === 'beranda' || currentNavMenu === 'portal') && typeof renderVillageMainLayout === 'function') {
+                renderVillageMainLayout(key, 'beranda', 'beranda');
             }
         }
 
@@ -12311,6 +12681,18 @@ function triggerPubDownload() {
     
         // ===== HELPER PUBLIKASI & INFOGRAFIS DESCAN BPS =====
         function renderPublikasiDesa(villageKey) {
+        const bookCoverTitle = document.getElementById('book3dCoverDesaName');
+        if (bookCoverTitle) {
+            const vNames = {
+                kamisi: 'DESA KAMISI',
+                koroha: 'DESA KOROHA',
+                malamala: 'KEL. MALA-MALA',
+                lapolu: 'DESA LAPOLU',
+                tanggeawo: 'DESA TANGGEAWO',
+                mattirobulu: 'DESA MATTIRO BULU'
+            };
+            bookCoverTitle.textContent = vNames[villageKey] || 'DESA KAMISI';
+        }
             const vKey = (villageKey || currentTargetVillage || currentVillageKey || 'kamisi').toLowerCase().replace(/[^a-z0-9]/g, '');
             const vData = (typeof villagesData !== 'undefined' && villagesData[vKey]) ? villagesData[vKey] : (villagesData?.kamisi || {});
             const vTitle = vData.title || (vKey === 'malamala' ? 'Kelurahan Mala-Mala' : 'Desa ' + vKey.charAt(0).toUpperCase() + vKey.slice(1));
@@ -13292,6 +13674,1459 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
                 if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
             }
         };
+
+
+// ==============================================================
+
+// ==============================================================
+
+// ==============================================================
+// SISTEM DATA GRAFIK INTERAKTIF DESA (2 BAR: BAR GRAPH & PIE GRAPH)
+// Sesuai Gambar Referensi 1 & Gambar Referensi 3
+// ==============================================================
+
+const VILLAGE_DETAILED_STATS = {
+    lapolu: {
+        name: 'Desa Lapolu',
+        kec: 'Tiwu',
+        totalJiwa: 1284,
+        totalKk: 321,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [285, 612, 178, 111, 98],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th (Belum Produktif)', '15 - 24 Th (Usia Muda)', '25 - 54 Th (Produktif Utama)', '55 - 64 Th (Pra-Lansia)', '65+ Th (Lansia)'],
+                values: [262, 263, 502, 146, 111],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [436, 359, 334, 103, 52],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Cengkeh & Kakao', 'Penyuling Minyak Atsiri (IKM)', 'Pedagang / Pengumpul', 'Ibu Rumah Tangga', 'Lainnya / Jasa'],
+                values: [590, 411, 128, 103, 52],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [682, 512, 48, 42],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1274, 10, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [648, 636],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [265, 310, 115, 412, 182],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Cengkeh Indah', 'Dusun II Bukit Harapan', 'Dusun III Lembah Subur'],
+                values: [452, 418, 414],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alsintan Cengkeh', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [42, 68, 35, 75, 101],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Cengkeh (380 Ha)', 'Perkebunan Kakao (180 Ha)', 'IKM Minyak Atsiri (75 Unit)', 'Pertanian Hortikultura (45 Ha)', 'Peternakan Rakyat'],
+                values: [380, 180, 75, 45, 30],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    tanggeawo: {
+        name: 'Desa Tanggeawo',
+        kec: 'Tiwu',
+        totalJiwa: 1342,
+        totalKk: 342,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [298, 644, 182, 114, 104],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [275, 274, 524, 155, 114],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [462, 385, 342, 98, 55],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Kakao Sambung Pucuk', 'Petani Nilam & Cengkeh', 'Pedagang / UMKM', 'PNS / Guru / Medis', 'Lainnya / Jasa'],
+                values: [684, 389, 115, 48, 106],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [718, 528, 52, 44],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1335, 7, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [680, 662],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [280, 325, 120, 427, 190],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Kakao Utama', 'Dusun II Harapan Tani', 'Dusun III Subur Makmur'],
+                values: [468, 442, 432],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Bibit Kakao', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [48, 72, 38, 85, 99],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Kakao (420 Ha)', 'Perkebunan Nilam (65 Ha)', 'Pertanian Jagung & Horti', 'UMKM Gula Aren (16 Unit)', 'Peternakan Kambing'],
+                values: [420, 65, 52, 16, 24],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    mattirobulu: {
+        name: 'Desa Mattiro Bulu',
+        kec: 'Tiwu',
+        totalJiwa: 856,
+        totalKk: 324,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [192, 410, 118, 68, 68],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [175, 175, 335, 103, 68],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [312, 248, 195, 62, 39],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Cengkeh & Nilam', 'Penyuling Nilam (IKM)', 'Pedagang / UMKM', 'PNS / Guru', 'Lainnya / Jasa'],
+                values: [462, 218, 75, 26, 75],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [468, 332, 30, 26],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [850, 6, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [432, 424],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [178, 206, 76, 272, 124],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Bulu Indah', 'Dusun II Puncak Harapan', 'Dusun III Lembah Hijau'],
+                values: [302, 280, 274],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alsintan Nilam', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [38, 56, 32, 45, 153],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Cengkeh (240 Ha)', 'Perkebunan Nilam (95 Ha)', 'Penyulingan Nilam (20 Unit)', 'Hortikultura Sayur Dataran Tinggi', 'Perkebunan Kakao (80 Ha)'],
+                values: [240, 95, 20, 35, 80],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    kamisi: {
+        name: 'Desa Kamisi',
+        kec: 'Kodeoha',
+        totalJiwa: 1576,
+        totalKk: 394,
+        dusunCount: 4,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [348, 752, 218, 136, 122],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [322, 322, 616, 180, 136],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [535, 441, 410, 126, 64],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Nelayan Tangkap & Teri', 'Petani Kakao & Kelapa', 'IKM Olahan Ikan & Rumput Laut', 'Pedagang Ikan / UMKM', 'PNS / Lainnya'],
+                values: [693, 441, 221, 142, 79],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [842, 620, 60, 54],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1568, 8, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [796, 780],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [330, 380, 140, 502, 224],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Bahari', 'Dusun II Pantai Indah', 'Dusun III Sejahtera', 'Dusun IV Harapan Baru'],
+                values: [416, 392, 408, 360],
+                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alat Tangkap Nelayan', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [52, 80, 42, 95, 125],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perikanan Tangkap & Teri (42 Perahu)', 'Perkebunan Kakao Pesisir (190 Ha)', 'Budidaya Rumput Laut (15 Ha)', 'IKM Olahan Ikan Asin (14 Unit)', 'Kelapa Dalam (60 Ha)'],
+                values: [42, 190, 15, 14, 60],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    koroha: {
+        name: 'Desa Koroha',
+        kec: 'Kodeoha',
+        totalJiwa: 1482,
+        totalKk: 372,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [330, 708, 204, 126, 114],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [304, 302, 580, 170, 126],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [504, 415, 385, 118, 60],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Kakao & Cengkeh', 'Nelayan Pesisir', 'IKM Hasil Kebun & Kelapa', 'Pedagang / UMKM', 'Lainnya / Jasa'],
+                values: [652, 385, 192, 148, 105],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [792, 582, 58, 50],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1475, 7, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [748, 734],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [310, 355, 132, 474, 211],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Koroha Raya', 'Dusun II Pantai Subur', 'Dusun III Lembah Kakao'],
+                values: [512, 488, 482],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Bibit Sambung Pucuk', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [49, 76, 40, 88, 119],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Kakao Sambung Pucuk (360 Ha)', 'Cengkeh Lereng Bukit (120 Ha)', 'Perikanan & Rumput Laut (25 Ha)', 'Kelapa Dalam (85 Ha)', 'IKM Olahan Pangan (12 Unit)'],
+                values: [360, 120, 25, 85, 12],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    malamala: {
+        name: 'Kelurahan Mala-Mala',
+        kec: 'Kodeoha',
+        totalJiwa: 2194,
+        totalKk: 669,
+        dusunCount: 4,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [486, 1054, 302, 184, 168],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [450, 448, 860, 252, 184],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [746, 614, 570, 186, 78],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Pedagang / Jasa & UMKM', 'PNS / TNI / Polri / Guru', 'Petani Kakao & Holti', 'Nelayan Pesisir', 'Buruh / Karyawan'],
+                values: [921, 307, 438, 285, 243],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [1174, 862, 88, 70],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [2176, 18, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [1108, 1086],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [460, 526, 195, 701, 312],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Lingkungan',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Lingkungan',
+                labels: ['Lingkungan I Pasar Lama', 'Lingkungan II Bahari', 'Lingkungan III Perbukitan', 'Lingkungan IV Pelayanan'],
+                values: [582, 554, 542, 516],
+                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Kelurahan', 'Bantuan Modal UMKM', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [68, 110, 55, 120, 316],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Kelurahan',
+                labels: ['Sentra Perdagangan & UMKM (140 Unit)', 'Perkebunan Kakao (210 Ha)', 'Industri Olahan Ikan (24 Unit)', 'Perikanan Tangkap (30 Perahu)', 'Jasa & Pergudangan'],
+                values: [140, 210, 24, 30, 45],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    }
+};
+
+let currentDesaChartType = 'bar';
+let currentDesaChartCategory = 'umur-kategori';
+let currentDesaChartInstance = null;
+let currentDesaPortalChartInstance = null;
+
+function renderDesaInteractiveChart(villageKey, categoryKey, chartType) {
+    if (villageKey) {
+        window.currentTargetVillage = villageKey;
+        window.currentVillageKey = villageKey;
+    }
+    const vKey = villageKey || window.currentTargetVillage || window.currentVillageKey || 'lapolu';
+    const cKey = categoryKey || currentDesaChartCategory || 'umur-kategori';
+    const cType = chartType || currentDesaChartType || 'bar';
+
+    currentDesaChartCategory = cKey;
+    currentDesaChartType = cType;
+
+    const vStats = VILLAGE_DETAILED_STATS[vKey] || VILLAGE_DETAILED_STATS.lapolu;
+    const catData = vStats.kategori[cKey] || vStats.kategori['umur-kategori'];
+
+    // List of targets: Main Dashboard (#view-dashboard) and Village Portal (#view-portal-desa)
+    const targets = [
+        {
+            canvasId: 'desaGraphicCanvas',
+            chipsId: 'desaChartSummaryChips',
+            titleId: 'desaChartMainTitle',
+            subId: 'desaChartSubTitle',
+            vNameId: 'desaChartActiveVillageName',
+            vJiwaId: 'desaChartTotalJiwaBadge',
+            vKkId: 'desaChartTotalKkBadge',
+            bannerPillId: 'bannerActiveDesaPill',
+            btnBarId: 'btnToggleBarGraph',
+            btnPieId: 'btnTogglePieGraph',
+            pillPrefix: 'btnPill-',
+            catPrefix: 'catBtn-',
+            getInst: () => currentDesaChartInstance,
+            setInst: (inst) => { currentDesaChartInstance = inst; }
+        },
+        {
+            canvasId: 'portalDesaGraphicCanvas',
+            chipsId: 'portalDesaChartSummaryChips',
+            titleId: 'portalDesaChartMainTitle',
+            subId: 'portalDesaChartSubTitle',
+            vNameId: 'portalDesaChartActiveVillageName',
+            vJiwaId: 'portalDesaChartTotalJiwaBadge',
+            vKkId: 'portalDesaChartTotalKkBadge',
+            bannerPillId: 'portalBannerActiveDesaPill',
+            btnBarId: 'portalBtnToggleBarGraph',
+            btnPieId: 'portalBtnTogglePieGraph',
+            pillPrefix: 'portalBtnPill-',
+            catPrefix: 'portalCatBtn-',
+            getInst: () => currentDesaPortalChartInstance,
+            setInst: (inst) => { currentDesaPortalChartInstance = inst; }
+        }
+    ];
+
+    targets.forEach(t => {
+        // 1. Text & Titles
+        const titleEl = document.getElementById(t.titleId);
+        const subEl = document.getElementById(t.subId);
+        const vNameBadge = document.getElementById(t.vNameId);
+        const totalJiwaBadge = document.getElementById(t.vJiwaId);
+        const totalKkBadge = document.getElementById(t.vKkId);
+        const bannerDesaPill = document.getElementById(t.bannerPillId);
+
+        if (titleEl) titleEl.textContent = catData.title;
+        if (vNameBadge) vNameBadge.textContent = vStats.name;
+        if (totalJiwaBadge) totalJiwaBadge.textContent = vStats.totalJiwa.toLocaleString('id-ID');
+        if (totalKkBadge) totalKkBadge.textContent = vStats.totalKk.toLocaleString('id-ID');
+        if (bannerDesaPill) bannerDesaPill.textContent = `${vStats.name.toUpperCase()} (KEC. ${vStats.kec.toUpperCase()})`;
+
+        // 2. Toggle Buttons
+        const btnBar = document.getElementById(t.btnBarId);
+        const btnPie = document.getElementById(t.btnPieId);
+
+        if (btnBar && btnPie) {
+            if (cType === 'bar') {
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+            } else {
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+            }
+        }
+
+        // 3. Pills in Banner
+        const pubPills = ['dusun', 'umur-rentang', 'pendidikan', 'umur-kategori', 'pekerjaan', 'status-perkawinan', 'agama', 'jenis-kelamin'];
+        pubPills.forEach(pillKey => {
+            const pillBtn = document.getElementById(t.pillPrefix + pillKey);
+            if (pillBtn) {
+                if (pillKey === cKey) {
+                    pillBtn.className = 'btn-pub-pill active group';
+                } else {
+                    pillBtn.className = 'btn-pub-pill group';
+                }
+            }
+        });
+
+        // 4. Sidebar Category Buttons
+        const allCatKeys = ['umur-rentang', 'umur-kategori', 'pendidikan', 'pekerjaan', 'status-perkawinan', 'agama', 'jenis-kelamin', 'golongan-darah', 'dusun', 'bantuan-sosial', 'komoditas'];
+        allCatKeys.forEach(k => {
+            const catBtn = document.getElementById(t.catPrefix + k);
+            if (catBtn) {
+                if (k === cKey) {
+                    catBtn.className = 'chart-cat-item active';
+                } else {
+                    catBtn.className = 'chart-cat-item';
+                }
+            }
+        });
+
+        // 5. Canvas Chart.js
+        const canvas = document.getElementById(t.canvasId);
+        if (canvas && typeof Chart !== 'undefined') {
+            const oldInst = t.getInst();
+            if (oldInst) {
+                try { oldInst.destroy(); } catch (e) {}
+            }
+
+            const ctx = canvas.getContext('2d');
+            const isBar = (cType === 'bar');
+            let newChart;
+
+            if (isBar) {
+                newChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: catData.labels,
+                        datasets: [{
+                            label: 'Jumlah (Jiwa)',
+                            data: catData.values,
+                            backgroundColor: catData.colors,
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            borderRadius: 8,
+                            maxBarThickness: 65
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 600 },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0f172a',
+                                titleFont: { size: 13, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                padding: 12,
+                                cornerRadius: 10,
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.raw;
+                                        const total = catData.values.reduce((a, b) => a + b, 0);
+                                        const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                        return ` ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: {
+                                    font: { size: 10.5, weight: 'bold' },
+                                    color: '#334155'
+                                }
+                            },
+                            y: {
+                                grid: { color: '#f1f5f9' },
+                                ticks: {
+                                    font: { size: 10, weight: '600' },
+                                    color: '#64748b',
+                                    callback: v => v >= 1000 ? (v/1000) + 'k' : v
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                newChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: catData.labels,
+                        datasets: [{
+                            data: catData.values,
+                            backgroundColor: catData.colors,
+                            borderColor: '#ffffff',
+                            borderWidth: 3,
+                            hoverOffset: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 600 },
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 14,
+                                    padding: 14,
+                                    font: { size: 11, weight: 'bold' },
+                                    color: '#1e293b'
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: '#0f172a',
+                                titleFont: { size: 13, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                padding: 12,
+                                cornerRadius: 10,
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.raw;
+                                        const total = catData.values.reduce((a, b) => a + b, 0);
+                                        const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                        return ` ${context.label}: ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '52%'
+                    }
+                });
+            }
+            t.setInst(newChart);
+        }
+
+        // 6. Chips Summary
+        const chipsContainer = document.getElementById(t.chipsId);
+        if (chipsContainer) {
+            const total = catData.values.reduce((a, b) => a + b, 0);
+            chipsContainer.innerHTML = catData.labels.map((lbl, idx) => {
+                const val = catData.values[idx] || 0;
+                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                const color = catData.colors[idx] || '#10b981';
+                return `
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between hover:bg-slate-100 transition">
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${color}"></span>
+                            <span class="text-[11px] font-bold text-slate-700 truncate" title="${lbl}">${lbl}</span>
+                        </div>
+                        <div class="flex items-baseline justify-between mt-1">
+                            <span class="text-sm font-black text-slate-900">${val.toLocaleString('id-ID')}</span>
+                            <span class="text-[10.5px] font-extrabold text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">${pct}%</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    });
+}
+
+function switchDesaChartType(type) {
+    currentDesaChartType = type;
+    renderDesaInteractiveChart(window.currentTargetVillage, currentDesaChartCategory, type);
+}
+
+function selectDesaChartCategory(categoryKey) {
+    currentDesaChartCategory = categoryKey;
+    renderDesaInteractiveChart(window.currentTargetVillage, categoryKey, currentDesaChartType);
+    
+    // Smooth scroll ke area grafik jika diklik dari banner publikasi
+    const chartCard = document.getElementById('sectionDataGrafikDesa') || document.getElementById('portalSectionDataGrafikDesa');
+    if (chartCard && window.innerWidth < 1024) {
+        chartCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Global expose
+window.VILLAGE_DETAILED_STATS = VILLAGE_DETAILED_STATS;
+window.renderDesaInteractiveChart = renderDesaInteractiveChart;
+window.switchDesaChartType = switchDesaChartType;
+window.selectDesaChartCategory = selectDesaChartCategory;
+
+
+
+
+
+// ==============================================================
+    // ENGINE DATA PUBLIKASI TABEL STATISTIK SEKTORAL 3 PERIODE (BPS)
+    // Desain Sendangsari: Sidebar Kategori, 3 Periode Excel, Bar & Pie Graph
+    // ==============================================================
+    const SEKTORAL_DATA_STORE = {
+        penduduk: {
+            title: "Statistik Penduduk & Demografi",
+            icon: "bi-people-fill",
+            color: "emerald",
+            subTitle: "Jumlah Penduduk, Struktur Umur, Gender, dan Sebaran Dusun",
+            indicators: [
+                { id: "p1", name: "Total Penduduk Terdaftar", cat: "Demografi", unit: "Jiwa", y2024: 6478, y2025: 6619, y2026: 6734, note: "Perekaman SIAK & Pendataan Lapangan" },
+                { id: "p2", name: "Penduduk Laki-Laki", cat: "Gender", unit: "Jiwa", y2024: 3290, y2025: 3365, y2026: 3424, note: "Sex Ratio 103,4 (Seimbang)" },
+                { id: "p3", name: "Penduduk Perempuan", cat: "Gender", unit: "Jiwa", y2024: 3188, y2025: 3254, y2026: 3310, note: "Komposisi 49,2% dari total" },
+                { id: "p4", name: "Jumlah Kepala Keluarga (KK)", cat: "Keluarga", unit: "KK", y2024: 1625, y2025: 1660, y2026: 1689, note: "Rata-rata 3,9 jiwa/KK" },
+                { id: "p5", name: "Usia Balita (0 - 4 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 580, y2025: 562, y2026: 546, note: "Sasaran posyandu aktif" },
+                { id: "p6", name: "Usia Anak (5 - 14 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 1120, y2025: 1140, y2026: 1152, note: "Usia wajib belajar 9 tahun" },
+                { id: "p7", name: "Usia Produktif (15 - 64 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 4366, y2025: 4489, y2026: 4594, note: "Bonus demografi 68,2%" },
+                { id: "p8", name: "Usia Lanjut / Lansia (65+ Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 412, y2025: 428, y2026: 442, note: "Rasio ketergantungan 46,6%" }
+            ],
+            villages: {
+                kamisi: { total24: 1520, total25: 1554, total26: 1576, kk26: 394, kec: "Kodeoha" },
+                koroha: { total24: 1290, total25: 1315, total26: 1340, kk26: 335, kec: "Kodeoha" },
+                malamala: { total24: 1230, total25: 1250, total26: 1272, kk26: 318, kec: "Kodeoha" },
+                lapolu: { total24: 1210, total25: 1242, total26: 1264, kk26: 321, kec: "Tiwu" },
+                tanggeawo: { total24: 538, total25: 550, total26: 564, kk26: 141, kec: "Tiwu" },
+                mattirobulu: { total24: 690, total25: 708, total26: 718, kk26: 180, kec: "Tiwu" }
+            }
+        },
+        pendidikan: {
+            title: "Statistik Pendidikan & Literasi",
+            icon: "bi-mortarboard-fill",
+            color: "blue",
+            subTitle: "Tingkat Pendidikan Formal Dalam KK dan Partisipasi Sekolah",
+            indicators: [
+                { id: "ed1", name: "Tidak / Belum Pernah Sekolah", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 840, y2025: 795, y2026: 742, note: "Penurunan -11,7% (Program Keaksaraan)" },
+                { id: "ed2", name: "Tamat SD / Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 2120, y2025: 2080, y2026: 2045, note: "Pendidikan dasar mayoritas petani tua" },
+                { id: "ed3", name: "Tamat SMP / MTs Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 1610, y2025: 1670, y2026: 1712, note: "Kenaikan partisipasi wajar 9 th" },
+                { id: "ed4", name: "Tamat SMA / SMK / MA Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 1540, y2025: 1650, y2026: 1758, note: "Peningkatan mutu angkatan kerja (+14,2%)" },
+                { id: "ed5", name: "Tamat Perguruan Tinggi (D3/S1/S2)", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 368, y2025: 424, y2026: 477, note: "Lulusan sarjana kembali membangun desa" },
+                { id: "ed6", name: "Angka Partisipasi Sekolah (APS 7-18)", cat: "Partisipasi", unit: "%", y2024: 91.2, y2025: 93.8, y2026: 96.4, note: "Target 100% bebas anak putus sekolah" },
+                { id: "ed7", name: "Fasilitas Sarana PAUD / TK Aktif", cat: "Sarana", unit: "Unit", y2024: 8, y2025: 9, y2026: 11, note: "PAUD terakreditasi BPS & Kemendikbud" }
+            ]
+        },
+        kemiskinan: {
+            title: "Statistik Kemiskinan & Perlindungan Sosial",
+            icon: "bi-shield-check",
+            color: "amber",
+            subTitle: "Desil Kesejahteraan P3KE, Penerima Bansos PKH/BPNT/BLT, dan Sanitasi",
+            indicators: [
+                { id: "k1", name: "Keluarga Desil 1 (Kemiskinan Ekstrem)", cat: "Desil P3KE", unit: "KK", y2024: 182, y2025: 146, y2026: 112, note: "Penurunan -38,5% lewat padat karya & bansos" },
+                { id: "k2", name: "Keluarga Desil 2 (Pra-Sejahtera)", cat: "Desil P3KE", unit: "KK", y2024: 298, y2025: 272, y2026: 248, note: "Intervensi pemberdayaan bibit kakao" },
+                { id: "k3", name: "Penerima Program Keluarga Harapan (PKH)", cat: "Bantuan Sosial", unit: "KK", y2024: 245, y2025: 238, y2026: 226, note: "Graduasi mandiri bertahap" },
+                { id: "k4", name: "Penerima Kartu Sembako / BPNT", cat: "Bantuan Sosial", unit: "KK", y2024: 380, y2025: 365, y2026: 348, note: "Penyaluran via PT Pos & Himbara" },
+                { id: "k5", name: "Penerima BLT Dana Desa (BLT-DD)", cat: "Bantuan Sosial", unit: "KK", y2024: 196, y2025: 165, y2026: 138, note: "Tepat sasaran hasil Musdesus" },
+                { id: "k6", name: "Persentase Rumah Layak Huni (RLH)", cat: "Hunian", unit: "%", y2024: 82.4, y2025: 86.1, y2026: 91.5, note: "Bantuan bedah rumah BSPS Pemkab" },
+                { id: "k7", name: "Akses Air Bersih & Jamban Sehat (ODF)", cat: "Sanitasi", unit: "%", y2024: 88.6, y2025: 92.4, y2026: 96.8, note: "Desa Bebas Buang Air Besar Sembarangan" }
+            ]
+        },
+        pekerjaan: {
+            title: "Statistik Ketenagakerjaan & Mata Pencaharian",
+            icon: "bi-briefcase-fill",
+            color: "teal",
+            subTitle: "Distribusi Lapangan Pekerjaan, Usaha Mandiri, dan Angkatan Kerja",
+            indicators: [
+                { id: "pk1", name: "Petani Perkebunan (Kakao, Cengkeh, Nilam)", cat: "Sektor Primer", unit: "Jiwa", y2024: 2140, y2025: 2180, y2026: 2215, note: "Mayoritas komoditas perkebunan Kolut" },
+                { id: "pk2", name: "Nelayan Tangkap & Budidaya Bahari", cat: "Sektor Primer", unit: "Jiwa", y2024: 485, y2025: 502, y2026: 520, note: "Kawasan pesisir Kamisi & Mala-Mala" },
+                { id: "pk3", name: "Pedagang & Pelaku Usaha Mikro (UMKM)", cat: "Sektor Jasa", unit: "Jiwa", y2024: 312, y2025: 358, y2026: 412, note: "Tumbuh pesat (+32,1%) sentra kuliner" },
+                { id: "pk4", name: "Buruh Bangunan / Tukang Kayu", cat: "Sektor Sekunder", unit: "Jiwa", y2024: 420, y2025: 455, y2026: 486, note: "Pembangunan fisik desa mandiri" },
+                { id: "pk5", name: "Aparatur Desa / ASN / Nakes / Guru", cat: "Pemerintahan", unit: "Jiwa", y2024: 98, y2025: 104, y2026: 112, note: "Pelayanan publik terstandar" },
+                { id: "pk6", name: "Tingkat Pengangguran Terbuka (TPT)", cat: "Indikator", unit: "%", y2024: 3.8, y2025: 3.2, y2026: 2.7, note: "Angka pengangguran rendah dan stabil" }
+            ]
+        },
+        komoditas: {
+            title: "Statistik Pertanian, Kakao & Komoditas Sektoral",
+            icon: "bi-tree-fill",
+            color: "emerald",
+            subTitle: "Luas Lahan, Tonase Produksi Kakao, Nilam, Perikanan dan Unit IKM",
+            indicators: [
+                { id: "km1", name: "Luas Perkebunan Kakao Rakyat", cat: "Perkebunan", unit: "Hektar", y2024: 1420, y2025: 1455, y2026: 1488, note: "Varietas unggul sambung pucuk" },
+                { id: "km2", name: "Produksi Biji Kakao Fermentasi", cat: "Produksi", unit: "Ton/Th", y2024: 1280, y2025: 1390, y2026: 1540, note: "Kenaikan +20,3% hasil pembinaan GAP" },
+                { id: "km3", name: "Produksi Minyak Nilam Suling", cat: "Perkebunan", unit: "Liter/Th", y2024: 4600, y2025: 5400, y2026: 6200, note: "Penyulingan nilam Desa Mattiro Bulu" },
+                { id: "km4", name: "Produksi Perikanan Tangkap & Teri", cat: "Perikanan", unit: "Ton/Th", y2024: 340, y2025: 375, y2026: 410, note: "Teri nasi Teluk Bone Desa Kamisi" },
+                { id: "km5", name: "Jumlah Unit IKM Pengolahan Hasil Tani", cat: "Industri", unit: "Unit", y2024: 88, y2025: 114, y2026: 153, note: "Pertumbuhan industri rumah tangga (+73,9%)" }
+            ]
+        }
+    };
+
+    let currentSektoralState = {
+        catKey: 'penduduk',
+        viewMode: 'excel', // 'excel', 'bar', 'pie'
+        villageFilter: 'all', // 'all' or village slug
+        periodFilter: 'all',  // 'all' (3 periods), '2024', '2025', '2026'
+        searchQuery: '',
+        chartInstance: null
+    };
+
+    function renderSektoralStudio(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+
+        // Filter indicators
+        let list = cat.indicators.filter(ind => {
+            if (!currentSektoralState.searchQuery) return true;
+            const q = currentSektoralState.searchQuery.toLowerCase();
+            return ind.name.toLowerCase().includes(q) || ind.cat.toLowerCase().includes(q) || (ind.note && ind.note.toLowerCase().includes(q));
+        });
+
+        // Compute Delta
+        function calcGrowth(valOld, valNew) {
+            if (!valOld) return 0;
+            return (((valNew - valOld) / valOld) * 100).toFixed(1);
+        }
+
+        // HTML Layout (Sendangsari Style Sidebar + Main Stage)
+        let html = `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 w-full">
+                
+                <!-- KOLOM KIRI (lg:col-span-4 xl:col-span-3): SIDEBAR KATEGORI (PERSIS SENDANGSARI) -->
+                <div class="lg:col-span-4 xl:col-span-3 space-y-3">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-3">
+                        <div class="flex items-center justify-between px-1">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-slate-500">
+                                <i class="bi bi-grid-fill text-emerald-700 mr-1.5"></i>Indikator Sektoral
+                            </span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">44 Variabel</span>
+                        </div>
+
+                        <!-- Sidebar Menu Accordions -->
+                        <div class="space-y-1 text-xs font-semibold">
+                            
+                            <!-- 1. Statistik Penduduk -->
+                            <button type="button" onclick="changeSektoralCategory('penduduk')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'penduduk' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-people-fill ${currentSektoralState.catKey === 'penduduk' ? 'text-white' : 'text-emerald-700'}"></i>
+                                    <span>Statistik Penduduk</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'penduduk' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">8</span>
+                            </button>
+
+                            <!-- 2. Statistik Pendidikan -->
+                            <button type="button" onclick="changeSektoralCategory('pendidikan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'pendidikan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-mortarboard-fill ${currentSektoralState.catKey === 'pendidikan' ? 'text-white' : 'text-blue-700'}"></i>
+                                    <span>Statistik Pendidikan</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'pendidikan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">7</span>
+                            </button>
+
+                            <!-- 3. Kemiskinan & Bansos -->
+                            <button type="button" onclick="changeSektoralCategory('kemiskinan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'kemiskinan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-shield-check ${currentSektoralState.catKey === 'kemiskinan' ? 'text-white' : 'text-amber-700'}"></i>
+                                    <span>Kemiskinan & Bansos</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'kemiskinan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">7</span>
+                            </button>
+
+                            <!-- 4. Ketenagakerjaan -->
+                            <button type="button" onclick="changeSektoralCategory('pekerjaan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'pekerjaan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-briefcase-fill ${currentSektoralState.catKey === 'pekerjaan' ? 'text-white' : 'text-teal-700'}"></i>
+                                    <span>Ketenagakerjaan</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'pekerjaan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">6</span>
+                            </button>
+
+                            <!-- 5. Pertanian & Komoditas -->
+                            <button type="button" onclick="changeSektoralCategory('komoditas')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'komoditas' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-tree-fill ${currentSektoralState.catKey === 'komoditas' ? 'text-white' : 'text-emerald-700'}"></i>
+                                    <span>Pertanian & Kakao</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'komoditas' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">5</span>
+                            </button>
+
+                        </div>
+
+                        <!-- Info Card Rekap 6 Desa -->
+                        <div class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-[11px] space-y-1.5">
+                            <div class="font-black text-emerald-900 flex items-center gap-1.5">
+                                <i class="bi bi-check-circle-fill text-emerald-600"></i>
+                                <span>3 Periode Pendataan BPS</span>
+                            </div>
+                            <p class="text-slate-600 leading-snug">
+                                Data terhimpun dari <b>Tahun 2024</b> (Baseline), <b>Tahun 2025</b> (Pemutakhiran), dan <b>Tahun 2026</b> (Validasi SDI).
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN (lg:col-span-8 xl:col-span-9): MAIN DISPLAY (GRAFIK & EXCEL 3 PERIODE) -->
+                <div class="lg:col-span-8 xl:col-span-9 space-y-4">
+                    
+                    <!-- Header Atas: Judul Kategori & 3 Tombol Mode (Bar, Pie, Excel) -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                        <div>
+                            <h3 class="text-base sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                <i class="bi ${cat.icon} text-emerald-700"></i>
+                                <span>${cat.title}</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">${cat.subTitle}</p>
+                        </div>
+
+                        <!-- 3 Switcher: Bar Graph, Pie Graph, dan Tabel Excel -->
+                        <div class="inline-flex items-center gap-1 p-1 bg-slate-100 rounded-2xl border border-slate-200 shrink-0 self-start sm:self-auto shadow-inner">
+                            <button type="button" onclick="switchSektoralMode('excel')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'excel' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>Tabel Excel (3 Periode)</span>
+                            </button>
+                            <button type="button" onclick="switchSektoralMode('bar')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'bar' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-bar-chart-fill"></i>
+                                <span>Bar Graph</span>
+                            </button>
+                            <button type="button" onclick="switchSektoralMode('pie')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'pie' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-pie-chart-fill"></i>
+                                <span>Pie Graph</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bar & Search Toolbar -->
+                    <div class="flex flex-wrap items-center justify-between gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="flex flex-wrap items-center gap-2 flex-1 min-w-[240px]">
+                            <!-- Filter Wilayah -->
+                            <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                                <span class="font-bold text-slate-500 text-[11px]">Wilayah:</span>
+                                <select onchange="changeSektoralVillage(this.value)" class="py-1 px-2.5 rounded-lg border border-slate-200 bg-white text-xs font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                                    <option value="all" ${currentSektoralState.villageFilter === 'all' ? 'selected' : ''}>Semua 6 Desa Binaan</option>
+                                    <option value="kamisi" ${currentSektoralState.villageFilter === 'kamisi' ? 'selected' : ''}>Desa Kamisi (Kodeoha)</option>
+                                    <option value="koroha" ${currentSektoralState.villageFilter === 'koroha' ? 'selected' : ''}>Desa Koroha (Kodeoha)</option>
+                                    <option value="malamala" ${currentSektoralState.villageFilter === 'malamala' ? 'selected' : ''}>Kel. Mala-Mala (Kodeoha)</option>
+                                    <option value="lapolu" ${currentSektoralState.villageFilter === 'lapolu' ? 'selected' : ''}>Desa Lapolu (Tiwu)</option>
+                                    <option value="tanggeawo" ${currentSektoralState.villageFilter === 'tanggeawo' ? 'selected' : ''}>Desa Tanggeawo (Tiwu)</option>
+                                    <option value="mattirobulu" ${currentSektoralState.villageFilter === 'mattirobulu' ? 'selected' : ''}>Desa Mattiro Bulu (Tiwu)</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter Periode (3 Tahun) -->
+                            <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                                <span class="font-bold text-slate-500 text-[11px]">Periode:</span>
+                                <select onchange="changeSektoralPeriod(this.value)" class="py-1 px-2.5 rounded-lg border border-slate-200 bg-white text-xs font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                                    <option value="all" ${currentSektoralState.periodFilter === 'all' ? 'selected' : ''}>3 Periode (2024 - 2026)</option>
+                                    <option value="2026" ${currentSektoralState.periodFilter === '2026' ? 'selected' : ''}>Tahun 2026 (Mutakhir)</option>
+                                    <option value="2025" ${currentSektoralState.periodFilter === '2025' ? 'selected' : ''}>Tahun 2025</option>
+                                    <option value="2024" ${currentSektoralState.periodFilter === '2024' ? 'selected' : ''}>Tahun 2024 (Baseline)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Live Search & Excel Export Buttons -->
+                        <div class="flex items-center gap-2">
+                            <div class="relative w-44 sm:w-52">
+                                <i class="bi bi-search absolute left-2.5 top-2 text-slate-400 text-xs"></i>
+                                <input type="text" oninput="filterSektoralSearch(this.value)" value="${currentSektoralState.searchQuery}" placeholder="Cari data..." class="w-full pl-7 pr-2 py-1 rounded-lg border border-slate-200 bg-white text-xs font-medium focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                            </div>
+
+                            <!-- Download Excel CSV Button -->
+                            <button type="button" onclick="exportSektoralToExcel()" class="py-1 px-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition cursor-pointer" title="Unduh Lembar Kerja Excel (.csv)">
+                                <i class="bi bi-file-earmark-excel-fill"></i>
+                                <span class="hidden sm:inline">Export Excel</span>
+                            </button>
+                        </div>
+                    </div>
+        `;
+
+        // Render Mode Content
+        if (currentSektoralState.viewMode === 'excel') {
+            // TAMPILAN TABEL EXCEL 3 PERIODE
+            html += `
+                <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white">
+                    <div class="overflow-x-auto max-h-[460px] scrollbar-thin">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead class="sticky top-0 z-10 bg-slate-100 text-slate-800 font-black border-b border-slate-300 text-[11px] shadow-sm">
+                                <tr>
+                                    <th class="p-2.5 text-center w-10">No</th>
+                                    <th class="p-2.5 min-w-[200px]">Indikator Pendataan / Variabel</th>
+                                    <th class="p-2.5 min-w-[100px]">Kategori</th>
+                                    <th class="p-2.5 text-center w-16">Satuan</th>
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2024' ? '<th class="p-2.5 text-right bg-slate-50 font-black text-slate-700">Periode 2024</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2025' ? '<th class="p-2.5 text-right bg-blue-50/50 font-black text-blue-900">Periode 2025</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2026' ? '<th class="p-2.5 text-right bg-emerald-50 font-black text-emerald-900">Periode 2026</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' ? '<th class="p-2.5 text-center w-24">Tren / Delta</th>' : ''}
+                                    <th class="p-2.5 min-w-[160px]">Keterangan SDI BPS</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium">
+            `;
+
+            if (list.length === 0) {
+                html += `<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada indikator yang sesuai dengan kata kunci pencarian.</td></tr>`;
+            } else {
+                list.forEach((ind, idx) => {
+                    const delta = calcGrowth(ind.y2024, ind.y2026);
+                    const isPositive = delta >= 0;
+                    const deltaBadge = isPositive 
+                        ? `<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">+${delta}%</span>`
+                        : `<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-100 text-rose-800">${delta}%</span>`;
+
+                    html += `
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-2.5 text-center text-slate-400 font-bold">${idx + 1}</td>
+                            <td class="p-2.5 font-bold text-slate-900">${ind.name}</td>
+                            <td class="p-2.5 text-slate-500"><span class="px-2 py-0.5 rounded bg-slate-100 text-[10px] font-bold text-slate-600">${ind.cat}</span></td>
+                            <td class="p-2.5 text-center font-bold text-slate-600">${ind.unit}</td>
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2024' ? `<td class="p-2.5 text-right font-mono font-semibold text-slate-700 bg-slate-50/50">${ind.y2024.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2025' ? `<td class="p-2.5 text-right font-mono font-semibold text-blue-900 bg-blue-50/30">${ind.y2025.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2026' ? `<td class="p-2.5 text-right font-mono font-black text-emerald-800 bg-emerald-50/40">${ind.y2026.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' ? `<td class="p-2.5 text-center font-bold">${deltaBadge}</td>` : ''}
+                            <td class="p-2.5 text-[11px] text-slate-500">${ind.note || '-'}</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Excel Table Footer Toolbar -->
+                    <div class="p-3 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                            <span class="font-bold">Total: ${list.length} Indikator Terbakukan</span>
+                            <span class="text-slate-400">•</span>
+                            <span>Formula: <code>Δ = ((T2026 - T2024) / T2024) * 100</code></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="copySektoralTableToClipboard()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 font-bold transition flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-clipboard"></i>
+                                <span>Salin Data</span>
+                            </button>
+                            <button type="button" onclick="printSektoralTable()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 font-bold transition flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-printer"></i>
+                                <span>Cetak</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            // TAMPILAN GRAFIK (BAR GRAPH ATAU PIE GRAPH)
+            html += `
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 space-y-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs font-bold text-slate-700">
+                            <span>Visualisasi: </span>
+                            <span class="text-emerald-800 font-extrabold">${currentSektoralState.viewMode === 'bar' ? 'Bar Graph Multi-Series (3 Periode)' : 'Pie Graph Distribusi Komposisi'}</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+                            Highcharts &amp; Chart.js Engine
+                        </span>
+                    </div>
+
+                    <!-- Canvas Area -->
+                    <div class="relative w-full h-[360px] sm:h-[400px] bg-slate-50/50 rounded-xl p-2 border border-slate-100">
+                        <canvas id="sektoralStudioCanvas"></canvas>
+                    </div>
+
+                    <!-- Ringkasan Statistik / Chips di Bawah Grafik -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-center">
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Baseline 2024</div>
+                            <div class="text-sm sm:text-base font-black text-slate-800 mt-0.5">6.478 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-blue-50/60 border border-blue-200">
+                            <div class="text-[10px] text-blue-700 font-bold uppercase">Pemutakhiran 2025</div>
+                            <div class="text-sm sm:text-base font-black text-blue-900 mt-0.5">6.619 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
+                            <div class="text-[10px] text-emerald-700 font-bold uppercase">Terkini 2026</div>
+                            <div class="text-sm sm:text-base font-black text-emerald-900 mt-0.5">6.734 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                            <div class="text-[10px] text-amber-700 font-bold uppercase">Pertumbuhan Rata-Rata</div>
+                            <div class="text-sm sm:text-base font-black text-amber-900 mt-0.5">+3,95%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        html += `
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        // Inisialisasi Chart jika mode bar atau pie
+        if (currentSektoralState.viewMode !== 'excel') {
+            setTimeout(() => {
+                initSektoralChart(list);
+            }, 50);
+        }
+    }
+
+    function changeSektoralCategory(catKey) {
+        currentSektoralState.catKey = catKey;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function switchSektoralMode(mode) {
+        currentSektoralState.viewMode = mode;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function changeSektoralVillage(v) {
+        currentSektoralState.villageFilter = v;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function changeSektoralPeriod(p) {
+        currentSektoralState.periodFilter = p;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function filterSektoralSearch(q) {
+        currentSektoralState.searchQuery = q;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function initSektoralChart(items) {
+        const canvas = document.getElementById('sektoralStudioCanvas');
+        if (!canvas || typeof Chart === 'undefined') return;
+
+        if (currentSektoralState.chartInstance) {
+            currentSektoralState.chartInstance.destroy();
+            currentSektoralState.chartInstance = null;
+        }
+
+        const labels = items.map(i => i.name.length > 20 ? i.name.substring(0, 18) + '...' : i.name);
+
+        if (currentSektoralState.viewMode === 'bar') {
+            // Bar Graph 3 Periode
+            currentSektoralState.chartInstance = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Periode 2024',
+                            data: items.map(i => i.y2024),
+                            backgroundColor: 'rgba(100, 116, 139, 0.75)',
+                            borderColor: '#475569',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Periode 2025',
+                            data: items.map(i => i.y2025),
+                            backgroundColor: 'rgba(37, 99, 235, 0.8)',
+                            borderColor: '#1d4ed8',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Periode 2026',
+                            data: items.map(i => i.y2026),
+                            backgroundColor: 'rgba(14, 124, 90, 0.9)',
+                            borderColor: '#096347',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { weight: 'bold', size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw.toLocaleString('id-ID')}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } }
+                    }
+                }
+            });
+        } else if (currentSektoralState.viewMode === 'pie') {
+            // Pie Graph Komposisi Periode 2026
+            const palette = [
+                '#0E7C5A', '#2563EB', '#D97706', '#059669', 
+                '#DC2626', '#7C3AED', '#0891B2', '#475569'
+            ];
+            currentSektoralState.chartInstance = new Chart(canvas, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: items.map(i => i.y2026),
+                        backgroundColor: palette.slice(0, items.length),
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { weight: 'bold', size: 11 }, boxWidth: 14 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                    return `${context.label}: ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function exportSektoralToExcel() {
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+        let csv = "No,Kategori,Indikator Pendataan,Satuan,Periode 2024,Periode 2025,Periode 2026,Pertumbuhan (%),Keterangan SDI BPS\r\n";
+        
+        cat.indicators.forEach((ind, idx) => {
+            const delta = ind.y2024 ? (((ind.y2026 - ind.y2024) / ind.y2024) * 100).toFixed(1) : "0";
+            csv += `${idx + 1},"${ind.cat}","${ind.name}","${ind.unit}",${ind.y2024},${ind.y2025},${ind.y2026},${delta}%,"${ind.note || ''}"\r\n`;
+        });
+
+        const fileName = `Tabel_Statistik_Sektoral_${currentSektoralState.catKey}_3_Periode_BPS.csv`;
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        if (typeof showToast === 'function') {
+            showToast(`📥 Lembar kerja Excel ${fileName} berhasil diunduh!`);
+        }
+    }
+
+    function copySektoralTableToClipboard() {
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+        let text = "No\tKategori\tIndikator\tSatuan\tPeriode 2024\tPeriode 2025\tPeriode 2026\tPertumbuhan (%)\tKeterangan\n";
+        cat.indicators.forEach((ind, idx) => {
+            const delta = ind.y2024 ? (((ind.y2026 - ind.y2024) / ind.y2024) * 100).toFixed(1) : "0";
+            text += `${idx + 1}\t${ind.cat}\t${ind.name}\t${ind.unit}\t${ind.y2024}\t${ind.y2025}\t${ind.y2026}\t${delta}%\t${ind.note || ''}\n`;
+        });
+
+        navigator.clipboard.writeText(text).then(() => {
+            if (typeof showToast === 'function') {
+                showToast("📋 Data tabel berhasil disalin ke clipboard! Siap di-paste ke Excel.");
+            } else {
+                alert("Data tabel berhasil disalin ke clipboard! Siap di-paste ke Excel.");
+            }
+        });
+    }
+
+    function printSektoralTable() {
+        window.print();
+    }
+
+
+
+// ==============================================================
+    // 3D REALISTIC MOVING BOOK INTERACTIVE ENGINE
+    // Gerakan 3D Halus Mengikuti Kursor Mouse + Floating Idle Animasi
+    // ==============================================================
+    function init3DBookInteraction() {
+        const stage = document.getElementById('book3dStage');
+        const book = document.getElementById('book3dObject');
+        const shadow = document.getElementById('book3dShadow');
+        const glare = document.getElementById('book3dGlare');
+
+        if (!stage || !book) return;
+
+        let isHovered = false;
+
+        stage.addEventListener('mouseenter', () => {
+            isHovered = true;
+            book.classList.remove('floating-anim');
+            book.style.transition = 'transform 0.08s ease-out';
+        });
+
+        stage.addEventListener('mousemove', (e) => {
+            if (!isHovered) return;
+            const rect = stage.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width; // 0 to 1
+            const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+
+            const rotY = -22 + (x - 0.5) * 48; // rotate between -46deg and +2deg
+            const rotX = 8 - (y - 0.5) * 36;  // tilt up/down
+            const transY = (y - 0.5) * 16;
+
+            book.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(${transY}px) scale(1.04)`;
+
+            if (shadow) {
+                const shadowX = (x - 0.5) * 32;
+                const shadowScale = 0.9 + (1 - y) * 0.16;
+                shadow.style.transform = `rotateX(85deg) translateZ(-130px) translateX(${shadowX}px) translateY(18px) scale(${shadowScale})`;
+                shadow.style.opacity = (0.5 + y * 0.25).toString();
+            }
+
+            if (glare) {
+                const glarePos = x * 100;
+                glare.style.background = `linear-gradient(${105 + (x - 0.5) * 40}deg, rgba(255,255,255,${0.45 - Math.abs(x - 0.5) * 0.3}) ${glarePos - 20}%, rgba(255,255,255,0) ${glarePos + 25}%)`;
+            }
+        });
+
+        stage.addEventListener('mouseleave', () => {
+            isHovered = false;
+            book.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            book.style.transform = 'rotateY(-22deg) rotateX(7deg) translateY(0px) scale(1)';
+            setTimeout(() => {
+                if (!isHovered) {
+                    book.classList.add('floating-anim');
+                }
+            }, 600);
+
+            if (shadow) {
+                shadow.style.transform = 'rotateX(85deg) translateZ(-130px) translateY(18px) scale(0.92)';
+                shadow.style.opacity = '0.55';
+            }
+            if (glare) {
+                glare.style.background = 'linear-gradient(115deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.1) 80%)';
+            }
+        });
+    }
+
+    // Inisialisasi otomatis saat DOM siap
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init3DBookInteraction);
+    } else {
+        init3DBookInteraction();
+    }
+
 </script>
 </body>
 </html>
