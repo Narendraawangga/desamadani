@@ -1608,7 +1608,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleMonografi" class="text-lg font-black text-slate-900 leading-snug">
-                                    Monografi Desa Kamisi
+                                    Monografi Desa
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Buku komprehensif monografi statistik sektoral desa mencakup batas geografis, dinamika demografi, profil pertanian kakao, perikanan, serta infrastruktur dan kesejahteraan sosial.
@@ -1643,7 +1643,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleTabel" class="text-lg font-black text-slate-900 leading-snug">
-                                    Tabel Statistik Sektoral Desa Kamisi
+                                    Publikasi Tematik
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Kompilasi tabulasi data sektoral per dusun dengan kode referensi baku, mencakup demografi umur produktif, keluarga desil bansos, produksi komoditas, dan sarana ibadah/kesehatan.
@@ -1678,7 +1678,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleStatistik" class="text-lg font-black text-slate-900 leading-snug">
-                                    Publikasi Statistik &amp; Indikator Makro Desa Kamisi
+                                    Leaflet
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Publikasi ringkas analisis perkembangan indikator makro pembangunan desa, rasio kemiskinan, penurunan stunting balita, dinamika ketenagakerjaan, dan evaluasi indeks desa.
@@ -1713,7 +1713,7 @@
                                     </span>
                                 </div>
                                 <h3 id="outputDocTitleLeaflet" class="text-lg font-black text-slate-900 leading-snug">
-                                    Leaflet Infografis Tematik Desa Kamisi
+                                    Infografis
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
                                     Brosur infografis visual lipat tiga (Tri-Fold) format cetak resolusi tinggi untuk sosialisasi profil desa, potensi sentra kakao, layanan adminduk, dan pilar Desa Cantik ke masyarakat.
