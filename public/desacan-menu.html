@@ -1731,7 +1731,7 @@
                                 </button>
                                 <button type="button" onclick="downloadOutputDoc('leaflet')" class="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
                                     <i class="bi bi-download"></i>
-                                    <span>Unduh Leaflet</span>
+                                    <span>Download Dokumen</span>
                                 </button>
                             </div>
                         </div>

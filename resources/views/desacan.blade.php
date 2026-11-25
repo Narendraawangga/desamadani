@@ -1439,12 +1439,14 @@
                             Profil komprehensif demografi, potensi kakao, dan sosial ekonomi 6 desa binaan.
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('monografi')" class="flex-1 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0E7C5A] font-bold text-xs text-center transition cursor-pointer">
-                            Buka Dokumen
+                    <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                        <button type="button" onclick="openOutputDoc('monografi')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0E7C5A] border border-emerald-200/70 font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer active:scale-95 shadow-2xs" title="Buka Dokumen Monografi">
+                            <i class="bi bi-file-earmark-text-fill text-emerald-600"></i>
+                            <span>Buka Dokumen</span>
                         </button>
-                        <button type="button" onclick="downloadOutputDoc('monografi')" class="py-2 px-3 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Monografi">
-                            📥
+                        <button type="button" onclick="downloadOutputDoc('monografi')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm active:scale-95" title="Download Dokumen Monografi">
+                            <i class="bi bi-download"></i>
+                            <span>Download Dokumen</span>
                         </button>
                     </div>
                 </div>
@@ -1460,12 +1462,14 @@
                             Tabel data rekapitulasi 44 variabel sosial ekonomi keluarga berstandar SDI.
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('tabel')" class="flex-1 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-xs text-center transition cursor-pointer">
-                            Spreadsheet
+                    <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                        <button type="button" onclick="openOutputDoc('tabel')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200/70 font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer active:scale-95 shadow-2xs" title="Buka Dokumen Tabel Statistik">
+                            <i class="bi bi-file-earmark-spreadsheet-fill text-blue-600"></i>
+                            <span>Buka Dokumen</span>
                         </button>
-                        <button type="button" onclick="downloadOutputDoc('tabel')" class="py-2 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Excel">
-                            📥
+                        <button type="button" onclick="downloadOutputDoc('tabel')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm active:scale-95" title="Download Dokumen Tabel Statistik">
+                            <i class="bi bi-download"></i>
+                            <span>Download Dokumen</span>
                         </button>
                     </div>
                 </div>
@@ -1481,12 +1485,14 @@
                             Berita Resmi Statistik indikator ketenagakerjaan daerah dan komoditas perkebunan kakao.
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('brs')" class="flex-1 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka BRS
+                    <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                        <button type="button" onclick="openOutputDoc('brs')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/70 font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer active:scale-95 shadow-2xs" title="Buka Dokumen BRS Sektoral">
+                            <i class="bi bi-file-earmark-pdf-fill text-amber-600"></i>
+                            <span>Buka Dokumen</span>
                         </button>
-                        <button type="button" onclick="downloadOutputDoc('brs')" class="py-2 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download BRS">
-                            📥
+                        <button type="button" onclick="downloadOutputDoc('brs')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm active:scale-95" title="Download Dokumen BRS Sektoral">
+                            <i class="bi bi-download"></i>
+                            <span>Download Dokumen</span>
                         </button>
                     </div>
                 </div>
@@ -1502,12 +1508,14 @@
                             Ringkasan visual statistik dusun dalam format infografis ramah baca bagi masyarakat.
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('leaflet')" class="flex-1 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka Leaflet
+                    <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                        <button type="button" onclick="openOutputDoc('leaflet')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-200/70 font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer active:scale-95 shadow-2xs" title="Buka Dokumen Leaflet & Infografis">
+                            <i class="bi bi-file-earmark-richtext-fill text-teal-600"></i>
+                            <span>Buka Dokumen</span>
                         </button>
-                        <button type="button" onclick="downloadOutputDoc('leaflet')" class="py-2 px-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Leaflet">
-                            📥
+                        <button type="button" onclick="downloadOutputDoc('leaflet')" class="w-full py-2 px-2 min-h-[38px] rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm active:scale-95" title="Download Dokumen Leaflet & Infografis">
+                            <i class="bi bi-download"></i>
+                            <span>Download Dokumen</span>
                         </button>
                     </div>
                 </div>
