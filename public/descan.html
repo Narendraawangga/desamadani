@@ -1869,10 +1869,69 @@
     <section id="galeri-section" class="w-full bg-[#f8fafc] py-14 sm:py-20 border-t border-slate-200">
         <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
             
-            <!-- Ribbon Banner Header "GALERI DESA CANTIK" (Sesuai Desain Motif Batik) -->
-            <div class="max-w-[860px] mx-auto mb-8 sm:mb-10 text-center">
-                <div class="relative inline-block w-full max-w-[740px] rounded-full overflow-hidden shadow-lg border border-amber-900/10">
-                    <img src="/images/descan/galeri/header_galeri.png" alt="Galeri Desa Cantik" class="w-full h-auto object-contain mx-auto select-none">
+                        <!-- Ribbon Banner Header "GALERI DESA CANTIK" (Harmonis dengan Tema Hijau Zamrud DESCAN) -->
+            <div class="max-w-[860px] mx-auto mb-8 sm:mb-10 text-center px-2">
+                <div class="relative overflow-hidden rounded-full shadow-xl border border-emerald-500/30 bg-gradient-to-r from-[#022c22] via-[#064e3b] to-[#022c22] flex items-center justify-between min-h-[58px] sm:min-h-[66px] px-3.5 sm:px-8">
+                    
+                    <!-- SVG Motif Ornamen Songket Zamrud & Emas di Kedua Ujung Banner -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="kawungDescanGaleri" width="32" height="32" patternUnits="userSpaceOnUse">
+                                <ellipse cx="16" cy="8" rx="5" ry="8" fill="#10b981" opacity="0.22" />
+                                <ellipse cx="16" cy="24" rx="5" ry="8" fill="#10b981" opacity="0.22" />
+                                <ellipse cx="8" cy="16" rx="8" ry="5" fill="#10b981" opacity="0.22" />
+                                <ellipse cx="24" cy="16" rx="8" ry="5" fill="#10b981" opacity="0.22" />
+                                <circle cx="16" cy="16" r="2.5" fill="#fbbf24" opacity="0.35" />
+                                <circle cx="0" cy="0" r="2" fill="#fbbf24" opacity="0.25" />
+                                <circle cx="32" cy="0" r="2" fill="#fbbf24" opacity="0.25" />
+                                <circle cx="0" cy="32" r="2" fill="#fbbf24" opacity="0.25" />
+                                <circle cx="32" cy="32" r="2" fill="#fbbf24" opacity="0.25" />
+                            </pattern>
+                            <linearGradient id="fadeCenterGaleri" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+                                <stop offset="26%" stop-color="#fff" stop-opacity="0.85" />
+                                <stop offset="38%" stop-color="#fff" stop-opacity="0" />
+                                <stop offset="62%" stop-color="#fff" stop-opacity="0" />
+                                <stop offset="74%" stop-color="#fff" stop-opacity="0.85" />
+                                <stop offset="100%" stop-color="#fff" stop-opacity="1" />
+                            </linearGradient>
+                            <mask id="motifMaskGaleri">
+                                <rect width="100%" height="100%" fill="url(#fadeCenterGaleri)" />
+                            </mask>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#kawungDescanGaleri)" mask="url(#motifMaskGaleri)" />
+                    </svg>
+
+                    <!-- Left Badge Ornamen: Kamera & Label Desa Cantik -->
+                    <div class="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full p-1 bg-emerald-950/70 border border-emerald-400/40 backdrop-blur-sm shadow flex items-center justify-center shrink-0">
+                            <span class="text-sm sm:text-base">📸</span>
+                        </div>
+                        <span class="hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase bg-emerald-500/25 text-emerald-300 border border-emerald-400/30">
+                            DESA CANTIK
+                        </span>
+                    </div>
+
+                    <!-- Center Title: GALERI DESA CANTIK -->
+                    <div class="relative z-10 flex flex-col items-center justify-center mx-auto px-2">
+                        <h2 class="text-base sm:text-xl md:text-2xl font-black text-white tracking-[0.2em] sm:tracking-[0.25em] text-center uppercase drop-shadow-md">
+                            GALERI DESA CANTIK
+                        </h2>
+                        <span class="text-[9.5px] sm:text-[10.5px] text-emerald-200/90 font-bold tracking-wider uppercase mt-0.5 hidden xs:inline-block">
+                            Dokumentasi Pembinaan BPS Kolaka Utara
+                        </span>
+                    </div>
+
+                    <!-- Right Badge Ornamen: Label Kolaka Utara & Kilau -->
+                    <div class="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
+                        <span class="hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase bg-amber-500/20 text-amber-300 border border-amber-400/30">
+                            KOLAKA UTARA
+                        </span>
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full p-1 bg-emerald-950/70 border border-emerald-400/40 backdrop-blur-sm shadow flex items-center justify-center shrink-0">
+                            <span class="text-sm sm:text-base">✨</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -3490,7 +3549,7 @@
             dot.setAttribute('aria-label', 'Pindah ke slide ' + (i + 1));
             const isActive = i === currentDescanSlideIndex;
             dot.className = `w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                isActive ? 'bg-[#ef4444] scale-125 shadow-sm' : 'bg-slate-300 hover:bg-slate-400'
+                isActive ? 'bg-emerald-500 scale-125 shadow-md shadow-emerald-500/40 ring-2 ring-emerald-300' : 'bg-slate-300 hover:bg-slate-400'
             }`;
             dot.onclick = () => goToDescanSlide(i);
             dotsContainer.appendChild(dot);
