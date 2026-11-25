@@ -952,18 +952,12 @@
                                 <span class="text-[#3B4D3B]">MADANI</span>
                             </h1>
 
-                            <!-- Dua Tombol Kapsul Pill Buttons (Tema Warna Emerald & Navy, Tanpa Merah) -->
+                            <!-- Tombol Kapsul Pill Button "Lihat Seluruh Data" -->
                             <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
                                 <!-- Pill 1: Emerald Kapsul "Lihat Seluruh Data" (Menuju Halaman 2) -->
                                 <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#3B4D3B] hover:bg-[#566B53] text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer group">
                                     <span>Lihat Seluruh Data</span>
                                     <svg class="w-4 h-4 text-white/90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
-                                </a>
-
-                                <!-- Pill 2: Navy Kapsul "Peta dan Analisis" (Menuju Halaman 3 Peta) -->
-                                <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#1D241E] hover:bg-[#3B4D3B] text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer group">
-                                    <svg class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
-                                    <span>Peta dan Analisis</span>
                                 </a>
                             </div>
 
