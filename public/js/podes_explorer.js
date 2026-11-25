@@ -251,6 +251,7 @@
     window.nextSectorSlide = nextSectorSlide;
     window.startSectorAutoSlide = startSectorAutoSlide;
     window.stopSectorAutoSlide = stopSectorAutoSlide;
+    window.toggleSectorAutoPlay = toggleSectorAutoPlay;
     window.setDetailTableTab = setDetailTableTab;
     window.exportActiveTableCSV = exportActiveTableCSV;
     window.exportKecamatanCSV = exportKecamatanCSV;
@@ -346,7 +347,7 @@
       const indexStr = String(idx + 1).padStart(2, '0');
 
       const meta = KEC_META[kKey] || {
-        photo: '/images/jadesta/kebun_kakao_totallang.jpg'
+        photo: '/images/kecamatan/kebun_kakao_totallang.jpg'
       };
 
       // Tulisan menurun dari atas ke bawah (upright letters top-to-bottom)
@@ -366,7 +367,7 @@
           <img src="${meta.photo}" 
                alt="Kecamatan ${k.nama}" 
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
-               onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+               onerror="this.src='/images/kecamatan/kebun_kakao_totallang.jpg'">
 
           <!-- Polos Clean Dark Gradient Overlay (Tanpa Kotak/Bingkai Terpisah) -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/35 pointer-events-none"></div>
@@ -624,11 +625,18 @@
   // -------------------------------------------------------------
   // STATE 2: DETAIL KECAMATAN (SPLIT-PANEL DUA KOLOM + SWIPE)
   // -------------------------------------------------------------
+  let sectorAutoSlideInterval = null;
+  let isSectorAutoPaused = false;
+  let isSectorHovered = false;
+  const SECTOR_AUTOSLIDE_DELAY = 4000; // 4 detik
+
   function selectKecamatanExploration(kKey) {
     if (!masterData || !masterData.kecamatan[kKey]) return;
     activeKecamatanKey = kKey;
     activeSectorIndex = 0;
     detailSearchQuery = '';
+    isSectorAutoPaused = false;
+    isSectorHovered = false;
 
     const dirEl = document.getElementById('podesStateDirectory');
     const detailEl = document.getElementById('podesStateDetail');
@@ -647,7 +655,7 @@
 
   function backToKecamatanDirectory() {
     activeState = 'directory';
-    stopSectorAutoSlide();
+    stopSectorAutoSlide(false);
     const dirEl = document.getElementById('podesStateDirectory');
     const detailEl = document.getElementById('podesStateDetail');
 
@@ -661,37 +669,144 @@
   }
 
   // -------------------------------------------------------------
-  // AUTO-SLIDE & SMOOTH CAROUSEL CONTROLLER (4 DETIK INTERVAL)
+  // AUTO-SLIDE, TIMER BAR & PAUSE/PLAY CONTROLLER (4 DETIK)
   // -------------------------------------------------------------
-  let sectorAutoSlideInterval = null;
-  const SECTOR_AUTOSLIDE_DELAY = 4000; // 4 detik
+  let timerBarRafId = null;
+
+  function animateSectorTimerBar(running, preserveWidth = false) {
+    if (timerBarRafId && typeof window.cancelAnimationFrame === 'function') {
+      window.cancelAnimationFrame(timerBarRafId);
+      timerBarRafId = null;
+    }
+
+    const bar = document.getElementById('sectorTimerBar');
+    if (!bar) return;
+
+    if (!running) {
+      if (preserveWidth) {
+        const currentWidth = window.getComputedStyle(bar).width;
+        bar.style.transition = 'none';
+        bar.style.width = currentWidth;
+      } else {
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+      }
+      return;
+    }
+
+    // Reset seamlessly to 0%, then transition to 100% on next paint frame
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    void bar.offsetWidth;
+
+    const triggerFill = () => {
+      if (isSectorAutoPaused || isSectorHovered) return;
+      const liveBar = document.getElementById('sectorTimerBar');
+      if (!liveBar) return;
+      liveBar.style.transition = `width ${SECTOR_AUTOSLIDE_DELAY}ms linear`;
+      liveBar.style.width = '100%';
+    };
+
+    if (typeof window.requestAnimationFrame === 'function') {
+      timerBarRafId = window.requestAnimationFrame(() => {
+        timerBarRafId = window.requestAnimationFrame(triggerFill);
+      });
+    } else {
+      triggerFill();
+    }
+  }
+
+  function updateSectorAutoStatusUI() {
+    const playBtn = document.getElementById('sectorAutoPlayBtn');
+    const statusLabel = document.getElementById('sectorAutoStatusLabel');
+
+    if (playBtn) {
+      const icon = playBtn.querySelector('i');
+      if (isSectorAutoPaused) {
+        playBtn.title = 'Lanjutkan Auto-Slide';
+        playBtn.setAttribute('aria-label', 'Lanjutkan Auto-Slide');
+        playBtn.className = 'w-7 h-7 rounded-full bg-[#E6ECE6] border border-[#3B4D3B] text-[#3B4D3B] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs';
+        if (icon) icon.className = 'bi bi-play-fill ml-0.5';
+      } else {
+        playBtn.title = 'Jeda Auto-Slide';
+        playBtn.setAttribute('aria-label', 'Jeda Auto-Slide');
+        playBtn.className = 'w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs';
+        if (icon) icon.className = 'bi bi-pause-fill';
+      }
+    }
+
+    if (statusLabel) {
+      if (isSectorAutoPaused) {
+        statusLabel.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span>Dijeda</span>';
+        statusLabel.className = 'hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[10px] font-mono font-semibold';
+      } else if (isSectorHovered) {
+        statusLabel.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-[#8A9B86]"></span><span>Ditahan</span>';
+        statusLabel.className = 'hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F8FAF8] border border-[#DCE3DD] text-[#5E6B61] text-[10px] font-mono font-semibold';
+      } else {
+        statusLabel.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B] animate-pulse"></span><span>Auto • 4d</span>';
+        statusLabel.className = 'hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E6ECE6]/80 border border-[#DCE3DD] text-[#3B4D3B] text-[10px] font-mono font-semibold';
+      }
+    }
+  }
 
   function startSectorAutoSlide() {
-    stopSectorAutoSlide();
+    clearInterval(sectorAutoSlideInterval);
+    sectorAutoSlideInterval = null;
+
     const detailEl = document.getElementById('podesStateDetail');
-    if (!detailEl || detailEl.style.display === 'none') return;
+    if (!detailEl || detailEl.style.display === 'none' || isSectorAutoPaused || isSectorHovered) {
+      animateSectorTimerBar(false, isSectorAutoPaused || isSectorHovered);
+      updateSectorAutoStatusUI();
+      return;
+    }
+
+    animateSectorTimerBar(true);
+    updateSectorAutoStatusUI();
 
     sectorAutoSlideInterval = setInterval(() => {
       const curDetail = document.getElementById('podesStateDetail');
-      if (!curDetail || curDetail.style.display === 'none') {
-        stopSectorAutoSlide();
+      if (!curDetail || curDetail.style.display === 'none' || isSectorAutoPaused || isSectorHovered) {
+        stopSectorAutoSlide(isSectorAutoPaused || isSectorHovered);
         return;
       }
       nextSectorSlide(false);
     }, SECTOR_AUTOSLIDE_DELAY);
   }
 
-  function stopSectorAutoSlide() {
+  function stopSectorAutoSlide(preserveBar = false) {
     if (sectorAutoSlideInterval) {
       clearInterval(sectorAutoSlideInterval);
       sectorAutoSlideInterval = null;
     }
+    animateSectorTimerBar(false, preserveBar);
+    updateSectorAutoStatusUI();
   }
 
   function restartSectorAutoSlide() {
-    stopSectorAutoSlide();
+    clearInterval(sectorAutoSlideInterval);
+    sectorAutoSlideInterval = null;
     startSectorAutoSlide();
   }
+
+  function toggleSectorAutoPlay() {
+    isSectorAutoPaused = !isSectorAutoPaused;
+    if (isSectorAutoPaused) {
+      stopSectorAutoSlide(true);
+    } else {
+      startSectorAutoSlide();
+    }
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopSectorAutoSlide(true);
+    } else {
+      const detailEl = document.getElementById('podesStateDetail');
+      if (detailEl && detailEl.style.display !== 'none' && !isSectorAutoPaused) {
+        startSectorAutoSlide();
+      }
+    }
+  });
 
   function setSectorSlide(index, userInitiated = false) {
     if (index < 0 || index >= SECTORS.length) return;
@@ -729,13 +844,19 @@
           chip.className = 'sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer bg-[#3B4D3B] text-white shadow-xs';
           if (icon) icon.className = `bi ${s.icon} text-white`;
         } else {
-          chip.className = `sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer bg-white hover:${s.badgeBg} text-[#5E6B61] hover:${s.badgeText} border border-[#DCE3DD] hover:${s.badgeBorder} shadow-2xs`;
+          chip.className = 'sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer bg-white hover:bg-[#F2F6F2] text-[#5E6B61] hover:text-[#1D241E] border border-[#DCE3DD] hover:border-[#8A9B86] shadow-2xs';
           if (icon) icon.className = `bi ${s.icon} ${s.badgeText}`;
         }
       });
 
       if (userInitiated) {
-        restartSectorAutoSlide();
+        if (isSectorAutoPaused || isSectorHovered) {
+          animateSectorTimerBar(false, false);
+        } else {
+          restartSectorAutoSlide();
+        }
+      } else if (!isSectorAutoPaused && !isSectorHovered) {
+        animateSectorTimerBar(true);
       }
     } else {
       renderRightSectorCard();
@@ -757,62 +878,135 @@
     if (!k) return;
 
     const desaList = k.desa_list || [];
+    const meta = KEC_META[activeKecamatanKey] || {
+      tag: 'Wilayah Kolaka Utara',
+      icon: '🌿',
+      photo: '/images/kecamatan/kebun_kakao_totallang.jpg'
+    };
+
     const dominantComm = getDominantCommodity(desaList);
+    const commIcon = getCommodityIconClass(dominantComm);
     const prodInfo = getFeaturedProductsInfo(desaList);
+
+    const kelCount = desaList.filter(d => d.status === 'Kelurahan').length;
+    const desaCount = desaList.filter(d => d.status !== 'Kelurahan').length;
+    const adminSummary = kelCount > 0 ? `${kelCount} Kel • ${desaCount} Desa` : `${desaCount} Desa`;
+
+    const totL = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+    const totP = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+    const totPop = totL + totP;
+
     const totIMK = desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
     const totBumdes = desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
+    const bumdesPct = desaList.length ? Math.min(100, Math.round((totBumdes / desaList.length) * 100)) : 0;
 
-    // 1. Render Left Panel (Sektor Unggulan) - Minimalist Editorial Split
+    const totSekolah = desaList.reduce((a, b) => a + (Number(b.pendidikan.tk) || 0) + (Number(b.pendidikan.sd_mi_tot) || 0) + (Number(b.pendidikan.smp_mts_tot) || 0) + (Number(b.pendidikan.sma_ma_tot) || 0) + (Number(b.pendidikan.smk_tot) || 0) + (Number(b.pendidikan.pt_tot) || 0), 0);
+    const totFaskes = desaList.reduce((a, b) => a + (Number(b.kesehatan.total_faskes) || 0), 0);
+    const totPosyandu = desaList.reduce((a, b) => a + (Number(b.kesehatan.posyandu_aktif) || 0), 0);
+
+    const totPLN = desaList.reduce((a, b) => a + (Number(b.lingkungan.pln_kk) || 0), 0);
+    const totNonPLN = desaList.reduce((a, b) => a + (Number(b.lingkungan.non_pln_kk) || 0), 0);
+    const totTanpa = desaList.reduce((a, b) => a + (Number(b.lingkungan.tanpa_listrik_kk) || 0), 0);
+    const totalKK = totPLN + totNonPLN + totTanpa;
+    const plnRatio = totalKK > 0 ? ((totPLN / totalKK) * 100).toFixed(1) : '100.0';
+
+    const subsectors = [...new Set(desaList.map(d => (d.ekonomi && d.ekonomi.subsektor ? d.ekonomi.subsektor.trim() : '')).filter(s => s && s !== '-'))];
+    const subsectorLabel = subsectors.length ? subsectors.slice(0, 2).join(' & ') : 'Perkebunan & Jasa';
+
+    // Smart 02 Metric: Show Produk Khas if > 0, otherwise show Sarana Publik (Sekolah & Faskes)
+    const metric02Html = prodInfo.count > 0 ? `
+      <div class="px-3">
+        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PRODUK KHAS</span>
+        <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">
+          ${prodInfo.count} <span class="text-xs font-normal text-[#5E6B61]">Desa</span>
+        </div>
+        <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Produk Unggulan</span>
+      </div>
+    ` : `
+      <div class="px-3">
+        <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / SARANA PUBLIK</span>
+        <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">
+          ${totSekolah + totFaskes} <span class="text-xs font-normal text-[#5E6B61]">Unit</span>
+        </div>
+        <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">${totSekolah} Sekolah • ${totFaskes} Faskes</span>
+      </div>
+    `;
+
+    // 1. Render Left Panel (Visual Hero Card + Komoditas + Smart Metrics + Insight Cepat)
     const leftPanel = document.getElementById('kecDetailLeftPanel');
     if (leftPanel) {
       leftPanel.innerHTML = `
-        <div class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+        <div class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-9">
           <div>
             <!-- Top Controls: Back Button & Regional Code -->
             <div class="flex items-center justify-between gap-2">
-              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-2 text-xs font-semibold text-[#5E6B61] hover:text-[#1D241E] transition-colors cursor-pointer group font-sans">
-                <i class="bi bi-arrow-left text-[#3B4D3B] transition-transform group-hover:-translate-x-1"></i>
+              <button onclick="window.backToKecamatanDirectory()" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F8FAF8] hover:bg-[#E6ECE6] border border-[#DCE3DD] text-xs font-semibold text-[#5E6B61] hover:text-[#1D241E] transition-colors cursor-pointer group font-sans">
+                <i class="bi bi-arrow-left text-[#3B4D3B] transition-transform group-hover:-translate-x-0.5"></i>
                 <span>Semua Kecamatan</span>
               </button>
-              <span class="font-mono text-xs tracking-wider text-[#8A9B86]">
-                KODE: ${k.kode || '-'}
-              </span>
-            </div>
-
-            <!-- Big Kecamatan Heading -->
-            <h2 class="font-cinzel text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1D241E] tracking-[0.05em] uppercase leading-tight mt-5">
-              ${k.nama}
-            </h2>
-            <p class="font-sans text-xs sm:text-sm text-[#5E6B61] mt-1.5 flex items-center gap-2">
-              <span>Wilayah Administratif</span>
-              <span class="text-[#8A9B86]">•</span>
-              <span>Terdiri dari <strong class="text-[#1D241E] font-bold">${desaList.length} Desa & Kelurahan</strong></span>
-            </p>
-
-            <div class="border-t border-[#DCE3DD] my-6"></div>
-
-            <!-- Sektor Unggulan Header -->
-            <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#3B4D3B]"></span>
-                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#5E6B61]">SEKTOR UNGGULAN WILAYAH</span>
+                <span class="font-mono text-[11px] tracking-wider text-[#8A9B86]">KODE: ${k.kode || '-'}</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#E6ECE6] border border-[#DCE3DD] text-[10px] font-mono font-semibold text-[#3B4D3B]">PODES 2025</span>
               </div>
-              <span class="font-mono text-xs text-[#8A9B86]">PODES 2025</span>
             </div>
 
-            <!-- Dominant Commodity (Open, No Box) -->
-            <div class="mt-4">
-              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">KOMODITAS UTAMA DOMINAN</div>
-              <div class="font-cinzel text-2xl sm:text-3xl font-bold text-[#1D241E] tracking-tight uppercase mt-0.5">
-                ${dominantComm}
+            <!-- Visual Identity Hero Banner -->
+            <div class="relative overflow-hidden rounded-2xl border border-[#DCE3DD] h-40 sm:h-44 mt-4 group shadow-2xs">
+              <img src="${meta.photo}"
+                   alt="Lanskap Kecamatan ${k.nama}"
+                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
+                   onerror="this.src='/images/kecamatan/kebun_kakao_totallang.jpg'">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1D241E]/95 via-[#1D241E]/55 to-[#1D241E]/25"></div>
+
+              <!-- Top Floating Frosted Badges -->
+              <div class="relative z-10 p-3.5 sm:p-4 flex items-center justify-between gap-2">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] font-medium text-white shadow-xs">
+                  <span>${meta.icon}</span>
+                  <span>${meta.tag}</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3B4D3B]/85 backdrop-blur-md border border-white/20 text-[10px] font-mono font-semibold text-white">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+                  <span>${adminSummary}</span>
+                </span>
               </div>
-              <p class="text-xs text-[#5E6B61] mt-1 font-sans leading-relaxed">
-                Basis komoditas perkebunan rakyat dan agribisnis utama di wilayah Kecamatan ${k.nama}.
-              </p>
+
+              <!-- Bottom Title & Population Summary -->
+              <div class="absolute bottom-0 left-0 right-0 z-10 p-3.5 sm:p-4">
+                <h2 class="font-cinzel text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-[0.05em] uppercase leading-tight drop-shadow-sm">
+                  ${k.nama}
+                </h2>
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-200 font-sans mt-1">
+                  <span class="inline-flex items-center gap-1">
+                    <i class="bi bi-people-fill text-emerald-300"></i>
+                    <strong class="text-white tabular-nums">${totPop.toLocaleString('id-ID')}</strong> Jiwa Terdata
+                  </span>
+                  <span class="text-white/40">•</span>
+                  <span class="inline-flex items-center gap-1">
+                    <i class="bi bi-check-circle-fill text-emerald-300"></i>
+                    <span>100% Sensus Selesai</span>
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <!-- 3 Column Metrics (Senada dengan 01 / 02 / 03 / 04) -->
-            <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-5 my-6">
+            <!-- Dominant Commodity Highlight Card -->
+            <div class="mt-4 p-3.5 sm:p-4 rounded-2xl bg-[#F8FAF8] border border-[#DCE3DD] flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] border border-[#DCE3DD] flex items-center justify-center text-xl shrink-0 shadow-2xs">
+                <i class="bi ${commIcon}"></i>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] font-semibold">KOMODITAS UTAMA DOMINAN</span>
+                  <span class="text-[10px] font-mono text-[#5E6B61] hidden sm:inline">Subsektor: ${subsectorLabel}</span>
+                </div>
+                <div class="font-cinzel text-xl sm:text-2xl font-bold text-[#1D241E] tracking-tight uppercase mt-0.5 truncate">
+                  ${dominantComm}
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Column Metrics -->
+            <div class="grid grid-cols-3 divide-x divide-[#DCE3DD] border-t border-b border-[#DCE3DD] py-4 my-4">
               <div class="pr-3">
                 <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / UNIT IMK</span>
                 <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">
@@ -821,42 +1015,44 @@
                 <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Usaha Mikro/Kecil</span>
               </div>
 
-              <div class="px-3">
-                <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PRODUK KHAS</span>
-                <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">
-                  ${prodInfo.count} <span class="text-xs font-normal text-[#5E6B61]">Desa</span>
-                </div>
-                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Desa Unggulan</span>
-              </div>
+              ${metric02Html}
 
               <div class="pl-3">
                 <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / BUMDES</span>
                 <div class="text-2xl sm:text-3xl font-bold text-[#566B53] tabular-nums font-sans mt-1">
                   ${totBumdes} <span class="text-xs font-normal text-[#5E6B61]">Unit</span>
                 </div>
-                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Kemandirian Desa</span>
+                <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Cakupan ${bumdesPct}% Desa</span>
               </div>
             </div>
           </div>
 
-          <!-- Bottom: Featured Products (Subtle chips) -->
-          ${prodInfo.products.length ? `
-            <div class="pt-2">
-              <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block mb-2">PRODUK UNGGULAN TERDATA:</span>
-              <div class="flex flex-wrap gap-2">
-                ${prodInfo.products.map(p => `
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-xs font-medium font-sans">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B]"></span>
-                    <span>${p}</span>
-                  </span>
-                `).join('')}
+          <!-- Bottom: Featured Products (if any) + Human-Readable Sorotan Wilayah -->
+          <div class="space-y-3">
+            ${prodInfo.products.length ? `
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block mb-1.5">PRODUK UNGGULAN TERDATA:</span>
+                <div class="flex flex-wrap gap-1.5">
+                  ${prodInfo.products.map(p => `
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-[11px] font-semibold font-sans">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B]"></span>
+                      <span>${p}</span>
+                    </span>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <div class="p-3.5 rounded-2xl bg-[#F2F6F2] border border-[#DCE3DD] flex items-start gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-white border border-[#DCE3DD] text-[#3B4D3B] flex items-center justify-center text-sm shrink-0 mt-0.5 shadow-2xs">
+                <i class="bi bi-lightbulb-fill text-amber-600"></i>
+              </div>
+              <div class="text-xs text-[#5E6B61] font-sans leading-relaxed">
+                <span class="font-bold text-[#1D241E] block mb-0.5">Sorotan ${k.nama}</span>
+                Menghimpun <strong class="text-[#1D241E]">${totPop.toLocaleString('id-ID')} jiwa</strong> dengan elektrifikasi PLN <strong class="text-[#3B4D3B]">${plnRatio}%</strong>, ditunjang <strong class="text-[#1D241E]">${totSekolah} sekolah</strong> dan <strong class="text-[#1D241E]">${totPosyandu} posyandu aktif</strong>.
               </div>
             </div>
-          ` : `
-            <div class="text-xs text-[#8A9B86] font-sans">
-              Data dihimpun dari sensus Potensi Desa (PODES) 2025 BPS Kabupaten Kolaka Utara.
-            </div>
-          `}
+          </div>
         </div>
       `;
     }
@@ -872,11 +1068,13 @@
       const totL = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
       const totP = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
       const totPop = totL + totP;
+      const pctL = totPop > 0 ? ((totL / totPop) * 100).toFixed(1) : '50.0';
+      const pctP = totPop > 0 ? (100 - parseFloat(pctL)).toFixed(1) : '50.0';
       const avgKepadatan = desaList.length ? (desaList.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / desaList.length).toFixed(1) : 0;
       const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3.5">
           <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / TOTAL PENDUDUK</span>
             <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totPop.toLocaleString('id-ID')}</div>
@@ -893,9 +1091,15 @@
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Laki-laki per 100 Perempuan</span>
           </div>
         </div>
-        <div class="p-3 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} flex items-center justify-between text-xs my-2">
-          <span class="text-[#5E6B61] font-sans">Cakupan wilayah administrasi: <strong class="text-[#1D241E]">${desaList.length} Desa & Kelurahan</strong></span>
-          <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">100% Terdata</span>
+        <div class="p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} space-y-2 my-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-[#1D241E] font-sans">Komposisi Gender (${desaList.length} Desa & Kel)</span>
+            <span class="text-[11px] font-mono font-bold ${sec.badgeText}">L ${pctL}% : P ${pctP}%</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-[#DCE3DD] overflow-hidden flex">
+            <div class="h-full bg-[#3B4D3B] transition-all duration-500" style="width: ${pctL}%;" title="Laki-laki ${pctL}%"></div>
+            <div class="h-full bg-[#8A9B86] transition-all duration-500" style="width: ${pctP}%;" title="Perempuan ${pctP}%"></div>
+          </div>
         </div>
       `;
     } else if (sec.id === 'pendidikan') {
@@ -906,12 +1110,21 @@
       const totSMK = desaList.reduce((a, b) => a + (b.pendidikan.smk_tot || 0), 0);
       const totPT = desaList.reduce((a, b) => a + (b.pendidikan.pt_tot || 0), 0);
       const totalSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
+      const totMenengahAtas = totSMA + totSMK + totPT;
+      const pctTK = totalSekolah ? ((totTK / totalSekolah) * 100).toFixed(1) : 0;
+      const pctSD = totalSekolah ? ((totSD / totalSekolah) * 100).toFixed(1) : 0;
+      const pctSMP = totalSekolah ? ((totSMP / totalSekolah) * 100).toFixed(1) : 0;
+      const pctAtas = totalSekolah ? ((totMenengahAtas / totalSekolah) * 100).toFixed(1) : 0;
+      const avgSekolahDesa = desaList.length ? (totalSekolah / desaList.length).toFixed(1) : 0;
 
       sectorContentHtml = `
         <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-[#285A43]"></span>
-            <span class="text-xs font-bold text-[#1D241E] font-sans">Total Fasilitas Sekolah</span>
+            <div>
+              <span class="text-xs font-bold text-[#1D241E] font-sans block">Total Fasilitas Sekolah</span>
+              <span class="text-[11px] text-[#5E6B61] font-sans">Rata-rata ${avgSekolahDesa} sekolah per desa</span>
+            </div>
           </div>
           <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
             ${totalSekolah} <span class="text-xs font-semibold text-[#5E6B61]">Unit</span>
@@ -943,9 +1156,20 @@
             <span class="text-lg sm:text-xl font-bold text-[#1D241E] tabular-nums font-sans mt-0.5 block">${totPT}</span>
           </div>
         </div>
-        <p class="text-xs text-[#5E6B61] font-sans leading-relaxed">
-          Ketersediaan sarana belajar dari jenjang usia dini hingga perguruan tinggi.
-        </p>
+        <div class="space-y-1.5 pt-1">
+          <div class="w-full h-2 rounded-full bg-[#DCE3DD] overflow-hidden flex">
+            <div class="h-full bg-[#8A9B86]" style="width: ${pctTK}%;" title="TK/PAUD: ${totTK}"></div>
+            <div class="h-full bg-[#285A43]" style="width: ${pctSD}%;" title="SD/MI: ${totSD}"></div>
+            <div class="h-full bg-[#3B4D3B]" style="width: ${pctSMP}%;" title="SMP/MTs: ${totSMP}"></div>
+            <div class="h-full bg-[#1D241E]" style="width: ${pctAtas}%;" title="SMA/SMK/PT: ${totMenengahAtas}"></div>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-[10px] font-mono text-[#5E6B61]">
+            <span><i class="bi bi-square-fill text-[#8A9B86] mr-1"></i>PAUD (${pctTK}%)</span>
+            <span><i class="bi bi-square-fill text-[#285A43] mr-1"></i>SD (${pctSD}%)</span>
+            <span><i class="bi bi-square-fill text-[#3B4D3B] mr-1"></i>SMP (${pctSMP}%)</span>
+            <span><i class="bi bi-square-fill text-[#1D241E] mr-1"></i>SMA/PT (${pctAtas}%)</span>
+          </div>
+        </div>
       `;
     } else if (sec.id === 'kesehatan') {
       const totRS = desaList.reduce((a, b) => a + (b.kesehatan.rs || 0), 0);
@@ -954,9 +1178,10 @@
       const totApotek = desaList.reduce((a, b) => a + (b.kesehatan.apotek || 0), 0);
       const totPosyandu = desaList.reduce((a, b) => a + (b.kesehatan.posyandu_aktif || 0), 0);
       const totPosbindu = desaList.reduce((a, b) => a + (b.kesehatan.posbindu || 0), 0);
+      const posyanduCovPct = desaList.length ? Math.min(100, Math.round((totPosyandu / desaList.length) * 100)) : 100;
 
       sectorContentHtml = `
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3.5">
           <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">01 / RS & PUSKESMAS</span>
             <div class="text-2xl sm:text-3xl font-bold text-[#1E5646] tabular-nums font-sans mt-1">${totRS + totPusk} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
@@ -973,9 +1198,14 @@
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Posbindu: ${totPosbindu} • Apotek: ${totApotek}</span>
           </div>
         </div>
-        <div class="p-3 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} flex items-center justify-between text-xs my-2">
-          <span class="text-[#5E6B61] font-sans">Kapasitas penanganan kesehatan masyarakat desa:</span>
-          <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">${totPosyandu} Posyandu Aktif</span>
+        <div class="p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} space-y-2 my-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[#1D241E] font-semibold font-sans">Jangkauan Layanan Kesehatan Desa</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">${totPosyandu}/${desaList.length} Desa Aktif</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-white/80 border ${sec.badgeBorder} overflow-hidden">
+            <div class="h-full bg-[#1E5646] rounded-full transition-all duration-500" style="width: ${posyanduCovPct}%;"></div>
+          </div>
         </div>
       `;
     } else if (sec.id === 'ekonomi') {
@@ -985,6 +1215,7 @@
       const totBank = desaList.reduce((a, b) => a + (b.ekonomi.bank_gov + b.ekonomi.bank_swasta + b.ekonomi.bpr), 0);
       const totKop = desaList.reduce((a, b) => a + (b.ekonomi.kud + b.ekonomi.ksp + b.ekonomi.koperasi_lain), 0);
       const totHotel = desaList.reduce((a, b) => a + (b.ekonomi.hotel + b.ekonomi.penginapan), 0);
+      const avgIMKDesa = desaList.length ? (totIMK / desaList.length).toFixed(1) : 0;
 
       sectorContentHtml = `
         <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
@@ -994,7 +1225,7 @@
             </span>
             <div>
               <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Sentra Industri Mikro & Kecil (IMK)</span>
-              <span class="text-xs text-[#5E6B61]">Pusat kerajinan & olahan pangan rakyat</span>
+              <span class="text-xs text-[#5E6B61]">Rata-rata ${avgIMKDesa} unit produktif per desa</span>
             </div>
           </div>
           <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
@@ -1013,33 +1244,42 @@
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bank: ${totBank} • Koperasi: ${totKop}</span>
           </div>
         </div>
+        <div class="flex flex-wrap items-center justify-between gap-2 px-3 py-2 rounded-xl bg-[#F8FAF8] border border-[#DCE3DD] text-[11px] text-[#5E6B61] font-sans">
+          <span>Ekosistem Niaga: <strong class="text-[#1D241E]">${totPasar + totMini} Pusat Belanja</strong></span>
+          <span>Akomodasi / Penginapan: <strong class="text-[#1D241E]">${totHotel} Unit</strong></span>
+        </div>
       `;
     } else if (sec.id === 'lingkungan') {
       const totPLN = desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
       const totNonPLN = desaList.reduce((a, b) => a + (b.lingkungan.non_pln_kk || 0), 0);
       const totTanpa = desaList.reduce((a, b) => a + (b.lingkungan.tanpa_listrik_kk || 0), 0);
       const totalKK = totPLN + totNonPLN + totTanpa;
-      const rasioPLN = totalKK > 0 ? ((totPLN / totalKK) * 100).toFixed(1) : 100;
+      const rasioPLN = totalKK > 0 ? ((totPLN / totalKK) * 100).toFixed(1) : '100.0';
+      const rasioNum = Math.min(100, parseFloat(rasioPLN));
+      const plnStatus = rasioNum >= 95 ? 'Sangat Baik' : (rasioNum >= 85 ? 'Baik' : 'Bertahap');
       const bebasCemarDesa = desaList.filter(d => d.lingkungan.bebas_pencemaran).length;
+      const bebasPct = desaList.length ? Math.round((bebasCemarDesa / desaList.length) * 100) : 100;
 
       sectorContentHtml = `
-        <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
-          <div class="flex items-center gap-2.5">
-            <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
-              <i class="bi bi-lightning-charge-fill"></i>
-            </span>
-            <div>
-              <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Pelanggan Listrik PLN</span>
-              <span class="text-xs text-[#5E6B61]">Elektrifikasi rumah tangga</span>
+        <div class="p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-lg ${sec.badgeBg} ${sec.badgeText} flex items-center justify-center text-sm border ${sec.badgeBorder}">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </span>
+              <div>
+                <span class="text-[10px] font-mono uppercase ${sec.badgeText} font-bold block">Pelanggan Listrik PLN</span>
+                <span class="text-xs text-[#5E6B61]">Rasio ${rasioPLN}% • Kategori <strong class="${sec.badgeText}">${plnStatus}</strong></span>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
+                ${totPLN.toLocaleString('id-ID')} <span class="text-xs font-semibold ${sec.badgeText}/80">KK</span>
+              </div>
             </div>
           </div>
-          <div class="text-right">
-            <div class="text-2xl sm:text-3xl font-black ${sec.badgeText} tabular-nums font-sans">
-              ${totPLN.toLocaleString('id-ID')} <span class="text-xs font-semibold ${sec.badgeText}/80">KK</span>
-            </div>
-            <span class="inline-block px-2 py-0.5 rounded-full ${sec.badgeBg} ${sec.badgeText} text-[10px] font-bold border ${sec.badgeBorder}">
-              Rasio ${rasioPLN}%
-            </span>
+          <div class="w-full h-2.5 rounded-full bg-white/90 border ${sec.badgeBorder} overflow-hidden">
+            <div class="h-full bg-[#23683A] rounded-full transition-all duration-500" style="width: ${rasioNum}%;"></div>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 my-3">
@@ -1048,10 +1288,14 @@
             <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${totNonPLN} <span class="text-xs font-normal text-[#5E6B61]">KK</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanpa Listrik: ${totTanpa} KK</span>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / LINGKUNGAN HIDUP</span>
-            <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${bebasCemarDesa} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Bebas Pencemaran Air & Udara</span>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / LINGKUNGAN HIDUP</span>
+              <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${bebasCemarDesa} <span class="text-xs font-normal text-[#5E6B61]">/ ${desaList.length} Desa</span></div>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-[#E6ECE6] overflow-hidden mt-2" title="${bebasPct}% Bebas Pencemaran">
+              <div class="h-full bg-[#3B4D3B] rounded-full" style="width: ${bebasPct}%;"></div>
+            </div>
           </div>
         </div>
       `;
@@ -1061,6 +1305,8 @@
       const totWisata = desaList.reduce((a, b) => a + (b.pemerintahan.wisata_desa || 0), 0);
       const countSiskeudes = desaList.filter(d => d.pemerintahan.siskeudes && d.pemerintahan.siskeudes !== 'Tidak Ada').length;
       const countSID = desaList.filter(d => d.pemerintahan.sid && d.pemerintahan.sid !== 'Tidak Ada').length;
+      const pctSiskeudes = desaList.length ? Math.round((countSiskeudes / desaList.length) * 100) : 0;
+      const pctSID = desaList.length ? Math.round((countSID / desaList.length) * 100) : 0;
 
       sectorContentHtml = `
         <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
@@ -1078,15 +1324,27 @@
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 my-3">
-          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / DIGITALISASI (SID)</span>
-            <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${countSID} <span class="text-xs font-normal text-[#5E6B61]">Desa</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">SISKEUDES: ${countSiskeudes} Desa</span>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs space-y-2">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / DIGITALISASI DESA</span>
+              <div class="text-2xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">${countSiskeudes} <span class="text-xs font-normal text-[#5E6B61]">SISKEUDES</span></div>
+            </div>
+            <div class="space-y-1 text-[10px] font-mono text-[#5E6B61]">
+              <div class="flex justify-between"><span>SISKEUDES</span><span>${pctSiskeudes}%</span></div>
+              <div class="w-full h-1.5 rounded-full bg-[#E6ECE6] overflow-hidden"><div class="h-full bg-[#245366]" style="width: ${pctSiskeudes}%;"></div></div>
+              <div class="flex justify-between pt-0.5"><span>Sistem Info (SID)</span><span>${pctSID}%</span></div>
+              <div class="w-full h-1.5 rounded-full bg-[#E6ECE6] overflow-hidden"><div class="h-full bg-[#566B53]" style="width: ${pctSID}%;"></div></div>
+            </div>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / ASET & WISATA</span>
-            <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totWisata} <span class="text-xs font-normal text-[#5E6B61]">Lokasi</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanah Kas Desa: ${totTanahKas} Unit</span>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / ASET & WISATA</span>
+              <div class="text-2xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totWisata} <span class="text-xs font-normal text-[#5E6B61]">Wisata</span></div>
+              <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Tanah Kas Desa: ${totTanahKas} Unit</span>
+            </div>
+            <div class="text-[11px] font-sans text-[#5E6B61] bg-[#F8FAF8] border border-[#DCE3DD] rounded-lg px-2.5 py-1.5 mt-2">
+              Total ${countSID} Desa aktif SID
+            </div>
           </div>
         </div>
       `;
@@ -1095,6 +1353,9 @@
       const kadesS1 = desaList.filter(d => d.pemerintahan.kades_pend && d.pemerintahan.kades_pend.includes('S1')).length;
       const kadesL = desaList.filter(d => d.pemerintahan.kades_gender === 'Laki-laki').length;
       const kadesP = desaList.filter(d => d.pemerintahan.kades_gender === 'Perempuan').length;
+      const kadesS1Pct = desaList.length ? Math.round((kadesS1 / desaList.length) * 100) : 0;
+      const kadesTotGender = kadesL + kadesP;
+      const kadesLPct = kadesTotGender ? Math.round((kadesL / kadesTotGender) * 100) : 100;
 
       sectorContentHtml = `
         <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
@@ -1112,15 +1373,26 @@
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3 my-3">
-          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / PENDIDIKAN KADES</span>
-            <div class="text-2xl font-bold ${sec.badgeText} tabular-nums font-sans mt-1">${kadesS1} <span class="text-xs font-normal text-[#5E6B61]">Kades</span></div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Jenjang D-IV / S1 ke atas</span>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">01 / PENDIDIKAN KADES</span>
+              <div class="text-2xl font-bold ${sec.badgeText} tabular-nums font-sans mt-1">${kadesS1} <span class="text-xs font-normal text-[#5E6B61]">/ ${desaList.length} Kades</span></div>
+              <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Lulusan D-IV / S1 (${kadesS1Pct}%)</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-[#E6ECE6] overflow-hidden mt-2">
+              <div class="h-full bg-[#445E2A] rounded-full" style="width: ${kadesS1Pct}%;"></div>
+            </div>
           </div>
-          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / GENDER KADES</span>
-            <div class="text-2xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${kadesL} L • ${kadesP} P</div>
-            <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Komposisi Kepemimpinan</span>
+          <div class="bg-white p-3 rounded-xl border border-[#DCE3DD] shadow-2xs flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono uppercase text-[#8A9B86] block">02 / GENDER KADES</span>
+              <div class="text-2xl font-bold text-[#566B53] tabular-nums font-sans mt-1">${kadesL} L • ${kadesP} P</div>
+              <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Komposisi Kepemimpinan</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-[#E6ECE6] overflow-hidden flex mt-2">
+              <div class="h-full bg-[#3B4D3B]" style="width: ${kadesLPct}%;"></div>
+              <div class="h-full bg-[#8A9B86]" style="width: ${100 - kadesLPct}%;"></div>
+            </div>
           </div>
         </div>
       `;
@@ -1133,7 +1405,7 @@
     const contentHtml = getSectorContentHtml(sec, desaList);
     return `
       <div class="w-full shrink-0 min-w-full p-5 sm:p-6 flex flex-col justify-between" data-sector-slide-index="${idx}">
-        <div class="flex items-center justify-between pb-3.5 border-b border-[#DCE3DD]/80">
+        <div class="flex items-center justify-between pb-3 border-b border-[#DCE3DD]/80">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl ${sec.badgeBg} ${sec.badgeText} border ${sec.badgeBorder} flex items-center justify-center text-lg shrink-0 shadow-2xs">
               <i class="bi ${sec.icon}"></i>
@@ -1180,23 +1452,30 @@
     const slidesHtml = SECTORS.map((s, idx) => getSectorSlideHtml(s, idx, desaList)).join('');
 
     rightPanel.innerHTML = `
-      <div id="swipeableSectorCard" class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 select-none">
+      <div id="swipeableSectorCard" class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-9 select-none">
         <div>
-          <!-- Top Bar: Title & Slide Nav -->
-          <div class="flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2">
+          <!-- Top Bar: Title, Auto-Play Status, & Slide Nav -->
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
               <h3 class="font-batangas text-2xl sm:text-3xl font-bold text-[#1D241E]">Sektor Lainnya</h3>
               <span id="sectorCounterText" class="font-mono text-xs text-[#8A9B86]">(${activeSectorIndex + 1}/7)</span>
+              <span id="sectorAutoStatusLabel" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E6ECE6]/80 border border-[#DCE3DD] text-[#3B4D3B] text-[10px] font-mono font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B] animate-pulse"></span>
+                <span>Auto • 4d</span>
+              </span>
             </div>
 
-            <!-- Dots & Prev / Next Arrows -->
-            <div class="flex items-center gap-3">
+            <!-- Dots, Prev / Pause-Play / Next Arrows -->
+            <div class="flex items-center gap-2.5 sm:gap-3">
               <div id="sectorDotsContainer" class="flex items-center gap-1.5">
                 ${dotsHtml}
               </div>
-              <div class="flex items-center gap-1 border-l border-[#DCE3DD] pl-3">
+              <div class="flex items-center gap-1 border-l border-[#DCE3DD] pl-2.5 sm:pl-3">
                 <button onclick="window.prevSectorSlide(true)" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Sebelumnya">
                   <i class="bi bi-chevron-left"></i>
+                </button>
+                <button id="sectorAutoPlayBtn" onclick="window.toggleSectorAutoPlay()" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Jeda Auto-Slide">
+                  <i class="bi bi-pause-fill"></i>
                 </button>
                 <button onclick="window.nextSectorSlide(true)" class="w-7 h-7 rounded-full bg-white border border-[#DCE3DD] hover:border-[#3B4D3B] hover:text-[#3B4D3B] text-[#5E6B61] flex items-center justify-center text-xs transition-colors cursor-pointer shadow-2xs" title="Sektor Selanjutnya">
                   <i class="bi bi-chevron-right"></i>
@@ -1205,12 +1484,17 @@
             </div>
           </div>
 
-          <div class="border-t border-[#DCE3DD] my-5"></div>
+          <div class="border-t border-[#DCE3DD] my-4"></div>
 
-          <!-- Active Sector Card Container with Smooth Carousel Track -->
+          <!-- Active Sector Card Container with 4-Second Visual Timer Bar & Carousel Track -->
           <div class="bg-white rounded-2xl border border-[#DCE3DD] shadow-2xs overflow-hidden relative">
+            <!-- 4s Progress Timer Line -->
+            <div class="w-full h-[3px] bg-[#E6ECE6] overflow-hidden">
+              <div id="sectorTimerBar" class="h-full bg-[#3B4D3B]" style="width: 0%;"></div>
+            </div>
+
             <div id="sectorSliderTrack" 
-                 class="flex w-full will-change-transform" 
+                 class="flex w-full will-change-transform items-stretch" 
                  style="transform: translateX(-${activeSectorIndex * 100}%); transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);">
               ${slidesHtml}
             </div>
@@ -1218,16 +1502,16 @@
         </div>
 
         <!-- Bottom Sector Quick Chips (Interactive Pill Bar with Sector Accents) -->
-        <div class="mt-6 pt-4 border-t border-[#DCE3DD]">
-          <div class="flex items-center justify-between mb-2.5">
+        <div class="mt-5 pt-4 border-t border-[#DCE3DD]">
+          <div class="flex items-center justify-between mb-2">
             <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86]">NAVIGASI 7 SEKTOR PODES</span>
-            <span class="text-[11px] text-[#5E6B61] font-sans">Pilih sektor untuk melihat data</span>
+            <span class="text-[11px] text-[#5E6B61] font-sans">Pilih sektor • Arahkan kursor untuk menjeda</span>
           </div>
           <div id="sectorChipsContainer" class="flex flex-wrap gap-1.5 sm:gap-2">
             ${SECTORS.map((s, idx) => `
               <button onclick="window.setSectorSlide(${idx}, true)" 
                       data-chip-idx="${idx}"
-                      class="sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-xs' : 'bg-white hover:' + s.badgeBg + ' text-[#5E6B61] hover:' + s.badgeText + ' border border-[#DCE3DD] hover:' + s.badgeBorder + ' shadow-2xs'}">
+                      class="sector-pill-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${idx === activeSectorIndex ? 'bg-[#3B4D3B] text-white shadow-xs' : 'bg-white hover:bg-[#F2F6F2] text-[#5E6B61] hover:text-[#1D241E] border border-[#DCE3DD] hover:border-[#8A9B86] shadow-2xs'}">
                 <i class="bi ${s.icon} ${idx === activeSectorIndex ? 'text-white' : s.badgeText}"></i>
                 <span>${s.name}</span>
               </button>
@@ -1241,10 +1525,12 @@
     const swipeCard = document.getElementById('swipeableSectorCard');
     if (swipeCard) {
       swipeCard.addEventListener('mouseenter', () => {
-        stopSectorAutoSlide();
+        isSectorHovered = true;
+        stopSectorAutoSlide(true);
       });
 
       swipeCard.addEventListener('mouseleave', () => {
+        isSectorHovered = false;
         startSectorAutoSlide();
       });
 
@@ -1252,18 +1538,21 @@
       let touchEndX = 0;
 
       swipeCard.addEventListener('touchstart', (e) => {
-        stopSectorAutoSlide();
+        isSectorHovered = true;
+        stopSectorAutoSlide(true);
         touchStartX = e.changedTouches[0].screenX;
       }, { passive: true });
 
       swipeCard.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
+        isSectorHovered = false;
         if (touchEndX < touchStartX - 50) {
           nextSectorSlide(true);
         } else if (touchEndX > touchStartX + 50) {
           prevSectorSlide(true);
+        } else {
+          startSectorAutoSlide();
         }
-        startSectorAutoSlide();
       }, { passive: true });
     }
 
