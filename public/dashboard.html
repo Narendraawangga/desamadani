@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Bootstrap Icons CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -32,7 +32,8 @@
                     },
                     fontFamily: {
                         cinzel: ['"Cinzel"', 'serif'],
-                        cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        batangas: ['"Batangas"', 'sans-serif'],
+                        cormorant: ['"Batangas"', 'sans-serif'],
                         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
                     }
@@ -69,19 +70,24 @@
 
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261123_08"></script>
-    <script src="/js/podes_explorer.js?v=20261123_08"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261123_09"></script>
+    <script src="/js/podes_explorer.js?v=20261125_01"></script>
 
     <style>
-        html, body {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-            width: 100% !important;
+        html {
+            overflow-x: clip;
+            max-width: 100vw;
+            width: 100%;
             box-sizing: border-box;
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
+            overflow-x: clip;
+            max-width: 100vw;
+            width: 100%;
+            box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: #F8FAF8;
             color: #1e293b;
@@ -172,7 +178,7 @@
         }
     
     
-        /* Typography: Cinzel, Cormorant Garamond, Plus Jakarta Sans */
+        /* Typography: Cinzel (Header & Brand), Batangas (Secondary Display Titles), Plus Jakarta Sans (UI & Body) */
         .font-cinzel {
             font-family: 'Cinzel', serif !important;
             letter-spacing: 0.05em;
@@ -183,13 +189,17 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
+        .font-batangas {
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
+        }
         .font-cormorant {
-            font-family: 'Cormorant Garamond', Georgia, serif !important;
-            font-weight: 600;
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
         }
         .font-editorial {
-            font-family: 'Cormorant Garamond', Georgia, serif !important;
-            font-weight: 600;
+            font-family: 'Batangas', sans-serif !important;
+            letter-spacing: 0.02em;
         }
         .eyebrow-label {
             font-family: 'Plus Jakarta Sans', sans-serif !important;
@@ -615,18 +625,17 @@
 
 <body class="bg-[#F8FAF8] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
 
-    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI) -->
-    <header class="bg-white/95 backdrop-blur-md text-slate-800 border-b border-slate-200 sticky top-0 z-50 transition-all min-h-[58px] flex items-center w-full max-w-full">
-        <div class="w-full px-4 lg:px-8 py-2.5 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
+    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI - FIXED TRANSPARAN DI ATAS, PUTIH SAAT SCROLL) -->
+    <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
+        <div class="w-full px-4 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
-            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS -->
+            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Mengarahkan ke Login Admin) -->
             <div class="flex items-center gap-3 shrink-0">
-                <a href="/portal" class="flex items-center gap-2 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99] rounded-xl" title="Desa Madani Kabupaten Kolaka Utara">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#3B4D3B] animate-pulse"></span>
-                    <div class="flex items-center gap-1.5 shrink-0 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-lg shadow-2xs">
-                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-6 w-auto object-contain">
-                        <div class="h-3.5 w-[1px] bg-slate-300"></div>
-                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-5 w-auto object-contain">
+                <a href="/login" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" title="Masuk ke Portal Login Administrator">
+                    <div class="flex items-center gap-2 shrink-0">
+                        <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain">
+                        <div class="h-4 w-[1px] bg-[#DCE3DD]"></div>
+                        <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-6 w-auto object-contain">
                     </div>
                     <div class="text-base sm:text-lg font-bold text-[#1D241E] leading-none whitespace-nowrap font-cinzel tracking-[0.05em]">
                         DESA <span class="text-[#3B4D3B]">MADANI</span>
@@ -688,19 +697,7 @@
                 </div>
             </nav>
 
-            <!-- Sisi Kanan: 15 Kecamatan Modal, Kelola Data, Bahasa -->
-            <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-                <button onclick="window.toggleKecamatanModal()" id="btnOpenKecamatanModal" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#3B4D3B] text-slate-700 hover:text-[#3B4D3B] text-xs font-bold transition shrink-0 whitespace-nowrap cursor-pointer">
-                    <svg class="w-3.5 h-3.5 text-[#3B4D3B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-                    <span>15 Kecamatan</span>
-                </button>
-
-                <a href="/descan/login" id="btnOpenAdminPortal" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-full shadow-2xs hover:shadow transition flex items-center gap-1.5 text-xs transform hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap cursor-pointer" title="Kelola Data">
-                    <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                    <span>Kelola Data</span>
-                </a>
-
-                <div class="flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold border border-slate-200 shrink-0">
+                <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
                     <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
                     <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
                 </div>
@@ -708,7 +705,7 @@
         </div>
 
         <!-- Mobile Horizontal Scroll Menu -->
-        <div class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t border-slate-100 no-scrollbar text-xs font-bold text-slate-600 w-full bg-white">
+        <div id="mobileNavMenu" class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t no-scrollbar text-xs font-bold text-slate-600 w-full">
             <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full bg-[#3B4D3B] text-white">Beranda</a>
             <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200">Agregat 15 Kec</a>
             <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200">WebGIS Peta</a>
@@ -719,6 +716,8 @@
         </div>
     </header>
 
+    <!-- Header Spacer to maintain exact page layout flow with fixed navbar -->
+    <div id="headerSpacer" class="w-full shrink-0"></div>
     <div id="portal-content-top"></div>
 
     <!-- MAIN PAGES CONTAINER (PISAH 5 HALAMAN) -->
@@ -845,7 +844,7 @@
 </svg>
 
 
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
                         
                         <!-- Sisi Kiri: Tipografi Bold Desapresisi, Pill Buttons & 4 KPI Riil 2025 -->
@@ -871,10 +870,10 @@
                                     <svg class="w-4 h-4 text-white/90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
                                 </a>
 
-                                <!-- Pill 2: Navy Kapsul "WebGIS Peta Spasial" (Menuju Halaman 3 Peta) -->
+                                <!-- Pill 2: Navy Kapsul "Peta dan Analisis" (Menuju Halaman 3 Peta) -->
                                 <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#1D241E] hover:bg-[#3B4D3B] text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer group">
                                     <svg class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
-                                    <span>WebGIS Peta Spasial</span>
+                                    <span>Peta dan Analisis</span>
                                 </a>
                             </div>
 
@@ -1013,62 +1012,134 @@
                 </div>
             </div>
 
-            <!-- Strip 3 Koridor Wilayah Pembangunan (Regional Dispatches) -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <span class="text-xs font-bold text-[#3B4D3B] uppercase tracking-wider">Kewilayahan PODES 2025</span>
+            <!-- Strip 3 Koridor Wilayah Pembangunan (Regional Dispatches - Layered 3D Cards) -->
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#3B4D3B] border border-emerald-200/70 text-xs font-black uppercase tracking-wider mb-2">Kewilayahan PODES 2025</span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">3 Koridor Pembangunan Kolaka Utara</h2>
                     <p class="text-slate-600 text-xs sm:text-sm mt-1.5">Segmentasi strategis agregasi 15 kecamatan berdasarkan karakteristik agribisnis dan geografi.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-[#3B4D3B] font-bold text-xs">KORIDOR I • UTARA</span>
-                            <span class="text-xs font-bold text-slate-400">4 KECAMATAN</span>
-                        </div>
-                        <h3 class="text-lg font-black text-slate-800 mt-3">Episentrum Industri & Pesisir</h3>
-                        <p class="text-xs text-slate-500 mt-1">Tolala, Porehu, Batu Putih, Pakue Utara.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 space-y-2 text-xs">
-                            <div class="flex justify-between"><span class="text-slate-500">Sentra IMK Terbesar:</span><span class="font-extrabold text-amber-600">Porehu (1.440 IMK)</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Komoditas Utama:</span><span class="font-semibold text-slate-700">Kakao, Lada, Nilam</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Total Desa:</span><span class="font-semibold text-slate-700">38 Desa</span></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch max-w-5xl mx-auto">
+                    <!-- KORIDOR 01: UTARA -->
+                    <div class="relative group">
+                        <!-- Back Colored Plate -->
+                        <div class="absolute inset-0 bg-[#3B4D3B] rounded-[28px] transform translate-x-3 translate-y-2.5 rotate-[1.8deg] shadow-lg shadow-[#3B4D3B]/20 transition-transform duration-300 group-hover:translate-x-3.5 group-hover:translate-y-3 group-hover:rotate-[2.2deg]"></div>
+
+                        <!-- Front White Card -->
+                        <div class="relative bg-white rounded-[28px] p-7 sm:p-8 shadow-sm flex flex-col items-center text-center justify-between h-full border border-slate-100/90 transition-all duration-300 group-hover:-translate-y-1">
+                            <div>
+                                <!-- Top Minimal Icon (Desktop Monitor) -->
+                                <div class="w-12 h-12 flex items-center justify-center text-slate-700 mx-auto transition-all duration-300 group-hover:scale-110 group-hover:text-[#3B4D3B]">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Title -->
+                                <h3 class="font-black text-base sm:text-lg text-slate-900 tracking-wider uppercase mt-4">
+                                    KORIDOR I • UTARA
+                                </h3>
+                                <div class="text-[11px] font-bold text-[#3B4D3B] tracking-wider uppercase mt-0.5">
+                                    Episentrum Industri &amp; Pesisir
+                                </div>
+
+                                <!-- Description -->
+                                <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal mt-3 px-1">
+                                    Sentra hilirisasi komoditas kakao, lada, nilam (1.440 IMK di Porehu) dan perikanan pesisir yang mencakup 38 desa di Tolala, Porehu, Batu Putih, dan Pakue Utara.
+                                </p>
+                            </div>
+
+                            <!-- Bottom Circle Number -->
+                            <div class="mt-8 pt-2">
+                                <div class="w-14 h-14 rounded-full bg-[#3B4D3B] text-white flex items-center justify-center font-black text-xl shadow-md shadow-[#3B4D3B]/25 transition-transform duration-300 group-hover:scale-105 select-none">
+                                    01
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="px-2.5 py-1 rounded-full bg-teal-50 text-teal-800 font-bold text-xs">KORIDOR II • TENGAH</span>
-                            <span class="text-xs font-bold text-slate-400">7 KECAMATAN</span>
-                        </div>
-                        <h3 class="text-lg font-black text-slate-800 mt-3">Ibukota, Pendidikan & Medis</h3>
-                        <p class="text-xs text-slate-500 mt-1">Lasusua, Katoi, Kodeoha, Tiwu, Ngapa, Watunohu, Pakue.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 space-y-2 text-xs">
-                            <div class="flex justify-between"><span class="text-slate-500">Konsentrasi PLN:</span><span class="font-extrabold text-emerald-600">Lasusua (8.463 KK)</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Fasilitas Sosial:</span><span class="font-semibold text-slate-700">RSUD Kelas C, 3 Kampus PT</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Total Desa:</span><span class="font-semibold text-slate-700">67 Desa / Kel</span></div>
+                    <!-- KORIDOR 02: TENGAH -->
+                    <div class="relative group">
+                        <!-- Back Colored Plate -->
+                        <div class="absolute inset-0 bg-[#285A48] rounded-[28px] transform translate-x-3 translate-y-2.5 rotate-[1.8deg] shadow-lg shadow-[#285A48]/20 transition-transform duration-300 group-hover:translate-x-3.5 group-hover:translate-y-3 group-hover:rotate-[2.2deg]"></div>
+
+                        <!-- Front White Card -->
+                        <div class="relative bg-white rounded-[28px] p-7 sm:p-8 shadow-sm flex flex-col items-center text-center justify-between h-full border border-slate-100/90 transition-all duration-300 group-hover:-translate-y-1">
+                            <div>
+                                <!-- Top Minimal Icon (Rocket Ship) -->
+                                <div class="w-12 h-12 flex items-center justify-center text-slate-700 mx-auto transition-all duration-300 group-hover:scale-110 group-hover:text-[#285A48]">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7a3 3 0 11-4.243-4.243 3 3 0 014.243 4.243z"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Title -->
+                                <h3 class="font-black text-base sm:text-lg text-slate-900 tracking-wider uppercase mt-4">
+                                    KORIDOR II • TENGAH
+                                </h3>
+                                <div class="text-[11px] font-bold text-[#285A48] tracking-wider uppercase mt-0.5">
+                                    Ibukota, Pendidikan &amp; Medis
+                                </div>
+
+                                <!-- Description -->
+                                <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal mt-3 px-1">
+                                    Pusat pemerintahan Pemkab, RSUD rujukan utama Kelas C, 3 kampus perguruan tinggi, dan 8.463 KK berlistrik PLN di 67 desa/kelurahan Lasusua dan sekitarnya.
+                                </p>
+                            </div>
+
+                            <!-- Bottom Circle Number -->
+                            <div class="mt-8 pt-2">
+                                <div class="w-14 h-14 rounded-full bg-[#285A48] text-white flex items-center justify-center font-black text-xl shadow-md shadow-[#285A48]/25 transition-transform duration-300 group-hover:scale-105 select-none">
+                                    02
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 font-bold text-xs">KORIDOR III • SELATAN</span>
-                            <span class="text-xs font-bold text-slate-400">4 KECAMATAN</span>
-                        </div>
-                        <h3 class="text-lg font-black text-slate-800 mt-3">Pertanian Sawah & Konservasi</h3>
-                        <p class="text-xs text-slate-500 mt-1">Lambai, Rante Angin, Wawo, Pakue Tengah.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 space-y-2 text-xs">
-                            <div class="flex justify-between"><span class="text-slate-500">Basis Ekonomi:</span><span class="font-extrabold text-slate-700">Padi Sawah & Cengkeh</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Aparatur Aktif:</span><span class="font-semibold text-slate-700">224 Aparatur Desa</span></div>
-                            <div class="flex justify-between"><span class="text-slate-500">Total Desa:</span><span class="font-semibold text-slate-700">28 Desa</span></div>
+                    <!-- KORIDOR 03: SELATAN -->
+                    <div class="relative group">
+                        <!-- Back Colored Plate -->
+                        <div class="absolute inset-0 bg-[#566B53] rounded-[28px] transform translate-x-3 translate-y-2.5 rotate-[1.8deg] shadow-lg shadow-[#566B53]/20 transition-transform duration-300 group-hover:translate-x-3.5 group-hover:translate-y-3 group-hover:rotate-[2.2deg]"></div>
+
+                        <!-- Front White Card -->
+                        <div class="relative bg-white rounded-[28px] p-7 sm:p-8 shadow-sm flex flex-col items-center text-center justify-between h-full border border-slate-100/90 transition-all duration-300 group-hover:-translate-y-1">
+                            <div>
+                                <!-- Top Minimal Icon (Bar Chart) -->
+                                <div class="w-12 h-12 flex items-center justify-center text-slate-700 mx-auto transition-all duration-300 group-hover:scale-110 group-hover:text-[#566B53]">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Title -->
+                                <h3 class="font-black text-base sm:text-lg text-slate-900 tracking-wider uppercase mt-4">
+                                    KORIDOR III • SELATAN
+                                </h3>
+                                <div class="text-[11px] font-bold text-[#566B53] tracking-wider uppercase mt-0.5">
+                                    Pertanian Sawah &amp; Konservasi
+                                </div>
+
+                                <!-- Description -->
+                                <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed font-normal mt-3 px-1">
+                                    Lumbung ketahanan pangan padi sawah, perkebunan cengkeh produktif, 224 aparatur desa aktif, dan geowisata karst Danau Biru di 28 desa wilayah selatan.
+                                </p>
+                            </div>
+
+                            <!-- Bottom Circle Number -->
+                            <div class="mt-8 pt-2">
+                                <div class="w-14 h-14 rounded-full bg-[#566B53] text-white flex items-center justify-center font-black text-xl shadow-md shadow-[#566B53]/25 transition-transform duration-300 group-hover:scale-105 select-none">
+                                    03
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-12 text-center">
-                    <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-white hover:bg-emerald-50 text-[#3B4D3B] border border-emerald-300 font-bold text-sm shadow-sm hover:shadow-md transition-all cursor-pointer">
-                        <span>Lanjut ke Halaman 2: Agregat 15 Kecamatan & Eksplorasi 133 Desa</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                <div class="mt-14 text-center">
+                    <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-emerald-50 text-[#3B4D3B] border border-emerald-300 font-bold text-sm shadow-xs hover:shadow-md transition-all cursor-pointer group">
+                        <span>Lanjut ke Halaman 2: Agregat 15 Kecamatan &amp; Eksplorasi 133 Desa</span>
+                        <svg class="w-4 h-4 text-[#3B4D3B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
             </div>
@@ -1077,17 +1148,13 @@
         <!-- ========================================================================= -->
         <!-- HALAMAN 2: RINGKASAN & EKSPLORASI 133 DESA (TWO-STAGE EXPLORATION) -->
         <!-- ========================================================================= -->
-        <section id="portalPage2" class="portal-page  w-full py-8 sm:py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section id="portalPage2" class="portal-page  w-full pt-6 sm:pt-8 pb-12">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <!-- 1. Header Halaman (Tetap Ringkas & Pemisah Halus #DCE3DD) -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DCE3DD] pb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#DCE3DD] pb-5">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E6ECE6] border border-[#DCE3DD] text-[#3B4D3B] text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase font-sans mb-2">
-                            <span>📊 EKSPLORASI DETAIL PODES 2025</span>
-                        </div>
-                        <h2 class="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D241E] tracking-tight leading-tight">Ringkasan & Eksplorasi 133 Desa</h2>
-                        <p class="text-slate-600 text-sm mt-1">Direktori 15 kecamatan dan telaah mendalam 7 sektor pembangunan PODES 2025 BPS Kabupaten Kolaka Utara.</p>
+                        <h2 class="font-batangas text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D241E] tracking-tight leading-tight">Jelajah & Eksplorasi 133 Desa</h2>
                     </div>
                     <div class="flex items-center gap-2.5">
                         <button id="btnExplorerExportCSV" onclick="window.exportActiveTableCSV()" class="px-5 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
@@ -1100,13 +1167,13 @@
                 <!-- =================================================================== -->
                 <!-- STATE 1: DIREKTORI 15 KECAMATAN (HORIZONTAL CARD CAROUSEL & SEARCH) -->
                 <!-- =================================================================== -->
-                <div id="podesStateDirectory" class="space-y-6">
+                <div id="podesStateDirectory" class="space-y-6 scroll-mt-24">
                     <!-- Search Bar Kapsul (Rounded-full) di Sisi Kiri dengan Ikon Kaca Pembesar di Kanan -->
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="relative w-full max-w-md">
                             <input type="text" id="kecamatanPillSearch" placeholder="Cari kecamatan atau nama desa..." class="w-full bg-white border border-slate-300 rounded-full pl-5 pr-12 py-3 text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] focus:border-transparent shadow-xs transition-all">
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <i class="bi bi-search text-[#5E6B61]"></i>
                             </div>
                         </div>
 
@@ -1117,12 +1184,8 @@
                                 <span>15 Kecamatan</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri">
-                                    ‹
-                                </button>
-                                <button onclick="window.scrollKecCarousel(1)" class="w-9 h-9 rounded-full bg-white border border-slate-200 hover:bg-emerald-50 text-slate-700 hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kanan">
-                                    ›
-                                </button>
+                                <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-[#DCE3DD] hover:bg-[#E6ECE6] text-[#1D241E] hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri"><i class="bi bi-chevron-left"></i></button>
+                                <button onclick="window.scrollKecCarousel(1)" class="w-9 h-9 rounded-full bg-white border border-[#DCE3DD] hover:bg-[#E6ECE6] text-[#1D241E] hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kanan"><i class="bi bi-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1134,7 +1197,7 @@
                         </div>
                         
                         <div id="carouselNoResults" class="hidden py-12 text-center bg-white rounded-3xl border border-slate-200">
-                            <span class="text-3xl">🔍</span>
+                            <span class="text-3xl"><i class="bi bi-search"></i></span>
                             <p class="text-sm font-bold text-slate-700 mt-2">Kecamatan atau desa tidak ditemukan</p>
                             <p class="text-xs text-slate-400">Silakan periksa ejaan nama kecamatan atau desa yang dicari.</p>
                         </div>
@@ -1163,53 +1226,53 @@
                 <!-- =================================================================== -->
                 <!-- STATE 2: DETAIL KECAMATAN (SPLIT-PANEL DUA KOLOM + SWIPEABLE CARD) -->
                 <!-- =================================================================== -->
-                <div id="podesStateDetail" class="space-y-6" style="display: none;">
+                <div id="podesStateDetail" class="space-y-6 scroll-mt-24" style="display: none;">
                     
                     <!-- Split-Panel Dua Kolom Simetris (50:50 Desktop, Rounded-3xl, Border #DCE3DD) -->
-                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-sm overflow-hidden">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
+                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs overflow-hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#DCE3DD]">
                             <!-- Panel Kiri (Statis: Sektor Unggulan) -->
-                            <div id="kecDetailLeftPanel" class="w-full h-full">
+                            <div id="kecDetailLeftPanel" class="w-full h-full bg-white">
                                 <!-- Injected by podes_explorer.js -->
                             </div>
 
                             <!-- Panel Kanan (Swipeable Card: Sektor Lainnya) -->
-                            <div id="kecDetailRightPanel" class="w-full h-full bg-slate-50/30">
+                            <div id="kecDetailRightPanel" class="w-full h-full bg-[#F8FAF8]">
                                 <!-- Injected by podes_explorer.js -->
                             </div>
                         </div>
                     </div>
 
                     <!-- Tabel Rincian Desa Khusus Kecamatan Terpilih -->
-                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-sm p-6 sm:p-7 space-y-4">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-slate-100">
+                    <div class="bg-white rounded-3xl border border-[#DCE3DD] shadow-xs p-6 sm:p-8 space-y-5">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#DCE3DD]">
                             <div>
-                                <h4 class="font-black text-lg sm:text-xl text-[#1D241E]">Rincian Desa / Kelurahan Konstituen</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
+                                <h4 class="font-batangas font-bold text-2xl sm:text-3xl text-[#1D241E]">Rincian Desa & Kelurahan Konstituen</h4>
+                                <p class="text-xs text-[#5E6B61] mt-0.5 font-sans">Tabel data riil desa di wilayah kecamatan yang sedang dipilih.</p>
                             </div>
                             
                             <div class="flex flex-wrap items-center gap-2.5">
                                 <div class="relative w-full sm:w-64">
-                                    <input type="text" id="detailDesaTableSearch" placeholder="Cari nama desa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]">
-                                    <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                    <input type="text" id="detailDesaTableSearch" placeholder="Cari nama desa..." class="w-full bg-white border border-[#DCE3DD] rounded-full pl-8 pr-3 py-1.5 text-xs font-medium text-[#1D241E] placeholder-[#8A9B86] focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] font-sans">
+                                    <i class="bi bi-search text-[#8A9B86] absolute left-2.5 top-2.5 text-xs"></i>
                                 </div>
-                                <button onclick="window.exportKecamatanCSV()" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#3B4D3B] border border-emerald-200 font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <button onclick="window.exportKecamatanCSV()" class="px-4 py-1.5 rounded-full bg-[#E6ECE6] hover:bg-[#DCE3DD] text-[#3B4D3B] border border-[#DCE3DD] font-semibold text-xs transition-all flex items-center gap-1.5 cursor-pointer font-sans">
+                                    <i class="bi bi-download"></i>
                                     <span>Unduh CSV Kecamatan</span>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Table Tab Selector -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-[#3B4D3B] text-white shadow-2xs">
-                                👥 Kependudukan & Demografi
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="window.setDetailTableTab('demografi')" data-tab="demografi" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#3B4D3B] text-white shadow-2xs font-sans">
+                                <i class="bi bi-people-fill"></i> Kependudukan & Demografi
                             </button>
-                            <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
-                                🏭 Ekonomi, Komoditas & IMK
+                            <button onclick="window.setDetailTableTab('ekonomi')" data-tab="ekonomi" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#E6ECE6]/60 text-[#5E6B61] hover:bg-[#E6ECE6] hover:text-[#1D241E] font-sans">
+                                <i class="bi bi-buildings-fill"></i> Ekonomi, Komoditas & IMK
                             </button>
-                            <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
-                                🏛️ Sekolah, Faskes & Lingkungan
+                            <button onclick="window.setDetailTableTab('fasilitas')" data-tab="fasilitas" class="btn-detail-table-tab px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all bg-[#E6ECE6]/60 text-[#5E6B61] hover:bg-[#E6ECE6] hover:text-[#1D241E] font-sans">
+                                <i class="bi bi-shield-check"></i> Sekolah, Faskes & Lingkungan
                             </button>
                         </div>
 
@@ -1227,7 +1290,7 @@
                         <span>Halaman 1: Beranda</span>
                     </a>
                     <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-6 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
-                        <span>Halaman 3: WebGIS Peta Spasial</span>
+                        <span>Halaman 3: Peta dan Analisis</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
@@ -1238,12 +1301,12 @@
         <!-- HALAMAN 3: PETA TEMATIK INTERAKTIF (LEAFLET 15 KECAMATAN + 6 LAPISAN DATA)-->
         <!-- ========================================================================= -->
         <section id="portalPage3" class="portal-page  w-full py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-5">
                     <div>
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#3B4D3B] text-xs font-bold mb-2">
-                            <span>🗺️ WEBGIS TEMATIK PODES 2025</span>
+                            <span><i class="bi bi-map-fill"></i> WEBGIS TEMATIK PODES 2025</span>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Peta Tematik Interaktif 15 Kecamatan</h2>
                         <p class="text-slate-600 text-sm mt-1">Visualisasi 6 lapisan indikator spasial riil dan direktori desa/kelurahan konstituen.</p>
@@ -1259,22 +1322,22 @@
                 <div class="bg-white rounded-2xl p-3 border border-slate-200/90 shadow-xs flex flex-wrap gap-2 items-center">
                     <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider px-2">Pilih Lapisan:</span>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('jiwa')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        👥 Jumlah Penduduk
+                        <i class="bi bi-people-fill"></i> Jumlah Penduduk
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('pln')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
                         ⚡ Rasio Elektrifikasi PLN
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('imk')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-[#3B4D3B] text-white border border-emerald-700 shadow-xs">
-                        🏭 Sentra IMK (3.622 Unit)
+                        <i class="bi bi-buildings-fill"></i> Sentra IMK (3.622 Unit)
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('faskes')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        🏥 Faskes & Posyandu
+                        <i class="bi bi-hospital-fill"></i> Faskes & Posyandu
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('sid')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        💻 SID & Sistem Informasi
+                        <i class="bi bi-laptop"></i> SID & Sistem Informasi
                     </button>
                     <button onclick="window.PresisiEngine.setLeaderboardMetric('bumdes')" class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-50 text-emerald-800 hover:bg-[#3B4D3B] hover:text-white border border-emerald-200">
-                        💼 Kemandirian BUMDes
+                        <i class="bi bi-wallet2"></i> Kemandirian BUMDes
                     </button>
                 </div>
 
@@ -1354,7 +1417,7 @@
         <!-- HALAMAN 4: 6 DESA CANTIK (CINTA STATISTIK - 100% ANGKA RIIL PODES 2025)   -->
         <!-- ========================================================================= -->
         <section id="portalPage4" class="portal-page  w-full py-10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
                     <div>
@@ -1450,7 +1513,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1468,7 +1531,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1486,7 +1549,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1504,7 +1567,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1521,21 +1584,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 1 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 1.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, >= 55 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
@@ -1576,7 +1639,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1594,7 +1657,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1612,7 +1675,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1630,7 +1693,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1647,21 +1710,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 3 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 0 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 25-34 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 25-34 Thn, Diploma IV/S1).</div>
@@ -1702,7 +1765,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1720,7 +1783,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1738,7 +1801,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1756,7 +1819,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1773,21 +1836,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 2 • SMP/MTs: 1 • Total: 6 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Laki-laki, 45-54 Thn, Diploma IV/S1) • Sekdes (Perempuan, 45-54 Thn, Diploma IV/S1).</div>
@@ -1828,7 +1891,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1846,7 +1909,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1864,7 +1927,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -1882,7 +1945,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -1899,21 +1962,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 0 • Total: 2 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Diploma IV/S1) • Sekdes (Laki-laki, 35-44 Thn, Diploma IV/S1).</div>
@@ -1954,7 +2017,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -1972,7 +2035,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -1990,7 +2053,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -2008,7 +2071,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -2025,21 +2088,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 0 • SD/MI: 1 • SMP/MTs: 0 • Total: 1 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 35-44 Thn, Akademi/DIII) • Sekdes (Laki-laki, 35-44 Thn, SMU/Sederajat).</div>
@@ -2080,7 +2143,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base">👥</div>
+                            <div class="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold text-base"><i class="bi bi-people-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Kependudukan</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">TABEL 2.1</span>
@@ -2098,7 +2161,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base">🏭</div>
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-base"><i class="bi bi-buildings-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Ekonomi & IMK</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">TABEL 4.1</span>
@@ -2116,7 +2179,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base">⚡</div>
+                            <div class="w-8 h-8 rounded-lg bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-base"><i class="bi bi-lightning-charge-fill"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Elektrifikasi & Alam</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-[#3B4D3B]">TABEL 5.1</span>
@@ -2134,7 +2197,7 @@
                 <div class="bg-white rounded-2xl p-5 border border-[#DCE3DD]/90 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base">🏛️</div>
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-base"><i class="bi bi-shield-check"></i></div>
                             <h4 class="font-bold text-sm text-slate-800">Tata Kelola & Aset</h4>
                         </div>
                         <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">TABEL 6.1</span>
@@ -2151,21 +2214,21 @@
 
             <div class="bg-slate-50 rounded-2xl p-5 border border-[#DCE3DD]/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🎓</span>
+                    <span class="text-2xl"><i class="bi bi-mortarboard-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Fasilitas Pendidikan Terpadu</div>
                         <div class="text-slate-500 mt-0.5">TK: 1 • SD/MI: 1 • SMP/MTs: 1 • Total: 4 unit pendidikan.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">🏥</span>
+                    <span class="text-2xl"><i class="bi bi-hospital-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Layanan Kesehatan & Posyandu</div>
                         <div class="text-slate-500 mt-0.5">Pustu/Poskesdes: 0 • Posyandu Aktif: 1 • Posbindu: 1 • Apotek: 0.</div>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="text-2xl">👤</span>
+                    <span class="text-2xl"><i class="bi bi-person-fill"></i></span>
                     <div>
                         <div class="font-bold text-slate-800">Kepemimpinan Desa</div>
                         <div class="text-slate-500 mt-0.5">Kades (Perempuan, 25-34 Thn, Akademi/DIII) • Sekdes (Laki-laki, 25-34 Thn, SMU/Sederajat).</div>
@@ -2180,7 +2243,7 @@
                 <div class="flex items-center justify-between pt-6 border-t border-slate-200">
                     <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                        <span>Halaman 3: WebGIS Peta Spasial</span>
+                        <span>Halaman 3: Peta dan Analisis</span>
                     </a>
                     <a href="/portal/tentang" onclick="window.onNavClick(event, 5, '/portal/tentang')" class="px-6 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
                         <span>Halaman 5: Tentang Madani</span>
@@ -3785,7 +3848,7 @@
 
     <!-- FOOTER RESMI -->
     <footer class="bg-white border-t border-slate-200 py-8 text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
                 <span class="font-extrabold text-slate-700">Desa Madani Kolaka Utara</span>
                 <span>•</span>
@@ -3810,7 +3873,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg">💡</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg"><i class="bi bi-lightbulb-fill"></i></div>
                 <div>
                     <h3 class="font-extrabold text-base text-slate-900">Pusat Bantuan & Panduan</h3>
                     <p class="text-xs text-slate-500">Portal Desa Madani Kolaka Utara</p>
@@ -3837,7 +3900,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg">🗺️</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg"><i class="bi bi-map-fill"></i></div>
                 <div>
                     <h3 class="font-extrabold text-base text-slate-900">Daftar 15 Kecamatan Kolaka Utara</h3>
                     <p class="text-xs text-slate-500">Pilih kecamatan untuk langsung menuju data spasial atau agregat</p>
@@ -4029,19 +4092,20 @@
             history.pushState({ page: pageNum, sub: subTab || 'madani' }, '', targetUrl);
         }
 
-        // Scroll to top
-        const contentTop = document.getElementById('portal-content-top');
-        if (contentTop) {
-            contentTop.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Scroll window to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Special Initializations per Page
+
         if (pageNum === 2) {
             setTimeout(function() {
                 if (typeof window.initExplorer === 'function') {
                     window.initExplorer();
                 }
-            }, 50);
+                if (typeof window.triggerSummaryCountUp === 'function') {
+                    window.triggerSummaryCountUp();
+                }
+            }, 60);
         } else if (pageNum === 3) {
             setTimeout(function() {
                 if (window.PresisiEngine) {
@@ -4050,7 +4114,8 @@
                 }
             }, 150);
         }
-    };
+
+        };
 
     // Subtab switcher inside Page 5 (Madani vs Publikasi)
     window.switchTentangTab = function(tabKey, pushHistory = true) {
@@ -4601,8 +4666,9 @@
         }, 200);
     };
 
-    // 8. Language Switcher ID/EN
+        // 8. Language Switcher ID/EN
     window.setPortalLanguage = function(lang) {
+        try { localStorage.removeItem('portal_lang'); } catch(e) {}
         const btnID = document.getElementById('btnLangID');
         const btnEN = document.getElementById('btnLangEN');
         if (lang === 'en') {
@@ -4614,8 +4680,28 @@
         }
     };
 
+    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, Solid White when Scrolled)
+    window.handlePortalHeaderScroll = function() {
+        const header = document.getElementById('mainPortalHeader');
+        const mNav = document.getElementById('mobileNavMenu');
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || (document.body ? document.body.scrollTop : 0) || 0;
+        const isScrolled = scrollPos > 10;
+        if (header) {
+            header.classList.toggle('scrolled', isScrolled);
+        }
+        if (mNav) {
+            mNav.classList.toggle('scrolled', isScrolled);
+        }
+    };
+
+    window.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
+    document.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
+    window.handlePortalHeaderScroll();
+
     // Auto-detect page on initial load
     document.addEventListener('DOMContentLoaded', function() {
+        window.handlePortalHeaderScroll();
+
         const path = window.location.pathname.toLowerCase();
         const hash = window.location.hash.toLowerCase();
         

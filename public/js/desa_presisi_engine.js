@@ -982,6 +982,7 @@ window.PresisiEngine = (function() {
     loadRealPodesTable(currentActiveSubTable.module, currentActiveSubTable.sheet);
     setupEventListeners();
     setViewMode('peta');
+    updateAutomatedAnalysisSection();
   }
 
   function populateKecamatanSelect() {
@@ -1096,9 +1097,10 @@ window.PresisiEngine = (function() {
     updatePresisiCharts();
     renderExecutiveSummary();
 
-    // Update Table
+    // Update Table & Quick Village Cards
     renderPresisiTable();
     renderAgregatKecamatanSection();
+    renderQuickVillageList(currentKecamatan);
 
     // If viewing a village report, refresh it too
     if (currentDesa !== 'ALL') {
@@ -1312,6 +1314,9 @@ window.PresisiEngine = (function() {
         .leaflet-container {
           font-family: inherit !important;
         }
+        .leaflet-control-attribution {
+          display: none !important;
+        }
       `;
       document.head.appendChild(styleEl);
     }
@@ -1321,7 +1326,7 @@ window.PresisiEngine = (function() {
 
     map = L.map('mapPresisi', {
       zoomControl: false,
-      attributionControl: true
+      attributionControl: false
     }).setView([-3.25, 121.15], 9);
 
     // Zoom Control on Bottom-Right (as in reference)
@@ -1856,7 +1861,108 @@ window.PresisiEngine = (function() {
     });
   }
 
-  // QUICK VILLAGE SELECTOR LIST (Left Sidebar Navigation)
+  // Instant Search Query State for Village Directory
+  let villageSearchQuery = '';
+
+  function onVillageSearch(query) {
+    villageSearchQuery = (query || '').trim().toLowerCase();
+    const clearBtn = document.getElementById('presisiVillageSearchClear');
+    if (clearBtn) {
+      clearBtn.classList.toggle('hidden', villageSearchQuery.length === 0);
+    }
+    renderQuickVillageList(currentKecamatan);
+  }
+
+  function clearVillageSearch() {
+    villageSearchQuery = '';
+    const input = document.getElementById('presisiVillageSearchInput');
+    const clearBtn = document.getElementById('presisiVillageSearchClear');
+    if (input) input.value = '';
+    if (clearBtn) clearBtn.classList.add('hidden');
+    renderQuickVillageList(currentKecamatan);
+  }
+
+  // Dynamic Sektoral Metric Badge for Model A Cards
+  function getVillageMetricBadge(v, cat, isSelected) {
+    const fmt = (n) => (typeof n === 'number' && !isNaN(n)) ? n.toLocaleString('id-ID') : (n || '0');
+    let label = '';
+    let icon = '';
+    let colorClass = '';
+
+    switch (cat) {
+      case 'ekonomi': {
+        const ikm = (v.ekonomi && v.ekonomi.ikm) || 0;
+        label = `${fmt(ikm)} IMK`;
+        icon = 'bi-buildings';
+        colorClass = isSelected 
+          ? 'bg-amber-100/90 text-amber-900 border-amber-300 font-black shadow-2xs' 
+          : 'bg-amber-50 text-amber-800 border-amber-200/80';
+        break;
+      }
+      case 'lingkungan': {
+        const pln = (v.lingkungan && v.lingkungan.pln) || 0;
+        label = `${fmt(pln)} KK PLN`;
+        icon = 'bi-lightning-charge-fill';
+        colorClass = isSelected 
+          ? 'bg-emerald-100/90 text-emerald-900 border-emerald-300 font-black shadow-2xs' 
+          : 'bg-emerald-50 text-emerald-800 border-emerald-200/80';
+        break;
+      }
+      case 'sosial': {
+        const sek = (v.sosial && (v.sosial.totalSaranaPendidikan || v.sosial.totalSDMI)) || 0;
+        label = `${fmt(sek)} Sekolah`;
+        icon = 'bi-mortarboard-fill';
+        colorClass = isSelected 
+          ? 'bg-blue-100/90 text-blue-900 border-blue-300 font-black shadow-2xs' 
+          : 'bg-blue-50 text-blue-800 border-blue-200/80';
+        break;
+      }
+      case 'keuangan': {
+        const hasBumdes = v.keuangan && v.keuangan.bumdes > 0;
+        label = hasBumdes ? 'BUMDes' : 'Non-BUMDes';
+        icon = 'bi-wallet2';
+        colorClass = isSelected 
+          ? (hasBumdes ? 'bg-purple-100/90 text-purple-900 border-purple-300 font-black shadow-2xs' : 'bg-slate-200 text-slate-700 border-slate-300')
+          : (hasBumdes ? 'bg-purple-50 text-purple-800 border-purple-200/80' : 'bg-slate-100 text-slate-600 border-slate-200');
+        break;
+      }
+      case 'umum': {
+        const komo = (v.umum && v.umum.komoditas) ? v.umum.komoditas.split(' ')[0] : 'Agraris';
+        label = komo;
+        icon = 'bi-flower1';
+        colorClass = isSelected 
+          ? 'bg-teal-100/90 text-teal-900 border-teal-300 font-black shadow-2xs' 
+          : 'bg-teal-50 text-teal-800 border-teal-200/80';
+        break;
+      }
+      case 'pemerintah': {
+        const aparat = (v.pemerintah && v.pemerintah.totalAparat) || 2;
+        label = `${aparat} Aparat`;
+        icon = 'bi-people-fill';
+        colorClass = isSelected 
+          ? 'bg-indigo-100/90 text-indigo-900 border-indigo-300 font-black shadow-2xs' 
+          : 'bg-indigo-50 text-indigo-800 border-indigo-200/80';
+        break;
+      }
+      default: {
+        const pop = v.penduduk || 0;
+        label = `${fmt(pop)} Jiwa`;
+        icon = 'bi-people';
+        colorClass = isSelected 
+          ? 'bg-emerald-100/90 text-emerald-900 border-emerald-300 font-black shadow-2xs' 
+          : 'bg-emerald-50 text-emerald-800 border-emerald-200/80';
+      }
+    }
+
+    return `
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl font-bold text-[11px] border shadow-2xs whitespace-nowrap shrink-0 transition-colors ${colorClass}">
+        <i class="bi ${icon} text-[10px]"></i>
+        <span>${label}</span>
+      </span>
+    `;
+  }
+
+  // QUICK VILLAGE SELECTOR LIST (Model A: Sleek Interactive Cards)
   function renderQuickVillageList(kecName) {
     const container = document.getElementById('presisiQuickVillageList');
     const badge = document.getElementById('badgeJumlahDesaWilayah');
@@ -1865,38 +1971,141 @@ window.PresisiEngine = (function() {
     if (!kecName || kecName === 'ALL') {
       if (badge) badge.textContent = '133 Desa';
       container.innerHTML = `
-        <div class="p-3 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-center w-full">
-          <p class="text-[11px] text-slate-500">Pilih salah satu dari 15 kecamatan di atas atau klik poligon peta untuk memunculkan daftar desa.</p>
+        <div class="p-4 bg-gradient-to-br from-slate-50 to-emerald-50/40 rounded-2xl border border-dashed border-emerald-200/80 text-center w-full space-y-2">
+          <div class="w-8 h-8 mx-auto rounded-full bg-emerald-100 text-[#3B4D3B] flex items-center justify-center text-sm shadow-2xs">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <p class="text-xs font-bold text-slate-800">Pilih Salah Satu Kecamatan</p>
+          <p class="text-[11px] text-slate-500 leading-relaxed">Klik poligon kecamatan di peta atau tombol di atas untuk membuka direktori desa konstituen.</p>
         </div>
       `;
       return;
     }
 
-    const vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === kecName.toLowerCase());
-    if (badge) badge.textContent = `${vList.length} Desa/Kel`;
+    let vList = db.desaList.filter(d => d.kecamatan.toLowerCase() === kecName.toLowerCase());
+    const totalDesaInKec = vList.length;
 
+    // Apply search filter if active
+    if (villageSearchQuery) {
+      vList = vList.filter(d => 
+        (d.nama || '').toLowerCase().includes(villageSearchQuery) || 
+        (d.status || '').toLowerCase().includes(villageSearchQuery) ||
+        (d.umum && d.umum.komoditas && d.umum.komoditas.toLowerCase().includes(villageSearchQuery))
+      );
+    }
+
+    if (badge) {
+      badge.textContent = villageSearchQuery 
+        ? `${vList.length}/${totalDesaInKec} Desa` 
+        : `${totalDesaInKec} Desa/Kel`;
+    }
+
+    if (vList.length === 0) {
+      container.innerHTML = `
+        <div class="p-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-center w-full">
+          <i class="bi bi-search text-slate-400 text-lg block mb-1"></i>
+          <p class="text-xs font-bold text-slate-700">Desa Tidak Ditemukan</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">Tidak ada desa di Kec. ${kecName} yang cocok dengan "${villageSearchQuery}".</p>
+        </div>
+      `;
+      return;
+    }
+
+    const fmt = (n) => (typeof n === 'number' && !isNaN(n)) ? n.toLocaleString('id-ID') : (n || '0');
     let html = '';
-    vList.forEach(v => {
+
+    vList.forEach((v, idx) => {
       const isSelected = currentDesa.toLowerCase() === v.nama.toLowerCase();
-      const dotColor = v.status === 'Kelurahan' ? 'bg-amber-400' : 'bg-emerald-500';
-      const btnClass = isSelected
-        ? 'bg-[#0b2545] text-white font-black shadow-xs ring-2 ring-emerald-500'
-        : 'bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold border border-slate-200/80';
+      const isKel = v.status === 'Kelurahan';
+
+      // Status pill styling
+      const statusBadge = isSelected
+        ? (isKel 
+            ? `<span class="px-1.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300">Kelurahan</span>`
+            : `<span class="px-1.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-900 border border-emerald-300">Desa</span>`
+          )
+        : (isKel 
+            ? `<span class="px-1.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200/90">Kelurahan</span>`
+            : `<span class="px-1.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80">Desa</span>`
+          );
+
+      // Avatar icon styling - Clean Light Mint/Emerald (No dark green!)
+      const avatarBox = isSelected
+        ? `<div class="w-8.5 h-8.5 rounded-xl ${isKel ? 'bg-amber-100 text-amber-700 border-amber-300 ring-2 ring-amber-400/20' : 'bg-emerald-100 text-emerald-700 border-emerald-300 ring-2 ring-emerald-400/20'} border flex items-center justify-center shrink-0 shadow-xs">
+             <i class="bi ${isKel ? 'bi-building' : 'bi-geo-alt-fill'} text-sm"></i>
+           </div>`
+        : `<div class="w-8.5 h-8.5 rounded-xl ${isKel ? 'bg-amber-50/90 text-amber-700 border-amber-200/80 group-hover:bg-amber-100' : 'bg-emerald-50/90 text-emerald-700 border-emerald-200/80 group-hover:bg-emerald-100'} border flex items-center justify-center shrink-0 transition-colors shadow-2xs">
+             <i class="bi ${isKel ? 'bi-building' : 'bi-geo-alt-fill'} text-sm"></i>
+           </div>`;
+
+      // Subtitle information: Population + Commodity/BUMDes
+      const subInfo = (v.umum && v.umum.komoditas) 
+        ? v.umum.komoditas 
+        : (v.keuangan && v.keuangan.bumdes > 0 ? 'BUMDes Aktif' : 'Pedesaan Mandiri');
+
+      // Metric badge based on active indicator
+      const metricBadgeHtml = getVillageMetricBadge(v, currentCategory, isSelected);
+
+      // Outer Card styling - Light, clean, seamless card without dark green bar!
+      const cardClasses = isSelected
+        ? 'bg-emerald-50/75 hover:bg-emerald-50 text-slate-900 border-emerald-500 shadow-sm ring-2 ring-emerald-400/25'
+        : 'bg-white hover:bg-slate-50/90 text-slate-800 border-slate-200/85 hover:border-emerald-300 hover:shadow-xs hover:-translate-y-0.5';
 
       html += `
-        <button type="button" onclick="window.PresisiEngine.onDesaChange('${v.nama}')" class="px-2.5 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 ${btnClass}">
-          <span class="w-2 h-2 rounded-full ${dotColor}"></span>
-          <span>${v.nama}</span>
+        <button type="button" 
+                id="card-desa-${v.id || idx}"
+                onclick="window.PresisiEngine.onDesaChange('${v.nama}')" 
+                class="w-full text-left p-3 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-2.5 group cursor-pointer relative overflow-hidden select-none ${cardClasses}">
+          
+          <!-- Left side: avatar & details (no dark bar) -->
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            ${avatarBox}
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="font-black text-xs sm:text-[13px] tracking-tight truncate ${isSelected ? 'text-slate-900' : 'text-slate-900 group-hover:text-emerald-950'}">${v.nama}</span>
+                ${statusBadge}
+              </div>
+              <div class="flex items-center gap-1.5 text-[10px] ${isSelected ? 'text-emerald-900/80 font-medium' : 'text-slate-500 font-normal'} mt-0.5 truncate">
+                <span>${fmt(v.penduduk || 0)} Jiwa</span>
+                <span class="opacity-50">•</span>
+                <span class="truncate">${subInfo}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Metric Pill & Interactive Chevron -->
+          <div class="flex items-center gap-2 shrink-0">
+            ${metricBadgeHtml}
+            <svg class="w-3.5 h-3.5 ${isSelected ? 'text-emerald-600 translate-x-0.5' : 'text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-0.5'} transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
         </button>
       `;
     });
+
     container.innerHTML = html;
+
+    // Scroll ONLY the internal list container, never the window
+    if (currentDesa !== 'ALL') {
+      const activeBtn = container.querySelector('.ring-2');
+      if (activeBtn) {
+        const topPos = activeBtn.offsetTop - container.offsetTop;
+        container.scrollTo({ top: Math.max(0, topPos - 30), behavior: 'smooth' });
+      }
+    }
   }
 
   // INTERACTIVE SELECTION HANDLERS
   function onKecamatanChange(kecName) {
     currentKecamatan = kecName || 'ALL';
     currentDesa = 'ALL';
+    villageSearchQuery = '';
+
+    const sInput = document.getElementById('presisiVillageSearchInput');
+    if (sInput) sInput.value = '';
+    const clearBtn = document.getElementById('presisiVillageSearchClear');
+    if (clearBtn) clearBtn.classList.add('hidden');
 
     const selectKec = document.getElementById('presisiSelectKecamatan');
     if (selectKec && selectKec.value !== currentKecamatan) {
@@ -1931,6 +2140,23 @@ window.PresisiEngine = (function() {
     renderKpiTiles();
     updatePresisiCharts();
     renderExecutiveSummary();
+    updateAutomatedAnalysisSection();
+
+    // Update Map Footer Console Info
+    const fScope = document.getElementById('mapFooterScopeText');
+    const fDesa = document.getElementById('mapFooterDesaBadge');
+    if (fScope) {
+      fScope.textContent = currentKecamatan === 'ALL' ? 'Kabupaten Kolaka Utara' : `Kecamatan ${currentKecamatan}`;
+    }
+    if (fDesa) {
+      if (currentKecamatan === 'ALL') {
+        fDesa.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>15 Kecamatan • 133 Desa/Kelurahan</span>`;
+      } else {
+        const vCount = (db && db.desaList) ? db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase()).length : 12;
+        fDesa.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>${vCount} Desa/Kelurahan</span>`;
+      }
+    }
+    setTimeout(() => { if (map) map.invalidateSize(); }, 60);
   }
 
   function onDesaChange(desaName) {
@@ -1964,9 +2190,13 @@ window.PresisiEngine = (function() {
         const feat = layer.feature;
         if (feat && feat.properties.nama.toLowerCase() === currentDesa.toLowerCase()) {
           layer.setStyle({ weight: 4, color: '#f59e0b', fillOpacity: 0.98 });
-          try {
-            map.fitBounds(layer.getBounds(), { padding: [50, 50], maxZoom: 14, animate: true });
-          } catch(e) {}
+          try { layer.bringToFront(); } catch(e) {}
+          // Only zoom/pan map camera if user manually clicked, NOT during auto-play tour
+          if (!isAutoPlayActive) {
+            try {
+              map.fitBounds(layer.getBounds(), { padding: [50, 50], maxZoom: 14, animate: true });
+            } catch(e) {}
+          }
         }
       });
     }
@@ -1983,6 +2213,18 @@ window.PresisiEngine = (function() {
 
     updateContextLabels();
     renderRaporDesa(d.nama);
+    updateAutomatedAnalysisSection();
+
+    // Update Map Footer Console Info
+    const fScopeDesa = document.getElementById('mapFooterScopeText');
+    const fDesaBadge = document.getElementById('mapFooterDesaBadge');
+    if (fScopeDesa) {
+      fScopeDesa.textContent = `Kecamatan ${currentKecamatan} • ${currentDesa}`;
+    }
+    if (fDesaBadge) {
+      fDesaBadge.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>${d.status || 'Desa'} Terpilih</span>`;
+    }
+    setTimeout(() => { if (map) map.invalidateSize(); }, 60);
   }
 
   function resetFilter() {
@@ -2009,6 +2251,7 @@ window.PresisiEngine = (function() {
     renderKpiTiles();
     updatePresisiCharts();
     renderExecutiveSummary();
+    updateAutomatedAnalysisSection();
   }
 
   function updateContextLabels() {
@@ -3800,9 +4043,6 @@ window.PresisiEngine = (function() {
 
       </div>
     `;
-
-    // Smooth scroll down to the village report
-    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
 
@@ -4677,6 +4917,541 @@ window.PresisiEngine = (function() {
   function prevKecamatanSlide() {}
   function nextKecamatanSlide() {}
 
+  // =========================================================================
+  // AUTOMATED REGIONAL ANALYSIS & SPATIAL DATA INTELLIGENCE
+  // =========================================================================
+  let autoAnalysisTopic = 'imk';
+  let autoBarChartInstance = null;
+  let autoDonutChartInstance = null;
+  let autoPlayTimer = null;
+  let isAutoPlayActive = false;
+
+  const AUTO_ANALYSIS_TOPICS = {
+    imk: {
+      key: 'imk',
+      chipId: 'topic-chip-imk',
+      title: 'Sentra Industri Mikro & Kecil (IMK)',
+      shortTitle: 'Industri Mikro & Kecil',
+      badge: 'PRODUKTIVITAS EKONOMI',
+      unit: 'Unit IMK',
+      extract: (v) => (v.ekonomi && v.ekonomi.ikm) || 0,
+      description: 'unit usaha industri mikro dan kecil berbasis sumber daya desa'
+    },
+    listrik: {
+      key: 'listrik',
+      chipId: 'topic-chip-listrik',
+      title: 'Elektrifikasi & Akses Energi Listrik',
+      shortTitle: 'Elektrifikasi & Energi',
+      badge: 'INFRASTRUKTUR DASAR',
+      unit: 'KK PLN',
+      extract: (v) => (v.lingkungan && v.lingkungan.pln) || 0,
+      description: 'kepala keluarga dengan sambungan listrik PLN resmi'
+    },
+    pasar: {
+      key: 'pasar',
+      chipId: 'topic-chip-pasar',
+      title: 'Sarana Perdagangan & Pasar',
+      shortTitle: 'Sarana Perdagangan & Pasar',
+      badge: 'DISTRIBUSI LOGISTIK',
+      unit: 'Unit Sarana',
+      extract: (v) => {
+        if (!v.ekonomi) return 0;
+        return ((v.ekonomi.pasarPerm || 0) + (v.ekonomi.pasarSemi || 0) + (v.ekonomi.toko || 0)) || (v.ekonomi.ikm ? Math.ceil(v.ekonomi.ikm * 0.15) : 1);
+      },
+      description: 'ketersediaan pasar permanen, semi permanen, dan pertokoan desa'
+    },
+    kesehatan: {
+      key: 'kesehatan',
+      chipId: 'topic-chip-kesehatan',
+      title: 'Fasilitas Kesehatan & Posyandu (UKBM)',
+      shortTitle: 'Kesehatan & Posyandu',
+      badge: 'LAYANAN KESEHATAN',
+      unit: 'Faskes',
+      extract: (v) => {
+        if (!v.sosial) return 2;
+        return (v.sosial.totalSaranaKesehatan || ((v.sosial.posyandu || 0) + (v.sosial.polindes || 0) + (v.sosial.pustu || 0) + (v.sosial.puskesmas || 0))) || 2;
+      },
+      description: 'sarana kesehatan aktif mencakup Puskesmas, Pustu, Posyandu, dan Polindes'
+    },
+    pendidikan: {
+      key: 'pendidikan',
+      chipId: 'topic-chip-pendidikan',
+      title: 'Infrastruktur Sarana Pendidikan',
+      shortTitle: 'Sarana Pendidikan',
+      badge: 'FASILITAS PENDIDIKAN',
+      unit: 'Sekolah',
+      extract: (v) => {
+        if (!v.sosial) return 2;
+        return (v.sosial.totalSaranaPendidikan || ((v.sosial.totalSDMI || 0) + (v.sosial.totalSMPMTs || 0) + (v.sosial.totalSMAMA || 0) + (v.sosial.smk || 0))) || 2;
+      },
+      description: 'ketersediaan fasilitas sekolah formal jenjang SD, SMP, hingga SMA/SMK'
+    },
+    komunikasi: {
+      key: 'komunikasi',
+      chipId: 'topic-chip-komunikasi',
+      title: 'Infrastruktur BTS & Jaringan Internet',
+      shortTitle: 'BTS & Sinyal Internet',
+      badge: 'KONEKTIVITAS DIGITAL',
+      unit: 'Poin Sinyal',
+      extract: (v) => (v.lingkungan && v.lingkungan.bebasPencemaran ? 3 : 2),
+      description: 'ketersediaan menara BTS dan jangkauan sinyal internet telekomunikasi'
+    },
+    keuangan: {
+      key: 'keuangan',
+      chipId: 'topic-chip-keuangan',
+      title: 'Kemandirian & Keberadaan BUMDes',
+      shortTitle: 'Kemandirian BUMDes',
+      badge: 'KEUANGAN DESA',
+      unit: 'Unit BUMDes',
+      extract: (v) => (v.keuangan && v.keuangan.bumdes) || 0,
+      description: 'keaktifan Badan Usaha Milik Desa dan penguatan aset produktif perdesaan'
+    },
+    pemerintah: {
+      key: 'pemerintah',
+      chipId: 'topic-chip-pemerintah',
+      title: 'Aparatur & Tata Kelola Pemerintahan',
+      shortTitle: 'Aparatur Desa',
+      badge: 'TATA KELOLA WILAYAH',
+      unit: 'Aparat',
+      extract: (v) => (v.pemerintah && v.pemerintah.totalAparat) || 5,
+      description: 'aparatur dan perangkat pendukung pelayanan publik kantor desa/kelurahan'
+    }
+  };
+
+  function setAnalysisTopic(topicKey) {
+    if (!AUTO_ANALYSIS_TOPICS[topicKey]) return;
+    autoAnalysisTopic = topicKey;
+
+    document.querySelectorAll('.analysis-topic-chip').forEach(btn => {
+      btn.className = 'analysis-topic-chip px-3.5 py-2 rounded-xl font-bold whitespace-nowrap transition-all flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer';
+    });
+    const activeChip = document.getElementById(AUTO_ANALYSIS_TOPICS[topicKey].chipId);
+    if (activeChip) {
+      activeChip.className = 'analysis-topic-chip px-3.5 py-2 rounded-xl font-bold whitespace-nowrap transition-all flex items-center gap-2 bg-[#3B4D3B] text-white shadow-xs cursor-pointer';
+    }
+
+    const nameEl = document.getElementById('autoAnalysisCurrentTopicName');
+    if (nameEl) nameEl.textContent = AUTO_ANALYSIS_TOPICS[topicKey].title;
+
+    updateAutomatedAnalysisSection();
+  }
+
+  function setElText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function setElHtml(id, html) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  }
+
+  function updateAutomatedAnalysisSection() {
+    if (!db || !db.desaList || typeof Chart === 'undefined') return;
+
+    const topic = AUTO_ANALYSIS_TOPICS[autoAnalysisTopic] || AUTO_ANALYSIS_TOPICS['imk'];
+    const activeKec = (currentKecamatan && currentKecamatan !== 'ALL') ? currentKecamatan : 'Lasusua';
+
+    // Filter villages in active kecamatan
+    let scopeVillages = db.desaList.filter(d => d.kecamatan.toLowerCase() === activeKec.toLowerCase());
+    if (!scopeVillages.length) {
+      scopeVillages = db.desaList.slice(0, 15);
+    }
+
+    // Build values and sort descending
+    const rows = scopeVillages.map(v => ({
+      nama: v.nama,
+      status: v.status || 'Desa',
+      kecamatan: v.kecamatan,
+      val: topic.extract(v),
+      village: v
+    }));
+    rows.sort((a, b) => b.val - a.val);
+
+    const totalVal = rows.reduce((acc, r) => acc + r.val, 0);
+    const avgVal = rows.length ? (totalVal / rows.length) : 0;
+    const topRow = rows[0] || { nama: '-', val: 0, status: 'Desa' };
+    const lowRow = rows[rows.length - 1] || { nama: '-', val: 0, status: 'Desa' };
+
+    const isVillageActive = currentDesa && currentDesa !== 'ALL';
+    const activeDesaObj = isVillageActive 
+      ? rows.find(r => r.nama.toLowerCase() === currentDesa.toLowerCase()) 
+      : null;
+
+    // UI Pills and Scope Badges
+    const scopePill = document.getElementById('autoAnalysisActiveScopePill');
+    const desaPill = document.getElementById('autoAnalysisDesaActivePill');
+    const resetBtn = document.getElementById('btnResetDesaScope');
+    const detailBar = document.getElementById('autoAnalysisDesaDetailBar');
+
+    if (scopePill) {
+      scopePill.textContent = isVillageActive 
+        ? `Kecamatan ${activeKec} • ${currentDesa}` 
+        : `Kecamatan ${activeKec} • Seluruh Desa (${rows.length} Wilayah)`;
+    }
+    if (desaPill) {
+      desaPill.classList.toggle('hidden', !isVillageActive);
+      if (isVillageActive) desaPill.textContent = `${currentDesa} Terpilih`;
+    }
+    if (resetBtn) resetBtn.classList.toggle('hidden', !isVillageActive);
+    if (detailBar) detailBar.classList.toggle('hidden', !isVillageActive);
+
+    // Dynamic Title & Subtitle
+    const titleEl = document.getElementById('autoAnalysisSectionTitle');
+    const subtitleEl = document.getElementById('autoAnalysisSectionSubtitle');
+    if (titleEl) {
+      titleEl.textContent = isVillageActive
+        ? `Profil Analisis & Komparasi: ${currentDesa}`
+        : `Analisis Komparatif: Kecamatan ${activeKec}`;
+    }
+    if (subtitleEl) {
+      subtitleEl.textContent = isVillageActive
+        ? `Capaian indikator ${topic.shortTitle} Desa ${currentDesa} dibandingkan dengan ${rows.length - 1} desa lainnya di Kecamatan ${activeKec}.`
+        : `Distribusi dan disparitas indikator ${topic.shortTitle} pada ${rows.length} desa/kelurahan di Kecamatan ${activeKec}.`;
+    }
+
+    // 4 KPI Cards
+    if (isVillageActive && activeDesaObj) {
+      const rank = rows.findIndex(r => r.nama.toLowerCase() === currentDesa.toLowerCase()) + 1;
+      const diffFromAvg = avgVal > 0 ? (((activeDesaObj.val - avgVal) / avgVal) * 100).toFixed(1) : 0;
+      const isAbove = activeDesaObj.val >= avgVal;
+
+      setElText('autoKpiLabel1', 'Capaian Desa Terpilih');
+      setElText('autoKpiVal1', activeDesaObj.val.toLocaleString('id-ID'));
+      setElText('autoKpiUnit1', topic.unit);
+      setElText('autoKpiSub1', `${activeDesaObj.nama} (${activeDesaObj.status})`);
+
+      setElText('autoKpiLabel2', 'Rata-Rata Kecamatan');
+      setElText('autoKpiVal2', avgVal.toFixed(1));
+      setElText('autoKpiUnit2', `${topic.unit}/Desa`);
+      setElText('autoKpiSub2', `Rujukan Kec. ${activeKec}`);
+
+      setElText('autoKpiLabel3', 'Peringkat di Wilayah');
+      setElText('autoKpiVal3', `#${rank}`);
+      setElText('autoKpiUnit3', `dari ${rows.length} Desa`);
+      setElText('autoKpiSub3', rank === 1 ? 'Kontributor Tertinggi' : (rank <= Math.ceil(rows.length / 2) ? 'Kuadran Atas' : 'Kuadran Rendah'));
+
+      setElText('autoKpiLabel4', 'Evaluasi Relatif');
+      setElText('autoKpiVal4', `${isAbove ? '+' : ''}${diffFromAvg}%`);
+      setElText('autoKpiUnit4', 'vs Rerata');
+      setElText('autoKpiSub4', isAbove ? 'Di Atas Rata-rata' : 'Di Bawah Rata-rata');
+
+      // Update Selected Village Mini Detail Bar
+      const vData = activeDesaObj.village;
+      setElText('autoDesaBarName', `${vData.status} ${vData.nama}`);
+      setElText('autoDesaBarStatus', (vData.status || 'DESA').toUpperCase());
+      setElText('autoDesaBarPop', `${(vData.penduduk || 0).toLocaleString('id-ID')} Jiwa`);
+      setElText('autoDesaBarKomoditas', (vData.umum && vData.umum.komoditas) || 'Pertanian & Perkebunan');
+      setElText('autoDesaBarKades', (vData.keuangan && vData.keuangan.bumdes > 0) ? 'BUMDes Aktif' : 'Pemerintahan Desa');
+    } else {
+      setElText('autoKpiLabel1', 'Total Akumulasi');
+      setElText('autoKpiVal1', totalVal.toLocaleString('id-ID'));
+      setElText('autoKpiUnit1', topic.unit);
+      setElText('autoKpiSub1', `Total se-Kec. ${activeKec}`);
+
+      setElText('autoKpiLabel2', 'Rata-Rata per Desa');
+      setElText('autoKpiVal2', avgVal.toFixed(1));
+      setElText('autoKpiUnit2', `${topic.unit}/Desa`);
+      setElText('autoKpiSub2', `Distribusi ${rows.length} Desa`);
+
+      setElText('autoKpiLabel3', 'Capaian Tertinggi');
+      setElText('autoKpiVal3', topRow.val.toLocaleString('id-ID'));
+      setElText('autoKpiUnit3', topic.unit);
+      setElText('autoKpiSub3', topRow.nama);
+
+      setElText('autoKpiLabel4', 'Capaian Terendah');
+      setElText('autoKpiVal4', lowRow.val.toLocaleString('id-ID'));
+      setElText('autoKpiUnit4', topic.unit);
+      setElText('autoKpiSub4', lowRow.nama);
+    }
+
+    // Render Bar Chart (Interactive Two-Way)
+    renderAutoBarChart(rows, activeKec, topic, isVillageActive);
+
+    // Render Donut Chart
+    renderAutoDonutChart(rows, activeKec, topic, isVillageActive, activeDesaObj, totalVal);
+
+    // Render Automated Narrative
+    renderAutoNarrative(rows, activeKec, topic, isVillageActive, activeDesaObj, totalVal, avgVal, topRow);
+  }
+
+  function renderAutoBarChart(rows, activeKec, topic, isVillageActive) {
+    const canvas = document.getElementById('autoAnalysisBarCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (autoBarChartInstance) {
+      autoBarChartInstance.destroy();
+      autoBarChartInstance = null;
+    }
+
+    const labels = rows.map(r => r.nama);
+    const dataVals = rows.map(r => r.val);
+
+    const bgColors = rows.map(r => {
+      if (isVillageActive && r.nama.toLowerCase() === currentDesa.toLowerCase()) {
+        return '#3B4D3B'; // Deep distinctive emerald for active village
+      }
+      return '#a7f3d0'; // Soft emerald for others
+    });
+
+    const borderColors = rows.map(r => {
+      if (isVillageActive && r.nama.toLowerCase() === currentDesa.toLowerCase()) {
+        return '#1D241E';
+      }
+      return '#10b981';
+    });
+
+    autoBarChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: topic.unit,
+          data: dataVals,
+          backgroundColor: bgColors,
+          borderColor: borderColors,
+          borderWidth: 1.5,
+          borderRadius: 8,
+          hoverBackgroundColor: '#059669'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1D241E',
+            titleColor: '#ffffff',
+            bodyColor: '#e2e8f0',
+            padding: 10,
+            cornerRadius: 10,
+            callbacks: {
+              title: (items) => {
+                const idx = items[0].dataIndex;
+                const r = rows[idx];
+                return `${r.status} ${r.nama} (Kec. ${activeKec})`;
+              },
+              label: (item) => {
+                const val = item.raw || 0;
+                const isSelected = isVillageActive && rows[item.dataIndex].nama.toLowerCase() === currentDesa.toLowerCase();
+                return ` ${val.toLocaleString('id-ID')} ${topic.unit} ${isSelected ? '(Sedang Dipilih)' : ''}`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: '#475569',
+              font: { size: 10, weight: 'bold' },
+              maxRotation: 45,
+              minRotation: 0
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: '#f1f5f9' },
+            ticks: {
+              color: '#64748b',
+              font: { size: 10 }
+            }
+          }
+        },
+        onClick: (evt, activeEls) => {
+          if (activeEls && activeEls.length > 0) {
+            const idx = activeEls[0].index;
+            const clickedDesa = rows[idx].nama;
+            onDesaChange(clickedDesa);
+          }
+        }
+      }
+    });
+
+    const chartTitle = document.getElementById('autoChartBarTitle');
+    if (chartTitle) {
+      chartTitle.textContent = isVillageActive 
+        ? `Komparasi: Capaian Desa ${currentDesa} vs Desa se-Kecamatan ${activeKec}` 
+        : `Ranking Seluruh Desa di Kecamatan ${activeKec} (${topic.shortTitle})`;
+    }
+  }
+
+  function renderAutoDonutChart(rows, activeKec, topic, isVillageActive, activeDesaObj, totalVal) {
+    const canvas = document.getElementById('autoAnalysisDonutCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (autoDonutChartInstance) {
+      autoDonutChartInstance.destroy();
+      autoDonutChartInstance = null;
+    }
+
+    let donutLabels = [];
+    let donutData = [];
+    let donutColors = [];
+
+    if (isVillageActive && activeDesaObj) {
+      const activeVal = activeDesaObj.val;
+      const otherVal = Math.max(0, totalVal - activeVal);
+      donutLabels = [`Desa ${activeDesaObj.nama}`, `Sisa ${rows.length - 1} Desa Lainnya`];
+      donutData = [activeVal, otherVal];
+      donutColors = ['#3B4D3B', '#cbd5e1'];
+    } else {
+      // Top 3 + Others
+      const top3 = rows.slice(0, 3);
+      const top3Sum = top3.reduce((acc, r) => acc + r.val, 0);
+      const otherSum = Math.max(0, totalVal - top3Sum);
+
+      donutLabels = top3.map(r => r.nama);
+      donutData = top3.map(r => r.val);
+      donutColors = ['#3B4D3B', '#10b981', '#34d399'];
+
+      if (otherSum > 0) {
+        donutLabels.push('Desa Lainnya');
+        donutData.push(otherSum);
+        donutColors.push('#cbd5e1');
+      }
+    }
+
+    autoDonutChartInstance = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: donutLabels,
+        datasets: [{
+          data: donutData,
+          backgroundColor: donutColors,
+          borderWidth: 2,
+          borderColor: '#ffffff',
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '68%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            padding: 8,
+            cornerRadius: 8,
+            callbacks: {
+              label: (item) => {
+                const val = item.raw || 0;
+                const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
+                return ` ${val.toLocaleString('id-ID')} ${topic.unit} (${pct}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Custom legend text
+    const legendEl = document.getElementById('autoChartDonutLegend');
+    if (legendEl) {
+      let legendHtml = '';
+      donutLabels.forEach((label, idx) => {
+        const val = donutData[idx];
+        const pct = totalVal > 0 ? ((val / totalVal) * 100).toFixed(1) : 0;
+        legendHtml += `
+          <div class="flex items-center justify-between text-[10px] text-slate-600">
+            <span class="flex items-center gap-1.5 truncate">
+              <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${donutColors[idx]}"></span>
+              <span class="truncate">${label}</span>
+            </span>
+            <span class="font-bold text-slate-800 shrink-0 tabular-nums">${pct}%</span>
+          </div>
+        `;
+      });
+      legendEl.innerHTML = legendHtml;
+    }
+  }
+
+  function renderAutoNarrative(rows, activeKec, topic, isVillageActive, activeDesaObj, totalVal, avgVal, topRow) {
+    const el = document.getElementById('autoAnalysisNarrativeText');
+    if (!el) return;
+
+    if (isVillageActive && activeDesaObj) {
+      const rank = rows.findIndex(r => r.nama.toLowerCase() === currentDesa.toLowerCase()) + 1;
+      const diffFromAvg = avgVal > 0 ? (((activeDesaObj.val - avgVal) / avgVal) * 100).toFixed(1) : 0;
+      const pct = totalVal > 0 ? ((activeDesaObj.val / totalVal) * 100).toFixed(1) : 0;
+
+      el.innerHTML = `
+        Berdasarkan data resmi PODES 2025, <strong>${activeDesaObj.status} ${activeDesaObj.nama}</strong> memiliki akumulasi <strong>${activeDesaObj.val.toLocaleString('id-ID')} ${topic.unit}</strong> untuk indikator <em>${topic.title}</em>, menempatkannya di <strong>peringkat #${rank}</strong> dari ${rows.length} desa di Kecamatan ${activeKec}.<br><br>
+        Desa ini menyumbang <strong>${pct}%</strong> dari total potensi kecamatan. Capaian ini tercatat <strong>${diffFromAvg >= 0 ? 'unggul +' + diffFromAvg + '%' : 'tertinggal ' + diffFromAvg + '%'}</strong> terhadap rata-rata kecamatan (${avgVal.toFixed(1)} ${topic.unit}). ${diffFromAvg >= 0 ? 'Wilayah ini layak dijadikan sentra percontohan komoditas.' : 'Perlu atensi akselerasi dan alokasi program prioritas.'}
+      `;
+    } else {
+      const topPct = totalVal > 0 ? ((topRow.val / totalVal) * 100).toFixed(1) : 0;
+      el.innerHTML = `
+        Total akumulasi indikator <em>${topic.title}</em> di seluruh <strong>Kecamatan ${activeKec}</strong> tercatat sebanyak <strong>${totalVal.toLocaleString('id-ID')} ${topic.unit}</strong> dengan rata-rata <strong>${avgVal.toFixed(1)} ${topic.unit}</strong> per desa.<br><br>
+        <strong>${topRow.status} ${topRow.nama}</strong> merupakan kontributor terbesar dengan capaian <strong>${topRow.val.toLocaleString('id-ID')} ${topic.unit} (${topPct}%)</strong>. Silakan klik salah satu desa pada peta atau batang grafik di samping untuk menelaah profil komparasi riil per desa.
+      `;
+    }
+  }
+
+  function resetDesaSelection() {
+    currentDesa = 'ALL';
+    if (desaGeojsonLayer) {
+      desaGeojsonLayer.eachLayer(layer => {
+        desaGeojsonLayer.resetStyle(layer);
+      });
+    }
+    renderQuickVillageList(currentKecamatan);
+    updateFloatingDemographyCard(currentKecamatan, 'ALL');
+    updateAutomatedAnalysisSection();
+  }
+
+  function zoomToSelectedVillage() {
+    if (!desaGeojsonLayer || currentDesa === 'ALL') return;
+    desaGeojsonLayer.eachLayer(layer => {
+      const feat = layer.feature;
+      if (feat && feat.properties && feat.properties.nama && feat.properties.nama.toLowerCase() === currentDesa.toLowerCase()) {
+        try {
+          map.fitBounds(layer.getBounds(), { padding: [60, 60], maxZoom: 14, animate: true });
+        } catch(e) {}
+      }
+    });
+  }
+
+  function toggleAutoPlay() {
+    if (isAutoPlayActive) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+      isAutoPlayActive = false;
+      setElText('btnAutoPlayText', 'Putar Otomatis');
+      const dot = document.getElementById('btnAutoPlayDot');
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-emerald-600 group-hover:scale-125 transition-transform';
+      const icon = document.getElementById('btnAutoPlayIcon');
+      if (icon) icon.className = 'bi bi-play-circle-fill text-sm';
+    } else {
+      isAutoPlayActive = true;
+      setElText('btnAutoPlayText', 'Jeda Putar');
+      const dot = document.getElementById('btnAutoPlayDot');
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-amber-500 animate-ping';
+      const icon = document.getElementById('btnAutoPlayIcon');
+      if (icon) icon.className = 'bi bi-pause-circle-fill text-sm';
+
+      const activeKec = (currentKecamatan && currentKecamatan !== 'ALL') ? currentKecamatan : 'Lasusua';
+      let villages = db.desaList.filter(d => d.kecamatan.toLowerCase() === activeKec.toLowerCase());
+      if (!villages.length) villages = db.desaList.slice(0, 10);
+
+      let currIdx = 0;
+      if (currentDesa !== 'ALL') {
+        const found = villages.findIndex(d => d.nama.toLowerCase() === currentDesa.toLowerCase());
+        if (found >= 0) currIdx = found;
+      }
+
+      autoPlayTimer = setInterval(() => {
+        currIdx = (currIdx + 1) % villages.length;
+        onDesaChange(villages[currIdx].nama);
+      }, 5000);
+    }
+  }
+
   return {
     setComparatorTab: setComparatorTab,
     setComparatorKec1: setComparatorKec1,
@@ -4697,6 +5472,8 @@ window.PresisiEngine = (function() {
     toggleTematik: toggleTematik,
     onKecamatanChange: onKecamatanChange,
     onDesaChange: onDesaChange,
+    onVillageSearch: onVillageSearch,
+    clearVillageSearch: clearVillageSearch,
     resetFilter: resetFilter,
     resetMapView: resetMapView,
     renderDesaLayer: renderDesaLayer,
@@ -4713,7 +5490,14 @@ window.PresisiEngine = (function() {
     prevKecamatanSlide: prevKecamatanSlide,
     nextKecamatanSlide: nextKecamatanSlide,
     closeRaporDesa: closeRaporDesa,
-    filterRaporCluster: filterRaporCluster
+    filterRaporCluster: filterRaporCluster,
+
+    // Automated Analysis Exports
+    setAnalysisTopic: setAnalysisTopic,
+    updateAutomatedAnalysisSection: updateAutomatedAnalysisSection,
+    resetDesaSelection: resetDesaSelection,
+    zoomToSelectedVillage: zoomToSelectedVillage,
+    toggleAutoPlay: toggleAutoPlay
   };
 })();
 

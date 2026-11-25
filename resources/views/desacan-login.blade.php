@@ -652,7 +652,29 @@
             // Pastikan password selalu kosong saat halaman dimuat
             const passInp = document.getElementById('inpPassword');
             if (passInp) passInp.value = '';
+
+            try {
+                const saved = localStorage.getItem('portal_lang');
+                if (saved === 'en') {
+                    window.setPortalLanguage('en');
+                }
+            } catch(e) {}
         });
+
+                // Language Switcher ID/EN (Visual only - English disabled as requested)
+        window.setPortalLanguage = function(lang) {
+            try { localStorage.removeItem('portal_lang'); } catch(e) {}
+            const btnID = document.getElementById('btnLangID');
+            const btnEN = document.getElementById('btnLangEN');
+            if (lang === 'en') {
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            } else {
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            }
+        };
+
     </script>
 </body>
 </html>

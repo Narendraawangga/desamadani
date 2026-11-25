@@ -88,14 +88,25 @@ Route::get('/desa-cantik', function () {
     return view('desacan');
 });
 
-// Halaman Login Akun Resmi Desa Cantik (DESCAN)
+// Halaman Login Administrator & Operator Desa Madani
+Route::get('/login', function () {
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        return redirect('/admin');
+    }
+    return view('login');
+})->name('login');
+
+Route::get('/admin/login', function () {
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        return redirect('/admin');
+    }
+    return view('login');
+})->name('admin.login');
+
+// Halaman Login Akun Resmi Desa Cantik (DESCAN - 6 Desa Binaan)
 Route::get('/descan/login', function () {
     return view('desacan-login');
 });
-
-Route::get('/login', function () {
-    return view('desacan-login');
-})->name('login');
 
 Route::get('/desacan/login', function () {
     return view('desacan-login');
