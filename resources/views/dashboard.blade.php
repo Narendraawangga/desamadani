@@ -325,9 +325,9 @@
     <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
         <div class="w-full px-4 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
-            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Clean & Seamless Tanpa Dot / Background Box) -->
+            <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Mengarahkan ke Login Admin) -->
             <div class="flex items-center gap-3 shrink-0">
-                <a href="/portal" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" title="Desa Madani Kabupaten Kolaka Utara">
+                <a href="{{ Auth::check() ? url('/admin') : url('/login') }}" class="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none transition-transform hover:scale-[1.01] active:scale-[0.99]" title="{{ Auth::check() ? 'Buka Dashboard Admin (' . Auth::user()->name . ')' : 'Masuk ke Portal Login Administrator' }}">
                     <div class="flex items-center gap-2 shrink-0">
                         <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain">
                         <div class="h-4 w-[1px] bg-[#DCE3DD]"></div>
@@ -336,6 +336,9 @@
                     <div class="text-base sm:text-lg font-bold text-[#1D241E] leading-none whitespace-nowrap font-cinzel tracking-[0.05em]">
                         DESA <span class="text-[#3B4D3B]">MADANI</span>
                         <span class="hidden sm:inline font-sans text-[11px] font-semibold text-[#5E6B61] ml-2 pl-2 border-l border-[#DCE3DD] tracking-[0.2em] uppercase">Kolaka Utara</span>
+                        @if(Auth::check())
+                            <span class="ml-2 px-1.5 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 font-sans font-bold border border-emerald-300">ADMIN</span>
+                        @endif
                     </div>
                 </a>
             </div>

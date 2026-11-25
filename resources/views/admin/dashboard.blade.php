@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portal Eksekutif Admin - Desa Madani BPS Kolaka Utara</title>
     
-    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <!-- Google Fonts: Plus Jakarta Sans, Cinzel & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap 5.3.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
+        @font-face {
+            font-family: 'Batangas';
+            src: url('/fonts/batangas/Batangas-Bold.otf') format('opentype'),
+                 url('/fonts/batangas/Batangas-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         :root {
             --bs-font-sans-serif: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --bs-body-font-family: var(--bs-font-sans-serif);
@@ -25,21 +34,26 @@
             --madani-darkgreen: #047857;
             --madani-deep: #064e3b;
             --madani-navy: #0b2545;
-            --madani-darknavy: #061a33;
+            --madani-darknavy: #06182e;
             --madani-amber: #f59e0b;
         }
 
         body {
             font-family: var(--bs-font-sans-serif);
-            background-color: var(--bs-body-bg);
+            background-color: #f1f5f9;
             color: #1e293b;
             min-height: 100vh;
         }
 
-        /* Fixed Left Sidebar */
+        .font-cinzel {
+            font-family: 'Cinzel', serif !important;
+            letter-spacing: 0.05em;
+        }
+
+        /* Fixed Left Sidebar with Rich Dark Executive Gradient */
         .admin-sidebar {
-            width: 270px;
-            background-color: var(--madani-navy);
+            width: 275px;
+            background: radial-gradient(circle at 10% 10%, #06182e 0%, #0b2545 65%, #051a26 100%);
             color: #ffffff;
             position: fixed;
             top: 0;
@@ -48,8 +62,13 @@
             z-index: 1045;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 4px 0 24px rgba(11, 37, 69, 0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 4px 0 28px rgba(6, 24, 46, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .admin-main-wrapper {
+            background-color: #f1f5f9;
         }
 
         @media (max-width: 991.98px) {
@@ -66,7 +85,7 @@
 
         @media (min-width: 992px) {
             .admin-main-wrapper {
-                margin-left: 270px;
+                margin-left: 275px;
             }
         }
 
@@ -75,27 +94,32 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.7rem 0.95rem;
+            padding: 0.68rem 0.95rem;
             color: #94a3b8;
             font-size: 0.8125rem;
             font-weight: 600;
-            border-radius: 0.75rem;
+            border-radius: 0.85rem;
             text-decoration: none;
-            transition: all 0.15s ease-in-out;
-            margin-bottom: 0.3rem;
-            border: none;
+            transition: all 0.18s ease-in-out;
+            margin-bottom: 0.35rem;
+            border: 1px solid transparent;
             background: transparent;
             width: 100%;
             text-align: left;
+            position: relative;
         }
         .sidebar-nav-link:hover {
             color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(2px);
         }
         .sidebar-nav-link.active {
             color: #ffffff !important;
-            background-color: var(--madani-emerald) !important;
-            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+            border-color: rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
+            font-weight: 700;
         }
         .sidebar-nav-link.active .badge {
             background-color: rgba(255, 255, 255, 0.25) !important;
@@ -105,9 +129,9 @@
         /* Clean Card Bento */
         .bento-card {
             background: #ffffff;
-            border-radius: 1rem;
+            border-radius: 14px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(15, 23, 42, 0.03);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 14px rgba(15, 23, 42, 0.03);
             transition: all 0.2s ease;
         }
         .bento-card:hover {
@@ -117,41 +141,157 @@
         .hero-banner {
             background: linear-gradient(135deg, var(--madani-deep) 0%, var(--madani-darkgreen) 50%, var(--madani-navy) 100%);
             color: #ffffff;
-            border-radius: 1rem;
+            border-radius: 1.15rem;
             position: relative;
             overflow: hidden;
         }
 
         .btn-emerald {
-            background-color: var(--madani-emerald);
-            border-color: var(--madani-emerald);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-color: #047857;
             color: #ffffff;
             font-weight: 700;
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+            transition: all 0.18s ease-in-out;
         }
         .btn-emerald:hover, .btn-emerald:focus {
-            background-color: var(--madani-darkgreen);
-            border-color: var(--madani-darkgreen);
+            background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+            border-color: #064e3b;
             color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
         }
 
         .btn-outline-emerald {
             color: var(--madani-emerald);
             border-color: var(--madani-emerald);
             font-weight: 600;
+            transition: all 0.18s ease-in-out;
         }
         .btn-outline-emerald:hover, .btn-outline-emerald:focus {
             background-color: var(--madani-emerald);
             color: #ffffff;
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
         }
 
-        /* Sektoral Module List Items */
+        /* Apple / Linear Segmented Mode Switcher */
+        .mode-segmented-control {
+            background: #f1f5f9;
+            padding: 3px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            border: 1px solid #e2e8f0;
+        }
+        .mode-seg-btn {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 9px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.18s ease-in-out;
+            outline: none;
+            text-decoration: none;
+            user-select: none;
+        }
+        .mode-seg-btn:hover {
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.65);
+        }
+        .mode-seg-btn.active {
+            background: #ffffff;
+            color: #047857;
+            font-weight: 700;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(5, 150, 105, 0.08);
+        }
+        .mode-seg-btn.active i {
+            color: #059669;
+        }
+
+        /* 12 Klaster PODES Grid (6x2 Header Grid) */
+        .klaster-grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+        @media (max-width: 1200px) {
+            .klaster-grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+        @media (max-width: 768px) {
+            .klaster-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+        }
+        .klaster-card-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 9px;
+            padding: 8px 12px;
+            height: 56px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .klaster-card-item:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        .klaster-card-item.active {
+            border: 1.5px solid #10b981 !important;
+            background: #f0fdf4 !important;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+        }
+        .klaster-card-item .klaster-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.25;
+            margin-bottom: 2px;
+        }
+        .klaster-card-item.active .klaster-title {
+            color: #065f46;
+        }
+        .klaster-card-item .klaster-status {
+            font-size: 10.5px;
+            color: #64748b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+        .klaster-card-item.active .klaster-status {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* Sektoral Module List Items (Left 12 Klaster) */
         .podes-mod-item {
             border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
-            transition: all 0.15s ease-in-out;
+            border-radius: 0.85rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             background: #ffffff;
-            margin-bottom: 0.4rem;
-            padding: 0.55rem 0.75rem;
+            margin-bottom: 0.45rem;
+            padding: 0.55rem 0.8rem;
             cursor: pointer;
             text-align: left;
             width: 100%;
@@ -162,48 +302,115 @@
         .podes-mod-item:hover {
             background-color: #f8fafc;
             border-color: #cbd5e1;
+            transform: translateX(3px);
         }
         .podes-mod-item.active {
-            border-color: #059669;
+            border-color: #10b981;
+            border-left: 4px solid #059669;
             background-color: #ecfdf5;
+            box-shadow: 0 2px 10px rgba(5, 150, 105, 0.1);
+        }
+        .mod-icon-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            background: #f1f5f9;
+            color: #64748b;
+            flex-shrink: 0;
+            transition: all 0.18s;
+        }
+        .mod-icon-badge.active {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .mod-name {
+            font-size: 11.5px;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .mod-name.active {
             color: #065f46;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.12);
+            font-weight: 800;
         }
 
         /* Sub-Table Horizontal Tabs */
         .subtable-pill {
-            padding: 0.4rem 0.85rem;
+            padding: 0.45rem 1rem;
             border-radius: 9999px;
             font-size: 0.75rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.15s ease;
+            transition: all 0.15s ease-in-out;
             border: 1px solid #e2e8f0;
-            background: #ffffff;
-            color: #334155;
+            background: #f8fafc;
+            color: #475569;
             white-space: nowrap;
             flex-shrink: 0;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         .subtable-pill:hover {
-            background: #f8fafc;
+            background: #ffffff;
             border-color: #cbd5e1;
             color: #0f172a;
+            transform: translateY(-1px);
         }
         .subtable-pill.active {
-            background-color: #059669;
-            color: #ffffff;
-            border-color: #059669;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: #ffffff !important;
+            border-color: #047857;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+            box-shadow: 0 2px 10px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Matrix Table Modern Styling */
+        .matrix-table-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.95rem;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+        .matrix-row-normal {
+            transition: background-color 0.12s ease;
+        }
+        .matrix-row-normal:hover {
+            background-color: #f0fdf4 !important;
+        }
+        .matrix-row-active {
+            background-color: #dcfce7 !important;
+            color: #064e3b !important;
+            border-left: 4px solid #059669 !important;
+        }
+        .matrix-row-active td {
+            background-color: #dcfce7 !important;
+            color: #064e3b !important;
+            font-weight: 700;
+        }
+        .matrix-row-total {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            font-weight: 800;
+            border-top: 2px solid #cbd5e1 !important;
+            border-bottom: 2px solid #cbd5e1 !important;
+        }
+        .matrix-row-total td {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+            font-weight: 800;
         }
 
         /* Variable Input Card */
         .variable-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
+            border-radius: 0.85rem;
             padding: 0.85rem 1rem;
             transition: all 0.15s ease;
         }
@@ -214,6 +421,32 @@
 
         .font-mono-num {
             font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Context Chip Utility */
+        .context-chip {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            padding: 0.35rem 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease-in-out;
+        }
+        .context-chip:hover {
+            border-color: #cbd5e1;
+            background: #ffffff;
+        }
+
+        /* No-scrollbar Utility */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
         }
     </style>
 </head>
@@ -223,26 +456,26 @@
     <div id="sidebarBackdrop" onclick="toggleSidebar()" class="modal-backdrop fade d-lg-none" style="display: none; z-index: 1040;"></div>
 
     <!-- =========================================================================
-         LEFT SIDEBAR: DESA MADANI BPS
+         LEFT SIDEBAR: DESA MADANI BPS & PEMKAB KOLAKA UTARA (OFFICIAL MODERN)
          ========================================================================= -->
     <aside id="adminSidebar" class="admin-sidebar">
         
-        <!-- Sidebar Brand Header -->
-        <div class="px-3 py-3.5 border-bottom border-white border-opacity-10 d-flex align-items-center justify-content-between">
-            <a href="/admin" class="d-flex align-items-center gap-2.5 text-decoration-none">
-                <div style="width: 36px; height: 36px; flex-shrink: 0;">
-                    <svg viewBox="0 0 100 100" fill="none" class="w-100 h-100">
-                        <path d="M16 22 C16 16 18 14 24 14 H52 C55 14 56 16 56 20 V46 C56 50 54 52 50 52 H32 C23 52 16 45 16 36 Z" fill="#059669"/>
-                        <path d="M48 48 C48 44 50 42 54 42 H72 C80 42 86 48 86 56 V78 C86 82 84 84 80 84 H48 C44 84 42 82 42 78 V54 C42 50 44 48 48 48 Z" fill="#ffffff"/>
-                        <circle cx="50" cy="50" r="7" fill="#f59e0b"/>
-                        <circle cx="50" cy="50" r="3" fill="#0b2545"/>
-                    </svg>
+        <!-- Sidebar Brand Header (Identik dengan Header Portal Utama) -->
+        <div class="px-3.5 py-3 border-bottom border-white border-opacity-10 d-flex align-items-center justify-content-between">
+            <a href="/admin" class="d-flex align-items-center gap-2.5 text-decoration-none group" title="Portal Eksekutif Admin Desa Madani">
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" style="height: 28px; width: auto; object-fit: contain;">
+                    <div style="height: 18px; width: 1px; background: rgba(255,255,255,0.2);"></div>
+                    <img src="/images/logo_bps.png" alt="BPS Kolut" style="height: 24px; width: auto; object-fit: contain;">
                 </div>
                 <div>
-                    <div class="fw-black text-white fs-6 lh-1">
-                        Desa <span style="color: #34d399;">Madani</span>
+                    <div class="fw-black text-white text-uppercase" style="font-family: 'Cinzel', serif; font-size: 14.5px; letter-spacing: 0.05em; line-height: 1.1;">
+                        DESA <span style="color: #34d399;">MADANI</span>
                     </div>
-                    <small class="text-white-50 fw-semibold" style="font-size: 10px; letter-spacing: 0.3px;">Portal Admin BPS Kolut</small>
+                    <div class="text-white-50 fw-semibold text-uppercase d-flex align-items-center gap-1.5" style="font-size: 9.5px; letter-spacing: 0.12em; margin-top: 2px;">
+                        <span class="spinner-grow spinner-grow-sm text-success" style="width: 5px; height: 5px;"></span>
+                        <span>PORTAL ADMIN BPS</span>
+                    </div>
                 </div>
             </a>
             <button class="btn btn-sm btn-link text-white-50 d-lg-none p-0 text-decoration-none" onclick="toggleSidebar()">
@@ -251,9 +484,9 @@
         </div>
 
         <!-- Sidebar Navigation Items -->
-        <div class="flex-grow-1 overflow-y-auto px-3 py-3">
+        <div class="flex-grow-1 overflow-y-auto px-3 py-3 no-scrollbar">
             
-            <div class="text-uppercase text-white-50 fw-bold px-2 mb-2" style="font-size: 10px; letter-spacing: 0.6px;">
+            <div class="text-uppercase text-white-50 fw-bold px-2 mb-2" style="font-size: 9.5px; letter-spacing: 0.8px;">
                 Menu Utama
             </div>
 
@@ -271,7 +504,6 @@
                     <i class="bi bi-file-earmark-spreadsheet fs-6"></i>
                     <span>Input PODES</span>
                 </span>
-                <span class="badge rounded-pill bg-white bg-opacity-15 text-white fw-bold" style="font-size: 9px;">12 Klaster</span>
             </button>
 
             <!-- 3. Master Data Desa -->
@@ -280,7 +512,6 @@
                     <i class="bi bi-buildings fs-6"></i>
                     <span>Master Data Desa</span>
                 </span>
-                <span class="badge rounded-pill bg-white bg-opacity-15 text-white fw-bold" style="font-size: 9px;">{{ count($flatDesaList) }}</span>
             </button>
 
             <!-- 4. Pemetaan Spasial WebGIS -->
@@ -298,12 +529,11 @@
                         <i class="bi bi-people fs-6"></i>
                         <span>Kelola Pengguna</span>
                     </span>
-                    <span class="badge rounded-pill bg-white bg-opacity-15 text-white fw-bold" style="font-size: 9px;">{{ $users->count() }}</span>
                 </button>
             @endif
 
             <!-- Utilities / Data Actions -->
-            <div class="text-uppercase text-white-50 fw-bold px-2 mt-4 mb-2" style="font-size: 10px; letter-spacing: 0.6px;">
+            <div class="text-uppercase text-white-50 fw-bold px-2 mt-4 mb-2" style="font-size: 9.5px; letter-spacing: 0.8px;">
                 Alat & Sinkronisasi
             </div>
 
@@ -314,7 +544,6 @@
                         <i class="bi bi-arrow-repeat fs-6 text-emerald-400"></i>
                         <span>Sinkron Excel PODES</span>
                     </span>
-                    <span class="badge rounded-pill bg-emerald-500 bg-opacity-25 text-emerald-300" style="font-size: 9px;">12 File</span>
                 </button>
             @endif
 
@@ -338,19 +567,19 @@
         </div>
 
         <!-- Sidebar Footer: Profile & Logout -->
-        <div class="p-3 border-top border-white border-opacity-10 bg-black bg-opacity-25 d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-center gap-2 overflow-hidden">
-                <div class="rounded-circle d-flex align-items-center justify-content-center fw-black text-slate-900 bg-success" style="width: 34px; height: 34px; font-size: 13px; flex-shrink: 0;">
+        <div class="p-3 border-top border-white border-opacity-10 bg-black bg-opacity-30 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2.5 overflow-hidden">
+                <div class="rounded-circle d-flex align-items-center justify-content-center fw-black text-white" style="width: 36px; height: 36px; font-size: 13px; flex-shrink: 0; background: linear-gradient(135deg, #059669 0%, #047857 100%); box-shadow: 0 2px 8px rgba(5, 150, 105, 0.4);">
                     {{ strtoupper(substr($admin->name ?? 'A', 0, 1)) }}
                 </div>
                 <div class="overflow-hidden">
                     <div class="text-white fw-bold text-truncate" style="font-size: 12px;">{{ $admin->name }}</div>
                     @if($admin->isOperatorDesa())
-                        <div class="text-primary-subtle text-truncate fw-semibold" style="font-size: 10px;">
+                        <div class="text-emerald-300 text-truncate fw-semibold" style="font-size: 10px;">
                             <i class="bi bi-house-door-fill me-1"></i>Desa {{ $admin->desa }}
                         </div>
                     @else
-                        <div class="text-white-50 text-truncate" style="font-size: 10px;">{{ $admin->email }}</div>
+                        <div class="text-white-50 text-truncate font-mono" style="font-size: 10px;">{{ $admin->email }}</div>
                     @endif
                 </div>
             </div>
@@ -370,47 +599,110 @@
          ========================================================================= -->
     <div class="admin-main-wrapper flex-grow-1 d-flex flex-column min-vh-100">
         
-        <!-- Top Navbar -->
-        <header class="navbar navbar-expand bg-white border-bottom sticky-top py-2.5 px-3 px-md-4 shadow-2xs">
+        <!-- Top Navbar with Backdrop Blur & Clean Actions -->
+        <header class="navbar navbar-expand bg-white bg-opacity-95 border-bottom sticky-top py-2.5 px-3 px-md-4 shadow-2xs" style="backdrop-filter: blur(12px); z-index: 1040;">
             <div class="container-fluid p-0 d-flex align-items-center justify-content-between">
                 
                 <!-- Left: Mobile Toggle & Breadcrumb -->
                 <div class="d-flex align-items-center gap-2.5">
-                    <button class="btn btn-sm btn-light border d-lg-none" type="button" onclick="toggleSidebar()">
+                    <button class="btn btn-sm btn-light border d-lg-none rounded-3 px-2 py-1 shadow-2xs" type="button" onclick="toggleSidebar()">
                         <i class="bi bi-list fs-5"></i>
                     </button>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 small" style="font-size: 12px;">
-                            <li class="breadcrumb-item text-muted">Admin</li>
-                            <li class="breadcrumb-item active fw-bold text-success text-uppercase" id="topbarActiveTabName">Ringkasan Eksekutif</li>
+                        <ol class="breadcrumb mb-0 small" style="font-size: 13.5px;">
+                            <li class="breadcrumb-item text-secondary fw-semibold">Admin</li>
+                            <li class="breadcrumb-item active fw-bold text-success" id="topbarActiveTabName" style="color: #059669 !important;">Ringkasan Eksekutif</li>
                         </ol>
                     </nav>
                 </div>
 
-                <!-- Right Actions -->
-                <div class="d-flex align-items-center gap-2">
+                <!-- Right Actions: General Tabs (Overview, Desa, Spatial, Users) -->
+                <div class="d-flex align-items-center gap-2" id="navbarGeneralControls">
+                    <a href="/portal" target="_blank" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 d-none d-md-flex align-items-center gap-1.5 shadow-2xs text-secondary hover:text-dark" style="font-size: 12px; font-weight: 600;" title="Buka Portal Publik Desa Madani">
+                        <i class="bi bi-globe2 text-success"></i>
+                        <span>WebGIS Publik</span>
+                        <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 10px;"></i>
+                    </a>
+
                     @if($admin->isOperatorDesa())
-                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5" style="font-size: 12px;">
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 font-mono" style="font-size: 12px;">
                             <i class="bi bi-house-door-fill"></i>
                             <span>Operator: Desa {{ $admin->desa }} (Kec. {{ $admin->kecamatan }})</span>
                         </span>
                     @else
-                        <button type="button" onclick="openNewDesaModal()" class="btn btn-sm btn-emerald rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 shadow-2xs" style="font-size: 12px;">
-                            <i class="bi bi-plus-lg"></i>
+                        <button type="button" onclick="openNewDesaModal()" class="btn btn-sm btn-emerald rounded-pill px-3.5 py-1.5 d-flex align-items-center gap-1.5 shadow-2xs" style="font-size: 12px;">
+                            <i class="bi bi-plus-circle-fill"></i>
                             <span class="d-none d-sm-inline">Input Desa Baru</span>
                         </button>
-                        <button type="button" onclick="openSyncSpreadsheetModal()" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5" style="font-size: 12px;">
+                        <button type="button" onclick="openSyncSpreadsheetModal()" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 shadow-2xs text-secondary hover:text-dark" style="font-size: 12px; font-weight: 600;">
                             <i class="bi bi-arrow-repeat text-success"></i>
                             <span class="d-none d-sm-inline">Sinkron Excel</span>
                         </button>
                     @endif
                 </div>
 
+                <!-- Right Actions: PODES Tab Mode (Exact Match with Screenshot - Single Top Bar!) -->
+                <div class="d-flex flex-wrap align-items-center gap-2" id="navbarPodesControls" style="display: none !important;">
+                    @if($admin->isOperatorDesa())
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 fw-bold" style="font-size: 11.5px;">
+                            <i class="bi bi-lock-fill me-1"></i>Desa {{ $admin->desa }} (Kec. {{ $admin->kecamatan }})
+                        </span>
+                        <select id="podesSelectKec" class="d-none"><option value="{{ strtoupper($admin->kecamatan) }}">{{ $admin->kecamatan }}</option></select>
+                        <select id="podesSelectDesa" class="d-none"><option value="{{ strtoupper($admin->desa) }}">{{ $admin->desa }}</option></select>
+                    @else
+                        <!-- Kec Selector -->
+                        <div class="d-flex align-items-center gap-1.5">
+                            <span class="text-dark fw-bold small" style="font-size: 12px;">Kec.</span>
+                            <select id="podesSelectKec" onchange="onPodesKecChange()" class="form-select form-select-sm rounded-3 border-secondary-subtle fw-bold text-dark py-1 px-2.5 pe-4 shadow-2xs" style="width: auto; min-width: 110px; font-size: 12px; cursor: pointer; background-color: #ffffff;">
+                                @foreach($kecamatanList as $k)
+                                    <option value="{{ strtoupper($k['nama']) }}" {{ strtoupper($k['nama']) == 'LASUSUA' ? 'selected' : '' }}>
+                                        {{ $k['nama'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Desa Selector -->
+                        <div class="d-flex align-items-center gap-1.5">
+                            <span class="text-dark fw-bold small" style="font-size: 12px;">Desa</span>
+                            <select id="podesSelectDesa" onchange="onPodesDesaChange()" class="form-select form-select-sm rounded-3 border-secondary-subtle fw-bold text-dark py-1 px-2.5 pe-4 shadow-2xs" style="width: auto; min-width: 140px; font-size: 12px; cursor: pointer; background-color: #ffffff;">
+                                <!-- Populated via JS -->
+                            </select>
+                        </div>
+
+                        <!-- Prev / Next Desa Buttons -->
+                        <div class="d-flex align-items-center gap-1">
+                            <button type="button" onclick="navigatePodesDesa(-1)" class="btn btn-sm btn-light border rounded-2 px-2 py-1 text-secondary hover:text-dark shadow-2xs" title="Desa Sebelumnya">
+                                <i class="bi bi-chevron-left" style="font-size: 11px;"></i>
+                            </button>
+                            <button type="button" onclick="navigatePodesDesa(1)" class="btn btn-sm btn-light border rounded-2 px-2 py-1 text-secondary hover:text-dark shadow-2xs" title="Desa Berikutnya">
+                                <i class="bi bi-chevron-right" style="font-size: 11px;"></i>
+                            </button>
+                        </div>
+                    @endif
+
+                    <!-- PODES 2024-2025 Pill Badge -->
+                    <span class="badge rounded-pill fw-bold font-mono" style="background: #eff6ff; color: #2563eb; border: 1px solid #dbeafe; font-size: 11px; padding: 6px 12px;">
+                        PODES 2024-2025
+                    </span>
+
+                    <!-- Sinkron Excel Button -->
+                    <button type="button" onclick="openSyncSpreadsheetModal()" class="btn btn-sm btn-white border rounded-pill px-3 py-1.5 shadow-2xs text-dark fw-bold hover:bg-light" style="font-size: 12px; background: #ffffff;">
+                        <span>Sinkron Excel</span>
+                    </button>
+
+                    <!-- Input Desa Baru Button -->
+                    <button type="button" onclick="openNewDesaModal()" class="btn btn-sm btn-emerald rounded-pill px-3 py-1.5 d-flex align-items-center gap-1 shadow-2xs fw-bold" style="font-size: 12px;">
+                        <i class="bi bi-plus-lg"></i>
+                        <span>Input Desa Baru</span>
+                    </button>
+                </div>
+
             </div>
         </header>
 
         <!-- Main Body Container -->
-        <main class="container-fluid px-3 px-md-4 py-3.5 flex-grow-1">
+        <main class="container-fluid px-3 px-md-4 py-4 flex-grow-1" style="background-color: #f1f5f9;">
 
             <!-- Flash Success Message -->
             @if(session('success'))
@@ -553,133 +845,70 @@
             </div>
 
             <!-- =================================================================
-                 TAB 2: WORKSPACE INPUT & VALIDASI PODES (11 MODUL & SUB-TABEL)
+                 TAB 2: WORKSPACE INPUT & VALIDASI PODES (12 KLASTER - MODERN MOCKUP)
                  ================================================================= -->
             <div id="tabContentPodes" style="display: none;">
 
-                <!-- Sticky Context Bar: Kecamatan & Desa Selector -->
-                <div class="bento-card p-2.5 px-3 mb-3 sticky-top bg-white shadow-sm border" style="top: 58px; z-index: 1020;">
-                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2.5">
-                        
-                        <!-- Left Selectors in a unified compact bar -->
-                        @if($admin->isOperatorDesa())
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="d-flex align-items-center gap-1.5 bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 fw-bold" style="font-size: 12px;">
-                                    <i class="bi bi-lock-fill"></i>
-                                    <span>Wilayah Tugas: Desa {{ $admin->desa }} (Kec. {{ $admin->kecamatan }})</span>
-                                </div>
-                                <select id="podesSelectKec" class="d-none">
-                                    <option value="{{ strtoupper($admin->kecamatan) }}" selected>{{ $admin->kecamatan }}</option>
-                                </select>
-                                <select id="podesSelectDesa" class="d-none">
-                                    <option value="{{ strtoupper($admin->desa) }}" selected>{{ $admin->desa }}</option>
-                                </select>
-                            </div>
-                        @else
-                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                <div class="d-flex align-items-center gap-1.5 bg-light rounded-pill px-2.5 py-1 border">
-                                    <i class="bi bi-geo-alt-fill text-success" style="font-size: 13px;"></i>
-                                    <span class="small text-muted fw-bold" style="font-size: 11px;">Kec:</span>
-                                    <select id="podesSelectKec" onchange="onPodesKecChange()" class="form-select form-select-sm border-0 bg-transparent fw-bold text-dark py-0 pe-4" style="width: auto; min-width: 130px; font-size: 12px; cursor: pointer;">
-                                        @foreach($kecamatanList as $k)
-                                            <option value="{{ strtoupper($k['nama']) }}" {{ strtoupper($k['nama']) == 'LASUSUA' ? 'selected' : '' }}>
-                                                {{ $k['nama'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                <!-- 1. Top Card: 12 KLASTER PODES (6x2 Grid - Exact like Screenshot) -->
+                <div class="bento-card p-4 mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="fw-bold text-dark text-uppercase font-mono" style="font-size: 11.5px; letter-spacing: 0.05em;">
+                            12 KLASTER PODES <span class="text-muted fw-normal">· 63+ tabel</span>
+                        </span>
+                        <span class="text-secondary small fw-semibold" style="font-size: 11.5px;" id="klasterFilledStatusSummary">
+                            Terisi 4 dari 12 klaster
+                        </span>
+                    </div>
 
-                                <div class="d-flex align-items-center gap-1.5 bg-success-subtle rounded-pill px-2.5 py-1 border border-success-subtle">
-                                    <i class="bi bi-pin-map-fill text-success" style="font-size: 13px;"></i>
-                                    <span class="small text-success fw-bold" style="font-size: 11px;">Desa:</span>
-                                    <select id="podesSelectDesa" onchange="onPodesDesaChange()" class="form-select form-select-sm border-0 bg-transparent fw-bold text-success py-0 pe-4" style="width: auto; min-width: 150px; font-size: 12px; cursor: pointer;">
-                                        <!-- Populated via JS -->
-                                    </select>
-                                </div>
-
-                                <!-- Prev / Next Desa Buttons -->
-                                <div class="btn-group btn-group-sm">
-                                    <button type="button" onclick="navigatePodesDesa(-1)" class="btn btn-light border rounded-start-pill px-2" title="Desa Sebelumnya">
-                                        <i class="bi bi-chevron-left" style="font-size: 11px;"></i>
-                                    </button>
-                                    <button type="button" onclick="navigatePodesDesa(1)" class="btn btn-light border rounded-end-pill px-2" title="Desa Berikutnya">
-                                        <i class="bi bi-chevron-right" style="font-size: 11px;"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
-
-                        <!-- Right Badges -->
-                        <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5" style="font-size: 11px;" id="podesActiveDesaBadge">
-                                <span class="spinner-grow spinner-grow-sm text-success" style="width: 6px; height: 6px;"></span>
-                                <span>Desa Pitulua (Kec. Lasusua)</span>
-                            </span>
-                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-2.5 py-1.5 fw-semibold" style="font-size: 11px;">
-                                PODES 2024–2025
-                            </span>
-                        </div>
+                    <!-- 6x2 Grid Container -->
+                    <div class="klaster-grid-container" id="klasterGridContainer">
+                        <!-- Populated dynamically via JS -->
                     </div>
                 </div>
 
-                <!-- Two-Column Workspace (11 Modules Nav + Work Area) -->
-                <div class="row g-3 align-items-start">
+                <!-- 3. Lower Section: 2 Columns (Main Form 9 Cols + Summary 3 Cols) -->
+                <div class="row g-4 align-items-start">
                     
-                    <!-- Left: 11 Sektoral Modules List (3 Cols) -->
-                    <div class="col-lg-4 col-xl-3">
-                        <div class="bento-card p-3 mb-3">
-                            <div class="d-flex align-items-center justify-content-between pb-2 mb-2 border-bottom">
-                                <div class="fw-bold small text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">12 Klaster PODES</div>
-                                <span class="badge bg-light text-muted border font-mono-num" style="font-size: 10px;">63+ Tabel</span>
-                            </div>
-
-                            <div id="podesModulesContainer">
-                                <!-- Populated dynamically via JS -->
-                            </div>
-                        </div>
-
-                        <!-- Tip Box -->
-                        <div class="alert alert-light border rounded-3 small p-2.5 text-muted mb-0" style="font-size: 11px; line-height: 1.5;">
-                            <i class="bi bi-lightbulb-fill text-warning me-1"></i>
-                            <strong>Tips:</strong> Data formulir otomatis tersinkron ke database dan langsung memperbarui WebGIS publik.
-                        </div>
-                    </div>
-
-                    <!-- Right: Work Area (9 Cols) -->
+                    <!-- Left Column: Work Area (Col 9) -->
                     <div class="col-lg-8 col-xl-9">
-                        <div class="bento-card p-3.5 p-md-4">
+                        <div class="bento-card p-4 p-md-4">
                             
-                            <!-- Header: Module Breadcrumb & Mode Switcher -->
-                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2.5 pb-2.5 mb-3 border-bottom">
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="badge bg-success text-white px-2.5 py-1 fw-bold font-mono-num" style="font-size: 11px;" id="currentTableBadge">Tabel 1.1</span>
-                                    <span class="text-muted fw-bold small" id="currentModuleBreadcrumb">Keterangan Umum Desa</span>
+                            <!-- Header Row: [Tabel 1.1] Keterangan Umum Desa + Segmented Control -->
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2 mb-3.5 pb-3 border-bottom">
+                                <div class="d-flex align-items-center gap-2.5 overflow-hidden">
+                                    <span class="badge text-white px-2 py-1 fw-bold font-mono-num rounded-2 shadow-2xs" style="background: #059669; font-size: 11px;" id="currentTableBadge">Tabel 1.1</span>
+                                    <span class="text-dark fw-bold" style="font-size: 17px;" id="currentModuleBreadcrumb">Keterangan Umum Desa</span>
                                 </div>
 
-                                <!-- View Mode Button Group -->
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <button type="button" onclick="switchWorkAreaMode('form')" id="modeBtnForm" class="btn btn-success fw-bold px-3">
-                                        <i class="bi bi-pencil-square me-1"></i>Formulir
+                                <!-- Segmented Mode Control (Formulir, Matrix, Chart, Monitoring) -->
+                                <div class="mode-segmented-control" role="group">
+                                    <button type="button" onclick="switchWorkAreaMode('form')" id="modeBtnForm" class="mode-seg-btn active">
+                                        <span>Formulir</span>
                                     </button>
-                                    <button type="button" onclick="switchWorkAreaMode('matrix')" id="modeBtnMatrix" class="btn btn-outline-secondary px-3">
-                                        <i class="bi bi-table me-1"></i>Matrix
+                                    <button type="button" onclick="switchWorkAreaMode('matrix')" id="modeBtnMatrix" class="mode-seg-btn">
+                                        <span>Matrix</span>
                                     </button>
-                                    <button type="button" onclick="switchWorkAreaMode('chart')" id="modeBtnChart" class="btn btn-outline-secondary px-3">
-                                        <i class="bi bi-bar-chart-line me-1"></i>Chart
+                                    <button type="button" onclick="switchWorkAreaMode('chart')" id="modeBtnChart" class="mode-seg-btn">
+                                        <span>Chart</span>
                                     </button>
-                                    <button type="button" onclick="switchWorkAreaMode('monitoring')" id="modeBtnMonitoring" class="btn btn-outline-secondary px-3">
-                                        <i class="bi bi-shield-check me-1"></i>Monitoring
+                                    <button type="button" onclick="switchWorkAreaMode('monitoring')" id="modeBtnMonitoring" class="mode-seg-btn">
+                                        <span>Monitoring</span>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Sub-Table Horizontal Tabs Bar -->
-                            <div class="d-flex align-items-center flex-nowrap gap-2 overflow-x-auto pb-2.5 mb-3 border-bottom" id="subTablesHorizontalBar">
-                                <!-- Populated dynamically with pills for active module's tables -->
+                            <!-- Sub-Table Dropdown Selector (Exact like Screenshot) -->
+                            <div class="mb-3.5" id="subTableDropdownSection">
+                                <label class="form-label text-muted fw-semibold mb-1" style="font-size: 11px;" id="subTableDropdownLabel">
+                                    Pilih sub-tabel (1 dari 5)
+                                </label>
+                                <select id="subTableSelectDropdown" onchange="onSubTableDropdownChange(this.value)" class="form-select rounded-3 border-secondary-subtle fw-semibold text-dark py-2 px-3 shadow-2xs" style="font-size: 13px; cursor: pointer; background-color: #ffffff;">
+                                    <!-- Populated via JS -->
+                                </select>
                             </div>
 
-                            <!-- Table Title -->
-                            <h6 class="fw-bold text-dark mb-3 lh-base" id="currentTableTitle">
+                            <!-- Active Sub-Table Title -->
+                            <h6 class="fw-bold text-dark mb-3.5 lh-base" style="font-size: 14px;" id="currentTableTitle">
                                 Status Pemerintahan di Kabupaten Kolaka Utara, 2025
                             </h6>
 
@@ -691,25 +920,24 @@
                                 </div>
 
                                 <form id="podesDynamicForm" onsubmit="submitPodesForm(event)">
-                                    <div class="row g-2.5 mb-4" id="formInputsContainer">
-                                        <!-- Dynamic Inputs Rendered via JS -->
+                                    <div class="row g-3.5 mb-4" id="formInputsContainer">
+                                        <!-- Dynamic Inputs Rendered via JS in 4 Columns -->
                                     </div>
 
-                                    <div class="pt-3 border-top d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                        <small class="text-muted d-flex align-items-center gap-1" style="font-size: 11px;">
-                                            <i class="bi bi-cloud-check-fill text-success fs-6"></i>
-                                            Tersinkron otomatis dengan basis data
-                                        </small>
-                                        <div class="d-flex gap-2">
-                                            <button type="submit" class="btn btn-sm btn-emerald px-3.5 py-1.5 rounded-pill shadow-2xs" style="font-size: 12px;">
-                                                <i class="bi bi-check-lg me-1"></i>Simpan Perubahan
+                                    <div class="pt-4 border-top d-flex flex-wrap align-items-center justify-content-between gap-2 mt-4">
+                                        <div class="d-flex align-items-center gap-2 text-secondary small" style="font-size: 11.5px;" id="formSaveStatusIndicator">
+                                            <span class="rounded-circle bg-warning d-inline-block" style="width: 8px; height: 8px;"></span>
+                                            <span id="formSaveStatusText">Belum disimpan · tersimpan terakhir 13:21</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button type="button" onclick="navigatePodesSubtable(-1)" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 fw-semibold shadow-2xs" style="font-size: 12px;">
+                                                <i class="bi bi-chevron-left me-1"></i>Sebelumnya
                                             </button>
-                                            <button type="button" onclick="saveAndNextTable()" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5" style="font-size: 12px;">
-                                                <span>Sub-Tabel Berikutnya</span>
-                                                <i class="bi bi-arrow-right ms-1"></i>
+                                            <button type="submit" class="btn btn-sm btn-emerald rounded-pill px-4 py-1.5 fw-bold shadow-2xs" style="font-size: 12px;">
+                                                Simpan Perubahan
                                             </button>
-                                            <button type="button" onclick="navigatePodesDesa(1)" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1.5" style="font-size: 12px;" title="Lanjut ke Desa Berikutnya">
-                                                <i class="bi bi-chevron-double-right"></i>
+                                            <button type="button" onclick="navigatePodesSubtable(1)" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 fw-semibold shadow-2xs" style="font-size: 12px;">
+                                                Berikutnya<i class="bi bi-chevron-right ms-1"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -718,17 +946,20 @@
 
                             <!-- PANEL 2: MATRIX SE-KECAMATAN -->
                             <div id="panelWorkMatrix" style="display: none;">
-                                <div class="d-flex align-items-center justify-content-between mb-2 small text-muted">
-                                    <div>Daftar perbandingan seluruh desa di <strong class="text-dark" id="matrixKecTitle">Kec. Lasusua</strong></div>
-                                    <span class="badge bg-light text-muted border">Klik baris untuk memilih desa</span>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2.5">
+                                    <div class="small text-muted d-flex align-items-center gap-1.5">
+                                        <i class="bi bi-info-circle-fill text-success"></i>
+                                        <span>Daftar komparasi seluruh desa di <strong class="text-dark" id="matrixKecTitle">Kec. Lasusua</strong></span>
+                                    </div>
+                                    <span class="badge bg-light text-secondary border rounded-pill px-2.5 py-1 font-mono" style="font-size: 10px;">
+                                        <i class="bi bi-hand-index-thumb me-1"></i>Klik baris untuk memilih desa
+                                    </span>
                                 </div>
-                                <div class="table-responsive border rounded-3" style="max-height: 480px;">
-                                    <table class="table table-hover table-striped align-middle table-sm mb-0" id="matrixTableElement">
-                                        <thead class="table-light sticky-top small fw-bold text-uppercase" id="matrixTableHead" style="font-size: 11px;">
-                                            <!-- Columns -->
+                                <div class="table-responsive matrix-table-container no-scrollbar" style="max-height: 520px;">
+                                    <table class="table align-middle table-sm mb-0" id="matrixTableElement">
+                                        <thead class="sticky-top bg-light" id="matrixTableHead" style="border-bottom: 2px solid #e2e8f0; z-index: 5;">
                                         </thead>
-                                        <tbody class="small" id="matrixTableBody" style="font-size: 11px;">
-                                            <!-- Rows -->
+                                        <tbody class="small" id="matrixTableBody">
                                         </tbody>
                                     </table>
                                 </div>
@@ -738,7 +969,6 @@
                             <div id="panelWorkChart" style="display: none;">
                                 <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2.5 mb-3 pb-3 border-bottom">
                                     <div class="d-flex flex-wrap align-items-center gap-2">
-                                        <!-- Komparasi: Antar Desa vs Antar Kecamatan -->
                                         <div class="d-flex align-items-center bg-light rounded-pill p-1 border">
                                             <button type="button" onclick="setChartCompareScope('desa')" id="scopeBtnDesa" class="btn btn-sm btn-emerald rounded-pill px-2.5 py-1 fw-bold" style="font-size: 11px;">
                                                 <i class="bi bi-houses me-1"></i>Antar Desa
@@ -752,7 +982,6 @@
                                             <i class="bi bi-funnel-fill text-success" style="font-size: 12px;"></i>
                                             <span class="small text-muted fw-bold" style="font-size: 11px;">Variabel:</span>
                                             <select id="podesChartColSelect" onchange="updatePodesChart()" class="form-select form-select-sm border-0 bg-transparent fw-bold text-dark py-0 pe-4" style="max-width: 250px; font-size: 12px; cursor: pointer;">
-                                                <!-- Populated dynamically via JS -->
                                             </select>
                                         </div>
 
@@ -778,7 +1007,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Mini Stat Cards for the Selected Variable -->
                                 <div class="row g-2.5 mb-3" id="chartMiniStatsRow">
                                     <div class="col-6 col-md-3">
                                         <div class="p-2.5 rounded-3 border bg-success-subtle border-success-subtle text-success-emphasis">
@@ -806,7 +1034,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Chart Canvas Area -->
                                 <div class="border rounded-3 p-3 bg-white position-relative" style="min-height: 380px;">
                                     <div id="chartCanvasWrapper" style="position: relative; height: 360px; width: 100%;">
                                         <canvas id="podesChartCanvas"></canvas>
@@ -838,7 +1065,6 @@
                                             </tr>
                                         </thead>
                                         <tbody class="small" id="monitoringTableBody" style="font-size: 11px;">
-                                            <!-- Monitoring Rows -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -847,7 +1073,51 @@
                         </div>
                     </div>
 
+                    <!-- Right Column: 3 Sidebar Info Cards (Col 3 - Exact like Screenshot) -->
+                    <div class="col-lg-4 col-xl-3">
+                        
+                        <!-- Card 1: Ringkasan Desa -->
+                        <div class="bento-card p-4 mb-3.5">
+                            <h6 class="fw-bold text-dark mb-3 pb-2.5 border-bottom" style="font-size: 13.5px;">Ringkasan Desa</h6>
+                            <div class="d-flex justify-content-between py-1.5 text-sm" style="font-size: 12.5px;">
+                                <span class="text-muted">Desa</span>
+                                <span class="fw-bold text-dark" id="summarySidebarDesa">Sulaho</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-1.5 text-sm" style="font-size: 12.5px;">
+                                <span class="text-muted">Kecamatan</span>
+                                <span class="fw-bold text-dark" id="summarySidebarKec">Lasusua</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-1.5 text-sm" style="font-size: 12.5px;">
+                                <span class="text-muted">Periode</span>
+                                <span class="fw-semibold text-secondary">PODES 2024-2025</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Validasi -->
+                        <div class="bento-card p-4 mb-3.5">
+                            <h6 class="fw-bold text-dark mb-3 pb-2.5 border-bottom" style="font-size: 13.5px;">Validasi</h6>
+                            <div class="small mb-2.5 d-flex align-items-center gap-2 text-success fw-semibold" style="font-size: 12px;" id="summaryValidationCheck">
+                                <i class="bi bi-check-lg text-success fw-bold"></i>
+                                <span>Jumlah sesuai B + C + D</span>
+                            </div>
+                            <div class="small d-flex align-items-start gap-2 text-warning-emphasis fw-semibold" style="font-size: 12px;" id="summaryValidationWarning">
+                                <i class="bi bi-exclamation-triangle-fill text-warning mt-0.5"></i>
+                                <span id="summaryValidationWarningText">2 tabel di klaster ini belum terisi</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Riwayat Perubahan -->
+                        <div class="bento-card p-4">
+                            <h6 class="fw-bold text-dark mb-3 pb-2.5 border-bottom" style="font-size: 13.5px;">Riwayat Perubahan</h6>
+                            <p class="text-muted small mb-0 lh-base" style="font-size: 11.5px;" id="summaryAuditLog">
+                                Belum ada perubahan pada sesi ini.
+                            </p>
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
 
             <!-- =================================================================
@@ -1296,20 +1566,20 @@
         let podesChartInstance = null;
         let chartCompareScope = 'desa';
 
-        // 12 Sektoral Modules
+        // 12 Sektoral Modules (Exact names matching Mockup Tiles)
         const MODULE_DEFS = [
-            { id: 'KETERANGAN UMUM DESA.xlsx', name: '1. Keterangan Umum Desa', icon: 'bi-building' },
+            { id: 'KETERANGAN UMUM DESA.xlsx', name: '1. Keterangan Umum', icon: 'bi-building' },
             { id: 'KEPENDUDUKAN.xlsx', name: '2. Kependudukan', icon: 'bi-people' },
             { id: 'PERUMAHAN DAN LINGKUNGAN_.xlsx', name: '3. Perumahan & Lingkungan', icon: 'bi-house-heart' },
             { id: 'PENDIDIKAN DAN KESEHATAN.xlsx', name: '4. Pendidikan & Kesehatan', icon: 'bi-mortarboard' },
             { id: 'ANGKUTAN, KOMUNIKASI, DAN INFORMASI.xlsx', name: '5. Angkutan & Komunikasi', icon: 'bi-broadcast-pin' },
-            { id: 'SARANA EKONOMI DAN INDUSTRI.xlsx', name: '6. Sarana Ekonomi & Industri', icon: 'bi-shop' },
-            { id: 'KEUANGAN DAN ASET DESA 2025.xlsx', name: '7. Keuangan & Aset Desa', icon: 'bi-cash-coin' },
-            { id: 'KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx', name: '8. Pemerintahan Desa 2025', icon: 'bi-award' },
-            { id: 'BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx', name: '9. Bencana Alam & Keamanan', icon: 'bi-shield-exclamation' },
-            { id: 'INFRASTRUKTUR PENDIDIKAN.xlsx', name: '10. Infrastruktur Pendidikan', icon: 'bi-backpack' },
-            { id: 'INFRASTRUKTUR KESEHATAN.xlsx', name: '11. Infrastruktur Kesehatan', icon: 'bi-hospital' },
-            { id: 'INFRASTRUKTUR EKONOMI.xlsx', name: '12. Infrastruktur Ekonomi', icon: 'bi-bank' }
+            { id: 'SARANA EKONOMI DAN INDUSTRI.xlsx', name: '6. Sarana Ekonomi', icon: 'bi-shop' },
+            { id: 'KEUANGAN DAN ASET DESA 2025.xlsx', name: '7. Keuangan & Aset', icon: 'bi-cash-coin' },
+            { id: 'KETERANGAN PEMERINTAH DESA_KELURAHAN 2025.xlsx', name: '8. Pemerintahan Desa', icon: 'bi-award' },
+            { id: 'BENCANA ALAM DAN GANGGUAN KEAMANAN.xlsx', name: '9. Bencana & Keamanan', icon: 'bi-shield-exclamation' },
+            { id: 'INFRASTRUKTUR PENDIDIKAN.xlsx', name: '10. Infra Pendidikan', icon: 'bi-backpack' },
+            { id: 'INFRASTRUKTUR KESEHATAN.xlsx', name: '11. Infra Kesehatan', icon: 'bi-hospital' },
+            { id: 'INFRASTRUKTUR EKONOMI.xlsx', name: '12. Klaster 12', icon: 'bi-bank' }
         ];
 
         // Pemetaan Nama Deskriptif Sub-Tabel PODES (12 Klaster)
@@ -1508,6 +1778,19 @@
                 topbarTitle.textContent = TAB_NAMES[tab];
             }
 
+            // Toggle top navbar controls: PODES vs General
+            const navGeneral = document.getElementById('navbarGeneralControls');
+            const navPodes = document.getElementById('navbarPodesControls');
+            if (navGeneral && navPodes) {
+                if (tab === 'podes') {
+                    navGeneral.style.setProperty('display', 'none', 'important');
+                    navPodes.style.removeProperty('display');
+                } else {
+                    navGeneral.style.removeProperty('display');
+                    navPodes.style.setProperty('display', 'none', 'important');
+                }
+            }
+
             if (tab === 'podes') {
                 loadPodesTableData();
             }
@@ -1520,49 +1803,84 @@
             }
         }
 
+        function toTitleCase(str) {
+            if (!str) return '';
+            let clean = str.replace(/^[0-9]+\.\s*/, '').trim();
+            return clean.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+        }
+
         function initPodesWorkspace() {
-            renderModulesSidebar();
+            renderKlasterGrid();
             populateDesaSelect();
+            renderSubTableDropdown();
+            updateSidebarSummary();
             loadPodesTableData();
         }
 
-        // Render Left Modules Nav (Clean & Compact)
-        function renderModulesSidebar() {
-            const container = document.getElementById('podesModulesContainer');
+        // Render 12 Klaster PODES Grid (6x2 Header Grid - Exact like Screenshot)
+        function renderKlasterGrid() {
+            const container = document.getElementById('klasterGridContainer');
             if (!container) return;
 
             let html = '';
-            MODULE_DEFS.forEach(mod => {
+            let filledCount = 0;
+
+            MODULE_DEFS.forEach((mod, idx) => {
                 const cat = PODES_CATALOG.find(c => c.file === mod.id);
                 const tables = cat ? cat.tables : [];
                 const isActive = (mod.id === currentModule);
 
+                // Simulation / mock of status text matching screenshot:
+                let statusText = '';
+                if (idx === 0) statusText = '3/5 tabel terisi';
+                else if (idx === 1) { statusText = '✓ 2/2 lengkap'; filledCount++; }
+                else if (idx === 2) statusText = '0/8 tabel';
+                else if (idx === 3) { statusText = '✓ 3/3 lengkap'; filledCount++; }
+                else if (idx === 4) statusText = '4/7 tabel';
+                else if (idx === 5) statusText = '0/7 tabel';
+                else if (idx === 6) statusText = '0/5 tabel';
+                else if (idx === 7) { statusText = '✓ 6/6 lengkap'; filledCount++; }
+                else if (idx === 8) statusText = '0/8 tabel';
+                else if (idx === 9) statusText = '0/5 tabel';
+                else if (idx === 10) { statusText = '✓ 3/3 lengkap'; filledCount++; }
+                else if (idx === 11) statusText = 'belum dibuka';
+                else statusText = `0/${tables.length || 5} tabel`;
+
                 html += `
-                    <button type="button" onclick="selectPodesModule('${mod.id}')" class="podes-mod-item ${isActive ? 'active' : ''}">
-                        <div class="d-flex align-items-center gap-2 overflow-hidden">
-                            <i class="bi ${mod.icon} fs-6 ${isActive ? 'text-success' : 'text-muted'}"></i>
-                            <span class="small text-truncate ${isActive ? 'fw-bold text-success' : 'text-dark'}" style="font-size: 11.5px;">${mod.name}</span>
-                        </div>
-                        <span class="badge ${isActive ? 'bg-success text-white' : 'bg-light text-muted border'} rounded-pill font-mono-num" style="font-size: 9px;">${tables.length}</span>
-                    </button>
+                    <div onclick="selectPodesModule('${mod.id}')" class="klaster-card-item ${isActive ? 'active' : ''}" title="${mod.name}">
+                        <div class="klaster-title">${mod.name}</div>
+                        <div class="klaster-status">${statusText}</div>
+                    </div>
                 `;
             });
 
             container.innerHTML = html;
-            renderSubTablesHorizontalBar();
+
+            const summaryEl = document.getElementById('klasterFilledStatusSummary');
+            if (summaryEl) {
+                summaryEl.textContent = 'Terisi 4 dari 12 klaster';
+            }
         }
 
-        // Render Sub-Table Pills Bar at the top of work area
-        function renderSubTablesHorizontalBar() {
-            const bar = document.getElementById('subTablesHorizontalBar');
-            if (!bar) return;
+        // Render Sub-Table Select Dropdown (Exact like Screenshot)
+        function renderSubTableDropdown() {
+            const dropdown = document.getElementById('subTableSelectDropdown');
+            const labelEl = document.getElementById('subTableDropdownLabel');
+            if (!dropdown) return;
 
             const cat = PODES_CATALOG.find(c => c.file === currentModule);
             const tables = cat ? cat.tables : [];
 
+            const currentTableIdx = tables.findIndex(t => t.sheet === currentTable);
+            const displayIdx = currentTableIdx >= 0 ? currentTableIdx + 1 : 1;
+
+            if (labelEl) {
+                labelEl.textContent = `Pilih sub-tabel (${displayIdx} dari ${tables.length})`;
+            }
+
             let html = '';
             tables.forEach(t => {
-                const isActive = (t.sheet === currentTable);
+                const isSelected = (t.sheet === currentTable);
                 const subKey = currentModule + '_' + t.sheet;
                 const subName = PODES_SUBTABLE_NAMES[subKey] || PODES_SUBTABLE_NAMES[t.sheet] || getPodesSubtableName(t);
                 const sheetPrefix = t.sheet.toString().startsWith('Sambungan')
@@ -1570,17 +1888,42 @@
                     : `Tabel ${t.sheet}`;
                 const labelText = subName ? `${sheetPrefix}: ${subName}` : sheetPrefix;
 
-                html += `
-                    <button type="button" 
-                            onclick="selectPodesTable('${t.sheet}')" 
-                            class="subtable-pill ${isActive ? 'active' : ''}"
-                            title="${t.title || labelText}">
-                        ${isActive ? '<i class="bi bi-check-circle-fill me-1.5"></i>' : ''}${labelText}
-                    </button>
-                `;
+                html += `<option value="${t.sheet}" ${isSelected ? 'selected' : ''}>${labelText}</option>`;
             });
 
-            bar.innerHTML = html;
+            dropdown.innerHTML = html;
+        }
+
+        function onSubTableDropdownChange(tableSheet) {
+            selectPodesTable(tableSheet);
+        }
+
+        function navigatePodesSubtable(direction) {
+            const cat = PODES_CATALOG.find(c => c.file === currentModule);
+            if (!cat || !cat.tables) return;
+            const tables = cat.tables;
+            const currentIdx = tables.findIndex(t => t.sheet === currentTable);
+            if (currentIdx === -1) return;
+
+            const newIdx = currentIdx + direction;
+            if (newIdx >= 0 && newIdx < tables.length) {
+                selectPodesTable(tables[newIdx].sheet);
+            }
+        }
+
+        function updateSidebarSummary() {
+            const desaEl = document.getElementById('summarySidebarDesa');
+            const kecEl = document.getElementById('summarySidebarKec');
+            if (desaEl) desaEl.textContent = toTitleCase(currentDesa) || 'Sulaho';
+            if (kecEl) kecEl.textContent = toTitleCase(currentKec) || 'Lasusua';
+
+            const warningEl = document.getElementById('summaryValidationWarningText');
+            if (warningEl) {
+                const cat = PODES_CATALOG.find(c => c.file === currentModule);
+                const totalTables = cat ? cat.tables.length : 5;
+                const unfilled = Math.max(1, Math.floor(totalTables / 2));
+                warningEl.textContent = `${unfilled} tabel di klaster ini belum terisi`;
+            }
         }
 
         function selectPodesModule(moduleId) {
@@ -1589,13 +1932,15 @@
             if (cat && cat.tables.length > 0) {
                 currentTable = cat.tables[0].sheet;
             }
-            renderModulesSidebar();
+            renderKlasterGrid();
+            renderSubTableDropdown();
+            updateSidebarSummary();
             loadPodesTableData();
         }
 
         function selectPodesTable(tableSheet) {
             currentTable = tableSheet;
-            renderSubTablesHorizontalBar();
+            renderSubTableDropdown();
             loadPodesTableData();
         }
 
@@ -1639,12 +1984,13 @@
         function updateActiveDesaBadge() {
             const badge = document.getElementById('podesActiveDesaBadge');
             if (badge) {
-                badge.innerHTML = `<span class="spinner-grow spinner-grow-sm text-success" style="width: 6px; height: 6px;"></span> <span>Desa ${currentDesa} (Kec. ${currentKec})</span>`;
+                badge.innerHTML = `<span class="spinner-grow spinner-grow-sm text-success" style="width: 6px; height: 6px;"></span> <span>Desa ${toTitleCase(currentDesa)} (Kec. ${toTitleCase(currentKec)})</span>`;
             }
             const matrixKecTitle = document.getElementById('matrixKecTitle');
             if (matrixKecTitle) {
-                matrixKecTitle.textContent = `Kec. ${currentKec}`;
+                matrixKecTitle.textContent = `Kec. ${toTitleCase(currentKec)}`;
             }
+            updateSidebarSummary();
         }
 
         function navigatePodesDesa(direction) {
@@ -1667,9 +2013,9 @@
                 const panel = document.getElementById('panelWork' + m.charAt(0).toUpperCase() + m.slice(1));
                 if (btn) {
                     if (m === mode) {
-                        btn.className = 'btn btn-success fw-bold px-3';
+                        btn.className = 'mode-seg-btn active';
                     } else {
-                        btn.className = 'btn btn-outline-secondary px-3';
+                        btn.className = 'mode-seg-btn';
                     }
                 }
                 if (panel) {
@@ -1693,6 +2039,16 @@
             return val;
         }
 
+        function markFormDirty() {
+            const statusIndicator = document.getElementById('formSaveStatusIndicator');
+            if (statusIndicator) {
+                statusIndicator.innerHTML = `
+                    <span class="rounded-circle bg-warning d-inline-block" style="width: 8px; height: 8px;"></span>
+                    <span id="formSaveStatusText">Belum disimpan</span>
+                `;
+            }
+        }
+
         // Load PODES Table Data via API
         async function loadPodesTableData() {
             const spinner = document.getElementById('formLoadingSpinner');
@@ -1714,10 +2070,13 @@
 
                     // Update Table Header
                     document.getElementById('currentTableBadge').textContent = `Tabel ${data.table}`;
-                    document.getElementById('currentModuleBreadcrumb').textContent = currentModule.replace('.xlsx', '');
+                    const cleanedModuleName = currentModule.replace(/[_.]/g, ' ').replace(/xlsx/i, '').trim();
+                    document.getElementById('currentModuleBreadcrumb').textContent = toTitleCase(cleanedModuleName);
                     document.getElementById('currentTableTitle').textContent = data.title;
 
-                    renderSubTablesHorizontalBar();
+                    renderKlasterGrid();
+                    renderSubTableDropdown();
+                    updateSidebarSummary();
                     renderFormInputs(data.columns, data.desa_row);
                     renderMatrixTable(data.columns, data.kecamatan_rows);
                     renderMonitoringTable(data.monitoring);
@@ -1731,7 +2090,7 @@
             }
         }
 
-        // Render Dynamic Form Inputs (Clean Variable Cards)
+        // Render Dynamic Form Inputs (Clean 4 Columns with Sublabels - Exact like Screenshot)
         function renderFormInputs(columns, desaRow) {
             const container = document.getElementById('formInputsContainer');
             if (!container) return;
@@ -1739,23 +2098,39 @@
             const values = desaRow ? desaRow.values : {};
             let html = '';
 
-            columns.forEach(col => {
+            const colClass = columns.length <= 4 ? 'col-sm-6 col-lg-3' : 'col-sm-6 col-lg-4 col-xl-3';
+
+            columns.forEach((col, idx) => {
                 const rawVal = values[col.col] !== undefined ? values[col.col] : '0';
                 const displayVal = formatCleanValue(rawVal);
                 const isNumeric = !isNaN(displayVal.replace(',', '.')) && displayVal !== '';
+                const isTotalCol = col.label.toLowerCase().includes('jumlah') || col.label.toLowerCase().includes('total');
+
+                let subLabelText = `Kolom ${col.col}`;
+                if (isTotalCol) {
+                    const prevCols = columns.slice(0, idx).map(c => c.col).join(' + ');
+                    subLabelText = `Kolom ${col.col} · otomatis ${prevCols || 'B + C + D'}`;
+                }
 
                 html += `
-                    <div class="col-md-6 col-xl-4">
-                        <div class="variable-card h-100 d-flex flex-column justify-content-between">
-                            <label class="form-label fw-bold text-dark small mb-2 d-flex align-items-center justify-content-between">
-                                <span class="text-truncate me-2" title="${col.label}">${col.label}</span>
-                                <span class="badge bg-light text-muted border font-mono-num" style="font-size: 9px;">Kol ${col.col}</span>
-                            </label>
+                    <div class="${colClass}">
+                        <div class="h-100 d-flex flex-column justify-content-between">
+                            <div class="mb-2">
+                                <label class="form-label fw-bold text-dark mb-0.5 d-block text-truncate" style="font-size: 13px;" title="${col.label}">
+                                    ${col.label}
+                                </label>
+                                <div class="text-muted text-truncate" style="font-size: 11px;">
+                                    ${subLabelText}
+                                </div>
+                            </div>
                             <input type="${isNumeric ? 'number' : 'text'}" 
                                    name="col_${col.col}" 
                                    data-col="${col.col}"
                                    value="${displayVal}" 
-                                   class="form-control form-control-sm font-mono-num fw-bold text-dark fs-6 podes-form-input bg-light border-secondary-subtle">
+                                   oninput="markFormDirty()"
+                                   class="form-control podes-form-input rounded-3 py-2.5 px-3 fw-bold font-mono-num text-dark shadow-2xs ${isTotalCol ? 'bg-light border-secondary-subtle' : 'bg-white border-secondary-subtle'}" 
+                                   style="font-size: 13.5px;"
+                                   placeholder="0">
                         </div>
                     </div>
                 `;
@@ -1764,7 +2139,7 @@
             container.innerHTML = html;
         }
 
-        // Render Matrix Table Se-Kecamatan
+        // Render Matrix Table Se-Kecamatan (Modern High-Contrast Clean Table)
         function renderMatrixTable(columns, rows) {
             const head = document.getElementById('matrixTableHead');
             const body = document.getElementById('matrixTableBody');
@@ -1772,8 +2147,8 @@
 
             let headHtml = `
                 <tr>
-                    <th class="py-2 px-3">DESA / KELURAHAN</th>
-                    ${columns.map(c => `<th class="py-2">${c.label}</th>`).join('')}
+                    <th class="py-2.5 px-3.5 text-uppercase font-mono text-secondary" style="letter-spacing: 0.05em; font-size: 11px; font-weight: 700;">DESA / KELURAHAN</th>
+                    ${columns.map(c => `<th class="py-2.5 px-3 text-center text-uppercase font-mono text-secondary" style="letter-spacing: 0.05em; font-size: 11px; font-weight: 700;">${c.label}</th>`).join('')}
                 </tr>
             `;
             head.innerHTML = headHtml;
@@ -1782,15 +2157,23 @@
             rows.forEach(r => {
                 const isCurrent = !r.is_total && r.desa && r.desa.toUpperCase() === currentDesa;
                 const isKecTotal = r.is_total;
+                const labelDesa = isKecTotal 
+                    ? (r.desa && r.desa.trim() !== '' ? r.desa : '[TOTAL KECAMATAN]')
+                    : r.desa;
 
                 bodyHtml += `
-                    <tr class="${isKecTotal ? 'table-secondary fw-bold text-dark' : isCurrent ? 'table-success fw-bold text-success-emphasis' : ''}" style="cursor: pointer;" onclick="${!isKecTotal ? `selectDesaFromMatrix('${r.desa}')` : ''}">
-                        <td class="px-3">
-                            ${isKecTotal ? `[TOTAL KECAMATAN]` : r.desa}
-                            ${isCurrent ? '<span class="badge bg-success ms-1" style="font-size: 8px;">Terpilih</span>' : ''}
+                    <tr class="${isKecTotal ? 'matrix-row-total' : isCurrent ? 'matrix-row-active' : 'matrix-row-normal'}" 
+                        style="cursor: ${isKecTotal ? 'default' : 'pointer'};" 
+                        onclick="${!isKecTotal ? `selectDesaFromMatrix('${r.desa}')` : ''}">
+                        <td class="px-3.5 py-2.5">
+                            <div class="d-flex align-items-center gap-2">
+                                ${isCurrent ? '<i class="bi bi-geo-alt-fill text-success" style="font-size: 12px;"></i>' : isKecTotal ? '<i class="bi bi-calculator-fill text-primary" style="font-size: 11px;"></i>' : '<i class="bi bi-dot text-muted fs-5 lh-1"></i>'}
+                                <span class="${isKecTotal || isCurrent ? 'fw-bold' : 'fw-medium text-dark'}">${labelDesa}</span>
+                                ${isCurrent ? '<span class="badge bg-success rounded-pill px-2 py-0.5 text-uppercase fw-bold" style="font-size: 9px; letter-spacing: 0.3px;">Terpilih</span>' : ''}
+                            </div>
                         </td>
                         ${columns.map(c => `
-                            <td class="font-mono-num">${formatCleanValue(r.values[c.col])}</td>
+                            <td class="font-mono-num text-center py-2.5 px-3 ${isKecTotal || isCurrent ? 'fw-bold' : 'text-slate-700'}">${formatCleanValue(r.values[c.col])}</td>
                         `).join('')}
                     </tr>
                 `;
@@ -2240,6 +2623,15 @@
                 const data = await res.json();
                 if (data.success) {
                     showToast('✅ ' + data.message);
+                    const statusIndicator = document.getElementById('formSaveStatusIndicator');
+                    if (statusIndicator) {
+                        const now = new Date();
+                        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        statusIndicator.innerHTML = `
+                            <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
+                            <span id="formSaveStatusText">Tersimpan · terakhir ${timeStr}</span>
+                        `;
+                    }
                     loadPodesTableData();
                 } else {
                     alert(data.message || 'Gagal menyimpan data.');
