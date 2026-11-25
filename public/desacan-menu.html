@@ -10740,6 +10740,12 @@ function triggerPubDownload() {
             if (currentNavMenu === 'galeri' && typeof renderPageGaleriPhotos === 'function') {
                 renderPageGaleriPhotos('all', '');
             }
+            if (typeof initVillageHeader === 'function') {
+                initVillageHeader(key);
+            }
+            if ((currentNavMenu === 'beranda' || currentNavMenu === 'portal') && typeof renderVillageMainLayout === 'function') {
+                renderVillageMainLayout(key, 'beranda', 'beranda');
+            }
         }
 
         function switchPemTab(tab) {
