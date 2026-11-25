@@ -109,7 +109,7 @@
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
     <script src="/js/desa_presisi_engine.js?v=20261124_05"></script>
-    <script src="/js/podes_explorer.js?v=20261123_09"></script>
+    <script src="/js/podes_explorer.js?v=20261124_02"></script>
 
     <style>
         .leaflet-control-attribution {
@@ -290,11 +290,11 @@
             transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
         }
         #mainPortalHeader.scrolled {
-            background-color: rgba(255, 255, 255, 0.96) !important;
+            background-color: #ffffff !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
-            border-bottom-color: #DCE3DD !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+            border-bottom: 1px solid #DCE3DD !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
         }
         #mobileNavMenu {
             background-color: transparent;
@@ -302,8 +302,9 @@
             transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
         #mobileNavMenu.scrolled {
-            background-color: rgba(255, 255, 255, 0.96) !important;
-            border-top-color: #DCE3DD !important;
+            background-color: #ffffff !important;
+            border-top: 1px solid #DCE3DD !important;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05) !important;
         }
         #headerSpacer {
             height: 64px;
@@ -2532,6 +2533,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Special Initializations per Page
+
         if (pageNum === 2) {
             setTimeout(function() {
                 if (typeof window.initExplorer === 'function') {
@@ -2549,7 +2551,8 @@
                 }
             }, 150);
         }
-    };
+
+        };
 
     // Handle Browser Back / Forward buttons
     window.addEventListener('popstate', function(e) {
@@ -2604,8 +2607,9 @@
         }, 200);
     };
 
-    // 8. Language Switcher ID/EN
+        // 8. Language Switcher ID/EN
     window.setPortalLanguage = function(lang) {
+        try { localStorage.removeItem('portal_lang'); } catch(e) {}
         const btnID = document.getElementById('btnLangID');
         const btnEN = document.getElementById('btnLangEN');
         if (lang === 'en') {
@@ -2617,12 +2621,12 @@
         }
     };
 
-    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, White when Scrolled)
+    // 9. Sticky Header Smooth Scroll Transition (Transparent at Top, Solid White when Scrolled)
     window.handlePortalHeaderScroll = function() {
         const header = document.getElementById('mainPortalHeader');
         const mNav = document.getElementById('mobileNavMenu');
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || (document.body ? document.body.scrollTop : 0) || 0;
-        const isScrolled = scrollPos > 15;
+        const isScrolled = scrollPos > 10;
         if (header) {
             header.classList.toggle('scrolled', isScrolled);
         }
@@ -2633,6 +2637,7 @@
 
     window.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
     document.addEventListener('scroll', window.handlePortalHeaderScroll, { passive: true });
+    window.handlePortalHeaderScroll();
 
     // Auto-detect page on initial load
     document.addEventListener('DOMContentLoaded', function() {

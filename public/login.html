@@ -50,6 +50,12 @@
             background: radial-gradient(circle at 20% 20%, #06182e 0%, #0b2545 50%, #031424 100%);
             min-height: 100vh;
         }
+        .desa-pill-btn.active {
+            background: #005ea6;
+            color: #ffffff;
+            font-weight: 800;
+            border-color: #005ea6;
+        }
     </style>
 </head>
 <body class="text-slate-800 flex flex-col justify-between p-4 sm:p-6 lg:p-8 min-h-screen selection:bg-amber-200 selection:text-amber-950">
@@ -78,7 +84,11 @@
             </div>
         </a>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex items-center bg-white/90 backdrop-blur-md rounded-full p-0.5 text-xs font-bold border border-white/30 shrink-0 shadow-md">
+                <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+            </div>
             <a href="/descan" class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-2 shadow-sm hover:shadow-md">
                 <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 <span class="hidden sm:inline">Kembali ke 6 Desa</span>
@@ -102,145 +112,88 @@
                 <div class="relative z-10 space-y-4">
                     <div class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>Portal Login Resmi Desa Binaan</span>
+                        <span>Portal Login Resmi Desa Binaan (Kec. Kodeoha & Kec. Tiwu)</span>
                     </div>
 
                     <!-- Village Feature Landscape Photo Card -->
                     <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group">
                         <img id="sideDesaHeroPhoto" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=90" alt="Foto Desa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4">
-                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest" id="sideDesaKecamatanTag">Kec. Pangalengan • Jawa Barat</span>
-                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">Desa Cijati</h2>
+                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest" id="sideDesaKecamatanTag">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">Desa Kalu Kaluku</h2>
                         </div>
                     </div>
 
-                    <!-- Village Details Box -->
-                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 backdrop-blur-sm text-xs">
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Lembaga:</span>
-                            <span id="sideDesaLembaga" class="font-bold text-white">Pemerintah Desa Cijati</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Status Pembinaan:</span>
-                            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400">Akses Modul:</span>
-                            <span class="text-amber-300 text-[11px] font-bold font-mono">Buku Excel & Evaluasi</span>
-                        </div>
+                    <!-- Status pembinaan -->
+                    <div class="flex items-center gap-2 text-xs">
+                        <span id="sideDesaStatusBadge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS (Mandiri)</span>
                     </div>
 
                     <!-- Explanation text specifically for this village -->
                     <div class="pt-2">
-                        <p class="text-xs text-slate-300 leading-relaxed font-medium">
-                            Masukkan email dan kata sandi resmi untuk membuka dashboard pembinaan, buku panduan digital Excel, dan monografi data desa ini.
+                        <p id="sideDesaDesc" class="text-xs text-slate-300 leading-relaxed font-medium">
+                            Pilot Utama Desa Cantik BPS Kolaka Utara. Terletak strategis di perbatasan Ibu Kota Lasusua, dengan sentra kakao rakyat dan perikanan terpadu.
                         </p>
                     </div>
                 </div>
 
-                <div class="relative z-10 pt-4 mt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                    <a href="/descan" class="text-slate-300 hover:text-amber-400 font-bold flex items-center gap-1.5 transition">
-                        <span>←</span>
-                        <span>Dashboard 6 Desa</span>
-                    </a>
-                    <span class="text-[10px] text-slate-500 font-medium">BPS Kolaka Utara</span>
+                <div class="relative z-10 pt-4 mt-4 border-t border-slate-800 text-[10px] text-slate-500 font-medium">
+                    BPS Kolaka Utara 2026
                 </div>
             </div>
 
-            <!-- RIGHT PANEL: FORM LOGIN RESMI KHUSUS DESA INI -->
-            <div class="lg:col-span-7 flex flex-col justify-between bg-white">
-                
-                <!-- Top Gradient Accent Line -->
+            <!-- RIGHT PANEL: FORM LOGIN -->
+            <div class="lg:col-span-7 flex flex-col bg-white">
                 <div class="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-[#005ea6] to-amber-500"></div>
 
-                <div class="p-6 sm:p-10 space-y-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <!-- Active Village Header Context Card -->
-                        <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-emerald-50/60 to-slate-50 border border-slate-200 flex items-center justify-between gap-3 shadow-2xs">
-                            <div class="flex items-center gap-3.5">
-                                <img id="activeDesaAvatar" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=200&q=80" alt="Foto Desa" class="w-12 h-12 rounded-2xl object-cover border-2 border-emerald-500 shadow-sm shrink-0">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h2 id="activeDesaName" class="text-lg font-black text-slate-900 leading-tight">Desa Cijati</h2>
-                                        <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">Terbina BPS</span>
-                                    </div>
-                                    <p id="activeDesaRep" class="text-xs font-semibold text-slate-600 mt-0.5">
-                                        Pemerintah Desa Cijati • Admin Resmi
-                                    </p>
-                                    <p id="activeDesaWilayah" class="text-[10px] text-slate-400 font-medium">
-                                        Kec. Pangalengan • Jawa Barat
-                                    </p>
-                                </div>
-                            </div>
+                <div class="p-6 sm:p-10 flex-1 flex flex-col justify-center">
+                    <div class="max-w-md w-full mx-auto">
 
-                            <!-- 1-Click Fast Fill Button -->
-                            <button type="button" onclick="autoFillActiveCredentials()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs shadow-xs hover:shadow transition cursor-pointer" title="Isi email dan sandi resmi desa ini otomatis">
-                                <i class="bi bi-lightning-charge-fill text-slate-950"></i><span>Isi Sandi</span>
-                            </button>
-                        </div>
+                        <h1 class="text-2xl font-black text-slate-900 tracking-tight">Masuk ke Dashboard Desa</h1>
+                        <p class="text-sm text-slate-500 mt-1">Gunakan akun resmi desa binaan untuk melanjutkan.</p>
 
-                        <!-- 1-Click Fast Fill Mobile Button -->
-                        <div class="sm:hidden mt-2">
-                            <button type="button" onclick="autoFillActiveCredentials()" class="w-full py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
-                                <i class="bi bi-lightning-charge-fill text-slate-950"></i><span>Isi Sandi Resmi Desa Ini</span>
-                            </button>
-                        </div>
+                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-7">
 
-                        <!-- FORM LOGIN -->
-                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-6">
-                            
-                            <!-- Error Alert Banner -->
-                            <div id="loginErrorAlert" class="hidden p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 shadow-xs">
-                                <svg class="w-5 h-5 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                            <div id="loginErrorAlert" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5">
+                                <svg class="w-4 h-4 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                                 <span id="loginErrorText" class="font-medium">Email atau kata sandi tidak cocok.</span>
                             </div>
 
-                            <!-- Email Input -->
+                            <!-- Email -->
                             <div>
-                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1">
-                                    Email Akun Resmi Desa
-                                </label>
+                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-envelope-fill"></i></span>
-                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
+                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
                                 </div>
                             </div>
 
-                            <!-- Password Input -->
+                            <!-- Password -->
                             <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label for="inpPassword" class="block text-xs font-bold text-slate-700">
-                                        Kata Sandi (Password)
-                                    </label>
-                                    <span id="hintPasswordDisplay" class="text-[11px] font-mono text-slate-400"></span>
-                                </div>
+                                <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata Sandi</label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm"><i class="bi bi-lock-fill"></i></span>
-                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi desa" class="w-full pl-10 pr-12 py-3 rounded-2xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#005ea6] focus:border-transparent transition bg-slate-50 focus:bg-white shadow-2xs">
-                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi"><i id="eyePassIconLogin" class="bi bi-eye"></i></button>
+                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500">
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer" title="Lihat/Sembunyikan Sandi"><i id="eyePassIcon" class="bi bi-eye"></i></button>
                                 </div>
                             </div>
 
-                            <!-- Submit Button -->
-                            <button type="submit" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#005ea6] via-[#0b2545] to-[#005ea6] hover:from-[#004e8a] hover:to-[#081b33] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 transform active:scale-98 cursor-pointer">
-                                <span id="btnSubmitText">Masuk ke Dashboard Desa</span>
-                                <span class="text-base">→</span>
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0f6b4a] to-[#0a4d36] hover:from-[#0d5c40] hover:to-[#083b2a] text-white font-black text-sm shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 cursor-pointer">
+                                <span id="btnSubmitText">Masuk ke Dashboard</span>
+                                <i class="bi bi-arrow-right text-sm"></i>
                             </button>
                         </form>
-                    </div>
 
-                    <!-- BOTTOM: Kredensial Khusus Desa Ini Saja -->
-                    <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-slate-400">Akun:</span>
-                            <span id="hintCurrentEmail" class="font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-lg text-[11px] border border-slate-200"></span>
+                        <div class="flex items-center gap-3 my-5 text-[11px] text-slate-400 font-semibold">
+                            <span class="flex-1 h-px bg-slate-200"></span>atau<span class="flex-1 h-px bg-slate-200"></span>
                         </div>
-                        <button type="button" onclick="autoFillActiveCredentials()" class="text-[#005ea6] hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer">
-                            <i class="bi bi-lightning-charge-fill text-amber-600"></i><span>Isi Sandi Otomatis</span>
-                        </button>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5"><i class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi Otomatis</span></button>
+                            <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5"><i class="bi bi-eye-fill text-emerald-600 text-sm"></i><span>Masuk sebagai Tamu</span></button>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -256,11 +209,23 @@
 
     <!-- SCRIPT LOGIC -->
     <script>
-        let currentSelectedDesa = 'cijati';
+        let currentSelectedDesa = 'kamisi';
 
         function selectLoginDesa(key) {
+            key = (key || 'kamisi').toLowerCase();
+            if (key === 'cijati' || key === 'kalukaluku') key = 'kamisi';
+            if (key === 'sukamaju' || key === 'awo') key = 'koroha';
+            if (key === 'mekarwangi' || key === 'mala-mala') key = 'malamala';
+            if (key === 'tegalasri' || key === 'lametuna') key = 'lapolu';
+            if (key === 'harapan' || key === 'sawangaoha') key = 'tanggeawo';
+            if (key === 'lestari' || key === 'mattiro-bulu') key = 'mattirobulu';
+
             currentSelectedDesa = key;
-            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['cijati'];
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[key]) ? DESCAN_ACCOUNTS[key] : DESCAN_ACCOUNTS['kamisi'];
+
+            // Sinkronkan dropdown desa
+            const selDesa = document.getElementById('selDesa');
+            if (selDesa) selDesa.value = key;
 
             // Update Left Hero Panel specifically for this village
             const sideHeroPhoto = document.getElementById('sideDesaHeroPhoto');
@@ -268,12 +233,16 @@
             const sideTitle = document.getElementById('sideDesaHeroTitle');
             const sideKec = document.getElementById('sideDesaKecamatanTag');
             const sideLembaga = document.getElementById('sideDesaLembaga');
+            const sideDesc = document.getElementById('sideDesaDesc');
+            const sideStatus = document.getElementById('sideDesaStatusBadge');
 
             if (sideHeroPhoto) sideHeroPhoto.src = acc.avatar;
             if (sideBgPhoto) sideBgPhoto.src = acc.avatar;
             if (sideTitle) sideTitle.textContent = acc.desaName;
             if (sideKec) sideKec.textContent = acc.kecamatan;
             if (sideLembaga) sideLembaga.textContent = acc.rep;
+            if (sideDesc) sideDesc.textContent = acc.description;
+            if (sideStatus) sideStatus.textContent = `Terverifikasi BPS (${acc.kategori || 'Mandiri'})`;
 
             // Update Right Context Card
             const nameEl = document.getElementById('activeDesaName');
@@ -293,11 +262,28 @@
             if (emailInp) emailInp.value = acc.email;
             if (passInp) passInp.value = '';
             if (errEl) errEl.classList.add('hidden');
-            if (btnSubmitText) btnSubmitText.textContent = `Masuk ke Dashboard ${acc.desaName}`;
             if (hintEmail) hintEmail.textContent = acc.email;
 
             const hintEl = document.getElementById('hintPasswordDisplay');
             if (hintEl) hintEl.textContent = `Sandi: ${acc.password}`;
+        }
+
+        function loginAsGuestViewer() {
+            const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentSelectedDesa]) ? DESCAN_ACCOUNTS[currentSelectedDesa] : DESCAN_ACCOUNTS['kamisi'];
+            const session = {
+                desaKey: currentSelectedDesa,
+                desaName: acc.desaName,
+                rep: acc.rep,
+                avatar: acc.avatar,
+                email: acc.email,
+                role: 'Peninjau Resmi BPS / Tamu',
+                loginAt: new Date().toISOString()
+            };
+            try {
+                localStorage.setItem('descan_auth_session', JSON.stringify(session));
+                sessionStorage.setItem('descan_auth_session', JSON.stringify(session));
+            } catch(e) {}
+            window.location.href = `/descan/menu?desa=${currentSelectedDesa}&menu=dashboard`;
         }
 
         function autoFillActiveCredentials() {
@@ -313,14 +299,14 @@
 
         function togglePassVisibility() {
             const inp = document.getElementById('inpPassword');
-            const icon = document.getElementById('eyePassIconLogin');
+            const eyeIcon = document.getElementById('eyePassIcon');
             if (inp) {
                 if (inp.type === 'password') {
                     inp.type = 'text';
-                    if (icon) icon.className = 'bi bi-eye-slash';
+                    if (eyeIcon) eyeIcon.className = 'bi bi-eye-slash';
                 } else {
                     inp.type = 'password';
-                    if (icon) icon.className = 'bi bi-eye';
+                    if (eyeIcon) eyeIcon.className = 'bi bi-eye';
                 }
             }
         }
@@ -357,7 +343,7 @@
             showLoginToast(`✓ Berhasil login sebagai ${result.account.desaName}! Mengarahkan ke dashboard...`);
 
             setTimeout(() => {
-                window.location.href = `/descan/menu?desa=${result.account.desaKey}&menu=tentang`;
+                window.location.href = `/descan/menu?desa=${result.account.desaKey}&menu=dashboard`;
             }, 700);
         }
 
@@ -370,7 +356,7 @@
             }
         }
 
-        // Init on load: Bersihkan sesi lama sehingga setiap login benar-benar baru
+        // Init on load
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof clearDescanAuth === 'function') clearDescanAuth();
             try {
@@ -379,13 +365,35 @@
             } catch(e) {}
 
             const params = new URLSearchParams(window.location.search);
-            const desaParam = (params.get('desa') || 'cijati').toLowerCase();
+            const desaParam = (params.get('desa') || 'kamisi').toLowerCase();
             selectLoginDesa(desaParam);
 
             // Pastikan password selalu kosong saat halaman dimuat
             const passInp = document.getElementById('inpPassword');
             if (passInp) passInp.value = '';
+
+            try {
+                const saved = localStorage.getItem('portal_lang');
+                if (saved === 'en') {
+                    window.setPortalLanguage('en');
+                }
+            } catch(e) {}
         });
+
+                // Language Switcher ID/EN (Visual only - English disabled as requested)
+        window.setPortalLanguage = function(lang) {
+            try { localStorage.removeItem('portal_lang'); } catch(e) {}
+            const btnID = document.getElementById('btnLangID');
+            const btnEN = document.getElementById('btnLangEN');
+            if (lang === 'en') {
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            } else {
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            }
+        };
+
     </script>
 </body>
 </html>

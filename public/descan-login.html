@@ -84,7 +84,11 @@
             </div>
         </a>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex items-center bg-white/90 backdrop-blur-md rounded-full p-0.5 text-xs font-bold border border-white/30 shrink-0 shadow-md">
+                <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2.5 py-1 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
+                <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2.5 py-1 rounded-full text-slate-700 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+            </div>
             <a href="/descan" class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-2 shadow-sm hover:shadow-md">
                 <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 <span class="hidden sm:inline">Kembali ke 6 Desa</span>
@@ -367,7 +371,29 @@
             // Pastikan password selalu kosong saat halaman dimuat
             const passInp = document.getElementById('inpPassword');
             if (passInp) passInp.value = '';
+
+            try {
+                const saved = localStorage.getItem('portal_lang');
+                if (saved === 'en') {
+                    window.setPortalLanguage('en');
+                }
+            } catch(e) {}
         });
+
+                // Language Switcher ID/EN (Visual only - English disabled as requested)
+        window.setPortalLanguage = function(lang) {
+            try { localStorage.removeItem('portal_lang'); } catch(e) {}
+            const btnID = document.getElementById('btnLangID');
+            const btnEN = document.getElementById('btnLangEN');
+            if (lang === 'en') {
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            } else {
+                if (btnID) btnID.className = 'px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs font-bold text-[11px]';
+                if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
+            }
+        };
+
     </script>
 </body>
 </html>
