@@ -2521,13 +2521,8 @@ window.PresisiEngine = (function() {
     }
 
     if (subAnalisis) {
-      if (currentActiveSubTable && currentActiveSubTable.title) {
-        const cleanTitle = cleanSubTableTitle(currentActiveSubTable.title);
-        const modName = (currentActiveSubTable.module || '').replace('.xlsx', '');
-        subAnalisis.textContent = `Telaah komparatif data Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara • Tabel ${currentActiveSubTable.sheet}: ${cleanTitle} (${modName})`;
-      } else {
-        subAnalisis.textContent = `Telaah komparatif berbasis tabel statistik Potensi Desa (PODES BPS 2025) se-Kabupaten Kolaka Utara`;
-      }
+      subAnalisis.textContent = '';
+      subAnalisis.style.display = 'none';
     }
   }
 

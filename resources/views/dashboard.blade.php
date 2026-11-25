@@ -75,7 +75,7 @@
 
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261124_05"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261125_01"></script>
     <script src="/js/podes_explorer.js?v=20261125_01"></script>
 
     <style>
@@ -1373,7 +1373,6 @@
                             <div class="pb-3 border-b border-slate-100">
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wider">DETAIL KECAMATAN TERPILIH</span>
                                 <h3 id="presisiAnalisisTitle" class="text-2xl font-black text-slate-900 mt-2">Kecamatan Lasusua</h3>
-                                <p id="presisiAnalisisSubtitle" class="text-xs text-slate-500 mt-0.5">Ibu Kota Kabupaten Kolaka Utara • 12 Desa/Kelurahan</p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-2.5 text-xs">
