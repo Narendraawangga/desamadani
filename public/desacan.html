@@ -2166,6 +2166,15 @@
 
             if (!modal) return;
 
+            const modalBox = modal.querySelector('.relative.w-full');
+            if (modalBox) {
+                if (docType === 'tabel') {
+                    modalBox.className = "relative w-full max-w-6xl xl:max-w-7xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-3 sm:my-6 flex flex-col max-h-[94vh] animate-in fade-in zoom-in duration-200";
+                } else {
+                    modalBox.className = "relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-6 flex flex-col max-h-[92vh] animate-in fade-in zoom-in duration-200";
+                }
+            }
+
             if (docType === 'monografi') {
                 if (iconEl) iconEl.innerHTML = '📘';
                 if (tagEl) tagEl.textContent = 'BUKU PUBLIKASI RESMI • BPS KAB. KOLAKA UTARA';
@@ -2222,50 +2231,11 @@
                 }
             } else if (docType === 'tabel') {
                 if (iconEl) iconEl.innerHTML = '📊';
-                if (tagEl) tagEl.textContent = 'KOMPILASI DATA SEKTORAL • BPS SDI';
-                if (titleEl) titleEl.textContent = 'Tabel Statistik Sektoral 44 Indikator SDI (6 Desa)';
+                if (tagEl) tagEl.textContent = 'KOMPILASI DATA SEKTORAL 3 PERIODE • BPS SDI';
+                if (titleEl) titleEl.textContent = 'Tabel Statistik Sektoral 44 Indikator (6 Desa • 3 Periode Excel & Grafik)';
                 if (bodyEl) {
-                    bodyEl.innerHTML = `
-                        <div class="space-y-5">
-                            <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 flex flex-wrap items-center justify-between gap-3">
-                                <div>
-                                    <div class="text-[10px] font-black uppercase text-blue-800">Standar Metadata Baku</div>
-                                    <div class="font-black text-slate-900 text-sm">32 Matriks Tabulasi Sektoral BPS</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[10px] font-black">Format Excel / CSV</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-800 text-[10px] font-black">6 Desa Terintegrasi</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-slate-200 text-slate-800 text-[10px] font-black">100% Valid</span>
-                                </div>
-                            </div>
-
-                            <div class="overflow-x-auto rounded-xl border border-slate-200">
-                                <table class="w-full text-left text-xs border-collapse">
-                                    <thead>
-                                        <tr class="bg-slate-100 text-slate-800 font-black border-b border-slate-200 text-[11px]">
-                                            <th class="p-2.5">Nama Desa</th>
-                                            <th class="p-2.5">Kecamatan</th>
-                                            <th class="p-2.5 text-center">Penduduk</th>
-                                            <th class="p-2.5 text-center">Keluarga</th>
-                                            <th class="p-2.5 text-center">IKM</th>
-                                            <th class="p-2.5 text-center">Status IDM</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-100 font-medium">
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Desa Kamisi</td><td class="p-2.5">Kodeoha</td><td class="p-2.5 text-center">1.576</td><td class="p-2.5 text-center">394 KK</td><td class="p-2.5 text-center font-bold text-amber-600">14 Unit</td><td class="p-2.5 text-center text-emerald-700 font-bold">Mandiri (98%)</td></tr>
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Desa Koroha</td><td class="p-2.5">Kodeoha</td><td class="p-2.5 text-center">1.340</td><td class="p-2.5 text-center">335 KK</td><td class="p-2.5 text-center font-bold text-amber-600">16 Unit</td><td class="p-2.5 text-center text-sky-700 font-bold">Mandiri (72%)</td></tr>
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Kelurahan Mala-Mala</td><td class="p-2.5">Kodeoha</td><td class="p-2.5 text-center">1.272</td><td class="p-2.5 text-center">318 KK</td><td class="p-2.5 text-center font-bold text-amber-600">2 Unit</td><td class="p-2.5 text-center text-emerald-700 font-bold">Mandiri (93%)</td></tr>
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Desa Lapolu</td><td class="p-2.5">Tiwu</td><td class="p-2.5 text-center">1.264</td><td class="p-2.5 text-center">321 KK</td><td class="p-2.5 text-center font-bold text-amber-600">75 Unit</td><td class="p-2.5 text-center text-emerald-700 font-bold">Mandiri (88%)</td></tr>
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Desa Tanggeawo</td><td class="p-2.5">Tiwu</td><td class="p-2.5 text-center">564</td><td class="p-2.5 text-center">141 KK</td><td class="p-2.5 text-center font-bold text-amber-600">46 Unit</td><td class="p-2.5 text-center text-indigo-700 font-bold">Mandiri (84%)</td></tr>
-                                        <tr class="hover:bg-slate-50"><td class="p-2.5 font-bold text-slate-900">Desa Mattiro Bulu</td><td class="p-2.5">Tiwu</td><td class="p-2.5 text-center">856</td><td class="p-2.5 text-center">324 KK</td><td class="p-2.5 text-center font-bold text-amber-600">20 Unit</td><td class="p-2.5 text-center text-purple-700 font-bold">Terbina (79%)</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-950 text-xs">
-                                <b>Format Kompatibel:</b> Tabel data dapat dibuka di Microsoft Excel, Google Sheets, LibreOffice Calc, dan database GIS.
-                            </div>
-                        </div>
-                    `;
+                    bodyEl.innerHTML = `<div id="sektoralStudioContainer" class="w-full"></div>`;
+                    renderSektoralStudio('sektoralStudioContainer');
                 }
             } else if (docType === 'brs' || docType === 'statistik') {
                 if (iconEl) iconEl.innerHTML = '📑';
@@ -3247,6 +3217,577 @@
             }
         };
 </script>
-    <script src="/js/desa-portal.js"></script>
+    <script src="/js/desa-portal.js">
+
+// ==============================================================
+    // ENGINE DATA PUBLIKASI TABEL STATISTIK SEKTORAL 3 PERIODE (BPS)
+    // Desain Sendangsari: Sidebar Kategori, 3 Periode Excel, Bar & Pie Graph
+    // ==============================================================
+    const SEKTORAL_DATA_STORE = {
+        penduduk: {
+            title: "Statistik Penduduk & Demografi",
+            icon: "bi-people-fill",
+            color: "emerald",
+            subTitle: "Jumlah Penduduk, Struktur Umur, Gender, dan Sebaran Dusun",
+            indicators: [
+                { id: "p1", name: "Total Penduduk Terdaftar", cat: "Demografi", unit: "Jiwa", y2024: 6478, y2025: 6619, y2026: 6734, note: "Perekaman SIAK & Pendataan Lapangan" },
+                { id: "p2", name: "Penduduk Laki-Laki", cat: "Gender", unit: "Jiwa", y2024: 3290, y2025: 3365, y2026: 3424, note: "Sex Ratio 103,4 (Seimbang)" },
+                { id: "p3", name: "Penduduk Perempuan", cat: "Gender", unit: "Jiwa", y2024: 3188, y2025: 3254, y2026: 3310, note: "Komposisi 49,2% dari total" },
+                { id: "p4", name: "Jumlah Kepala Keluarga (KK)", cat: "Keluarga", unit: "KK", y2024: 1625, y2025: 1660, y2026: 1689, note: "Rata-rata 3,9 jiwa/KK" },
+                { id: "p5", name: "Usia Balita (0 - 4 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 580, y2025: 562, y2026: 546, note: "Sasaran posyandu aktif" },
+                { id: "p6", name: "Usia Anak (5 - 14 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 1120, y2025: 1140, y2026: 1152, note: "Usia wajib belajar 9 tahun" },
+                { id: "p7", name: "Usia Produktif (15 - 64 Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 4366, y2025: 4489, y2026: 4594, note: "Bonus demografi 68,2%" },
+                { id: "p8", name: "Usia Lanjut / Lansia (65+ Tahun)", cat: "Rentang Umur", unit: "Jiwa", y2024: 412, y2025: 428, y2026: 442, note: "Rasio ketergantungan 46,6%" }
+            ],
+            villages: {
+                kamisi: { total24: 1520, total25: 1554, total26: 1576, kk26: 394, kec: "Kodeoha" },
+                koroha: { total24: 1290, total25: 1315, total26: 1340, kk26: 335, kec: "Kodeoha" },
+                malamala: { total24: 1230, total25: 1250, total26: 1272, kk26: 318, kec: "Kodeoha" },
+                lapolu: { total24: 1210, total25: 1242, total26: 1264, kk26: 321, kec: "Tiwu" },
+                tanggeawo: { total24: 538, total25: 550, total26: 564, kk26: 141, kec: "Tiwu" },
+                mattirobulu: { total24: 690, total25: 708, total26: 718, kk26: 180, kec: "Tiwu" }
+            }
+        },
+        pendidikan: {
+            title: "Statistik Pendidikan & Literasi",
+            icon: "bi-mortarboard-fill",
+            color: "blue",
+            subTitle: "Tingkat Pendidikan Formal Dalam KK dan Partisipasi Sekolah",
+            indicators: [
+                { id: "ed1", name: "Tidak / Belum Pernah Sekolah", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 840, y2025: 795, y2026: 742, note: "Penurunan -11,7% (Program Keaksaraan)" },
+                { id: "ed2", name: "Tamat SD / Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 2120, y2025: 2080, y2026: 2045, note: "Pendidikan dasar mayoritas petani tua" },
+                { id: "ed3", name: "Tamat SMP / MTs Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 1610, y2025: 1670, y2026: 1712, note: "Kenaikan partisipasi wajar 9 th" },
+                { id: "ed4", name: "Tamat SMA / SMK / MA Sederajat", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 1540, y2025: 1650, y2026: 1758, note: "Peningkatan mutu angkatan kerja (+14,2%)" },
+                { id: "ed5", name: "Tamat Perguruan Tinggi (D3/S1/S2)", cat: "Tingkat Ijazah", unit: "Jiwa", y2024: 368, y2025: 424, y2026: 477, note: "Lulusan sarjana kembali membangun desa" },
+                { id: "ed6", name: "Angka Partisipasi Sekolah (APS 7-18)", cat: "Partisipasi", unit: "%", y2024: 91.2, y2025: 93.8, y2026: 96.4, note: "Target 100% bebas anak putus sekolah" },
+                { id: "ed7", name: "Fasilitas Sarana PAUD / TK Aktif", cat: "Sarana", unit: "Unit", y2024: 8, y2025: 9, y2026: 11, note: "PAUD terakreditasi BPS & Kemendikbud" }
+            ]
+        },
+        kemiskinan: {
+            title: "Statistik Kemiskinan & Perlindungan Sosial",
+            icon: "bi-shield-check",
+            color: "amber",
+            subTitle: "Desil Kesejahteraan P3KE, Penerima Bansos PKH/BPNT/BLT, dan Sanitasi",
+            indicators: [
+                { id: "k1", name: "Keluarga Desil 1 (Kemiskinan Ekstrem)", cat: "Desil P3KE", unit: "KK", y2024: 182, y2025: 146, y2026: 112, note: "Penurunan -38,5% lewat padat karya & bansos" },
+                { id: "k2", name: "Keluarga Desil 2 (Pra-Sejahtera)", cat: "Desil P3KE", unit: "KK", y2024: 298, y2025: 272, y2026: 248, note: "Intervensi pemberdayaan bibit kakao" },
+                { id: "k3", name: "Penerima Program Keluarga Harapan (PKH)", cat: "Bantuan Sosial", unit: "KK", y2024: 245, y2025: 238, y2026: 226, note: "Graduasi mandiri bertahap" },
+                { id: "k4", name: "Penerima Kartu Sembako / BPNT", cat: "Bantuan Sosial", unit: "KK", y2024: 380, y2025: 365, y2026: 348, note: "Penyaluran via PT Pos & Himbara" },
+                { id: "k5", name: "Penerima BLT Dana Desa (BLT-DD)", cat: "Bantuan Sosial", unit: "KK", y2024: 196, y2025: 165, y2026: 138, note: "Tepat sasaran hasil Musdesus" },
+                { id: "k6", name: "Persentase Rumah Layak Huni (RLH)", cat: "Hunian", unit: "%", y2024: 82.4, y2025: 86.1, y2026: 91.5, note: "Bantuan bedah rumah BSPS Pemkab" },
+                { id: "k7", name: "Akses Air Bersih & Jamban Sehat (ODF)", cat: "Sanitasi", unit: "%", y2024: 88.6, y2025: 92.4, y2026: 96.8, note: "Desa Bebas Buang Air Besar Sembarangan" }
+            ]
+        },
+        pekerjaan: {
+            title: "Statistik Ketenagakerjaan & Mata Pencaharian",
+            icon: "bi-briefcase-fill",
+            color: "teal",
+            subTitle: "Distribusi Lapangan Pekerjaan, Usaha Mandiri, dan Angkatan Kerja",
+            indicators: [
+                { id: "pk1", name: "Petani Perkebunan (Kakao, Cengkeh, Nilam)", cat: "Sektor Primer", unit: "Jiwa", y2024: 2140, y2025: 2180, y2026: 2215, note: "Mayoritas komoditas perkebunan Kolut" },
+                { id: "pk2", name: "Nelayan Tangkap & Budidaya Bahari", cat: "Sektor Primer", unit: "Jiwa", y2024: 485, y2025: 502, y2026: 520, note: "Kawasan pesisir Kamisi & Mala-Mala" },
+                { id: "pk3", name: "Pedagang & Pelaku Usaha Mikro (UMKM)", cat: "Sektor Jasa", unit: "Jiwa", y2024: 312, y2025: 358, y2026: 412, note: "Tumbuh pesat (+32,1%) sentra kuliner" },
+                { id: "pk4", name: "Buruh Bangunan / Tukang Kayu", cat: "Sektor Sekunder", unit: "Jiwa", y2024: 420, y2025: 455, y2026: 486, note: "Pembangunan fisik desa mandiri" },
+                { id: "pk5", name: "Aparatur Desa / ASN / Nakes / Guru", cat: "Pemerintahan", unit: "Jiwa", y2024: 98, y2025: 104, y2026: 112, note: "Pelayanan publik terstandar" },
+                { id: "pk6", name: "Tingkat Pengangguran Terbuka (TPT)", cat: "Indikator", unit: "%", y2024: 3.8, y2025: 3.2, y2026: 2.7, note: "Angka pengangguran rendah dan stabil" }
+            ]
+        },
+        komoditas: {
+            title: "Statistik Pertanian, Kakao & Komoditas Sektoral",
+            icon: "bi-tree-fill",
+            color: "emerald",
+            subTitle: "Luas Lahan, Tonase Produksi Kakao, Nilam, Perikanan dan Unit IKM",
+            indicators: [
+                { id: "km1", name: "Luas Perkebunan Kakao Rakyat", cat: "Perkebunan", unit: "Hektar", y2024: 1420, y2025: 1455, y2026: 1488, note: "Varietas unggul sambung pucuk" },
+                { id: "km2", name: "Produksi Biji Kakao Fermentasi", cat: "Produksi", unit: "Ton/Th", y2024: 1280, y2025: 1390, y2026: 1540, note: "Kenaikan +20,3% hasil pembinaan GAP" },
+                { id: "km3", name: "Produksi Minyak Nilam Suling", cat: "Perkebunan", unit: "Liter/Th", y2024: 4600, y2025: 5400, y2026: 6200, note: "Penyulingan nilam Desa Mattiro Bulu" },
+                { id: "km4", name: "Produksi Perikanan Tangkap & Teri", cat: "Perikanan", unit: "Ton/Th", y2024: 340, y2025: 375, y2026: 410, note: "Teri nasi Teluk Bone Desa Kamisi" },
+                { id: "km5", name: "Jumlah Unit IKM Pengolahan Hasil Tani", cat: "Industri", unit: "Unit", y2024: 88, y2025: 114, y2026: 153, note: "Pertumbuhan industri rumah tangga (+73,9%)" }
+            ]
+        }
+    };
+
+    let currentSektoralState = {
+        catKey: 'penduduk',
+        viewMode: 'excel', // 'excel', 'bar', 'pie'
+        villageFilter: 'all', // 'all' or village slug
+        periodFilter: 'all',  // 'all' (3 periods), '2024', '2025', '2026'
+        searchQuery: '',
+        chartInstance: null
+    };
+
+    function renderSektoralStudio(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+
+        // Filter indicators
+        let list = cat.indicators.filter(ind => {
+            if (!currentSektoralState.searchQuery) return true;
+            const q = currentSektoralState.searchQuery.toLowerCase();
+            return ind.name.toLowerCase().includes(q) || ind.cat.toLowerCase().includes(q) || (ind.note && ind.note.toLowerCase().includes(q));
+        });
+
+        // Compute Delta
+        function calcGrowth(valOld, valNew) {
+            if (!valOld) return 0;
+            return (((valNew - valOld) / valOld) * 100).toFixed(1);
+        }
+
+        // HTML Layout (Sendangsari Style Sidebar + Main Stage)
+        let html = `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 w-full">
+                
+                <!-- KOLOM KIRI (lg:col-span-4 xl:col-span-3): SIDEBAR KATEGORI (PERSIS SENDANGSARI) -->
+                <div class="lg:col-span-4 xl:col-span-3 space-y-3">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-3">
+                        <div class="flex items-center justify-between px-1">
+                            <span class="text-[11px] font-black uppercase tracking-wider text-slate-500">
+                                <i class="bi bi-grid-fill text-emerald-700 mr-1.5"></i>Indikator Sektoral
+                            </span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">44 Variabel</span>
+                        </div>
+
+                        <!-- Sidebar Menu Accordions -->
+                        <div class="space-y-1 text-xs font-semibold">
+                            
+                            <!-- 1. Statistik Penduduk -->
+                            <button type="button" onclick="changeSektoralCategory('penduduk')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'penduduk' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-people-fill ${currentSektoralState.catKey === 'penduduk' ? 'text-white' : 'text-emerald-700'}"></i>
+                                    <span>Statistik Penduduk</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'penduduk' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">8</span>
+                            </button>
+
+                            <!-- 2. Statistik Pendidikan -->
+                            <button type="button" onclick="changeSektoralCategory('pendidikan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'pendidikan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-mortarboard-fill ${currentSektoralState.catKey === 'pendidikan' ? 'text-white' : 'text-blue-700'}"></i>
+                                    <span>Statistik Pendidikan</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'pendidikan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">7</span>
+                            </button>
+
+                            <!-- 3. Kemiskinan & Bansos -->
+                            <button type="button" onclick="changeSektoralCategory('kemiskinan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'kemiskinan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-shield-check ${currentSektoralState.catKey === 'kemiskinan' ? 'text-white' : 'text-amber-700'}"></i>
+                                    <span>Kemiskinan & Bansos</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'kemiskinan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">7</span>
+                            </button>
+
+                            <!-- 4. Ketenagakerjaan -->
+                            <button type="button" onclick="changeSektoralCategory('pekerjaan')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'pekerjaan' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-briefcase-fill ${currentSektoralState.catKey === 'pekerjaan' ? 'text-white' : 'text-teal-700'}"></i>
+                                    <span>Ketenagakerjaan</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'pekerjaan' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">6</span>
+                            </button>
+
+                            <!-- 5. Pertanian & Komoditas -->
+                            <button type="button" onclick="changeSektoralCategory('komoditas')" class="w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between ${currentSektoralState.catKey === 'komoditas' ? 'bg-[#0E7C5A] text-white shadow-sm font-bold' : 'text-slate-700 hover:bg-slate-200/70'}">
+                                <span class="flex items-center gap-2">
+                                    <i class="bi bi-tree-fill ${currentSektoralState.catKey === 'komoditas' ? 'text-white' : 'text-emerald-700'}"></i>
+                                    <span>Pertanian & Kakao</span>
+                                </span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded ${currentSektoralState.catKey === 'komoditas' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">5</span>
+                            </button>
+
+                        </div>
+
+                        <!-- Info Card Rekap 6 Desa -->
+                        <div class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-[11px] space-y-1.5">
+                            <div class="font-black text-emerald-900 flex items-center gap-1.5">
+                                <i class="bi bi-check-circle-fill text-emerald-600"></i>
+                                <span>3 Periode Pendataan BPS</span>
+                            </div>
+                            <p class="text-slate-600 leading-snug">
+                                Data terhimpun dari <b>Tahun 2024</b> (Baseline), <b>Tahun 2025</b> (Pemutakhiran), dan <b>Tahun 2026</b> (Validasi SDI).
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN (lg:col-span-8 xl:col-span-9): MAIN DISPLAY (GRAFIK & EXCEL 3 PERIODE) -->
+                <div class="lg:col-span-8 xl:col-span-9 space-y-4">
+                    
+                    <!-- Header Atas: Judul Kategori & 3 Tombol Mode (Bar, Pie, Excel) -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                        <div>
+                            <h3 class="text-base sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                                <i class="bi ${cat.icon} text-emerald-700"></i>
+                                <span>${cat.title}</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">${cat.subTitle}</p>
+                        </div>
+
+                        <!-- 3 Switcher: Bar Graph, Pie Graph, dan Tabel Excel -->
+                        <div class="inline-flex items-center gap-1 p-1 bg-slate-100 rounded-2xl border border-slate-200 shrink-0 self-start sm:self-auto shadow-inner">
+                            <button type="button" onclick="switchSektoralMode('excel')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'excel' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                                <span>Tabel Excel (3 Periode)</span>
+                            </button>
+                            <button type="button" onclick="switchSektoralMode('bar')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'bar' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-bar-chart-fill"></i>
+                                <span>Bar Graph</span>
+                            </button>
+                            <button type="button" onclick="switchSektoralMode('pie')" class="px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 cursor-pointer ${currentSektoralState.viewMode === 'pie' ? 'bg-[#0E7C5A] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-white'}">
+                                <i class="bi bi-pie-chart-fill"></i>
+                                <span>Pie Graph</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bar & Search Toolbar -->
+                    <div class="flex flex-wrap items-center justify-between gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="flex flex-wrap items-center gap-2 flex-1 min-w-[240px]">
+                            <!-- Filter Wilayah -->
+                            <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                                <span class="font-bold text-slate-500 text-[11px]">Wilayah:</span>
+                                <select onchange="changeSektoralVillage(this.value)" class="py-1 px-2.5 rounded-lg border border-slate-200 bg-white text-xs font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                                    <option value="all" ${currentSektoralState.villageFilter === 'all' ? 'selected' : ''}>Semua 6 Desa Binaan</option>
+                                    <option value="kamisi" ${currentSektoralState.villageFilter === 'kamisi' ? 'selected' : ''}>Desa Kamisi (Kodeoha)</option>
+                                    <option value="koroha" ${currentSektoralState.villageFilter === 'koroha' ? 'selected' : ''}>Desa Koroha (Kodeoha)</option>
+                                    <option value="malamala" ${currentSektoralState.villageFilter === 'malamala' ? 'selected' : ''}>Kel. Mala-Mala (Kodeoha)</option>
+                                    <option value="lapolu" ${currentSektoralState.villageFilter === 'lapolu' ? 'selected' : ''}>Desa Lapolu (Tiwu)</option>
+                                    <option value="tanggeawo" ${currentSektoralState.villageFilter === 'tanggeawo' ? 'selected' : ''}>Desa Tanggeawo (Tiwu)</option>
+                                    <option value="mattirobulu" ${currentSektoralState.villageFilter === 'mattirobulu' ? 'selected' : ''}>Desa Mattiro Bulu (Tiwu)</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter Periode (3 Tahun) -->
+                            <div class="flex items-center gap-1.5 text-xs text-slate-700">
+                                <span class="font-bold text-slate-500 text-[11px]">Periode:</span>
+                                <select onchange="changeSektoralPeriod(this.value)" class="py-1 px-2.5 rounded-lg border border-slate-200 bg-white text-xs font-bold text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                                    <option value="all" ${currentSektoralState.periodFilter === 'all' ? 'selected' : ''}>3 Periode (2024 - 2026)</option>
+                                    <option value="2026" ${currentSektoralState.periodFilter === '2026' ? 'selected' : ''}>Tahun 2026 (Mutakhir)</option>
+                                    <option value="2025" ${currentSektoralState.periodFilter === '2025' ? 'selected' : ''}>Tahun 2025</option>
+                                    <option value="2024" ${currentSektoralState.periodFilter === '2024' ? 'selected' : ''}>Tahun 2024 (Baseline)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Live Search & Excel Export Buttons -->
+                        <div class="flex items-center gap-2">
+                            <div class="relative w-44 sm:w-52">
+                                <i class="bi bi-search absolute left-2.5 top-2 text-slate-400 text-xs"></i>
+                                <input type="text" oninput="filterSektoralSearch(this.value)" value="${currentSektoralState.searchQuery}" placeholder="Cari data..." class="w-full pl-7 pr-2 py-1 rounded-lg border border-slate-200 bg-white text-xs font-medium focus:outline-none focus:ring-1 focus:ring-emerald-600">
+                            </div>
+
+                            <!-- Download Excel CSV Button -->
+                            <button type="button" onclick="exportSektoralToExcel()" class="py-1 px-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition cursor-pointer" title="Unduh Lembar Kerja Excel (.csv)">
+                                <i class="bi bi-file-earmark-excel-fill"></i>
+                                <span class="hidden sm:inline">Export Excel</span>
+                            </button>
+                        </div>
+                    </div>
+        `;
+
+        // Render Mode Content
+        if (currentSektoralState.viewMode === 'excel') {
+            // TAMPILAN TABEL EXCEL 3 PERIODE
+            html += `
+                <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white">
+                    <div class="overflow-x-auto max-h-[460px] scrollbar-thin">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead class="sticky top-0 z-10 bg-slate-100 text-slate-800 font-black border-b border-slate-300 text-[11px] shadow-sm">
+                                <tr>
+                                    <th class="p-2.5 text-center w-10">No</th>
+                                    <th class="p-2.5 min-w-[200px]">Indikator Pendataan / Variabel</th>
+                                    <th class="p-2.5 min-w-[100px]">Kategori</th>
+                                    <th class="p-2.5 text-center w-16">Satuan</th>
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2024' ? '<th class="p-2.5 text-right bg-slate-50 font-black text-slate-700">Periode 2024</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2025' ? '<th class="p-2.5 text-right bg-blue-50/50 font-black text-blue-900">Periode 2025</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2026' ? '<th class="p-2.5 text-right bg-emerald-50 font-black text-emerald-900">Periode 2026</th>' : ''}
+                                    ${currentSektoralState.periodFilter === 'all' ? '<th class="p-2.5 text-center w-24">Tren / Delta</th>' : ''}
+                                    <th class="p-2.5 min-w-[160px]">Keterangan SDI BPS</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-medium">
+            `;
+
+            if (list.length === 0) {
+                html += `<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada indikator yang sesuai dengan kata kunci pencarian.</td></tr>`;
+            } else {
+                list.forEach((ind, idx) => {
+                    const delta = calcGrowth(ind.y2024, ind.y2026);
+                    const isPositive = delta >= 0;
+                    const deltaBadge = isPositive 
+                        ? `<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">+${delta}%</span>`
+                        : `<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-100 text-rose-800">${delta}%</span>`;
+
+                    html += `
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="p-2.5 text-center text-slate-400 font-bold">${idx + 1}</td>
+                            <td class="p-2.5 font-bold text-slate-900">${ind.name}</td>
+                            <td class="p-2.5 text-slate-500"><span class="px-2 py-0.5 rounded bg-slate-100 text-[10px] font-bold text-slate-600">${ind.cat}</span></td>
+                            <td class="p-2.5 text-center font-bold text-slate-600">${ind.unit}</td>
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2024' ? `<td class="p-2.5 text-right font-mono font-semibold text-slate-700 bg-slate-50/50">${ind.y2024.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2025' ? `<td class="p-2.5 text-right font-mono font-semibold text-blue-900 bg-blue-50/30">${ind.y2025.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' || currentSektoralState.periodFilter === '2026' ? `<td class="p-2.5 text-right font-mono font-black text-emerald-800 bg-emerald-50/40">${ind.y2026.toLocaleString('id-ID')}</td>` : ''}
+                            ${currentSektoralState.periodFilter === 'all' ? `<td class="p-2.5 text-center font-bold">${deltaBadge}</td>` : ''}
+                            <td class="p-2.5 text-[11px] text-slate-500">${ind.note || '-'}</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Excel Table Footer Toolbar -->
+                    <div class="p-3 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                            <span class="font-bold">Total: ${list.length} Indikator Terbakukan</span>
+                            <span class="text-slate-400">•</span>
+                            <span>Formula: <code>Δ = ((T2026 - T2024) / T2024) * 100</code></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="copySektoralTableToClipboard()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 font-bold transition flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-clipboard"></i>
+                                <span>Salin Data</span>
+                            </button>
+                            <button type="button" onclick="printSektoralTable()" class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 font-bold transition flex items-center gap-1 cursor-pointer">
+                                <i class="bi bi-printer"></i>
+                                <span>Cetak</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            // TAMPILAN GRAFIK (BAR GRAPH ATAU PIE GRAPH)
+            html += `
+                <div class="bg-white rounded-2xl border border-slate-200 p-4 space-y-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs font-bold text-slate-700">
+                            <span>Visualisasi: </span>
+                            <span class="text-emerald-800 font-extrabold">${currentSektoralState.viewMode === 'bar' ? 'Bar Graph Multi-Series (3 Periode)' : 'Pie Graph Distribusi Komposisi'}</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+                            Highcharts &amp; Chart.js Engine
+                        </span>
+                    </div>
+
+                    <!-- Canvas Area -->
+                    <div class="relative w-full h-[360px] sm:h-[400px] bg-slate-50/50 rounded-xl p-2 border border-slate-100">
+                        <canvas id="sektoralStudioCanvas"></canvas>
+                    </div>
+
+                    <!-- Ringkasan Statistik / Chips di Bawah Grafik -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-center">
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Baseline 2024</div>
+                            <div class="text-sm sm:text-base font-black text-slate-800 mt-0.5">6.478 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-blue-50/60 border border-blue-200">
+                            <div class="text-[10px] text-blue-700 font-bold uppercase">Pemutakhiran 2025</div>
+                            <div class="text-sm sm:text-base font-black text-blue-900 mt-0.5">6.619 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
+                            <div class="text-[10px] text-emerald-700 font-bold uppercase">Terkini 2026</div>
+                            <div class="text-sm sm:text-base font-black text-emerald-900 mt-0.5">6.734 Jiwa</div>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                            <div class="text-[10px] text-amber-700 font-bold uppercase">Pertumbuhan Rata-Rata</div>
+                            <div class="text-sm sm:text-base font-black text-amber-900 mt-0.5">+3,95%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        html += `
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        // Inisialisasi Chart jika mode bar atau pie
+        if (currentSektoralState.viewMode !== 'excel') {
+            setTimeout(() => {
+                initSektoralChart(list);
+            }, 50);
+        }
+    }
+
+    function changeSektoralCategory(catKey) {
+        currentSektoralState.catKey = catKey;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function switchSektoralMode(mode) {
+        currentSektoralState.viewMode = mode;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function changeSektoralVillage(v) {
+        currentSektoralState.villageFilter = v;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function changeSektoralPeriod(p) {
+        currentSektoralState.periodFilter = p;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function filterSektoralSearch(q) {
+        currentSektoralState.searchQuery = q;
+        renderSektoralStudio('sektoralStudioContainer');
+    }
+
+    function initSektoralChart(items) {
+        const canvas = document.getElementById('sektoralStudioCanvas');
+        if (!canvas || typeof Chart === 'undefined') return;
+
+        if (currentSektoralState.chartInstance) {
+            currentSektoralState.chartInstance.destroy();
+            currentSektoralState.chartInstance = null;
+        }
+
+        const labels = items.map(i => i.name.length > 20 ? i.name.substring(0, 18) + '...' : i.name);
+
+        if (currentSektoralState.viewMode === 'bar') {
+            // Bar Graph 3 Periode
+            currentSektoralState.chartInstance = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Periode 2024',
+                            data: items.map(i => i.y2024),
+                            backgroundColor: 'rgba(100, 116, 139, 0.75)',
+                            borderColor: '#475569',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Periode 2025',
+                            data: items.map(i => i.y2025),
+                            backgroundColor: 'rgba(37, 99, 235, 0.8)',
+                            borderColor: '#1d4ed8',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Periode 2026',
+                            data: items.map(i => i.y2026),
+                            backgroundColor: 'rgba(14, 124, 90, 0.9)',
+                            borderColor: '#096347',
+                            borderWidth: 1.5,
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { weight: 'bold', size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw.toLocaleString('id-ID')}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } }
+                    }
+                }
+            });
+        } else if (currentSektoralState.viewMode === 'pie') {
+            // Pie Graph Komposisi Periode 2026
+            const palette = [
+                '#0E7C5A', '#2563EB', '#D97706', '#059669', 
+                '#DC2626', '#7C3AED', '#0891B2', '#475569'
+            ];
+            currentSektoralState.chartInstance = new Chart(canvas, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: items.map(i => i.y2026),
+                        backgroundColor: palette.slice(0, items.length),
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { weight: 'bold', size: 11 }, boxWidth: 14 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                    return `${context.label}: ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function exportSektoralToExcel() {
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+        let csv = "No,Kategori,Indikator Pendataan,Satuan,Periode 2024,Periode 2025,Periode 2026,Pertumbuhan (%),Keterangan SDI BPS\r\n";
+        
+        cat.indicators.forEach((ind, idx) => {
+            const delta = ind.y2024 ? (((ind.y2026 - ind.y2024) / ind.y2024) * 100).toFixed(1) : "0";
+            csv += `${idx + 1},"${ind.cat}","${ind.name}","${ind.unit}",${ind.y2024},${ind.y2025},${ind.y2026},${delta}%,"${ind.note || ''}"\r\n`;
+        });
+
+        const fileName = `Tabel_Statistik_Sektoral_${currentSektoralState.catKey}_3_Periode_BPS.csv`;
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        if (typeof showToast === 'function') {
+            showToast(`📥 Lembar kerja Excel ${fileName} berhasil diunduh!`);
+        }
+    }
+
+    function copySektoralTableToClipboard() {
+        const cat = SEKTORAL_DATA_STORE[currentSektoralState.catKey] || SEKTORAL_DATA_STORE.penduduk;
+        let text = "No\tKategori\tIndikator\tSatuan\tPeriode 2024\tPeriode 2025\tPeriode 2026\tPertumbuhan (%)\tKeterangan\n";
+        cat.indicators.forEach((ind, idx) => {
+            const delta = ind.y2024 ? (((ind.y2026 - ind.y2024) / ind.y2024) * 100).toFixed(1) : "0";
+            text += `${idx + 1}\t${ind.cat}\t${ind.name}\t${ind.unit}\t${ind.y2024}\t${ind.y2025}\t${ind.y2026}\t${delta}%\t${ind.note || ''}\n`;
+        });
+
+        navigator.clipboard.writeText(text).then(() => {
+            if (typeof showToast === 'function') {
+                showToast("📋 Data tabel berhasil disalin ke clipboard! Siap di-paste ke Excel.");
+            } else {
+                alert("Data tabel berhasil disalin ke clipboard! Siap di-paste ke Excel.");
+            }
+        });
+    }
+
+    function printSektoralTable() {
+        window.print();
+    }
+
+</script>
 </body>
 </html>
