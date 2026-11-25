@@ -22,7 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/podes/table-data', [AdminController::class, 'getPodesTableData'])->name('admin.podes.table-data');
     Route::post('/admin/podes/save', [AdminController::class, 'savePodesData'])->name('admin.podes.save');
     Route::post('/admin/podes/sync', [AdminController::class, 'syncPodesFiles'])->name('admin.podes.sync');
+    Route::post('/admin/podes/sync-portal', [AdminController::class, 'syncPodesToPortalAction'])->name('admin.podes.sync-portal');
     Route::post('/admin/desa/save', [AdminController::class, 'saveDesaMaster'])->name('admin.desa.save');
+    Route::post('/admin/kecamatan/save', [AdminController::class, 'saveKecamatan'])->name('admin.kecamatan.save');
+    Route::post('/admin/portal-agregat/save', [AdminController::class, 'savePortalAggregate'])->name('admin.portal-agregat.save');
 });
 
 // Dashboard Awal: Tampilan Identik Jejaring Desa Wisata (Jadesta Kemenpar)

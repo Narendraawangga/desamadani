@@ -960,6 +960,77 @@ window.PresisiEngine = (function() {
     updatePresisiCharts();
   }
 
+  function syncPresisiLiveKecamatan() {
+    if (!db || !Array.isArray(window.LIVE_KECAMATAN_MASTER) || window.LIVE_KECAMATAN_MASTER.length === 0) {
+      return;
+    }
+    const collapse = (str) => String(str || '').trim().toUpperCase().replace(/[\s_-]+/g, '');
+    if (!Array.isArray(db.kecamatanList)) db.kecamatanList = [];
+    if (!Array.isArray(db.desaList)) db.desaList = [];
+
+    window.LIVE_KECAMATAN_MASTER.forEach(liveKec => {
+      const newNama = String(liveKec.nama || '').trim();
+      if (!newNama) return;
+      const newCollapsed = collapse(newNama);
+      const candidates = [newNama, liveKec.base_key, ...(Array.isArray(liveKec.aliases) ? liveKec.aliases : [])]
+        .filter(Boolean)
+        .map(collapse);
+
+      let matched = db.kecamatanList.find(k =>
+        (liveKec.kode && k.kode && String(k.kode).trim() === String(liveKec.kode).trim()) ||
+        candidates.includes(collapse(k.nama))
+      );
+
+      if (matched) {
+        const oldNama = matched.nama;
+        const oldCollapsed = collapse(oldNama);
+        matched.nama = newNama;
+        if (liveKec.kode) matched.kode = liveKec.kode;
+        if (liveKec.potensi_utama) matched.karakteristik = liveKec.potensi_utama;
+        if (typeof liveKec.desa_count === 'number') {
+          matched.desaCount = liveKec.desa_count;
+        }
+
+        if (oldCollapsed !== newCollapsed) {
+          if (KECAMATAN_PALETTE[oldCollapsed] && !KECAMATAN_PALETTE[newCollapsed]) {
+            KECAMATAN_PALETTE[newCollapsed] = KECAMATAN_PALETTE[oldCollapsed];
+          }
+          if (KECAMATAN_DEMOGRAPHY[oldCollapsed] && !KECAMATAN_DEMOGRAPHY[newCollapsed]) {
+            KECAMATAN_DEMOGRAPHY[newCollapsed] = KECAMATAN_DEMOGRAPHY[oldCollapsed];
+          }
+          db.desaList.forEach(d => {
+            if (collapse(d.kecamatan) === oldCollapsed) {
+              d.kecamatan = newNama;
+            }
+          });
+          if (typeof comparatorKec1 === 'string' && collapse(comparatorKec1) === oldCollapsed) {
+            comparatorKec1 = newNama;
+          }
+          if (typeof comparatorKec2 === 'string' && collapse(comparatorKec2) === oldCollapsed) {
+            comparatorKec2 = newNama;
+          }
+        }
+      } else {
+        if (!KECAMATAN_PALETTE[newCollapsed]) {
+          KECAMATAN_PALETTE[newCollapsed] = '#0D6E5B';
+        }
+        const newDesaArr = Array.isArray(liveKec.desaList) ? liveKec.desaList : [];
+        db.kecamatanList.push({
+          nama: newNama,
+          kode: liveKec.kode || '-',
+          lat: liveKec.lat || -3.5291,
+          lng: liveKec.lng || 120.9855,
+          desaCount: newDesaArr.length,
+          karakteristik: liveKec.potensi_utama || 'Wilayah Kecamatan Baru',
+          ekonomi: { ikm: 0, pasarPerm: 0, pasarSemi: 0, bank: 0 },
+          lingkungan: { pln: 0, persenPln: 0 },
+          sosial: { totalSaranaPendidikan: 0, totalSaranaKesehatan: 0 },
+          keuangan: { bumdes: 0 }
+        });
+      }
+    });
+  }
+
   // INITIALIZATION
   function init() {
     if (typeof window.PODES_2025_DATABASE === 'undefined' || typeof L === 'undefined' || !document.getElementById('mapPresisi')) {
@@ -967,6 +1038,7 @@ window.PresisiEngine = (function() {
       return;
     }
     db = window.PODES_2025_DATABASE;
+    syncPresisiLiveKecamatan();
 
     populateKecamatanSelect();
     populateDesaSelect('ALL');
@@ -988,7 +1060,8 @@ window.PresisiEngine = (function() {
   function populateKecamatanSelect() {
     const select = document.getElementById('presisiSelectKecamatan');
     if (!select) return;
-    select.innerHTML = '<option value="ALL">Semua Kecamatan (15 Kec)</option>';
+    const totalKec = (db && Array.isArray(db.kecamatanList)) ? db.kecamatanList.length : 15;
+    select.innerHTML = `<option value="ALL">Semua Kecamatan (${totalKec} Kec)</option>`;
     db.kecamatanList.forEach(k => {
       const opt = document.createElement('option');
       opt.value = k.nama;
@@ -2150,7 +2223,9 @@ window.PresisiEngine = (function() {
     }
     if (fDesa) {
       if (currentKecamatan === 'ALL') {
-        fDesa.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>15 Kecamatan • 133 Desa/Kelurahan</span>`;
+        const totalKec = (db && Array.isArray(db.kecamatanList)) ? db.kecamatanList.length : 15;
+        const totalDesa = (db && Array.isArray(db.desaList)) ? db.desaList.length : 133;
+        fDesa.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>${totalKec} Kecamatan • ${totalDesa} Desa/Kelurahan</span>`;
       } else {
         const vCount = (db && db.desaList) ? db.desaList.filter(d => d.kecamatan.toLowerCase() === currentKecamatan.toLowerCase()).length : 12;
         fDesa.innerHTML = `<i class="bi bi-geo-alt-fill text-emerald-600"></i> <span>${vCount} Desa/Kelurahan</span>`;
@@ -2267,7 +2342,7 @@ window.PresisiEngine = (function() {
       if (scopeBadge) scopeBadge.textContent = `${k ? k.desaCount : ''} Desa/Kelurahan`;
     } else {
       if (breadcrumb) breadcrumb.innerHTML = `<span class="text-[#0b2545] font-black">Kabupaten Kolaka Utara</span>`;
-      if (scopeBadge) scopeBadge.textContent = `15 Kecamatan • 133 Desa`;
+      if (scopeBadge) scopeBadge.textContent = `${(db && db.kecamatanList) ? db.kecamatanList.length : 15} Kecamatan • ${(db && db.desaList) ? db.desaList.length : 133} Desa`;
     }
   }
 
@@ -2321,7 +2396,7 @@ window.PresisiEngine = (function() {
     let kpi1 = { label: "Total " + cfg.label, val: "0", sub: "" };
     let kpi2 = { label: "Rata-rata", val: "0", sub: "per wilayah" };
     let kpi3 = { label: "Tertinggi", val: "-", sub: "" };
-    let kpi4 = { label: "Cakupan", val: "15 Kec", sub: "133 Desa" };
+    let kpi4 = { label: "Cakupan", val: `${db.kecamatanList.length} Kec`, sub: `${db.desaList.length} Desa` };
 
     if (currentKecamatan === 'ALL') {
       // Kabupaten Level
@@ -2332,7 +2407,7 @@ window.PresisiEngine = (function() {
       const avg = values.length ? Math.round(total / values.length) : 0;
 
       kpi1.val = (isNaN(total) ? 0 : total).toLocaleString('id-ID') + ' ' + cfg.unit;
-      kpi1.sub = "Akumulasi 15 Kecamatan";
+      kpi1.sub = `Akumulasi ${db.kecamatanList.length} Kecamatan`;
 
       kpi2.val = (isNaN(avg) ? 0 : avg).toLocaleString('id-ID') + ' ' + cfg.unit;
       kpi2.sub = "Rata-rata per Kecamatan";
@@ -2340,7 +2415,7 @@ window.PresisiEngine = (function() {
       kpi3.val = values[0] && !isNaN(values[0].val) ? `${values[0].nama} (${values[0].val.toLocaleString('id-ID')})` : "-";
       kpi3.sub = "Kecamatan Terbanyak";
 
-      kpi4.val = "133 Desa";
+      kpi4.val = `${db.desaList.length} Desa`;
       kpi4.sub = "100% Terdata Lengkap";
     } else {
       // Kecamatan Level
@@ -4873,10 +4948,10 @@ window.PresisiEngine = (function() {
           </div>
         </div>
 
-        <!-- Full Ranking Table (Posisi 4 s/d 15) -->
+        <!-- Full Ranking Table -->
         <div class="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-xs space-y-3">
           <div class="text-xs font-bold uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-100">
-            Peringkat Seluruh 15 Kecamatan Berdasarkan ${currentDef.name}
+            Peringkat Seluruh ${sorted.length} Kecamatan Berdasarkan ${currentDef.name}
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             ${sorted.map((item, idx) => {

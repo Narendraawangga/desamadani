@@ -62,6 +62,21 @@ class PodesWorkspaceTest extends TestCase
         $response->assertStatus(200)
             ->assertJson([
                 'success' => true,
+                'synced_to_portal' => true,
+            ]);
+    }
+
+    public function test_authenticated_admin_can_trigger_sync_podes_to_portal(): void
+    {
+        $admin = User::factory()->create([
+            'email' => 'admin@bps.go.id',
+        ]);
+
+        $response = $this->actingAs($admin)->postJson('/admin/podes/sync-portal');
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
             ]);
     }
 

@@ -1,6 +1,41 @@
 @php
     $curPage = (int) ($activePage ?? request('page', 1));
     if ($curPage < 1 || $curPage > 5) $curPage = 1;
+
+    $liveKecamatanList = \App\Http\Controllers\AdminController::getEnrichedKecamatanList();
+    $liveKecamatanCount = count($liveKecamatanList) > 0 ? count($liveKecamatanList) : 15;
+    $liveKecamatanPayload = [];
+    foreach ($liveKecamatanList as $lk) {
+        $desaArr = $lk['desaList'] ?? $lk['desa_list'] ?? [];
+        $liveKecamatanPayload[] = [
+            'kode' => $lk['kode'] ?? '',
+            'nama' => $lk['nama'] ?? '',
+            'base_key' => $lk['base_key'] ?? ($lk['nama'] ?? ''),
+            'aliases' => $lk['aliases'] ?? [],
+            'foto' => $lk['foto'] ?? '/images/jadesta/kebun_kakao_totallang.jpg',
+            'tag' => $lk['tag'] ?? '',
+            'ipd' => (float) ($lk['ipd'] ?? 70),
+            'status_ipd' => $lk['status_ipd'] ?? 'Maju',
+            'potensi_utama' => $lk['potensi_utama'] ?? '',
+            'komoditas' => $lk['komoditas'] ?? '',
+            'komoditas_dominan' => $lk['komoditas_dominan'] ?? '',
+            'produk_unggulan' => $lk['produk_unggulan'] ?? '',
+            'produk_unggulan_desa_count' => (int) ($lk['produk_unggulan_desa_count'] ?? 0),
+            'penduduk_l' => (int) ($lk['penduduk_l'] ?? 0),
+            'penduduk_p' => (int) ($lk['penduduk_p'] ?? 0),
+            'penduduk_total' => (int) ($lk['penduduk_total'] ?? 0),
+            'imk' => (int) ($lk['imk'] ?? 0),
+            'bumdes' => (int) ($lk['bumdes'] ?? 0),
+            'total_sekolah' => (int) ($lk['total_sekolah'] ?? 0),
+            'total_faskes' => (int) ($lk['total_faskes'] ?? 0),
+            'pln_kk' => (int) ($lk['pln_kk'] ?? 0),
+            'odtw' => $lk['odtw'] ?? '',
+            'lat' => isset($lk['lat']) ? (float) $lk['lat'] : null,
+            'lng' => isset($lk['lng']) ? (float) $lk['lng'] : null,
+            'desa_count' => $lk['desa_count'] ?? count($desaArr),
+            'desaList' => $desaArr,
+        ];
+    }
 @endphp
 <!DOCTYPE html>
 <html lang="id">
@@ -107,9 +142,12 @@
     <script src="/data/kolut_desa_polygons.js"></script>
 
     <!-- PODES 2025 DATABASE, DESA PRESISI ENGINE & PODES EXPLORER -->
+    <script>
+        window.LIVE_KECAMATAN_MASTER = @json($liveKecamatanPayload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    </script>
     <script src="/data/podes_kolut_complete_2025.js?v=20261123_03"></script>
-    <script src="/js/desa_presisi_engine.js?v=20261124_05"></script>
-    <script src="/js/podes_explorer.js?v=20261124_02"></script>
+    <script src="/js/desa_presisi_engine.js?v=20261125_02"></script>
+    <script src="/js/podes_explorer.js?v=20261125_02"></script>
 
     <style>
         .leaflet-control-attribution {
@@ -281,25 +319,22 @@
             left: 0 !important;
             right: 0 !important;
             width: 100% !important;
-            z-index: 50 !important;
-            background-color: transparent;
-            border-bottom: 1px solid transparent;
-            box-shadow: none;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
-        }
-        #mainPortalHeader.scrolled {
-            background-color: #ffffff !important;
+            z-index: 9999 !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
             border-bottom: 1px solid #DCE3DD !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        #mainPortalHeader.scrolled {
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
         }
         #mobileNavMenu {
-            background-color: transparent;
-            border-top-color: transparent;
-            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #DCE3DD;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
         }
         #mobileNavMenu.scrolled {
             background-color: #ffffff !important;
@@ -322,8 +357,8 @@
 
 <body class="bg-[#F8FAF8] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
 
-    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI - FIXED TRANSPARAN DI ATAS, PUTIH SAAT SCROLL) -->
-    <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-50 text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
+    <!-- TOP NAVIGATION BAR (IDENTIK & ELEGAN DENGAN DUA LOGO RESMI - FIXED ELEVASI TINGGI DI ATAS MAP & KONTEN) -->
+    <header id="mainPortalHeader" class="fixed top-0 left-0 right-0 z-[9999] text-slate-800 border-b min-h-[50px] flex flex-col justify-center w-full max-w-full">
         <div class="w-full px-4 lg:px-8 py-1.5 sm:py-2 flex items-center justify-between gap-4 max-w-[1720px] mx-auto">
             
             <!-- Sisi Kiri: Identitas Resmi Desa Madani & Logo Pemkab + BPS (Mengarahkan ke Login Admin) -->
@@ -351,7 +386,7 @@
                         Beranda
                     </a>
                     <a href="/portal/agregat" id="navLinkPage2" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 2 ? 'active' : '' }}">
-                        Agregat 15 Kecamatan
+                        Agregat {{ $liveKecamatanCount }} Kecamatan
                     </a>
                     <a href="/portal/peta" id="navLinkPage3" onclick="window.onNavClick(event, 3, '/portal/peta')" class="portal-nav-link hover:text-[#3B4D3B] transition py-1 relative {{ $curPage === 3 ? 'active' : '' }}">
                         Peta dan Analisis
@@ -374,7 +409,7 @@
         <!-- Mobile Horizontal Scroll Menu -->
         <div id="mobileNavMenu" class="flex md:hidden overflow-x-auto px-4 py-2 gap-2 border-t no-scrollbar text-xs font-bold text-slate-600 w-full">
             <a href="/portal" onclick="window.onNavClick(event, 1, '/portal')" id="mNav1" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 1 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Beranda</a>
-            <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 2 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Agregat 15 Kec</a>
+            <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" id="mNav2" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 2 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Agregat {{ $liveKecamatanCount }} Kec</a>
             <a href="/portal/peta" onclick="window.onNavClick(event, 3, '/portal/peta')" id="mNav3" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 3 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Peta dan Analisis</a>
             <a href="/portal/desa-cantik" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" id="mNav4" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 4 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Desa Cantik</a>
             <a href="/portal/tentang" onclick="window.onNavClick(event, 5, '/portal/tentang')" id="mNav5" class="whitespace-nowrap px-3 py-1 rounded-full {{ $curPage === 5 ? 'bg-[#3B4D3B] text-white' : 'bg-white/80 border border-[#DCE3DD] hover:bg-slate-100' }}">Tentang</a>
@@ -683,7 +718,7 @@
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#3B4D3B] border border-emerald-200/70 text-xs font-black uppercase tracking-wider mb-2">Kewilayahan PODES 2025</span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">3 Koridor Pembangunan Kolaka Utara</h2>
-                    <p class="text-slate-600 text-xs sm:text-sm mt-1.5">Segmentasi strategis agregasi 15 kecamatan berdasarkan karakteristik agribisnis dan geografi.</p>
+                    <p class="text-slate-600 text-xs sm:text-sm mt-1.5">Segmentasi strategis agregasi {{ $liveKecamatanCount }} kecamatan berdasarkan karakteristik agribisnis dan geografi.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch max-w-5xl mx-auto">
@@ -804,7 +839,7 @@
 
                 <div class="mt-14 text-center">
                     <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-emerald-50 text-[#3B4D3B] border border-emerald-300 font-bold text-sm shadow-xs hover:shadow-md transition-all cursor-pointer group">
-                        <span>Lanjut ke Halaman 2: Agregat 15 Kecamatan &amp; Eksplorasi 133 Desa</span>
+                        <span>Lanjut ke Halaman 2: Agregat {{ $liveKecamatanCount }} Kecamatan &amp; Eksplorasi 133 Desa</span>
                         <svg class="w-4 h-4 text-[#3B4D3B] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
@@ -831,7 +866,7 @@
                 </div>
 
                 <!-- =================================================================== -->
-                <!-- STATE 1: DIREKTORI 15 KECAMATAN (HORIZONTAL CARD CAROUSEL & SEARCH) -->
+                <!-- STATE 1: DIREKTORI KECAMATAN (HORIZONTAL CARD CAROUSEL & SEARCH) -->
                 <!-- =================================================================== -->
                 <div id="podesStateDirectory" class="space-y-6 scroll-mt-24">
                     <!-- Search Bar Kapsul (Rounded-full) di Sisi Kiri dengan Ikon Kaca Pembesar di Kanan -->
@@ -847,7 +882,7 @@
                         <div class="flex items-center gap-3 self-end sm:self-auto">
                             <div class="hidden sm:flex items-center gap-1.5 text-xs text-slate-400 font-semibold mr-2">
                                 <span class="w-2 h-2 rounded-full bg-[#3B4D3B]"></span>
-                                <span>15 Kecamatan</span>
+                                <span>{{ $liveKecamatanCount }} Kecamatan</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <button onclick="window.scrollKecCarousel(-1)" class="w-9 h-9 rounded-full bg-white border border-[#DCE3DD] hover:bg-[#E6ECE6] text-[#1D241E] hover:text-[#3B4D3B] flex items-center justify-center text-sm font-bold shadow-2xs transition-all cursor-pointer" title="Geser ke kiri"><i class="bi bi-chevron-left"></i></button>
@@ -974,7 +1009,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 text-[#3B4D3B] text-xs font-bold mb-2">
                             <span><i class="bi bi-map-fill"></i> WEBGIS TEMATIK PODES 2025</span>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Peta Tematik Interaktif 15 Kecamatan</h2>
+                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Peta Tematik Interaktif {{ $liveKecamatanCount }} Kecamatan</h2>
                         <p class="text-slate-600 text-sm mt-1">Visualisasi 6 lapisan indikator spasial riil dan direktori desa/kelurahan konstituen.</p>
                     </div>
                     <div class="flex items-center gap-2">
@@ -1007,7 +1042,7 @@
                                 </span>
                                 <span id="mapFooterDesaBadge" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200/80 shadow-2xs">
                                     <i class="bi bi-geo-alt-fill text-emerald-600"></i>
-                                    <span>15 Kecamatan • 133 Desa/Kelurahan</span>
+                                    <span>{{ $liveKecamatanCount }} Kecamatan • 133 Desa/Kelurahan</span>
                                 </span>
                             </div>
                             <div class="flex items-center gap-1.5 shrink-0">
@@ -1327,7 +1362,7 @@
                 <div class="flex items-center justify-between pt-6 border-t border-slate-200">
                     <a href="/portal/agregat" onclick="window.onNavClick(event, 2, '/portal/agregat')" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                        <span>Halaman 2: Agregat 15 Kecamatan</span>
+                        <span>Halaman 2: Agregat {{ $liveKecamatanCount }} Kecamatan</span>
                     </a>
                     <a href="/portal/desa-cantik" onclick="window.onNavClick(event, 4, '/portal/desa-cantik')" class="px-6 py-2.5 rounded-xl bg-[#3B4D3B] hover:bg-[#566B53] text-white font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer">
                         <span>Halaman 4: 6 Desa Cantik</span>
@@ -2369,13 +2404,13 @@
     </footer>
 
     <!-- FLOATING PUSAT BANTUAN BUTTON -->
-    <button onclick="window.togglePusatBantuan()" id="btnFloatingHelp" class="fixed bottom-6 right-6 z-40 bg-[#3B4D3B] hover:bg-[#566B53] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 font-bold text-xs transition-all hover:scale-105 cursor-pointer">
+    <button onclick="window.togglePusatBantuan()" id="btnFloatingHelp" class="fixed bottom-6 right-6 z-[9990] bg-[#3B4D3B] hover:bg-[#566B53] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 font-bold text-xs transition-all hover:scale-105 cursor-pointer">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         <span>Pusat Bantuan</span>
     </button>
 
     <!-- MODAL PUSAT BANTUAN -->
-    <div id="modalPusatBantuan" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs hidden items-center justify-center p-4">
+    <div id="modalPusatBantuan" class="fixed inset-0 z-[10000] bg-black/40 backdrop-blur-xs hidden items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative">
             <button onclick="window.togglePusatBantuan()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -2402,7 +2437,7 @@
     </div>
 
     <!-- MODAL 15 KECAMATAN -->
-    <div id="modalKecamatanList" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs hidden items-center justify-center p-4">
+    <div id="modalKecamatanList" class="fixed inset-0 z-[10000] bg-black/40 backdrop-blur-xs hidden items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 relative">
             <button onclick="window.toggleKecamatanModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -2410,13 +2445,15 @@
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#3B4D3B] flex items-center justify-center font-bold text-lg"><i class="bi bi-map-fill"></i></div>
                 <div>
-                    <h3 class="font-extrabold text-base text-slate-900">Daftar 15 Kecamatan Kolaka Utara</h3>
+                    <h3 class="font-extrabold text-base text-slate-900">Daftar {{ $liveKecamatanCount }} Kecamatan Kolaka Utara</h3>
                     <p class="text-xs text-slate-500">Pilih kecamatan untuk langsung menuju data spasial atau agregat</p>
                 </div>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                 @php
-                    $kecList = ['Tolala', 'Porehu', 'Batu Putih', 'Pakue Utara', 'Pakue Tengah', 'Pakue', 'Watunohu', 'Tiwu', 'Ngapa', 'Kodeoha', 'Katoi', 'Lasusua', 'Lambai', 'Rante Angin', 'Wawo'];
+                    $kecList = count($liveKecamatanPayload) > 0
+                        ? array_values(array_filter(array_map(static fn (array $item): string => (string) ($item['nama'] ?? ''), $liveKecamatanPayload)))
+                        : ['Tolala', 'Porehu', 'Batu Putih', 'Pakue Utara', 'Pakue Tengah', 'Pakue', 'Watunohu', 'Tiwu', 'Ngapa', 'Kodeoha', 'Katoi', 'Lasusua', 'Lambai', 'Rante Angin', 'Wawo'];
                 @endphp
                 @foreach($kecList as $kItem)
                     <button onclick="window.selectKecamatanFromModal('{{ $kItem }}')" class="p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 hover:text-[#3B4D3B] border border-slate-200 text-left font-bold transition flex items-center justify-between">
@@ -2432,6 +2469,31 @@
     <script>
     // 1. Metadata for SVG Hover & Click
     window.SVG_KEC_META = {"svg-kec-lasusua": {"nama": "Lasusua", "kode": "74.08.01", "pop": 26729, "imk": 237, "pln": 8463, "desa": 12, "sekolah": 54, "faskes": 41, "bumdes": 13, "potensi": "Pusat Perdagangan, Jasa, Perikanan Tangkap & Wisata Bahari", "komoditas": "Kakao, Ikan Cakalang, Kuliner Bahari, Olahan Cokelat"}, "svg-kec-pakue": {"nama": "Pakue", "kode": "74.08.02", "pop": 10757, "imk": 86, "pln": 2927, "desa": 11, "sekolah": 24, "faskes": 15, "bumdes": 9, "potensi": "Budidaya Tambak Udang & Bandeng, Perkebunan Kakao", "komoditas": "Udang Windu, Ikan Bandeng, Kakao, Kelapa Kopra"}, "svg-kec-batuputih": {"nama": "Batu Putih", "kode": "74.08.03", "pop": 9229, "imk": 226, "pln": 2379, "desa": 11, "sekolah": 27, "faskes": 20, "bumdes": 12, "potensi": "Perikanan Tangkap, Perkebunan Kelapa & Potensi Bahari", "komoditas": "Ikan Karang, Kelapa Dalam, Kakao, Cengkeh"}, "svg-kec-ranteangin": {"nama": "Rante Angin", "kode": "74.08.04", "pop": 6161, "imk": 39, "pln": 1673, "desa": 7, "sekolah": 16, "faskes": 11, "bumdes": 4, "potensi": "Perkebunan Kakao Rakyat & Padi Sawah Irigasi", "komoditas": "Biji Kakao, Beras Sawah, Ternak Sapi"}, "svg-kec-kodeoha": {"nama": "Kodeoha", "kode": "74.08.05", "pop": 11592, "imk": 234, "pln": 2960, "desa": 12, "sekolah": 30, "faskes": 15, "bumdes": 17, "potensi": "Sentra Utama Kakao Fermentasi & Perikanan Pesisir", "komoditas": "Kakao Super, Padi Sawah, Rumput Laut, Udang"}, "svg-kec-ngapa": {"nama": "Ngapa", "kode": "74.08.06", "pop": 17256, "imk": 502, "pln": 3353, "desa": 12, "sekolah": 25, "faskes": 21, "bumdes": 13, "potensi": "Lumbung Pangan (Padi/Jagung) & Perkebunan Kakao", "komoditas": "Beras Organik, Jagung Hibrida, Kakao, Peternakan"}, "svg-kec-wawo": {"nama": "Wawo", "kode": "74.08.07", "pop": 7188, "imk": 25, "pln": 1883, "desa": 7, "sekolah": 17, "faskes": 10, "bumdes": 9, "potensi": "Agrowisata Danau Biru & Perkebunan Cengkeh/Kopi", "komoditas": "Cengkeh, Kopi Robusta, Kakao, Pariwisata Alam"}, "svg-kec-lambai": {"nama": "Lambai", "kode": "74.08.08", "pop": 7195, "imk": 107, "pln": 1936, "desa": 7, "sekolah": 18, "faskes": 11, "bumdes": 7, "potensi": "Perkebunan Cengkeh, Minyak Nilam & Kakao", "komoditas": "Minyak Nilam, Bunga Cengkeh Kering, Kakao"}, "svg-kec-watunohu": {"nama": "Watunohu", "kode": "74.08.09", "pop": 7279, "imk": 64, "pln": 2107, "desa": 8, "sekolah": 18, "faskes": 11, "bumdes": 8, "potensi": "Hortikultura Sayur-Buah & Perkebunan Kakao", "komoditas": "Sayuran Dataran, Pisang, Kakao, Ternak Kambing"}, "svg-kec-pakuetengah": {"nama": "Pakue Tengah", "kode": "74.08.10", "pop": 7738, "imk": 49, "pln": 2089, "desa": 10, "sekolah": 27, "faskes": 14, "bumdes": 7, "potensi": "Pariwisata Bahari Pasir Putih & Perkebunan Kakao", "komoditas": "Kelapa, Kakao, Ikan Tongkol/Tenggiri"}, "svg-kec-pakueutara": {"nama": "Pakue Utara", "kode": "74.08.11", "pop": 8402, "imk": 257, "pln": 2212, "desa": 9, "sekolah": 22, "faskes": 16, "bumdes": 14, "potensi": "Perikanan Tangkap & Kelapa Kopra", "komoditas": "Ikan Layang, Kopra Putih, Kakao"}, "svg-kec-porehu": {"nama": "Porehu", "kode": "74.08.12", "pop": 6822, "imk": 1440, "pln": 1615, "desa": 8, "sekolah": 22, "faskes": 11, "bumdes": 8, "potensi": "Perkebunan Cengkeh, Kopi & Wisata Alam Air Terjun", "komoditas": "Cengkeh Grade A, Kopi Organik, Madu Hutan"}, "svg-kec-katoi": {"nama": "Katoi", "kode": "74.08.13", "pop": 7408, "imk": 71, "pln": 1877, "desa": 6, "sekolah": 17, "faskes": 11, "bumdes": 11, "potensi": "Kampung Nelayan Pesisir & Sentra Kakao", "komoditas": "Ikan Teri, Kakao, Olahan Ikan Asin, Kelapa"}, "svg-kec-tiwu": {"nama": "Tiwu", "kode": "74.08.14", "pop": 4849, "imk": 194, "pln": 1449, "desa": 7, "sekolah": 15, "faskes": 7, "bumdes": 8, "potensi": "Perkebunan Kakao, Kelapa & Rumput Laut", "komoditas": "Kakao, Rumput Laut Eucheuma, Kelapa"}, "svg-kec-tolala": {"nama": "Tolala", "kode": "74.08.15", "pop": 4087, "imk": 91, "pln": 1154, "desa": 6, "sekolah": 15, "faskes": 9, "bumdes": 6, "potensi": "Perikanan Bahari Teluk Bone & Hasil Hutan", "komoditas": "Ikan Tuna/Cakalang, Madu Lebah Liar, Kakao"}};
+
+    // Sync live Kecamatan names/metadata into SVG map & metadata
+    if (Array.isArray(window.LIVE_KECAMATAN_MASTER)) {
+        const collapseKecName = (s) => String(s || '').trim().toUpperCase().replace(/[\s_-]+/g, '');
+        Object.keys(window.SVG_KEC_META).forEach((svgId) => {
+            const meta = window.SVG_KEC_META[svgId];
+            const matchedLive = window.LIVE_KECAMATAN_MASTER.find((lk) => {
+                const candidates = [lk.nama, lk.base_key, ...(Array.isArray(lk.aliases) ? lk.aliases : [])].filter(Boolean).map(collapseKecName);
+                return (lk.kode && meta.kode && String(lk.kode).trim() === String(meta.kode).trim()) || candidates.includes(collapseKecName(meta.nama));
+            });
+            if (matchedLive && matchedLive.nama) {
+                meta.nama = matchedLive.nama;
+                if (matchedLive.potensi_utama) meta.potensi = matchedLive.potensi_utama;
+                if (matchedLive.komoditas) meta.komoditas = matchedLive.komoditas;
+                const svgGroup = document.getElementById(svgId);
+                if (svgGroup) {
+                    svgGroup.setAttribute('data-kec', matchedLive.nama);
+                    const textEl = svgGroup.querySelector('text');
+                    if (textEl) textEl.textContent = matchedLive.nama;
+                    const titleEl = svgGroup.querySelector('title');
+                    if (titleEl) titleEl.textContent = `Kecamatan ${matchedLive.nama} (Klik untuk eksplorasi di WebGIS)`;
+                }
+            }
+        });
+    }
     window.CURRENT_PORTAL_PAGE = {{ $curPage }};
 
     // 2. SVG Map Hover Handler

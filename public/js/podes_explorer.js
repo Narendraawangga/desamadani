@@ -5,8 +5,14 @@
  * - State 2: Split-Panel Detail Kecamatan (Sektor Unggulan + Swipeable 7 Sektor PODES + Tabel Desa)
  * Palet: Emerald/Teal (#3B4D3B, #3B4D3B, Badge #E6ECE6) • 100% Clean Look & Data Fidelity
  */
-(function() {
+(function () {
   let masterData = null;
+  let hasSyncedLiveMaster = false;
+  let activeKecOrder = [
+    'KATOI', 'LAMBAI', 'LASUSUA', 'KODEOHA', 'BATU PUTIH',
+    'RANTEANGIN', 'WAWO', 'TIWU', 'NGAPA', 'WATUNOHU',
+    'PAKUE', 'PAKUE UTARA', 'PAKUE TENGAH', 'POREHU', 'TOLALA'
+  ];
   let activeState = 'directory'; // 'directory' (State 1) or 'detail' (State 2)
   let activeKecamatanKey = 'KATOI';
   let activeSectorIndex = 0; // 0 to 6
@@ -99,63 +105,63 @@
   };
 
   const SECTORS = [
-    { 
-      id: 'demografi', 
-      name: 'Kependudukan', 
+    {
+      id: 'demografi',
+      name: 'Kependudukan',
       icon: 'bi-people-fill',
       badgeBg: 'bg-[#E6ECE6]',
       badgeText: 'text-[#3B4D3B]',
       badgeBorder: 'border-[#DCE3DD]',
       accentBg: 'bg-[#F2F6F2]'
     },
-    { 
-      id: 'pendidikan', 
-      name: 'Pendidikan', 
+    {
+      id: 'pendidikan',
+      name: 'Pendidikan',
       icon: 'bi-mortarboard-fill',
       badgeBg: 'bg-[#E3EFE8]',
       badgeText: 'text-[#285A43]',
       badgeBorder: 'border-[#CCE3D5]',
       accentBg: 'bg-[#F0F6F2]'
     },
-    { 
-      id: 'kesehatan', 
-      name: 'Kesehatan', 
+    {
+      id: 'kesehatan',
+      name: 'Kesehatan',
       icon: 'bi-hospital-fill',
       badgeBg: 'bg-[#E0EFEA]',
       badgeText: 'text-[#1E5646]',
       badgeBorder: 'border-[#C5E3D9]',
       accentBg: 'bg-[#EFF7F4]'
     },
-    { 
-      id: 'ekonomi', 
-      name: 'Ekonomi & Industri', 
+    {
+      id: 'ekonomi',
+      name: 'Ekonomi & Industri',
       icon: 'bi-buildings-fill',
       badgeBg: 'bg-[#F7EFE1]',
       badgeText: 'text-[#8C6226]',
       badgeBorder: 'border-[#EBD6B5]',
       accentBg: 'bg-[#FDF9F2]'
     },
-    { 
-      id: 'lingkungan', 
-      name: 'Kelistrikan & Lingkungan', 
+    {
+      id: 'lingkungan',
+      name: 'Kelistrikan & Lingkungan',
       icon: 'bi-lightning-charge-fill',
       badgeBg: 'bg-[#E2F2E5]',
       badgeText: 'text-[#23683A]',
       badgeBorder: 'border-[#C4E5CA]',
       accentBg: 'bg-[#F0F8F2]'
     },
-    { 
-      id: 'keuangan', 
-      name: 'Keuangan & BUMDes', 
+    {
+      id: 'keuangan',
+      name: 'Keuangan & BUMDes',
       icon: 'bi-wallet2',
       badgeBg: 'bg-[#E2ECF0]',
       badgeText: 'text-[#245366]',
       badgeBorder: 'border-[#C3DCE5]',
       accentBg: 'bg-[#EFF5F8]'
     },
-    { 
-      id: 'pemerintahan', 
-      name: 'Pemerintahan Desa', 
+    {
+      id: 'pemerintahan',
+      name: 'Pemerintahan Desa',
       icon: 'bi-shield-check',
       badgeBg: 'bg-[#EBEFE2]',
       badgeText: 'text-[#445E2A]',
@@ -182,7 +188,7 @@
   }
 
   // Helper: Get dominant commodity of a village list
-    // Helper: Get Bootstrap icon for commodity
+  // Helper: Get Bootstrap icon for commodity
   function getCommodityIconClass(comm) {
     if (!comm) return 'bi-flower2';
     const c = comm.toLowerCase();
@@ -196,8 +202,8 @@
     return 'bi-flower2';
   }
 
-  function getDominantCommodity(desaList) {
-    if (!desaList || !desaList.length) return 'Pertanian / Perkebunan';
+  function getDominantCommodity(desaList, fallbackComm) {
+    if (!desaList || !desaList.length) return fallbackComm || 'Pertanian / Perkebunan';
     const counts = {};
     desaList.forEach(d => {
       const c = (d.ekonomi && d.ekonomi.komoditas) ? d.ekonomi.komoditas.trim() : '-';
@@ -206,7 +212,7 @@
       }
     });
     const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
-    return sorted[0] || 'Kakao & Cengkeh';
+    return sorted[0] || fallbackComm || 'Kakao & Cengkeh';
   }
 
   // Helper: Get count of villages with featured products
@@ -226,12 +232,174 @@
     return { count, products: prods.slice(0, 4) };
   }
 
+  function syncExplorerMasterData() {
+    if (hasSyncedLiveMaster || !masterData || !Array.isArray(window.LIVE_KECAMATAN_MASTER) || window.LIVE_KECAMATAN_MASTER.length === 0) {
+      return;
+    }
+    hasSyncedLiveMaster = true;
+
+    const norm = (str) => String(str || '').trim().toUpperCase();
+    const collapse = (str) => norm(str).replace(/[\s_-]+/g, '');
+    if (!masterData.kecamatan) masterData.kecamatan = {};
+    if (!Array.isArray(masterData.desa)) masterData.desa = [];
+
+    const nextOrder = [...KEC_ORDER];
+
+    window.LIVE_KECAMATAN_MASTER.forEach(liveKec => {
+      const displayNama = String(liveKec.nama || '').trim();
+      if (!displayNama) return;
+      const newKey = norm(displayNama);
+      const candidates = [displayNama, liveKec.base_key, ...(Array.isArray(liveKec.aliases) ? liveKec.aliases : [])]
+        .filter(Boolean);
+      const candCollapsed = candidates.map(collapse);
+
+      let matchedKey = Object.keys(masterData.kecamatan).find(kKey => {
+        const kObj = masterData.kecamatan[kKey];
+        const byKode = liveKec.kode && kObj && kObj.kode && String(kObj.kode).trim() === String(liveKec.kode).trim();
+        return byKode || candCollapsed.includes(collapse(kKey)) || (kObj && candCollapsed.includes(collapse(kObj.nama)));
+      });
+
+      if (matchedKey) {
+        const kObj = masterData.kecamatan[matchedKey];
+        if (!KEC_META[newKey] && KEC_META[matchedKey]) {
+          KEC_META[newKey] = { ...KEC_META[matchedKey] };
+        }
+        if (!KEC_META[newKey]) {
+          KEC_META[newKey] = {
+            tag: liveKec.tag || liveKec.potensi_utama || 'Potensi Wilayah Kolaka Utara',
+            icon: '🌿',
+            photo: liveKec.foto || '/images/jadesta/kebun_kakao_totallang.jpg'
+          };
+        }
+        if (liveKec.foto) {
+          KEC_META[newKey].photo = liveKec.foto;
+          kObj.live_foto = liveKec.foto;
+        }
+        if (liveKec.tag) {
+          KEC_META[newKey].tag = liveKec.tag;
+          kObj.live_tag = liveKec.tag;
+        }
+        if (matchedKey !== newKey) {
+          masterData.kecamatan[newKey] = kObj;
+          delete masterData.kecamatan[matchedKey];
+          const orderIdx = nextOrder.indexOf(matchedKey);
+          if (orderIdx !== -1) {
+            nextOrder[orderIdx] = newKey;
+          } else if (!nextOrder.includes(newKey)) {
+            nextOrder.push(newKey);
+          }
+          if (activeKecamatanKey === matchedKey) {
+            activeKecamatanKey = newKey;
+          }
+        }
+        kObj.nama = newKey;
+        kObj.display_nama = displayNama;
+        if (liveKec.kode) kObj.kode = liveKec.kode;
+        if (liveKec.komoditas) kObj.komoditas = liveKec.komoditas;
+        if (liveKec.komoditas_dominan) kObj.live_komoditas_dominan = liveKec.komoditas_dominan;
+        if (liveKec.potensi_utama) kObj.potensi_utama = liveKec.potensi_utama;
+        if (liveKec.produk_unggulan !== undefined) kObj.live_produk_unggulan = liveKec.produk_unggulan;
+        if (liveKec.produk_unggulan_desa_count !== undefined && liveKec.produk_unggulan_desa_count !== null) {
+          kObj.live_produk_unggulan_desa_count = Number(liveKec.produk_unggulan_desa_count);
+        }
+        if (liveKec.penduduk_l !== undefined && liveKec.penduduk_l !== null) kObj.live_penduduk_l = Number(liveKec.penduduk_l);
+        if (liveKec.penduduk_p !== undefined && liveKec.penduduk_p !== null) kObj.live_penduduk_p = Number(liveKec.penduduk_p);
+        if (liveKec.penduduk_total !== undefined && liveKec.penduduk_total !== null) kObj.live_penduduk_total = Number(liveKec.penduduk_total);
+        if (liveKec.imk !== undefined && liveKec.imk !== null) kObj.live_imk = Number(liveKec.imk);
+        if (liveKec.bumdes !== undefined && liveKec.bumdes !== null) kObj.live_bumdes = Number(liveKec.bumdes);
+        if (liveKec.total_sekolah !== undefined && liveKec.total_sekolah !== null) kObj.live_total_sekolah = Number(liveKec.total_sekolah);
+        if (liveKec.total_faskes !== undefined && liveKec.total_faskes !== null) kObj.live_total_faskes = Number(liveKec.total_faskes);
+        if (liveKec.pln_kk !== undefined && liveKec.pln_kk !== null) kObj.live_pln_kk = Number(liveKec.pln_kk);
+        if (liveKec.desa_count !== undefined && liveKec.desa_count !== null) kObj.live_desa_count = Number(liveKec.desa_count);
+
+        const oldCollapsed = collapse(matchedKey);
+        (kObj.desa_list || []).forEach(d => {
+          d.kecamatan = newKey;
+        });
+        masterData.desa.forEach(d => {
+          if (collapse(d.kecamatan) === oldCollapsed || collapse(d.kecamatan) === collapse(newKey)) {
+            d.kecamatan = newKey;
+          }
+        });
+      } else {
+        const rawDesaList = Array.isArray(liveKec.desaList) ? liveKec.desaList : [];
+        const mappedDesaList = rawDesaList.map((d, idx) => ({
+          id: `${newKey.replace(/\s+/g, '_')}_${idx + 1}`,
+          nama: d.nama || '-',
+          kecamatan: newKey,
+          status: d.status || liveKec.status_ipd || 'Berkembang',
+          demografi: {
+            penduduk_l: Math.round((Number(d.penduduk) || 0) / 2),
+            penduduk_p: Math.floor((Number(d.penduduk) || 0) / 2),
+            penduduk_total: Number(d.penduduk) || 0,
+            kepadatan_km2: 0,
+            sex_ratio: 100
+          },
+          ekonomi: {
+            komoditas: d.komoditas || liveKec.komoditas || '-',
+            imk: 0,
+            pasar: 0,
+            minimarket: 0,
+            koperasi: 0,
+            kur: '-',
+            prod_unggulan_makanan: '-',
+            prod_unggulan_non_makanan: '-'
+          },
+          pendidikan: { tk: 0, sd: 0, smp: 0, sma: 0, total_sekolah: 0 },
+          kesehatan: { puskesmas: 0, pustu: 0, posyandu: 0, total_faskes: 0 },
+          lingkungan: { pln_kk: Number(d.kk) || 0, non_pln_kk: 0, tidak_listrik_kk: 0, persen_pln: 100 },
+          keuangan: { siskuedes: '-', bumdes: 0, sid: '-', tanah_kas_desa: '-' },
+          pemerintahan: { total_aparat: 0, gender_kades: '-', pendidikan_kades: '-', kantor_desa: '-', bumdes: 0 }
+        }));
+
+        masterData.kecamatan[newKey] = {
+          nama: newKey,
+          display_nama: displayNama,
+          kode: liveKec.kode || '-',
+          ipd: liveKec.ipd || 70,
+          status_ipd: liveKec.status_ipd || 'Maju',
+          komoditas: liveKec.komoditas || 'Kakao, Cengkeh',
+          live_komoditas_dominan: liveKec.komoditas_dominan || liveKec.komoditas || 'Kakao, Cengkeh',
+          potensi_utama: liveKec.potensi_utama || 'Pengembangan Ekonomi & Agribisnis Wilayah',
+          live_foto: liveKec.foto || '/images/jadesta/kebun_kakao_totallang.jpg',
+          live_tag: liveKec.tag || liveKec.potensi_utama || 'Wilayah Kecamatan Baru',
+          live_produk_unggulan: liveKec.produk_unggulan || '',
+          live_produk_unggulan_desa_count: Number(liveKec.produk_unggulan_desa_count || 0),
+          live_penduduk_l: Number(liveKec.penduduk_l || 0),
+          live_penduduk_p: Number(liveKec.penduduk_p || 0),
+          live_penduduk_total: Number(liveKec.penduduk_total || 0),
+          live_imk: Number(liveKec.imk || 0),
+          live_bumdes: Number(liveKec.bumdes || 0),
+          live_total_sekolah: Number(liveKec.total_sekolah || 0),
+          live_total_faskes: Number(liveKec.total_faskes || 0),
+          live_pln_kk: Number(liveKec.pln_kk || 0),
+          live_desa_count: Number(liveKec.desa_count ?? mappedDesaList.length),
+          desa_list: mappedDesaList
+        };
+        mappedDesaList.forEach(item => masterData.desa.push(item));
+
+        KEC_META[newKey] = {
+          tag: liveKec.tag || liveKec.potensi_utama || 'Wilayah Kecamatan Baru',
+          icon: '🌿',
+          photo: liveKec.foto || '/images/jadesta/kebun_kakao_totallang.jpg'
+        };
+        if (!nextOrder.includes(newKey)) {
+          nextOrder.push(newKey);
+        }
+      }
+    });
+
+    activeKecOrder = nextOrder;
+  }
+
   function initExplorer() {
     masterData = window.PODES_KOLUT_MASTER_2025;
     if (!masterData) {
       setTimeout(initExplorer, 150);
       return;
     }
+
+    syncExplorerMasterData();
 
     // Fix Tojabi demographic anomaly in memory if present
     const tojabi = masterData.desa.find(d => d.nama.toLowerCase() === 'tojabi');
@@ -331,26 +499,32 @@
     indicator.style.width = percent + '%';
   }
 
+  function escapeHtmlAttr(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function renderState1Carousel() {
     const track = document.getElementById('kecamatanCarouselTrack');
     if (!track || !masterData) return;
 
     let html = '';
-    KEC_ORDER.forEach((kKey, idx) => {
+    activeKecOrder.forEach((kKey, idx) => {
       const k = masterData.kecamatan[kKey];
       if (!k) return;
 
-      const totL = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
-      const totP = (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
-      const totPop = totL + totP;
+      const displayNama = String(k.display_nama || k.nama || '').trim();
+      const totL = k.live_penduduk_l !== undefined ? Number(k.live_penduduk_l) : (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+      const totP = k.live_penduduk_p !== undefined ? Number(k.live_penduduk_p) : (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+      const totPop = k.live_penduduk_total !== undefined ? Number(k.live_penduduk_total) : (totL + totP);
       const indexStr = String(idx + 1).padStart(2, '0');
 
       const meta = KEC_META[kKey] || {
         photo: '/images/jadesta/kebun_kakao_totallang.jpg'
       };
+      const photoUrl = k.live_foto || meta.photo || '/images/jadesta/kebun_kakao_totallang.jpg';
 
       // Tulisan menurun dari atas ke bawah (upright letters top-to-bottom)
-      const words = String(k.nama || '').trim().split(/\s+/);
+      const words = displayNama.toUpperCase().split(/\s+/);
       const verticalTitleHtml = words.map(w => {
         const letters = w.split('').map(char => `<span class="inline-block leading-tight">${char}</span>`).join('');
         return `<div class="flex flex-col items-center font-cinzel text-lg sm:text-xl lg:text-[22px] font-bold text-white tracking-[0.18em] drop-shadow-md select-none group-hover:text-[#E6ECE6] transition-colors">${letters}</div>`;
@@ -360,11 +534,11 @@
         <div class="kec-carousel-card relative w-[220px] sm:w-[250px] lg:w-[265px] h-[340px] sm:h-[370px] lg:h-[390px] flex-shrink-0 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 select-none flex flex-col justify-between border border-[#DCE3DD]" 
              data-kec-key="${kKey}" 
              onclick="if(!window.isDraggingCarousel) window.selectKecamatanExploration('${kKey}')"
-             title="Klik untuk melihat data Kecamatan ${k.nama}">
+             title="${meta.tag ? escapeHtmlAttr(meta.tag) + ' - ' : ''}Klik untuk melihat data Kecamatan ${displayNama}">
           
           <!-- Full-Bleed Atmospheric Landscape Photo -->
-          <img src="${meta.photo}" 
-               alt="Kecamatan ${k.nama}" 
+          <img src="${photoUrl}" 
+               alt="Kecamatan ${displayNama}" 
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
                onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
 
@@ -444,14 +618,15 @@
     if (!summaryContainer || !masterData) return;
 
     const allDesa = masterData.desa || [];
-    const countDesa = allDesa.length;
-    const totL = allDesa.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
-    const totP = allDesa.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
-    const totJiwa = totL + totP; // Exactly 145.679
-    const avgKepadatan = countDesa ? (allDesa.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / countDesa).toFixed(1) : 0;
+    const kecList = activeKecOrder.map(kKey => masterData.kecamatan[kKey]).filter(Boolean);
+    const countDesa = kecList.reduce((acc, k) => acc + (k.live_desa_count !== undefined ? Number(k.live_desa_count) : (k.desa_list || []).length), 0) || allDesa.length;
+    const totL = kecList.reduce((acc, k) => acc + (k.live_penduduk_l !== undefined ? Number(k.live_penduduk_l) : (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0)), 0);
+    const totP = kecList.reduce((acc, k) => acc + (k.live_penduduk_p !== undefined ? Number(k.live_penduduk_p) : (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0)), 0);
+    const totJiwa = kecList.reduce((acc, k) => acc + (k.live_penduduk_total !== undefined ? Number(k.live_penduduk_total) : (k.desa_list || []).reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0) + (Number(b.demografi.penduduk_p) || 0), 0)), 0) || (totL + totP);
+    const avgKepadatan = allDesa.length ? (allDesa.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / allDesa.length).toFixed(1) : 0;
     const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
-    const totIMK = allDesa.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
-    const totPLN = allDesa.reduce((a, b) => a + (Number(b.lingkungan.pln_kk) || 0), 0);
+    const totIMK = kecList.reduce((acc, k) => acc + (k.live_imk !== undefined ? Number(k.live_imk) : (k.desa_list || []).reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0)), 0);
+    const totPLN = kecList.reduce((acc, k) => acc + (k.live_pln_kk !== undefined ? Number(k.live_pln_kk) : (k.desa_list || []).reduce((a, b) => a + (Number(b.lingkungan.pln_kk) || 0), 0)), 0);
     const totNonPLN = allDesa.reduce((a, b) => a + (Number(b.lingkungan.non_pln_kk) || 0), 0);
     const totTanpaListrik = allDesa.reduce((a, b) => a + (Number(b.lingkungan.tanpa_listrik_kk) || 0), 0);
     const rasioListrik = (totPLN + totNonPLN + totTanpaListrik) > 0 ? ((totPLN / (totPLN + totNonPLN + totTanpaListrik)) * 100).toFixed(2) : 99.55;
@@ -491,7 +666,7 @@
                 0.0 <span class="text-xs font-semibold text-[#5E6B61]">Jiwa/km²</span>
               </div>
               <p class="text-xs text-[#5E6B61] font-medium mt-1.5 leading-relaxed font-sans">
-                Cakupan 15 Kecamatan / 133 Desa
+                Cakupan ${activeKecOrder.length} Kecamatan / ${(masterData.desa || []).length} Desa
               </p>
             </div>
           </div>
@@ -756,11 +931,20 @@
     const k = masterData.kecamatan[activeKecamatanKey];
     if (!k) return;
 
+    const displayNama = String(k.display_nama || k.nama || '').trim();
     const desaList = k.desa_list || [];
-    const dominantComm = getDominantCommodity(desaList);
+    const desaCountDisplay = k.live_desa_count !== undefined ? Number(k.live_desa_count) : desaList.length;
+    const dominantComm = k.live_komoditas_dominan || getDominantCommodity(desaList, k.komoditas);
     const prodInfo = getFeaturedProductsInfo(desaList);
-    const totIMK = desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
-    const totBumdes = desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
+    const prodProducts = (k.live_produk_unggulan && k.live_produk_unggulan.trim() !== '')
+      ? k.live_produk_unggulan.split(',').map(s => s.trim()).filter(Boolean)
+      : prodInfo.products;
+    const prodDesaCount = k.live_produk_unggulan_desa_count !== undefined ? Number(k.live_produk_unggulan_desa_count) : prodInfo.count;
+    const totIMK = k.live_imk !== undefined ? Number(k.live_imk) : desaList.reduce((a, b) => a + (Number(b.ekonomi.imk) || 0), 0);
+    const totBumdes = k.live_bumdes !== undefined ? Number(k.live_bumdes) : desaList.reduce((a, b) => a + (Number(b.pemerintahan.bumdes) || 0), 0);
+    const descPotensi = (k.potensi_utama && k.potensi_utama.trim() !== '')
+      ? k.potensi_utama
+      : `Basis komoditas perkebunan rakyat dan agribisnis utama di wilayah Kecamatan ${displayNama}.`;
 
     // 1. Render Left Panel (Sektor Unggulan) - Minimalist Editorial Split
     const leftPanel = document.getElementById('kecDetailLeftPanel');
@@ -781,12 +965,12 @@
 
             <!-- Big Kecamatan Heading -->
             <h2 class="font-cinzel text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1D241E] tracking-[0.05em] uppercase leading-tight mt-5">
-              ${k.nama}
+              ${displayNama}
             </h2>
             <p class="font-sans text-xs sm:text-sm text-[#5E6B61] mt-1.5 flex items-center gap-2">
               <span>Wilayah Administratif</span>
               <span class="text-[#8A9B86]">•</span>
-              <span>Terdiri dari <strong class="text-[#1D241E] font-bold">${desaList.length} Desa & Kelurahan</strong></span>
+              <span>Terdiri dari <strong class="text-[#1D241E] font-bold">${desaCountDisplay} Desa & Kelurahan</strong></span>
             </p>
 
             <div class="border-t border-[#DCE3DD] my-6"></div>
@@ -807,7 +991,7 @@
                 ${dominantComm}
               </div>
               <p class="text-xs text-[#5E6B61] mt-1 font-sans leading-relaxed">
-                Basis komoditas perkebunan rakyat dan agribisnis utama di wilayah Kecamatan ${k.nama}.
+                ${descPotensi}
               </p>
             </div>
 
@@ -824,7 +1008,7 @@
               <div class="px-3">
                 <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">02 / PRODUK KHAS</span>
                 <div class="text-2xl sm:text-3xl font-bold text-[#1D241E] tabular-nums font-sans mt-1">
-                  ${prodInfo.count} <span class="text-xs font-normal text-[#5E6B61]">Desa</span>
+                  ${prodDesaCount} <span class="text-xs font-normal text-[#5E6B61]">Desa</span>
                 </div>
                 <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Desa Unggulan</span>
               </div>
@@ -840,11 +1024,11 @@
           </div>
 
           <!-- Bottom: Featured Products (Subtle chips) -->
-          ${prodInfo.products.length ? `
+          ${prodProducts.length ? `
             <div class="pt-2">
               <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block mb-2">PRODUK UNGGULAN TERDATA:</span>
               <div class="flex flex-wrap gap-2">
-                ${prodInfo.products.map(p => `
+                ${prodProducts.map(p => `
                   <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6ECE6] text-[#3B4D3B] text-xs font-medium font-sans">
                     <span class="w-1.5 h-1.5 rounded-full bg-[#3B4D3B]"></span>
                     <span>${p}</span>
@@ -865,13 +1049,20 @@
     renderRightSectorCard();
   }
 
-  function getSectorContentHtml(sec, desaList) {
+  function getSectorContentHtml(sec, desaList, kecObj) {
     let sectorContentHtml = '';
 
     if (sec.id === 'demografi') {
-      const totL = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
-      const totP = desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
-      const totPop = totL + totP;
+      const totL = (kecObj && kecObj.live_penduduk_l !== undefined)
+        ? Number(kecObj.live_penduduk_l)
+        : desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_l) || 0), 0);
+      const totP = (kecObj && kecObj.live_penduduk_p !== undefined)
+        ? Number(kecObj.live_penduduk_p)
+        : desaList.reduce((a, b) => a + (Number(b.demografi.penduduk_p) || 0), 0);
+      const totPop = (kecObj && kecObj.live_penduduk_total !== undefined)
+        ? Number(kecObj.live_penduduk_total)
+        : (totL + totP);
+      const desaDisplayCount = (kecObj && kecObj.live_desa_count !== undefined) ? Number(kecObj.live_desa_count) : desaList.length;
       const avgKepadatan = desaList.length ? (desaList.reduce((a, b) => a + parseKepadatan(b.demografi.kepadatan_km2), 0) / desaList.length).toFixed(1) : 0;
       const sexRatio = totP ? ((totL / totP) * 100).toFixed(1) : 100;
 
@@ -894,7 +1085,7 @@
           </div>
         </div>
         <div class="p-3 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} flex items-center justify-between text-xs my-2">
-          <span class="text-[#5E6B61] font-sans">Cakupan wilayah administrasi: <strong class="text-[#1D241E]">${desaList.length} Desa & Kelurahan</strong></span>
+          <span class="text-[#5E6B61] font-sans">Cakupan wilayah administrasi: <strong class="text-[#1D241E]">${desaDisplayCount} Desa & Kelurahan</strong></span>
           <span class="px-2.5 py-0.5 rounded-full bg-white border ${sec.badgeBorder} ${sec.badgeText} text-[11px] font-bold">100% Terdata</span>
         </div>
       `;
@@ -905,7 +1096,10 @@
       const totSMA = desaList.reduce((a, b) => a + (b.pendidikan.sma_ma_tot || 0), 0);
       const totSMK = desaList.reduce((a, b) => a + (b.pendidikan.smk_tot || 0), 0);
       const totPT = desaList.reduce((a, b) => a + (b.pendidikan.pt_tot || 0), 0);
-      const totalSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
+      const computedSekolah = totTK + totSD + totSMP + totSMA + totSMK + totPT;
+      const totalSekolah = (kecObj && kecObj.live_total_sekolah !== undefined && Number(kecObj.live_total_sekolah) > 0 && computedSekolah === 0)
+        ? Number(kecObj.live_total_sekolah)
+        : ((kecObj && kecObj.live_total_sekolah !== undefined) ? Number(kecObj.live_total_sekolah) : computedSekolah);
 
       sectorContentHtml = `
         <div class="flex items-center justify-between p-3.5 rounded-xl ${sec.accentBg} border ${sec.badgeBorder} my-3">
@@ -954,6 +1148,8 @@
       const totApotek = desaList.reduce((a, b) => a + (b.kesehatan.apotek || 0), 0);
       const totPosyandu = desaList.reduce((a, b) => a + (b.kesehatan.posyandu_aktif || 0), 0);
       const totPosbindu = desaList.reduce((a, b) => a + (b.kesehatan.posbindu || 0), 0);
+      const computedFaskes = desaList.reduce((a, b) => a + (b.kesehatan.total_faskes || 0), 0);
+      const totFaskesAll = (kecObj && kecObj.live_total_faskes !== undefined) ? Number(kecObj.live_total_faskes) : computedFaskes;
 
       sectorContentHtml = `
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
@@ -968,8 +1164,8 @@
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Layanan Kesehatan Desa</span>
           </div>
           <div class="bg-white p-3.5 rounded-xl border border-[#DCE3DD] shadow-2xs">
-            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / POSYANDU AKTIF</span>
-            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totPosyandu} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8A9B86] block">03 / TOTAL FASKES</span>
+            <div class="text-2xl sm:text-3xl font-bold text-[#3B4D3B] tabular-nums font-sans mt-1">${totFaskesAll} <span class="text-xs font-normal text-[#5E6B61]">Unit</span></div>
             <span class="text-[11px] text-[#5E6B61] block mt-0.5 font-sans">Posbindu: ${totPosbindu} • Apotek: ${totApotek}</span>
           </div>
         </div>
@@ -979,7 +1175,7 @@
         </div>
       `;
     } else if (sec.id === 'ekonomi') {
-      const totIMK = desaList.reduce((a, b) => a + (b.ekonomi.imk || 0), 0);
+      const totIMK = (kecObj && kecObj.live_imk !== undefined) ? Number(kecObj.live_imk) : desaList.reduce((a, b) => a + (b.ekonomi.imk || 0), 0);
       const totPasar = desaList.reduce((a, b) => a + (b.ekonomi.pasar_perm + b.ekonomi.pasar_semi + b.ekonomi.pasar_tanpa), 0);
       const totMini = desaList.reduce((a, b) => a + (b.ekonomi.minimarket || 0), 0);
       const totBank = desaList.reduce((a, b) => a + (b.ekonomi.bank_gov + b.ekonomi.bank_swasta + b.ekonomi.bpr), 0);
@@ -1015,7 +1211,7 @@
         </div>
       `;
     } else if (sec.id === 'lingkungan') {
-      const totPLN = desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
+      const totPLN = (kecObj && kecObj.live_pln_kk !== undefined) ? Number(kecObj.live_pln_kk) : desaList.reduce((a, b) => a + (b.lingkungan.pln_kk || 0), 0);
       const totNonPLN = desaList.reduce((a, b) => a + (b.lingkungan.non_pln_kk || 0), 0);
       const totTanpa = desaList.reduce((a, b) => a + (b.lingkungan.tanpa_listrik_kk || 0), 0);
       const totalKK = totPLN + totNonPLN + totTanpa;
@@ -1056,7 +1252,7 @@
         </div>
       `;
     } else if (sec.id === 'keuangan') {
-      const totBumdes = desaList.reduce((a, b) => a + (b.pemerintahan.bumdes || 0), 0);
+      const totBumdes = (kecObj && kecObj.live_bumdes !== undefined) ? Number(kecObj.live_bumdes) : desaList.reduce((a, b) => a + (b.pemerintahan.bumdes || 0), 0);
       const totTanahKas = desaList.reduce((a, b) => a + (b.pemerintahan.tanah_kas || 0), 0);
       const totWisata = desaList.reduce((a, b) => a + (b.pemerintahan.wisata_desa || 0), 0);
       const countSiskeudes = desaList.filter(d => d.pemerintahan.siskeudes && d.pemerintahan.siskeudes !== 'Tidak Ada').length;
@@ -1129,8 +1325,8 @@
     return sectorContentHtml;
   }
 
-  function getSectorSlideHtml(sec, idx, desaList) {
-    const contentHtml = getSectorContentHtml(sec, desaList);
+  function getSectorSlideHtml(sec, idx, desaList, kecObj) {
+    const contentHtml = getSectorContentHtml(sec, desaList, kecObj);
     return `
       <div class="w-full shrink-0 min-w-full p-5 sm:p-6 flex flex-col justify-between" data-sector-slide-index="${idx}">
         <div class="flex items-center justify-between pb-3.5 border-b border-[#DCE3DD]/80">
@@ -1177,7 +1373,7 @@
     }).join('');
 
     // Pre-render all 7 sector slides into the hardware-accelerated carousel track
-    const slidesHtml = SECTORS.map((s, idx) => getSectorSlideHtml(s, idx, desaList)).join('');
+    const slidesHtml = SECTORS.map((s, idx) => getSectorSlideHtml(s, idx, desaList, k)).join('');
 
     rightPanel.innerHTML = `
       <div id="swipeableSectorCard" class="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 select-none">

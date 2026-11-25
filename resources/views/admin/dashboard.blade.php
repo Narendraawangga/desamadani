@@ -448,6 +448,191 @@
             -ms-overflow-style: none !important;
             scrollbar-width: none !important;
         }
+
+        /* Compatibility Utilities for Half-Step Spacing, Opacity & Flex Truncation */
+        .gap-1\.5 { gap: 0.375rem !important; }
+        .gap-2\.5 { gap: 0.625rem !important; }
+        .g-1\.5 { --bs-gutter-x: 0.375rem; --bs-gutter-y: 0.375rem; }
+        .p-3\.5 { padding: 1.125rem !important; }
+        .px-2\.5 { padding-left: 0.625rem !important; padding-right: 0.625rem !important; }
+        .px-3\.5 { padding-left: 0.9rem !important; padding-right: 0.9rem !important; }
+        .py-0\.5 { padding-top: 0.15rem !important; padding-bottom: 0.15rem !important; }
+        .py-1\.5 { padding-top: 0.4rem !important; padding-bottom: 0.4rem !important; }
+        .py-2\.5 { padding-top: 0.625rem !important; padding-bottom: 0.625rem !important; }
+        .mb-1\.5 { margin-bottom: 0.375rem !important; }
+        .mb-2\.5 { margin-bottom: 0.625rem !important; }
+        .min-w-0 { min-width: 0 !important; }
+        .inset-0 { top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important; }
+        .fw-black { font-weight: 800 !important; }
+        .bg-opacity-20 { --bs-bg-opacity: 0.2 !important; }
+        .bg-opacity-30 { --bs-bg-opacity: 0.3 !important; }
+        .bg-opacity-95 { --bs-bg-opacity: 0.95 !important; }
+        .border-opacity-10 { --bs-border-opacity: 0.1 !important; }
+        .border-opacity-15 { --bs-border-opacity: 0.15 !important; }
+        .border-opacity-25 { --bs-border-opacity: 0.25 !important; }
+        .text-emerald-300 { color: #6ee7b7 !important; }
+        .text-emerald-400 { color: #34d399 !important; }
+        .shadow-2xs { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important; }
+
+        /* Sleek Pill Search & Segmented View Switcher */
+        .search-pill-box {
+            height: 36px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+        }
+        .search-pill-box:focus-within {
+            background-color: #ffffff;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+        }
+        .kec-view-capsule {
+            height: 36px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            padding: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .kec-view-capsule .btn-view-tab {
+            height: 28px;
+            border-radius: 9999px;
+            border: 0;
+            padding: 0 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1;
+            box-shadow: none;
+            transition: all 0.15s ease;
+        }
+        .kec-view-capsule .btn-view-tab.active {
+            background-color: #059669;
+            color: #ffffff;
+            box-shadow: 0 1px 2px rgba(5, 150, 105, 0.25);
+        }
+        .kec-view-capsule .btn-view-tab:not(.active) {
+            background-color: transparent;
+            color: #64748b;
+        }
+        .kec-view-capsule .btn-view-tab:not(.active):hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
+        .select-pill-box {
+            height: 36px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 9999px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #334155;
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 14px;
+            padding-right: 32px;
+            cursor: pointer;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+        }
+        .select-pill-box:focus {
+            background-color: #ffffff;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+            outline: none;
+        }
+        .desa-status-chip {
+            height: 28px;
+            border-radius: 9999px;
+            border: 0;
+            padding: 0 10px;
+            font-size: 11.5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            line-height: 1;
+            color: #64748b;
+            background-color: transparent;
+            box-shadow: none;
+            transition: all 0.15s ease;
+        }
+        .desa-status-chip:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+        }
+        .desa-status-chip.active {
+            background-color: #059669;
+            color: #ffffff;
+            box-shadow: 0 1px 2px rgba(5, 150, 105, 0.25);
+        }
+        .desa-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 9999px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .desa-status-chip.active .desa-status-dot {
+            background-color: #ffffff !important;
+        }
+        .table-modern thead th {
+            position: sticky;
+            top: 0;
+            background-color: #f8fafc;
+            color: #334155;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding-top: 0.85rem;
+            padding-bottom: 0.85rem;
+            z-index: 2;
+        }
+        .table-modern tbody td {
+            border-color: #f1f5f9;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            vertical-align: middle;
+        }
+        .table-modern tbody tr:hover {
+            background-color: #f0fdf4 !important;
+        }
+        .overview-chart-wrap {
+            position: relative;
+            width: 100%;
+        }
+        .overview-doughnut-wrap {
+            position: relative;
+            width: 190px;
+            height: 190px;
+            margin: 0 auto;
+        }
+        .overview-shortcut-tile {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 14px;
+            text-align: left;
+            transition: all 0.16s ease;
+            width: 100%;
+        }
+        .overview-shortcut-tile:hover {
+            background: #ffffff;
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+            transform: translateY(-1px);
+        }
+        .overview-podes-card {
+            background: linear-gradient(135deg, #064e3b 0%, #047857 55%, #0f172a 100%);
+            border-radius: 14px;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -514,6 +699,22 @@
                 </span>
             </button>
 
+            <!-- 3b. Master Kecamatan (Terhubung ke /portal/agregat) -->
+            @if(!$admin->isOperatorDesa())
+                <button type="button" onclick="switchAdminTab('kecamatan')" id="tabBtnKecamatan" class="sidebar-nav-link">
+                    <span class="d-flex align-items-center gap-2.5">
+                        <i class="bi bi-map fs-6"></i>
+                        <span>Master Kecamatan</span>
+                    </span>
+                </button>
+                <button type="button" onclick="switchAdminTab('aggregate')" id="tabBtnAggregate" class="sidebar-nav-link">
+                    <span class="d-flex align-items-center gap-2.5">
+                        <i class="bi bi-sliders2-vertical fs-6"></i>
+                        <span>Ringkasan Portal</span>
+                    </span>
+                </button>
+            @endif
+
             <!-- 4. Pemetaan Spasial WebGIS -->
             <button type="button" onclick="switchAdminTab('spatial')" id="tabBtnSpatial" class="sidebar-nav-link">
                 <span class="d-flex align-items-center gap-2.5">
@@ -531,38 +732,6 @@
                     </span>
                 </button>
             @endif
-
-            <!-- Utilities / Data Actions -->
-            <div class="text-uppercase text-white-50 fw-bold px-2 mt-4 mb-2" style="font-size: 9.5px; letter-spacing: 0.8px;">
-                Alat & Sinkronisasi
-            </div>
-
-            <!-- Sync Excel Modal (Admin Only) -->
-            @if($admin->isAdmin())
-                <button type="button" onclick="openSyncSpreadsheetModal()" class="sidebar-nav-link">
-                    <span class="d-flex align-items-center gap-2.5">
-                        <i class="bi bi-arrow-repeat fs-6 text-emerald-400"></i>
-                        <span>Sinkron Excel PODES</span>
-                    </span>
-                </button>
-            @endif
-
-            <!-- Export CSV -->
-            <button type="button" onclick="exportDataToCSV()" class="sidebar-nav-link">
-                <span class="d-flex align-items-center gap-2.5">
-                    <i class="bi bi-download fs-6"></i>
-                    <span>Ekspor CSV Master</span>
-                </span>
-            </button>
-
-            <!-- Public Portal Link -->
-            <a href="/portal" target="_blank" class="sidebar-nav-link">
-                <span class="d-flex align-items-center gap-2.5">
-                    <i class="bi bi-globe2 fs-6 text-warning"></i>
-                    <span>Portal Publik WebGIS</span>
-                </span>
-                <i class="bi bi-box-arrow-up-right text-white-50" style="font-size: 10px;"></i>
-            </a>
 
         </div>
 
@@ -600,7 +769,7 @@
     <div class="admin-main-wrapper flex-grow-1 d-flex flex-column min-vh-100">
         
         <!-- Top Navbar with Backdrop Blur & Clean Actions -->
-        <header class="navbar navbar-expand bg-white bg-opacity-95 border-bottom sticky-top py-2.5 px-3 px-md-4 shadow-2xs" style="backdrop-filter: blur(12px); z-index: 1040;">
+        <header class="navbar navbar-expand bg-white bg-opacity-95 border-bottom sticky-top py-2.5 px-3 px-md-4 shadow-2xs" style="backdrop-filter: blur(12px); z-index: 1040; min-height: 56px;">
             <div class="container-fluid p-0 d-flex align-items-center justify-content-between">
                 
                 <!-- Left: Mobile Toggle & Breadcrumb -->
@@ -616,28 +785,13 @@
                     </nav>
                 </div>
 
-                <!-- Right Actions: General Tabs (Overview, Desa, Spatial, Users) -->
+                <!-- Right Actions: General Tabs -->
                 <div class="d-flex align-items-center gap-2" id="navbarGeneralControls">
-                    <a href="/portal" target="_blank" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 d-none d-md-flex align-items-center gap-1.5 shadow-2xs text-secondary hover:text-dark" style="font-size: 12px; font-weight: 600;" title="Buka Portal Publik Desa Madani">
-                        <i class="bi bi-globe2 text-success"></i>
-                        <span>WebGIS Publik</span>
-                        <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 10px;"></i>
-                    </a>
-
                     @if($admin->isOperatorDesa())
                         <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 font-mono" style="font-size: 12px;">
                             <i class="bi bi-house-door-fill"></i>
                             <span>Operator: Desa {{ $admin->desa }} (Kec. {{ $admin->kecamatan }})</span>
                         </span>
-                    @else
-                        <button type="button" onclick="openNewDesaModal()" class="btn btn-sm btn-emerald rounded-pill px-3.5 py-1.5 d-flex align-items-center gap-1.5 shadow-2xs" style="font-size: 12px;">
-                            <i class="bi bi-plus-circle-fill"></i>
-                            <span class="d-none d-sm-inline">Input Desa Baru</span>
-                        </button>
-                        <button type="button" onclick="openSyncSpreadsheetModal()" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 shadow-2xs text-secondary hover:text-dark" style="font-size: 12px; font-weight: 600;">
-                            <i class="bi bi-arrow-repeat text-success"></i>
-                            <span class="d-none d-sm-inline">Sinkron Excel</span>
-                        </button>
                     @endif
                 </div>
 
@@ -685,6 +839,18 @@
                     <span class="badge rounded-pill fw-bold font-mono" style="background: #eff6ff; color: #2563eb; border: 1px solid #dbeafe; font-size: 11px; padding: 6px 12px;">
                         PODES 2024-2025
                     </span>
+
+                    <!-- Lihat Portal Peta Button -->
+                    <a href="/portal/peta" target="_blank" class="btn btn-sm btn-white border rounded-pill px-3 py-1.5 shadow-2xs text-secondary hover:text-dark fw-bold d-inline-flex align-items-center gap-1.5 text-decoration-none" style="font-size: 12px; background: #ffffff;" title="Buka Halaman Analisis Komparatif /portal/peta">
+                        <i class="bi bi-box-arrow-up-right text-success"></i>
+                        <span>Lihat /portal/peta</span>
+                    </a>
+
+                    <!-- Sinkron ke /portal/peta Button -->
+                    <button type="button" onclick="syncPodesToPortalManual()" id="btnSyncPortalPeta" class="btn btn-sm btn-white border rounded-pill px-3 py-1.5 shadow-2xs text-dark fw-bold hover:bg-light d-inline-flex align-items-center gap-1.5" style="font-size: 12px; background: #ffffff;" title="Sinkronkan data PODES dengan analitik /portal/peta">
+                        <i class="bi bi-arrow-repeat text-success"></i>
+                        <span>Sinkron /portal/peta</span>
+                    </button>
 
                     <!-- Sinkron Excel Button -->
                     <button type="button" onclick="openSyncSpreadsheetModal()" class="btn btn-sm btn-white border rounded-pill px-3 py-1.5 shadow-2xs text-dark fw-bold hover:bg-light" style="font-size: 12px; background: #ffffff;">
@@ -735,11 +901,11 @@
                 <div class="hero-banner p-4 p-md-5 mb-4 shadow-2xs">
                     <div class="row align-items-center gy-3">
                         <div class="col-lg-8">
-                            <span class="badge bg-white bg-opacity-20 text-white mb-2 px-3 py-1 text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">
+                            <span class="badge text-white mb-2 px-3 py-1 text-uppercase fw-bold" style="background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.25); font-size: 10px; letter-spacing: 0.5px;">
                                 Selamat Datang di Dashboard Admin
                             </span>
                             <h2 class="fw-black mb-1.5">
-                                Halo, <span style="color: #6ee7b7;">{{ $admin->name }}</span> 👋
+                                Halo, <span style="color: #6ee7b7;">{{ $admin->name }}</span>
                             </h2>
                             <p class="text-white-50 mb-0 small" style="max-width: 600px; line-height: 1.6;">
                                 Kelola data potensi desa, pembaruan indeks kemandirian (IPD), komoditas unggulan, dan titik spasial 133 desa se-Kabupaten Kolaka Utara.
@@ -775,8 +941,8 @@
                                     <i class="bi bi-buildings fs-5"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-black mb-1">{{ $stats['total_desa'] }} <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
-                            <small class="text-muted"><strong class="text-primary">{{ $stats['total_kecamatan'] }} Kecamatan</strong> di Kab. Kolaka Utara</small>
+                            <h3 class="fw-black mb-1"><span id="overviewTotalDesa">{{ $stats['total_desa'] }}</span> <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
+                            <small class="text-muted"><strong class="text-primary"><span id="overviewTotalKecamatan">{{ $stats['total_kecamatan'] }}</span> Kecamatan</strong> di Kab. Kolaka Utara</small>
                         </div>
                     </div>
 
@@ -789,7 +955,7 @@
                                     <i class="bi bi-shield-check fs-5"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-black mb-1 text-success">{{ $stats['mandiri_count'] }} <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
+                            <h3 class="fw-black mb-1 text-success"><span id="overviewMandiriCount">{{ $stats['mandiri_count'] }}</span> <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
                             <small class="text-muted">Kemandirian fiskal & layanan optimal</small>
                         </div>
                     </div>
@@ -803,7 +969,7 @@
                                     <i class="bi bi-graph-up-arrow fs-5"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-black mb-1 text-warning">{{ $stats['maju_count'] }} <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
+                            <h3 class="fw-black mb-1 text-warning"><span id="overviewMajuCount">{{ $stats['maju_count'] }}</span> <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
                             <small class="text-muted">Potensial menuju status mandiri</small>
                         </div>
                     </div>
@@ -817,28 +983,286 @@
                                     <i class="bi bi-house-door fs-5"></i>
                                 </div>
                             </div>
-                            <h3 class="fw-black mb-1 text-info">{{ $stats['berkembang_count'] }} <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
+                            <h3 class="fw-black mb-1 text-info"><span id="overviewBerkembangCount">{{ $stats['berkembang_count'] }}</span> <span class="fs-6 fw-semibold text-muted">Desa</span></h3>
                             <small class="text-muted">Sasaran akselerasi pembangunan</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Quick Action to PODES Workspace -->
-                <div class="bento-card p-4 bg-white border-success-subtle">
-                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="rounded-3 bg-success text-white p-3 d-flex align-items-center justify-content-center shadow-2xs">
-                                <i class="bi bi-file-earmark-spreadsheet fs-3"></i>
-                            </div>
+                @php
+                    $operatorAccountCount = $users->where('role', 'operator_desa')->count();
+                    $totalDesaCountSafe = max(1, count($flatDesaList));
+                    $operatorCoveragePct = min(100, round(($operatorAccountCount / $totalDesaCountSafe) * 100));
+                @endphp
+
+                <!-- BARIS DIAGRAM 1: PERINGKAT 15 KECAMATAN (8) + KOMPOSISI STATUS KEMANDIRIAN (4) -->
+                <div class="row g-3 mb-4">
+                    <!-- Kiri (8): Diagram Batang 15 Kecamatan Multi-Metrik -->
+                    <div class="col-xl-8">
+                        <div class="bento-card p-3.5 p-md-4 h-100 d-flex flex-column justify-content-between">
                             <div>
-                                <h5 class="fw-bold mb-1">Workspace Input & Validasi Data PODES 2025</h5>
-                                <p class="text-muted small mb-0">Semua 12 file modul PODES telah diorganisir per tabel dan per desa agar input data mudah dan tidak membingungkan.</p>
+                                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 pb-3 mb-3 border-bottom">
+                                    <div>
+                                        <h6 class="fw-bold mb-0.5 text-dark">Perbandingan Kinerja Antar Kecamatan</h6>
+                                        <small class="text-muted" id="overviewKecChartSubtitle">Peringkat Skor IPD pada 15 Kecamatan (batas status Mandiri &ge; 70)</small>
+                                    </div>
+                                    <div class="kec-view-capsule flex-shrink-0" role="group" aria-label="Pilih Metrik Kecamatan">
+                                        <button type="button" id="ovKecMetric-ipd" onclick="setOverviewKecMetric('ipd')" class="btn btn-view-tab active">Skor IPD</button>
+                                        <button type="button" id="ovKecMetric-penduduk" onclick="setOverviewKecMetric('penduduk')" class="btn btn-view-tab">Penduduk</button>
+                                        <button type="button" id="ovKecMetric-imk" onclick="setOverviewKecMetric('imk')" class="btn btn-view-tab">Unit IMK</button>
+                                        <button type="button" id="ovKecMetric-bumdes" onclick="setOverviewKecMetric('bumdes')" class="btn btn-view-tab">BUMDes</button>
+                                    </div>
+                                </div>
+                                <div class="overview-chart-wrap" style="height: 270px;">
+                                    <canvas id="chartOverviewKecamatan"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-3 mt-2 border-top" id="overviewKecLegendBar">
+                                <div class="d-flex flex-wrap align-items-center gap-3 small" style="font-size: 11.5px;">
+                                    <span class="d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #10b981;"></span>
+                                        Mandiri (&ge; 70)
+                                    </span>
+                                    <span class="d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #f59e0b;"></span>
+                                        Maju (50–69.9)
+                                    </span>
+                                    <span class="d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #0ea5e9;"></span>
+                                        Berkembang (&lt; 50)
+                                    </span>
+                                </div>
+                                <small class="text-muted font-mono-num" style="font-size: 11px;">Sumber: Master Wilayah PODES 2025</small>
                             </div>
                         </div>
-                        <button type="button" onclick="switchAdminTab('podes')" class="btn btn-emerald rounded-pill px-4 py-2 d-flex align-items-center gap-2 shadow-2xs text-nowrap align-self-start align-self-md-auto">
-                            <span>Buka Workspace PODES</span>
-                            <i class="bi bi-arrow-right"></i>
-                        </button>
+                    </div>
+
+                    <!-- Kanan (4): Diagram Donat Proporsi Status Kemandirian -->
+                    <div class="col-xl-4">
+                        <div class="bento-card p-3.5 p-md-4 h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex align-items-center justify-content-between gap-2 pb-3 mb-3 border-bottom">
+                                    <div>
+                                        <h6 class="fw-bold mb-0.5 text-dark">Status Kemandirian</h6>
+                                        <small class="text-muted">Proporsi {{ $stats['total_desa'] }} Desa/Kelurahan</small>
+                                    </div>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill font-mono-num" style="font-size: 11px;" id="overviewDoughnutTotalBadge">{{ $stats['total_desa'] }} Desa</span>
+                                </div>
+
+                                <div class="overview-doughnut-wrap my-2">
+                                    <canvas id="chartOverviewStatusDoughnut"></canvas>
+                                    <div class="position-absolute top-50 start-50 translate-middle text-center" style="pointer-events: none;">
+                                        <div class="text-uppercase text-muted fw-bold" style="font-size: 9.5px; letter-spacing: 0.5px;">Rata-rata IPD</div>
+                                        <div class="fw-black text-dark font-mono-num" style="font-size: 24px; line-height: 1.15;" id="overviewAvgIpdValue">70.0</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column gap-2 pt-3 border-top">
+                                <div class="d-flex align-items-center justify-content-between px-2.5 py-1.5 rounded-3 bg-light border">
+                                    <span class="d-inline-flex align-items-center gap-2 small fw-semibold text-dark" style="font-size: 12px;">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #10b981;"></span>
+                                        Desa Mandiri
+                                    </span>
+                                    <span class="font-mono-num fw-bold text-success" style="font-size: 12px;" id="overviewDoughnutMandiri">{{ $stats['mandiri_count'] }} Desa</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between px-2.5 py-1.5 rounded-3 bg-light border">
+                                    <span class="d-inline-flex align-items-center gap-2 small fw-semibold text-dark" style="font-size: 12px;">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #f59e0b;"></span>
+                                        Desa Maju
+                                    </span>
+                                    <span class="font-mono-num fw-bold text-warning" style="font-size: 12px;" id="overviewDoughnutMaju">{{ $stats['maju_count'] }} Desa</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between px-2.5 py-1.5 rounded-3 bg-light border">
+                                    <span class="d-inline-flex align-items-center gap-2 small fw-semibold text-dark" style="font-size: 12px;">
+                                        <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #0ea5e9;"></span>
+                                        Desa Berkembang
+                                    </span>
+                                    <span class="font-mono-num fw-bold text-info" style="font-size: 12px;" id="overviewDoughnutBerkembang">{{ $stats['berkembang_count'] }} Desa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BARIS DIAGRAM 2: DEMOGRAFI PENDUDUK (6) + KOMODITAS & INFRASTRUKTUR (6) -->
+                <div class="row g-3 mb-4">
+                    <!-- Kiri (6): Stacked Bar Demografi Penduduk L/P -->
+                    <div class="col-lg-6">
+                        <div class="bento-card p-3.5 p-md-4 h-100">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pb-3 mb-3 border-bottom">
+                                <div>
+                                    <h6 class="fw-bold mb-0.5 text-dark">Demografi Penduduk per Kecamatan</h6>
+                                    <small class="text-muted">Komposisi penduduk laki-laki vs perempuan (PODES 2025)</small>
+                                </div>
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-2.5 py-1 font-mono-num" style="font-size: 11px;" id="overviewTotalPendudukBadge">0 Jiwa</span>
+                            </div>
+                            <div class="overview-chart-wrap" style="height: 255px;">
+                                <canvas id="chartOverviewDemografi"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kanan (6): Horizontal Bar Top Komoditas / Infrastruktur -->
+                    <div class="col-lg-6">
+                        <div class="bento-card p-3.5 p-md-4 h-100">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pb-3 mb-3 border-bottom">
+                                <div>
+                                    <h6 class="fw-bold mb-0.5 text-dark" id="overviewSektorChartTitle">Top Komoditas Unggulan Desa</h6>
+                                    <small class="text-muted" id="overviewSektorChartSubtitle">Sebaran sektor komoditas di {{ $stats['total_desa'] }} Desa Kolaka Utara</small>
+                                </div>
+                                <div class="kec-view-capsule flex-shrink-0" role="group" aria-label="Pilih Analitik Sektor">
+                                    <button type="button" id="ovSektorMode-komoditas" onclick="setOverviewSektorMode('komoditas')" class="btn btn-view-tab active">Komoditas</button>
+                                    <button type="button" id="ovSektorMode-infrastruktur" onclick="setOverviewSektorMode('infrastruktur')" class="btn btn-view-tab">Infrastruktur</button>
+                                </div>
+                            </div>
+                            <div class="overview-chart-wrap" style="height: 255px;">
+                                <canvas id="chartOverviewSektor"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BARIS 3: MONITORING PRIORITAS DESA & OPERATOR (7) + WORKSPACE PODES & AKSES CEPAT (5) -->
+                <div class="row g-3">
+                    <!-- Kiri (7): Panel Prioritas Akselerasi & Top Mandiri -->
+                    <div class="col-xl-7">
+                        <div class="bento-card overflow-hidden h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="p-3.5 p-md-4 pb-3 border-bottom d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                    <div>
+                                        <h6 class="fw-bold mb-0.5 text-dark">Monitoring Prioritas Kemandirian Desa</h6>
+                                        <small class="text-muted" id="overviewPrioritySubtitle">Desa sasaran akselerasi &amp; pendampingan IPD</small>
+                                    </div>
+                                    <div class="kec-view-capsule flex-shrink-0" role="group" aria-label="Mode Daftar Prioritas">
+                                        <button type="button" id="ovPriorityTab-prioritas" onclick="setOverviewPriorityMode('prioritas')" class="btn btn-view-tab active">Prioritas (&lt; 70)</button>
+                                        <button type="button" id="ovPriorityTab-top" onclick="setOverviewPriorityMode('top')" class="btn btn-view-tab">Top Mandiri</button>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-modern align-middle mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="px-3">DESA &amp; KECAMATAN</th>
+                                                <th>STATUS</th>
+                                                <th class="text-end">SKOR IPD</th>
+                                                <th>KOMODITAS</th>
+                                                <th class="text-center px-3">AKSI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="small" id="overviewPriorityTbody">
+                                            <!-- Populated by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="px-3.5 px-md-4 py-3 bg-light border-top d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                <div class="flex-grow-1" style="min-width: 220px;">
+                                    <div class="d-flex align-items-center justify-content-between mb-1">
+                                        <span class="fw-bold text-dark" style="font-size: 11.5px;">
+                                            <i class="bi bi-people-fill text-success me-1"></i>Kesiapan Akun Operator Desa
+                                        </span>
+                                        <span class="font-mono-num fw-bold text-success" style="font-size: 11.5px;">{{ $operatorAccountCount }} / {{ count($flatDesaList) }} Desa ({{ $operatorCoveragePct }}%)</span>
+                                    </div>
+                                    <div class="w-100 rounded-pill overflow-hidden" style="height: 6px; background-color: #e2e8f0;">
+                                        <div class="h-100 rounded-pill bg-success" style="width: {{ $operatorCoveragePct }}%;"></div>
+                                    </div>
+                                </div>
+                                @if($admin->isAdmin())
+                                    <button type="button" onclick="switchAdminTab('users')" class="btn btn-sm btn-outline-success rounded-pill px-3 fw-bold flex-shrink-0" style="font-size: 11.5px;">
+                                        Kelola Operator
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kanan (5): Workspace PODES Ringkas + Kartu Akses Cepat -->
+                    <div class="col-xl-5 d-flex flex-column gap-3">
+                        <div class="overview-podes-card p-4 shadow-2xs">
+                            <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 46px; height: 46px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.24);">
+                                        <i class="bi bi-file-earmark-spreadsheet fs-4 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <span class="badge text-white mb-1 px-2 py-0.5 fw-bold" style="background: rgba(255, 255, 255, 0.18); font-size: 10px;">12 MODUL &bull; 63+ TABEL</span>
+                                        <h6 class="fw-bold mb-0 text-white">Workspace Input PODES 2025</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="small mb-3" style="color: rgba(255, 255, 255, 0.78); font-size: 12px; line-height: 1.55;">
+                                Seluruh tabel survei potensi desa telah dikelompokkan per klaster dan per desa agar pengisian &amp; validasi lebih cepat.
+                            </p>
+                            <button type="button" onclick="switchAdminTab('podes')" class="btn btn-light rounded-pill px-3.5 py-2 fw-bold text-success d-inline-flex align-items-center gap-2 w-100 justify-content-center shadow-2xs" style="font-size: 12.5px;">
+                                <span>Buka Workspace PODES</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="bento-card p-3.5 p-md-4 flex-grow-1">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h6 class="fw-bold mb-0 text-dark" style="font-size: 13.5px;">Pintasan Pengelolaan Data</h6>
+                                <span class="text-muted font-mono-num" style="font-size: 10.5px;">Navigasi Cepat</span>
+                            </div>
+                            <div class="row g-2.5">
+                                <div class="col-6">
+                                    <button type="button" onclick="switchAdminTab('desa')" class="overview-shortcut-tile">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="rounded-2 bg-success-subtle text-success p-1.5 d-inline-flex"><i class="bi bi-buildings"></i></span>
+                                            <span class="fw-bold text-dark" style="font-size: 12px;">Master Desa</span>
+                                        </div>
+                                        <div class="text-muted text-truncate" style="font-size: 11px;">{{ count($flatDesaList) }} profil &amp; IPD desa</div>
+                                    </button>
+                                </div>
+                                @if(!$admin->isOperatorDesa())
+                                    <div class="col-6">
+                                        <button type="button" onclick="switchAdminTab('kecamatan')" class="overview-shortcut-tile">
+                                            <div class="d-flex align-items-center gap-2 mb-1">
+                                                <span class="rounded-2 bg-primary-subtle text-primary p-1.5 d-inline-flex"><i class="bi bi-map"></i></span>
+                                                <span class="fw-bold text-dark" style="font-size: 12px;">Kecamatan</span>
+                                            </div>
+                                            <div class="text-muted text-truncate" style="font-size: 11px;">{{ count($kecamatanList) }} wilayah &amp; galeri</div>
+                                        </button>
+                                    </div>
+                                @endif
+                                <div class="col-6">
+                                    <button type="button" onclick="switchAdminTab('spatial')" class="overview-shortcut-tile">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="rounded-2 bg-warning-subtle text-warning p-1.5 d-inline-flex"><i class="bi bi-geo-alt"></i></span>
+                                            <span class="fw-bold text-dark" style="font-size: 12px;">Peta Spasial</span>
+                                        </div>
+                                        <div class="text-muted text-truncate" style="font-size: 11px;">Koordinat GIS wilayah</div>
+                                    </button>
+                                </div>
+                                @if($admin->isAdmin())
+                                    <div class="col-6">
+                                        <button type="button" onclick="switchAdminTab('users')" class="overview-shortcut-tile">
+                                            <div class="d-flex align-items-center gap-2 mb-1">
+                                                <span class="rounded-2 bg-info-subtle text-info p-1.5 d-inline-flex"><i class="bi bi-people"></i></span>
+                                                <span class="fw-bold text-dark" style="font-size: 12px;">Kelola Akun</span>
+                                            </div>
+                                            <div class="text-muted text-truncate" style="font-size: 11px;">{{ $users->count() }} akun terdaftar</div>
+                                        </button>
+                                    </div>
+                                @endif
+                                <div class="col-12">
+                                    <a href="/portal/agregat" target="_blank" class="overview-shortcut-tile d-flex align-items-center justify-content-between text-decoration-none">
+                                        <div class="d-flex align-items-center gap-2.5">
+                                            <span class="rounded-2 bg-dark text-white p-1.5 d-inline-flex"><i class="bi bi-globe2 text-emerald-300"></i></span>
+                                            <div>
+                                                <div class="fw-bold text-dark" style="font-size: 12px;">Pratinjau Portal Agregat Publik</div>
+                                                <div class="text-muted" style="font-size: 11px;">Lihat tampilan live pada <code>/portal/agregat</code></div>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-box-arrow-up-right text-success"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -848,6 +1272,38 @@
                  TAB 2: WORKSPACE INPUT & VALIDASI PODES (12 KLASTER - MODERN MOCKUP)
                  ================================================================= -->
             <div id="tabContentPodes" style="display: none;">
+
+                <!-- Status Integrasi /portal/peta Banner -->
+                <div class="bento-card p-3 px-md-4 py-md-3 mb-3 bg-white border border-emerald-200 shadow-2xs">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2.5">
+                        <div class="d-flex align-items-center gap-2.5">
+                            <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success bg-opacity-10 text-success flex-shrink-0" style="width: 34px; height: 34px;">
+                                <i class="bi bi-link-45deg fs-5"></i>
+                            </span>
+                            <div>
+                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                    <span class="fw-bold text-dark" style="font-size: 13px;">Terintegrasi dengan Analisis Wilayah /portal/peta</span>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-0.5 fw-bold" style="font-size: 10.5px;">
+                                        <i class="bi bi-broadcast me-1"></i>Live Sync Aktif
+                                    </span>
+                                </div>
+                                <small class="text-muted d-block" style="font-size: 11.5px;">
+                                    Data tabel yang disimpan di sini langsung terhubung &amp; memperbarui grafik komparatif IMK, listrik, pendidikan, kesehatan, dan ranking desa pada halaman publik.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <a href="/portal/peta" target="_blank" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 fw-semibold text-secondary hover:text-dark d-inline-flex align-items-center gap-1.5 text-decoration-none" style="font-size: 12px;">
+                                <i class="bi bi-box-arrow-up-right text-success"></i>
+                                <span>Buka /portal/peta</span>
+                            </a>
+                            <button type="button" onclick="syncPodesToPortalManual()" class="btn btn-sm btn-emerald rounded-pill px-3 py-1.5 fw-bold d-inline-flex align-items-center gap-1.5" style="font-size: 12px;">
+                                <i class="bi bi-arrow-repeat"></i>
+                                <span>Sinkronkan Ulang</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- 1. Top Card: 12 KLASTER PODES (6x2 Grid - Exact like Screenshot) -->
                 <div class="bento-card p-4 mb-4">
@@ -1123,75 +1579,184 @@
             <!-- =================================================================
                  TAB 3: MASTER DATA DESA (133 DESA)
                  ================================================================= -->
+            @php
+                $desaMandiriCount = collect($flatDesaList)->where('status', 'Mandiri')->count();
+                $desaMajuCount = collect($flatDesaList)->where('status', 'Maju')->count();
+                $desaBerkembangCount = collect($flatDesaList)->where('status', 'Berkembang')->count();
+            @endphp
             <div id="tabContentDesa" style="display: none;">
-                <div class="bento-card p-4">
-                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 pb-3 mb-3 border-bottom">
-                        <div>
-                            <h5 class="fw-bold mb-1">Master Data Potensi Desa (133 Desa)</h5>
-                            <small class="text-muted" id="desaTableCountText">Menampilkan seluruh 133 Desa dan Kelurahan di 15 Kecamatan</small>
+                <!-- Header & Filter Card (Modern, Rapi & Elegan) -->
+                <div class="bento-card p-3 p-md-4 mb-3">
+                    <!-- Baris 1: Judul, Badge Jumlah & Tombol Aksi Utama -->
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 pb-3 mb-3 border-bottom">
+                        <div class="min-w-0">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                <h5 class="fw-bold mb-0 text-dark">Master Data Potensi Desa</h5>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fw-bold" style="font-size: 11px;">
+                                    <span id="masterDesaCountBadge">{{ count($flatDesaList) }}</span> Desa &amp; Kelurahan
+                                </span>
+                                <span class="badge bg-light text-secondary border rounded-pill px-2.5 py-1 fw-semibold" style="font-size: 11px;">
+                                    {{ count($kecamatanList) }} Kecamatan
+                                </span>
+                            </div>
+                            <small class="text-muted d-block" id="desaTableCountText">
+                                Menampilkan seluruh <strong>{{ count($flatDesaList) }}</strong> Desa dan Kelurahan di <span id="masterKecCountSubtitle">{{ count($kecamatanList) }}</span> Kecamatan
+                            </small>
                         </div>
 
-                        <!-- Filters -->
-                        <div class="d-flex flex-wrap align-items-center gap-2">
-                            <div class="input-group input-group-sm" style="width: 210px;">
-                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
-                                <input type="text" id="inputSearchDesa" onkeyup="filterDesaTable()" placeholder="Cari desa/komoditas..." class="form-control border-start-0 ps-0">
+                        <div class="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                            @if(!$admin->isOperatorDesa())
+                                <button type="button" onclick="switchAdminTab('kecamatan')" class="btn btn-sm btn-light border rounded-pill px-3 d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold text-nowrap shadow-2xs" style="height: 38px; font-size: 12px;">
+                                    <i class="bi bi-map-fill text-success"></i>
+                                    <span>Master Kecamatan (<span id="subTabKecCount">{{ count($kecamatanList) }}</span>)</span>
+                                </button>
+                                <button type="button" onclick="openNewDesaModal()" class="btn btn-sm btn-emerald rounded-pill px-3.5 d-inline-flex align-items-center gap-1.5 fw-bold text-nowrap shadow-2xs" style="height: 38px; font-size: 12.5px;">
+                                    <i class="bi bi-plus-circle-fill"></i>
+                                    <span>Input Desa Baru</span>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- Baris 2: Pencarian, Filter Kecamatan, Quick Status Filter & View Switcher -->
+                    <div class="d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center justify-content-between gap-3">
+                        <div class="d-flex flex-wrap align-items-center gap-2 flex-grow-1">
+                            <!-- Search Pill -->
+                            <div class="search-pill-box d-flex align-items-center px-3 gap-2 flex-grow-1" style="min-width: 220px; max-width: 300px; height: 38px;">
+                                <i class="bi bi-search text-muted flex-shrink-0" style="font-size: 13px;"></i>
+                                <input type="text" id="inputSearchDesa" onkeyup="filterDesaTable()" placeholder="Cari desa, kecamatan, komoditas..." class="form-control form-control-sm border-0 bg-transparent shadow-none p-0 text-dark" style="font-size: 12.5px;">
                             </div>
-                            <select id="selectFilterKecamatan" onchange="filterDesaTable()" class="form-select form-select-sm" style="width: auto;">
-                                <option value="">Semua Kecamatan (15)</option>
+
+                            <!-- Select Kecamatan Pill -->
+                            <select id="selectFilterKecamatan" onchange="filterDesaTable()" class="form-select form-select-sm select-pill-box" style="width: auto; min-width: 180px; max-width: 220px; height: 38px;">
+                                <option value="">Semua Kecamatan ({{ count($kecamatanList) }})</option>
                                 @foreach($kecamatanList as $k)
                                     <option value="{{ $k['nama'] }}">{{ $k['nama'] }}</option>
                                 @endforeach
                             </select>
-                            <select id="selectFilterStatus" onchange="filterDesaTable()" class="form-select form-select-sm" style="width: auto;">
+
+                            <!-- Quick Status Filter Capsule (Synced with #selectFilterStatus) -->
+                            <select id="selectFilterStatus" onchange="filterDesaTable()" class="d-none" aria-hidden="true">
                                 <option value="">Semua Status</option>
                                 <option value="Mandiri">Mandiri</option>
                                 <option value="Maju">Maju</option>
                                 <option value="Berkembang">Berkembang</option>
                             </select>
+                            <div class="kec-view-capsule" role="group" aria-label="Filter Status Kemandirian" style="height: 38px;">
+                                <button type="button" id="btnDesaStatusAll" onclick="setDesaStatusFilter('')" class="btn desa-status-chip active">
+                                    <span>Semua</span>
+                                    <span class="badge bg-white text-dark rounded-pill ms-1 font-sans" style="font-size: 10px;">{{ count($flatDesaList) }}</span>
+                                </button>
+                                <button type="button" id="btnDesaStatusMandiri" onclick="setDesaStatusFilter('Mandiri')" class="btn desa-status-chip">
+                                    <span class="desa-status-dot" style="background-color: #10b981;"></span>
+                                    <span>Mandiri</span>
+                                    <span class="opacity-90 font-sans" style="font-size: 11px;">{{ $desaMandiriCount }}</span>
+                                </button>
+                                <button type="button" id="btnDesaStatusMaju" onclick="setDesaStatusFilter('Maju')" class="btn desa-status-chip">
+                                    <span class="desa-status-dot" style="background-color: #f59e0b;"></span>
+                                    <span>Maju</span>
+                                    <span class="opacity-90 font-sans" style="font-size: 11px;">{{ $desaMajuCount }}</span>
+                                </button>
+                                <button type="button" id="btnDesaStatusBerkembang" onclick="setDesaStatusFilter('Berkembang')" class="btn desa-status-chip">
+                                    <span class="desa-status-dot" style="background-color: #0ea5e9;"></span>
+                                    <span>Berkembang</span>
+                                    <span class="opacity-90 font-sans" style="font-size: 11px;">{{ $desaBerkembangCount }}</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between justify-content-xl-end gap-2 flex-shrink-0">
+                            <span class="text-muted small fw-semibold d-none d-xxl-inline" style="font-size: 11.5px;">Tampilan:</span>
+                            <div class="kec-view-capsule" role="group" aria-label="Mode Tampilan Desa" style="height: 38px;">
+                                <button type="button" id="btnDesaViewTable" onclick="setDesaViewMode('table')" class="btn btn-view-tab active">
+                                    <i class="bi bi-table"></i>
+                                    <span>Tabel</span>
+                                </button>
+                                <button type="button" id="btnDesaViewCards" onclick="setDesaViewMode('cards')" class="btn btn-view-tab">
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Kartu</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Table -->
-                    <div class="table-responsive border rounded-3">
-                        <table class="table table-hover align-middle table-sm mb-0" id="tableDesaMaster">
-                            <thead class="table-light small fw-bold text-uppercase" style="font-size: 11px;">
+                <!-- MODE 1: TABEL MODERN (DEFAULT) -->
+                <div id="desaTableContainer" class="bento-card overflow-hidden shadow-sm">
+                    <div class="table-responsive" style="max-height: 720px;">
+                        <table class="table table-hover table-modern table-modern-sticky align-middle mb-0" id="tableDesaMaster">
+                            <thead>
                                 <tr>
-                                    <th class="py-2.5 px-3">#</th>
-                                    <th class="py-2.5">DESA / KELURAHAN</th>
-                                    <th class="py-2.5">KECAMATAN</th>
-                                    <th class="py-2.5">SKOR IPD</th>
-                                    <th class="py-2.5">STATUS</th>
-                                    <th class="py-2.5">KOMODITAS UTAMA</th>
-                                    <th class="py-2.5">FASILITAS KES.</th>
-                                    <th class="py-2.5 text-center">AKSI</th>
+                                    <th class="px-3 text-center" style="width: 48px;">#</th>
+                                    <th style="min-width: 180px;">DESA / KELURAHAN</th>
+                                    <th style="min-width: 140px;">KECAMATAN</th>
+                                    <th class="text-center" style="min-width: 110px;">SKOR IPD</th>
+                                    <th class="text-center" style="min-width: 125px;">STATUS</th>
+                                    <th style="min-width: 250px;">KOMODITAS UTAMA</th>
+                                    <th style="min-width: 180px;">FASILITAS KES.</th>
+                                    <th class="text-center px-3" style="width: 105px;">AKSI</th>
                                 </tr>
                             </thead>
-                            <tbody class="small">
+                            <tbody>
                                 @foreach($flatDesaList as $idx => $d)
+                                    @php
+                                        $ipdNum = (float) ($d['ipd'] ?? 70);
+                                        $isKel = str_contains(strtolower($d['nama_desa']), 'kelurahan') || strtolower($d['nama_desa']) === 'lasusua';
+                                    @endphp
                                     <tr class="desa-row"
-                                        data-nama="{{ strtolower($d['nama_desa']) }}" 
-                                        data-kecamatan="{{ $d['nama_kec'] }}" 
+                                        data-nama="{{ strtolower($d['nama_desa']) }}"
+                                        data-kecamatan="{{ $d['nama_kec'] }}"
                                         data-status="{{ $d['status'] }}"
                                         data-komoditas="{{ strtolower($d['komoditas']) }}">
-                                        <td class="px-3 text-muted font-mono-num">{{ $idx + 1 }}</td>
-                                        <td class="fw-bold text-dark">{{ $d['nama_desa'] }}</td>
-                                        <td class="text-muted">{{ $d['nama_kec'] }}</td>
-                                        <td class="fw-bold font-mono-num text-success">{{ number_format($d['ipd'], 1) }}</td>
+                                        <td class="px-3 text-center text-muted fw-bold" style="font-size: 12px;">{{ $idx + 1 }}</td>
                                         <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="fw-bold text-dark" style="font-size: 13.5px;">{{ $d['nama_desa'] }}</span>
+                                                @if($isKel)
+                                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill" style="font-size: 9.5px; padding: 2px 7px;">Kelurahan</span>
+                                                @endif
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary fw-medium" style="font-size: 13px;">{{ $d['nama_kec'] }}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="fw-bold text-success" style="font-size: 13.5px; font-variant-numeric: tabular-nums;">
+                                                {{ number_format($ipdNum, 1) }}
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
                                             @if($d['status'] === 'Mandiri')
-                                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">Mandiri</span>
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fw-bold d-inline-flex align-items-center gap-1" style="font-size: 11px;">
+                                                    <i class="bi bi-circle-fill text-success" style="font-size: 6px;"></i>
+                                                    <span>Mandiri</span>
+                                                </span>
                                             @elseif($d['status'] === 'Maju')
-                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill">Maju</span>
+                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-2.5 py-1 fw-bold d-inline-flex align-items-center gap-1" style="font-size: 11px;">
+                                                    <i class="bi bi-circle-fill text-warning" style="font-size: 6px;"></i>
+                                                    <span>Maju</span>
+                                                </span>
                                             @else
-                                                <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill">Berkembang</span>
+                                                <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill px-2.5 py-1 fw-bold d-inline-flex align-items-center gap-1" style="font-size: 11px;">
+                                                    <i class="bi bi-circle-fill text-info" style="font-size: 6px;"></i>
+                                                    <span>Berkembang</span>
+                                                </span>
                                             @endif
                                         </td>
-                                        <td class="text-muted">{{ $d['komoditas'] }}</td>
-                                        <td class="text-muted">{{ $d['faskes'] }}</td>
-                                        <td class="text-center">
-                                            <button type="button" onclick="editDesaData('{{ $d['nama_desa'] }}', '{{ $d['nama_kec'] }}', '{{ $d['ipd'] }}', '{{ $d['status'] }}', '{{ $d['komoditas'] }}', '{{ $d['faskes'] }}', '{{ $d['lat'] }}', '{{ $d['lng'] }}')" class="btn btn-sm btn-light border text-muted px-2 py-0.5 rounded-pill" title="Edit Profil Desa">
-                                                <i class="bi bi-pencil me-1"></i>Edit
+                                        <td style="max-width: 260px;">
+                                            <span class="text-dark fw-medium" style="font-size: 12.5px; line-height: 1.45;">
+                                                {{ $d['komoditas'] ?: '-' }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="text-secondary" style="font-size: 12px;">
+                                                {{ $d['faskes'] ?: 'Poskesdes / Pustu' }}
+                                            </span>
+                                        </td>
+                                        <td class="text-center px-3">
+                                            <button type="button" onclick="editDesaData('{{ addslashes($d['nama_desa']) }}', '{{ addslashes($d['nama_kec']) }}', '{{ $d['ipd'] }}', '{{ $d['status'] }}', '{{ addslashes($d['komoditas']) }}', '{{ addslashes($d['faskes']) }}', '{{ $d['lat'] }}', '{{ $d['lng'] }}')" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-bold d-inline-flex align-items-center gap-1 shadow-2xs" style="font-size: 11.5px;" title="Edit Profil Desa">
+                                                <i class="bi bi-pencil-square"></i>
+                                                <span>Edit</span>
                                             </button>
                                         </td>
                                     </tr>
@@ -1199,8 +1764,770 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Footer Summary Bar -->
+                    <div class="p-3 bg-light border-top d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="font-size: 12px;">
+                        <div class="text-muted" id="desaFooterSummary">
+                            Menampilkan <strong>{{ count($flatDesaList) }}</strong> Desa &amp; Kelurahan di Kabupaten Kolaka Utara
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1">{{ $desaMandiriCount }} Mandiri</span>
+                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-2.5 py-1">{{ $desaMajuCount }} Maju</span>
+                            <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill px-2.5 py-1">{{ $desaBerkembangCount }} Berkembang</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODE 2: GRID KARTU DESA -->
+                <div id="desaGridContainer" class="row g-3" style="display: none;">
+                    @foreach($flatDesaList as $idx => $d)
+                        @php
+                            $desaBadgeClass = $d['status'] === 'Mandiri'
+                                ? 'bg-success-subtle text-success border-success-subtle'
+                                : ($d['status'] === 'Maju' ? 'bg-warning-subtle text-warning border-warning-subtle' : 'bg-info-subtle text-info border-info-subtle');
+                            $desaBarColor = $d['status'] === 'Mandiri'
+                                ? '#10b981'
+                                : ($d['status'] === 'Maju' ? '#f59e0b' : '#0ea5e9');
+                            $desaBarWidth = min(100, max(5, (float) $d['ipd']));
+                        @endphp
+                        <div class="col-12 col-sm-6 col-xl-4 col-xxl-3 desa-card-col"
+                             data-nama="{{ strtolower($d['nama_desa']) }}"
+                             data-kecamatan="{{ $d['nama_kec'] }}"
+                             data-status="{{ $d['status'] }}"
+                             data-komoditas="{{ strtolower($d['komoditas']) }}">
+                            <div class="bento-card p-3 h-100 d-flex flex-column justify-content-between gap-2.5 bg-white">
+                                <div>
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2.5">
+                                        <div class="min-w-0">
+                                            <div class="d-flex align-items-center gap-1.5 mb-0.5">
+                                                <span class="badge bg-light text-secondary border rounded-pill font-mono-num" style="font-size: 10px;">#{{ $idx + 1 }}</span>
+                                                <span class="text-muted text-truncate" style="font-size: 11px;">Kec. {{ $d['nama_kec'] }}</span>
+                                            </div>
+                                            <h6 class="fw-bold text-dark mb-0 text-truncate">{{ $d['nama_desa'] }}</h6>
+                                        </div>
+                                        <span class="badge {{ $desaBadgeClass }} border rounded-pill px-2.5 py-1 fw-semibold flex-shrink-0" style="font-size: 10.5px;">{{ $d['status'] }}</span>
+                                    </div>
+
+                                    <div class="bg-light border rounded-3 p-2.5 mb-2.5">
+                                        <div class="d-flex align-items-center justify-content-between mb-1">
+                                            <span class="text-muted text-uppercase fw-bold" style="font-size: 9.5px; letter-spacing: 0.4px;">Skor IPD</span>
+                                            <span class="fw-bold font-mono-num text-success" style="font-size: 13px;">{{ number_format($d['ipd'], 1) }}</span>
+                                        </div>
+                                        <div class="w-100 rounded-pill overflow-hidden" style="height: 5px; background-color: #e2e8f0;">
+                                            <div class="h-100 rounded-pill desa-ipd-bar" style="width: {{ $desaBarWidth }}%; background-color: {{ $desaBarColor }};"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-1.5 mb-1">
+                                        <i class="bi bi-flower2 text-success flex-shrink-0" style="font-size: 12px;"></i>
+                                        <span class="fw-semibold text-dark text-truncate desa-card-komoditas" style="font-size: 11.5px;">{{ $d['komoditas'] }}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1.5 text-muted">
+                                        <i class="bi bi-hospital flex-shrink-0" style="font-size: 11.5px;"></i>
+                                        <span class="text-truncate desa-card-faskes" style="font-size: 11px;">{{ $d['faskes'] }}</span>
+                                    </div>
+                                </div>
+
+                                <button type="button" onclick="editDesaData('{{ addslashes($d['nama_desa']) }}', '{{ addslashes($d['nama_kec']) }}', '{{ $d['ipd'] }}', '{{ $d['status'] }}', '{{ addslashes($d['komoditas']) }}', '{{ addslashes($d['faskes']) }}', '{{ $d['lat'] }}', '{{ $d['lng'] }}')" class="btn btn-sm btn-outline-success w-100 rounded-pill fw-bold py-1.5 d-flex align-items-center justify-content-center gap-1.5" style="font-size: 11.5px;">
+                                    <i class="bi bi-pencil-square"></i>
+                                    <span>Edit Profil Desa</span>
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
+            <!-- =================================================================
+                 TAB 3B: MASTER KECAMATAN (OPSI A: GRID KARTU VISUAL + EDITOR 2 KOLOM)
+                 ================================================================= -->
+            <div id="tabContentKecamatan" style="display: none;">
+                <!-- VIEW 1: DIREKTORI KARTU & TABEL KECAMATAN -->
+                <div id="kecDirectoryView">
+                    <div class="bento-card p-3 p-md-4 mb-3">
+                        <!-- Baris 1: Judul, Badge Wilayah & Tombol Aksi Utama -->
+                        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 pb-3 mb-3 border-bottom">
+                            <div class="min-w-0">
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                    <h5 class="fw-bold mb-0 text-dark">Master Kecamatan &amp; Konten Portal Agregat</h5>
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 font-mono-num" style="font-size: 11px;">
+                                        <span id="kecHeaderCount">{{ count($kecamatanList) }}</span> Wilayah
+                                    </span>
+                                </div>
+                                <small class="text-muted d-block" id="kecTableCountText">Menampilkan seluruh <strong>{{ count($kecamatanList) }}</strong> Kecamatan beserta foto kartu, populasi, komoditas, dan metrik <code>/portal/agregat</code></small>
+                            </div>
+
+                            <div class="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                                @if(!$admin->isOperatorDesa())
+                                    <button type="button" onclick="switchAdminTab('aggregate')" class="btn btn-sm btn-outline-success rounded-pill px-3 d-inline-flex align-items-center gap-1.5 fw-bold text-nowrap" style="height: 36px; font-size: 12px;">
+                                        <i class="bi bi-sliders2-vertical"></i>
+                                        <span>Edit Ringkasan Kab.</span>
+                                    </button>
+                                @endif
+                                <a href="/portal/agregat" target="_blank" class="btn btn-sm btn-light border rounded-pill px-3 d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold text-nowrap" style="height: 36px; font-size: 12px;">
+                                    <i class="bi bi-box-arrow-up-right text-success"></i>
+                                    <span>Lihat Portal</span>
+                                </a>
+
+                                @if(!$admin->isOperatorDesa())
+                                    <button type="button" onclick="openNewKecamatanModal()" class="btn btn-sm btn-emerald rounded-pill px-3.5 d-inline-flex align-items-center gap-1.5 fw-bold text-nowrap" style="height: 36px; font-size: 12px;">
+                                        <i class="bi bi-plus-circle-fill"></i>
+                                        <span>Tambah Kecamatan</span>
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Baris 2: Pencarian Pill & Switcher Mode Tampilan -->
+                        <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center justify-content-between gap-2.5">
+                            <div class="search-pill-box d-flex align-items-center px-3 gap-2" style="width: 100%; max-width: 320px;">
+                                <i class="bi bi-search text-muted flex-shrink-0" style="font-size: 13px;"></i>
+                                <input type="text" id="inputSearchKecamatan" onkeyup="filterKecamatanTable()" placeholder="Cari kecamatan atau komoditas..." class="form-control form-control-sm border-0 bg-transparent shadow-none p-0 text-dark" style="font-size: 12.5px;">
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between justify-content-sm-end gap-2 flex-shrink-0">
+                                <span class="text-muted small fw-semibold d-none d-md-inline" style="font-size: 11.5px;">Tampilan:</span>
+                                <div class="kec-view-capsule" role="group" aria-label="Mode Tampilan Kecamatan">
+                                    <button type="button" id="btnKecViewCards" onclick="setKecamatanViewMode('cards')" class="btn btn-view-tab active">
+                                        <i class="bi bi-grid-fill"></i>
+                                        <span>Kartu</span>
+                                    </button>
+                                    <button type="button" id="btnKecViewTable" onclick="setKecamatanViewMode('table')" class="btn btn-view-tab">
+                                        <i class="bi bi-table"></i>
+                                        <span>Tabel</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GRID KARTU VISUAL (DEFAULT) -->
+                    <div id="kecGridContainer" class="row g-3">
+                        @foreach($kecamatanList as $idx => $k)
+                            @php
+                                $kecDesaCount = $k['desa_count'] ?? count($k['desaList'] ?? $k['desa_list'] ?? []);
+                                $kecStatus = $k['status_ipd'] ?? 'Maju';
+                                $kecFoto = $k['foto'] ?? '/images/jadesta/kebun_kakao_totallang.jpg';
+                                $kecPopTotal = (int) ($k['penduduk_total'] ?? 0);
+                                $statusBadge = $kecStatus === 'Mandiri'
+                                    ? 'bg-success text-white'
+                                    : ($kecStatus === 'Maju' ? 'bg-warning text-dark' : 'bg-info text-dark');
+                            @endphp
+                            <div class="col-12 col-sm-6 col-xl-4 col-xxl-3 kec-card-col"
+                                 data-index="{{ $idx + 1 }}"
+                                 data-nama="{{ strtolower($k['nama'] ?? '') }}"
+                                 data-kode="{{ strtolower($k['kode'] ?? '') }}"
+                                 data-komoditas="{{ strtolower(($k['komoditas_dominan'] ?? '') . ' ' . ($k['komoditas'] ?? '') . ' ' . ($k['produk_unggulan'] ?? '')) }}"
+                                 data-kec-json='@json($k)'>
+                                <div class="bento-card overflow-hidden h-100 d-flex flex-column">
+                                    <!-- Card Photo Header -->
+                                    <div class="position-relative" style="height: 158px; background: #0f172a;">
+                                        <img src="{{ $kecFoto }}"
+                                             alt="Foto {{ $k['nama'] ?? '' }}"
+                                             class="w-100 h-100 object-fit-cover"
+                                             onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+                                        <div class="position-absolute inset-0 w-100 h-100 top-0 start-0" style="background: linear-gradient(to top, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.20) 55%, rgba(15, 23, 42, 0.40) 100%);"></div>
+
+                                        <!-- Top Badges -->
+                                        <div class="position-absolute top-0 start-0 end-0 p-2.5 d-flex align-items-center justify-content-between">
+                                            <span class="badge bg-dark bg-opacity-75 text-white border border-white border-opacity-25 rounded-pill font-mono-num" style="font-size: 10px;">
+                                                {{ $k['kode'] ?? '-' }}
+                                            </span>
+                                            <span class="badge {{ $statusBadge }} rounded-pill fw-bold" style="font-size: 10px;">
+                                                {{ $kecStatus }}
+                                            </span>
+                                        </div>
+
+                                        <!-- Bottom Title Over Image -->
+                                        <div class="position-absolute bottom-0 start-0 end-0 p-3">
+                                            <div class="d-flex align-items-end justify-content-between gap-2">
+                                                <div class="min-w-0">
+                                                    <h6 class="fw-bold text-white mb-0 text-truncate">{{ $k['nama'] ?? '-' }}</h6>
+                                                    <div class="text-white-50 text-truncate" style="font-size: 11px;">{{ $k['tag'] ?? '-' }}</div>
+                                                </div>
+                                                <span class="badge text-white font-mono-num flex-shrink-0" style="background: rgba(15, 23, 42, 0.68); border: 1px solid rgba(255, 255, 255, 0.28); font-size: 10px;">
+                                                    IPD {{ number_format((float) ($k['ipd'] ?? 70), 1) }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Body -->
+                                    <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between gap-2.5 bg-white">
+                                        <div>
+                                            <div class="row g-1.5 text-center bg-light rounded-3 p-2 mb-2.5 border">
+                                                <div class="col-4 border-end">
+                                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">Penduduk</div>
+                                                    <div class="fw-bold text-dark font-mono-num" style="font-size: 12px;">{{ number_format($kecPopTotal, 0, ',', '.') }} <span class="fw-normal text-muted" style="font-size: 10px;">Jiwa</span></div>
+                                                </div>
+                                                <div class="col-4 border-end">
+                                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">Desa</div>
+                                                    <div class="fw-bold text-dark font-mono-num" style="font-size: 12px;">{{ $kecDesaCount }}</div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">IMK</div>
+                                                    <div class="fw-bold text-success font-mono-num" style="font-size: 12px;">{{ number_format((int) ($k['imk'] ?? 0), 0, ',', '.') }}</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex align-items-center gap-1.5 mb-1">
+                                                <i class="bi bi-flower2 text-success flex-shrink-0" style="font-size: 12px;"></i>
+                                                <span class="fw-semibold text-dark text-truncate" style="font-size: 11.5px;">{{ $k['komoditas_dominan'] ?? ($k['komoditas'] ?? '-') }}</span>
+                                            </div>
+                                            <div class="text-muted font-mono-num text-truncate" style="font-size: 10.5px;">
+                                                BUMDes {{ (int) ($k['bumdes'] ?? 0) }} &bull; Sekolah {{ (int) ($k['total_sekolah'] ?? 0) }} &bull; PLN {{ number_format((int) ($k['pln_kk'] ?? 0), 0, ',', '.') }} KK
+                                            </div>
+                                        </div>
+
+                                        @if(!$admin->isOperatorDesa())
+                                            <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-outline-success w-100 rounded-pill fw-bold py-1.5 d-flex align-items-center justify-content-center gap-1.5" style="font-size: 11.5px;">
+                                                <i class="bi bi-pencil-square"></i>
+                                                <span>Edit Konten &amp; Foto</span>
+                                            </button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- TABEL RINGKAS 5 KOLOM (OPSIONAL) -->
+                    <div id="kecTableContainer" class="bento-card p-3" style="display: none;">
+                        <div class="table-responsive border rounded-3">
+                            <table class="table table-hover align-middle table-sm mb-0" id="tableKecamatanMaster">
+                                <thead class="table-light small fw-bold text-uppercase" style="font-size: 11px;">
+                                    <tr>
+                                        <th class="py-2.5 px-3">#</th>
+                                        <th class="py-2.5">FOTO &amp; KECAMATAN</th>
+                                        <th class="py-2.5">PENDUDUK &amp; DESA</th>
+                                        <th class="py-2.5">KOMODITAS DOMINAN</th>
+                                        <th class="py-2.5">IPD &amp; STATUS</th>
+                                        @if(!$admin->isOperatorDesa())
+                                            <th class="py-2.5 text-center">AKSI</th>
+                                        @endif
+                                    </tr>
+                                </thead>
+                                <tbody class="small" id="tbodyKecamatanMaster">
+                                    @foreach($kecamatanList as $idx => $k)
+                                        @php
+                                            $kecDesaCount = $k['desa_count'] ?? count($k['desaList'] ?? $k['desa_list'] ?? []);
+                                            $kecStatus = $k['status_ipd'] ?? 'Maju';
+                                            $kecFoto = $k['foto'] ?? '/images/jadesta/kebun_kakao_totallang.jpg';
+                                            $kecPopTotal = (int) ($k['penduduk_total'] ?? 0);
+                                        @endphp
+                                        <tr class="kec-master-row"
+                                            data-index="{{ $idx + 1 }}"
+                                            data-nama="{{ strtolower($k['nama'] ?? '') }}"
+                                            data-kode="{{ strtolower($k['kode'] ?? '') }}"
+                                            data-komoditas="{{ strtolower(($k['komoditas_dominan'] ?? '') . ' ' . ($k['komoditas'] ?? '') . ' ' . ($k['produk_unggulan'] ?? '')) }}"
+                                            data-kec-json='@json($k)'>
+                                            <td class="px-3 text-muted font-mono-num">{{ $idx + 1 }}</td>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2.5 py-1">
+                                                    <img src="{{ $kecFoto }}" alt="Foto {{ $k['nama'] ?? '' }}" class="rounded-2 border object-fit-cover flex-shrink-0" style="width: 40px; height: 48px;" onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+                                                    <div>
+                                                        <div class="fw-bold text-dark">{{ $k['nama'] ?? '-' }}</div>
+                                                        <div class="font-mono-num text-muted" style="font-size: 10.5px;">{{ $k['kode'] ?? '-' }}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold font-mono-num text-dark">{{ number_format($kecPopTotal, 0, ',', '.') }} Jiwa</div>
+                                                <div class="text-muted" style="font-size: 11px;">{{ $kecDesaCount }} Desa/Kelurahan</div>
+                                            </td>
+                                            <td style="max-width: 240px;">
+                                                <div class="fw-semibold text-dark text-truncate">{{ $k['komoditas_dominan'] ?? ($k['komoditas'] ?? '-') }}</div>
+                                                <div class="text-muted text-truncate" style="font-size: 10.5px;">{{ $k['tag'] ?? '-' }}</div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold font-mono-num text-success me-1">{{ number_format((float) ($k['ipd'] ?? 70), 1) }}</span>
+                                                @if($kecStatus === 'Mandiri')
+                                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">Mandiri</span>
+                                                @elseif($kecStatus === 'Maju')
+                                                    <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill">Maju</span>
+                                                @else
+                                                    <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill">Berkembang</span>
+                                                @endif
+                                            </td>
+                                            @if(!$admin->isOperatorDesa())
+                                                <td class="text-center">
+                                                    <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-emerald px-2.5 py-1 rounded-pill" style="font-size: 11.5px;">
+                                                        <i class="bi bi-pencil-square me-1"></i>Edit
+                                                    </button>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW 2: EDITOR SPLIT-SCREEN 2 KOLOM (TANPA POPUP SCROLL PANJANG) -->
+                <div id="kecEditorView" style="display: none;">
+                    <!-- Top Breadcrumb / Back Action -->
+                    <div class="bento-card px-4 py-3 mb-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="button" onclick="closeKecamatanEditor()" class="btn btn-sm btn-light border rounded-pill px-3 py-1.5 fw-semibold text-secondary d-flex align-items-center gap-1.5">
+                                <i class="bi bi-arrow-left"></i>
+                                <span>Kembali ke Daftar</span>
+                            </button>
+                            <div>
+                                <h6 class="fw-bold mb-0" id="modalEditKecamatanTitle">Edit Kecamatan</h6>
+                                <small class="text-muted" style="font-size: 11px;">Perubahan langsung terhubung ke kartu &amp; detail di <code>/portal/agregat</code></small>
+                            </div>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1.5 fw-semibold" style="font-size: 11px;">
+                            <i class="bi bi-broadcast me-1"></i>Sinkron Real-Time
+                        </span>
+                    </div>
+
+                    <form id="formKecamatanEditor" onsubmit="saveKecamatanModalData(event)" enctype="multipart/form-data">
+                        <input type="hidden" id="editKecOriginalNama" value="">
+                        <div class="row g-3 align-items-stretch">
+                            <!-- KOLOM KIRI: LIVE PREVIEW KARTU PORTAL + GANTI FOTO MODERN -->
+                            <div class="col-lg-4">
+                                <div class="bento-card p-4 h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <span class="text-uppercase fw-bold text-muted" style="font-size: 10.5px; letter-spacing: 0.7px;">Live Preview Kartu</span>
+                                            <span class="badge bg-light text-secondary border font-mono-num" style="font-size: 10px;">/portal/agregat</span>
+                                        </div>
+
+                                        <!-- Miniatur Kartu Vertikal Persis Portal Agregat -->
+                                        <div class="mx-auto position-relative shadow-sm border" style="width: 220px; height: 320px; border-radius: 22px; overflow: hidden; background: #111827;">
+                                            <img id="editKecFotoPreview" src="/images/jadesta/kebun_kakao_totallang.jpg" alt="Preview Kartu Kecamatan" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.22) 50%, rgba(0,0,0,0.38) 100%);"></div>
+
+                                            <div class="position-relative h-100 p-3.5 d-flex flex-column justify-content-between" style="z-index: 2;">
+                                                <div class="d-flex align-items-start justify-content-between">
+                                                    <div id="editKecPreviewVerticalTitle" class="d-flex align-items-start gap-2 text-white font-cinzel fw-bold" style="font-size: 17px; letter-spacing: 0.14em; line-height: 1.15; text-shadow: 0 2px 6px rgba(0,0,0,0.6);">
+                                                        <!-- Stacked vertical letters populated by JS -->
+                                                    </div>
+                                                    <span id="editKecPreviewIndex" class="font-mono-num text-white-50 fw-bold" style="font-size: 12px;">01</span>
+                                                </div>
+
+                                                <div class="border-top border-white border-opacity-25 pt-2">
+                                                    <div id="editKecPreviewPop" class="text-white fw-bold text-uppercase font-sans" style="font-size: 11px; letter-spacing: 1px;">0 PENDUDUK</div>
+                                                    <div id="editKecPreviewTag" class="text-white-50 text-truncate mt-0.5" style="font-size: 10px;">Potensi Wilayah</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Kontrol Foto Clean -->
+                                    <div class="mt-3 pt-3 border-top">
+                                        <input type="file" id="editKecFotoFile" accept="image/jpeg,image/png,image/webp" onchange="previewKecamatanPhoto(this)" class="d-none">
+                                        <label for="editKecFotoFile" class="btn btn-sm btn-outline-success w-100 rounded-pill fw-bold py-2 d-flex align-items-center justify-content-center gap-2 mb-2" style="cursor: pointer;">
+                                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                                            <span>Upload Foto Baru</span>
+                                        </label>
+                                        <div class="text-center text-muted font-mono-num mb-2 text-truncate" style="font-size: 10.5px;" id="editKecPreviewLabel">Belum ada foto dipilih</div>
+
+                                        <div class="mb-2">
+                                            <select id="editKecFotoGallery" onchange="selectKecamatanGalleryPhoto(this.value)" class="form-select form-select-sm rounded-pill">
+                                                <option value="">Atau pilih foto galeri bawaan...</option>
+                                                @foreach(($kecamatanGallery ?? []) as $imgPath)
+                                                    <option value="{{ $imgPath }}">{{ basename($imgPath) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <a href="javascript:void(0)" onclick="toggleManualFotoPath()" class="text-decoration-none text-muted" style="font-size: 11px;">
+                                                <i class="bi bi-link-45deg"></i> Atur path gambar manual
+                                            </a>
+                                        </div>
+                                        <div id="kecManualFotoPathWrap" class="mt-2" style="display: none;">
+                                            <input type="text" id="editKecFoto" oninput="updateKecFotoPreviewPath(this.value)" class="form-control form-control-sm font-mono-num" placeholder="/images/kecamatan/katoi.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- KOLOM KANAN: FORM 3 TAB RINGKAS (TANPA SCROLL PANJANG) -->
+                            <div class="col-lg-8">
+                                <div class="bento-card p-4 h-100 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <!-- 3 Tab Pill Navigation -->
+                                        <div class="d-flex flex-wrap gap-2 pb-3 mb-4 border-bottom" id="kecEditorTabs">
+                                            <button type="button" id="kecEdTabBtn-identitas" onclick="switchKecEditorTab('identitas')" class="btn btn-sm btn-emerald rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5" style="font-size: 12px;">
+                                                <i class="bi bi-geo-alt-fill"></i>
+                                                <span>1. Identitas &amp; Peta</span>
+                                            </button>
+                                            <button type="button" id="kecEdTabBtn-komoditas" onclick="switchKecEditorTab('komoditas')" class="btn btn-sm btn-light border text-secondary rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5" style="font-size: 12px;">
+                                                <i class="bi bi-award-fill"></i>
+                                                <span>2. Komoditas &amp; Unggulan</span>
+                                            </button>
+                                            <button type="button" id="kecEdTabBtn-populasi" onclick="switchKecEditorTab('populasi')" class="btn btn-sm btn-light border text-secondary rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5" style="font-size: 12px;">
+                                                <i class="bi bi-people-fill"></i>
+                                                <span>3. Populasi &amp; Sektor</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- TAB 1: IDENTITAS & PETA -->
+                                        <div id="kecEditorTabIdentitas" class="kec-editor-pane small">
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-8">
+                                                    <label class="form-label fw-bold">Nama Kecamatan <span class="text-danger">*</span></label>
+                                                    <input type="text" id="editKecNama" oninput="updateKecLiveCardPreview()" class="form-control fw-bold" placeholder="Contoh: Katoi atau Lasusua">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label fw-bold">Kode Wilayah</label>
+                                                    <input type="text" id="editKecKode" class="form-control font-mono-num" placeholder="Otomatis (74.08.XX)">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Tagline / Karakteristik Singkat</label>
+                                                <input type="text" id="editKecTag" oninput="updateKecLiveCardPreview()" class="form-control" placeholder="Contoh: Pesisir & Agribisnis Cengkeh">
+                                            </div>
+
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-bold">Skor IPD <span class="text-muted fw-normal">(0–100)</span></label>
+                                                    <input type="number" step="0.1" min="0" max="100" id="editKecIpd" class="form-control font-mono-num fw-bold" placeholder="72.5">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-bold">Status Kemandirian</label>
+                                                    <select id="editKecStatusIpd" class="form-select fw-bold">
+                                                        <option value="Mandiri">Mandiri (IPD &ge; 70)</option>
+                                                        <option value="Maju">Maju (50 &le; IPD &lt; 70)</option>
+                                                        <option value="Berkembang">Berkembang (IPD &lt; 50)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-bold">Jumlah Desa / Kel.</label>
+                                                    <input type="number" min="0" id="editKecDesaCount" class="form-control font-mono-num fw-bold" placeholder="6">
+                                                </div>
+                                            </div>
+
+                                            <div class="row g-3">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label fw-bold">Latitude <span class="text-muted fw-normal font-mono-num">(Lintang WebGIS)</span></label>
+                                                    <input type="number" step="any" id="editKecLat" class="form-control font-mono-num" placeholder="-3.5291">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label class="form-label fw-bold">Longitude <span class="text-muted fw-normal font-mono-num">(Bujur WebGIS)</span></label>
+                                                    <input type="number" step="any" id="editKecLng" class="form-control font-mono-num" placeholder="120.9855">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- TAB 2: KOMODITAS & UNGGULAN -->
+                                        <div id="kecEditorTabKomoditas" class="kec-editor-pane small" style="display: none;">
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Komoditas Utama Dominan <span class="text-muted fw-normal">(Panel Kiri)</span></label>
+                                                    <input type="text" id="editKecKomoditasDominan" class="form-control fw-bold" placeholder="Contoh: Kakao atau Cengkeh">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-bold">Daftar Komoditas Wilayah</label>
+                                                    <input type="text" id="editKecKomoditas" class="form-control" placeholder="Contoh: Kakao, Cengkeh, Kelapa">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold">Potensi Utama / Deskripsi Wilayah</label>
+                                                <textarea id="editKecPotensi" rows="2" class="form-control" placeholder="Deskripsi potensi agribisnis & sektor unggulan kecamatan..."></textarea>
+                                            </div>
+
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-8">
+                                                    <label class="form-label fw-bold">Produk Unggulan Terdata <span class="text-muted fw-normal">(pisahkan dengan koma)</span></label>
+                                                    <input type="text" id="editKecProdukUnggulan" oninput="renderKecProdukChipPreview()" class="form-control" placeholder="Contoh: SALAK, GULA AREN, MINYAK NILAM">
+                                                    <div id="editKecProdukChipPreview" class="d-flex flex-wrap gap-1.5 mt-2"></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label fw-bold">Jml Desa Produk Khas</label>
+                                                    <input type="number" min="0" id="editKecProdukDesaCount" class="form-control font-mono-num fw-bold" placeholder="0">
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label class="form-label fw-bold">Wisata / ODTW Unggulan</label>
+                                                <input type="text" id="editKecOdtw" class="form-control" placeholder="Contoh: Pantai Berova, Danau Biru Walasiho">
+                                            </div>
+                                        </div>
+
+                                        <!-- TAB 3: POPULASI & INDIKATOR PORTAL -->
+                                        <div id="kecEditorTabPopulasi" class="kec-editor-pane small" style="display: none;">
+                                            <div class="p-3 rounded-3 bg-light border mb-3">
+                                                <div class="fw-bold text-dark mb-2" style="font-size: 11.5px;">
+                                                    <i class="bi bi-people-fill text-success me-1"></i>Data Penduduk (Tampil di Kartu &amp; Sektor Kependudukan)
+                                                </div>
+                                                <div class="row g-3">
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label fw-semibold mb-1">Penduduk Laki-laki (L)</label>
+                                                        <input type="number" min="0" id="editKecPendudukL" oninput="recalcKecPendudukTotal()" class="form-control font-mono-num" placeholder="0">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label fw-semibold mb-1">Penduduk Perempuan (P)</label>
+                                                        <input type="number" min="0" id="editKecPendudukP" oninput="recalcKecPendudukTotal()" class="form-control font-mono-num" placeholder="0">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label fw-bold mb-1 text-success">Total Penduduk (Card)</label>
+                                                        <input type="number" min="0" id="editKecPendudukTotal" oninput="updateKecLiveCardPreview()" class="form-control font-mono-num fw-bold border-success-subtle" placeholder="0">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="fw-bold text-dark mb-2" style="font-size: 11.5px;">
+                                                <i class="bi bi-buildings-fill text-success me-1"></i>Ringkasan Indikator 7 Sektor PODES (/portal/agregat)
+                                            </div>
+                                            <div class="row g-3 mb-2">
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-semibold mb-1">Unit IMK</label>
+                                                    <input type="number" min="0" id="editKecImk" class="form-control font-mono-num fw-bold" placeholder="0">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-semibold mb-1">BUMDes (Unit)</label>
+                                                    <input type="number" min="0" id="editKecBumdes" class="form-control font-mono-num fw-bold" placeholder="0">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="form-label fw-semibold mb-1">Listrik PLN (KK)</label>
+                                                    <input type="number" min="0" id="editKecPlnKk" class="form-control font-mono-num fw-bold" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="row g-3">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label fw-semibold mb-1">Total Sarana Sekolah</label>
+                                                    <input type="number" min="0" id="editKecSekolah" class="form-control font-mono-num" placeholder="0">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label class="form-label fw-semibold mb-1">Total Fasilitas Kesehatan (Faskes)</label>
+                                                    <input type="number" min="0" id="editKecFaskes" class="form-control font-mono-num" placeholder="0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- STICKY FORM FOOTER -->
+                                    <div class="pt-3 mt-4 border-top d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                        <small class="text-muted">Pastikan data sudah sesuai sebelum menyimpan ke basis data.</small>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button type="button" onclick="closeKecamatanEditor()" class="btn btn-sm btn-light border rounded-pill px-3.5 py-1.5 fw-semibold">Batal</button>
+                                            <button type="submit" id="btnSaveKecamatanModal" class="btn btn-sm btn-emerald rounded-pill px-4 py-1.5 fw-bold">
+                                                <i class="bi bi-check2-circle me-1"></i>Simpan Kecamatan &amp; Foto
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- =================================================================
+                 TAB 3C: RINGKASAN AGREGAT PORTAL KABUPATEN KOLAKA UTARA
+                 ================================================================= -->
+            @if(!$admin->isOperatorDesa())
+                @php
+                    $aggAct = $portalAggregate['active'] ?? [];
+                    $aggDef = $portalAggregate['defaults'] ?? [];
+                    $aggIsCustom = !empty($portalAggregate['is_custom']);
+                @endphp
+                <div id="tabContentAggregate" style="display: none;">
+                    <!-- Header Bento Card -->
+                    <div class="bento-card p-3 p-md-4 mb-3">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                            <div class="min-w-0">
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                    <h5 class="fw-bold mb-0 text-dark">Ringkasan Agregat Kabupaten Kolaka Utara</h5>
+                                    <span id="aggModeStatusBadge" class="badge {{ $aggIsCustom ? 'bg-warning-subtle text-warning border border-warning-subtle' : 'bg-success-subtle text-success border border-success-subtle' }} rounded-pill px-2.5 py-1 fw-bold" style="font-size: 11px;">
+                                        {{ $aggIsCustom ? 'Mode Edit Manual Aktif' : 'Mode Hitung Otomatis' }}
+                                    </span>
+                                </div>
+                                <small class="text-muted d-block">
+                                    Edit langsung 4 kartu statistik pada <code>/portal/agregat</code> serta KPI Beranda <code>/portal</code> &amp; Tentang Madani.
+                                </small>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                                <a href="/portal/agregat" target="_blank" class="btn btn-sm btn-light border rounded-pill px-3 d-inline-flex align-items-center gap-1.5 text-secondary fw-semibold text-nowrap" style="height: 36px; font-size: 12px;">
+                                    <i class="bi bi-box-arrow-up-right text-success"></i>
+                                    <span>Lihat /portal/agregat</span>
+                                </a>
+                                <button type="button" onclick="savePortalAggregateData(null, 'reset')" id="btnResetPortalAggregate" class="btn btn-sm btn-light border rounded-pill px-3 d-inline-flex align-items-center gap-1.5 text-danger fw-semibold text-nowrap" style="height: 36px; font-size: 12px;">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                    <span>Reset ke Otomatis</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview Identik dengan Tampilan /portal/agregat -->
+                    <div class="bento-card p-3 p-md-4 mb-3 bg-light">
+                        <div class="d-flex align-items-center justify-content-between mb-2.5">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="desa-status-dot" style="width: 8px; height: 8px; background-color: #3B4D3B;"></span>
+                                <span class="fw-bold text-uppercase text-dark" style="font-size: 11.5px; letter-spacing: 0.05em;" id="aggPreviewJudul">{{ $aggAct['judul_ringkasan'] ?? 'Ringkasan Agregat Kabupaten Kolaka Utara' }}</span>
+                            </div>
+                            <span class="text-muted fw-semibold font-mono-num" style="font-size: 11px;" id="aggPreviewSumber">{{ $aggAct['label_sumber'] ?? 'BPS PODES 2025' }}</span>
+                        </div>
+
+                        <div class="bg-white rounded-4 border shadow-2xs overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-12 col-sm-6 col-xl-3 p-3.5 border-end border-bottom border-xl-bottom-0">
+                                    <div class="font-mono-num text-muted mb-1" style="font-size: 11px;">01</div>
+                                    <div class="fw-bold text-uppercase text-dark mb-2" style="font-size: 12.5px; letter-spacing: 0.04em;">Total Penduduk Riil</div>
+                                    <div class="fw-black font-mono-num" style="font-size: 28px; color: #3B4D3B; line-height: 1.1;" id="aggPreviewTotalPenduduk">{{ number_format((int) ($aggAct['total_penduduk'] ?? 0), 0, ',', '.') }}</div>
+                                    <div class="text-muted mt-1.5 font-mono-num" style="font-size: 11.5px;" id="aggPreviewLP">L: {{ number_format((int) ($aggAct['total_penduduk_l'] ?? 0), 0, ',', '.') }} &bull; P: {{ number_format((int) ($aggAct['total_penduduk_p'] ?? 0), 0, ',', '.') }}</div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-xl-3 p-3.5 border-end border-bottom border-xl-bottom-0">
+                                    <div class="font-mono-num text-muted mb-1" style="font-size: 11px;">02</div>
+                                    <div class="fw-bold text-uppercase text-dark mb-2" style="font-size: 12.5px; letter-spacing: 0.04em;">Rata-Rata Kepadatan</div>
+                                    <div class="fw-black font-mono-num text-dark" style="font-size: 28px; line-height: 1.1;">
+                                        <span id="aggPreviewKepadatan">{{ number_format((float) ($aggAct['kepadatan_rata'] ?? 0), 1) }}</span>
+                                        <span class="fw-semibold text-muted" style="font-size: 11.5px;">Jiwa/km&sup2;</span>
+                                    </div>
+                                    <div class="text-muted mt-1.5" style="font-size: 11.5px;" id="aggPreviewCakupan">Cakupan {{ (int) ($aggAct['total_kecamatan'] ?? 15) }} Kecamatan / {{ (int) ($aggAct['total_desa'] ?? 133) }} Desa</div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-xl-3 p-3.5 border-end border-bottom border-sm-bottom-0">
+                                    <div class="font-mono-num text-muted mb-1" style="font-size: 11px;">03</div>
+                                    <div class="fw-bold text-uppercase text-dark mb-2" style="font-size: 12.5px; letter-spacing: 0.04em;">Rasio Jenis Kelamin</div>
+                                    <div class="fw-black font-mono-num" style="font-size: 28px; color: #566B53; line-height: 1.1;" id="aggPreviewSexRatio">{{ number_format((float) ($aggAct['rasio_jenis_kelamin'] ?? 100), 1) }}</div>
+                                    <div class="text-muted mt-1.5" style="font-size: 11.5px;">Laki-laki per 100 Perempuan</div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-xl-3 p-3.5">
+                                    <div class="font-mono-num text-muted mb-1" style="font-size: 11px;">04</div>
+                                    <div class="fw-bold text-uppercase text-dark mb-2" style="font-size: 12.5px; letter-spacing: 0.04em;">Sentra &amp; IMK Produktif</div>
+                                    <div class="fw-black font-mono-num" style="font-size: 28px; color: #3B4D3B; line-height: 1.1;" id="aggPreviewImk">{{ number_format((int) ($aggAct['total_imk'] ?? 0), 0, ',', '.') }}</div>
+                                    <div class="text-muted mt-1.5 font-mono-num" style="font-size: 11.5px;" id="aggPreviewPln">Listrik PLN: {{ number_format((float) ($aggAct['rasio_listrik'] ?? 0), 2) }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Editor 4 Kartu -->
+                    <form id="formPortalAggregate" onsubmit="savePortalAggregateData(event, 'save')">
+                        <div class="row g-3 mb-3">
+                            <!-- Kartu 01: Total Penduduk Riil -->
+                            <div class="col-lg-6">
+                                <div class="bento-card p-4 h-100 small">
+                                    <div class="d-flex align-items-center justify-content-between pb-2.5 mb-3 border-bottom">
+                                        <span class="fw-bold text-dark"><span class="badge bg-success-subtle text-success rounded-pill me-1.5 font-mono-num">01</span>Total Penduduk Riil</span>
+                                        <button type="button" onclick="calcAggregateTotalPenduduk()" class="btn btn-sm btn-light border rounded-pill px-2.5 py-0.5 fw-semibold text-success" style="font-size: 11px;">
+                                            Hitung L + P
+                                        </button>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Penduduk Laki-laki (L)</label>
+                                            <input type="number" min="0" id="aggInputPendudukL" oninput="onAggregateLPInput()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_penduduk_l'] ?? 0) }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Penduduk Perempuan (P)</label>
+                                            <input type="number" min="0" id="aggInputPendudukP" oninput="onAggregateLPInput()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_penduduk_p'] ?? 0) }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-bold text-success">Total Penduduk</label>
+                                            <input type="number" min="0" id="aggInputPendudukTotal" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold border-success-subtle rounded-3" value="{{ (int) ($aggAct['total_penduduk'] ?? 0) }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Kartu 02: Rata-rata Kepadatan & Cakupan -->
+                            <div class="col-lg-6">
+                                <div class="bento-card p-4 h-100 small">
+                                    <div class="d-flex align-items-center justify-content-between pb-2.5 mb-3 border-bottom">
+                                        <span class="fw-bold text-dark"><span class="badge bg-success-subtle text-success rounded-pill me-1.5 font-mono-num">02</span>Rata-Rata Kepadatan &amp; Cakupan Wilayah</span>
+                                        <span class="text-muted font-mono-num" style="font-size: 10.5px;">Jiwa/km&sup2;</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-bold text-success">Rata Kepadatan</label>
+                                            <input type="number" step="0.1" min="0" id="aggInputKepadatan" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ number_format((float) ($aggAct['kepadatan_rata'] ?? 241.8), 1, '.', '') }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Jml Kecamatan</label>
+                                            <input type="number" min="0" id="aggInputTotalKecamatan" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_kecamatan'] ?? 15) }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Jml Desa / Kel.</label>
+                                            <input type="number" min="0" id="aggInputTotalDesa" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_desa'] ?? 133) }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Kartu 03: Rasio Jenis Kelamin -->
+                            <div class="col-lg-6">
+                                <div class="bento-card p-4 h-100 small">
+                                    <div class="d-flex align-items-center justify-content-between pb-2.5 mb-3 border-bottom">
+                                        <span class="fw-bold text-dark"><span class="badge bg-success-subtle text-success rounded-pill me-1.5 font-mono-num">03</span>Rasio Jenis Kelamin &amp; Metadata Header</span>
+                                        <button type="button" onclick="calcAggregateSexRatio()" class="btn btn-sm btn-light border rounded-pill px-2.5 py-0.5 fw-semibold text-success" style="font-size: 11px;">
+                                            Hitung dari L / P
+                                        </button>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-bold text-success">Rasio L / 100 P</label>
+                                            <input type="number" step="0.1" min="0" id="aggInputSexRatio" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ number_format((float) ($aggAct['rasio_jenis_kelamin'] ?? 104.9), 1, '.', '') }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Judul Seksi Portal</label>
+                                            <input type="text" id="aggInputJudul" oninput="updatePortalAggregatePreview()" class="form-control rounded-3" value="{{ $aggAct['judul_ringkasan'] ?? 'Ringkasan Agregat Kabupaten Kolaka Utara' }}">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Label Sumber Kanan</label>
+                                            <input type="text" id="aggInputSumber" oninput="updatePortalAggregatePreview()" class="form-control rounded-3" value="{{ $aggAct['label_sumber'] ?? 'BPS PODES 2025' }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Kartu 04: Sentra IMK & Kelistrikan PLN -->
+                            <div class="col-lg-6">
+                                <div class="bento-card p-4 h-100 small">
+                                    <div class="d-flex align-items-center justify-content-between pb-2.5 mb-3 border-bottom">
+                                        <span class="fw-bold text-dark"><span class="badge bg-success-subtle text-success rounded-pill me-1.5 font-mono-num">04</span>Sentra IMK &amp; Rasio Kelistrikan PLN</span>
+                                        <span class="text-muted font-mono-num" style="font-size: 10.5px;">Ekonomi &amp; Energi</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-bold text-success">Sentra &amp; IMK (Unit)</label>
+                                            <input type="number" min="0" id="aggInputImk" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_imk'] ?? 0) }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-bold">Listrik PLN (%)</label>
+                                            <input type="number" step="0.01" min="0" max="100" id="aggInputRasioListrik" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ number_format((float) ($aggAct['rasio_listrik'] ?? 91.50), 2, '.', '') }}" required>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label fw-semibold">Berlistrik PLN (KK)</label>
+                                            <input type="number" min="0" id="aggInputPlnKk" oninput="updatePortalAggregatePreview()" class="form-control font-mono-num fw-bold rounded-3" value="{{ (int) ($aggAct['total_pln_kk'] ?? 0) }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Aksi -->
+                        <div class="bento-card p-3 p-md-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                            <div>
+                                <div class="small fw-semibold text-dark" id="aggLastUpdatedInfo">
+                                    @if($aggIsCustom && !empty($portalAggregate['updated_at']))
+                                        Diubah manual pada <strong>{{ $portalAggregate['updated_at'] }}</strong> oleh {{ $portalAggregate['updated_by'] ?? 'Administrator' }}
+                                    @else
+                                        Nilai saat ini dihitung otomatis dari akumulasi Master Kecamatan &amp; data PODES 2025.
+                                    @endif
+                                </div>
+                                <small class="text-muted" style="font-size: 11px;">Klik <strong>Reset ke Otomatis</strong> kapan saja jika ingin angka kembali mengikuti penjumlahan Master Kecamatan.</small>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                                <button type="button" onclick="fillAggregateFromDefaults()" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1.5 fw-bold">
+                                    <i class="bi bi-calculator me-1"></i>Isi Hitungan Otomatis
+                                </button>
+                                <button type="submit" id="btnSavePortalAggregate" class="btn btn-sm btn-emerald rounded-pill px-4 py-1.5 fw-bold">
+                                    <i class="bi bi-check2-circle me-1"></i>Simpan &amp; Publikasikan ke Portal
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            @endif
 
             <!-- =================================================================
                  TAB 4: PEMETAAN SPASIAL WEBGIS
@@ -1210,7 +2537,7 @@
                     <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 pb-3 mb-4 border-bottom">
                         <div>
                             <h5 class="fw-bold mb-1">Manajemen Koordinat Geospasial WebGIS</h5>
-                            <small class="text-muted">Kelola titik koordinat Latitude dan Longitude untuk 15 Kantor Kecamatan dan 133 Desa</small>
+                            <small class="text-muted">Kelola titik koordinat Latitude dan Longitude untuk <span id="spatialKecCountSubtitle">{{ count($kecamatanList) }}</span> Kantor Kecamatan dan {{ count($flatDesaList) }} Desa</small>
                         </div>
                         <a href="/portal#sectionPeta" target="_blank" class="btn btn-sm btn-emerald rounded-pill px-3 py-1.5 d-flex align-items-center gap-1.5 align-self-start">
                             <i class="bi bi-map"></i>
@@ -1233,24 +2560,34 @@
 
                         <div class="col-lg-8">
                             <div class="table-responsive border rounded-3" style="max-height: 440px;">
-                                <table class="table table-hover align-middle table-sm mb-0">
+                                <table class="table table-hover align-middle table-sm mb-0" id="tableSpatialKecamatan">
                                     <thead class="table-light sticky-top small fw-bold text-uppercase" style="font-size: 11px;">
                                         <tr>
                                             <th>WILAYAH KECAMATAN</th>
                                             <th>LATITUDE</th>
                                             <th>LONGITUDE</th>
                                             <th class="text-center">STATUS PETA</th>
+                                            @if(!$admin->isOperatorDesa())
+                                                <th class="text-center">AKSI</th>
+                                            @endif
                                         </tr>
                                     </thead>
-                                    <tbody class="small" style="font-size: 11px;">
+                                    <tbody class="small" style="font-size: 11px;" id="tbodySpatialKecamatan">
                                         @foreach($kecamatanList as $k)
-                                            <tr>
+                                            <tr class="kec-spatial-row" data-nama="{{ strtolower($k['nama'] ?? '') }}" data-kec-json='@json($k)'>
                                                 <td class="fw-bold text-dark">{{ $k['nama'] }}</td>
                                                 <td class="font-mono-num text-muted">{{ $k['lat'] }}</td>
                                                 <td class="font-mono-num text-muted">{{ $k['lng'] }}</td>
                                                 <td class="text-center">
                                                     <span class="badge bg-success-subtle text-success rounded-pill">Aktif di Peta</span>
                                                 </td>
+                                                @if(!$admin->isOperatorDesa())
+                                                    <td class="text-center">
+                                                        <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-light border text-muted px-2 py-0 rounded-pill" style="font-size: 10.5px;" title="Edit Nama & Koordinat Kecamatan">
+                                                            <i class="bi bi-pencil me-1"></i>Edit
+                                                        </button>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -1435,64 +2772,79 @@
          BOOTSTRAP MODAL: EDIT PROFIL DESA
          ========================================================================= -->
     <div class="modal fade" id="modalEditDesa" tabindex="-1" aria-labelledby="modalEditDesaTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 border-0 shadow-lg">
-                <div class="modal-header border-bottom py-3 px-4">
-                    <h6 class="modal-title fw-bold" id="modalEditDesaTitle">Edit Potensi Desa</h6>
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4 border-0 shadow-lg overflow-hidden">
+                <div class="modal-header border-bottom py-3 px-4 bg-white">
+                    <div class="d-flex align-items-center gap-2.5">
+                        <span class="d-inline-flex align-items-center justify-content-center rounded-3 bg-success-subtle text-success" style="width: 34px; height: 34px;">
+                            <i class="bi bi-houses-fill fs-6"></i>
+                        </span>
+                        <div>
+                            <h6 class="modal-title fw-bold mb-0 text-dark" id="modalEditDesaTitle">Edit Potensi Desa</h6>
+                            <small class="text-muted" style="font-size: 11px;">Perbarui skor kemandirian (IPD), komoditas, faskes &amp; koordinat peta desa</small>
+                        </div>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form onsubmit="saveDesaModalData(event)">
                     <div class="modal-body p-4 small">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Nama Desa / Kelurahan <span class="text-danger">*</span></label>
-                            <input type="text" id="editModalNamaDesa" class="form-control form-control-sm bg-light fw-bold" placeholder="Contoh: Desa Pitulua" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Kecamatan <span class="text-danger">*</span></label>
-                            <select id="editModalNamaKec" class="form-select form-select-sm fw-bold">
-                                @foreach($kecamatanList as $k)
-                                    <option value="{{ $k['nama'] }}">{{ $k['nama'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <label class="form-label fw-bold">Skor IPD <span class="text-muted fw-normal font-mono-num">(0-100)</span></label>
-                                <input type="number" step="0.1" min="0" max="100" id="editModalIpd" class="form-control form-control-sm font-mono-num fw-bold" placeholder="70.0" required>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-7">
+                                <label class="form-label fw-bold">Nama Desa / Kelurahan <span class="text-danger">*</span></label>
+                                <input type="text" id="editModalNamaDesa" class="form-control bg-light fw-bold rounded-3" placeholder="Contoh: Desa Pitulua" required>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-5">
+                                <label class="form-label fw-bold">Kecamatan <span class="text-danger">*</span></label>
+                                <select id="editModalNamaKec" class="form-select fw-bold rounded-3">
+                                    @foreach($kecamatanList as $k)
+                                        <option value="{{ $k['nama'] }}">{{ $k['nama'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Skor IPD <span class="text-muted fw-normal font-mono-num">(0–100)</span></label>
+                                <input type="number" step="0.1" min="0" max="100" id="editModalIpd" class="form-control font-mono-num fw-bold rounded-3" placeholder="70.0" required>
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label fw-bold">Status Kemandirian</label>
-                                <select id="editModalStatus" class="form-select form-select-sm fw-bold">
+                                <select id="editModalStatus" class="form-select fw-bold rounded-3">
                                     <option value="Mandiri">Mandiri (IPD &ge; 70)</option>
                                     <option value="Maju">Maju (50 &le; IPD &lt; 70)</option>
                                     <option value="Berkembang">Berkembang (IPD &lt; 50)</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Komoditas Utama</label>
-                            <input type="text" id="editModalKomoditas" class="form-control form-control-sm fw-bold" placeholder="Contoh: Kakao, Cengkeh, Kelapa">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Fasilitas Kesehatan</label>
-                            <input type="text" id="editModalFaskes" class="form-control form-control-sm fw-bold" placeholder="Contoh: Poskesdes / Pustu">
-                        </div>
-                        <div class="row g-2">
-                            <div class="col-6">
-                                <label class="form-label fw-bold">Latitude <span class="text-muted fw-normal font-mono-num">(Lintang)</span></label>
-                                <input type="number" step="any" id="editModalLat" class="form-control form-control-sm font-mono-num" placeholder="-3.5291">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Komoditas Utama</label>
+                                <input type="text" id="editModalKomoditas" class="form-control rounded-3" placeholder="Contoh: Kakao, Cengkeh, Kelapa">
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Fasilitas Kesehatan</label>
+                                <input type="text" id="editModalFaskes" class="form-control rounded-3" placeholder="Contoh: Poskesdes / Pustu">
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Latitude <span class="text-muted fw-normal font-mono-num">(Lintang)</span></label>
+                                <input type="number" step="any" id="editModalLat" class="form-control font-mono-num rounded-3" placeholder="-3.5291">
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label fw-bold">Longitude <span class="text-muted fw-normal font-mono-num">(Bujur)</span></label>
-                                <input type="number" step="any" id="editModalLng" class="form-control form-control-sm font-mono-num" placeholder="120.9855">
+                                <input type="number" step="any" id="editModalLng" class="form-control font-mono-num rounded-3" placeholder="120.9855">
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer border-top py-2 px-4">
-                        <button type="button" class="btn btn-sm btn-light border rounded-pill px-3" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" id="btnSaveDesaModal" class="btn btn-sm btn-emerald rounded-pill px-4">
-                            <i class="bi bi-check2 me-1"></i>Simpan Perubahan
-                        </button>
+                    <div class="modal-footer border-top bg-light py-3 px-4 d-flex justify-content-between">
+                        <small class="text-muted">Perubahan otomatis tersinkron ke Portal Publik.</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-sm btn-light border rounded-pill px-3.5 py-1.5 fw-semibold" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" id="btnSaveDesaModal" class="btn btn-sm btn-emerald rounded-pill px-4 py-1.5 fw-bold">
+                                <i class="bi bi-check2-circle me-1"></i>Simpan Perubahan
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1551,7 +2903,9 @@
     <script>
         // Master Data Kecamatan & Desa
         const KECAMATAN_DATA = @json($kecamatanList);
+        const FLAT_DESA_DATA = @json($flatDesaList);
         const PODES_CATALOG = @json($podesCatalog);
+        let PORTAL_AGGREGATE_STATE = @json($portalAggregate);
 
         // State Workspace PODES
         let currentKec = 'LASUSUA';
@@ -1696,7 +3050,9 @@
         const TAB_NAMES = {
             overview: 'Ringkasan Eksekutif',
             podes: 'Input PODES',
-            desa: 'Master Data Desa (133)',
+            desa: 'Master Data Desa',
+            kecamatan: 'Master Kecamatan (/portal/agregat)',
+            aggregate: 'Ringkasan Agregat Portal',
             spatial: 'Pemetaan Spasial WebGIS',
             users: 'Kelola Pengguna'
         };
@@ -1710,14 +3066,16 @@
             editDesaModal = new bootstrap.Modal(document.getElementById('modalEditDesa'));
             newUserModal = new bootstrap.Modal(document.getElementById('modalNewUser'));
 
+            initOverviewDashboard();
             initPodesWorkspace();
 
-            // Auto-sinkronisasi Skor IPD dengan Status Kemandirian
-            const ipdInput = document.getElementById('editModalIpd');
-            if (ipdInput) {
-                ipdInput.addEventListener('input', function() {
+            // Auto-sinkronisasi Skor IPD dengan Status Kemandirian (Modal Desa & Kecamatan)
+            const bindIpdSync = (inputId, selectId) => {
+                const ipdEl = document.getElementById(inputId);
+                if (!ipdEl) return;
+                ipdEl.addEventListener('input', function() {
                     const score = parseFloat(this.value);
-                    const statusSelect = document.getElementById('editModalStatus');
+                    const statusSelect = document.getElementById(selectId);
                     if (!isNaN(score) && statusSelect) {
                         if (score >= 70.0) {
                             statusSelect.value = 'Mandiri';
@@ -1728,7 +3086,9 @@
                         }
                     }
                 });
-            }
+            };
+            bindIpdSync('editModalIpd', 'editModalStatus');
+            bindIpdSync('editKecIpd', 'editKecStatusIpd');
 
             // Auto-isi koordinat default kecamatan saat ganti kecamatan di mode input desa baru
             const kecSelect = document.getElementById('editModalNamaKec');
@@ -1759,8 +3119,9 @@
             }
         }
 
-        function switchAdminTab(tab) {
-            const tabs = ['overview', 'podes', 'desa', 'spatial', 'users'];
+        function switchAdminTab(tab, keepKecEditorOpen = false) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            const tabs = ['overview', 'podes', 'desa', 'kecamatan', 'aggregate', 'spatial', 'users'];
             tabs.forEach(t => {
                 const content = document.getElementById('tabContent' + t.charAt(0).toUpperCase() + t.slice(1));
                 const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
@@ -1772,6 +3133,10 @@
                     if (btn) btn.classList.remove('active');
                 }
             });
+
+            if (tab === 'kecamatan' && !keepKecEditorOpen) {
+                closeKecamatanEditor();
+            }
 
             const topbarTitle = document.getElementById('topbarActiveTabName');
             if (topbarTitle && TAB_NAMES[tab]) {
@@ -1793,6 +3158,14 @@
 
             if (tab === 'podes') {
                 loadPodesTableData();
+            } else if (tab === 'overview') {
+                requestAnimationFrame(() => {
+                    Object.values(overviewCharts).forEach(ch => {
+                        if (ch && typeof ch.resize === 'function') {
+                            ch.resize();
+                        }
+                    });
+                });
             }
 
             if (window.innerWidth < 992) {
@@ -2629,7 +4002,7 @@
                         const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                         statusIndicator.innerHTML = `
                             <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
-                            <span id="formSaveStatusText">Tersimpan · terakhir ${timeStr}</span>
+                            <span id="formSaveStatusText">Tersimpan &amp; Terintegrasi ke /portal/peta · ${timeStr}</span>
                         `;
                     }
                     loadPodesTableData();
@@ -2639,6 +4012,40 @@
             } catch (err) {
                 console.error(err);
                 alert('Terjadi kesalahan jaringan.');
+            }
+        }
+
+        // Sinkronisasi manual seluruh data PODES ke /portal/peta
+        async function syncPodesToPortalManual() {
+            const btn = document.getElementById('btnSyncPortalPeta');
+            const originalHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm text-success" role="status"></span> Menyinkronkan...';
+            }
+
+            try {
+                const res = await fetch('/admin/podes/sync-portal', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('🚀 ' + (data.message || 'Data PODES berhasil disinkronkan ke /portal/peta!'));
+                } else {
+                    alert(data.message || 'Gagal menyinkronkan data.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Terjadi kesalahan jaringan saat menyinkronkan ke /portal/peta.');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                }
             }
         }
 
@@ -2680,35 +4087,85 @@
             if (syncModal) syncModal.show();
         }
 
-        function filterDesaTable() {
-            const searchVal = document.getElementById('inputSearchDesa').value.toLowerCase().trim();
-            const kecVal = document.getElementById('selectFilterKecamatan').value;
-            const statusVal = document.getElementById('selectFilterStatus').value;
-
-            const rows = document.querySelectorAll('.desa-row');
-            let visibleCount = 0;
-
-            rows.forEach(r => {
-                const nama = r.getAttribute('data-nama') || '';
-                const kec = r.getAttribute('data-kecamatan') || '';
-                const st = r.getAttribute('data-status') || '';
-                const komoditas = r.getAttribute('data-komoditas') || '';
-
-                const matchesSearch = !searchVal || nama.includes(searchVal) || kec.toLowerCase().includes(searchVal) || komoditas.includes(searchVal);
-                const matchesKec = !kecVal || kec === kecVal;
-                const matchesStatus = !statusVal || st === statusVal;
-
-                if (matchesSearch && matchesKec && matchesStatus) {
-                    r.style.display = '';
-                    visibleCount++;
-                } else {
-                    r.style.display = 'none';
+        function setDesaStatusFilter(statusVal) {
+            const selectEl = document.getElementById('selectFilterStatus');
+            if (selectEl) {
+                selectEl.value = statusVal;
+            }
+            const btnMap = {
+                '': 'btnDesaStatusAll',
+                'Mandiri': 'btnDesaStatusMandiri',
+                'Maju': 'btnDesaStatusMaju',
+                'Berkembang': 'btnDesaStatusBerkembang'
+            };
+            Object.keys(btnMap).forEach(key => {
+                const btn = document.getElementById(btnMap[key]);
+                if (btn) {
+                    btn.className = (key === statusVal) ? 'btn desa-status-chip active' : 'btn desa-status-chip';
                 }
             });
+            filterDesaTable();
+        }
+
+        function setDesaViewMode(mode) {
+            const tableEl = document.getElementById('desaTableContainer');
+            const gridEl = document.getElementById('desaGridContainer');
+            const btnTable = document.getElementById('btnDesaViewTable');
+            const btnCards = document.getElementById('btnDesaViewCards');
+            if (!tableEl || !gridEl || !btnTable || !btnCards) return;
+
+            if (mode === 'cards') {
+                tableEl.style.display = 'none';
+                gridEl.style.display = '';
+                btnCards.className = 'btn btn-view-tab active';
+                btnTable.className = 'btn btn-view-tab';
+            } else {
+                gridEl.style.display = 'none';
+                tableEl.style.display = '';
+                btnTable.className = 'btn btn-view-tab active';
+                btnCards.className = 'btn btn-view-tab';
+            }
+        }
+
+        function filterDesaTable() {
+            const searchVal = (document.getElementById('inputSearchDesa')?.value || '').toLowerCase().trim();
+            const kecVal = document.getElementById('selectFilterKecamatan')?.value || '';
+            const statusVal = document.getElementById('selectFilterStatus')?.value || '';
+
+            const filterCollection = (selector) => {
+                let count = 0;
+                document.querySelectorAll(selector).forEach(el => {
+                    const nama = el.getAttribute('data-nama') || '';
+                    const kec = el.getAttribute('data-kecamatan') || '';
+                    const st = el.getAttribute('data-status') || '';
+                    const komoditas = el.getAttribute('data-komoditas') || '';
+
+                    const matchesSearch = !searchVal || nama.includes(searchVal) || kec.toLowerCase().includes(searchVal) || komoditas.includes(searchVal);
+                    const matchesKec = !kecVal || kec === kecVal;
+                    const matchesStatus = !statusVal || st === statusVal;
+
+                    if (matchesSearch && matchesKec && matchesStatus) {
+                        el.style.display = '';
+                        count++;
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+                return count;
+            };
+
+            const visibleCount = filterCollection('.desa-row');
+            filterCollection('.desa-card-col');
 
             const countText = document.getElementById('desaTableCountText');
             if (countText) {
-                countText.textContent = `Menampilkan ${visibleCount} dari {{ count($flatDesaList) }} Desa/Kelurahan`;
+                const kecTotal = document.getElementById('masterKecCountSubtitle')?.textContent || '{{ count($kecamatanList) }}';
+                countText.innerHTML = `Menampilkan <strong>${visibleCount}</strong> dari <strong>{{ count($flatDesaList) }}</strong> Desa dan Kelurahan di <span id="masterKecCountSubtitle">${kecTotal}</span> Kecamatan`;
+            }
+
+            const footerSummary = document.getElementById('desaFooterSummary');
+            if (footerSummary) {
+                footerSummary.innerHTML = `Menampilkan <strong>${visibleCount}</strong> dari <strong>{{ count($flatDesaList) }}</strong> Desa & Kelurahan di Kabupaten Kolaka Utara`;
             }
         }
 
@@ -2850,20 +4307,68 @@
                         } else if (desa.status === 'Maju') {
                             badgeClass = 'bg-warning-subtle text-warning border-warning-subtle';
                         }
-                        cells[4].innerHTML = `<span class="badge ${badgeClass} border rounded-pill">${desa.status}</span>`;
+                        cells[4].innerHTML = `<span class="badge ${badgeClass} border rounded-pill px-2.5 py-1 fw-semibold">${desa.status}</span>`;
                         cells[5].textContent = desa.komoditas || '-';
                         cells[6].textContent = desa.faskes || '-';
 
+                        const safeNama = (desa.nama_desa || '').replace(/'/g, "\\'");
+                        const safeKec = (desa.nama_kec || '').replace(/'/g, "\\'");
                         const safeKomoditas = (desa.komoditas || '').replace(/'/g, "\\'");
                         const safeFaskes = (desa.faskes || '').replace(/'/g, "\\'");
                         cells[7].innerHTML = `
-                            <button type="button" onclick="editDesaData('${desa.nama_desa}', '${desa.nama_kec}', '${desa.ipd}', '${desa.status}', '${safeKomoditas}', '${safeFaskes}', '${desa.lat}', '${desa.lng}')" class="btn btn-sm btn-light border text-muted px-2 py-0.5 rounded-pill" title="Edit Profil Desa">
-                                <i class="bi bi-pencil me-1"></i>Edit
+                            <button type="button" onclick="editDesaData('${safeNama}', '${safeKec}', '${desa.ipd}', '${desa.status}', '${safeKomoditas}', '${safeFaskes}', '${desa.lat}', '${desa.lng}')" class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-semibold d-inline-flex align-items-center gap-1" style="font-size: 11.5px;" title="Edit Profil Desa">
+                                <i class="bi bi-pencil-square"></i>
+                                <span>Edit</span>
                             </button>
                         `;
                     }
                 }
             });
+
+            document.querySelectorAll('.desa-card-col').forEach(card => {
+                const cNama = (card.getAttribute('data-nama') || '').toLowerCase();
+                const cKec = (card.getAttribute('data-kecamatan') || '').toLowerCase();
+                if (cNama === targetNama && cKec === targetKec) {
+                    card.setAttribute('data-status', desa.status);
+                    card.setAttribute('data-komoditas', (desa.komoditas || '').toLowerCase());
+                    const komEl = card.querySelector('.desa-card-komoditas');
+                    if (komEl) komEl.textContent = desa.komoditas || '-';
+                    const faskesEl = card.querySelector('.desa-card-faskes');
+                    if (faskesEl) faskesEl.textContent = desa.faskes || '-';
+                    const barEl = card.querySelector('.desa-ipd-bar');
+                    if (barEl) {
+                        barEl.style.width = `${Math.min(100, Math.max(5, Number(desa.ipd || 70)))}%`;
+                        barEl.style.backgroundColor = desa.status === 'Mandiri' ? '#10b981' : (desa.status === 'Maju' ? '#f59e0b' : '#0ea5e9');
+                    }
+                    const btn = card.querySelector('button[onclick^="editDesaData"]');
+                    if (btn) {
+                        const safeNama = (desa.nama_desa || '').replace(/'/g, "\\'");
+                        const safeKec = (desa.nama_kec || '').replace(/'/g, "\\'");
+                        const safeKomoditas = (desa.komoditas || '').replace(/'/g, "\\'");
+                        const safeFaskes = (desa.faskes || '').replace(/'/g, "\\'");
+                        btn.setAttribute('onclick', `editDesaData('${safeNama}', '${safeKec}', '${desa.ipd}', '${desa.status}', '${safeKomoditas}', '${safeFaskes}', '${desa.lat}', '${desa.lng}')`);
+                    }
+                }
+            });
+
+            if (found && Array.isArray(FLAT_DESA_DATA)) {
+                const idx = FLAT_DESA_DATA.findIndex(item =>
+                    (item.nama_desa || '').toLowerCase() === targetNama &&
+                    (item.nama_kec || '').toLowerCase() === targetKec
+                );
+                if (idx >= 0) {
+                    FLAT_DESA_DATA[idx] = {
+                        ...FLAT_DESA_DATA[idx],
+                        ipd: Number(desa.ipd || FLAT_DESA_DATA[idx].ipd),
+                        status: desa.status || FLAT_DESA_DATA[idx].status,
+                        komoditas: desa.komoditas || FLAT_DESA_DATA[idx].komoditas,
+                        faskes: desa.faskes || FLAT_DESA_DATA[idx].faskes,
+                        lat: desa.lat ?? FLAT_DESA_DATA[idx].lat,
+                        lng: desa.lng ?? FLAT_DESA_DATA[idx].lng,
+                    };
+                    refreshOverviewDashboard();
+                }
+            }
 
             if (!found) {
                 // Desa baru ditambahkan: muat ulang halaman setelah notifikasi agar agregat & statistik ter-update
@@ -2871,6 +4376,698 @@
                     window.location.reload();
                 }, 1000);
             }
+        }
+
+        function setKecamatanViewMode(mode) {
+            const gridEl = document.getElementById('kecGridContainer');
+            const tableEl = document.getElementById('kecTableContainer');
+            const btnCards = document.getElementById('btnKecViewCards');
+            const btnTable = document.getElementById('btnKecViewTable');
+            if (!gridEl || !tableEl || !btnCards || !btnTable) return;
+
+            if (mode === 'table') {
+                gridEl.style.display = 'none';
+                tableEl.style.display = 'block';
+                btnTable.className = 'btn btn-view-tab active';
+                btnCards.className = 'btn btn-view-tab';
+            } else {
+                tableEl.style.display = 'none';
+                gridEl.style.display = '';
+                btnCards.className = 'btn btn-view-tab active';
+                btnTable.className = 'btn btn-view-tab';
+            }
+        }
+
+        function switchKecEditorTab(tabKey) {
+            const panes = {
+                identitas: 'kecEditorTabIdentitas',
+                komoditas: 'kecEditorTabKomoditas',
+                populasi: 'kecEditorTabPopulasi'
+            };
+            Object.keys(panes).forEach(k => {
+                const el = document.getElementById(panes[k]);
+                const btn = document.getElementById('kecEdTabBtn-' + k);
+                if (el) {
+                    el.style.display = (k === tabKey) ? 'block' : 'none';
+                }
+                if (btn) {
+                    btn.className = (k === tabKey)
+                        ? 'btn btn-sm btn-emerald rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5'
+                        : 'btn btn-sm btn-light border text-secondary rounded-pill px-3 py-1.5 fw-bold d-flex align-items-center gap-1.5';
+                }
+            });
+        }
+
+        function toggleManualFotoPath() {
+            const wrap = document.getElementById('kecManualFotoPathWrap');
+            if (!wrap) return;
+            wrap.style.display = (wrap.style.display === 'none' || !wrap.style.display) ? 'block' : 'none';
+        }
+
+        function updateKecLiveCardPreview() {
+            const namaRaw = (document.getElementById('editKecNama')?.value || '').trim() || 'KECAMATAN';
+            const popVal = parseInt(document.getElementById('editKecPendudukTotal')?.value || '0', 10) || 0;
+            const tagVal = (document.getElementById('editKecTag')?.value || '').trim() || 'Potensi Wilayah';
+
+            const titleContainer = document.getElementById('editKecPreviewVerticalTitle');
+            if (titleContainer) {
+                const words = namaRaw.toUpperCase().split(/\s+/).filter(Boolean);
+                titleContainer.innerHTML = words.map(w => {
+                    const letters = w.split('').map(ch => `<span>${escapeAdminHtml(ch)}</span>`).join('');
+                    return `<div class="d-flex flex-column align-items-center">${letters}</div>`;
+                }).join('');
+            }
+
+            const popEl = document.getElementById('editKecPreviewPop');
+            if (popEl) {
+                popEl.textContent = `${popVal.toLocaleString('id-ID')} PENDUDUK`;
+            }
+
+            const tagEl = document.getElementById('editKecPreviewTag');
+            if (tagEl) {
+                tagEl.textContent = tagVal;
+            }
+        }
+
+        function renderKecProdukChipPreview() {
+            const raw = document.getElementById('editKecProdukUnggulan')?.value || '';
+            const wrap = document.getElementById('editKecProdukChipPreview');
+            if (!wrap) return;
+            const items = raw.split(',').map(s => s.trim()).filter(Boolean);
+            if (!items.length) {
+                wrap.innerHTML = '<span class="text-muted" style="font-size: 11px;">Belum ada produk unggulan tertulis.</span>';
+                return;
+            }
+            wrap.innerHTML = items.map(item => `
+                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fw-semibold" style="font-size: 11px;">
+                    <i class="bi bi-dot me-0.5"></i>${escapeAdminHtml(item)}
+                </span>
+            `).join('');
+        }
+
+        function filterKecamatanTable() {
+            const inputEl = document.getElementById('inputSearchKecamatan');
+            const searchVal = inputEl ? inputEl.value.toLowerCase().trim() : '';
+            const filterItems = (selector) => {
+                let count = 0;
+                document.querySelectorAll(selector).forEach(el => {
+                    const nama = el.getAttribute('data-nama') || '';
+                    const kode = el.getAttribute('data-kode') || '';
+                    const komoditas = el.getAttribute('data-komoditas') || '';
+                    const matches = !searchVal || nama.includes(searchVal) || kode.includes(searchVal) || komoditas.includes(searchVal);
+                    el.style.display = matches ? '' : 'none';
+                    if (matches) count++;
+                });
+                return count;
+            };
+
+            const cardVisible = filterItems('.kec-card-col');
+            filterItems('.kec-master-row');
+
+            const countText = document.getElementById('kecTableCountText');
+            if (countText) {
+                countText.innerHTML = `Menampilkan <strong>${cardVisible}</strong> dari <strong>${KECAMATAN_DATA.length}</strong> Kecamatan beserta foto kartu, populasi, komoditas, dan metrik <code>/portal/agregat</code>`;
+            }
+        }
+
+        function updateKecFotoPreviewPath(path) {
+            const img = document.getElementById('editKecFotoPreview');
+            if (!img) return;
+            img.src = (path && path.trim()) ? path.trim() : '/images/jadesta/kebun_kakao_totallang.jpg';
+        }
+
+        function selectKecamatanGalleryPhoto(path) {
+            if (!path) return;
+            const pathInput = document.getElementById('editKecFoto');
+            const fileInput = document.getElementById('editKecFotoFile');
+            const labelEl = document.getElementById('editKecPreviewLabel');
+            if (fileInput) fileInput.value = '';
+            if (pathInput) pathInput.value = path;
+            if (labelEl) labelEl.textContent = path.split('/').pop();
+            updateKecFotoPreviewPath(path);
+        }
+
+        function previewKecamatanPhoto(input) {
+            const file = input && input.files ? input.files[0] : null;
+            const img = document.getElementById('editKecFotoPreview');
+            const label = document.getElementById('editKecPreviewLabel');
+            if (!file || !img) return;
+            const objectUrl = URL.createObjectURL(file);
+            img.src = objectUrl;
+            if (label) label.textContent = 'File baru: ' + file.name;
+        }
+
+        function recalcKecPendudukTotal() {
+            const l = parseInt(document.getElementById('editKecPendudukL')?.value || '0', 10) || 0;
+            const p = parseInt(document.getElementById('editKecPendudukP')?.value || '0', 10) || 0;
+            const totEl = document.getElementById('editKecPendudukTotal');
+            if (totEl) {
+                totEl.value = String(l + p);
+            }
+            updateKecLiveCardPreview();
+        }
+
+        function openKecamatanEditorView() {
+            const dirView = document.getElementById('kecDirectoryView');
+            const edView = document.getElementById('kecEditorView');
+            if (dirView) dirView.style.display = 'none';
+            if (edView) edView.style.display = 'block';
+            switchKecEditorTab('identitas');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeKecamatanEditor() {
+            const dirView = document.getElementById('kecDirectoryView');
+            const edView = document.getElementById('kecEditorView');
+            const manualWrap = document.getElementById('kecManualFotoPathWrap');
+            if (edView) edView.style.display = 'none';
+            if (dirView) dirView.style.display = 'block';
+            if (manualWrap) manualWrap.style.display = 'none';
+        }
+
+        function openNewKecamatanModal() {
+            switchAdminTab('kecamatan', true);
+            document.getElementById('modalEditKecamatanTitle').textContent = 'Tambah Kecamatan Baru';
+            document.getElementById('editKecOriginalNama').value = '';
+            const namaInput = document.getElementById('editKecNama');
+            namaInput.value = '';
+            document.getElementById('editKecKode').value = '';
+            document.getElementById('editKecTag').value = '';
+            document.getElementById('editKecIpd').value = '70.0';
+            document.getElementById('editKecStatusIpd').value = 'Maju';
+            document.getElementById('editKecDesaCount').value = '0';
+            document.getElementById('editKecKomoditasDominan').value = '';
+            document.getElementById('editKecKomoditas').value = '';
+            document.getElementById('editKecPotensi').value = '';
+            document.getElementById('editKecOdtw').value = '';
+            document.getElementById('editKecProdukUnggulan').value = '';
+            document.getElementById('editKecProdukDesaCount').value = '0';
+            document.getElementById('editKecPendudukL').value = '0';
+            document.getElementById('editKecPendudukP').value = '0';
+            document.getElementById('editKecPendudukTotal').value = '0';
+            document.getElementById('editKecImk').value = '0';
+            document.getElementById('editKecBumdes').value = '0';
+            document.getElementById('editKecSekolah').value = '0';
+            document.getElementById('editKecFaskes').value = '0';
+            document.getElementById('editKecPlnKk').value = '0';
+            document.getElementById('editKecLat').value = '-3.5291';
+            document.getElementById('editKecLng').value = '120.9855';
+
+            const idxEl = document.getElementById('editKecPreviewIndex');
+            if (idxEl) idxEl.textContent = String((KECAMATAN_DATA?.length || 15) + 1).padStart(2, '0');
+
+            const defaultImg = '/images/jadesta/kebun_kakao_totallang.jpg';
+            document.getElementById('editKecFoto').value = defaultImg;
+            const fileEl = document.getElementById('editKecFotoFile');
+            if (fileEl) fileEl.value = '';
+            const galEl = document.getElementById('editKecFotoGallery');
+            if (galEl) galEl.value = '';
+            const labelEl = document.getElementById('editKecPreviewLabel');
+            if (labelEl) labelEl.textContent = 'Default foto wilayah baru';
+            updateKecFotoPreviewPath(defaultImg);
+            updateKecLiveCardPreview();
+            renderKecProdukChipPreview();
+            openKecamatanEditorView();
+            setTimeout(() => namaInput.focus(), 120);
+        }
+
+        function editKecamatanFromRow(btn) {
+            const container = btn ? btn.closest('.kec-card-col, tr') : null;
+            if (!container) return;
+            let kec = {};
+            try {
+                kec = JSON.parse(container.getAttribute('data-kec-json') || '{}');
+            } catch (err) {
+                console.error(err);
+                return;
+            }
+            const cardIdx = container.getAttribute('data-index') || '1';
+            switchAdminTab('kecamatan', true);
+
+            const nama = kec.nama || '';
+            document.getElementById('modalEditKecamatanTitle').textContent = 'Edit Kecamatan: ' + nama;
+            document.getElementById('editKecOriginalNama').value = nama;
+            const namaInput = document.getElementById('editKecNama');
+            namaInput.value = nama;
+            document.getElementById('editKecKode').value = kec.kode || '';
+            document.getElementById('editKecTag').value = kec.tag || '';
+            document.getElementById('editKecIpd').value = kec.ipd ?? '70.0';
+            document.getElementById('editKecStatusIpd').value = kec.status_ipd || 'Maju';
+            document.getElementById('editKecDesaCount').value = kec.desa_count ?? (Array.isArray(kec.desaList) ? kec.desaList.length : 0);
+            document.getElementById('editKecKomoditasDominan').value = kec.komoditas_dominan || kec.komoditas || '';
+            document.getElementById('editKecKomoditas').value = kec.komoditas || '';
+            document.getElementById('editKecPotensi').value = kec.potensi_utama || '';
+            document.getElementById('editKecOdtw').value = kec.odtw || '';
+            document.getElementById('editKecProdukUnggulan').value = kec.produk_unggulan || '';
+            document.getElementById('editKecProdukDesaCount').value = kec.produk_unggulan_desa_count ?? 0;
+            document.getElementById('editKecPendudukL').value = kec.penduduk_l ?? 0;
+            document.getElementById('editKecPendudukP').value = kec.penduduk_p ?? 0;
+            document.getElementById('editKecPendudukTotal').value = kec.penduduk_total ?? ((Number(kec.penduduk_l) || 0) + (Number(kec.penduduk_p) || 0));
+            document.getElementById('editKecImk').value = kec.imk ?? 0;
+            document.getElementById('editKecBumdes').value = kec.bumdes ?? 0;
+            document.getElementById('editKecSekolah').value = kec.total_sekolah ?? 0;
+            document.getElementById('editKecFaskes').value = kec.total_faskes ?? 0;
+            document.getElementById('editKecPlnKk').value = kec.pln_kk ?? 0;
+            document.getElementById('editKecLat').value = kec.lat ?? '-3.5291';
+            document.getElementById('editKecLng').value = kec.lng ?? '120.9855';
+
+            const idxEl = document.getElementById('editKecPreviewIndex');
+            if (idxEl) idxEl.textContent = String(kec.portal_order || cardIdx).padStart(2, '0');
+
+            const fotoPath = kec.foto || '/images/jadesta/kebun_kakao_totallang.jpg';
+            document.getElementById('editKecFoto').value = fotoPath;
+            const fileEl = document.getElementById('editKecFotoFile');
+            if (fileEl) fileEl.value = '';
+            const galEl = document.getElementById('editKecFotoGallery');
+            if (galEl) {
+                const matchedOpt = Array.from(galEl.options).find(opt => opt.value === fotoPath);
+                galEl.value = matchedOpt ? fotoPath : '';
+            }
+            const labelEl = document.getElementById('editKecPreviewLabel');
+            if (labelEl) labelEl.textContent = fotoPath ? fotoPath.split('/').pop() : 'Preview Kartu';
+
+            updateKecFotoPreviewPath(fotoPath);
+            updateKecLiveCardPreview();
+            renderKecProdukChipPreview();
+            openKecamatanEditorView();
+            setTimeout(() => namaInput.focus(), 120);
+        }
+
+        async function saveKecamatanModalData(e) {
+            if (e) e.preventDefault();
+
+            const originalNama = document.getElementById('editKecOriginalNama').value.trim();
+            const nama = document.getElementById('editKecNama').value.trim();
+            const ipd = parseFloat(document.getElementById('editKecIpd').value);
+
+            if (!nama) {
+                switchKecEditorTab('identitas');
+                document.getElementById('editKecNama')?.focus();
+                alert('Nama Kecamatan wajib diisi!');
+                return;
+            }
+            if (isNaN(ipd) || ipd < 0 || ipd > 100) {
+                switchKecEditorTab('identitas');
+                document.getElementById('editKecIpd')?.focus();
+                alert('Skor IPD harus berupa angka antara 0 hingga 100.');
+                return;
+            }
+
+            const formData = new FormData();
+            if (originalNama) formData.append('original_nama', originalNama);
+            formData.append('nama', nama);
+            formData.append('kode', document.getElementById('editKecKode').value.trim());
+            formData.append('tag', document.getElementById('editKecTag').value.trim());
+            formData.append('foto', document.getElementById('editKecFoto').value.trim());
+            formData.append('ipd', String(ipd));
+            formData.append('status_ipd', document.getElementById('editKecStatusIpd').value);
+            formData.append('desa_count', document.getElementById('editKecDesaCount').value || '0');
+            formData.append('komoditas_dominan', document.getElementById('editKecKomoditasDominan').value.trim());
+            formData.append('komoditas', document.getElementById('editKecKomoditas').value.trim());
+            formData.append('potensi_utama', document.getElementById('editKecPotensi').value.trim());
+            formData.append('odtw', document.getElementById('editKecOdtw').value.trim());
+            formData.append('produk_unggulan', document.getElementById('editKecProdukUnggulan').value.trim());
+            formData.append('produk_unggulan_desa_count', document.getElementById('editKecProdukDesaCount').value || '0');
+            formData.append('penduduk_l', document.getElementById('editKecPendudukL').value || '0');
+            formData.append('penduduk_p', document.getElementById('editKecPendudukP').value || '0');
+            formData.append('penduduk_total', document.getElementById('editKecPendudukTotal').value || '0');
+            formData.append('imk', document.getElementById('editKecImk').value || '0');
+            formData.append('bumdes', document.getElementById('editKecBumdes').value || '0');
+            formData.append('total_sekolah', document.getElementById('editKecSekolah').value || '0');
+            formData.append('total_faskes', document.getElementById('editKecFaskes').value || '0');
+            formData.append('pln_kk', document.getElementById('editKecPlnKk').value || '0');
+
+            const latVal = document.getElementById('editKecLat').value.trim();
+            const lngVal = document.getElementById('editKecLng').value.trim();
+            if (latVal !== '') formData.append('lat', latVal);
+            if (lngVal !== '') formData.append('lng', lngVal);
+
+            const fotoFileInput = document.getElementById('editKecFotoFile');
+            if (fotoFileInput && fotoFileInput.files && fotoFileInput.files[0]) {
+                formData.append('foto_file', fotoFileInput.files[0]);
+            }
+
+            const btn = document.getElementById('btnSaveKecamatanModal');
+            const originalText = btn ? btn.innerHTML : 'Simpan Kecamatan & Foto';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Menyimpan...';
+            }
+
+            try {
+                const res = await fetch('/admin/kecamatan/save', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    showToast(data.message || 'Data Kecamatan berhasil disimpan!');
+                    syncKecamatanUiAfterSave(data.mode, data.old_nama || originalNama, data.kecamatan, data.total_kecamatan);
+                    closeKecamatanEditor();
+                } else {
+                    alert(data.message || 'Gagal menyimpan data Kecamatan.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Terjadi kesalahan koneksi saat menyimpan data Kecamatan.');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
+            }
+        }
+
+        function escapeAdminHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderKecamatanGridCardInnerHtml(kec) {
+            const kecDesaCount = kec.desa_count ?? (Array.isArray(kec.desaList) ? kec.desaList.length : 0);
+            const kecStatus = kec.status_ipd || 'Maju';
+            const statusBadge = kecStatus === 'Mandiri'
+                ? 'bg-success text-white'
+                : (kecStatus === 'Maju' ? 'bg-warning text-dark' : 'bg-info text-dark');
+            const fotoUrl = kec.foto || '/images/jadesta/kebun_kakao_totallang.jpg';
+            const popTotal = Number(kec.penduduk_total || 0);
+            const komDom = kec.komoditas_dominan || kec.komoditas || '-';
+
+            return `
+                <div class="bento-card overflow-hidden h-100 d-flex flex-column">
+                    <div class="position-relative" style="height: 158px; background: #0f172a;">
+                        <img src="${escapeAdminHtml(fotoUrl)}" alt="Foto ${escapeAdminHtml(kec.nama)}" class="w-100 h-100 object-fit-cover" onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+                        <div class="position-absolute inset-0 w-100 h-100 top-0 start-0" style="background: linear-gradient(to top, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.20) 55%, rgba(15, 23, 42, 0.40) 100%);"></div>
+                        <div class="position-absolute top-0 start-0 end-0 p-2.5 d-flex align-items-center justify-content-between">
+                            <span class="badge bg-dark bg-opacity-75 text-white border border-white border-opacity-25 rounded-pill font-mono-num" style="font-size: 10px;">${escapeAdminHtml(kec.kode || '-')}</span>
+                            <span class="badge ${statusBadge} rounded-pill fw-bold" style="font-size: 10px;">${escapeAdminHtml(kecStatus)}</span>
+                        </div>
+                        <div class="position-absolute bottom-0 start-0 end-0 p-3">
+                            <div class="d-flex align-items-end justify-content-between gap-2">
+                                <div class="min-w-0">
+                                    <h6 class="fw-bold text-white mb-0 text-truncate">${escapeAdminHtml(kec.nama)}</h6>
+                                    <div class="text-white-50 text-truncate" style="font-size: 11px;">${escapeAdminHtml(kec.tag || '-')}</div>
+                                </div>
+                                <span class="badge text-white font-mono-num flex-shrink-0" style="background: rgba(15, 23, 42, 0.68); border: 1px solid rgba(255, 255, 255, 0.28); font-size: 10px;">IPD ${Number(kec.ipd || 70).toFixed(1)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between gap-2.5 bg-white">
+                        <div>
+                            <div class="row g-1.5 text-center bg-light rounded-3 p-2 mb-2.5 border">
+                                <div class="col-4 border-end">
+                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">Penduduk</div>
+                                    <div class="fw-bold text-dark font-mono-num" style="font-size: 12px;">${popTotal.toLocaleString('id-ID')} <span class="fw-normal text-muted" style="font-size: 10px;">Jiwa</span></div>
+                                </div>
+                                <div class="col-4 border-end">
+                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">Desa</div>
+                                    <div class="fw-bold text-dark font-mono-num" style="font-size: 12px;">${kecDesaCount}</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-muted text-uppercase" style="font-size: 9px; letter-spacing: 0.4px;">IMK</div>
+                                    <div class="fw-bold text-success font-mono-num" style="font-size: 12px;">${Number(kec.imk || 0).toLocaleString('id-ID')}</div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-1.5 mb-1">
+                                <i class="bi bi-flower2 text-success flex-shrink-0" style="font-size: 12px;"></i>
+                                <span class="fw-semibold text-dark text-truncate" style="font-size: 11.5px;">${escapeAdminHtml(komDom)}</span>
+                            </div>
+                            <div class="text-muted font-mono-num text-truncate" style="font-size: 10.5px;">
+                                BUMDes ${Number(kec.bumdes || 0)} &bull; Sekolah ${Number(kec.total_sekolah || 0)} &bull; PLN ${Number(kec.pln_kk || 0).toLocaleString('id-ID')} KK
+                            </div>
+                        </div>
+                        <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-outline-success w-100 rounded-pill fw-bold py-1.5 d-flex align-items-center justify-content-center gap-1.5" style="font-size: 11.5px;">
+                            <i class="bi bi-pencil-square"></i>
+                            <span>Edit Konten &amp; Foto</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderKecamatanMasterRowCells(kec, rowNum) {
+            const kecDesaCount = kec.desa_count ?? (Array.isArray(kec.desaList) ? kec.desaList.length : 0);
+            const kecStatus = kec.status_ipd || 'Maju';
+            const badgeClass = kecStatus === 'Mandiri'
+                ? 'bg-success-subtle text-success border-success-subtle'
+                : (kecStatus === 'Maju' ? 'bg-warning-subtle text-warning border-warning-subtle' : 'bg-info-subtle text-info border-info-subtle');
+            const fotoUrl = kec.foto || '/images/jadesta/kebun_kakao_totallang.jpg';
+            const popTotal = Number(kec.penduduk_total || 0);
+            const komDom = kec.komoditas_dominan || kec.komoditas || '-';
+
+            return `
+                <td class="px-3 text-muted font-mono-num">${rowNum}</td>
+                <td>
+                    <div class="d-flex align-items-center gap-2.5 py-1">
+                        <img src="${escapeAdminHtml(fotoUrl)}" alt="Foto ${escapeAdminHtml(kec.nama)}" class="rounded-2 border object-fit-cover flex-shrink-0" style="width: 40px; height: 48px;" onerror="this.src='/images/jadesta/kebun_kakao_totallang.jpg'">
+                        <div>
+                            <div class="fw-bold text-dark">${escapeAdminHtml(kec.nama)}</div>
+                            <div class="font-mono-num text-muted" style="font-size: 10.5px;">${escapeAdminHtml(kec.kode || '-')}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="fw-bold font-mono-num text-dark">${popTotal.toLocaleString('id-ID')} Jiwa</div>
+                    <div class="text-muted" style="font-size: 11px;">${kecDesaCount} Desa/Kelurahan</div>
+                </td>
+                <td style="max-width: 240px;">
+                    <div class="fw-semibold text-dark text-truncate">${escapeAdminHtml(komDom)}</div>
+                    <div class="text-muted text-truncate" style="font-size: 10.5px;">${escapeAdminHtml(kec.tag || '-')}</div>
+                </td>
+                <td>
+                    <span class="fw-bold font-mono-num text-success me-1">${Number(kec.ipd || 70).toFixed(1)}</span>
+                    <span class="badge ${badgeClass} border rounded-pill">${escapeAdminHtml(kecStatus)}</span>
+                </td>
+                <td class="text-center">
+                    <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-emerald px-2.5 py-1 rounded-pill" style="font-size: 11.5px;">
+                        <i class="bi bi-pencil-square me-1"></i>Edit
+                    </button>
+                </td>
+            `;
+        }
+
+        function syncKecamatanUiAfterSave(mode, oldNama, kec, totalKecamatan) {
+            if (!kec || !kec.nama) return;
+
+            const newNama = kec.nama;
+            const prevNamaUpper = (oldNama || '').toUpperCase();
+            const newNamaUpper = newNama.toUpperCase();
+            const kecJsonStr = JSON.stringify(kec);
+            const komSearch = `${kec.komoditas_dominan || ''} ${kec.komoditas || ''} ${kec.produk_unggulan || ''}`.toLowerCase();
+
+            // 1. Update in-memory KECAMATAN_DATA
+            if (Array.isArray(KECAMATAN_DATA)) {
+                if (mode === 'edit') {
+                    const targetIdx = KECAMATAN_DATA.findIndex(item => (item.nama || '').toUpperCase() === prevNamaUpper);
+                    if (targetIdx !== -1) {
+                        KECAMATAN_DATA[targetIdx] = kec;
+                    } else {
+                        KECAMATAN_DATA.push(kec);
+                    }
+                } else {
+                    KECAMATAN_DATA.push(kec);
+                }
+            }
+
+            // 2. Sync <select> dropdowns across Admin tabs
+            const syncSelectOption = (selectId, useUpperVal) => {
+                const sel = document.getElementById(selectId);
+                if (!sel) return;
+                const oldVal = useUpperVal ? prevNamaUpper : (oldNama || '');
+                const newVal = useUpperVal ? newNamaUpper : newNama;
+                let matched = false;
+                Array.from(sel.options).forEach(opt => {
+                    if (opt.value && opt.value.toUpperCase() === oldVal.toUpperCase() && mode === 'edit') {
+                        opt.value = newVal;
+                        opt.textContent = newNama;
+                        matched = true;
+                    }
+                });
+                if (!matched) {
+                    const opt = document.createElement('option');
+                    opt.value = newVal;
+                    opt.textContent = newNama;
+                    sel.appendChild(opt);
+                }
+                if (selectId === 'selectFilterKecamatan' && sel.options[0]) {
+                    sel.options[0].textContent = `Semua Kecamatan (${totalKecamatan || KECAMATAN_DATA.length})`;
+                }
+            };
+            syncSelectOption('podesSelectKec', true);
+            syncSelectOption('selectFilterKecamatan', false);
+            syncSelectOption('editModalNamaKec', false);
+
+            if (mode === 'edit' && currentKec === prevNamaUpper) {
+                currentKec = newNamaUpper;
+            }
+
+            // 3A. Update Visual Card Grid item or append new card
+            const gridContainer = document.getElementById('kecGridContainer');
+            if (gridContainer) {
+                let updatedCard = false;
+                if (mode === 'edit') {
+                    gridContainer.querySelectorAll('.kec-card-col').forEach(cardEl => {
+                        if ((cardEl.getAttribute('data-nama') || '').toUpperCase() === prevNamaUpper) {
+                            updatedCard = true;
+                            cardEl.setAttribute('data-nama', newNama.toLowerCase());
+                            cardEl.setAttribute('data-kode', (kec.kode || '').toLowerCase());
+                            cardEl.setAttribute('data-komoditas', komSearch);
+                            cardEl.setAttribute('data-kec-json', kecJsonStr);
+                            cardEl.innerHTML = renderKecamatanGridCardInnerHtml(kec);
+                        }
+                    });
+                }
+                if (!updatedCard) {
+                    const col = document.createElement('div');
+                    col.className = 'col-12 col-sm-6 col-xl-4 col-xxl-3 kec-card-col';
+                    col.setAttribute('data-index', String(gridContainer.querySelectorAll('.kec-card-col').length + 1));
+                    col.setAttribute('data-nama', newNama.toLowerCase());
+                    col.setAttribute('data-kode', (kec.kode || '').toLowerCase());
+                    col.setAttribute('data-komoditas', komSearch);
+                    col.setAttribute('data-kec-json', kecJsonStr);
+                    col.innerHTML = renderKecamatanGridCardInnerHtml(kec);
+                    gridContainer.appendChild(col);
+                }
+            }
+
+            // 3B. Update Master Kecamatan compact table row or append
+            const tbodyMaster = document.getElementById('tbodyKecamatanMaster');
+            if (tbodyMaster) {
+                let updatedMaster = false;
+                if (mode === 'edit') {
+                    tbodyMaster.querySelectorAll('.kec-master-row').forEach((tr, rowIdx) => {
+                        if ((tr.getAttribute('data-nama') || '').toUpperCase() === prevNamaUpper) {
+                            updatedMaster = true;
+                            tr.setAttribute('data-nama', newNama.toLowerCase());
+                            tr.setAttribute('data-kode', (kec.kode || '').toLowerCase());
+                            tr.setAttribute('data-komoditas', komSearch);
+                            tr.setAttribute('data-kec-json', kecJsonStr);
+                            tr.innerHTML = renderKecamatanMasterRowCells(kec, rowIdx + 1);
+                        }
+                    });
+                }
+
+                if (!updatedMaster) {
+                    const tr = document.createElement('tr');
+                    tr.className = 'kec-master-row';
+                    tr.setAttribute('data-index', String(tbodyMaster.querySelectorAll('.kec-master-row').length + 1));
+                    tr.setAttribute('data-nama', newNama.toLowerCase());
+                    tr.setAttribute('data-kode', (kec.kode || '').toLowerCase());
+                    tr.setAttribute('data-komoditas', komSearch);
+                    tr.setAttribute('data-kec-json', kecJsonStr);
+                    const rowNum = tbodyMaster.querySelectorAll('.kec-master-row').length + 1;
+                    tr.innerHTML = renderKecamatanMasterRowCells(kec, rowNum);
+                    tbodyMaster.appendChild(tr);
+                }
+            }
+
+            // 4. Update Spatial Kecamatan table row or append
+            const tbodySpatial = document.getElementById('tbodySpatialKecamatan');
+            if (tbodySpatial) {
+                let updatedSpatial = false;
+                if (mode === 'edit') {
+                    tbodySpatial.querySelectorAll('.kec-spatial-row').forEach(tr => {
+                        if ((tr.getAttribute('data-nama') || '').toUpperCase() === prevNamaUpper) {
+                            updatedSpatial = true;
+                            tr.setAttribute('data-nama', newNama.toLowerCase());
+                            tr.setAttribute('data-kec-json', kecJsonStr);
+                            const cells = tr.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                cells[0].textContent = newNama;
+                                cells[1].textContent = kec.lat ?? '-';
+                                cells[2].textContent = kec.lng ?? '-';
+                            }
+                        }
+                    });
+                }
+                if (!updatedSpatial) {
+                    const tr = document.createElement('tr');
+                    tr.className = 'kec-spatial-row';
+                    tr.setAttribute('data-nama', newNama.toLowerCase());
+                    tr.setAttribute('data-kec-json', kecJsonStr);
+                    tr.innerHTML = `
+                        <td class="fw-bold text-dark">${escapeAdminHtml(newNama)}</td>
+                        <td class="font-mono-num text-muted">${escapeAdminHtml(kec.lat ?? '-')}</td>
+                        <td class="font-mono-num text-muted">${escapeAdminHtml(kec.lng ?? '-')}</td>
+                        <td class="text-center"><span class="badge bg-success-subtle text-success rounded-pill">Aktif di Peta</span></td>
+                        <td class="text-center">
+                            <button type="button" onclick="editKecamatanFromRow(this)" class="btn btn-sm btn-light border text-muted px-2 py-0 rounded-pill" style="font-size: 10.5px;" title="Edit Nama & Koordinat Kecamatan">
+                                <i class="bi bi-pencil me-1"></i>Edit
+                            </button>
+                        </td>
+                    `;
+                    tbodySpatial.appendChild(tr);
+                }
+            }
+
+            // 5. Propagate rename across rendered Desa Master rows and cards
+            if (mode === 'edit' && oldNama && prevNamaUpper !== newNamaUpper) {
+                document.querySelectorAll('.desa-row').forEach(tr => {
+                    if ((tr.getAttribute('data-kecamatan') || '').toUpperCase() === prevNamaUpper) {
+                        tr.setAttribute('data-kecamatan', newNama);
+                        const cells = tr.querySelectorAll('td');
+                        if (cells.length >= 8) {
+                            cells[2].textContent = newNama;
+                            const btn = cells[7].querySelector('button');
+                            if (btn && btn.getAttribute('onclick')) {
+                                const updatedOnclick = btn.getAttribute('onclick').replace(`'${oldNama}'`, `'${newNama.replace(/'/g, "\\'")}'`);
+                                btn.setAttribute('onclick', updatedOnclick);
+                            }
+                        }
+                    }
+                });
+                document.querySelectorAll('.desa-card-col').forEach(card => {
+                    if ((card.getAttribute('data-kecamatan') || '').toUpperCase() === prevNamaUpper) {
+                        card.setAttribute('data-kecamatan', newNama);
+                        const kecLabel = card.querySelector('.text-muted.text-truncate');
+                        if (kecLabel) {
+                            kecLabel.textContent = 'Kec. ' + newNama;
+                        }
+                        const btn = card.querySelector('button[onclick^="editDesaData"]');
+                        if (btn && btn.getAttribute('onclick')) {
+                            const updatedOnclick = btn.getAttribute('onclick').replace(`'${oldNama}'`, `'${newNama.replace(/'/g, "\\'")}'`);
+                            btn.setAttribute('onclick', updatedOnclick);
+                        }
+                    }
+                });
+            }
+
+            // 6. Add newly uploaded image path into gallery dropdown if not listed
+            if (kec.foto) {
+                const galEl = document.getElementById('editKecFotoGallery');
+                if (galEl && !Array.from(galEl.options).some(opt => opt.value === kec.foto)) {
+                    const opt = document.createElement('option');
+                    opt.value = kec.foto;
+                    opt.textContent = kec.foto.split('/').pop();
+                    galEl.appendChild(opt);
+                }
+            }
+
+            // 7. Update counters & Overview dashboard charts
+            if (mode === 'edit' && oldNama && prevNamaUpper !== newNamaUpper && Array.isArray(FLAT_DESA_DATA)) {
+                FLAT_DESA_DATA.forEach(item => {
+                    if ((item.nama_kec || '').toUpperCase() === prevNamaUpper) {
+                        item.nama_kec = newNama;
+                    }
+                });
+            }
+            const finalCount = totalKecamatan || (Array.isArray(KECAMATAN_DATA) ? KECAMATAN_DATA.length : 15);
+            ['overviewTotalKecamatan', 'masterKecCountSubtitle', 'subTabKecCount', 'spatialKecCountSubtitle', 'kecHeaderCount'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = String(finalCount);
+            });
+            filterKecamatanTable();
+            refreshOverviewDashboard();
         }
 
         function openNewUserModal() {
@@ -2904,6 +5101,721 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        }
+
+        // =====================================================================
+        // RINGKASAN EKSEKUTIF: ANALITIK CHART.JS & MONITORING PRIORITAS DESA
+        // =====================================================================
+        const IS_OPERATOR_DESA = @json($admin->isOperatorDesa());
+        const OPERATOR_DESA_NAME = @json(strtoupper((string) ($admin->desa ?? '')));
+        const overviewCharts = { kec: null, status: null, demografi: null, sektor: null };
+        let overviewKecMetric = 'ipd';
+        let overviewSektorMode = 'komoditas';
+        let overviewPriorityMode = 'prioritas';
+
+        function initOverviewDashboard() {
+            refreshOverviewDashboard();
+        }
+
+        function refreshOverviewDashboard() {
+            renderOverviewStatusChart();
+            renderOverviewKecChart();
+            renderOverviewDemografiChart();
+            renderOverviewSektorChart();
+            renderOverviewPriorityList();
+        }
+
+        function setOverviewKecMetric(metric) {
+            overviewKecMetric = metric || 'ipd';
+            ['ipd', 'penduduk', 'imk', 'bumdes'].forEach(key => {
+                const btn = document.getElementById('ovKecMetric-' + key);
+                if (btn) {
+                    btn.className = (key === overviewKecMetric) ? 'btn btn-view-tab active' : 'btn btn-view-tab';
+                }
+            });
+            renderOverviewKecChart();
+        }
+
+        function renderOverviewKecChart() {
+            const canvas = document.getElementById('chartOverviewKecamatan');
+            if (!canvas || typeof Chart === 'undefined' || !Array.isArray(KECAMATAN_DATA)) return;
+
+            const metricConfig = {
+                ipd: {
+                    subtitle: `Peringkat Skor IPD pada ${KECAMATAN_DATA.length} Kecamatan (batas status Mandiri \u2265 70)`,
+                    label: 'Skor IPD',
+                    getVal: k => Number(k.ipd || 0),
+                    format: v => Number(v).toFixed(1),
+                    max: 100
+                },
+                penduduk: {
+                    subtitle: `Distribusi jumlah penduduk pada ${KECAMATAN_DATA.length} Kecamatan (PODES 2025)`,
+                    label: 'Total Penduduk (Jiwa)',
+                    getVal: k => Number(k.penduduk_total || 0),
+                    format: v => Number(v).toLocaleString('id-ID') + ' Jiwa',
+                    max: undefined
+                },
+                imk: {
+                    subtitle: `Sebaran unit Industri Mikro & Kecil (IMK) per Kecamatan`,
+                    label: 'Unit IMK',
+                    getVal: k => Number(k.imk || 0),
+                    format: v => Number(v).toLocaleString('id-ID') + ' Unit',
+                    max: undefined
+                },
+                bumdes: {
+                    subtitle: `Jumlah Badan Usaha Milik Desa (BUMDes) aktif per Kecamatan`,
+                    label: 'BUMDes (Unit)',
+                    getVal: k => Number(k.bumdes || 0),
+                    format: v => Number(v).toLocaleString('id-ID') + ' BUMDes',
+                    max: undefined
+                }
+            };
+
+            const cfg = metricConfig[overviewKecMetric] || metricConfig.ipd;
+            const subEl = document.getElementById('overviewKecChartSubtitle');
+            if (subEl) subEl.textContent = cfg.subtitle;
+
+            const legendBar = document.getElementById('overviewKecLegendBar');
+            if (legendBar) {
+                legendBar.style.display = (overviewKecMetric === 'ipd') ? 'flex' : 'none';
+            }
+
+            const sorted = [...KECAMATAN_DATA].sort((a, b) => cfg.getVal(b) - cfg.getVal(a));
+            const labels = sorted.map(k => k.nama || '-');
+            const values = sorted.map(cfg.getVal);
+            const colors = sorted.map((k, idx) => {
+                if (overviewKecMetric === 'ipd') {
+                    const ipdVal = Number(k.ipd || 0);
+                    if (ipdVal >= 70) return '#10b981';
+                    if (ipdVal >= 50) return '#f59e0b';
+                    return '#0ea5e9';
+                }
+                return idx < 3 ? '#059669' : '#34d399';
+            });
+
+            if (overviewCharts.kec) {
+                overviewCharts.kec.destroy();
+            }
+
+            overviewCharts.kec = new Chart(canvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: cfg.label,
+                        data: values,
+                        backgroundColor: colors,
+                        borderRadius: 6,
+                        maxBarThickness: 28
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: ctx => `${cfg.label}: ${cfg.format(ctx.parsed.y)}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { size: 10.5, weight: '600' },
+                                color: '#475569',
+                                maxRotation: 35,
+                                minRotation: 0
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            suggestedMax: cfg.max,
+                            grid: { color: '#f1f5f9' },
+                            ticks: {
+                                font: { size: 10.5 },
+                                color: '#64748b',
+                                callback: v => Number(v).toLocaleString('id-ID')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderOverviewStatusChart() {
+            const list = Array.isArray(FLAT_DESA_DATA) ? FLAT_DESA_DATA : [];
+            let mandiri = 0;
+            let maju = 0;
+            let berkembang = 0;
+            let ipdSum = 0;
+
+            list.forEach(d => {
+                const st = String(d.status || '').toLowerCase();
+                if (st.includes('mandiri')) mandiri++;
+                else if (st.includes('maju')) maju++;
+                else berkembang++;
+                ipdSum += Number(d.ipd || 0);
+            });
+
+            const total = list.length;
+            const avgIpd = total > 0 ? (ipdSum / total) : 0;
+            const pct = val => total > 0 ? ((val / total) * 100).toFixed(1).replace('.', ',') : '0,0';
+
+            const setTxt = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
+            setTxt('overviewTotalDesa', String(total));
+            setTxt('overviewMandiriCount', String(mandiri));
+            setTxt('overviewMajuCount', String(maju));
+            setTxt('overviewBerkembangCount', String(berkembang));
+            setTxt('overviewDoughnutTotalBadge', `${total} Desa`);
+            setTxt('overviewAvgIpdValue', avgIpd.toFixed(1));
+            setTxt('overviewDoughnutMandiri', `${mandiri} Desa (${pct(mandiri)}%)`);
+            setTxt('overviewDoughnutMaju', `${maju} Desa (${pct(maju)}%)`);
+            setTxt('overviewDoughnutBerkembang', `${berkembang} Desa (${pct(berkembang)}%)`);
+
+            const canvas = document.getElementById('chartOverviewStatusDoughnut');
+            if (!canvas || typeof Chart === 'undefined') return;
+
+            if (overviewCharts.status) {
+                overviewCharts.status.destroy();
+            }
+
+            overviewCharts.status = new Chart(canvas.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Mandiri', 'Maju', 'Berkembang'],
+                    datasets: [{
+                        data: [mandiri, maju, berkembang],
+                        backgroundColor: ['#10b981', '#f59e0b', '#0ea5e9'],
+                        borderColor: '#ffffff',
+                        borderWidth: 3,
+                        hoverOffset: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: ctx => `${ctx.label}: ${ctx.parsed} Desa (${pct(ctx.parsed)}%)`
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderOverviewDemografiChart() {
+            const list = Array.isArray(KECAMATAN_DATA) ? KECAMATAN_DATA : [];
+            const totalPop = list.reduce((acc, k) => acc + Number(k.penduduk_total || (Number(k.penduduk_l || 0) + Number(k.penduduk_p || 0))), 0);
+            const badge = document.getElementById('overviewTotalPendudukBadge');
+            if (badge) {
+                badge.textContent = `${totalPop.toLocaleString('id-ID')} Jiwa`;
+            }
+
+            const canvas = document.getElementById('chartOverviewDemografi');
+            if (!canvas || typeof Chart === 'undefined') return;
+
+            const sorted = [...list].sort((a, b) => Number(b.penduduk_total || 0) - Number(a.penduduk_total || 0));
+            const labels = sorted.map(k => k.nama || '-');
+            const dataL = sorted.map(k => Number(k.penduduk_l || 0));
+            const dataP = sorted.map(k => Number(k.penduduk_p || 0));
+
+            if (overviewCharts.demografi) {
+                overviewCharts.demografi.destroy();
+            }
+
+            overviewCharts.demografi = new Chart(canvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Laki-laki',
+                            data: dataL,
+                            backgroundColor: '#0284c7',
+                            borderRadius: 3
+                        },
+                        {
+                            label: 'Perempuan',
+                            data: dataP,
+                            backgroundColor: '#10b981',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 10,
+                                usePointStyle: true,
+                                pointStyle: 'circle',
+                                font: { size: 11, weight: '600' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: ctx => `${ctx.dataset.label}: ${Number(ctx.parsed.y).toLocaleString('id-ID')} Jiwa`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false },
+                            ticks: { font: { size: 10 }, color: '#475569', maxRotation: 40, minRotation: 0 }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: {
+                                font: { size: 10.5 },
+                                color: '#64748b',
+                                callback: v => Number(v).toLocaleString('id-ID')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function setOverviewSektorMode(mode) {
+            overviewSektorMode = mode === 'infrastruktur' ? 'infrastruktur' : 'komoditas';
+            ['komoditas', 'infrastruktur'].forEach(key => {
+                const btn = document.getElementById('ovSektorMode-' + key);
+                if (btn) {
+                    btn.className = (key === overviewSektorMode) ? 'btn btn-view-tab active' : 'btn btn-view-tab';
+                }
+            });
+            renderOverviewSektorChart();
+        }
+
+        function renderOverviewSektorChart() {
+            const canvas = document.getElementById('chartOverviewSektor');
+            if (!canvas || typeof Chart === 'undefined') return;
+
+            const titleEl = document.getElementById('overviewSektorChartTitle');
+            const subEl = document.getElementById('overviewSektorChartSubtitle');
+
+            if (overviewCharts.sektor) {
+                overviewCharts.sektor.destroy();
+            }
+
+            if (overviewSektorMode === 'infrastruktur') {
+                if (titleEl) titleEl.textContent = 'Sebaran Infrastruktur Desa (Top 7 Kecamatan)';
+                if (subEl) subEl.textContent = 'Perbandingan sarana Sekolah, Faskes & BUMDes dari data PODES 2025';
+
+                const topKec = [...(KECAMATAN_DATA || [])]
+                    .sort((a, b) => (Number(b.total_sekolah || 0) + Number(b.total_faskes || 0) + Number(b.bumdes || 0)) - (Number(a.total_sekolah || 0) + Number(a.total_faskes || 0) + Number(a.bumdes || 0)))
+                    .slice(0, 7);
+
+                overviewCharts.sektor = new Chart(canvas.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: topKec.map(k => k.nama || '-'),
+                        datasets: [
+                            {
+                                label: 'Sekolah',
+                                data: topKec.map(k => Number(k.total_sekolah || 0)),
+                                backgroundColor: '#3b82f6',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'Faskes',
+                                data: topKec.map(k => Number(k.total_faskes || 0)),
+                                backgroundColor: '#10b981',
+                                borderRadius: 4
+                            },
+                            {
+                                label: 'BUMDes',
+                                data: topKec.map(k => Number(k.bumdes || 0)),
+                                backgroundColor: '#f59e0b',
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { boxWidth: 10, usePointStyle: true, pointStyle: 'circle', font: { size: 11, weight: '600' } }
+                            },
+                            tooltip: { backgroundColor: '#0f172a', padding: 10, cornerRadius: 8 }
+                        },
+                        scales: {
+                            x: {
+                                stacked: true,
+                                beginAtZero: true,
+                                grid: { color: '#f1f5f9' },
+                                ticks: { font: { size: 10.5 }, color: '#64748b' }
+                            },
+                            y: {
+                                stacked: true,
+                                grid: { display: false },
+                                ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
+                            }
+                        }
+                    }
+                });
+                return;
+            }
+
+            if (titleEl) titleEl.textContent = 'Top Komoditas Unggulan Desa';
+            if (subEl) subEl.textContent = `Sebaran sektor komoditas di ${(FLAT_DESA_DATA || []).length} Desa Kolaka Utara`;
+
+            const buckets = {
+                'Kakao': 0,
+                'Cengkeh': 0,
+                'Nilam': 0,
+                'Padi & Beras': 0,
+                'Perikanan & Bahari': 0,
+                'Kopi': 0,
+                'Kelapa & Kopra': 0,
+                'Lada & Rempah': 0
+            };
+
+            (FLAT_DESA_DATA || []).forEach(d => {
+                const raw = String(d.komoditas || '').toLowerCase();
+                if (!raw) return;
+                if (raw.includes('kakao') || raw.includes('cokelat')) buckets['Kakao']++;
+                if (raw.includes('cengkeh')) buckets['Cengkeh']++;
+                if (raw.includes('nilam')) buckets['Nilam']++;
+                if (raw.includes('padi') || raw.includes('beras') || raw.includes('gabah')) buckets['Padi & Beras']++;
+                if (raw.includes('ikan') || raw.includes('rumput laut') || raw.includes('bandeng') || raw.includes('udang')) buckets['Perikanan & Bahari']++;
+                if (raw.includes('kopi')) buckets['Kopi']++;
+                if (raw.includes('kelapa') || raw.includes('kopra')) buckets['Kelapa & Kopra']++;
+                if (raw.includes('lada') || raw.includes('merica') || raw.includes('pala')) buckets['Lada & Rempah']++;
+            });
+
+            const sortedBuckets = Object.entries(buckets)
+                .filter(([, count]) => count > 0)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 7);
+
+            overviewCharts.sektor = new Chart(canvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: sortedBuckets.map(([name]) => name),
+                    datasets: [{
+                        label: 'Jumlah Desa',
+                        data: sortedBuckets.map(([, count]) => count),
+                        backgroundColor: ['#059669', '#10b981', '#34d399', '#0284c7', '#f59e0b', '#8b5cf6', '#ec4899'],
+                        borderRadius: 6,
+                        maxBarThickness: 22
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 10,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: ctx => `${ctx.parsed.x} Desa menghasilkan komoditas ini`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: { font: { size: 10.5 }, color: '#64748b' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function setOverviewPriorityMode(mode) {
+            overviewPriorityMode = mode === 'top' ? 'top' : 'prioritas';
+            ['prioritas', 'top'].forEach(key => {
+                const btn = document.getElementById('ovPriorityTab-' + key);
+                if (btn) {
+                    btn.className = (key === overviewPriorityMode) ? 'btn btn-view-tab active' : 'btn btn-view-tab';
+                }
+            });
+            renderOverviewPriorityList();
+        }
+
+        function renderOverviewPriorityList() {
+            const tbody = document.getElementById('overviewPriorityTbody');
+            if (!tbody) return;
+
+            const subEl = document.getElementById('overviewPrioritySubtitle');
+            const list = Array.isArray(FLAT_DESA_DATA) ? [...FLAT_DESA_DATA] : [];
+            let rows = [];
+
+            if (overviewPriorityMode === 'top') {
+                if (subEl) subEl.textContent = '6 desa dengan skor Indeks Pembangunan Desa (IPD) tertinggi';
+                rows = list.sort((a, b) => Number(b.ipd || 0) - Number(a.ipd || 0)).slice(0, 6);
+            } else {
+                const nonMandiri = list.filter(d => String(d.status || '').toLowerCase() !== 'mandiri')
+                    .sort((a, b) => Number(a.ipd || 0) - Number(b.ipd || 0));
+                if (subEl) subEl.textContent = `${nonMandiri.length} desa sasaran akselerasi menuju status Mandiri (IPD < 70)`;
+                rows = nonMandiri.slice(0, 6);
+            }
+
+            if (!rows.length) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Seluruh desa sudah berstatus Mandiri.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = rows.map(d => {
+                const st = d.status || 'Maju';
+                const badgeCls = st === 'Mandiri'
+                    ? 'bg-success-subtle text-success border-success-subtle'
+                    : (st === 'Maju' ? 'bg-warning-subtle text-warning border-warning-subtle' : 'bg-info-subtle text-info border-info-subtle');
+
+                const safeNama = String(d.nama_desa || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const safeKec = String(d.nama_kec || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const safeKom = String(d.komoditas || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                const safeFaskes = String(d.faskes || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+                const canEdit = !IS_OPERATOR_DESA || String(d.nama_desa || '').toUpperCase() === OPERATOR_DESA_NAME;
+                const actionBtn = canEdit
+                    ? `<button type="button" onclick="editDesaData('${safeNama}', '${safeKec}', '${d.ipd}', '${st}', '${safeKom}', '${safeFaskes}', '${d.lat}', '${d.lng}')" class="btn btn-sm btn-outline-success rounded-pill px-2.5 py-0.5 fw-semibold" style="font-size: 11px;">Edit</button>`
+                    : '<span class="text-muted font-mono-num" style="font-size: 11px;">-</span>';
+
+                return `
+                    <tr>
+                        <td class="px-3">
+                            <div class="fw-bold text-dark">${escapeAdminHtml(d.nama_desa)}</div>
+                            <div class="text-muted" style="font-size: 11px;">Kec. ${escapeAdminHtml(d.nama_kec)}</div>
+                        </td>
+                        <td><span class="badge ${badgeCls} border rounded-pill px-2 py-0.5 fw-semibold">${escapeAdminHtml(st)}</span></td>
+                        <td class="text-end fw-bold font-mono-num text-success">${Number(d.ipd || 0).toFixed(1)}</td>
+                        <td class="text-muted text-truncate" style="max-width: 170px;">${escapeAdminHtml(d.komoditas || '-')}</td>
+                        <td class="text-center px-3">${actionBtn}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // =====================================================================
+        // RINGKASAN AGREGAT PORTAL (/portal/agregat & /portal) EDITOR
+        // =====================================================================
+        function setPortalAggregateFormValues(vals) {
+            if (!vals) return;
+            const setVal = (id, v) => {
+                const el = document.getElementById(id);
+                if (el && v !== undefined && v !== null) el.value = v;
+            };
+            setVal('aggInputJudul', vals.judul_ringkasan ?? 'Ringkasan Agregat Kabupaten Kolaka Utara');
+            setVal('aggInputSumber', vals.label_sumber ?? 'BPS PODES 2025');
+            setVal('aggInputPendudukL', Number(vals.total_penduduk_l ?? 0));
+            setVal('aggInputPendudukP', Number(vals.total_penduduk_p ?? 0));
+            setVal('aggInputPendudukTotal', Number(vals.total_penduduk ?? 0));
+            setVal('aggInputKepadatan', Number(vals.kepadatan_rata ?? 0).toFixed(1));
+            setVal('aggInputTotalKecamatan', Number(vals.total_kecamatan ?? 15));
+            setVal('aggInputTotalDesa', Number(vals.total_desa ?? 133));
+            setVal('aggInputSexRatio', Number(vals.rasio_jenis_kelamin ?? 100).toFixed(1));
+            setVal('aggInputImk', Number(vals.total_imk ?? 0));
+            setVal('aggInputRasioListrik', Number(vals.rasio_listrik ?? 91.5).toFixed(2));
+            setVal('aggInputPlnKk', Number(vals.total_pln_kk ?? 0));
+            updatePortalAggregatePreview();
+        }
+
+        function onAggregateLPInput() {
+            const pL = parseInt(document.getElementById('aggInputPendudukL')?.value || '0', 10) || 0;
+            const pP = parseInt(document.getElementById('aggInputPendudukP')?.value || '0', 10) || 0;
+            const totEl = document.getElementById('aggInputPendudukTotal');
+            if (totEl) totEl.value = pL + pP;
+            const sexEl = document.getElementById('aggInputSexRatio');
+            if (sexEl && pP > 0) {
+                sexEl.value = ((pL / pP) * 100).toFixed(1);
+            }
+            updatePortalAggregatePreview();
+        }
+
+        function calcAggregateTotalPenduduk() {
+            const pL = parseInt(document.getElementById('aggInputPendudukL')?.value || '0', 10) || 0;
+            const pP = parseInt(document.getElementById('aggInputPendudukP')?.value || '0', 10) || 0;
+            const totEl = document.getElementById('aggInputPendudukTotal');
+            if (totEl) totEl.value = pL + pP;
+            updatePortalAggregatePreview();
+        }
+
+        function calcAggregateSexRatio() {
+            const pL = parseInt(document.getElementById('aggInputPendudukL')?.value || '0', 10) || 0;
+            const pP = parseInt(document.getElementById('aggInputPendudukP')?.value || '0', 10) || 0;
+            const sexEl = document.getElementById('aggInputSexRatio');
+            if (sexEl) {
+                sexEl.value = pP > 0 ? ((pL / pP) * 100).toFixed(1) : '100.0';
+            }
+            updatePortalAggregatePreview();
+        }
+
+        function updatePortalAggregatePreview() {
+            const pL = parseInt(document.getElementById('aggInputPendudukL')?.value || '0', 10) || 0;
+            const pP = parseInt(document.getElementById('aggInputPendudukP')?.value || '0', 10) || 0;
+            const pTot = parseInt(document.getElementById('aggInputPendudukTotal')?.value || '0', 10) || 0;
+            const kep = parseFloat(document.getElementById('aggInputKepadatan')?.value || '0') || 0;
+            const nKec = parseInt(document.getElementById('aggInputTotalKecamatan')?.value || '0', 10) || 0;
+            const nDesa = parseInt(document.getElementById('aggInputTotalDesa')?.value || '0', 10) || 0;
+            const sex = parseFloat(document.getElementById('aggInputSexRatio')?.value || '0') || 0;
+            const imk = parseInt(document.getElementById('aggInputImk')?.value || '0', 10) || 0;
+            const plnPct = parseFloat(document.getElementById('aggInputRasioListrik')?.value || '0') || 0;
+            const judul = (document.getElementById('aggInputJudul')?.value || '').trim() || 'Ringkasan Agregat Kabupaten Kolaka Utara';
+            const sumber = (document.getElementById('aggInputSumber')?.value || '').trim() || 'BPS PODES 2025';
+
+            const setText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
+            setText('aggPreviewJudul', judul);
+            setText('aggPreviewSumber', sumber);
+            setText('aggPreviewTotalPenduduk', pTot.toLocaleString('id-ID'));
+            setText('aggPreviewLP', `L: ${pL.toLocaleString('id-ID')} \u2022 P: ${pP.toLocaleString('id-ID')}`);
+            setText('aggPreviewKepadatan', kep.toFixed(1));
+            setText('aggPreviewCakupan', `Cakupan ${nKec} Kecamatan / ${nDesa} Desa`);
+            setText('aggPreviewSexRatio', sex.toFixed(1));
+            setText('aggPreviewImk', imk.toLocaleString('id-ID'));
+            setText('aggPreviewPln', `Listrik PLN: ${plnPct.toFixed(2)}%`);
+        }
+
+        function computeLiveKecamatanAggregateDefaults() {
+            const base = (PORTAL_AGGREGATE_STATE && PORTAL_AGGREGATE_STATE.defaults)
+                ? { ...PORTAL_AGGREGATE_STATE.defaults }
+                : {};
+            if (Array.isArray(KECAMATAN_DATA) && KECAMATAN_DATA.length > 0) {
+                let l = 0, p = 0, tot = 0, imk = 0, pln = 0, desaCount = 0;
+                KECAMATAN_DATA.forEach(k => {
+                    const kL = Number(k.penduduk_l || 0);
+                    const kP = Number(k.penduduk_p || 0);
+                    l += kL;
+                    p += kP;
+                    tot += Number(k.penduduk_total || (kL + kP));
+                    imk += Number(k.imk || 0);
+                    pln += Number(k.pln_kk || 0);
+                    desaCount += Number(k.desa_count || (Array.isArray(k.desaList) ? k.desaList.length : 0));
+                });
+                base.total_kecamatan = KECAMATAN_DATA.length;
+                base.total_desa = desaCount || base.total_desa || 133;
+                base.total_penduduk_l = l;
+                base.total_penduduk_p = p;
+                base.total_penduduk = tot || (l + p);
+                base.rasio_jenis_kelamin = p > 0 ? Number(((l / p) * 100).toFixed(1)) : 100.0;
+                base.total_imk = imk;
+                base.total_pln_kk = pln;
+            }
+            return base;
+        }
+
+        function fillAggregateFromDefaults() {
+            const defs = computeLiveKecamatanAggregateDefaults();
+            setPortalAggregateFormValues(defs);
+            showToast('Nilai form diisi ulang dari hitungan otomatis Master Kecamatan. Klik Simpan untuk mempublikasikan.');
+        }
+
+        async function savePortalAggregateData(e, action = 'save') {
+            if (e) e.preventDefault();
+
+            if (action === 'reset' && !confirm('Kembalikan seluruh angka Ringkasan Agregat Kabupaten agar dihitung otomatis dari Master Kecamatan?')) {
+                return;
+            }
+
+            const btn = document.getElementById(action === 'reset' ? 'btnResetPortalAggregate' : 'btnSavePortalAggregate');
+            const originalHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Memproses...';
+            }
+
+            try {
+                const payload = {
+                    action,
+                    judul_ringkasan: document.getElementById('aggInputJudul')?.value || '',
+                    label_sumber: document.getElementById('aggInputSumber')?.value || '',
+                    total_penduduk_l: parseInt(document.getElementById('aggInputPendudukL')?.value || '0', 10) || 0,
+                    total_penduduk_p: parseInt(document.getElementById('aggInputPendudukP')?.value || '0', 10) || 0,
+                    total_penduduk: parseInt(document.getElementById('aggInputPendudukTotal')?.value || '0', 10) || 0,
+                    kepadatan_rata: parseFloat(document.getElementById('aggInputKepadatan')?.value || '0') || 0,
+                    total_kecamatan: parseInt(document.getElementById('aggInputTotalKecamatan')?.value || '0', 10) || 0,
+                    total_desa: parseInt(document.getElementById('aggInputTotalDesa')?.value || '0', 10) || 0,
+                    rasio_jenis_kelamin: parseFloat(document.getElementById('aggInputSexRatio')?.value || '0') || 0,
+                    total_imk: parseInt(document.getElementById('aggInputImk')?.value || '0', 10) || 0,
+                    rasio_listrik: parseFloat(document.getElementById('aggInputRasioListrik')?.value || '0') || 0,
+                    total_pln_kk: parseInt(document.getElementById('aggInputPlnKk')?.value || '0', 10) || 0
+                };
+
+                const res = await fetch('/admin/portal-agregat/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    PORTAL_AGGREGATE_STATE = data.aggregate || PORTAL_AGGREGATE_STATE;
+                    if (PORTAL_AGGREGATE_STATE && PORTAL_AGGREGATE_STATE.active) {
+                        setPortalAggregateFormValues(PORTAL_AGGREGATE_STATE.active);
+                    }
+                    const badgeEl = document.getElementById('aggModeStatusBadge');
+                    if (badgeEl) {
+                        const isCustom = Boolean(PORTAL_AGGREGATE_STATE?.is_custom);
+                        badgeEl.className = isCustom
+                            ? 'badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-2.5 py-1 fw-bold'
+                            : 'badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fw-bold';
+                        badgeEl.textContent = isCustom ? 'Mode Edit Manual Aktif' : 'Mode Hitung Otomatis';
+                    }
+                    const infoEl = document.getElementById('aggLastUpdatedInfo');
+                    if (infoEl) {
+                        if (PORTAL_AGGREGATE_STATE?.is_custom && PORTAL_AGGREGATE_STATE.updated_at) {
+                            infoEl.innerHTML = `Diubah manual pada <strong>${escapeAdminHtml(PORTAL_AGGREGATE_STATE.updated_at)}</strong> oleh ${escapeAdminHtml(PORTAL_AGGREGATE_STATE.updated_by || 'Administrator')}`;
+                        } else {
+                            infoEl.textContent = 'Nilai saat ini dihitung otomatis dari akumulasi Master Kecamatan & data PODES 2025.';
+                        }
+                    }
+                    showToast(data.message || 'Ringkasan Agregat Portal berhasil diperbarui!');
+                } else {
+                    alert(data.message || 'Gagal menyimpan Ringkasan Agregat Portal.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Terjadi kesalahan jaringan saat menyimpan Ringkasan Agregat Portal.');
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                }
+            }
         }
     </script>
 </body>
