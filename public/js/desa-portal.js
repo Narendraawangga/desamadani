@@ -1352,6 +1352,7 @@ function selectVillageSubmenu(menuKey, subKey, event) {
 }
 
 function renderVillageSubmenu(menuKey, subKey) {
+
     if (typeof document === 'undefined') return;
     const contentEl = document.getElementById('desaWebContent');
     if (!contentEl) return;
@@ -1413,6 +1414,212 @@ function renderVillageSubmenu(menuKey, subKey) {
                     </div>
                 </div>
             </div>
+
+            
+            <!-- Data Grafik Kependudukan & Publikasi Desa (2 Bar: Bar Graph & Pie Graph - Sesuai Gambar 1 & Gambar 3) -->
+            <div id="portalSectionDataGrafikDesa" class="space-y-6 pt-2">
+                
+                <!-- BANNER DATA PUBLIKASI DESA & STATISTIK PENDUDUK (GAMBAR 3) -->
+                <div class="bg-gradient-to-r from-slate-900 via-[#043427] to-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-xl border border-emerald-500/30 relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                    
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-white shadow-md flex items-center justify-center shrink-0">
+                                <div class="w-full h-full rounded-full grid grid-cols-2 grid-rows-2 overflow-hidden">
+                                    <div class="bg-amber-400 flex items-center justify-center text-[9px] text-slate-900 font-black"><i class="bi bi-lightbulb-fill"></i></div>
+                                    <div class="bg-fuchsia-600 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-bullseye"></i></div>
+                                    <div class="bg-rose-500 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-file-earmark-text-fill"></i></div>
+                                    <div class="bg-sky-500 flex items-center justify-center text-[9px] text-white font-black"><i class="bi bi-graph-up"></i></div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-black uppercase text-emerald-300 tracking-wider">PORTAL SATU DATA BPS KOLAKA UTARA</span>
+                                <h3 class="text-base sm:text-xl font-black uppercase tracking-wider text-white">DATA PUBLIKASI &amp; STATISTIK PENDUDUK</h3>
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:flex items-center gap-2">
+                            <span id="portalBannerActiveDesaPill" class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">
+                                ${d.name.toUpperCase()} (KEC. ${d.kecamatan.toUpperCase()})
+                            </span>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 text-slate-950 flex items-center justify-center text-lg shadow-lg">
+                                <i class="bi bi-bar-chart-steps"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8 Pill Buttons (Persis Gambar 3) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 pt-4 relative z-10">
+                        <button type="button" onclick="selectDesaChartCategory('dusun')" id="portalBtnPill-dusun" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT DUSUN</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('umur-rentang')" id="portalBtnPill-umur-rentang" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT UMUR (RENTANG)</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('pendidikan')" id="portalBtnPill-pendidikan" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT PENDIDIKAN (KK)</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('umur-kategori')" id="portalBtnPill-umur-kategori" class="btn-pub-pill active group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT UMUR (KATEGORI)</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('pekerjaan')" id="portalBtnPill-pekerjaan" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT PEKERJAAN</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('status-perkawinan')" id="portalBtnPill-status-perkawinan" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT STATUS PERKAWINAN</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('agama')" id="portalBtnPill-agama" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT AGAMA</span>
+                        </button>
+                        <button type="button" onclick="selectDesaChartCategory('jenis-kelamin')" id="portalBtnPill-jenis-kelamin" class="btn-pub-pill group">
+                            <span class="pub-pill-dot"></span>
+                            <span class="truncate">JUMLAH PENDUDUK MENURUT JENIS KELAMIN</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD UTAMA STATISTIK: SIDEBAR KATEGORI (KIRI) + KANVAS GRAFIK (KANAN) (GAMBAR 1) -->
+                <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xl space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                        
+                        <!-- KOLOM KIRI: MENU KATEGORI STATISTIK (PERSIS GAMBAR 1) -->
+                        <div class="lg:col-span-4 xl:col-span-3 space-y-3 border-b lg:border-b-0 lg:border-r border-slate-200 pb-5 lg:pb-0 lg:pr-5">
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                    <span class="flex items-center gap-1.5 text-emerald-800">
+                                        <i class="bi bi-people-fill text-sm"></i>
+                                        <span>Statistik Penduduk</span>
+                                    </span>
+                                    <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                </div>
+                                <div class="space-y-1 pl-1">
+                                    <button type="button" onclick="selectDesaChartCategory('umur-rentang')" id="portalCatBtn-umur-rentang" class="chart-cat-item">
+                                        <span>Umur (Rentang)</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('umur-kategori')" id="portalCatBtn-umur-kategori" class="chart-cat-item active">
+                                        <span>Umur (Kategori)</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('pendidikan')" id="portalCatBtn-pendidikan" class="chart-cat-item">
+                                        <span>Pendidikan Dalam KK</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('pekerjaan')" id="portalCatBtn-pekerjaan" class="chart-cat-item">
+                                        <span>Pekerjaan</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('status-perkawinan')" id="portalCatBtn-status-perkawinan" class="chart-cat-item">
+                                        <span>Status Perkawinan</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('agama')" id="portalCatBtn-agama" class="chart-cat-item">
+                                        <span>Agama</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('jenis-kelamin')" id="portalCatBtn-jenis-kelamin" class="chart-cat-item">
+                                        <span>Jenis Kelamin</span>
+                                    </button>
+                                    <button type="button" onclick="selectDesaChartCategory('golongan-darah')" id="portalCatBtn-golongan-darah" class="chart-cat-item">
+                                        <span>Golongan Darah</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1 pt-2 border-t border-slate-100">
+                                <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                    <span class="flex items-center gap-1.5 text-slate-700">
+                                        <i class="bi bi-house-door-fill text-sm text-teal-700"></i>
+                                        <span>Statistik Wilayah &amp; Dusun</span>
+                                    </span>
+                                    <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                </div>
+                                <div class="space-y-1 pl-1">
+                                    <button type="button" onclick="selectDesaChartCategory('dusun')" id="portalCatBtn-dusun" class="chart-cat-item">
+                                        <span>Sebaran Dusun / Wilayah</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1 pt-2 border-t border-slate-100">
+                                <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                    <span class="flex items-center gap-1.5 text-slate-700">
+                                        <i class="bi bi-gift-fill text-sm text-amber-600"></i>
+                                        <span>Statistik Bantuan Sosial</span>
+                                    </span>
+                                    <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                </div>
+                                <div class="space-y-1 pl-1">
+                                    <button type="button" onclick="selectDesaChartCategory('bantuan-sosial')" id="portalCatBtn-bantuan-sosial" class="chart-cat-item">
+                                        <span>Penerima Bantuan Pemerintah</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-1 pt-2 border-t border-slate-100">
+                                <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
+                                    <span class="flex items-center gap-1.5 text-slate-700">
+                                        <i class="bi bi-tree-fill text-sm text-emerald-600"></i>
+                                        <span>Sektor Basis &amp; Komoditas</span>
+                                    </span>
+                                    <i class="bi bi-chevron-down text-slate-400 text-[10px]"></i>
+                                </div>
+                                <div class="space-y-1 pl-1">
+                                    <button type="button" onclick="selectDesaChartCategory('komoditas')" id="portalCatBtn-komoditas" class="chart-cat-item">
+                                        <span>Komoditas Unggulan &amp; IKM</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KOLOM KANAN: AREA GRAFIK DENGAN 2 TOMBOL BAR GRAPH & PIE GRAPH (PERSIS GAMBAR 1) -->
+                        <div class="lg:col-span-8 xl:col-span-9 space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <h3 id="portalDesaChartMainTitle" class="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
+                                        Demografi Berdasar Umur (Kategori)
+                                    </h3>
+                                    <p id="portalDesaChartSubTitle" class="text-xs sm:text-sm font-semibold text-slate-500 mt-0.5">
+                                        Grafik Umur (Kategori) — <span id="portalDesaChartActiveVillageName" class="text-emerald-800 font-extrabold">${d.name}</span> (<span id="portalDesaChartTotalJiwaBadge">${d.stats.penduduk}</span> Jiwa / <span id="portalDesaChartTotalKkBadge">${d.stats.kk}</span> KK)
+                                    </p>
+                                </div>
+
+                                <!-- 2 TOMBOL GRAPH: BAR GRAPH & PIE GRAPH (PERSIS GAMBAR 1) -->
+                                <div class="inline-flex items-center gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200 self-start sm:self-auto shrink-0 shadow-inner">
+                                    <button type="button" id="portalBtnToggleBarGraph" onclick="switchDesaChartType('bar')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer">
+                                        <i class="bi bi-bar-chart-fill"></i>
+                                        <span>Bar Graph</span>
+                                    </button>
+                                    <button type="button" id="portalBtnTogglePieGraph" onclick="switchDesaChartType('pie')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer">
+                                        <i class="bi bi-pie-chart-fill"></i>
+                                        <span>Pie Graph</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="border-b border-dashed border-slate-200"></div>
+
+                            <div class="relative w-full h-[340px] sm:h-[400px] bg-slate-50/50 rounded-2xl p-2 sm:p-4 border border-slate-100">
+                                <canvas id="portalDesaGraphicCanvas"></canvas>
+                            </div>
+
+                            <div class="space-y-2 pt-2">
+                                <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+                                    <span>Rincian Sebaran Data Terverifikasi:</span>
+                                    <span class="text-emerald-700 font-bold"><i class="bi bi-patch-check-fill text-xs mr-1"></i>Regsosek &amp; PODES 2026</span>
+                                </div>
+                                <div id="portalDesaChartSummaryChips" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
 
             <!-- Berita & Kabar Terkini Desa -->
             <div class="space-y-4">
@@ -2701,3 +2908,806 @@ if (typeof document !== 'undefined') {
         }
     }
 }
+
+
+
+// ==============================================================
+// SISTEM DATA GRAFIK INTERAKTIF DESA (2 BAR: BAR GRAPH & PIE GRAPH)
+// Sesuai Gambar Referensi 1 & Gambar Referensi 3
+// ==============================================================
+
+const VILLAGE_DETAILED_STATS = {
+    lapolu: {
+        name: 'Desa Lapolu',
+        kec: 'Tiwu',
+        totalJiwa: 1284,
+        totalKk: 321,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [285, 612, 178, 111, 98],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th (Belum Produktif)', '15 - 24 Th (Usia Muda)', '25 - 54 Th (Produktif Utama)', '55 - 64 Th (Pra-Lansia)', '65+ Th (Lansia)'],
+                values: [262, 263, 502, 146, 111],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [436, 359, 334, 103, 52],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Cengkeh & Kakao', 'Penyuling Minyak Atsiri (IKM)', 'Pedagang / Pengumpul', 'Ibu Rumah Tangga', 'Lainnya / Jasa'],
+                values: [590, 411, 128, 103, 52],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [682, 512, 48, 42],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1274, 10, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [648, 636],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [265, 310, 115, 412, 182],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Cengkeh Indah', 'Dusun II Bukit Harapan', 'Dusun III Lembah Subur'],
+                values: [452, 418, 414],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alsintan Cengkeh', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [42, 68, 35, 75, 101],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Cengkeh (380 Ha)', 'Perkebunan Kakao (180 Ha)', 'IKM Minyak Atsiri (75 Unit)', 'Pertanian Hortikultura (45 Ha)', 'Peternakan Rakyat'],
+                values: [380, 180, 75, 45, 30],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    tanggeawo: {
+        name: 'Desa Tanggeawo',
+        kec: 'Tiwu',
+        totalJiwa: 1342,
+        totalKk: 342,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [298, 644, 182, 114, 104],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [275, 274, 524, 155, 114],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [462, 385, 342, 98, 55],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Kakao Sambung Pucuk', 'Petani Nilam & Cengkeh', 'Pedagang / UMKM', 'PNS / Guru / Medis', 'Lainnya / Jasa'],
+                values: [684, 389, 115, 48, 106],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [718, 528, 52, 44],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1335, 7, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [680, 662],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [280, 325, 120, 427, 190],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Kakao Utama', 'Dusun II Harapan Tani', 'Dusun III Subur Makmur'],
+                values: [468, 442, 432],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Bibit Kakao', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [48, 72, 38, 85, 99],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Kakao (420 Ha)', 'Perkebunan Nilam (65 Ha)', 'Pertanian Jagung & Horti', 'UMKM Gula Aren (16 Unit)', 'Peternakan Kambing'],
+                values: [420, 65, 52, 16, 24],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    mattirobulu: {
+        name: 'Desa Mattiro Bulu',
+        kec: 'Tiwu',
+        totalJiwa: 856,
+        totalKk: 324,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [192, 410, 118, 68, 68],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [175, 175, 335, 103, 68],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [312, 248, 195, 62, 39],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Cengkeh & Nilam', 'Penyuling Nilam (IKM)', 'Pedagang / UMKM', 'PNS / Guru', 'Lainnya / Jasa'],
+                values: [462, 218, 75, 26, 75],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [468, 332, 30, 26],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [850, 6, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [432, 424],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [178, 206, 76, 272, 124],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Bulu Indah', 'Dusun II Puncak Harapan', 'Dusun III Lembah Hijau'],
+                values: [302, 280, 274],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alsintan Nilam', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [38, 56, 32, 45, 153],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perkebunan Cengkeh (240 Ha)', 'Perkebunan Nilam (95 Ha)', 'Penyulingan Nilam (20 Unit)', 'Hortikultura Sayur Dataran Tinggi', 'Perkebunan Kakao (80 Ha)'],
+                values: [240, 95, 20, 35, 80],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    kamisi: {
+        name: 'Desa Kamisi',
+        kec: 'Kodeoha',
+        totalJiwa: 1576,
+        totalKk: 394,
+        dusunCount: 4,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [348, 752, 218, 136, 122],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [322, 322, 616, 180, 136],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [535, 441, 410, 126, 64],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Nelayan Tangkap & Teri', 'Petani Kakao & Kelapa', 'IKM Olahan Ikan & Rumput Laut', 'Pedagang Ikan / UMKM', 'PNS / Lainnya'],
+                values: [693, 441, 221, 142, 79],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [842, 620, 60, 54],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1568, 8, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [796, 780],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [330, 380, 140, 502, 224],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Bahari', 'Dusun II Pantai Indah', 'Dusun III Sejahtera', 'Dusun IV Harapan Baru'],
+                values: [416, 392, 408, 360],
+                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Alat Tangkap Nelayan', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [52, 80, 42, 95, 125],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Perikanan Tangkap & Teri (42 Perahu)', 'Perkebunan Kakao Pesisir (190 Ha)', 'Budidaya Rumput Laut (15 Ha)', 'IKM Olahan Ikan Asin (14 Unit)', 'Kelapa Dalam (60 Ha)'],
+                values: [42, 190, 15, 14, 60],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    koroha: {
+        name: 'Desa Koroha',
+        kec: 'Kodeoha',
+        totalJiwa: 1482,
+        totalKk: 372,
+        dusunCount: 3,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [330, 708, 204, 126, 114],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [304, 302, 580, 170, 126],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [504, 415, 385, 118, 60],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Petani Kakao & Cengkeh', 'Nelayan Pesisir', 'IKM Hasil Kebun & Kelapa', 'Pedagang / UMKM', 'Lainnya / Jasa'],
+                values: [652, 385, 192, 148, 105],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [792, 582, 58, 50],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [1475, 7, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [748, 734],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [310, 355, 132, 474, 211],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Dusun',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
+                labels: ['Dusun I Koroha Raya', 'Dusun II Pantai Subur', 'Dusun III Lembah Kakao'],
+                values: [512, 488, 482],
+                colors: ['#046A38', '#0284c7', '#d97706']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Dana Desa', 'Bantuan Bibit Sambung Pucuk', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [49, 76, 40, 88, 119],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
+                labels: ['Kakao Sambung Pucuk (360 Ha)', 'Cengkeh Lereng Bukit (120 Ha)', 'Perikanan & Rumput Laut (25 Ha)', 'Kelapa Dalam (85 Ha)', 'IKM Olahan Pangan (12 Unit)'],
+                values: [360, 120, 25, 85, 12],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    },
+    malamala: {
+        name: 'Kelurahan Mala-Mala',
+        kec: 'Kodeoha',
+        totalJiwa: 2194,
+        totalKk: 669,
+        dusunCount: 4,
+        kategori: {
+            'umur-kategori': {
+                title: 'Demografi Berdasar Umur (Kategori)',
+                sub: 'Grafik Umur (Kategori)',
+                labels: ['Anak-Anak (0 - 17 Th)', 'Dewasa (18 - 49 Th)', 'Tua (50 - 59 Th)', 'Tua Sekali (60+ Th)', 'Belum Mengisi'],
+                values: [486, 1054, 302, 184, 168],
+                colors: ['#60a5fa', '#1e293b', '#4ade80', '#fb923c', '#818cf8']
+            },
+            'umur-rentang': {
+                title: 'Demografi Berdasar Umur (Rentang)',
+                sub: 'Grafik Rentang Usia Sensus Penduduk',
+                labels: ['0 - 14 Th', '15 - 24 Th', '25 - 54 Th', '55 - 64 Th', '65+ Th'],
+                values: [450, 448, 860, 252, 184],
+                colors: ['#38bdf8', '#0ea5e9', '#059669', '#f59e0b', '#64748b']
+            },
+            'pendidikan': {
+                title: 'Distribusi Tingkat Pendidikan Dalam KK',
+                sub: 'Grafik Jenjang Pendidikan Tertinggi yang Ditamatkan',
+                labels: ['SD / Sederajat', 'SMP / Sederajat', 'SMA / SMK / MA', 'Diploma / Sarjana (D3/S1)', 'Tidak / Belum Sekolah'],
+                values: [746, 614, 570, 186, 78],
+                colors: ['#0284c7', '#0d9488', '#16a34a', '#ca8a04', '#94a3b8']
+            },
+            'pekerjaan': {
+                title: 'Mata Pencaharian & Sektor Pekerjaan',
+                sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
+                labels: ['Pedagang / Jasa & UMKM', 'PNS / TNI / Polri / Guru', 'Petani Kakao & Holti', 'Nelayan Pesisir', 'Buruh / Karyawan'],
+                values: [921, 307, 438, 285, 243],
+                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+            },
+            'status-perkawinan': {
+                title: 'Komposisi Status Perkawinan Penduduk',
+                sub: 'Grafik Status Pernikahan Administrasi Kependudukan',
+                labels: ['Kawin / Menikah', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'],
+                values: [1174, 862, 88, 70],
+                colors: ['#059669', '#3b82f6', '#f59e0b', '#ef4444']
+            },
+            'agama': {
+                title: 'Komposisi Penduduk Menurut Agama',
+                sub: 'Grafik Kerukunan Umat Beragama Desa',
+                labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
+                values: [2176, 18, 0, 0],
+                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+            },
+            'jenis-kelamin': {
+                title: 'Rasio Jenis Kelamin (Sex Ratio)',
+                sub: 'Grafik Perbandingan Laki-Laki & Perempuan',
+                labels: ['Laki-Laki', 'Perempuan'],
+                values: [1108, 1086],
+                colors: ['#005ea6', '#e11d48']
+            },
+            'golongan-darah': {
+                title: 'Inventarisasi Golongan Darah Warga',
+                sub: 'Grafik Kesiapsiagaan Donor Darah Desa',
+                labels: ['Golongan A', 'Golongan B', 'Golongan AB', 'Golongan O', 'Belum Diketahui'],
+                values: [460, 526, 195, 701, 312],
+                colors: ['#ef4444', '#f97316', '#8b5cf6', '#10b981', '#94a3b8']
+            },
+            'dusun': {
+                title: 'Distribusi Penduduk Menurut Lingkungan',
+                sub: 'Grafik Sebaran Penduduk Tiap Wilayah Lingkungan',
+                labels: ['Lingkungan I Pasar Lama', 'Lingkungan II Bahari', 'Lingkungan III Perbukitan', 'Lingkungan IV Pelayanan'],
+                values: [582, 554, 542, 516],
+                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+            },
+            'bantuan-sosial': {
+                title: 'Penerima Bantuan Sosial Pemerintah',
+                sub: 'Grafik Transparansi Keluarga Penerima Manfaat (KPM)',
+                labels: ['Penerima PKH', 'Penerima BPNT Sembako', 'BLT Kelurahan', 'Bantuan Modal UMKM', 'Keluarga Mandiri (Non-Bansos)'],
+                values: [68, 110, 55, 120, 316],
+                colors: ['#dc2626', '#ea580c', '#ca8a04', '#16a34a', '#0284c7']
+            },
+            'komoditas': {
+                title: 'Potensi Sektor Basis & Komoditas Unggulan',
+                sub: 'Grafik Luas Perkebunan & Klaster Industri Kelurahan',
+                labels: ['Sentra Perdagangan & UMKM (140 Unit)', 'Perkebunan Kakao (210 Ha)', 'Industri Olahan Ikan (24 Unit)', 'Perikanan Tangkap (30 Perahu)', 'Jasa & Pergudangan'],
+                values: [140, 210, 24, 30, 45],
+                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+            }
+        }
+    }
+};
+
+let currentDesaChartType = 'bar';
+let currentDesaChartCategory = 'umur-kategori';
+let currentDesaChartInstance = null;
+let currentDesaPortalChartInstance = null;
+
+function renderDesaInteractiveChart(villageKey, categoryKey, chartType) {
+    if (villageKey) {
+        window.currentTargetVillage = villageKey;
+        window.currentVillageKey = villageKey;
+    }
+    const vKey = villageKey || window.currentTargetVillage || window.currentVillageKey || 'lapolu';
+    const cKey = categoryKey || currentDesaChartCategory || 'umur-kategori';
+    const cType = chartType || currentDesaChartType || 'bar';
+
+    currentDesaChartCategory = cKey;
+    currentDesaChartType = cType;
+
+    const vStats = VILLAGE_DETAILED_STATS[vKey] || VILLAGE_DETAILED_STATS.lapolu;
+    const catData = vStats.kategori[cKey] || vStats.kategori['umur-kategori'];
+
+    // List of targets: Main Dashboard (#view-dashboard) and Village Portal (#view-portal-desa)
+    const targets = [
+        {
+            canvasId: 'desaGraphicCanvas',
+            chipsId: 'desaChartSummaryChips',
+            titleId: 'desaChartMainTitle',
+            subId: 'desaChartSubTitle',
+            vNameId: 'desaChartActiveVillageName',
+            vJiwaId: 'desaChartTotalJiwaBadge',
+            vKkId: 'desaChartTotalKkBadge',
+            bannerPillId: 'bannerActiveDesaPill',
+            btnBarId: 'btnToggleBarGraph',
+            btnPieId: 'btnTogglePieGraph',
+            pillPrefix: 'btnPill-',
+            catPrefix: 'catBtn-',
+            getInst: () => currentDesaChartInstance,
+            setInst: (inst) => { currentDesaChartInstance = inst; }
+        },
+        {
+            canvasId: 'portalDesaGraphicCanvas',
+            chipsId: 'portalDesaChartSummaryChips',
+            titleId: 'portalDesaChartMainTitle',
+            subId: 'portalDesaChartSubTitle',
+            vNameId: 'portalDesaChartActiveVillageName',
+            vJiwaId: 'portalDesaChartTotalJiwaBadge',
+            vKkId: 'portalDesaChartTotalKkBadge',
+            bannerPillId: 'portalBannerActiveDesaPill',
+            btnBarId: 'portalBtnToggleBarGraph',
+            btnPieId: 'portalBtnTogglePieGraph',
+            pillPrefix: 'portalBtnPill-',
+            catPrefix: 'portalCatBtn-',
+            getInst: () => currentDesaPortalChartInstance,
+            setInst: (inst) => { currentDesaPortalChartInstance = inst; }
+        }
+    ];
+
+    targets.forEach(t => {
+        // 1. Text & Titles
+        const titleEl = document.getElementById(t.titleId);
+        const subEl = document.getElementById(t.subId);
+        const vNameBadge = document.getElementById(t.vNameId);
+        const totalJiwaBadge = document.getElementById(t.vJiwaId);
+        const totalKkBadge = document.getElementById(t.vKkId);
+        const bannerDesaPill = document.getElementById(t.bannerPillId);
+
+        if (titleEl) titleEl.textContent = catData.title;
+        if (vNameBadge) vNameBadge.textContent = vStats.name;
+        if (totalJiwaBadge) totalJiwaBadge.textContent = vStats.totalJiwa.toLocaleString('id-ID');
+        if (totalKkBadge) totalKkBadge.textContent = vStats.totalKk.toLocaleString('id-ID');
+        if (bannerDesaPill) bannerDesaPill.textContent = `${vStats.name.toUpperCase()} (KEC. ${vStats.kec.toUpperCase()})`;
+
+        // 2. Toggle Buttons
+        const btnBar = document.getElementById(t.btnBarId);
+        const btnPie = document.getElementById(t.btnPieId);
+
+        if (btnBar && btnPie) {
+            if (cType === 'bar') {
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+            } else {
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+            }
+        }
+
+        // 3. Pills in Banner
+        const pubPills = ['dusun', 'umur-rentang', 'pendidikan', 'umur-kategori', 'pekerjaan', 'status-perkawinan', 'agama', 'jenis-kelamin'];
+        pubPills.forEach(pillKey => {
+            const pillBtn = document.getElementById(t.pillPrefix + pillKey);
+            if (pillBtn) {
+                if (pillKey === cKey) {
+                    pillBtn.className = 'btn-pub-pill active group';
+                } else {
+                    pillBtn.className = 'btn-pub-pill group';
+                }
+            }
+        });
+
+        // 4. Sidebar Category Buttons
+        const allCatKeys = ['umur-rentang', 'umur-kategori', 'pendidikan', 'pekerjaan', 'status-perkawinan', 'agama', 'jenis-kelamin', 'golongan-darah', 'dusun', 'bantuan-sosial', 'komoditas'];
+        allCatKeys.forEach(k => {
+            const catBtn = document.getElementById(t.catPrefix + k);
+            if (catBtn) {
+                if (k === cKey) {
+                    catBtn.className = 'chart-cat-item active';
+                } else {
+                    catBtn.className = 'chart-cat-item';
+                }
+            }
+        });
+
+        // 5. Canvas Chart.js
+        const canvas = document.getElementById(t.canvasId);
+        if (canvas && typeof Chart !== 'undefined') {
+            const oldInst = t.getInst();
+            if (oldInst) {
+                try { oldInst.destroy(); } catch (e) {}
+            }
+
+            const ctx = canvas.getContext('2d');
+            const isBar = (cType === 'bar');
+            let newChart;
+
+            if (isBar) {
+                newChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: catData.labels,
+                        datasets: [{
+                            label: 'Jumlah (Jiwa)',
+                            data: catData.values,
+                            backgroundColor: catData.colors,
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            borderRadius: 8,
+                            maxBarThickness: 65
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 600 },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0f172a',
+                                titleFont: { size: 13, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                padding: 12,
+                                cornerRadius: 10,
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.raw;
+                                        const total = catData.values.reduce((a, b) => a + b, 0);
+                                        const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                        return ` ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: {
+                                    font: { size: 10.5, weight: 'bold' },
+                                    color: '#334155'
+                                }
+                            },
+                            y: {
+                                grid: { color: '#f1f5f9' },
+                                ticks: {
+                                    font: { size: 10, weight: '600' },
+                                    color: '#64748b',
+                                    callback: v => v >= 1000 ? (v/1000) + 'k' : v
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                newChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: catData.labels,
+                        datasets: [{
+                            data: catData.values,
+                            backgroundColor: catData.colors,
+                            borderColor: '#ffffff',
+                            borderWidth: 3,
+                            hoverOffset: 12
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 600 },
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 14,
+                                    padding: 14,
+                                    font: { size: 11, weight: 'bold' },
+                                    color: '#1e293b'
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: '#0f172a',
+                                titleFont: { size: 13, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                padding: 12,
+                                cornerRadius: 10,
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.raw;
+                                        const total = catData.values.reduce((a, b) => a + b, 0);
+                                        const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                        return ` ${context.label}: ${val.toLocaleString('id-ID')} (${pct}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '52%'
+                    }
+                });
+            }
+            t.setInst(newChart);
+        }
+
+        // 6. Chips Summary
+        const chipsContainer = document.getElementById(t.chipsId);
+        if (chipsContainer) {
+            const total = catData.values.reduce((a, b) => a + b, 0);
+            chipsContainer.innerHTML = catData.labels.map((lbl, idx) => {
+                const val = catData.values[idx] || 0;
+                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                const color = catData.colors[idx] || '#10b981';
+                return `
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between hover:bg-slate-100 transition">
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${color}"></span>
+                            <span class="text-[11px] font-bold text-slate-700 truncate" title="${lbl}">${lbl}</span>
+                        </div>
+                        <div class="flex items-baseline justify-between mt-1">
+                            <span class="text-sm font-black text-slate-900">${val.toLocaleString('id-ID')}</span>
+                            <span class="text-[10.5px] font-extrabold text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">${pct}%</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    });
+}
+
+function switchDesaChartType(type) {
+    currentDesaChartType = type;
+    renderDesaInteractiveChart(window.currentTargetVillage, currentDesaChartCategory, type);
+}
+
+function selectDesaChartCategory(categoryKey) {
+    currentDesaChartCategory = categoryKey;
+    renderDesaInteractiveChart(window.currentTargetVillage, categoryKey, currentDesaChartType);
+    
+    // Smooth scroll ke area grafik jika diklik dari banner publikasi
+    const chartCard = document.getElementById('sectionDataGrafikDesa') || document.getElementById('portalSectionDataGrafikDesa');
+    if (chartCard && window.innerWidth < 1024) {
+        chartCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Global expose
+window.VILLAGE_DETAILED_STATS = VILLAGE_DETAILED_STATS;
+window.renderDesaInteractiveChart = renderDesaInteractiveChart;
+window.switchDesaChartType = switchDesaChartType;
+window.selectDesaChartCategory = selectDesaChartCategory;
+
