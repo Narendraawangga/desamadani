@@ -485,11 +485,18 @@
                     <span id="badgeText" class="tracking-widest uppercase text-[11px] font-bold text-white/95">SELAMAT DATANG DI DESA MADANI</span>
                 </div>
 
-                <!-- Soft Fluid Title -->
-                <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)] transition-all duration-700">
-                    Pesona &amp; Potensi Unggul <br>
-                    <span>Kabupaten <span class="text-[#86efac]">Kolaka</span> <span class="text-[#fde68a]">Utara</span></span>
-                </h1>
+                <!-- Typographic Hero: 'Welcome to' in Cursive Script + 'DESA MADANI' in Grand Golden Condensed -->
+                <div class="relative inline-block mx-auto select-none pt-2">
+                    <div class="font-handwriting text-3xl sm:text-5xl text-[#0284c7] sm:text-[#06b6d4] font-bold -rotate-3 tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] mb-[-0.65rem] sm:mb-[-1rem] text-left pl-2 sm:pl-4">
+                        Welcome to
+                    </div>
+                    <h1 id="heroTitle" class="font-condensed text-5xl sm:text-7xl lg:text-8xl font-black text-[#d4a373] tracking-widest uppercase leading-none drop-shadow-[0_6px_28px_rgba(0,0,0,0.85)] transition-all duration-700">
+                        DESA MADANI
+                    </h1>
+                </div>
+                <p class="text-xs sm:text-sm font-medium text-white/90 max-w-lg mx-auto tracking-wide drop-shadow-md">
+                    Pesona &amp; Potensi Unggul Kabupaten Kolaka Utara
+                </p>
 
             </div>
         </div>

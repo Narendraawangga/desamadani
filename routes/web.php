@@ -58,7 +58,7 @@ Route::get('/portal/spasial', function () {
     return view('dashboard', ['activePage' => 3]);
 });
 Route::get('/portal/desa-cantik', function () {
-    return view('dashboard', ['activePage' => 4]);
+    return redirect('/descan');
 });
 Route::get('/portal/tentang', function () {
     return view('dashboard', ['activePage' => 5, 'activeSub' => 'madani']);

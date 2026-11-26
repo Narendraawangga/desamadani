@@ -47,7 +47,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at 20% 20%, #06182e 0%, #0b2545 50%, #031424 100%);
+            background: radial-gradient(circle at 20% 20%, #1E1B1E 0%, #4A0520 45%, #7A0C3C 85%, #111827 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -282,7 +282,7 @@
         }
 
         .shimmer-bar-animated {
-            background: linear-gradient(90deg, #059669, #005ea6, #f59e0b, #059669);
+            background: linear-gradient(90deg, #7A0C3C, #BE185D, #FDA4AF, #800040);
             background-size: 300% 100%;
             animation: shimmerBarFlow 8s ease infinite;
         }
@@ -329,9 +329,9 @@
     <div class="pointer-events-none fixed inset-0 z-0 bg-grid-mesh opacity-70"></div>
 
     <!-- Ambient Glowing Blur Orbs (Living Background Motion) -->
-    <div class="pointer-events-none fixed -top-28 -left-28 w-[28rem] h-[28rem] bg-emerald-500/15 rounded-full blur-3xl motion-orb-emerald z-0"></div>
-    <div class="pointer-events-none fixed -bottom-28 -right-28 w-[32rem] h-[32rem] bg-blue-500/15 rounded-full blur-3xl motion-orb-blue z-0"></div>
-    <div class="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl motion-orb-amber z-0"></div>
+    <div class="pointer-events-none fixed -top-28 -left-28 w-[28rem] h-[28rem] bg-[#BE185D]/20 rounded-full blur-3xl motion-orb-emerald z-0"></div>
+    <div class="pointer-events-none fixed -bottom-28 -right-28 w-[32rem] h-[32rem] bg-[#7A0C3C]/25 rounded-full blur-3xl motion-orb-blue z-0"></div>
+    <div class="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FDA4AF]/15 rounded-full blur-3xl motion-orb-amber z-0"></div>
 
     <!-- TOP HEADER BAR (Motion Fade Down) -->
     <header class="relative z-10 w-full max-w-5xl mx-auto flex items-center justify-between pb-4 sm:pb-6 motion-in-header">
@@ -367,7 +367,7 @@
         <div class="bg-white rounded-3xl shadow-2xl border border-white/20 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
             
             <!-- LEFT PANEL: IDENTITAS KHUSUS DESA YANG SEDANG DI-LOGIN (Motion Fade Left) -->
-            <div id="sideDesaLeftPanel" class="lg:col-span-5 bg-gradient-to-b from-slate-900 via-[#0b2545] to-slate-950 text-white p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden motion-in-left-panel">
+            <div id="sideDesaLeftPanel" class="lg:col-span-5 bg-gradient-to-b from-[#1E1B1E] via-[#4A0520] to-[#7A0C3C] text-white p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden motion-in-left-panel">
                 
                 <!-- Background ambient image blurred -->
                 <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -431,8 +431,8 @@
                             <div class="motion-stagger-2">
                                 <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
                                 <div class="relative group">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-emerald-600 text-sm transition-colors"><i class="bi bi-envelope-fill"></i></span>
-                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all duration-200">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-[#7A0C3C] text-sm transition-colors"><i class="bi bi-envelope-fill"></i></span>
+                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#BE185D]/40 focus:border-[#BE185D] transition-all duration-200">
                                 </div>
                             </div>
 
@@ -440,15 +440,15 @@
                             <div class="motion-stagger-3">
                                 <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata Sandi</label>
                                 <div class="relative group">
-                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-emerald-600 text-sm transition-colors"><i class="bi bi-lock-fill"></i></span>
-                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all duration-200">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-[#7A0C3C] text-sm transition-colors"><i class="bi bi-lock-fill"></i></span>
+                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#BE185D]/40 focus:border-[#BE185D] transition-all duration-200">
                                     <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer transition-colors" title="Lihat/Sembunyikan Sandi"><i id="eyePassIcon" class="bi bi-eye"></i></button>
                                 </div>
                             </div>
 
                             <!-- Submit button (Stagger 4) -->
                             <div class="motion-stagger-4 pt-1">
-                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0f6b4a] via-[#0d5c40] to-[#083b2a] hover:from-[#117e57] hover:to-[#0a4632] text-white font-black text-sm shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer btn-shimmer-sweep active:scale-[0.98]">
+                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#7A0C3C] via-[#881337] to-[#BE185D] hover:from-[#5C082D] hover:to-[#9F1239] text-white font-black text-sm shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer btn-shimmer-sweep active:scale-[0.98]">
                                     <span id="btnSubmitText">Masuk ke Dashboard</span>
                                     <i class="bi bi-arrow-right text-sm"></i>
                                 </button>
@@ -461,9 +461,34 @@
                         </div>
 
                         <!-- Quick actions (Stagger 6) -->
-                        <div class="grid grid-cols-2 gap-2 motion-stagger-6">
-                            <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100/90 border border-amber-200 text-amber-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi Otomatis</span></button>
-                            <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200 text-emerald-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-eye-fill text-emerald-600 text-sm"></i><span>Masuk sebagai Tamu</span></button>
+                        <!-- Role Switcher Quick Access (SRS 4 Peran Pengguna) -->
+                        <div class="space-y-2 motion-stagger-6">
+                            <div class="text-[10px] font-black uppercase tracking-wider text-[#881337] flex items-center gap-1">
+                                <i class="bi bi-person-badge-fill text-[#BE185D]"></i>
+                                <span>Pilih Simulasi Peran (SRS Descan):</span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                                <button type="button" onclick="quickLoginRole('super_admin')" class="py-2 px-2 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>👑</span>
+                                    <span>Super Admin</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('admin_bps')" class="py-2 px-2 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>🏛️</span>
+                                    <span>Admin BPS</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('operator_desa')" class="py-2 px-2 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-xs">
+                                    <span>🌾</span>
+                                    <span>Admin Operator Desa</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('publik')" class="py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>🌐</span>
+                                    <span>Publik</span>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100/90 border border-amber-200 text-amber-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi Otomatis</span></button>
+                                <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-eye-fill text-[#BE185D] text-sm"></i><span>Masuk Tamu (Publik)</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -676,5 +701,28 @@
         };
 
     </script>
+
+<script>
+function quickLoginRole(roleKey) {
+    if (roleKey === 'penilai_publik') roleKey = 'publik';
+    localStorage.setItem('descan_role', roleKey);
+    if (roleKey === 'publik') {
+        window.location.href = '/descan';
+        return;
+    }
+    const currentVillage = typeof activeDesaKey !== 'undefined' ? activeDesaKey : 'kamisi';
+    const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentVillage]) ? DESCAN_ACCOUNTS[currentVillage] : null;
+    if (acc) {
+        if (typeof setDescanAuth === 'function') setDescanAuth(acc);
+        window.location.href = '/descan/menu?desa=' + currentVillage;
+    } else {
+        window.location.href = '/descan/menu?desa=kamisi';
+    }
+}
+function loginAsGuestViewer() {
+    quickLoginRole('publik');
+}
+</script>
+
 </body>
 </html>

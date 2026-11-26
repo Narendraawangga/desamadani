@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Akun Resmi Desa - DESCAN BPS Kolaka Utara</title>
-
+    
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,14 +40,14 @@
             }
         }
     </script>
-
+    
     <!-- Sistem Autentikasi Akun Resmi DESCAN -->
     <script src="/js/descan-auth.js"></script>
 
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at 20% 20%, #06182e 0%, #0b2545 50%, #031424 100%);
+            background: radial-gradient(circle at 20% 20%, #1E1B1E 0%, #4A0520 45%, #7A0C3C 85%, #111827 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -66,7 +64,6 @@
                 opacity: 0;
                 transform: translate3d(0, -22px, 0);
             }
-
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -79,7 +76,6 @@
                 transform: scale(0.96) translate3d(0, 24px, 0);
                 filter: blur(6px);
             }
-
             100% {
                 opacity: 1;
                 transform: scale(1) translate3d(0, 0, 0);
@@ -92,7 +88,6 @@
                 opacity: 0;
                 transform: translate3d(0, 18px, 0);
             }
-
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -104,7 +99,6 @@
                 opacity: 0;
                 transform: translate3d(-24px, 0, 0);
             }
-
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -116,7 +110,6 @@
                 opacity: 0;
                 transform: translate3d(24px, 0, 0);
             }
-
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -125,37 +118,28 @@
 
         /* Ambient floating orbs (Living UI) */
         @keyframes floatOrb1 {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate3d(0, 0, 0) scale(1);
             }
-
             50% {
                 transform: translate3d(50px, 35px, 0) scale(1.18);
             }
         }
 
         @keyframes floatOrb2 {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate3d(0, 0, 0) scale(1);
             }
-
             50% {
                 transform: translate3d(-45px, -30px, 0) scale(1.15);
             }
         }
 
         @keyframes floatOrb3 {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate3d(0, 0, 0) scale(0.9);
                 opacity: 0.12;
             }
-
             50% {
                 transform: translate3d(25px, -20px, 0) scale(1.1);
                 opacity: 0.22;
@@ -164,17 +148,9 @@
 
         /* Top card animated gradient flow */
         @keyframes shimmerBarFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Hero image cinematic Ken-Burns subtle zoom */
@@ -182,11 +158,9 @@
             0% {
                 transform: scale(1.0);
             }
-
             50% {
                 transform: scale(1.07);
             }
-
             100% {
                 transform: scale(1.0);
             }
@@ -198,12 +172,10 @@
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
             }
-
             70% {
                 transform: scale(1);
                 box-shadow: 0 0 0 9px rgba(52, 211, 153, 0);
             }
-
             100% {
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
@@ -212,14 +184,8 @@
 
         /* Button shimmer sweep */
         @keyframes btnGleam {
-            0% {
-                left: -100%;
-            }
-
-            25%,
-            100% {
-                left: 200%;
-            }
+            0% { left: -100%; }
+            25%, 100% { left: 200%; }
         }
 
         /* Morph animation when switching village */
@@ -228,7 +194,6 @@
                 opacity: 0.2;
                 transform: scale(0.98);
             }
-
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -317,7 +282,7 @@
         }
 
         .shimmer-bar-animated {
-            background: linear-gradient(90deg, #059669, #005ea6, #f59e0b, #059669);
+            background: linear-gradient(90deg, #7A0C3C, #BE185D, #FDA4AF, #800040);
             background-size: 300% 100%;
             animation: shimmerBarFlow 8s ease infinite;
         }
@@ -326,7 +291,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .btn-shimmer-sweep::after {
             content: '';
             position: absolute;
@@ -351,10 +315,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-
-            *,
-            ::before,
-            ::after {
+            *, ::before, ::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -362,43 +323,29 @@
         }
     </style>
 </head>
-
-<body
-    class="text-slate-800 flex flex-col justify-between p-4 sm:p-6 lg:p-8 min-h-screen selection:bg-amber-200 selection:text-amber-950 relative overflow-x-hidden">
+<body class="text-slate-800 flex flex-col justify-between p-4 sm:p-6 lg:p-8 min-h-screen selection:bg-amber-200 selection:text-amber-950 relative overflow-x-hidden">
 
     <!-- Subtle Geometric Ambient Grid Mesh -->
     <div class="pointer-events-none fixed inset-0 z-0 bg-grid-mesh opacity-70"></div>
 
     <!-- Ambient Glowing Blur Orbs (Living Background Motion) -->
-    <div
-        class="pointer-events-none fixed -top-28 -left-28 w-[28rem] h-[28rem] bg-emerald-500/15 rounded-full blur-3xl motion-orb-emerald z-0">
-    </div>
-    <div
-        class="pointer-events-none fixed -bottom-28 -right-28 w-[32rem] h-[32rem] bg-blue-500/15 rounded-full blur-3xl motion-orb-blue z-0">
-    </div>
-    <div
-        class="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl motion-orb-amber z-0">
-    </div>
+    <div class="pointer-events-none fixed -top-28 -left-28 w-[28rem] h-[28rem] bg-[#BE185D]/20 rounded-full blur-3xl motion-orb-emerald z-0"></div>
+    <div class="pointer-events-none fixed -bottom-28 -right-28 w-[32rem] h-[32rem] bg-[#7A0C3C]/25 rounded-full blur-3xl motion-orb-blue z-0"></div>
+    <div class="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FDA4AF]/15 rounded-full blur-3xl motion-orb-amber z-0"></div>
 
     <!-- TOP HEADER BAR (Motion Fade Down) -->
-    <header
-        class="relative z-10 w-full max-w-5xl mx-auto flex items-center justify-between pb-4 sm:pb-6 motion-in-header">
+    <header class="relative z-10 w-full max-w-5xl mx-auto flex items-center justify-between pb-4 sm:pb-6 motion-in-header">
         <!-- Left: Logo Kolaka Utara bersampingan dengan Logo BPS Kolut -->
         <a href="/descan" class="flex items-center gap-3 group">
-            <div
-                class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-2.5 py-1.5 rounded-2xl border border-white/20 shadow-lg group-hover:scale-105 transition-all duration-300">
-                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara"
-                    class="h-9 w-auto object-contain drop-shadow" title="Pemerintah Kabupaten Kolaka Utara">
+            <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-2.5 py-1.5 rounded-2xl border border-white/20 shadow-lg group-hover:scale-105 transition-all duration-300">
+                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-9 w-auto object-contain drop-shadow" title="Pemerintah Kabupaten Kolaka Utara">
                 <div class="h-6 w-[1.5px] bg-white/30"></div>
-                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-8 w-auto object-contain drop-shadow"
-                    title="Badan Pusat Statistik Kolaka Utara">
+                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-8 w-auto object-contain drop-shadow" title="Badan Pusat Statistik Kolaka Utara">
             </div>
             <div>
-                <div
-                    class="text-xl sm:text-2xl font-black tracking-widest text-white leading-none flex items-center gap-1.5">
+                <div class="text-xl sm:text-2xl font-black tracking-widest text-white leading-none flex items-center gap-1.5">
                     <span>DESCAN</span>
-                    <span
-                        class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/40">AUTH</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/40">AUTH</span>
                 </div>
                 <div class="text-[9px] text-emerald-200/90 font-bold tracking-widest uppercase mt-0.5">
                     Desa Cantik • BPS Kolaka Utara
@@ -407,13 +354,8 @@
         </a>
 
         <div class="flex items-center gap-2">
-            <a href="/descan"
-                class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md hover:scale-105 active:scale-95">
-                <svg class="w-4 h-4 text-emerald-400 group-hover:-translate-x-0.5 transition-transform" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+            <a href="/descan" class="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md hover:scale-105 active:scale-95">
+                <svg class="w-4 h-4 text-emerald-400 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 <span class="hidden sm:inline">Kembali ke 6 Desa</span>
                 <span class="sm:hidden">6 Desa</span>
             </a>
@@ -422,64 +364,47 @@
 
     <!-- MAIN LOGIN CARD CONTAINER (Motion Pop In) -->
     <main class="relative z-10 w-full max-w-5xl mx-auto my-auto py-2 sm:py-4 motion-in-card">
-        <div
-            class="bg-white rounded-3xl shadow-2xl border border-white/20 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-
+        <div class="bg-white rounded-3xl shadow-2xl border border-white/20 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+            
             <!-- LEFT PANEL: IDENTITAS KHUSUS DESA YANG SEDANG DI-LOGIN (Motion Fade Left) -->
-            <div id="sideDesaLeftPanel"
-                class="lg:col-span-5 bg-gradient-to-b from-slate-900 via-[#0b2545] to-slate-950 text-white p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden motion-in-left-panel">
-
+            <div id="sideDesaLeftPanel" class="lg:col-span-5 bg-gradient-to-b from-[#1E1B1E] via-[#4A0520] to-[#7A0C3C] text-white p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden motion-in-left-panel">
+                
                 <!-- Background ambient image blurred -->
                 <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                    <img id="sideDesaBgPhoto"
-                        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80"
-                        alt="Background Desa" class="w-full h-full object-cover">
+                    <img id="sideDesaBgPhoto" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Background Desa" class="w-full h-full object-cover">
                 </div>
 
                 <div id="sideDesaHeroCard" class="relative z-10 space-y-4">
-                    <div
-                        class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
+                    <div class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 shadow-xs">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 motion-beacon"></span>
                         <span>Portal Login Resmi Desa Binaan</span>
                     </div>
 
                     <!-- Village Feature Landscape Photo Card with Ken-Burns Motion -->
-                    <div
-                        class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group">
-                        <img id="sideDesaHeroPhoto"
-                            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=90"
-                            alt="Foto Desa"
-                            class="w-full h-full object-cover transition-transform duration-700 motion-ken-burns">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4">
-                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest"
-                                id="sideDesaKecamatanTag">Kec. Kodeoha • Kab. Kolaka Utara</span>
-                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">
-                                Desa Kalu Kaluku</h2>
+                    <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group">
+                        <img id="sideDesaHeroPhoto" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=90" alt="Foto Desa" class="w-full h-full object-cover transition-transform duration-700 motion-ken-burns">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4">
+                            <span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest" id="sideDesaKecamatanTag">Kec. Kodeoha • Kab. Kolaka Utara</span>
+                            <h2 id="sideDesaHeroTitle" class="text-xl sm:text-2xl font-black text-white leading-tight">Desa Kalu Kaluku</h2>
                         </div>
                     </div>
 
                     <!-- Status pembinaan -->
                     <div class="flex items-center gap-2 text-xs">
-                        <span id="sideDesaStatusBadge"
-                            class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi
-                            BPS (Mandiri)</span>
+                        <span id="sideDesaStatusBadge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-[10px] border border-emerald-500/30">Terverifikasi BPS (Mandiri)</span>
                     </div>
 
                     <!-- Explanation text specifically for this village -->
                     <div class="pt-2">
                         <p id="sideDesaDesc" class="text-xs text-slate-300 leading-relaxed font-medium">
-                            Pilot Utama Desa Cantik BPS Kolaka Utara. Terletak strategis di perbatasan Ibu Kota Lasusua,
-                            dengan sentra kakao rakyat dan perikanan terpadu.
+                            Pilot Utama Desa Cantik BPS Kolaka Utara. Terletak strategis di perbatasan Ibu Kota Lasusua, dengan sentra kakao rakyat dan perikanan terpadu.
                         </p>
                     </div>
                 </div>
 
-                <div
-                    class="relative z-10 pt-4 mt-4 border-t border-slate-800 text-[10px] text-slate-500 font-medium flex items-center justify-between">
+                <div class="relative z-10 pt-4 mt-4 border-t border-slate-800 text-[10px] text-slate-500 font-medium flex items-center justify-between">
                     <span>BPS Kolaka Utara 2026</span>
-                    <span class="inline-flex items-center gap-1 text-[10px] text-emerald-400/90"><i
-                            class="bi bi-shield-check"></i> SSL Terenkripsi</span>
+                    <span class="inline-flex items-center gap-1 text-[10px] text-emerald-400/90"><i class="bi bi-shield-check"></i> SSL Terenkripsi</span>
                 </div>
             </div>
 
@@ -495,55 +420,35 @@
                             <p class="text-sm text-slate-500 mt-1">Gunakan akun resmi desa binaan untuk melanjutkan.</p>
                         </div>
 
-                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off"
-                            class="space-y-4 mt-7">
+                        <form id="mainLoginForm" onsubmit="handleMainLoginSubmit(event)" autocomplete="off" class="space-y-4 mt-7">
 
-                            <div id="loginErrorAlert"
-                                class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 animate-pulse">
-                                <svg class="w-4 h-4 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                            <div id="loginErrorAlert" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 animate-pulse">
+                                <svg class="w-4 h-4 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                                 <span id="loginErrorText" class="font-medium">Email atau kata sandi tidak cocok.</span>
                             </div>
 
                             <!-- Email (Stagger 2) -->
                             <div class="motion-stagger-2">
-                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun
-                                    Desa</label>
+                                <label for="inpEmail" class="block text-xs font-bold text-slate-700 mb-1.5">Email Akun Desa</label>
                                 <div class="relative group">
-                                    <span
-                                        class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-emerald-600 text-sm transition-colors"><i
-                                            class="bi bi-envelope-fill"></i></span>
-                                    <input type="email" id="inpEmail" required autocomplete="off"
-                                        placeholder="admin.nama_desa@descan.bps.go.id"
-                                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all duration-200">
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-[#7A0C3C] text-sm transition-colors"><i class="bi bi-envelope-fill"></i></span>
+                                    <input type="email" id="inpEmail" required autocomplete="off" placeholder="admin.nama_desa@descan.bps.go.id" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#BE185D]/40 focus:border-[#BE185D] transition-all duration-200">
                                 </div>
                             </div>
 
                             <!-- Password (Stagger 3) -->
                             <div class="motion-stagger-3">
-                                <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata
-                                    Sandi</label>
+                                <label for="inpPassword" class="block text-xs font-bold text-slate-700 mb-1.5">Kata Sandi</label>
                                 <div class="relative group">
-                                    <span
-                                        class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-emerald-600 text-sm transition-colors"><i
-                                            class="bi bi-lock-fill"></i></span>
-                                    <input type="password" id="inpPassword" required autocomplete="new-password"
-                                        placeholder="Masukkan kata sandi"
-                                        class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500 transition-all duration-200">
-                                    <button type="button" onclick="togglePassVisibility()"
-                                        class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer transition-colors"
-                                        title="Lihat/Sembunyikan Sandi"><i id="eyePassIcon"
-                                            class="bi bi-eye"></i></button>
+                                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-[#7A0C3C] text-sm transition-colors"><i class="bi bi-lock-fill"></i></span>
+                                    <input type="password" id="inpPassword" required autocomplete="new-password" placeholder="Masukkan kata sandi" class="w-full pl-10 pr-12 py-3 rounded-xl border border-slate-300 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#BE185D]/40 focus:border-[#BE185D] transition-all duration-200">
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 text-sm cursor-pointer transition-colors" title="Lihat/Sembunyikan Sandi"><i id="eyePassIcon" class="bi bi-eye"></i></button>
                                 </div>
                             </div>
 
                             <!-- Submit button (Stagger 4) -->
                             <div class="motion-stagger-4 pt-1">
-                                <button type="submit"
-                                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0f6b4a] via-[#0d5c40] to-[#083b2a] hover:from-[#117e57] hover:to-[#0a4632] text-white font-black text-sm shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer btn-shimmer-sweep active:scale-[0.98]">
+                                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#7A0C3C] via-[#881337] to-[#BE185D] hover:from-[#5C082D] hover:to-[#9F1239] text-white font-black text-sm shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer btn-shimmer-sweep active:scale-[0.98]">
                                     <span id="btnSubmitText">Masuk ke Dashboard</span>
                                     <i class="bi bi-arrow-right text-sm"></i>
                                 </button>
@@ -551,22 +456,39 @@
                         </form>
 
                         <!-- Divider (Stagger 5) -->
-                        <div
-                            class="flex items-center gap-3 my-5 text-[11px] text-slate-400 font-semibold motion-stagger-5">
-                            <span class="flex-1 h-px bg-slate-200"></span>atau<span
-                                class="flex-1 h-px bg-slate-200"></span>
+                        <div class="flex items-center gap-3 my-5 text-[11px] text-slate-400 font-semibold motion-stagger-5">
+                            <span class="flex-1 h-px bg-slate-200"></span>atau<span class="flex-1 h-px bg-slate-200"></span>
                         </div>
 
                         <!-- Quick actions (Stagger 6) -->
-                        <div class="grid grid-cols-2 gap-2 motion-stagger-6">
-                            <button type="button" onclick="autoFillActiveCredentials()"
-                                class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100/90 border border-amber-200 text-amber-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i
-                                    class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi
-                                    Otomatis</span></button>
-                            <button type="button" onclick="loginAsGuestViewer()"
-                                class="py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200 text-emerald-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i
-                                    class="bi bi-eye-fill text-emerald-600 text-sm"></i><span>Masuk sebagai
-                                    Tamu</span></button>
+                        <!-- Role Switcher Quick Access (SRS 4 Peran Pengguna) -->
+                        <div class="space-y-2 motion-stagger-6">
+                            <div class="text-[10px] font-black uppercase tracking-wider text-[#881337] flex items-center gap-1">
+                                <i class="bi bi-person-badge-fill text-[#BE185D]"></i>
+                                <span>Pilih Simulasi Peran (SRS Descan):</span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                                <button type="button" onclick="quickLoginRole('super_admin')" class="py-2 px-2 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>👑</span>
+                                    <span>Super Admin</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('admin_bps')" class="py-2 px-2 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>🏛️</span>
+                                    <span>Admin BPS</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('operator_desa')" class="py-2 px-2 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-black text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-xs">
+                                    <span>🌾</span>
+                                    <span>Admin Operator Desa</span>
+                                </button>
+                                <button type="button" onclick="quickLoginRole('publik')" class="py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10.5px] transition-all hover:scale-102 flex flex-col items-center justify-center text-center cursor-pointer shadow-2xs">
+                                    <span>🌐</span>
+                                    <span>Publik</span>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button type="button" onclick="autoFillActiveCredentials()" class="py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100/90 border border-amber-200 text-amber-800 font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-lightning-charge-fill text-amber-600 text-sm"></i><span>Isi Sandi Otomatis</span></button>
+                                <button type="button" onclick="loginAsGuestViewer()" class="py-2.5 rounded-xl bg-[#FFF1F2] hover:bg-[#FCE7F3] border border-[#FDA4AF] text-[#7A0C3C] font-bold text-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"><i class="bi bi-eye-fill text-[#BE185D] text-sm"></i><span>Masuk Tamu (Publik)</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -581,9 +503,7 @@
     </footer>
 
     <!-- Toast Notification -->
-    <div id="loginToast"
-        class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-xs font-bold shadow-2xl border border-slate-700 animate-bounce">
-    </div>
+    <div id="loginToast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-xs font-bold shadow-2xl border border-slate-700 animate-bounce"></div>
 
     <!-- SCRIPT LOGIC -->
     <script>
@@ -668,7 +588,7 @@
             try {
                 localStorage.setItem('descan_auth_session', JSON.stringify(session));
                 sessionStorage.setItem('descan_auth_session', JSON.stringify(session));
-            } catch (e) { }
+            } catch(e) {}
             window.location.href = `/descan/menu?desa=${currentSelectedDesa}&menu=dashboard`;
         }
 
@@ -748,7 +668,7 @@
             try {
                 localStorage.removeItem('descan_auth_session');
                 sessionStorage.removeItem('descan_auth_session');
-            } catch (e) { }
+            } catch(e) {}
 
             const params = new URLSearchParams(window.location.search);
             const desaParam = (params.get('desa') || 'kamisi').toLowerCase();
@@ -781,6 +701,28 @@
         };
 
     </script>
-</body>
 
+<script>
+function quickLoginRole(roleKey) {
+    if (roleKey === 'penilai_publik') roleKey = 'publik';
+    localStorage.setItem('descan_role', roleKey);
+    if (roleKey === 'publik') {
+        window.location.href = '/descan';
+        return;
+    }
+    const currentVillage = typeof activeDesaKey !== 'undefined' ? activeDesaKey : 'kamisi';
+    const acc = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentVillage]) ? DESCAN_ACCOUNTS[currentVillage] : null;
+    if (acc) {
+        if (typeof setDescanAuth === 'function') setDescanAuth(acc);
+        window.location.href = '/descan/menu?desa=' + currentVillage;
+    } else {
+        window.location.href = '/descan/menu?desa=kamisi';
+    }
+}
+function loginAsGuestViewer() {
+    quickLoginRole('publik');
+}
+</script>
+
+</body>
 </html>

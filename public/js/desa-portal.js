@@ -2,7 +2,7 @@
  * DESA PORTAL ENGINE - SISTEM WEBSITE RESMI DESA & KELURAHAN TERINTEGRASI DESCAN
  * Kabupaten Kolaka Utara (Kecamatan Kodeoha & Kecamatan Tiwu)
  * Mendukung 6 Desa Binaan: Kamisi, Koroha, Mala-Mala, Lapolu, Tanggeawo, Mattiro Bulu
- * Palet Warna: Hijau Zamrud (#046A38), Emas/Kuning Lembut, Putih Bersih
+ * Palet Warna: Hijau Zamrud (#7A0C3C), Emas/Kuning Lembut, Putih Bersih
  */
 
 const VILLAGE_PORTAL_DATA = {
@@ -576,7 +576,7 @@ function closeAllVillageDropdowns() {
     document.querySelectorAll('.vnav-btn').forEach(btn => {
         const key = btn.getAttribute('data-menu-key');
         if (typeof currentPortalActiveMenu !== 'undefined' && key !== currentPortalActiveMenu) {
-            btn.classList.remove('bg-[#03532c]', 'text-amber-300');
+            btn.classList.remove('bg-[#5C082D]', 'text-amber-300');
         }
     });
     activeVillageDropdown = null;
@@ -601,7 +601,7 @@ function toggleVillageDropdown(menuKey, event) {
         activeVillageDropdown = menuKey;
         if (typeof window !== 'undefined') window.activeVillageDropdown = menuKey;
         const btn = document.getElementById('vmenu-' + menuKey);
-        if (btn) btn.classList.add('bg-[#03532c]', 'text-amber-300');
+        if (btn) btn.classList.add('bg-[#5C082D]', 'text-amber-300');
     }
 }
 
@@ -615,7 +615,7 @@ function openVillageDropdown(menuKey) {
         activeVillageDropdown = menuKey;
         if (typeof window !== 'undefined') window.activeVillageDropdown = menuKey;
         const btn = document.getElementById('vmenu-' + menuKey);
-        if (btn) btn.classList.add('bg-[#03532c]', 'text-amber-300');
+        if (btn) btn.classList.add('bg-[#5C082D]', 'text-amber-300');
     }
 }
 
@@ -666,14 +666,14 @@ function initVillageHeader(desaKey, targetContainerId = null) {
     let potensiItemsHtml = '';
     d.wisataPotensi.items.forEach((item, idx) => {
         potensiItemsHtml += `
-            <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+            <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                 <span>${item.icon}</span>
                 <span class="truncate">${item.judul}</span>
             </button>
         `;
     });
     potensiItemsHtml += `
-        <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors border-t border-slate-100 mt-1 pt-1.5">
+        <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors border-t border-slate-100 mt-1 pt-1.5">
             <span>✨</span>
             <span>Katalog Potensi Lengkap</span>
         </button>
@@ -695,7 +695,7 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     </div>
                     <div class="min-w-0">
                         <div class="flex items-center gap-2">
-                            <span class="px-2 py-0.5 rounded text-[9.5px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                            <span class="px-2 py-0.5 rounded text-[9.5px] font-black uppercase tracking-wider bg-[#FCE7F3] text-[#7A0C3C] border border-[#FDA4AF]">
                                 DESA CANTIK BPS 2026
                             </span>
                             <span class="text-[10px] text-slate-400 hidden sm:inline">• Portal Satu Data Sektoral</span>
@@ -704,7 +704,7 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                             ${d.upperTitle}
                         </h1>
                         <p class="text-[10.5px] sm:text-xs text-slate-500 font-medium truncate">
-                            Kecamatan ${d.kecamatan}, ${d.kabupaten} • Motto: <span class="text-emerald-700 italic font-semibold">"${d.motto}"</span>
+                            Kecamatan ${d.kecamatan}, ${d.kabupaten} • Motto: <span class="text-[#7A0C3C] italic font-semibold">"${d.motto}"</span>
                         </p>
                     </div>
                 </div>
@@ -715,7 +715,7 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- Dropdown Pemilih 6 Desa Terbina (Village Switcher) -->
                     <div class="flex items-center gap-1.5 shrink-0">
                         <span class="text-[11px] font-black text-slate-500 uppercase tracking-wider hidden xl:inline">Pilih Desa:</span>
-                        <select id="villagePortalSwitcherSelect" onchange="switchDedicatedVillage(this.value)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-black text-slate-800 outline-none focus:ring-2 focus:ring-emerald-600 cursor-pointer transition shadow-2xs">
+                        <select id="villagePortalSwitcherSelect" onchange="switchDedicatedVillage(this.value)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-xs font-black text-slate-800 outline-none focus:ring-2 focus:ring-[#7A0C3C] cursor-pointer transition shadow-2xs">
                             <option value="lapolu" ${d.key === 'lapolu' ? 'selected' : ''}>🌾 Desa Lapolu (Kec. Tiwu)</option>
                             <option value="tanggeawo" ${d.key === 'tanggeawo' ? 'selected' : ''}>🌱 Desa Tanggeawo (Kec. Tiwu)</option>
                             <option value="mattirobulu" ${d.key === 'mattirobulu' ? 'selected' : ''}>🌊 Desa Mattiro Bulu (Kec. Tiwu)</option>
@@ -729,18 +729,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <div class="relative flex-1 md:w-60 lg:w-72">
                         <input type="text" id="inputPortalSearch" oninput="filterVillagePortalContent(this.value)" 
                             placeholder="Cari info, regulasi, layanan..." 
-                            class="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition-all placeholder:text-slate-400 font-medium">
+                            class="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition-all placeholder:text-slate-400 font-medium">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs">🔍</span>
                         <div id="searchDropdownResults" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 max-h-80 overflow-y-auto"></div>
                     </div>
 
                     <!-- Tombol Kembali ke Portal Utama DESCAN -->
-                    <button type="button" onclick="closeDedicatedVillagePortal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 shrink-0 border border-slate-200 shadow-2xs hover:border-emerald-300" title="Kembali ke Beranda Utama Portal DESCAN 6 Desa">
+                    <button type="button" onclick="closeDedicatedVillagePortal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-[#FFF1F2] hover:text-[#7A0C3C] text-slate-700 text-xs font-bold transition flex items-center gap-1.5 shrink-0 border border-slate-200 shadow-2xs hover:border-[#FDA4AF]" title="Kembali ke Beranda Utama Portal DESCAN 6 Desa">
                         <span>←</span> <span class="hidden sm:inline">Portal Utama DESCAN</span>
                     </button>
 
                     <!-- Tombol Masuk Mode Admin / Operator -->
-                    <button type="button" onclick="toggleOperatorDashboardModal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center gap-1.5 shrink-0 shadow-sm" title="Buka Alat Operator Desa">
+                    <button type="button" onclick="toggleOperatorDashboardModal()" class="px-3 sm:px-3.5 py-2 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white text-xs font-bold transition flex items-center gap-1.5 shrink-0 shadow-sm" title="Buka Alat Operator Desa">
                         <span>⚙️</span> <span class="hidden lg:inline">Admin DESCAN</span>
                     </button>
                 </div>
@@ -749,9 +749,9 @@ function initVillageHeader(desaKey, targetContainerId = null) {
         </div>
 
         <!-- ======================================================== -->
-        <!-- TINGKAT 2: NAVBAR HIJAU TUA #046A38 & 13 MENU DROPDOWN    -->
+        <!-- TINGKAT 2: NAVBAR HIJAU TUA #7A0C3C & 13 MENU DROPDOWN    -->
         <!-- ======================================================== -->
-        <nav class="w-full bg-[#046A38] text-white shadow-md sticky top-0 z-40">
+        <nav class="w-full bg-[#7A0C3C] text-white shadow-md sticky top-0 z-40">
             <div class="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between">
                 
                 <!-- Desktop Menu List (13 Menu Utama) -->
@@ -759,28 +759,28 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     
                     <!-- 1. Beranda Desa -->
                     <button type="button" onclick="selectVillageSubmenu('beranda', 'beranda', event)" id="vmenu-beranda" data-menu-key="beranda"
-                        class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1.5 rounded-t-lg transition border-b-2 border-transparent">
+                        class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1.5 rounded-t-lg transition border-b-2 border-transparent">
                         <span>🏠</span> <span>Beranda</span>
                     </button>
 
                     <!-- 2. Profil -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('profil')" onmouseleave="scheduleCloseVillageDropdown('profil')">
                         <button type="button" id="vmenu-profil" data-menu-key="profil" onclick="toggleVillageDropdown('profil', event)" 
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Profil</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-profil" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('profil')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[250px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-umum', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-umum', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏛️</span> <span>Profil ${d.name}</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-peta', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-peta', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🗺️</span> <span>Peta Wilayah & Batas Dusun</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-demografi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-demografi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📊</span> <span>Demografi & Statistik DESCAN</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-sejarah', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('profil', 'profil-sejarah', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📜</span> <span>Sejarah & Asal Usul Desa</span>
                             </button>
                         </div>
@@ -789,27 +789,27 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 3. Pemerintahan -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('pemerintahan')" onmouseleave="scheduleCloseVillageDropdown('pemerintahan')">
                         <button type="button" id="vmenu-pemerintahan" data-menu-key="pemerintahan" onclick="toggleVillageDropdown('pemerintahan', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Pemerintahan</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-pemerintahan" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('pemerintahan')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-visimisi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-visimisi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🎯</span> <span>Visi & Misi Desa MADANI</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-kades', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-kades', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>👤</span> <span>Profil ${d.kades.title}</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-perangkat', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-perangkat', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>👥</span> <span>Perangkat Desa / Aparatur</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-tupoksi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-tupoksi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📋</span> <span>Tugas & Fungsi (Tupoksi)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-bpd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-bpd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏛️</span> <span>Badan Permusyawaratan Desa (BPD)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-wilayah', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-wilayah', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏘️</span> <span>Wilayah Administratif Dusun & RT</span>
                             </button>
                         </div>
@@ -818,24 +818,24 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 4. Regulasi -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('regulasi')" onmouseleave="scheduleCloseVillageDropdown('regulasi')">
                         <button type="button" id="vmenu-regulasi" data-menu-key="regulasi" onclick="toggleVillageDropdown('regulasi', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Regulasi</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-regulasi" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('regulasi')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[280px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-perdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-perdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>⚖️</span> <span>Produk Hukum Perdes & Perkades</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rancangan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rancangan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📝</span> <span>Rancangan Perdes (Uji Publik)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rpjmdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rpjmdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📘</span> <span>RPJMDes 2021 - 2027</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rkpdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-rkpdes', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📑</span> <span>RKPDes Tahun Berjalan 2026</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-kerjasama', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-kerjasama', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🤝</span> <span>Kerja Sama BPS & Universitas</span>
                             </button>
                         </div>
@@ -844,24 +844,24 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 5. Laporan -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('laporan')" onmouseleave="scheduleCloseVillageDropdown('laporan')">
                         <button type="button" id="vmenu-laporan" data-menu-key="laporan" onclick="toggleVillageDropdown('laporan', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Laporan</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-laporan" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('laporan')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-lppd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-lppd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📄</span> <span>LPPD 2025/2026</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-akhir', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-akhir', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📁</span> <span>LPPD Akhir Masa Jabatan</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-kehadiran', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-kehadiran', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🕒</span> <span>Rekap Kehadiran Aparatur</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-realisasi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-realisasi', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📈</span> <span>Realisasi Anggaran & Kinerja</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-descan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-descan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🛡️</span> <span>Laporan Pembinaan Desa Cantik</span>
                             </button>
                         </div>
@@ -870,18 +870,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 6. PPID -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('ppid')" onmouseleave="scheduleCloseVillageDropdown('ppid')">
                         <button type="button" id="vmenu-ppid" data-menu-key="ppid" onclick="toggleVillageDropdown('ppid', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>PPID</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-ppid" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('ppid')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-profil', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-profil', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>ℹ️</span> <span>Profil PPID & SK Pengelola</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-daftar', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-daftar', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📑</span> <span>Daftar Informasi Publik Berkala</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-form', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-form', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>✍️</span> <span>Formulir Permohonan Informasi</span>
                             </button>
                         </div>
@@ -890,21 +890,21 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 7. APBDes -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('apbdes')" onmouseleave="scheduleCloseVillageDropdown('apbdes')">
                         <button type="button" id="vmenu-apbdes" data-menu-key="apbdes" onclick="toggleVillageDropdown('apbdes', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>APBDes</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-apbdes" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('apbdes')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-infografis', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-infografis', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📊</span> <span>Infografis Realisasi 2026</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-rincian', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-rincian', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>💰</span> <span>Rincian PADes, Dana Desa & ADD</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-belanja', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-belanja', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏗️</span> <span>Belanja Bidang Pembangunan & Sosial</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-pertanggungjawaban', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-pertanggungjawaban', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📜</span> <span>Laporan Pertanggungjawaban APBDes</span>
                             </button>
                         </div>
@@ -913,18 +913,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 8. BUMDes -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('bumdes')" onmouseleave="scheduleCloseVillageDropdown('bumdes')">
                         <button type="button" id="vmenu-bumdes" data-menu-key="bumdes" onclick="toggleVillageDropdown('bumdes', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>BUMDes</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-bumdes" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('bumdes')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-profil', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-profil', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏢</span> <span>Profil & Badan Hukum BUMDes</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-unit', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-unit', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🌱</span> <span>Unit Usaha Unggulan & Inovasi</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-laporan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-laporan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📊</span> <span>Laporan Keuangan & Kontribusi PADes</span>
                             </button>
                         </div>
@@ -933,27 +933,27 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 9. Lembaga -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('lembaga')" onmouseleave="scheduleCloseVillageDropdown('lembaga')">
                         <button type="button" id="vmenu-lembaga" data-menu-key="lembaga" onclick="toggleVillageDropdown('lembaga', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Lembaga</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-lembaga" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('lembaga')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[260px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-pkk', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-pkk', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🌸</span> <span>TP-PKK Desa & Dasawisma</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-lpmd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-lpmd', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🤝</span> <span>LPMD / Pemberdayaan</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-karangtaruna', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-karangtaruna', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>⚡</span> <span>Karang Taruna Desa</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-posyandu', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-posyandu', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🩺</span> <span>Posyandu & Kader Kesehatan</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-linmas', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-linmas', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🛡️</span> <span>Satlinmas & Trantibum</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-poktan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-poktan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🌾</span> <span>Kelompok Tani (Gapoktan)</span>
                             </button>
                         </div>
@@ -962,7 +962,7 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 10. Wisata & Potensi -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('wisata')" onmouseleave="scheduleCloseVillageDropdown('wisata')">
                         <button type="button" id="vmenu-wisata" data-menu-key="wisata" onclick="toggleVillageDropdown('wisata', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Potensi & Wisata</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-wisata" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('wisata')"
@@ -974,18 +974,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 11. Budaya -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('budaya')" onmouseleave="scheduleCloseVillageDropdown('budaya')">
                         <button type="button" id="vmenu-budaya" data-menu-key="budaya" onclick="toggleVillageDropdown('budaya', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Budaya</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-budaya" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('budaya')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[260px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-adat', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-adat', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🌿</span> <span>Adat & Tradisi Leluhur Kolut</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-seni', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-seni', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🎭</span> <span>Seni Tari & Musik Tradisional</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-kearifan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-kearifan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🤝</span> <span>Kearifan Lokal & Gotong Royong</span>
                             </button>
                         </div>
@@ -994,18 +994,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <!-- 12. Masterplan -->
                     <div class="relative village-dropdown-container" onmouseenter="openVillageDropdown('masterplan')" onmouseleave="scheduleCloseVillageDropdown('masterplan')">
                         <button type="button" id="vmenu-masterplan" data-menu-key="masterplan" onclick="toggleVillageDropdown('masterplan', event)"
-                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#03532c] flex items-center gap-1 transition rounded-t-lg">
+                            class="vnav-btn vnav-link px-3 py-3 hover:bg-[#5C082D] flex items-center gap-1 transition rounded-t-lg">
                             <span>Masterplan</span> <span class="text-[9px] opacity-75">▾</span>
                         </button>
                         <div id="vdropdown-masterplan" onmouseenter="cancelCloseVillageDropdown()" onmouseleave="scheduleCloseVillageDropdown('masterplan')"
                             class="village-dropdown-panel hidden absolute left-0 top-full bg-white text-slate-800 rounded-b-xl shadow-2xl border border-slate-200 p-2 min-w-[270px] z-50 animate-fadeIn">
-                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-madani', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-madani', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🗺️</span> <span>Masterplan Kawasan MADANI</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-descan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-descan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📊</span> <span>Integrasi Statistik DESCAN BPS</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-digital', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-digital', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🌐</span> <span>Rencana Aksi Transformasi Digital</span>
                             </button>
                         </div>
@@ -1022,28 +1022,28 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                             <div class="px-3 py-1.5 text-[10px] font-black uppercase text-amber-800 bg-amber-50 rounded-md mb-1">
                                 Layanan Mandiri & Tiket Instan
                             </div>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-sku', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-sku', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>💼</span> <span>Surat Keterangan Usaha (SKU)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-domisili', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-domisili', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🏠</span> <span>Surat Keterangan Domisili</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-ktp', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-ktp', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🆔</span> <span>Pengantar KTP-el</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-kk', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-kk', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>👨‍👩‍👧</span> <span>Pengantar Kartu Keluarga (KK)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-tidakmampu', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-tidakmampu', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>🤝</span> <span>Keterangan Tidak Mampu (SKTM)</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-akta', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-akta', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📜</span> <span>Akta Kelahiran / Kematian</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-pengaduan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-pengaduan', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📢</span> <span>Aspirasi & Pengaduan Warga</span>
                             </button>
-                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-pst', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                            <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-pst', event)" class="w-full text-left flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#7A0C3C] hover:bg-[#FFF1F2] rounded-lg transition-colors">
                                 <span>📊</span> <span>Pojok Statistik (PST) BPS</span>
                             </button>
                         </div>
@@ -1056,7 +1056,7 @@ function initVillageHeader(desaKey, targetContainerId = null) {
                     <div class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-emerald-100">
                         <span>🧭</span> <span>Menu Resmi ${d.name}</span>
                     </div>
-                    <button type="button" onclick="toggleVillageMobileNav()" class="p-1.5 rounded-lg bg-[#03532c] text-white hover:bg-emerald-800 transition">
+                    <button type="button" onclick="toggleVillageMobileNav()" class="p-1.5 rounded-lg bg-[#5C082D] text-white hover:bg-[#5C082D] transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
@@ -1065,18 +1065,18 @@ function initVillageHeader(desaKey, targetContainerId = null) {
 
             <!-- Mobile Nav Collapsible Content -->
             <div id="villageMobileNavContent" class="hidden lg:hidden bg-[#034d28] border-t border-emerald-700/60 p-4 max-h-[70vh] overflow-y-auto space-y-1.5 text-xs font-semibold">
-                <button type="button" onclick="selectVillageSubmenu('beranda', 'beranda', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🏠 Beranda Desa</button>
-                <button type="button" onclick="selectVillageSubmenu('profil', 'profil-umum', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🏛️ Profil Wilayah</button>
-                <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-visimisi', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🎯 Pemerintahan & Visi Misi</button>
-                <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-perdes', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">⚖️ Regulasi & Perdes</button>
-                <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-lppd', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">📄 Laporan LPPD & Evaluasi</button>
-                <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-profil', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">ℹ️ PPID Informasi Publik</button>
-                <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-infografis', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">📊 Transparansi APBDes</button>
-                <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-profil', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🏢 BUMDes Ekonomi Desa</button>
-                <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-pkk', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🌸 Kelembagaan (PKK/LPMD)</button>
-                <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🏖️ Potensi & Wisata</button>
-                <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-adat', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🌿 Budaya & Kearifan Lokal</button>
-                <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-madani', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-emerald-800">🗺️ Masterplan Desa MADANI</button>
+                <button type="button" onclick="selectVillageSubmenu('beranda', 'beranda', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🏠 Beranda Desa</button>
+                <button type="button" onclick="selectVillageSubmenu('profil', 'profil-umum', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🏛️ Profil Wilayah</button>
+                <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-visimisi', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🎯 Pemerintahan & Visi Misi</button>
+                <button type="button" onclick="selectVillageSubmenu('regulasi', 'reg-perdes', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">⚖️ Regulasi & Perdes</button>
+                <button type="button" onclick="selectVillageSubmenu('laporan', 'lap-lppd', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">📄 Laporan LPPD & Evaluasi</button>
+                <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-profil', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">ℹ️ PPID Informasi Publik</button>
+                <button type="button" onclick="selectVillageSubmenu('apbdes', 'apbdes-infografis', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">📊 Transparansi APBDes</button>
+                <button type="button" onclick="selectVillageSubmenu('bumdes', 'bumdes-profil', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🏢 BUMDes Ekonomi Desa</button>
+                <button type="button" onclick="selectVillageSubmenu('lembaga', 'lem-pkk', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🌸 Kelembagaan (PKK/LPMD)</button>
+                <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🏖️ Potensi & Wisata</button>
+                <button type="button" onclick="selectVillageSubmenu('budaya', 'budaya-adat', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🌿 Budaya & Kearifan Lokal</button>
+                <button type="button" onclick="selectVillageSubmenu('masterplan', 'mp-madani', event); toggleVillageMobileNav();" class="w-full text-left py-2 px-3 rounded hover:bg-[#5C082D]">🗺️ Masterplan Desa MADANI</button>
                 <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-sku', event); toggleVillageMobileNav();" class="w-full text-left py-2.5 px-3 rounded bg-amber-500 text-slate-900 font-black mt-2">✍️ Pelayanan Surat Mandiri</button>
             </div>
         </nav>
@@ -1084,9 +1084,9 @@ function initVillageHeader(desaKey, targetContainerId = null) {
         <!-- ======================================================== -->
         <!-- TINGKAT 3: SEKILAS INFO RUNNING TEXT (MARQUEE HIJAU LEMBUT) -->
         <!-- ======================================================== -->
-        <div class="w-full bg-[#ecfdf5] border-b border-emerald-200/90 py-1.5 px-3 sm:px-6">
+        <div class="w-full bg-[#ecfdf5] border-b border-[#FCE7F3]/90 py-1.5 px-3 sm:px-6">
             <div class="max-w-[1600px] mx-auto flex items-center gap-3 text-xs">
-                <span class="px-2.5 py-0.5 rounded-md bg-[#046A38] text-white text-[10px] font-black uppercase tracking-wider shrink-0 flex items-center gap-1 shadow-2xs">
+                <span class="px-2.5 py-0.5 rounded-md bg-[#7A0C3C] text-white text-[10px] font-black uppercase tracking-wider shrink-0 flex items-center gap-1 shadow-2xs">
                     <span>📢</span> <span>SEKILAS INFO</span>
                 </span>
                 <div class="overflow-hidden relative w-full select-none">
@@ -1148,7 +1148,7 @@ function renderVillageSidebarWidgets(d) {
     sidebarEl.innerHTML = `
         <!-- WIDGET 1: LAYANAN MANDIRI / ONLINE (PERSIS GAMBAR 4) -->
         <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
-            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+            <div class="bg-[#7A0C3C] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-base">🛡️</span>
                     <h3 class="text-sm font-black tracking-tight">Layanan Online ${d.name}</h3>
@@ -1163,18 +1163,18 @@ function renderVillageSidebarWidgets(d) {
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">NIK / No. KTP</label>
                         <input type="text" id="quickNik" maxlength="16" placeholder="16 Digit NIK KTP..." required
-                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
+                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">PIN Warga</label>
                         <input type="password" id="quickPin" maxlength="6" placeholder="Masukkan 6 Digit PIN..." required
-                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
+                            class="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-medium">
                     </div>
-                    <button type="submit" class="w-full py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-black text-xs shadow-md transition active:scale-98">
+                    <button type="submit" class="w-full py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-black text-xs shadow-md transition active:scale-98">
                         Masuk Layanan Mandiri
                     </button>
                     <div class="text-center pt-1">
-                        <a href="javascript:void(0)" onclick="alert('Untuk mendapatkan PIN Layanan Mandiri, silakan hubungi Kantor Operator Desa ' + getActiveDesaData().name + ' dengan membawa KTP dan KK asli.')" class="text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 underline">
+                        <a href="javascript:void(0)" onclick="alert('Untuk mendapatkan PIN Layanan Mandiri, silakan hubungi Kantor Operator Desa ' + getActiveDesaData().name + ' dengan membawa KTP dan KK asli.')" class="text-[11px] font-semibold text-[#7A0C3C] hover:text-emerald-900 underline">
                             Belum punya PIN / Lupa PIN?
                         </a>
                     </div>
@@ -1184,7 +1184,7 @@ function renderVillageSidebarWidgets(d) {
 
         <!-- WIDGET 2: WILAYAH KALURAHAN / PETA DESA (PERSIS GAMBAR 3 & 4) -->
         <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
-            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+            <div class="bg-[#7A0C3C] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-base">📍</span>
                     <h3 class="text-sm font-black tracking-tight">Wilayah ${d.name}</h3>
@@ -1216,7 +1216,7 @@ function renderVillageSidebarWidgets(d) {
 
         <!-- WIDGET 3: AGENDA DESA (PERSIS GAMBAR 2) -->
         <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
-            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+            <div class="bg-[#7A0C3C] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-base">📅</span>
                     <h3 class="text-sm font-black tracking-tight">Agenda</h3>
@@ -1226,7 +1226,7 @@ function renderVillageSidebarWidgets(d) {
             
             <!-- Tabs Baru / Lama -->
             <div class="flex border-b border-slate-200 bg-slate-50 text-xs font-bold">
-                <button type="button" id="tabAgendaBaru" onclick="switchAgendaTab('baru')" class="flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white">
+                <button type="button" id="tabAgendaBaru" onclick="switchAgendaTab('baru')" class="flex-1 py-2.5 text-center text-[#7A0C3C] border-b-2 border-[#7A0C3C] bg-white">
                     Baru
                 </button>
                 <button type="button" id="tabAgendaLama" onclick="switchAgendaTab('lama')" class="flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800">
@@ -1236,7 +1236,7 @@ function renderVillageSidebarWidgets(d) {
 
             <div id="agendaContentList" class="p-5 space-y-3.5 max-h-[360px] overflow-y-auto text-xs">
                 <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                         <i class="bi bi-calendar-event"></i>
                         <span>30 Oktober 2026</span>
                     </div>
@@ -1245,7 +1245,7 @@ function renderVillageSidebarWidgets(d) {
                 </div>
 
                 <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                         <i class="bi bi-calendar-event"></i>
                         <span>15 November 2026</span>
                     </div>
@@ -1254,7 +1254,7 @@ function renderVillageSidebarWidgets(d) {
                 </div>
 
                 <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                    <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                    <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                         <i class="bi bi-calendar-event"></i>
                         <span>22 Desember 2026</span>
                     </div>
@@ -1266,7 +1266,7 @@ function renderVillageSidebarWidgets(d) {
 
         <!-- WIDGET 4: STATISTIK RINGKAS DESA BINAAN (AUTHENTIC DESCAN DATA) -->
         <div class="bg-white rounded-3xl shadow-md border border-slate-200/90 overflow-hidden">
-            <div class="bg-[#046A38] text-white px-5 py-3.5 flex items-center justify-between">
+            <div class="bg-[#7A0C3C] text-white px-5 py-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-base">📊</span>
                     <h3 class="text-sm font-black tracking-tight">Statistik Ringkas ${d.name}</h3>
@@ -1275,15 +1275,15 @@ function renderVillageSidebarWidgets(d) {
             </div>
             <div class="p-5 space-y-3">
                 <div class="grid grid-cols-2 gap-2.5 text-center">
-                    <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+                    <div class="p-3 rounded-2xl bg-[#FFF1F2]/70 border border-emerald-100">
                         <span class="text-[10px] text-slate-500 font-bold uppercase">Penduduk</span>
                         <div class="text-lg font-black text-slate-900 mt-0.5">${d.stats.penduduk.toLocaleString('id-ID')}</div>
-                        <span class="text-[9.5px] text-emerald-700 font-semibold">Jiwa</span>
+                        <span class="text-[9.5px] text-[#7A0C3C] font-semibold">Jiwa</span>
                     </div>
-                    <div class="p-3 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+                    <div class="p-3 rounded-2xl bg-[#FFF1F2]/70 border border-emerald-100">
                         <span class="text-[10px] text-slate-500 font-bold uppercase">Kepala Keluarga</span>
                         <div class="text-lg font-black text-slate-900 mt-0.5">${d.stats.kk.toLocaleString('id-ID')}</div>
-                        <span class="text-[9.5px] text-emerald-700 font-semibold">KK</span>
+                        <span class="text-[9.5px] text-[#7A0C3C] font-semibold">KK</span>
                     </div>
                     <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-100">
                         <span class="text-[10px] text-slate-500 font-bold uppercase">Kemiskinan</span>
@@ -1335,11 +1335,11 @@ function selectVillageSubmenu(menuKey, subKey, event) {
 
     // Update navbar active buttons
     document.querySelectorAll('.vnav-btn').forEach(el => {
-        el.classList.remove('bg-[#03532c]', 'text-amber-300', 'border-b-2', 'border-amber-400');
+        el.classList.remove('bg-[#5C082D]', 'text-amber-300', 'border-b-2', 'border-amber-400');
     });
     const activeNavBtn = document.getElementById('vmenu-' + menuKey);
     if (activeNavBtn) {
-        activeNavBtn.classList.add('bg-[#03532c]', 'text-amber-300', 'border-b-2', 'border-amber-400');
+        activeNavBtn.classList.add('bg-[#5C082D]', 'text-amber-300', 'border-b-2', 'border-amber-400');
     }
 
     // If main layout has not been rendered yet, initialize it
@@ -1375,7 +1375,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <img src="/images/desa/${d.key}.jpg" alt="${d.name}" class="absolute inset-0 w-full h-full object-cover opacity-60">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent"></div>
                 <div class="relative z-10 p-5 sm:p-8 space-y-3 max-w-2xl">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500 text-white shadow-md">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#FFF1F2]0 text-white shadow-md">
                         <span>🏛️</span> <span>Website Resmi Pemerintahan</span>
                     </span>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight drop-shadow-md">
@@ -1385,7 +1385,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         "${d.kades.sambutan}"
                     </p>
                     <div class="flex flex-wrap items-center gap-3 pt-2">
-                        <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-sku', event)" class="px-4 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-700 text-white text-xs font-black transition shadow-lg flex items-center gap-2">
+                        <button type="button" onclick="selectVillageSubmenu('pelayanan', 'pelayanan-sku', event)" class="px-4 py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#7A0C3C] text-white text-xs font-black transition shadow-lg flex items-center gap-2">
                             <span>✍️</span> <span>Ajukan Surat Mandiri</span>
                         </button>
                         <button type="button" onclick="selectVillageSubmenu('profil', 'profil-umum', event)" class="px-4 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white text-xs font-bold transition flex items-center gap-2 border border-white/20">
@@ -1400,12 +1400,12 @@ function renderVillageSubmenu(menuKey, subKey) {
 
             <!-- Sambutan Resmi Kepala Desa / Lurah -->
             <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-md border border-slate-200/90 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <div class="w-28 sm:w-36 h-36 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-emerald-600 bg-slate-100">
+                <div class="w-28 sm:w-36 h-36 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-[#7A0C3C] bg-slate-100">
                     <img src="${d.kades.foto}" alt="${d.kades.nama}" class="w-full h-full object-cover">
                 </div>
                 <div class="space-y-3 text-center sm:text-left flex-1">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider bg-[#FFF1F2] px-2 py-0.5 rounded-md border border-[#FCE7F3]">
                             Sambutan Resmi ${d.kades.title}
                         </span>
                         <h3 class="text-lg sm:text-xl font-black text-slate-900 mt-1">${d.kades.nama}</h3>
@@ -1415,7 +1415,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         "${d.kades.sambutan}"
                     </p>
                     <div class="flex items-center justify-center sm:justify-start gap-3 pt-1">
-                        <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-kades', event)" class="text-xs font-bold text-emerald-800 hover:text-emerald-950 flex items-center gap-1">
+                        <button type="button" onclick="selectVillageSubmenu('pemerintahan', 'pem-kades', event)" class="text-xs font-bold text-[#7A0C3C] hover:text-emerald-950 flex items-center gap-1">
                             <span>Biodata Lengkap</span> <span>→</span>
                         </button>
                     </div>
@@ -1427,7 +1427,7 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div id="portalSectionDataGrafikDesa" class="space-y-6 pt-2">
                 
                 <!-- BANNER DATA PUBLIKASI DESA & STATISTIK PENDUDUK (GAMBAR 3) -->
-                <div class="bg-gradient-to-r from-slate-900 via-[#043427] to-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-xl border border-emerald-500/30 relative overflow-hidden">
+                <div class="bg-gradient-to-r from-slate-900 via-[#043427] to-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-xl border border-[#BE185D]/30 relative overflow-hidden">
                     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
                     
                     <div class="flex items-center justify-between pb-4 border-b border-white/10 relative z-10">
@@ -1447,7 +1447,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         </div>
 
                         <div class="hidden sm:flex items-center gap-2">
-                            <span id="portalBannerActiveDesaPill" class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">
+                            <span id="portalBannerActiveDesaPill" class="px-3 py-1 rounded-full text-xs font-black bg-[#FFF1F2]0/20 text-emerald-200 border border-emerald-400/30">
                                 ${d.name.toUpperCase()} (KEC. ${d.kecamatan.toUpperCase()})
                             </span>
                             <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-300 text-slate-950 flex items-center justify-center text-lg shadow-lg">
@@ -1501,7 +1501,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div class="lg:col-span-4 xl:col-span-3 space-y-3 border-b lg:border-b-0 lg:border-r border-slate-200 pb-5 lg:pb-0 lg:pr-5">
                             <div class="space-y-1">
                                 <div class="flex items-center justify-between text-xs font-black text-slate-800 uppercase tracking-wider py-1.5 px-2">
-                                    <span class="flex items-center gap-1.5 text-emerald-800">
+                                    <span class="flex items-center gap-1.5 text-[#7A0C3C]">
                                         <i class="bi bi-people-fill text-sm"></i>
                                         <span>Statistik Penduduk</span>
                                     </span>
@@ -1589,17 +1589,17 @@ function renderVillageSubmenu(menuKey, subKey) {
                                         Demografi Berdasar Umur (Kategori)
                                     </h3>
                                     <p id="portalDesaChartSubTitle" class="text-xs sm:text-sm font-semibold text-slate-500 mt-0.5">
-                                        Grafik Umur (Kategori) — <span id="portalDesaChartActiveVillageName" class="text-emerald-800 font-extrabold">${d.name}</span> (<span id="portalDesaChartTotalJiwaBadge">${d.stats.penduduk}</span> Jiwa / <span id="portalDesaChartTotalKkBadge">${d.stats.kk}</span> KK)
+                                        Grafik Umur (Kategori) — <span id="portalDesaChartActiveVillageName" class="text-[#7A0C3C] font-extrabold">${d.name}</span> (<span id="portalDesaChartTotalJiwaBadge">${d.stats.penduduk}</span> Jiwa / <span id="portalDesaChartTotalKkBadge">${d.stats.kk}</span> KK)
                                     </p>
                                 </div>
 
                                 <!-- 2 TOMBOL GRAPH: BAR GRAPH & PIE GRAPH (PERSIS GAMBAR 1) -->
                                 <div class="inline-flex items-center gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200 self-start sm:self-auto shrink-0 shadow-inner">
-                                    <button type="button" id="portalBtnToggleBarGraph" onclick="switchDesaChartType('bar')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer">
+                                    <button type="button" id="portalBtnToggleBarGraph" onclick="switchDesaChartType('bar')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#7A0C3C] bg-[#7A0C3C] text-white shadow-md cursor-pointer">
                                         <i class="bi bi-bar-chart-fill"></i>
                                         <span>Bar Graph</span>
                                     </button>
-                                    <button type="button" id="portalBtnTogglePieGraph" onclick="switchDesaChartType('pie')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer">
+                                    <button type="button" id="portalBtnTogglePieGraph" onclick="switchDesaChartType('pie')" class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-[#7A0C3C] hover:bg-white cursor-pointer">
                                         <i class="bi bi-pie-chart-fill"></i>
                                         <span>Pie Graph</span>
                                     </button>
@@ -1615,7 +1615,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                             <div class="space-y-2 pt-2">
                                 <div class="flex items-center justify-between text-xs font-bold text-slate-500">
                                     <span>Rincian Sebaran Data Terverifikasi:</span>
-                                    <span class="text-emerald-700 font-bold"><i class="bi bi-patch-check-fill text-xs mr-1"></i>Regsosek &amp; PODES 2026</span>
+                                    <span class="text-[#7A0C3C] font-bold"><i class="bi bi-patch-check-fill text-xs mr-1"></i>Regsosek &amp; PODES 2026</span>
                                 </div>
                                 <div id="portalDesaChartSummaryChips" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                                 </div>
@@ -1643,7 +1643,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col hover:shadow-md transition">
                             <div class="h-32 bg-slate-100 relative overflow-hidden">
                                 <img src="${b.foto}" alt="${b.judul}" class="w-full h-full object-cover">
-                                <span class="absolute top-2 left-2 bg-[#046A38] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-md shadow">
+                                <span class="absolute top-2 left-2 bg-[#7A0C3C] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-md shadow">
                                     ${b.kategori}
                                 </span>
                             </div>
@@ -1653,7 +1653,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                                     <h4 class="text-xs font-black text-slate-900 leading-snug line-clamp-2 mt-0.5">${b.judul}</h4>
                                     <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 leading-relaxed">${b.ringkasan}</p>
                                 </div>
-                                <button type="button" onclick="previewVillageDoc('${b.judul}', 'BERITA-2026', '2026', '${b.ringkasan}')" class="text-xs font-bold text-emerald-800 hover:text-emerald-950 flex items-center gap-1 pt-2">
+                                <button type="button" onclick="previewVillageDoc('${b.judul}', 'BERITA-2026', '2026', '${b.ringkasan}')" class="text-xs font-bold text-[#7A0C3C] hover:text-emerald-950 flex items-center gap-1 pt-2">
                                     <span>Baca Berita</span> <span>→</span>
                                 </button>
                             </div>
@@ -1669,7 +1669,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <span class="text-[10px] font-black uppercase text-slate-400">Pemberdayaan Ekonomi</span>
                         <h3 class="text-lg font-black text-slate-900">Potensi Komoditas & Wisata</h3>
                     </div>
-                    <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event)" class="text-xs font-bold text-emerald-800 hover:text-emerald-950">
+                    <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-semua', event)" class="text-xs font-bold text-[#7A0C3C] hover:text-emerald-950">
                         Lihat Semua →
                     </button>
                 </div>
@@ -1678,15 +1678,15 @@ function renderVillageSubmenu(menuKey, subKey) {
                     ${d.wisataPotensi.items.map((it, idx) => `
                         <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 p-4 space-y-2.5 flex flex-col justify-between">
                             <div>
-                                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center text-xl mb-2">
+                                <div class="w-10 h-10 rounded-xl bg-[#FFF1F2] text-[#7A0C3C] font-bold flex items-center justify-center text-xl mb-2">
                                     ${it.icon}
                                 </div>
                                 <h4 class="text-xs font-black text-slate-900 leading-snug">${it.judul}</h4>
                                 <p class="text-[11px] text-slate-500 leading-relaxed mt-1 line-clamp-3">${it.deskripsi}</p>
                             </div>
                             <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
-                                <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">${it.kapasitas}</span>
-                                <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="text-xs font-bold text-slate-700 hover:text-emerald-800">
+                                <span class="text-[10px] font-extrabold text-[#7A0C3C] bg-[#FFF1F2] px-2 py-0.5 rounded">${it.kapasitas}</span>
+                                <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="text-xs font-bold text-slate-700 hover:text-[#7A0C3C]">
                                     Detail →
                                 </button>
                             </div>
@@ -1707,10 +1707,10 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Pemetaan Wilayah</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Pemetaan Wilayah</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Peta Wilayah & Batas Dusun ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">GIS BPS 2026</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">GIS BPS 2026</span>
                     </div>
 
                     <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 relative shadow-inner aspect-video flex items-center justify-center text-white">
@@ -1755,20 +1755,20 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Demografi Presisi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Demografi Presisi</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Demografi & Struktur Penduduk ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Regsosek 2026</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Regsosek 2026</span>
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
-                            <span class="text-[10px] font-bold text-emerald-800 uppercase">Total Penduduk</span>
+                        <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 text-center">
+                            <span class="text-[10px] font-bold text-[#7A0C3C] uppercase">Total Penduduk</span>
                             <div class="text-xl font-black text-slate-900 mt-1">${d.stats.penduduk.toLocaleString('id-ID')}</div>
                             <span class="text-[10px] text-slate-500">Jiwa</span>
                         </div>
-                        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
-                            <span class="text-[10px] font-bold text-emerald-800 uppercase">Jumlah KK</span>
+                        <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 text-center">
+                            <span class="text-[10px] font-bold text-[#7A0C3C] uppercase">Jumlah KK</span>
                             <div class="text-xl font-black text-slate-900 mt-1">${d.stats.kk.toLocaleString('id-ID')}</div>
                             <span class="text-[10px] text-slate-500">Kepala Keluarga</span>
                         </div>
@@ -1800,7 +1800,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                             </div>
                             <div class="flex items-center justify-between py-1 border-b border-slate-200">
                                 <span class="text-slate-600">Usia 15 - 64 Tahun (Usia Produktif):</span>
-                                <span class="font-bold text-emerald-800">68.2% (Bonus Demografi Petani/Nelayan Muda)</span>
+                                <span class="font-bold text-[#7A0C3C]">68.2% (Bonus Demografi Petani/Nelayan Muda)</span>
                             </div>
                             <div class="flex items-center justify-between py-1">
                                 <span class="text-slate-600">Usia 65+ Tahun (Lanjut Usia):</span>
@@ -1818,10 +1818,10 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Historiografi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Historiografi</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Sejarah & Asal Usul ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Arsip Desa</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Arsip Desa</span>
                     </div>
 
                     <div class="prose prose-sm text-slate-600 leading-relaxed space-y-4">
@@ -1831,9 +1831,9 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <p>
                             Nama <b>${d.name}</b> diambil dari perpaduan makna kearifan lokal yang melambangkan keteguhan masyarakat dalam menjaga harmoni sumber daya alam, kerukunan warga, dan keterbukaan terhadap kemajuan zaman.
                         </p>
-                        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-xs">
+                        <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 text-xs">
                             <span class="font-black text-emerald-950 block mb-1">Motto Pembangunan:</span>
-                            <p class="italic text-emerald-800 font-semibold">"${d.motto}"</p>
+                            <p class="italic text-[#7A0C3C] font-semibold">"${d.motto}"</p>
                         </div>
                     </div>
 
@@ -1842,7 +1842,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div class="space-y-2 text-xs">
                             <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
                                 <div><b>${d.kades.nama}</b> (${d.kades.title})</div>
-                                <span class="text-emerald-800 font-bold bg-emerald-100 px-2 py-0.5 rounded">${d.kades.periode} (Menjabat)</span>
+                                <span class="text-[#7A0C3C] font-bold bg-[#FCE7F3] px-2 py-0.5 rounded">${d.kades.periode} (Menjabat)</span>
                             </div>
                         </div>
                     </div>
@@ -1858,13 +1858,13 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <!-- Breadcrumbs & Meta Tag -->
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 text-xs">
                     <div class="flex items-center gap-1.5 text-slate-500 font-medium">
-                        <a href="javascript:void(0)" onclick="selectVillageSubmenu('beranda', 'beranda', event)" class="hover:text-emerald-800">Beranda</a>
+                        <a href="javascript:void(0)" onclick="selectVillageSubmenu('beranda', 'beranda', event)" class="hover:text-[#7A0C3C]">Beranda</a>
                         <span>/</span>
                         <span class="text-slate-400">Profil</span>
                         <span>/</span>
-                        <span class="text-emerald-800 font-bold">Profil Desa ${d.name}</span>
+                        <span class="text-[#7A0C3C] font-bold">Profil Desa ${d.name}</span>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#FCE7F3] text-[#7A0C3C] border border-[#FDA4AF]">
                         Terverifikasi BPS Kolaka Utara
                     </span>
                 </div>
@@ -1876,15 +1876,15 @@ function renderVillageSubmenu(menuKey, subKey) {
                     </h1>
                     <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-slate-500 mt-2 font-medium">
                         <span class="flex items-center gap-1.5">
-                            <i class="bi bi-calendar3 text-emerald-700"></i>
+                            <i class="bi bi-calendar3 text-[#7A0C3C]"></i>
                             <span>24 Januari 2026</span>
                         </span>
                         <span class="flex items-center gap-1.5">
-                            <i class="bi bi-person-fill text-emerald-700"></i>
+                            <i class="bi bi-person-fill text-[#7A0C3C]"></i>
                             <span>Operator BPS DESCAN &amp; Pemdes</span>
                         </span>
                         <span class="flex items-center gap-1.5">
-                            <i class="bi bi-eye text-emerald-700"></i>
+                            <i class="bi bi-eye text-[#7A0C3C]"></i>
                             <span>Dibaca 1.420 kali</span>
                         </span>
                     </div>
@@ -1918,7 +1918,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         
                         <!-- COVER 1: TAHUN 2025 -->
                         <div class="flex flex-col items-center bg-slate-50/80 p-3 sm:p-4 rounded-2xl border border-slate-200 hover:shadow-lg transition-all group">
-                            <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-slate-300 group-hover:border-emerald-500 transition-colors bg-gradient-to-b from-[#d9eedb] via-[#bfe2c3] to-[#86b98e] flex flex-col justify-between p-3.5 text-center">
+                            <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md border-2 border-slate-300 group-hover:border-[#BE185D] transition-colors bg-gradient-to-b from-[#d9eedb] via-[#bfe2c3] to-[#86b98e] flex flex-col justify-between p-3.5 text-center">
                                 <div class="flex items-center justify-between">
                                     <img src="/images/logo_kolaka_utara.png" alt="Logo" class="w-6 h-6 object-contain">
                                     <span class="text-[8.5px] font-black uppercase text-emerald-900 bg-white/70 px-1.5 py-0.5 rounded">BPS DESCAN</span>
@@ -1935,7 +1935,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                                     <div class="absolute inset-0 bg-emerald-900/20"></div>
                                 </div>
                             </div>
-                            <button type="button" onclick="previewVillageDoc('${d.key}', 'profil-2025')" class="mt-3.5 px-5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 hover:text-emerald-900 font-extrabold text-xs border border-emerald-300 shadow-2xs hover:shadow-sm transition flex items-center gap-1.5">
+                            <button type="button" onclick="previewVillageDoc('${d.key}', 'profil-2025')" class="mt-3.5 px-5 py-2 rounded-xl bg-white hover:bg-[#FFF1F2] text-[#7A0C3C] hover:text-emerald-900 font-extrabold text-xs border border-[#FDA4AF] shadow-2xs hover:shadow-sm transition flex items-center gap-1.5">
                                 <i class="bi bi-download text-xs"></i>
                                 <span>Unduh Disini</span>
                             </button>
@@ -2012,9 +2012,9 @@ function renderVillageSubmenu(menuKey, subKey) {
                         Struktur perekonomian bertumpu pada sektor perkebunan rakyat lestari (komoditas unggulan kakao, cengkeh, dan nilam) serta aktivitas kelautan bahari pesisir Teluk Bone. Angka kemiskinan tercatat pada kategori rendah (${d.stats.kemiskinan}), dengan kasus stunting balita yang terkendali intensif (${d.stats.stunting} kasus terbina).
                     </p>
 
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-slate-700 space-y-1">
+                    <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-[#FCE7F3] text-xs text-slate-700 space-y-1">
                         <span class="font-black text-emerald-950 block">Motto Pelayanan &amp; Visi Pembangunan:</span>
-                        <p class="italic text-emerald-800 font-semibold">"${d.motto}"</p>
+                        <p class="italic text-[#7A0C3C] font-semibold">"${d.motto}"</p>
                     </div>
                 </div>
 
@@ -2036,7 +2036,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Profil Desa ' + d.name)}" target="_blank" class="w-8 h-8 rounded-full bg-sky-600 hover:bg-sky-700 text-white flex items-center justify-center text-xs transition shadow-sm">
                             <i class="bi bi-telegram"></i>
                         </a>
-                        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Profil Desa ' + d.name + ': ' + window.location.href)}" target="_blank" class="w-8 h-8 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center text-xs transition shadow-sm">
+                        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Profil Desa ' + d.name + ': ' + window.location.href)}" target="_blank" class="w-8 h-8 rounded-full bg-emerald-600 hover:bg-[#7A0C3C] text-white flex items-center justify-center text-xs transition shadow-sm">
                             <i class="bi bi-whatsapp"></i>
                         </a>
                     </div>
@@ -2047,7 +2047,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                     <h3 class="text-base font-black text-slate-900">Kirim Komentar</h3>
                     
                     <!-- Kotak Pemberitahuan Hijau -->
-                    <div class="p-3.5 rounded-xl bg-emerald-50 border-l-4 border-emerald-600 text-xs font-semibold text-emerald-900">
+                    <div class="p-3.5 rounded-xl bg-[#FFF1F2] border-l-4 border-[#7A0C3C] text-xs font-semibold text-emerald-900">
                         Komentar baru terbit setelah disetujui Admin
                     </div>
 
@@ -2060,26 +2060,26 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div>
                             <label class="block text-slate-700 mb-1">Komentar *</label>
                             <textarea id="commentText" rows="4" required placeholder="Tulis komentar atau aspirasi Anda di sini..."
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal"></textarea>
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal"></textarea>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
                                 <label class="block text-slate-700 mb-1">Nama *</label>
                                 <input type="text" id="commentName" required placeholder="Nama Anda..."
-                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
                             </div>
                             <div>
                                 <label class="block text-slate-700 mb-1">Alamat Email *</label>
                                 <input type="email" id="commentEmail" required placeholder="email@contoh.com..."
-                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
                             </div>
                             <div>
                                 <label class="block text-slate-700 mb-1">No. HP *</label>
                                 <input type="tel" id="commentPhone" required placeholder="08xxxxxxxxxx..."
-                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
+                                    class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-200 outline-none transition font-normal">
                             </div>
                         </div>
-                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-black text-xs shadow-md transition active:scale-98">
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-black text-xs shadow-md transition active:scale-98">
                             Kirim Komentar
                         </button>
                     </form>
@@ -2099,19 +2099,19 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Pimpinan Desa</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Pimpinan Desa</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Profil ${d.kades.title} ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">${d.kades.periode}</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">${d.kades.periode}</span>
                     </div>
 
                     <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
-                        <div class="w-36 h-48 rounded-2xl overflow-hidden shrink-0 border-2 border-emerald-600 shadow-lg bg-slate-100">
+                        <div class="w-36 h-48 rounded-2xl overflow-hidden shrink-0 border-2 border-[#7A0C3C] shadow-lg bg-slate-100">
                             <img src="${d.kades.foto}" alt="${d.kades.nama}" class="w-full h-full object-cover">
                         </div>
                         <div class="space-y-3 flex-1 text-center md:text-left">
                             <div>
-                                <span class="text-xs font-black uppercase text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                <span class="text-xs font-black uppercase text-[#7A0C3C] bg-[#FFF1F2] px-2.5 py-0.5 rounded-full border border-[#FCE7F3]">
                                     ${d.kades.title} Terpilih
                                 </span>
                                 <h3 class="text-2xl font-black text-slate-900 mt-1">${d.kades.nama}</h3>
@@ -2122,7 +2122,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                             </p>
                             <div class="grid grid-cols-2 gap-3 text-xs pt-1">
                                 <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><span class="text-slate-400 block text-[10px]">Masa Jabatan:</span><span class="font-bold text-slate-800">${d.kades.periode}</span></div>
-                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><span class="text-slate-400 block text-[10px]">Status:</span><span class="font-bold text-emerald-800">Definitif</span></div>
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200"><span class="text-slate-400 block text-[10px]">Status:</span><span class="font-bold text-[#7A0C3C]">Definitif</span></div>
                             </div>
                         </div>
                     </div>
@@ -2136,23 +2136,23 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Struktur Organisasi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Struktur Organisasi</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Perangkat & Aparatur Pemerintahan ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">SOTK 2026</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">SOTK 2026</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         ${d.perangkat.map(p => `
                             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-2">
                                 <div>
-                                    <span class="text-[9.5px] font-black uppercase text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">${p.jabatan}</span>
+                                    <span class="text-[9.5px] font-black uppercase text-[#7A0C3C] bg-[#FCE7F3] px-2 py-0.5 rounded">${p.jabatan}</span>
                                     <h4 class="text-xs font-black text-slate-900 mt-2">${p.nama}</h4>
                                     <p class="text-[10.5px] text-slate-500 font-medium">${d.name}, Kec. ${d.kecamatan}</p>
                                 </div>
                                 <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[10px]">
                                     <span class="text-slate-400">Status: Aktif</span>
-                                    <span class="text-emerald-800 font-bold">Terverifikasi</span>
+                                    <span class="text-[#7A0C3C] font-bold">Terverifikasi</span>
                                 </div>
                             </div>
                         `).join('')}
@@ -2167,10 +2167,10 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Tata Kelola Organisasi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Tata Kelola Organisasi</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Tugas Pokok & Fungsi (Tupoksi) Aparatur</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Permendagri No. 84/2015</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Permendagri No. 84/2015</span>
                     </div>
 
                     <div class="space-y-4 text-xs">
@@ -2201,10 +2201,10 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Mitra Musyawarah</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Mitra Musyawarah</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Badan Permusyawaratan Desa (BPD) ${d.name}</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Lembaga Perwakilan</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Lembaga Perwakilan</span>
                     </div>
 
                     <div class="prose prose-sm text-slate-600 leading-relaxed">
@@ -2212,7 +2212,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 space-y-2">
+                        <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 space-y-2">
                             <span class="font-black text-emerald-950 block">Pimpinan BPD:</span>
                             <ul class="space-y-1 text-emerald-900">
                                 <li>• <b>Ketua BPD:</b> Tokoh Masyarakat Terpilih</li>
@@ -2239,10 +2239,10 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Administratif Kewilayahan</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Administratif Kewilayahan</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Wilayah Administratif Dusun & Rukun Tetangga (RT)</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">${d.dusun.length} Dusun</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">${d.dusun.length} Dusun</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -2250,7 +2250,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <span class="text-xs font-black text-slate-900">${ds.nama}</span>
-                                    <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Aktif</span>
+                                    <span class="text-[10px] bg-[#FCE7F3] text-[#7A0C3C] font-bold px-2 py-0.5 rounded">Aktif</span>
                                 </div>
                                 <div class="space-y-1 text-slate-600">
                                     <div>• <b>Kepala Dusun:</b> ${ds.kadus}</div>
@@ -2270,10 +2270,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Arah Pembangunan</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Arah Pembangunan</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Visi & Misi ${d.name}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">RPJMDes 2021-2027</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">RPJMDes 2021-2027</span>
                 </div>
 
                 <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-800 to-teal-900 text-white space-y-2 shadow-md">
@@ -2287,19 +2287,19 @@ function renderVillageSubmenu(menuKey, subKey) {
                     <h4 class="text-xs font-black uppercase text-slate-900 tracking-wider">Misi Pembangunan Strategis:</h4>
                     <div class="space-y-2 text-xs text-slate-700">
                         <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">1</span>
+                            <span class="w-6 h-6 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">1</span>
                             <p class="leading-relaxed">Mewujudkan tata kelola pemerintahan desa yang bersih, transparan, akuntabel, dan berbasis teknologi digital.</p>
                         </div>
                         <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">2</span>
+                            <span class="w-6 h-6 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">2</span>
                             <p class="leading-relaxed">Meningkatkan produktivitas komoditas unggulan pertanian dan kelautan melalui penerapan inovasi dan penguatan BUMDes.</p>
                         </div>
                         <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">3</span>
+                            <span class="w-6 h-6 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">3</span>
                             <p class="leading-relaxed">Mendorong peningkatan kualitas sumber daya manusia melalui pengentasan kemiskinan, penurunan stunting, dan pendidikan.</p>
                         </div>
                         <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">4</span>
+                            <span class="w-6 h-6 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">4</span>
                             <p class="leading-relaxed">Melestarikan nilai-nilai budaya luhur, kearifan lokal, serta memperkuat ketahanan sosial dan lingkungan hidup berkelanjutan.</p>
                         </div>
                     </div>
@@ -2323,18 +2323,18 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Jaringan Dokumentasi Hukum</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Jaringan Dokumentasi Hukum</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">${subTitle}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">JDIH Kolut</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">JDIH Kolut</span>
                 </div>
 
                 <div class="space-y-3">
                     ${d.regulasi.map(r => `
-                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-emerald-50/40 transition">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#FFF1F2]/40 transition">
                             <div class="space-y-1">
                                 <div class="flex items-center gap-2">
-                                    <span class="text-[9.5px] font-black uppercase text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">${r.nomor}</span>
+                                    <span class="text-[9.5px] font-black uppercase text-[#7A0C3C] bg-[#FCE7F3] px-2 py-0.5 rounded">${r.nomor}</span>
                                     <span class="text-[10px] text-slate-400">Tahun ${r.tahun}</span>
                                 </div>
                                 <h4 class="text-xs font-black text-slate-900 leading-snug">${r.judul}</h4>
@@ -2344,7 +2344,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                                 <button type="button" onclick="previewVillageDoc('${r.judul}', '${r.nomor}', '${r.tahun}', '${r.tentang}')" class="px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 transition">
                                     Pratinjau
                                 </button>
-                                <button type="button" onclick="downloadVillageMockDoc('${r.nomor}')" class="px-3 py-1.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white text-xs font-bold shadow-sm transition">
+                                <button type="button" onclick="downloadVillageMockDoc('${r.nomor}')" class="px-3 py-1.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white text-xs font-bold shadow-sm transition">
                                     Unduh PDF
                                 </button>
                             </div>
@@ -2370,10 +2370,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Akuntabilitas Kinerja</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Akuntabilitas Kinerja</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">${titleLap}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Transparansi Publik</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Transparansi Publik</span>
                 </div>
 
                 <div class="prose prose-sm text-slate-600 leading-relaxed">
@@ -2385,13 +2385,13 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="space-y-3">
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                         <div>
-                            <span class="text-[9.5px] font-black uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Dokumen Resmi</span>
+                            <span class="text-[9.5px] font-black uppercase bg-[#FCE7F3] text-[#7A0C3C] px-2 py-0.5 rounded">Dokumen Resmi</span>
                             <h4 class="text-xs font-black text-slate-900 mt-1">${titleLap} ${d.name}</h4>
                             <p class="text-[11px] text-slate-500 mt-0.5">Tahun Anggaran 2025/2026 • Terverifikasi Inspektorat Daerah & BPS</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <button type="button" onclick="previewVillageDoc('${titleLap}', 'LAPORAN-RESMI-2026', '2026', 'Laporan akuntabilitas kinerja dan pembinaan statistik presisi')" class="px-3 py-1.5 rounded-xl bg-white text-slate-700 text-xs font-bold border border-slate-200 hover:bg-slate-100">Pratinjau</button>
-                            <button type="button" onclick="downloadVillageMockDoc('LAPORAN-RESMI-2026')" class="px-3 py-1.5 rounded-xl bg-[#046A38] text-white text-xs font-bold shadow-sm hover:bg-emerald-800">Unduh PDF</button>
+                            <button type="button" onclick="downloadVillageMockDoc('LAPORAN-RESMI-2026')" class="px-3 py-1.5 rounded-xl bg-[#7A0C3C] text-white text-xs font-bold shadow-sm hover:bg-[#5C082D]">Unduh PDF</button>
                         </div>
                     </div>
                 </div>
@@ -2409,33 +2409,33 @@ function renderVillageSubmenu(menuKey, subKey) {
                 <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                     <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Layanan Keterbukaan Informasi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Layanan Keterbukaan Informasi</span>
                             <h2 class="text-xl sm:text-2xl font-black text-slate-900">Formulir Permohonan Informasi Publik (PPID)</h2>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">UU No. 14/2008</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">UU No. 14/2008</span>
                     </div>
 
                     <form onsubmit="submitPelayananSurat(event)" class="space-y-4 text-xs">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block font-bold text-slate-700 mb-1">Nomor Induk Kependudukan (NIK)</label>
-                                <input type="text" id="suratNik" required maxlength="16" placeholder="16 digit NIK..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600">
+                                <input type="text" id="suratNik" required maxlength="16" placeholder="16 digit NIK..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C]">
                             </div>
                             <div>
                                 <label class="block font-bold text-slate-700 mb-1">Nama Lengkap Pemohon</label>
-                                <input type="text" id="suratNama" required placeholder="Nama lengkap..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600">
+                                <input type="text" id="suratNama" required placeholder="Nama lengkap..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C]">
                             </div>
                         </div>
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Rincian Informasi Publik yang Dimohonkan</label>
-                            <textarea rows="3" required placeholder="Tuliskan judul dokumen atau data yang ingin dimohonkan..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600"></textarea>
+                            <textarea rows="3" required placeholder="Tuliskan judul dokumen atau data yang ingin dimohonkan..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C]"></textarea>
                         </div>
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Tujuan Penggunaan Informasi</label>
-                            <input type="text" required placeholder="Penelitian, konfirmasi usaha, pelaporan, dll..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600">
+                            <input type="text" required placeholder="Penelitian, konfirmasi usaha, pelaporan, dll..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C]">
                         </div>
                         <input type="hidden" id="suratJenis" value="Permohonan Informasi Publik PPID">
-                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-bold text-xs shadow-md">
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-bold text-xs shadow-md">
                             Kirim Permohonan Informasi →
                         </button>
                     </form>
@@ -2449,10 +2449,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Pejabat Pengelola Informasi</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Pejabat Pengelola Informasi</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">PPID & Layanan Keterbukaan Informasi ${d.name}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">KIP Terbuka</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">KIP Terbuka</span>
                 </div>
 
                 <div class="prose prose-sm text-slate-600 leading-relaxed">
@@ -2481,7 +2481,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                 </div>
 
                 <div class="pt-4 border-t border-slate-100 flex gap-3">
-                    <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-form', event)" class="px-4 py-2 rounded-xl bg-[#046A38] text-white font-bold text-xs hover:bg-emerald-800">
+                    <button type="button" onclick="selectVillageSubmenu('ppid', 'ppid-form', event)" class="px-4 py-2 rounded-xl bg-[#7A0C3C] text-white font-bold text-xs hover:bg-[#5C082D]">
                         Ajukan Permohonan Informasi Online →
                     </button>
                 </div>
@@ -2499,18 +2499,18 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Transparansi Anggaran</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Transparansi Anggaran</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Anggaran Pendapatan & Belanja Desa (APBDes) 2026</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">TA 2026</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">TA 2026</span>
                 </div>
 
                 <!-- 3 Kartu Ringkasan APBDes -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
-                        <span class="text-[10px] font-bold text-emerald-800 uppercase">Total Pendapatan</span>
+                    <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 text-center">
+                        <span class="text-[10px] font-bold text-[#7A0C3C] uppercase">Total Pendapatan</span>
                         <div class="text-base sm:text-lg font-black text-emerald-950 mt-1">${a.pendapatan}</div>
-                        <span class="text-[10px] text-emerald-700 font-semibold">Dana Desa + ADD + PADes</span>
+                        <span class="text-[10px] text-[#7A0C3C] font-semibold">Dana Desa + ADD + PADes</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
                         <span class="text-[10px] font-bold text-rose-800 uppercase">Total Belanja</span>
@@ -2539,7 +2539,7 @@ function renderVillageSubmenu(menuKey, subKey) {
 
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <span class="text-xs text-slate-500">Laporan disahkan oleh BPD & Pemkab Kolaka Utara</span>
-                    <button type="button" onclick="previewVillageDoc('Laporan Realisasi APBDes 2026', 'PERDES-APBDES-2026', '2026', 'Rincian pertanggungjawaban APBDes')" class="px-4 py-2 rounded-xl bg-[#046A38] text-white font-bold text-xs hover:bg-emerald-800">
+                    <button type="button" onclick="previewVillageDoc('Laporan Realisasi APBDes 2026', 'PERDES-APBDES-2026', '2026', 'Rincian pertanggungjawaban APBDes')" class="px-4 py-2 rounded-xl bg-[#7A0C3C] text-white font-bold text-xs hover:bg-[#5C082D]">
                         Unduh Rincian APBDes PDF →
                     </button>
                 </div>
@@ -2556,10 +2556,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Lembaga Ekonomi Desa</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Lembaga Ekonomi Desa</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">BUMDes Mandiri Sejahtera ${d.name}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Badan Hukum Kemenkumham</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Badan Hukum Kemenkumham</span>
                 </div>
 
                 <div class="prose prose-sm text-slate-600 leading-relaxed">
@@ -2569,20 +2569,20 @@ function renderVillageSubmenu(menuKey, subKey) {
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 space-y-1">
+                    <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 space-y-1">
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Unit Usaha Utama</span>
                         <div class="font-black text-slate-900 text-sm">Pengolahan & Pemasaran Kakao/Hasil Tani</div>
-                        <span class="text-[10px] text-emerald-800 font-semibold">Kemitraan Petani Lokal</span>
+                        <span class="text-[10px] text-[#7A0C3C] font-semibold">Kemitraan Petani Lokal</span>
                     </div>
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 space-y-1">
+                    <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 space-y-1">
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Unit Jasa Layanan</span>
                         <div class="font-black text-slate-900 text-sm">Agen Keuangan & Logistik Desa</div>
-                        <span class="text-[10px] text-emerald-800 font-semibold">BRILink & Transaksi Digital</span>
+                        <span class="text-[10px] text-[#7A0C3C] font-semibold">BRILink & Transaksi Digital</span>
                     </div>
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 space-y-1">
+                    <div class="p-4 rounded-2xl bg-[#FFF1F2] border border-emerald-100 space-y-1">
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Kontribusi PADes</span>
                         <div class="font-black text-slate-900 text-sm">Rp 45.000.000 / Tahun</div>
-                        <span class="text-[10px] text-emerald-800 font-semibold">Tercatat di APBDes 2026</span>
+                        <span class="text-[10px] text-[#7A0C3C] font-semibold">Tercatat di APBDes 2026</span>
                     </div>
                 </div>
             </div>
@@ -2598,10 +2598,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Mitra Kemasyarakatan</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Mitra Kemasyarakatan</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Kelembagaan Masyarakat ${d.name}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Pemberdayaan</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Pemberdayaan</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -2641,10 +2641,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Potensi & Komoditas Unggulan</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Potensi & Komoditas Unggulan</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">${activeItem.judul}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">${activeItem.kapasitas}</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">${activeItem.kapasitas}</span>
                 </div>
 
                 <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 flex items-start gap-4">
@@ -2652,7 +2652,7 @@ function renderVillageSubmenu(menuKey, subKey) {
                     <div class="space-y-2">
                         <h3 class="text-base font-black text-slate-900">${activeItem.judul}</h3>
                         <p class="text-xs text-slate-600 leading-relaxed">${activeItem.deskripsi}</p>
-                        <div class="text-xs font-bold text-emerald-800">
+                        <div class="text-xs font-bold text-[#7A0C3C]">
                             Estimasi Kapasitas Produksi: <span class="text-slate-900">${activeItem.kapasitas}</span>
                         </div>
                     </div>
@@ -2662,11 +2662,11 @@ function renderVillageSubmenu(menuKey, subKey) {
                     <h4 class="text-xs font-black uppercase text-slate-900 tracking-wider">Daftar Potensi Lainnya di ${d.name}:</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         ${d.wisataPotensi.items.map((it, idx) => `
-                            <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="p-3 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 text-left transition flex items-center gap-2.5">
+                            <button type="button" onclick="selectVillageSubmenu('wisata', 'wisata-item-${idx}', event)" class="p-3 rounded-2xl bg-slate-50 hover:bg-[#FFF1F2] border border-slate-200 text-left transition flex items-center gap-2.5">
                                 <span class="text-xl">${it.icon}</span>
                                 <div class="min-w-0">
                                     <div class="text-xs font-black text-slate-900 truncate">${it.judul}</div>
-                                    <div class="text-[10px] text-emerald-800 font-bold">${it.kapasitas}</div>
+                                    <div class="text-[10px] text-[#7A0C3C] font-bold">${it.kapasitas}</div>
                                 </div>
                             </button>
                         `).join('')}
@@ -2685,10 +2685,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Warisan Leluhur</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Warisan Leluhur</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Kebudayaan & Kearifan Lokal ${d.name}</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Kolaka Utara</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">Kolaka Utara</span>
                 </div>
 
                 <div class="prose prose-sm text-slate-600 leading-relaxed">
@@ -2724,10 +2724,10 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Perencanaan Masa Depan</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Perencanaan Masa Depan</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">Masterplan Kawasan Desa MADANI & Desa Cantik BPS</h2>
                     </div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">2026 - 2029</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#FCE7F3] text-[#7A0C3C]">2026 - 2029</span>
                 </div>
 
                 <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-900 to-slate-900 text-white space-y-2">
@@ -2739,21 +2739,21 @@ function renderVillageSubmenu(menuKey, subKey) {
 
                 <div class="space-y-3 text-xs">
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">1</span>
+                        <span class="w-7 h-7 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">1</span>
                         <div>
                             <div class="font-black text-slate-900">Standardisasi 44 Indikator Sektoral (BPS Kolut)</div>
                             <p class="text-slate-600 mt-0.5 leading-relaxed">Memastikan seluruh data demografi, sosial, dan ekonomi desa terverifikasi sesuai kaidah metadata Satu Data Indonesia.</p>
                         </div>
                     </div>
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">2</span>
+                        <span class="w-7 h-7 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">2</span>
                         <div>
                             <div class="font-black text-slate-900">Digitalisasi Administrasi & Layanan Mandiri Warga</div>
                             <p class="text-slate-600 mt-0.5 leading-relaxed">Pengajuan surat, dokumen kependudukan, dan pengaduan dilakukan secara paperless dengan nomor tiket tracking otomatis.</p>
                         </div>
                     </div>
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-black flex items-center justify-center shrink-0">3</span>
+                        <span class="w-7 h-7 rounded-lg bg-[#FCE7F3] text-[#7A0C3C] font-black flex items-center justify-center shrink-0">3</span>
                         <div>
                             <div class="font-black text-slate-900">Kemandirian Ekonomi Berbasis Komoditas Presisi</div>
                             <p class="text-slate-600 mt-0.5 leading-relaxed">Pemanfaatan data potensi untuk peningkatan produksi kakao, cengkeh, nilam, dan perikanan dengan penyerapan pasar terjamin.</p>
@@ -2782,7 +2782,7 @@ function renderVillageSubmenu(menuKey, subKey) {
             <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-6">
                 <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-black uppercase text-emerald-800 tracking-wider">Layanan Mandiri Warga</span>
+                        <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Layanan Mandiri Warga</span>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900">${labelJenis}</h2>
                     </div>
                     <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">Tiket Online</span>
@@ -2800,12 +2800,12 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Nomor Induk Kependudukan (NIK)</label>
                             <input type="text" id="suratNik" maxlength="16" required placeholder="16 digit NIK sesuai KTP..."
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 font-medium">
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-100 font-medium">
                         </div>
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Nama Lengkap Pemohon</label>
                             <input type="text" id="suratNama" required placeholder="Nama lengkap sesuai KTP..."
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 font-medium">
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-100 font-medium">
                         </div>
                     </div>
 
@@ -2813,26 +2813,26 @@ function renderVillageSubmenu(menuKey, subKey) {
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Nomor WhatsApp / HP Aktif</label>
                             <input type="tel" required placeholder="08..."
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 font-medium">
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-100 font-medium">
                         </div>
                         <div>
                             <label class="block font-bold text-slate-700 mb-1">Dusun / RT Tempat Tinggal</label>
                             <input type="text" required placeholder="Misal: Dusun 01 RT 02..."
-                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 font-medium">
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-100 font-medium">
                         </div>
                     </div>
 
                     <div>
                         <label class="block font-bold text-slate-700 mb-1">Keperluan / Keterangan Tambahan</label>
                         <textarea rows="3" required placeholder="Tuliskan keterangan detail permohonan atau jenis usaha yang dijalankan..."
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 font-medium"></textarea>
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:border-[#7A0C3C] focus:ring-2 focus:ring-emerald-100 font-medium"></textarea>
                     </div>
 
                     <input type="hidden" id="suratJenis" value="${labelJenis}">
 
                     <div class="pt-2 flex items-center justify-between">
                         <span class="text-[11px] text-slate-500">Gratis tanpa biaya administrasi (Bebas Pungli).</span>
-                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-black text-xs transition shadow-md flex items-center gap-2">
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-black text-xs transition shadow-md flex items-center gap-2">
                             <span>Kirim Permohonan & Ambil Tiket</span> <span>→</span>
                         </button>
                     </div>
@@ -2847,7 +2847,7 @@ function renderVillageSubmenu(menuKey, subKey) {
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-4">
             <h3 class="text-base font-black text-slate-900">${menuKey.toUpperCase()} - ${subKey}</h3>
             <p class="text-xs text-slate-600">Halaman ini menyajikan informasi resmi Pemerintah ${d.name}.</p>
-            <button type="button" onclick="selectVillageSubmenu('beranda', 'beranda', event)" class="px-4 py-2 rounded-xl bg-[#046A38] text-white text-xs font-bold">
+            <button type="button" onclick="selectVillageSubmenu('beranda', 'beranda', event)" class="px-4 py-2 rounded-xl bg-[#7A0C3C] text-white text-xs font-bold">
                 Kembali ke Beranda Desa
             </button>
         </div>
@@ -2884,11 +2884,11 @@ function submitPelayananSurat(e) {
     const modalHtml = `
         <div id="ticketSuccessModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 text-center space-y-4 animate-scaleUp">
-                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 font-black text-2xl mx-auto flex items-center justify-center shadow-inner">
+                <div class="w-16 h-16 rounded-full bg-[#FCE7F3] text-[#7A0C3C] font-black text-2xl mx-auto flex items-center justify-center shadow-inner">
                     ✓
                 </div>
                 <div>
-                    <span class="text-[10px] font-black uppercase text-emerald-700 tracking-wider">Pengajuan Berhasil Diterima</span>
+                    <span class="text-[10px] font-black uppercase text-[#7A0C3C] tracking-wider">Pengajuan Berhasil Diterima</span>
                     <h3 class="text-xl font-black text-slate-900 mt-0.5">Nomor Tiket Layanan Mandiri</h3>
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-900 text-emerald-400 font-mono text-base font-black tracking-widest border border-slate-800 select-all">
@@ -2898,14 +2898,14 @@ function submitPelayananSurat(e) {
                     <div><b>Nama Pemohon:</b> ${nama}</div>
                     <div><b>NIK:</b> ${nik}</div>
                     <div><b>Jenis Surat:</b> ${jenis}</div>
-                    <div><b>Status:</b> <span class="text-emerald-700 font-bold">Diproses Kasi Pelayanan ${d.name}</span></div>
+                    <div><b>Status:</b> <span class="text-[#7A0C3C] font-bold">Diproses Kasi Pelayanan ${d.name}</span></div>
                     <div><b>Estimasi Selesai:</b> 1 x 24 Jam Kerja</div>
                 </div>
                 <div class="flex gap-2 pt-2">
                     <button type="button" onclick="window.print()" class="flex-1 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition">
                         Cetak Bukti Tiket
                     </button>
-                    <button type="button" onclick="closeTicketModal()" class="flex-1 py-2.5 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-bold text-xs transition shadow-md">
+                    <button type="button" onclick="closeTicketModal()" class="flex-1 py-2.5 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-bold text-xs transition shadow-md">
                         Selesai
                     </button>
                 </div>
@@ -2932,9 +2932,9 @@ function previewVillageDoc(judul, nomor, tahun, desc) {
             <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 space-y-4 max-h-[85vh] overflow-y-auto">
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                     <div class="flex items-center gap-2">
-                        <span class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center text-sm">📜</span>
+                        <span class="w-8 h-8 rounded-xl bg-[#FFF1F2] text-[#7A0C3C] font-bold flex items-center justify-center text-sm">📜</span>
                         <div>
-                            <span class="text-[10px] font-black uppercase text-emerald-800">Pratinjau Dokumen Resmi</span>
+                            <span class="text-[10px] font-black uppercase text-[#7A0C3C]">Pratinjau Dokumen Resmi</span>
                             <h3 class="text-sm font-black text-slate-900 leading-tight">${nomor}</h3>
                         </div>
                     </div>
@@ -2954,7 +2954,7 @@ function previewVillageDoc(judul, nomor, tahun, desc) {
 
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="document.getElementById('villageDocPreviewModal').remove()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs">Tutup</button>
-                    <button type="button" onclick="downloadVillageMockDoc('${nomor}')" class="px-4 py-2 rounded-xl bg-[#046A38] hover:bg-emerald-800 text-white font-bold text-xs shadow-md">Unduh Dokumen Asli (PDF)</button>
+                    <button type="button" onclick="downloadVillageMockDoc('${nomor}')" class="px-4 py-2 rounded-xl bg-[#7A0C3C] hover:bg-[#5C082D] text-white font-bold text-xs shadow-md">Unduh Dokumen Asli (PDF)</button>
                 </div>
             </div>
         </div>
@@ -3057,12 +3057,12 @@ function filterVillagePortalContent(query) {
 
     if (matches.length > 0) {
         resultsContainer.innerHTML = matches.map(m => `
-            <div onclick="selectVillageSubmenu('${m.menu}', '${m.sub}', event); document.getElementById('searchDropdownResults').classList.add('hidden');" class="p-2.5 rounded-xl hover:bg-emerald-50 transition cursor-pointer flex items-center justify-between text-xs">
+            <div onclick="selectVillageSubmenu('${m.menu}', '${m.sub}', event); document.getElementById('searchDropdownResults').classList.add('hidden');" class="p-2.5 rounded-xl hover:bg-[#FFF1F2] transition cursor-pointer flex items-center justify-between text-xs">
                 <div>
-                    <span class="text-[9px] font-black uppercase text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded">${m.category}</span>
+                    <span class="text-[9px] font-black uppercase text-[#7A0C3C] bg-[#FCE7F3] px-1.5 py-0.5 rounded">${m.category}</span>
                     <div class="font-bold text-slate-800 mt-1">${m.title}</div>
                 </div>
-                <span class="text-emerald-700 font-bold">Buka →</span>
+                <span class="text-[#7A0C3C] font-bold">Buka →</span>
             </div>
         `).join('');
         resultsContainer.classList.remove('hidden');
@@ -3150,7 +3150,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Petani Cengkeh & Kakao', 'Penyuling Minyak Atsiri (IKM)', 'Pedagang / Pengumpul', 'Ibu Rumah Tangga', 'Lainnya / Jasa'],
                 values: [590, 411, 128, 103, 52],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3164,7 +3164,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [1274, 10, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3185,7 +3185,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
                 labels: ['Dusun I Cengkeh Indah', 'Dusun II Bukit Harapan', 'Dusun III Lembah Subur'],
                 values: [452, 418, 414],
-                colors: ['#046A38', '#0284c7', '#d97706']
+                colors: ['#7A0C3C', '#0284c7', '#d97706']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3199,7 +3199,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
                 labels: ['Perkebunan Cengkeh (380 Ha)', 'Perkebunan Kakao (180 Ha)', 'IKM Minyak Atsiri (75 Unit)', 'Pertanian Hortikultura (45 Ha)', 'Peternakan Rakyat'],
                 values: [380, 180, 75, 45, 30],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     },
@@ -3236,7 +3236,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Petani Kakao Sambung Pucuk', 'Petani Nilam & Cengkeh', 'Pedagang / UMKM', 'PNS / Guru / Medis', 'Lainnya / Jasa'],
                 values: [684, 389, 115, 48, 106],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3250,7 +3250,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [1335, 7, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3271,7 +3271,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
                 labels: ['Dusun I Kakao Utama', 'Dusun II Harapan Tani', 'Dusun III Subur Makmur'],
                 values: [468, 442, 432],
-                colors: ['#046A38', '#0284c7', '#d97706']
+                colors: ['#7A0C3C', '#0284c7', '#d97706']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3285,7 +3285,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
                 labels: ['Perkebunan Kakao (420 Ha)', 'Perkebunan Nilam (65 Ha)', 'Pertanian Jagung & Horti', 'UMKM Gula Aren (16 Unit)', 'Peternakan Kambing'],
                 values: [420, 65, 52, 16, 24],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     },
@@ -3322,7 +3322,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Petani Cengkeh & Nilam', 'Penyuling Nilam (IKM)', 'Pedagang / UMKM', 'PNS / Guru', 'Lainnya / Jasa'],
                 values: [462, 218, 75, 26, 75],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3336,7 +3336,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [850, 6, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3357,7 +3357,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
                 labels: ['Dusun I Bulu Indah', 'Dusun II Puncak Harapan', 'Dusun III Lembah Hijau'],
                 values: [302, 280, 274],
-                colors: ['#046A38', '#0284c7', '#d97706']
+                colors: ['#7A0C3C', '#0284c7', '#d97706']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3371,7 +3371,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
                 labels: ['Perkebunan Cengkeh (240 Ha)', 'Perkebunan Nilam (95 Ha)', 'Penyulingan Nilam (20 Unit)', 'Hortikultura Sayur Dataran Tinggi', 'Perkebunan Kakao (80 Ha)'],
                 values: [240, 95, 20, 35, 80],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     },
@@ -3408,7 +3408,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Nelayan Tangkap & Teri', 'Petani Kakao & Kelapa', 'IKM Olahan Ikan & Rumput Laut', 'Pedagang Ikan / UMKM', 'PNS / Lainnya'],
                 values: [693, 441, 221, 142, 79],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3422,7 +3422,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [1568, 8, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3443,7 +3443,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
                 labels: ['Dusun I Bahari', 'Dusun II Pantai Indah', 'Dusun III Sejahtera', 'Dusun IV Harapan Baru'],
                 values: [416, 392, 408, 360],
-                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#6366f1']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3457,7 +3457,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
                 labels: ['Perikanan Tangkap & Teri (42 Perahu)', 'Perkebunan Kakao Pesisir (190 Ha)', 'Budidaya Rumput Laut (15 Ha)', 'IKM Olahan Ikan Asin (14 Unit)', 'Kelapa Dalam (60 Ha)'],
                 values: [42, 190, 15, 14, 60],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     },
@@ -3494,7 +3494,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Petani Kakao & Cengkeh', 'Nelayan Pesisir', 'IKM Hasil Kebun & Kelapa', 'Pedagang / UMKM', 'Lainnya / Jasa'],
                 values: [652, 385, 192, 148, 105],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3508,7 +3508,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [1475, 7, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3529,7 +3529,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Dusun',
                 labels: ['Dusun I Koroha Raya', 'Dusun II Pantai Subur', 'Dusun III Lembah Kakao'],
                 values: [512, 488, 482],
-                colors: ['#046A38', '#0284c7', '#d97706']
+                colors: ['#7A0C3C', '#0284c7', '#d97706']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3543,7 +3543,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Desa',
                 labels: ['Kakao Sambung Pucuk (360 Ha)', 'Cengkeh Lereng Bukit (120 Ha)', 'Perikanan & Rumput Laut (25 Ha)', 'Kelapa Dalam (85 Ha)', 'IKM Olahan Pangan (12 Unit)'],
                 values: [360, 120, 25, 85, 12],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     },
@@ -3580,7 +3580,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Distribusi Profesi dan Lapangan Usaha',
                 labels: ['Pedagang / Jasa & UMKM', 'PNS / TNI / Polri / Guru', 'Petani Kakao & Holti', 'Nelayan Pesisir', 'Buruh / Karyawan'],
                 values: [921, 307, 438, 285, 243],
-                colors: ['#046A38', '#0284c7', '#d97706', '#7c3aed', '#64748b']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#7c3aed', '#64748b']
             },
             'status-perkawinan': {
                 title: 'Komposisi Status Perkawinan Penduduk',
@@ -3594,7 +3594,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Kerukunan Umat Beragama Desa',
                 labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Lainnya'],
                 values: [2176, 18, 0, 0],
-                colors: ['#046A38', '#0284c7', '#8b5cf6', '#f59e0b']
+                colors: ['#7A0C3C', '#0284c7', '#8b5cf6', '#f59e0b']
             },
             'jenis-kelamin': {
                 title: 'Rasio Jenis Kelamin (Sex Ratio)',
@@ -3615,7 +3615,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Sebaran Penduduk Tiap Wilayah Lingkungan',
                 labels: ['Lingkungan I Pasar Lama', 'Lingkungan II Bahari', 'Lingkungan III Perbukitan', 'Lingkungan IV Pelayanan'],
                 values: [582, 554, 542, 516],
-                colors: ['#046A38', '#0284c7', '#d97706', '#6366f1']
+                colors: ['#7A0C3C', '#0284c7', '#d97706', '#6366f1']
             },
             'bantuan-sosial': {
                 title: 'Penerima Bantuan Sosial Pemerintah',
@@ -3629,7 +3629,7 @@ const VILLAGE_DETAILED_STATS = {
                 sub: 'Grafik Luas Perkebunan & Klaster Industri Kelurahan',
                 labels: ['Sentra Perdagangan & UMKM (140 Unit)', 'Perkebunan Kakao (210 Ha)', 'Industri Olahan Ikan (24 Unit)', 'Perikanan Tangkap (30 Perahu)', 'Jasa & Pergudangan'],
                 values: [140, 210, 24, 30, 45],
-                colors: ['#046A38', '#059669', '#d97706', '#0284c7', '#8b5cf6']
+                colors: ['#7A0C3C', '#059669', '#d97706', '#0284c7', '#8b5cf6']
             }
         }
     }
@@ -3712,11 +3712,11 @@ function renderDesaInteractiveChart(villageKey, categoryKey, chartType) {
 
         if (btnBar && btnPie) {
             if (cType === 'bar') {
-                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
-                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#7A0C3C] bg-[#7A0C3C] text-white shadow-md cursor-pointer';
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-[#7A0C3C] hover:bg-white cursor-pointer';
             } else {
-                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#046A38] bg-[#046A38] text-white shadow-md cursor-pointer';
-                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-emerald-800 hover:bg-white cursor-pointer';
+                btnPie.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-[#7A0C3C] bg-[#7A0C3C] text-white shadow-md cursor-pointer';
+                btnBar.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-transparent bg-transparent text-slate-600 hover:text-[#7A0C3C] hover:bg-white cursor-pointer';
             }
         }
 
@@ -3880,7 +3880,7 @@ function renderDesaInteractiveChart(villageKey, categoryKey, chartType) {
                         </div>
                         <div class="flex items-baseline justify-between mt-1">
                             <span class="text-sm font-black text-slate-900">${val.toLocaleString('id-ID')}</span>
-                            <span class="text-[10.5px] font-extrabold text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">${pct}%</span>
+                            <span class="text-[10.5px] font-extrabold text-[#7A0C3C] bg-[#FFF1F2] px-1.5 py-0.2 rounded border border-[#FCE7F3]">${pct}%</span>
                         </div>
                     </div>
                 `;
@@ -3988,14 +3988,14 @@ function switchAgendaTab(tabKey) {
 
     if (tabKey === 'baru') {
         if (btnBaru) {
-            btnBaru.className = 'flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white font-bold';
+            btnBaru.className = 'flex-1 py-2.5 text-center text-[#7A0C3C] border-b-2 border-[#7A0C3C] bg-white font-bold';
         }
         if (btnLama) {
             btnLama.className = 'flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800 font-bold';
         }
         content.innerHTML = `
             <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                     <i class="bi bi-calendar-event"></i>
                     <span>30 Oktober 2026</span>
                 </div>
@@ -4003,7 +4003,7 @@ function switchAgendaTab(tabKey) {
                 <div class="text-[11px] text-slate-500">Waktu: 09:00 WITA • Lokasi: Balai Pertemuan Desa</div>
             </div>
             <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                     <i class="bi bi-calendar-event"></i>
                     <span>15 November 2026</span>
                 </div>
@@ -4011,7 +4011,7 @@ function switchAgendaTab(tabKey) {
                 <div class="text-[11px] text-slate-500">Waktu: 08:30 WITA • Lokasi: Kantor Desa ${d.name}</div>
             </div>
             <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <div class="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+                <div class="flex items-center gap-1.5 text-[#7A0C3C] font-extrabold">
                     <i class="bi bi-calendar-event"></i>
                     <span>22 Desember 2026</span>
                 </div>
@@ -4021,7 +4021,7 @@ function switchAgendaTab(tabKey) {
         `;
     } else {
         if (btnLama) {
-            btnLama.className = 'flex-1 py-2.5 text-center text-emerald-800 border-b-2 border-emerald-600 bg-white font-bold';
+            btnLama.className = 'flex-1 py-2.5 text-center text-[#7A0C3C] border-b-2 border-[#7A0C3C] bg-white font-bold';
         }
         if (btnBaru) {
             btnBaru.className = 'flex-1 py-2.5 text-center text-slate-500 hover:text-slate-800 font-bold';
