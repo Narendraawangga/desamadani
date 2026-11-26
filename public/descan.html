@@ -422,9 +422,7 @@
                     <a href="#desa" class="nav-link">
                         6 Desa Binaan
                     </a>
-                    <a href="#output" class="nav-link">
-                        Output Program
-                    </a>
+                    <a href="/descan/output" class="nav-link">Output Program</a>
                     <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link cursor-pointer">
                         Galeri
                     </a>
@@ -434,6 +432,15 @@
                 <div class="flex items-center bg-white/80 rounded-full p-0.5 text-xs font-bold border border-[#DCE3DD] shrink-0 shadow-2xs">
                     <button type="button" id="btnLangID" onclick="window.setPortalLanguage('id')" class="px-2 py-0.5 rounded-full bg-[#3B4D3B] text-white shadow-2xs transition-all cursor-pointer font-bold text-[11px]">ID</button>
                     <button type="button" id="btnLangEN" onclick="window.setPortalLanguage('en')" class="px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] transition-all cursor-pointer font-bold text-[11px]">EN</button>
+                </div>
+
+                <!-- Tombol Pilihan Login Akun (Admin BPS vs Admin Operator Desa) -->
+                <div class="relative">
+                    <button type="button" onclick="openLoginRoleModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#9F1239] to-[#BE123C] hover:from-[#881337] hover:to-[#9F1239] text-white font-extrabold text-xs shadow-xs hover:shadow-md transition-all cursor-pointer border border-[#FECDD3]">
+                        <i class="bi bi-box-arrow-in-right text-xs"></i>
+                        <span>Masuk Akun</span>
+                        <i class="bi bi-chevron-down text-[9px] opacity-80"></i>
+                    </button>
                 </div>
 
                 <!-- Tombol Kembali ke Desa Madani di Ujung Kanan Header -->
@@ -1752,111 +1759,29 @@
 
     <!-- ============================================================== -->
     <!-- 7. MENU 4: OUTPUT PROGRAM DESA CANTIK (#output)                -->
+    <!-- Menampilkan Seluruh Publikasi & Data yang Diunggah oleh Desa   -->
     <!-- ============================================================== -->
-    <section class="py-14 bg-white border-t border-slate-200" id="output">
-        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-8">
-            
-            <div class="text-center max-w-xl mx-auto space-y-1.5">
-                <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
-                    Hasil Pembinaan BPS
-                </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                    Output Desa Cantik Kolaka Utara
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-500">
-                    Dokumen resmi, tabel data sektoral, dan media diseminasi hasil pembinaan BPS.
-                </p>
+        <!-- ============================================================== -->
+    <!-- 7. REPOSITORI OUTPUT PROGRAM RESMI (HALAMAN TERSENDIRI)        -->
+    <!-- Dipisahkan ke Halaman Khusus Sesuai Arahan & Warna Hijau Madani-->
+    <!-- ============================================================== -->
+    <section class="py-12 bg-white border-t border-[#DCE3DD]" id="output">
+        <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="bg-gradient-to-r from-[#2D3B2D] via-[#3B4D3B] to-[#566B53] rounded-3xl p-6 sm:p-10 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6 border border-[#DCE3DD]">
+                <div class="space-y-2.5 text-center md:text-left">
+                    <span class="inline-flex items-center gap-1.5 text-[10.5px] font-black uppercase tracking-wider text-emerald-200 bg-white/10 px-3.5 py-1 rounded-full border border-white/20">
+                        <span>📑</span> <span>REPOSITORI PUBLIKASI RESMI DESA CANTIK</span>
+                    </span>
+                    <h3 class="text-xl sm:text-3xl font-extrabold text-white">Output Program Desa Cantik Kolaka Utara</h3>
+                    <p class="text-xs sm:text-sm text-emerald-100/90 max-w-xl leading-relaxed">
+                        Akses publik mandiri terhadap monografi, profil desa, infografis, dan publikasi statistik 6 desa binaan telah disediakan pada halaman tersendiri dengan palet hijau Desa Madani.
+                    </p>
+                </div>
+                <a href="/descan/output" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-emerald-50 text-[#3B4D3B] font-extrabold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 shrink-0 hover:scale-[1.02] active:scale-95">
+                    <span>Buka Halaman Output Program</span>
+                    <span>→</span>
+                </a>
             </div>
-
-            <!-- 4 Output Cards (Identik Format Perindu) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- 1. Monografi Desa -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#0E7C5A] flex items-center justify-center text-xl font-bold">
-                            📘
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Monografi Desa 2026</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Profil komprehensif demografi, potensi kakao, dan sosial ekonomi 6 desa binaan.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('monografi')" class="flex-1 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0E7C5A] font-bold text-xs text-center transition cursor-pointer">
-                            Buka Dokumen
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('monografi')" class="py-2 px-3 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Monografi">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 2. Tabel Statistik Sektoral -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">
-                            📊
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Tabel Statistik Sektoral</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Tabel data rekapitulasi 44 variabel sosial ekonomi keluarga berstandar SDI.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('tabel')" class="flex-1 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-xs text-center transition cursor-pointer">
-                            Spreadsheet
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('tabel')" class="py-2 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Excel">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 3. BRS Sektoral BPS -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
-                            📑
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Publikasi BRS Sektoral</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Berita Resmi Statistik indikator ketenagakerjaan daerah dan komoditas perkebunan kakao.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('brs')" class="flex-1 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka BRS
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('brs')" class="py-2 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download BRS">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 4. Leaflet & Infografis -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-bold">
-                            🗺️
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Leaflet & Infografis</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Ringkasan visual statistik dusun dalam format infografis ramah baca bagi masyarakat.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('leaflet')" class="flex-1 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka Leaflet
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('leaflet')" class="py-2 px-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Leaflet">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
     </section>
 
@@ -2044,7 +1969,7 @@
                     <a href="#beranda" class="hover:text-emerald-400 transition">Beranda</a>
                     <a href="#dashboard" class="hover:text-emerald-400 transition">Dashboard & Grafik</a>
                     <a href="#desa" class="hover:text-emerald-400 transition">6 Desa Binaan</a>
-                    <a href="#output" class="hover:text-emerald-400 transition">Output Program</a>
+                    <a href="/descan/output" class="hover:text-emerald-400 transition">Output Program</a>
                 </div>
             </div>
 
@@ -2999,6 +2924,153 @@
                 showToast(`✅ Berkas ${fileName} berhasil diproses!`);
             }
         }
+
+        // ==============================================================
+        // SISTEM DOKUMEN OUTPUT DESA CANTIK (PUBLIK REPOSITORI 6 DESA)
+        // ==============================================================
+        let activePublicOutputDesa = 'all';
+        let activePublicOutputCategory = 'all';
+        let activePublicOutputQuery = '';
+
+        function renderPublicVillageOutputs() {
+            const grid = document.getElementById('publicVillageOutputsGrid');
+            const empty = document.getElementById('publicOutputEmptyState');
+            if (!grid) return;
+
+            // Ambil HANYA dokumen yang berstatus disetujui/terverifikasi oleh BPS
+            const allOutputs = (typeof window.getPublicVillageOutputs === 'function') 
+                ? window.getPublicVillageOutputs() 
+                : (typeof window.getVillageOutputs === 'function' 
+                    ? window.getVillageOutputs().filter(i => (i.status || '').toLowerCase().includes('terverifikasi') || (i.status || '').toLowerCase().includes('disetujui'))
+                    : (typeof DEFAULT_VILLAGE_OUTPUTS !== 'undefined' ? DEFAULT_VILLAGE_OUTPUTS.filter(i => (i.status || '').toLowerCase().includes('terverifikasi')) : []));
+
+            const filtered = allOutputs.filter(item => {
+                const matchDesa = (activePublicOutputDesa === 'all') || (item.desaKey === activePublicOutputDesa);
+                const matchCategory = (activePublicOutputCategory === 'all') || (item.category === activePublicOutputCategory);
+                const matchQuery = !activePublicOutputQuery || 
+                    (item.title && item.title.toLowerCase().includes(activePublicOutputQuery.toLowerCase())) ||
+                    (item.desaName && item.desaName.toLowerCase().includes(activePublicOutputQuery.toLowerCase())) ||
+                    (item.summary && item.summary.toLowerCase().includes(activePublicOutputQuery.toLowerCase()));
+                return matchDesa && matchCategory && matchQuery;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                if (empty) empty.classList.remove('hidden');
+                return;
+            }
+
+            if (empty) empty.classList.add('hidden');
+
+            const categoryIcons = {
+                'Monografi Desa': { icon: '📘', bg: 'bg-[#FFF1F2]', border: 'border-[#FECDD3]', text: 'text-[#9F1239]' },
+                'Profil Desa': { icon: '🏛️', bg: 'bg-[#E0F2FE]', border: 'border-[#BAE6FD]', text: 'text-[#0369A1]' },
+                'Publikasi Tematik': { icon: '📑', bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-800' },
+                'Leaflet & Infografis': { icon: '🗺️', bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-800' },
+                'Tabel Sektoral': { icon: '📊', bg: 'bg-sky-50', border: 'border-sky-200', text: 'text-sky-800' }
+            };
+
+            grid.innerHTML = filtered.map(doc => {
+                const style = categoryIcons[doc.category] || { icon: '📄', bg: 'bg-[#FFF1F2]', border: 'border-[#FECDD3]', text: 'text-[#9F1239]' };
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 hover:border-[#BAE6FD] p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4 group">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="text-[10px] font-black uppercase tracking-wider ${style.bg} ${style.text} border ${style.border} px-2.5 py-0.5 rounded-md flex items-center gap-1">
+                                    <span>${style.icon}</span> <span>${doc.category}</span>
+                                </span>
+                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                                    ${doc.desaName}
+                                </span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-extrabold text-slate-900 group-hover:text-[#9F1239] transition-colors line-clamp-2">
+                                    ${doc.title}
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                    ${doc.summary || 'Dokumen publikasi resmi hasil binaan statistik BPS Kabupaten Kolaka Utara.'}
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 text-[10.5px] text-slate-400 font-medium">
+                                <span><i class="bi bi-calendar3 mr-1"></i>${doc.date || '2026'}</span>
+                                <span>•</span>
+                                <span><i class="bi bi-file-earmark-check mr-1"></i>${doc.status || 'Terverifikasi BPS'}</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
+                            <button type="button" onclick="openOutputDoc('${doc.type || 'monografi'}')" class="flex-1 py-2 px-3 rounded-xl bg-sky-50 hover:bg-sky-100 text-[#0369A1] font-bold text-xs text-center transition cursor-pointer border border-[#BAE6FD]">
+                                Buka Dokumen
+                            </button>
+                            <button type="button" onclick="downloadOutputDoc('${doc.type || 'monografi'}')" class="py-2 px-3 rounded-xl bg-[#9F1239] hover:bg-[#881337] text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-xs" title="Unduh Asli">
+                                <i class="bi bi-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterPublicOutputs(desaKey, category) {
+            if (desaKey !== null) {
+                activePublicOutputDesa = desaKey;
+                document.querySelectorAll('.output-desa-tab').forEach(btn => {
+                    btn.className = 'output-desa-tab px-3.5 py-1.5 rounded-full bg-white text-slate-700 hover:text-[#9F1239] border border-[#BAE6FD] hover:bg-sky-50 transition whitespace-nowrap cursor-pointer';
+                });
+                const activeBtn = document.getElementById(`btnFilterDesa-${desaKey}`);
+                if (activeBtn) {
+                    activeBtn.className = 'output-desa-tab active px-3.5 py-1.5 rounded-full bg-[#9F1239] text-white border border-[#BE123C] shadow-2xs transition whitespace-nowrap cursor-pointer';
+                }
+            }
+
+            if (category !== null) {
+                activePublicOutputCategory = category;
+                document.querySelectorAll('.cat-pill').forEach(btn => {
+                    btn.className = 'cat-pill px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold';
+                });
+                const catIds = {
+                    'all': 'catBtn-all',
+                    'Monografi Desa': 'catBtn-monografi',
+                    'Profil Desa': 'catBtn-profil',
+                    'Publikasi Tematik': 'catBtn-tematik',
+                    'Leaflet & Infografis': 'catBtn-leaflet',
+                    'Tabel Sektoral': 'catBtn-tabel'
+                };
+                const activeCatBtn = document.getElementById(catIds[category] || 'catBtn-all');
+                if (activeCatBtn) {
+                    activeCatBtn.className = 'cat-pill active px-2.5 py-1 rounded-lg bg-sky-100 text-[#0369A1] font-bold border border-[#BAE6FD]';
+                }
+            }
+
+            renderPublicVillageOutputs();
+        }
+
+        function handlePublicOutputSearch(query) {
+            activePublicOutputQuery = query ? query.trim() : '';
+            renderPublicVillageOutputs();
+        }
+
+        function openLoginRoleModal() {
+            const m = document.getElementById('loginRoleSelectorModal');
+            if (m) {
+                m.classList.remove('hidden');
+                m.classList.add('flex');
+            }
+            if (document.body) document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLoginRoleModal() {
+            const m = document.getElementById('loginRoleSelectorModal');
+            if (m) {
+                m.classList.add('hidden');
+                m.classList.remove('flex');
+            }
+            if (document.body) document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPublicVillageOutputs();
+        });
  
         // ==============================================================
         // INISIALISASI ROBUST & TAHAN ASINKRONISITAS
@@ -3826,5 +3898,76 @@
             }
         };
 </script>
+    <!-- ============================================================== -->
+    <!-- MODAL PILIH PERAN LOGIN (ADMIN BPS VS ADMIN OPERATOR DESA)     -->
+    <!-- ============================================================== -->
+    <div id="loginRoleSelectorModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-[#BAE6FD] animate-scaleUp">
+            <!-- Modal Header -->
+            <div class="px-6 py-5 bg-gradient-to-r from-sky-50 via-white to-rose-50 border-b border-[#E0F2FE] flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white border border-[#BAE6FD] shadow-xs flex items-center justify-center text-xl">
+                        🔐
+                    </div>
+                    <div>
+                        <h3 class="text-base font-extrabold text-slate-900">Pilih Portal Masuk Akun</h3>
+                        <p class="text-[11px] text-slate-500">Sistem Autentikasi Terpisah Desa Cantik Kolaka Utara</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeLoginRoleModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition cursor-pointer">
+                    <i class="bi bi-x-lg text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body: 2 Pilihan Role -->
+            <div class="p-6 space-y-4">
+                <!-- Role 1: Admin BPS -->
+                <a href="/descan/login?role=bps" class="block p-4 rounded-2xl bg-gradient-to-br from-white to-sky-50/50 border-2 border-[#BAE6FD] hover:border-[#0284C7] shadow-xs hover:shadow-md transition-all group cursor-pointer">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#E0F2FE] text-[#0369A1] flex items-center justify-center text-2xl shrink-0 group-hover:scale-105 transition-transform">
+                            🏛️
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="text-[10px] font-black uppercase text-[#0369A1] bg-[#E0F2FE] px-2 py-0.5 rounded-md">BPS Kolaka Utara</span>
+                                <span class="text-[11px] font-bold text-[#0284C7] group-hover:translate-x-1 transition-transform">Masuk dengan Sandi →</span>
+                            </div>
+                            <h4 class="text-sm font-extrabold text-slate-900 mt-1">Portal Khusus Admin BPS</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                                Memantau live monitoring 6 desa binaan, mengunggah materi pembinaan &amp; template, dan mengunggah video mikrolearning edukasi.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Role 2: Admin Operator Desa -->
+                <a href="/descan/login?role=operator" class="block p-4 rounded-2xl bg-gradient-to-br from-white to-rose-50/50 border-2 border-rose-200 hover:border-[#BE123C] shadow-xs hover:shadow-md transition-all group cursor-pointer">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-[#9F1239] flex items-center justify-center text-2xl shrink-0 group-hover:scale-105 transition-transform">
+                            🏡
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="text-[10px] font-black uppercase text-[#9F1239] bg-rose-100 px-2 py-0.5 rounded-md">6 Desa Binaan</span>
+                                <span class="text-[11px] font-bold text-[#BE123C] group-hover:translate-x-1 transition-transform">Masuk dengan Sandi →</span>
+                            </div>
+                            <h4 class="text-sm font-extrabold text-slate-900 mt-1">Portal Admin Operator Desa</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                                Melihat materi/video yang diunggah BPS, mengisi evaluasi LKE 44 indikator mandiri, dan mengunggah output program publikasi desa.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Notice: Publik -->
+                <div class="pt-2 text-center text-xs text-slate-400">
+                    <span>Masyarakat / Publik? Tetap di </span>
+                    <button type="button" onclick="closeLoginRoleModal()" class="text-[#9F1239] font-bold hover:underline cursor-pointer">Halaman Utama Desa Cantik</button>
+                    <span> untuk melihat data dan unduh output resmi.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

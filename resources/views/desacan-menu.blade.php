@@ -80,18 +80,117 @@
             box-shadow: 0 10px 25px -5px rgba(15, 107, 74, 0.08);
         }
 
-        /* ===== DESCAN SIDEBAR THEME (Harmonized Light Style - Sinkron dengan Dashboard Desa) ===== */
-        :root { 
-            --dc-green:#0f6b4a; 
-            --dc-green-dark:#0a4d36; 
-            --dc-mint:#6ee7b7; 
-            --dc-mint-bg:#ecfdf5; 
-            --dc-line:#e5e9e7; 
-            --dc-ink:#0f1f1a; 
-            --dc-muted:#6b7a74;
-            --dc-sidebar-w: 265px; 
+        
+        /* ============================================================== */
+        /* SIDEBAR ACCORDION DROPDOWN STYLING                            */
+        /* ============================================================== */
+        .sidebar-accordion-group {
+            margin-bottom: 0.25rem;
         }
-        body { background-color:#f4f7f5; }
+        .sidebar-group-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.45rem 0.6rem;
+            border-radius: 0.65rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-align: left;
+            white-space: nowrap;
+            color: #2D3B2D;
+            background: #FFFFFF;
+            border: 1px solid #E0F2FE;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .sidebar-group-btn:hover {
+            background: #F0F9FF;
+            color: #1D241E;
+            border-color: #BAE6FD;
+        }
+        .sidebar-group-btn.open {
+            background: linear-gradient(135deg, #F0FDF4 0%, #E6ECE6 100%);
+            color: #1D241E;
+            border-color: #BAE6FD;
+        }
+        .sidebar-group-btn .group-chevron {
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #0284C7;
+            font-size: 10.5px;
+        }
+        .sidebar-group-btn.open .group-chevron {
+            transform: rotate(180deg);
+            color: #3B4D3B;
+        }
+
+        .sidebar-submenu-container {
+            transition: all 0.25s ease-in-out;
+        }
+        .sidebar-submenu-container.collapsed {
+            display: none;
+        }
+
+        /* Nav Sub Tab */
+        .nav-sub-tab {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            width: 100% !important;
+            padding: 0.35rem 0.65rem !important;
+            border-radius: 0.5rem !important;
+            font-size: 0.775rem !important;
+            font-weight: 500 !important;
+            color: #475569 !important;
+            background: transparent !important;
+            border: 1px solid transparent !important;
+            cursor: pointer !important;
+            transition: all 0.16s ease !important;
+            text-decoration: none !important;
+        }
+        .nav-sub-tab:hover {
+            background: #F0F9FF !important;
+            color: #3B4D3B !important;
+            border-color: #BAE6FD !important;
+        }
+        .nav-sub-tab.active {
+            background: #3B4D3B !important;
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 6px rgba(59, 77, 59, 0.22) !important;
+        }
+        .nav-sub-tab.active .sub-bullet {
+            background: #BAE6FD !important;
+        }
+        .nav-sub-tab.active .sub-badge {
+            background: rgba(255, 255, 255, 0.25) !important;
+            color: #FFFFFF !important;
+            border-color: transparent !important;
+        }
+
+        /* ===== DESCAN SIDEBAR THEME (Pink Agak Kemerahan, Putih & Ice Blue Palette) ===== */
+        :root { 
+            --dc-wine: #3B4D3B;
+            --dc-wine-dark: #2D3B2D;
+            --dc-rose: #3B4D3B;
+            --dc-rose-soft: #CBD5C8;
+            --dc-blush-bg: #E6ECE6;
+            --dc-ice-blue: #E0F2FE;
+            --dc-ice-blue-light: #F0F9FF;
+            --dc-ice-blue-border: #BAE6FD;
+            --dc-ice-blue-text: #0284C7;
+            --dc-line: #E0F2FE;
+            --dc-ink: #1E1B1E;
+            --dc-muted: #64748B;
+            --dc-green: #3B4D3B; 
+            --dc-green-dark: #2D3B2D; 
+            --dc-mint: #BAE6FD; 
+            --dc-mint-bg: #F0F9FF; 
+            --dc-sidebar-w: 280px; 
+        }
+        body { background-color: #F8FAFC; }
         body.dc-shell { transition: padding-left .25s ease; }
         
         #dcSidebar { 
@@ -100,14 +199,14 @@
             bottom: 0; 
             left: 0; 
             width: var(--dc-sidebar-w); 
-            background: #ffffff; 
-            border-right: 1px solid var(--dc-line); 
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 60%, #F0F9FF 100%); 
+            border-right: 1px solid #E0F2FE; 
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
             z-index: 50; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 4px 0 24px rgba(15, 31, 26, 0.05);
+            box-shadow: 4px 0 28px -4px rgba(2, 132, 199, 0.08), 1px 0 3px rgba(45, 59, 45, 0.04);
             transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .28s ease; 
         }
         @media (min-width: 1024px) {
@@ -153,9 +252,9 @@
             font-weight: 800; 
             letter-spacing: 0.1em; 
             text-transform: uppercase; 
-            color: #0f6b4a; 
+            color: #2D3B2D; 
             padding: 0 0.65rem !important; 
-            margin-top: 0.65rem !important; /* Dirapatkan dari 1.5rem (24px) ke ~10px */
+            margin-top: 0.65rem !important;
             margin-bottom: 0.18rem !important; 
         }
         .dc-nav-label:first-child, .dc-nav-label.mt-first { 
@@ -166,7 +265,7 @@
             width: 10px; 
             height: 2px; 
             border-radius: 99px; 
-            background: #10b981; 
+            background: #3B4D3B; 
             flex-shrink: 0; 
         }
 
@@ -192,7 +291,7 @@
             transform: none !important;
         }
 
-        /* 1. Kotak Ikon Menu: 25px x 25px, rounded-lg (7px), Flat & Modern */
+        /* 1. Kotak Ikon Menu: 25px x 25px, rounded-lg (7px), Flat & Modern (Ice Blue & Reddish Pink) */
         .dc-ico { 
             width: 25px !important; 
             height: 25px !important; 
@@ -202,10 +301,10 @@
             align-items: center !important; 
             justify-content: center !important; 
             flex-shrink: 0 !important; 
-            background: #ecfdf5 !important; 
-            border: 1px solid #d1fae5 !important; 
+            background: #E0F2FE !important; /* Ice Blue */
+            border: 1px solid #BAE6FD !important; 
             box-shadow: none !important; 
-            color: #0f6b4a !important; 
+            color: #3B4D3B !important; /* Pink Agak Kemerahan */
             transition: all .16s ease-in-out !important; 
         }
         .dc-ico i, .dc-ico svg { 
@@ -220,44 +319,44 @@
             transition: transform .16s ease, color .16s ease !important;
         }
 
-        /* Hover State */
+        /* Hover State: Soft Ice Blue & Pink Accent */
         .nav-tab:hover:not(.active), .dc-nav-item:hover { 
-            background: #f1f5f9 !important; /* Soft neutral / slate hover */
-            color: #0f6b4a !important; 
-            border-color: transparent !important;
+            background: #F0F9FF !important; /* Soft Ice Blue */
+            color: #3B4D3B !important; /* Pink Agak Kemerahan */
+            border-color: #BAE6FD !important;
             box-shadow: none !important;
             transform: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico, .dc-nav-item:hover .dc-ico { 
-            background: #e2f7ed !important; 
-            border-color: #a7f3d0 !important;
-            color: #065f46 !important; 
+            background: #BAE6FD !important; 
+            border-color: #7DD3FC !important;
+            color: #2D3B2D !important; 
             box-shadow: none !important;
         }
         .nav-tab:hover:not(.active) .dc-ico i, .dc-nav-item:hover .dc-ico i {
             transform: scale(1.1) !important;
         }
 
-        /* Active State: Kotak Ikon Hijau Solid & Full-Row Soft Green Background */
+        /* Active State: Kotak Ikon Pink Kemerahan Solid & Soft Rose Background */
         .nav-tab.active { 
-            background: #ecfdf5 !important; /* Hijau sangat lembut (emerald-50) */
-            color: #065f46 !important; /* Teks hijau tua semi-bold */
-            font-weight: 600 !important; 
-            border: 1px solid #d1fae5 !important; 
-            box-shadow: none !important; 
+            background: #E6ECE6 !important; 
+            color: #2D3B2D !important; 
+            font-weight: 700 !important; 
+            border: 1px solid #DCE3DD !important; 
+            box-shadow: 0 2px 6px rgba(45, 59, 45, 0.12) !important; 
             transform: none !important;
         }
         .nav-tab.active .dc-ico { 
-            background: #0f6b4a !important; /* Hijau solid hanya untuk menu aktif */
-            color: #ffffff !important; /* Ikon putih */
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            background: #3B4D3B !important; /* Pink Agak Kemerahan Vibrant */
+            color: #ffffff !important; 
+            border: 1px solid #3B4D3B !important;
+            box-shadow: 0 2px 6px rgba(59, 77, 59, 0.25) !important;
         }
         .nav-tab.active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.active .dc-caret {
-            color: #0f6b4a !important;
+            color: #3B4D3B !important;
         }
         .nav-tab.active::after {
             display: none !important;
@@ -265,23 +364,23 @@
 
         /* Active Parent State (Saat Submenu Dipilih) */
         .nav-tab.has-active { 
-            background: #f0fdf4 !important; 
-            color: #065f46 !important; 
-            font-weight: 600 !important;
-            border: 1px solid #dcfce7 !important; 
+            background: #E6ECE6 !important; 
+            color: #2D3B2D !important; 
+            font-weight: 700 !important;
+            border: 1px solid #DCE3DD !important; 
             box-shadow: none !important;
         }
         .nav-tab.has-active .dc-ico { 
-            background: #0f6b4a !important; 
+            background: #3B4D3B !important; 
             color: #ffffff !important; 
-            border: 1px solid #0f6b4a !important;
-            box-shadow: 0 2px 6px rgba(15, 107, 74, 0.22) !important;
+            border: 1px solid #3B4D3B !important;
+            box-shadow: 0 2px 6px rgba(59, 77, 59, 0.25) !important;
         }
         .nav-tab.has-active .dc-ico i {
             color: #ffffff !important;
         }
         .nav-tab.has-active .dc-caret {
-            color: #0f6b4a !important;
+            color: #3B4D3B !important;
         }
 
         /* Caret for collapsible menu */
@@ -702,112 +801,15 @@
 </head>
 <body class="dc-shell min-h-screen text-slate-800 flex flex-col justify-between selection:bg-teal-100 selection:text-teal-900">
 
-    <!-- ===== SIDEBAR DESCAN (Harmonized Light Style - Sinkron Sempurna dengan Dashboard) ===== -->
-    <div id="dcBackdrop" onclick="toggleDcSidebar()" class="hidden fixed inset-0 bg-black/40 backdrop-blur-2xs z-40 lg:hidden"></div>
-    <aside id="dcSidebar">
-        <!-- 1. Header Sidebar: Penempatan Logo BPS & Kolaka Utara + Tombol Tutup Sidebar -->
-        <div class="px-3.5 py-3.5 flex items-center justify-between border-b border-[#e5e9e7] bg-gradient-to-r from-emerald-50/50 via-white to-white relative">
-            <div class="flex items-center gap-2 bg-white/95 px-2.5 py-1.5 rounded-2xl border border-slate-200/90 shadow-2xs shrink-0 ring-1 ring-slate-900/5">
-                <img src="/images/logo_kolaka_utara.png" alt="Pemkab Kolaka Utara" class="h-7 w-auto object-contain" title="Pemerintah Kabupaten Kolaka Utara">
-                <img src="/images/logo_bps.png" alt="BPS Kolut" class="h-7 w-auto object-contain" title="Badan Pusat Statistik Kolaka Utara">
-                <div class="h-5 w-[1px] bg-slate-200"></div>
-                <img src="/logo-descan.png" alt="Desa Cantik" class="h-7 w-auto object-contain" title="Desa Cantik - Desa Cinta Statistik">
-            </div>
-            
-            <!-- Tombol Tutup/Sembunyikan Sidebar di Ujung Sidebar (<) -->
-            <button type="button" onclick="toggleDcSidebar()" id="btnSidebarClose" 
-                class="w-7 h-7 rounded-xl border border-slate-200/90 hover:border-emerald-300 bg-white hover:bg-emerald-50 text-slate-400 hover:text-emerald-700 flex items-center justify-center transition shadow-2xs active:scale-95 cursor-pointer shrink-0 ml-1" 
-                title="Tutup / Sembunyikan Sidebar">
-                <i class="bi bi-chevron-left text-xs font-black"></i>
-            </button>
-        </div>
-
-        <!-- 2. Daftar Menu Navigasi Sidebar (Modern Flow UI Light Style - Rapi, Terstruktur, Terbaca Jelas) -->
-        <div id="topNavMenuLinks" class="flex-1 overflow-y-auto px-2.5 py-1.5 space-y-0.5">
-            <!-- Kelompok 1: MENU UTAMA -->
-            <div class="dc-nav-label mt-first">Menu Utama</div>
-            <button type="button" onclick="switchNavMenu('dashboard')" id="nav-dashboard" class="nav-tab active">
-                <span class="dc-ico"><i class="bi bi-house-door-fill"></i></span>
-                <span>Beranda</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('tentang')" id="nav-tentang" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-buildings-fill"></i></span>
-                <span>Profil Desa</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('galeri')" id="nav-galeri" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-images"></i></span>
-                <span>Galeri Foto</span>
-            </button>
-
-            <!-- Kelompok 2: KAPASITAS & EDUKASI -->
-            <div class="dc-nav-label">Kapasitas &amp; Edukasi</div>
-            <button type="button" onclick="switchNavMenu('video')" id="nav-video" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-play-circle-fill"></i></span>
-                <span>Video Mikrolearning</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('pretest')" id="nav-pretest" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-patch-question-fill"></i></span>
-                <span>Pre-test &amp; Post-test</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('buku')" id="nav-buku" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-journal-bookmark-fill"></i></span>
-                <span>Buku Pedoman</span>
-            </button>
-
-            <!-- Kelompok 3: ADMINISTRASI & DATA -->
-            <div class="dc-nav-label">Administrasi &amp; Data</div>
-            <button type="button" onclick="switchNavMenu('podes')" id="nav-podes" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-pencil-square"></i></span>
-                <span>Pengisian Data PODES</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('monitoring')" id="nav-monitoring" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-clipboard-data-fill"></i></span>
-                <span>Monitoring</span>
-            </button>
-            <button type="button" onclick="switchNavMenu('publikasi')" id="nav-publikasi" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-file-earmark-bar-graph-fill"></i></span>
-                <span>Publikasi &amp; Infografis</span>
-            </button>
-
-            <!-- Kelompok 4: LAYANAN -->
-            <div class="dc-nav-label">Layanan</div>
-            <button type="button" onclick="openPstModal()" id="nav-pst" class="nav-tab">
-                <span class="dc-ico"><i class="bi bi-headset"></i></span>
-                <span>Layanan PST</span>
-            </button>
-        </div>
-
-        <!-- 3. Footer Sidebar: Mini Status SDI, Akses Kembali ke 6 Desa & Keluar Akun (Solid White & Anti-Overlap) -->
-        <div class="p-2.5 border-t border-slate-200 bg-white space-y-1.5 shrink-0 z-20 relative rounded-br-[24px]">
-            <!-- Mini Live Status Satu Data Indonesia -->
-            <div class="px-2.5 py-1.5 rounded-xl bg-emerald-50/80 border border-emerald-500/20 shadow-2xs flex items-center justify-between">
-                <div class="flex items-center gap-2 min-w-0">
-                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></div>
-                    <div class="truncate leading-tight">
-                        <div class="text-[9.5px] font-extrabold text-emerald-950 uppercase tracking-wider">Satu Data Indonesia</div>
-                        <div class="text-[8.5px] text-emerald-700 font-medium">BPS Kolaka Utara 2026</div>
-                    </div>
-                </div>
-                <span class="text-[8.5px] font-black text-emerald-800 bg-emerald-100/90 border border-emerald-300/80 px-1.5 py-0.5 rounded-full shrink-0">Aktif</span>
-            </div>
-
-            <a href="/descan" onclick="exitToDescanDashboard(event)" class="w-full flex items-center justify-center gap-2 text-[11.5px] font-bold text-slate-700 hover:text-emerald-800 bg-white hover:bg-emerald-50/90 border border-slate-200/90 hover:border-emerald-300 rounded-xl py-1.5 cursor-pointer transition shadow-2xs hover:shadow-xs group active:scale-98">
-                <i class="bi bi-grid-3x3-gap-fill text-xs text-emerald-600 group-hover:scale-110 transition-transform"></i>
-                <span>Kembali ke 6 Desa</span>
-            </a>
-            <button type="button" onclick="logoutFromMenu()" class="w-full flex items-center justify-center gap-2 text-[11.5px] font-bold text-rose-700 hover:text-rose-800 bg-rose-50/80 hover:bg-rose-100 border border-rose-200/90 rounded-xl py-1.5 cursor-pointer transition shadow-2xs group active:scale-98">
-                <i class="bi bi-box-arrow-right text-xs text-rose-600 group-hover:translate-x-0.5 transition-transform"></i>
-                <span>Keluar Akun</span>
-            </button>
-        </div>
-    </aside>
+    <!-- ===== SIDEBAR DESCAN DENGAN NAVIGASI DROPDOWN ACCORDION MODERN ===== -->
+    @include('partials.descan-sidebar')
 
     <!-- Tombol Buka Sidebar (>) Muncul di Ujung Kiri saat Sidebar Tertutup -->
     <button type="button" id="btnFloatingSidebarOpen" onclick="toggleDcSidebar()" 
-        class="hidden fixed left-0 top-14 sm:top-16 z-40 bg-white hover:bg-emerald-50 text-[#0f6b4a] border-y border-r border-emerald-300 shadow-lg py-3 px-2.5 rounded-r-2xl transition-all duration-300 cursor-pointer active:scale-95 group flex items-center gap-1.5" 
+        class="hidden fixed left-0 top-14 sm:top-16 z-40 bg-white hover:bg-emerald-50 text-[#3B4D3B] border-y border-r border-[#DCE3DD] shadow-lg py-3 px-2.5 rounded-r-2xl transition-all duration-300 cursor-pointer active:scale-95 group flex items-center gap-1.5" 
         title="Buka Sidebar Navigasi">
-        <i class="bi bi-chevron-right text-sm font-black text-emerald-600 group-hover:translate-x-0.5 transition-transform"></i>
-        <span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 pr-1 hidden sm:inline">Menu</span>
+        <i class="bi bi-chevron-right text-sm font-black text-[#3B4D3B] group-hover:translate-x-0.5 transition-transform"></i>
+        <span class="text-[10px] font-black uppercase tracking-wider text-[#3B4D3B] pr-1 hidden sm:inline">Menu</span>
     </button>
 
     <!-- ============================================================== -->
@@ -871,8 +873,8 @@
                 <!-- Form Login Gate -->
                 <form id="gateLoginForm" onsubmit="handleGateLoginSubmit(event)" class="space-y-4">
                     <!-- Error Banner -->
-                    <div id="gateLoginError" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
-                        <svg class="w-4 h-4 shrink-0 text-rose-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                    <div id="gateLoginError" class="hidden p-3 rounded-xl bg-[#E6ECE6] border border-[#DCE3DD] text-[#2D3B2D] text-xs flex items-center gap-2">
+                        <svg class="w-4 h-4 shrink-0 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
                         <span id="gateLoginErrorText">Email atau kata sandi tidak cocok untuk desa ini.</span>
                     </div>
 
@@ -931,7 +933,6 @@
         <!-- MAIN CONTENT AREA (BERSIH, TANPA SIDEBAR BERULANG, 100% LEGA & MODERN) -->
     <main id="mainMenuContent" class="w-full flex-1 bg-[#f4f6f9] py-5 sm:py-6">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-
                 <!-- ===================================================================== -->
                 <!-- 1. BERANDA (DASHBOARD UTAMA & POTENSI DESA)                            -->
                 <!-- ===================================================================== -->
@@ -942,139 +943,146 @@
 
             <div id="view-dashboard" class="menu-view-container space-y-6 animate-in fade-in duration-200">
 
-                    <!-- HERO WITH LIVING AURA & MOTION -->
+                    <!-- HERO WITH LIVING AURA & MOTION (RESTRUCTURED PROPORTIONAL 12-COL GRID) -->
                     <div class="dc-hero shadow-lg">
-                        <div class="grid lg:grid-cols-3 gap-6 items-center">
-                            <div class="lg:col-span-2 relative z-[1]">
-                                <span class="dc-chip mb-3"><span class="w-2 h-2 rounded-full bg-emerald-400 motion-beacon-pulse inline-block"></span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
-                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-2 tracking-tight">Selamat Datang di Desa Cantik</h2>
-                                <p class="text-[13px] leading-[1.7] opacity-90 mb-4 max-w-[640px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik. Melalui platform ini, pengguna dapat mengakses materi pembelajaran, video tutorial, buku panduan, serta mengikuti evaluasi melalui pre-test dan post-test. Mari wujudkan desa yang sadar statistik, memiliki data berkualitas, dan mampu memanfaatkan informasi sebagai dasar pembangunan desa.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <button type="button" onclick="openManageDataModal('kpi')" class="dc-btn-mint hover:scale-105 active:scale-95 transition-all shadow-sm">✎ Lanjutkan Data PODES</button>
-                                    <button type="button" onclick="switchNavMenu('buku')" class="dc-btn-ghost hover:scale-105 active:scale-95 transition-all"><i class="bi bi-journal-text text-sm mr-1"></i> Unduh Buku Panduan</button>
-                                </div>
-
-                    <!-- KPI (With Stagger Motion) -->
-                    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <div class="dc-card dc-kpi-stagger-1 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                            <div class="flex justify-between items-center"><span class="dc-icon"><i class="bi bi-clipboard2-check-fill"></i></span><span class="dc-tag">93% Selesai</span></div>
-                            <div class="dc-kpi-label">Pengisian PODES</div>
-                            <div class="dc-kpi-value"><span id="dcKpiPodesVal">41</span> / 44 Indikator</div>
-                            <div class="dc-progress mt-3"><span style="width:93%;background:var(--dc-green);transition:width 1s ease;"></span></div>
-                            <div class="dc-kpi-foot"><span>Kurang 3 variabel</span><b>Standar SDI</b></div>
-                        </div>
-                        <div class="dc-card dc-kpi-stagger-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eaf1fb;color:#2563eb;"><i class="bi bi-patch-check-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Tahap 3</span></div>
-                            <div class="dc-kpi-label">Verifikasi BPS Kolut</div>
-                            <div class="dc-kpi-value" style="color:var(--dc-green);">Terverifikasi</div>
-                            <div class="dc-kpi-foot mt-4"><span>✓ Metadata Sah</span><span>Rev. 12 Okt 2026</span></div>
-                        </div>
-                        <div class="dc-card dc-kpi-stagger-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#eef2f6;color:#334155;"><i class="bi bi-people-fill"></i></span><span class="dc-tag" style="background:#eef2f6;color:#4b5b6b;">Monografi 2026</span></div>
-                            <div class="dc-kpi-label">Cakupan Kependudukan</div>
-                            <div class="dc-kpi-value"><span id="dcKpiKK">1.120</span> KK</div>
-                            <div class="dc-kpi-foot mt-4"><span><span id="dcKpiJiwa">3.840</span> Jiwa terdata</span><b><span id="dcKpiDusun">4</span> Dusun</b></div>
-                        </div>
-                        <div class="dc-card dc-kpi-stagger-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#fdf3e1;color:#d97706;"><i class="bi bi-award-fill"></i></span><span class="dc-tag" style="background:#fdf3e1;color:#b45309;">Grade A</span></div>
-                            <div class="dc-kpi-label">Skor Rata-rata Evaluasi</div>
-                            <div class="dc-kpi-value"><span id="dcKpiSkorEvaluasi">88.5</span> / 100</div>
-                            <div class="dc-kpi-foot mt-4"><span>Pre-test &amp; Post-test</span><b>5 Operator</b></div>
-                        </div>
-                    </div>
-
-                                <!-- Action Buttons -->
-                                <div class="flex flex-wrap items-center gap-3 pt-1">
-                                    <button type="button" onclick="scrollToDashSection('sectionPiramida')" class="px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black text-xs transition shadow-lg flex items-center gap-2 cursor-pointer active:scale-95">
-                                        <i class="bi bi-bar-chart-fill"></i>
-                                        <span>Lihat Data Grafik Visual ↓</span>
+                        <div class="grid lg:grid-cols-12 gap-6 items-center">
+                            <!-- Left Column: Welcome & Overview (7 Cols) -->
+                            <div class="lg:col-span-7 relative z-[1] space-y-3.5">
+                                <span class="dc-chip inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 motion-beacon-pulse inline-block"></span> Desa Binaan BPS Aktif 2026 <span style="opacity:.5;">•</span> Kecamatan Kodeoha</span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">Selamat Datang di Desa Cantik</h2>
+                                <p class="text-[13px] leading-[1.7] text-white/90 max-w-[620px]">Desa Cantik (Desa Cinta Statistik) merupakan program pembinaan BPS untuk meningkatkan kapasitas aparatur desa dalam pengelolaan dan pemanfaatan data statistik berkualitas sebagai dasar perumusan kebijakan pembangunan desa yang presisi.</p>
+                                
+                                <!-- Primary Action Buttons -->
+                                <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                                    <button type="button" onclick="openManageDataModal('kpi')" class="px-4 py-2 rounded-xl bg-white text-[#3B4D3B] hover:bg-emerald-50 font-black text-xs transition shadow-md flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                        <i class="bi bi-pencil-square"></i>
+                                        <span>Lanjutkan Data PODES</span>
                                     </button>
-                                    <button type="button" onclick="openModalDesaPicker()" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-2 cursor-pointer active:scale-95">
+                                    <button type="button" onclick="switchNavMenu('buku')" class="px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-1.5 cursor-pointer active:scale-95 border border-white/20">
+                                        <i class="bi bi-journal-text"></i>
+                                        <span>Unduh Buku Panduan</span>
+                                    </button>
+                                    <button type="button" onclick="scrollToDashSection('sectionPiramida')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-1.5 cursor-pointer active:scale-95 border border-white/15">
+                                        <i class="bi bi-bar-chart-fill text-amber-300"></i>
+                                        <span>Grafik Visual ↓</span>
+                                    </button>
+                                    <button type="button" onclick="openModalDesaPicker()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs backdrop-blur-md transition flex items-center gap-1.5 cursor-pointer active:scale-95 border border-white/15">
                                         <i class="bi bi-geo-alt-fill text-emerald-300"></i>
-                                        <span>Pilih 6 Desa Binaan</span>
+                                        <span>Pilih 6 Desa</span>
                                     </button>
                                 </div>
 
                                 <!-- 4 Micro Indicators -->
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-emerald-500/20 text-xs">
-                                    <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                                        <div class="text-emerald-300 font-black text-base">100%</div>
-                                        <div class="text-[10px] text-emerald-100/70 font-medium">Target Capaian 2026</div>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2 border-t border-white/15 text-xs">
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                                        <div class="text-emerald-200 font-black text-base">100%</div>
+                                        <div class="text-[10px] text-white/80 font-medium">Target Capaian 2026</div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                                        <div class="text-emerald-300 font-black text-base">TW-IV</div>
-                                        <div class="text-[10px] text-emerald-100/70 font-medium">Periode Pendataan</div>
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                                        <div class="text-emerald-200 font-black text-base">TW-IV</div>
+                                        <div class="text-[10px] text-white/80 font-medium">Periode Pendataan</div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                                        <div class="text-emerald-300 font-black text-base">2 Kec.</div>
-                                        <div class="text-[10px] text-emerald-100/70 font-medium">Cakupan Wilayah</div>
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                                        <div class="text-emerald-200 font-black text-base">2 Kec.</div>
+                                        <div class="text-[10px] text-white/80 font-medium">Cakupan Wilayah</div>
                                     </div>
-                                    <div class="p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                                        <div class="text-emerald-300 font-black text-base flex items-center gap-1"><i class="bi bi-shield-check text-sm"></i> SDI</div>
-                                        <div class="text-[10px] text-emerald-100/70 font-medium">Terintegrasi BPS RI</div>
+                                    <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                                        <div class="text-emerald-200 font-black text-base flex items-center gap-1"><i class="bi bi-shield-check text-sm text-emerald-300"></i> SDI</div>
+                                        <div class="text-[10px] text-white/80 font-medium">Terintegrasi BPS RI</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Right: 3 Floating 3D Rounded Cards (Persis Gambar 1 Referensi) -->
-                            <div class="lg:col-span-5 space-y-3.5">
+                            <!-- Right Column: 3 Floating 3D Rounded Cards (5 Cols) -->
+                            <div class="lg:col-span-5 space-y-3">
                                 <!-- Card 1: Pesisir & Bahari -->
-                                <div class="card-3d-rounded animate-float-pill-1 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[26px] shadow-2xl border border-white/80 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="scrollToDashSection('sectionFasilitas')">
+                                <div class="card-3d-rounded animate-float-pill-1 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[22px] shadow-xl border border-white/90 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="scrollToDashSection('sectionFasilitas')">
                                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden shrink-0 shadow-md ring-2 ring-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
-                                        <img src="/images/jadesta/pantai_berova_pitulua.webp" alt="Pesisir & Bahari" class="w-full h-full object-cover">
+                                        <img src="/images/jadesta/pantai_batu_putih_tamborasi.jpg" alt="Pesisir Bahari" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center justify-between gap-2">
-                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-emerald-700 transition">Pesisir &amp; Bahari</h4>
-                                            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 shrink-0">Teluk Bone</span>
+                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-[#3B4D3B] transition">Pesisir &amp; Bahari</h4>
+                                            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] shrink-0">Bahari SDI</span>
                                         </div>
-                                        <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate leading-tight">Perikanan tangkap, mangrove &amp; rumput laut.</p>
+                                        <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate leading-tight">Rumput laut, perikanan &amp; mangrove pesisir.</p>
                                         <div class="flex items-center gap-2 mt-1.5 text-[10px] font-bold text-slate-600">
-                                            <span class="text-sky-700"><i class="bi bi-water"></i> 42 Perahu Nelayan</span>
+                                            <span class="text-[#3B4D3B]"><i class="bi bi-water"></i> 4 Dusun Bahari</span>
                                             <span class="text-slate-300">•</span>
-                                            <span class="text-emerald-700">35 Ton / Th</span>
+                                            <span class="text-[#2D3B2D]">35 Ton / Th</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Card 2: Agro Perkebunan -->
-                                <div class="card-3d-rounded animate-float-pill-2 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[26px] shadow-2xl border border-white/80 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="scrollToDashSection('sectionKomoditas')">
+                                <div class="card-3d-rounded animate-float-pill-2 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[22px] shadow-xl border border-white/90 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="scrollToDashSection('sectionKomoditas')">
                                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden shrink-0 shadow-md ring-2 ring-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
                                         <img src="/images/jadesta/kebun_kakao_totallang.jpg" alt="Agro Perkebunan" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center justify-between gap-2">
-                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-emerald-700 transition">Agro Perkebunan</h4>
+                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-[#3B4D3B] transition">Agro Perkebunan</h4>
                                             <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 shrink-0">Kakao &amp; Nilam</span>
                                         </div>
                                         <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate leading-tight">Cengkeh, nilam &amp; kakao unggulan Kolut.</p>
                                         <div class="flex items-center gap-2 mt-1.5 text-[10px] font-bold text-slate-600">
                                             <span class="text-amber-700"><i class="bi bi-tree-fill"></i> 184 Ha Lahan</span>
                                             <span class="text-slate-300">•</span>
-                                            <span class="text-emerald-700">14 Unit IMK</span>
+                                            <span class="text-[#3B4D3B]">14 Unit IMK</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Card 3: Satu Data Indonesia -->
-                                <div class="card-3d-rounded animate-float-pill-3 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[26px] shadow-2xl border border-white/80 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="switchNavMenu('publikasi')">
+                                <div class="card-3d-rounded animate-float-pill-3 bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-[22px] shadow-xl border border-white/90 flex items-center gap-3.5 cursor-pointer hover:bg-white text-slate-800 transition group" onclick="switchNavMenu('publikasi')">
                                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden shrink-0 shadow-md ring-2 ring-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
                                         <img src="/images/kecamatan/kodeoha.jpg" alt="Satu Data Indonesia" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center justify-between gap-2">
-                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-emerald-700 transition">Satu Data Indonesia</h4>
-                                            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 shrink-0">SDI 2026</span>
+                                            <h4 class="text-sm sm:text-base font-black text-slate-900 truncate group-hover:text-[#3B4D3B] transition">Satu Data Indonesia</h4>
+                                            <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#E6ECE6] text-[#3B4D3B] shrink-0">SDI 2026</span>
                                         </div>
                                         <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5 truncate leading-tight">44 Indikator makro &amp; tata kelola digital.</p>
                                         <div class="flex items-center gap-2 mt-1.5 text-[10px] font-bold text-slate-600">
-                                            <span class="text-emerald-700"><i class="bi bi-patch-check-fill"></i> 100% Terverifikasi</span>
+                                            <span class="text-[#3B4D3B]"><i class="bi bi-patch-check-fill"></i> 100% Terverifikasi</span>
                                             <span class="text-slate-300">•</span>
                                             <span class="text-blue-700">BPS Kolut</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================================== -->
+                    <!-- 1.1 KPI SUMMARY METRICS (PROPORTIONAL STANDALONE 4-COL GRID)   -->
+                    <!-- ============================================================== -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                        <div class="dc-card dc-kpi-stagger-1 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <div class="flex justify-between items-center"><span class="dc-icon"><i class="bi bi-clipboard2-check-fill"></i></span><span class="dc-tag">93% Selesai</span></div>
+                            <div class="dc-kpi-label">Pengisian PODES</div>
+                            <div class="dc-kpi-value"><span id="dcKpiPodesVal">41</span> / 44 Indikator</div>
+                            <div class="dc-progress mt-3"><span style="width:93%;background:#3B4D3B;transition:width 1s ease;"></span></div>
+                            <div class="dc-kpi-foot"><span>Kurang 3 variabel</span><b>Standar SDI</b></div>
+                        </div>
+                        <div class="dc-card dc-kpi-stagger-2 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#E6ECE6;color:#3B4D3B;"><i class="bi bi-patch-check-fill"></i></span><span class="dc-tag" style="background:#E6ECE6;color:#3B4D3B;">Tahap 3</span></div>
+                            <div class="dc-kpi-label">Verifikasi BPS Kolut</div>
+                            <div class="dc-kpi-value" style="color:#3B4D3B;">Terverifikasi</div>
+                            <div class="dc-kpi-foot mt-4"><span>✓ Metadata Sah</span><span>Rev. 12 Okt 2026</span></div>
+                        </div>
+                        <div class="dc-card dc-kpi-stagger-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#E6ECE6;color:#3B4D3B;"><i class="bi bi-people-fill"></i></span><span class="dc-tag" style="background:#E6ECE6;color:#3B4D3B;">Monografi 2026</span></div>
+                            <div class="dc-kpi-label">Cakupan Kependudukan</div>
+                            <div class="dc-kpi-value"><span id="dcKpiKK">1.120</span> KK</div>
+                            <div class="dc-kpi-foot mt-4"><span><span id="dcKpiJiwa">3.840</span> Jiwa terdata</span><b><span id="dcKpiDusun">4</span> Dusun</b></div>
+                        </div>
+                        <div class="dc-card dc-kpi-stagger-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <div class="flex justify-between items-center"><span class="dc-icon" style="background:#E6ECE6;color:#3B4D3B;"><i class="bi bi-award-fill"></i></span><span class="dc-tag" style="background:#E6ECE6;color:#3B4D3B;">Grade A</span></div>
+                            <div class="dc-kpi-label">Skor Rata-rata Evaluasi</div>
+                            <div class="dc-kpi-value"><span id="dcKpiSkorEvaluasi">88.5</span> / 100</div>
+                            <div class="dc-kpi-foot mt-4"><span>Pre-test &amp; Post-test</span><b>5 Operator</b></div>
                         </div>
                     </div>
 
@@ -1296,6 +1304,44 @@
                     </div>
 
                     <!-- 4 Output Cards Grid -->
+                    <!-- TABEL STATUS DOKUMEN OUTPUT YANG DIAJUKAN DESA INI -->
+                    <div class="bps-card p-6 bg-white border border-[#BAE6FD] rounded-3xl space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+                            <div>
+                                <h4 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                                    <span>Status Pengajuan Dokumen Output Desa</span>
+                                    <span class="text-[10px] font-black text-[#0369A1] bg-[#E0F2FE] border border-[#BAE6FD] px-2 py-0.5 rounded-full">KONTROL BPS</span>
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Pantau status verifikasi dari BPS. Dokumen yang disetujui otomatis tampil di publik, sedangkan dokumen yang perlu perbaikan harus direvisi sesuai catatan pembina BPS.</p>
+                            </div>
+                            <button type="button" onclick="openUploadOutputModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#3B4D3B] to-[#3B4D3B] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs hover:shadow-md self-start sm:self-auto">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                                <span>+ Ajukan Dokumen Baru</span>
+                            </button>
+                        </div>
+
+                        <div id="villageOperatorOutputsList" class="space-y-3">
+                            <!-- Injected dynamically by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Tombol Unggah Output Desa Baru (Menyimpan ke Repositori Publik) -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-sky-50 border-2 border-dashed border-[#3B4D3B]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#3B4D3B] to-[#3B4D3B] text-white flex items-center justify-center text-xl shadow-xs shrink-0">
+                                📤
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-900">Unggah Output Program Publikasi Desa Anda</h4>
+                                <p class="text-xs text-slate-500">Seluruh dokumen yang diunggah desa akan otomatis tampil di Dashboard Utama Publik Desa Cantik.</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="openUploadOutputModal()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3B4D3B] to-[#3B4D3B] hover:from-[#2D3B2D] hover:to-[#3B4D3B] text-white font-extrabold text-xs shadow-sm hover:shadow-md transition flex items-center justify-center gap-2 cursor-pointer shrink-0">
+                            <i class="bi bi-cloud-arrow-up-fill text-sm"></i>
+                            <span>+ Unggah Dokumen Output</span>
+                        </button>
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         
                         <!-- 1. Monografi Desa -->
@@ -1407,10 +1453,10 @@
                         <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
                             <div>
                                 <div class="flex items-start justify-between gap-3 mb-4">
-                                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-2xl shadow-inner shrink-0">
+                                    <div class="w-12 h-12 rounded-2xl bg-[#E6ECE6] text-[#2D3B2D] flex items-center justify-center text-2xl shadow-inner shrink-0">
                                         <i class="bi bi-file-earmark-richtext-fill"></i>
                                     </div>
-                                    <span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-[11px] font-black border border-rose-200">
+                                    <span class="px-2.5 py-1 rounded-full bg-[#E6ECE6] text-[#2D3B2D] text-[11px] font-black border border-[#DCE3DD]">
                                         Leaflet Lipat 3 (HD)
                                     </span>
                                 </div>
@@ -1422,16 +1468,16 @@
                                 </p>
                                 <div class="flex flex-wrap items-center gap-2 mt-4 text-[11px] font-semibold text-slate-600">
                                     <span class="px-2.5 py-1 rounded-lg bg-slate-100"><i class="bi bi-printer-fill text-indigo-600 mr-1"></i>Siap Cetak A4</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-slate-100"><i class="bi bi-palette-fill text-rose-600 mr-1"></i>Full Color CMYK</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-slate-100"><i class="bi bi-palette-fill text-red-600 mr-1"></i>Full Color CMYK</span>
                                     <span class="px-2.5 py-1 rounded-lg bg-slate-100"><i class="bi bi-file-earmark-pdf-fill text-rose-500 mr-1"></i>Format PDF HD</span>
                                 </div>
                             </div>
                             <div class="pt-5 mt-5 border-t border-slate-100 grid grid-cols-2 gap-2.5">
                                 <button type="button" onclick="openPublikasiDocModal('leaflet')" class="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
-                                    <i class="bi bi-eye-fill text-rose-600"></i>
+                                    <i class="bi bi-eye-fill text-red-600"></i>
                                     <span>Buka Dokumen</span>
                                 </button>
-                                <button type="button" onclick="downloadOutputDoc('leaflet')" class="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
+                                <button type="button" onclick="downloadOutputDoc('leaflet')" class="w-full py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-red-700 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer active:scale-95">
                                     <i class="bi bi-download"></i>
                                     <span>Unduh Leaflet</span>
                                 </button>
@@ -1589,7 +1635,7 @@
                                 <span class="absolute left-3.5 text-slate-400 text-sm">
                                     <i class="bi bi-link-45deg"></i>
                                 </span>
-                                <input type="url" id="podesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-xs font-medium text-slate-900 transition outline-none">
+                                <input type="url" id="podesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-[#3B4D3B]/20 text-xs font-medium text-slate-900 transition outline-none">
                                 <button type="button" onclick="clearPodesSheetInput('page')" class="absolute right-3 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer">
                                     Hapus
                                 </button>
@@ -1618,7 +1664,7 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <span class="text-slate-400">Konversi otomatis anti-blokir: <code class="bg-slate-100 px-1 py-0.5 rounded text-[10px] text-emerald-700 font-mono">/edit?rm=minimal</code></span>
-                                <button type="button" onclick="clearPodesSpreadsheet()" class="text-rose-600 hover:text-rose-700 hover:underline font-bold text-[11px] cursor-pointer">
+                                <button type="button" onclick="clearPodesSpreadsheet()" class="text-red-600 hover:text-[#2D3B2D] hover:underline font-bold text-[11px] cursor-pointer">
                                     Reset Link Desa Ini
                                 </button>
                             </div>
@@ -1816,15 +1862,15 @@
                                 </div>
                                 <div>
                                     <div class="flex justify-between text-[12.5px] font-medium">
-                                        <span><span class="text-rose-600 text-xs">●</span> 3. Pertanian, Perkebunan &amp; Perikanan Bahari</span>
-                                        <b class="text-[11px] text-rose-600 font-bold">85% (11/13)</b>
+                                        <span><span class="text-red-600 text-xs">●</span> 3. Pertanian, Perkebunan &amp; Perikanan Bahari</span>
+                                        <b class="text-[11px] text-red-600 font-bold">85% (11/13)</b>
                                     </div>
                                     <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:85%;background:#dc2626;"></span></div>
                                 </div>
                                 <div>
                                     <div class="flex justify-between text-[12.5px] font-medium">
-                                        <span><span class="text-rose-600 text-xs">●</span> 4. Akses Transportasi &amp; Sarana Komunikasi</span>
-                                        <b class="text-[11px] text-rose-600 font-bold">67% (6/9)</b>
+                                        <span><span class="text-red-600 text-xs">●</span> 4. Akses Transportasi &amp; Sarana Komunikasi</span>
+                                        <b class="text-[11px] text-red-600 font-bold">67% (6/9)</b>
                                     </div>
                                     <div class="dc-progress mt-1.5" style="height:6px;"><span style="width:67%;background:#dc2626;"></span></div>
                                 </div>
@@ -1976,6 +2022,14 @@
                                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                 <span>Standar SDI BPS 2026</span>
                             </span>
+                            <button type="button" onclick="openRawDataModal('podes')" class="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-300 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer" title="Lihat Data Mentah Lapangan (SRS UC-18)">
+                                <i class="bi bi-table text-blue-600"></i>
+                                <span>Lihat Data Asli Sektoral</span>
+                            </button>
+                            <button type="button" onclick="openRawDataModal('podes')" class="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-300 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer" title="Lihat Data Mentah Lapangan (SRS UC-18)">
+                                <i class="bi bi-table text-blue-600"></i>
+                                <span>Lihat Data Asli Sektoral</span>
+                            </button>
                             <button type="button" onclick="window.print()" class="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer">
                                 <i class="bi bi-printer-fill text-emerald-600"></i>
                                 <span>Cetak Halaman</span>
@@ -2147,13 +2201,13 @@
                                             <i class="bi bi-file-earmark-medical-fill text-8xl"></i>
                                         </div>
                                         <div class="flex items-center justify-between">
-                                            <span class="text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded bg-rose-500/40 border border-rose-400/30">MEDIA CETAK</span>
-                                            <i class="bi bi-printer-fill text-rose-300 text-sm"></i>
+                                            <span class="text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded bg-[#E6ECE6]0/40 border border-[#DCE3DD]/30">MEDIA CETAK</span>
+                                            <i class="bi bi-printer-fill text-emerald-300 text-sm"></i>
                                         </div>
                                         <div>
-                                            <div class="text-[11px] font-medium text-rose-200">LEAFLET STATISTIK DESA</div>
+                                            <div class="text-[11px] font-medium text-emerald-200">LEAFLET STATISTIK DESA</div>
                                             <div id="pubLeafletVillageTitle" class="text-base font-black leading-tight text-white mt-0.5">Desa Kamisi 2026</div>
-                                            <div class="text-[10px] text-rose-100/80 mt-1">Publikasi Ringkas Lipat Tiga Berwarna</div>
+                                            <div class="text-[10px] text-emerald-100/80 mt-1">Publikasi Ringkas Lipat Tiga Berwarna</div>
                                         </div>
                                     </div>
                                     <h4 id="pubLeafletCardTitle" class="font-extrabold text-slate-800 text-sm leading-snug">Leaflet Statistik Desa Kamisi 2026</h4>
@@ -2166,7 +2220,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-5 pt-3 flex items-center gap-2">
-                                    <button type="button" onclick="downloadPublicationDoc('Leaflet_Statistik_Desa_2026.pdf')" class="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95">
+                                    <button type="button" onclick="downloadPublicationDoc('Leaflet_Statistik_Desa_2026.pdf')" class="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-red-700 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                         <span>Unduh PDF</span>
                                     </button>
@@ -2448,7 +2502,7 @@
                         <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
                             <div class="relative flex-1 max-w-md">
                                 <i class="bi bi-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="metadataSearchInput" onkeyup="filterMetadataRows(this.value)" placeholder="Cari nama variabel, kode, atau konsep definisi..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-xs text-slate-800 placeholder-slate-400 shadow-2xs">
+                                <input type="text" id="metadataSearchInput" onkeyup="filterMetadataRows(this.value)" placeholder="Cari nama variabel, kode, atau konsep definisi..." class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-[#3B4D3B] text-xs text-slate-800 placeholder-slate-400 shadow-2xs">
                             </div>
                             <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 text-xs">
                                 <button type="button" onclick="filterMetadataCategory('all')" id="meta-pill-all" class="meta-pill active px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-emerald-600 text-white shrink-0">Semua (12)</button>
@@ -2554,7 +2608,7 @@
                                         <td class="py-2.5 px-3 text-[11px] font-bold text-slate-700">BPKP, DPMD &amp; BPS</td>
                                     </tr>
                                     <tr class="metadata-row hover:bg-emerald-50/40 transition" data-cat="infrastruktur">
-                                        <td class="py-2.5 px-3.5 font-mono font-bold text-rose-800 text-[11px]"><span class="px-2 py-0.5 rounded bg-rose-100">PODES-0601</span></td>
+                                        <td class="py-2.5 px-3.5 font-mono font-bold text-rose-800 text-[11px]"><span class="px-2 py-0.5 rounded bg-[#E6ECE6]">PODES-0601</span></td>
                                         <td class="py-2.5 px-3.5 font-bold text-slate-900">Mitigasi &amp; Sistem Peringatan Dini Bencana Alam</td>
                                         <td class="py-2.5 px-3.5 text-slate-600">Ketersediaan rambu evakuasi, sirine/kentongan peringatan dini tsunami/banjir, serta posko kesiapsiagaan bencana desa.</td>
                                         <td class="py-2.5 px-3 font-semibold text-slate-800">Kesiapan Desa</td>
@@ -2631,7 +2685,7 @@
                                         <span class="sm:hidden">Galeri</span>
                                     </button>
                                     <button type="button" onclick="openPublikasiDocModal('monografi')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 active:scale-95 text-[#0a4d36] font-extrabold text-xs shadow-md hover:shadow-lg border border-white/40 transition-all duration-200 cursor-pointer" title="Buka Pratinjau Buku Monografi Resmi PDF">
-                                        <i class="bi bi-file-earmark-pdf-fill text-rose-600 text-sm"></i>
+                                        <i class="bi bi-file-earmark-pdf-fill text-red-600 text-sm"></i>
                                         <span class="hidden sm:inline">Buku Monografi (PDF)</span>
                                         <span class="sm:hidden">Monografi</span>
                                     </button>
@@ -2730,7 +2784,7 @@
                             <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col justify-between hover:shadow-md transition">
                                 <div class="flex items-center justify-between text-xs text-slate-500 font-bold">
                                     <span>Kasus Stunting:</span>
-                                    <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm shadow-2xs">
+                                    <span class="w-8 h-8 rounded-xl bg-[#E6ECE6] text-red-600 flex items-center justify-center text-sm shadow-2xs">
                                         <i class="bi bi-heart-pulse-fill text-base"></i>
                                     </span>
                                 </div>
@@ -3277,7 +3331,7 @@
                         <div class="flex items-center gap-3 shrink-0">
                             <div class="relative w-full md:w-64">
                                 <i class="bi bi-search absolute left-3.5 top-3 text-slate-400 text-xs"></i>
-                                <input type="text" id="pageGaleriSearchInput" oninput="searchPageGaleriPhotos(this.value)" placeholder="Cari foto dokumentasi..." class="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                                <input type="text" id="pageGaleriSearchInput" oninput="searchPageGaleriPhotos(this.value)" placeholder="Cari foto dokumentasi..." class="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] focus:bg-white transition">
                             </div>
                             <span id="pageGaleriCount" class="text-xs font-black text-emerald-800 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200 whitespace-nowrap hidden sm:inline">
                                 8 Foto Dokumentasi
@@ -3444,7 +3498,7 @@
                                         <i class="bi bi-shield-fill-check"></i>
                                     </div>
                                     <!-- Orb 5: Bottom Left (8 o'clock) -->
-                                    <div class="absolute bottom-4 -left-1 w-9 h-9 rounded-full bg-gradient-to-tr from-rose-500 to-red-400 shadow-[0_6px_15px_rgba(225,29,72,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
+                                    <div class="absolute bottom-4 -left-1 w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-red-400 shadow-[0_6px_15px_rgba(225,29,72,0.4)] border-2 border-white/70 backdrop-blur-md flex items-center justify-center text-white text-xs transform hover:scale-110 transition duration-300">
                                         <i class="bi bi-play-btn-fill"></i>
                                     </div>
                                     <!-- Orb 6: Top Left (10 o'clock) -->
@@ -3783,6 +3837,17 @@
     </div>
 
                 <div id="view-video" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- Read-only BPS Materials Banner -->
+                    <div class="p-3.5 rounded-2xl bg-gradient-to-r from-sky-50 via-white to-[#F8FAF8] border border-[#BAE6FD] flex items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-8 h-8 rounded-xl bg-white border border-[#BAE6FD] text-[#0369A1] flex items-center justify-center font-bold text-sm shadow-xs shrink-0">📡</span>
+                            <div>
+                                <span class="font-extrabold text-slate-800">Materi &amp; Video Edukasi Resmi BPS (Read-Only)</span>
+                                <p class="text-[11px] text-slate-500">Diunggah oleh Pembina BPS Kolaka Utara (Devira &amp; Hakam). Operator desa hanya mempelajari materi &amp; mengerjakan evaluasi.</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-black text-[#0369A1] bg-[#E0F2FE] border border-[#BAE6FD] px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0">Diverifikasi BPS</span>
+                    </div>
                     <!-- 1. Header Video Mikrolearning (Ikon Lucide PlayCircle Hijau & Tombol Navigasi Tunggal) -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-3.5">
@@ -3793,8 +3858,11 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Mikrolearning</h2>
-                                <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS</p>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Video Mikrolearning</h2>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">PIC: Devira &amp; Hakam</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Video edukasi microlearning Desa Cantik BPS Kolaka Utara &bull; Instruktur: <strong class="text-emerald-800">Devira &amp; Hakam (Tim Pembinaan BPS)</strong></p>
                             </div>
                         </div>
                         <div class="flex items-center gap-2 self-start sm:self-auto">
@@ -4057,8 +4125,11 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pre-test &amp; Post-test</h2>
-                                <p class="text-xs text-slate-500 mt-0.5">Evaluasi kompetensi aparatur desa dan sertifikat Agen Statistik</p>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Pre-test &amp; Post-test</h2>
+                                    <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-black border border-blue-300">Tim Teknis BPS</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Evaluasi kompetensi aparatur desa dan sertifikat Agen Statistik &bull; Disusun oleh: <strong class="text-emerald-800">Seluruh Tim Teknis BPS Kolaka Utara</strong></p>
                             </div>
                         </div>
                         <div class="flex items-center gap-2.5 self-start sm:self-auto flex-wrap">
@@ -4259,6 +4330,17 @@
                 <!-- BUKU PANDUAN                                                          -->
                 <!-- ===================================================================== -->
                 <div id="view-buku" class="menu-view-container hidden space-y-6 animate-in fade-in duration-200">
+                    <!-- Read-only BPS Pedoman Banner -->
+                    <div class="p-3.5 rounded-2xl bg-gradient-to-r from-sky-50 via-white to-[#F8FAF8] border border-[#BAE6FD] flex items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-8 h-8 rounded-xl bg-white border border-[#BAE6FD] text-[#3B4D3B] flex items-center justify-center font-bold text-sm shadow-xs shrink-0">📘</span>
+                            <div>
+                                <span class="font-extrabold text-slate-800">Pedoman &amp; 5 Template Publikasi BPS (Read-Only)</span>
+                                <p class="text-[11px] text-slate-500">Materi resmi pedoman &amp; format dokumen yang disusun Tim Teknis BPS (Hanifah, Robbith, Asma, Aidil, Rini, Ilham).</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-black text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-2.5 py-1 rounded-full uppercase tracking-wider shrink-0">Pedoman Baku</span>
+                    </div>
                     <!-- 1. Header Halaman Buku Pedoman & Template Publikasi -->
                     <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-3.5">
@@ -4318,7 +4400,7 @@
 
                             <!-- Tab 6: Template Publikasi -->
                             <button type="button" onclick="selectPedomanTabPill('publikasi')" id="pill-pedoman-publikasi" class="pedoman-pill flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer border bg-slate-50 hover:bg-emerald-50/60 text-slate-700 hover:text-emerald-800 border-slate-200">
-                                <i class="bi bi-file-earmark-arrow-down-fill text-sm text-rose-600"></i>
+                                <i class="bi bi-file-earmark-arrow-down-fill text-sm text-red-600"></i>
                                 <span class="truncate">6. Template Publikasi</span>
                             </button>
                         </div>
@@ -4378,9 +4460,14 @@
                                                 <span id="docMetaSubTitle">BADAN PUSAT STATISTIK KABUPATEN KOLAKA UTARA</span>
                                                 <span id="docMetaRefCode" class="font-mono font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">MADANI-BPS-7408-2026</span>
                                             </div>
-                                            <h1 id="docMainTitle" class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-snug">
-                                                PEDOMAN UMUM DESA MADANI KOLAKA UTARA
-                                            </h1>
+                                            <div class="flex items-center justify-between gap-2 flex-wrap">
+                                                <h1 id="docMainTitle" class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-snug">
+                                                    PEDOMAN UMUM DESA MADANI KOLAKA UTARA
+                                                </h1>
+                                                <span class="text-[9.5px] font-black uppercase text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">
+                                                    Penyusun: Hanifah (Tim Teknis BPS)
+                                                </span>
+                                            </div>
                                             <div class="text-xs text-slate-600 mt-1 flex items-center gap-2">
                                                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                                                 <span id="docChapterTitle" class="font-bold text-slate-800">Bab I: Kerangka Acuan &amp; Standarisasi Desa Cinta Statistik</span>
@@ -4437,128 +4524,173 @@
 
                                 <!-- 5 Kartu Template Resmi -->
                                 <div class="space-y-3">
-                                    <!-- 1. Profil Desa -->
-                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-300 transition shadow-2xs group flex flex-col justify-between gap-3">
+                                    <!-- 1. Profil Desa (PIC: Robbith) -->
+                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-[#DCE3DD] transition shadow-2xs group flex flex-col justify-between gap-3">
                                         <div>
-                                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                            <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                                                 <div class="flex items-center gap-2">
                                                     <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold shrink-0">
                                                         <i class="bi bi-buildings-fill"></i>
                                                     </span>
-                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition">1. Profil Desa</h4>
+                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-[#3B4D3B] transition">1. Profil Desa</h4>
                                                 </div>
-                                                <span class="text-[9.5px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded">DOCX &bull; PDF</span>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-[9px] font-black uppercase text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">PIC: Robbith</span>
+                                                    <span class="text-[9.5px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded">DOCX &bull; PDF</span>
+                                                </div>
                                             </div>
                                             <p class="text-[11px] text-slate-600 leading-relaxed">
                                                 Format naskah komprehensif profil demografi, potensi geospasial, sejarah, dan struktur kelembagaan desa.
                                             </p>
                                         </div>
-                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                             <span class="text-[10px] text-slate-400">Standar BPS &bull; 4,2 MB</span>
-                                            <button type="button" onclick="downloadTemplateDoc('profil_desa')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                                <i class="bi bi-download"></i>
-                                                <span>Unduh Template</span>
-                                            </button>
+                                            <div class="flex items-center gap-1.5">
+                                                <button type="button" onclick="openTemplatePreviewModal('profil')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                                                    <i class="bi bi-eye"></i>
+                                                    <span>Pratinjau</span>
+                                                </button>
+                                                <button type="button" onclick="downloadTemplateDoc('profil_desa')" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                                    <i class="bi bi-download"></i>
+                                                    <span>Unduh</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- 2. Monografi Desa -->
-                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-300 transition shadow-2xs group flex flex-col justify-between gap-3">
+                                    <!-- 2. Monografi Desa (PIC: Asma) -->
+                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-[#DCE3DD] transition shadow-2xs group flex flex-col justify-between gap-3">
                                         <div>
-                                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                            <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                                                 <div class="flex items-center gap-2">
                                                     <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold shrink-0">
                                                         <i class="bi bi-journal-bookmark-fill"></i>
                                                     </span>
-                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition">2. Monografi Desa</h4>
+                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-[#3B4D3B] transition">2. Monografi Desa</h4>
                                                 </div>
-                                                <span class="text-[9.5px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">XLSX &bull; DOCX</span>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-[9px] font-black uppercase text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">PIC: Asma</span>
+                                                    <span class="text-[9.5px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">XLSX &bull; DOCX</span>
+                                                </div>
                                             </div>
                                             <p class="text-[11px] text-slate-600 leading-relaxed">
                                                 Template buku monografi resmi standar BPS Kolaka Utara dengan tabulasi 44 variabel PODES otomatis.
                                             </p>
                                         </div>
-                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                             <span class="text-[10px] text-slate-400">Layout A4 Resmi &bull; 5,8 MB</span>
-                                            <button type="button" onclick="downloadTemplateDoc('monografi_desa')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                                <i class="bi bi-download"></i>
-                                                <span>Unduh Template</span>
-                                            </button>
+                                            <div class="flex items-center gap-1.5">
+                                                <button type="button" onclick="openTemplatePreviewModal('monografi')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                                                    <i class="bi bi-eye"></i>
+                                                    <span>Pratinjau</span>
+                                                </button>
+                                                <button type="button" onclick="downloadTemplateDoc('monografi_desa')" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                                    <i class="bi bi-download"></i>
+                                                    <span>Unduh</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- 3. Publikasi Tematik -->
-                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-300 transition shadow-2xs group flex flex-col justify-between gap-3">
+                                    <!-- 3. Publikasi Tematik (PIC: Aidil) -->
+                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-[#DCE3DD] transition shadow-2xs group flex flex-col justify-between gap-3">
                                         <div>
-                                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                            <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                                                 <div class="flex items-center gap-2">
                                                     <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold shrink-0">
                                                         <i class="bi bi-graph-up-arrow"></i>
                                                     </span>
-                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition">3. Publikasi Tematik</h4>
+                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-[#3B4D3B] transition">3. Publikasi Tematik</h4>
                                                 </div>
-                                                <span class="text-[9.5px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded">DOCX &bull; PPTX</span>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-[9px] font-black uppercase text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">PIC: Aidil</span>
+                                                    <span class="text-[9.5px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded">DOCX &bull; PPTX</span>
+                                                </div>
                                             </div>
                                             <p class="text-[11px] text-slate-600 leading-relaxed">
                                                 Format kajian tematik komoditas kakao, perikanan bahari, dan evaluasi bansos/P3KE kemiskinan ekstrem.
                                             </p>
                                         </div>
-                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                             <span class="text-[10px] text-slate-400">Analisis Sektoral &bull; 3,5 MB</span>
-                                            <button type="button" onclick="downloadTemplateDoc('publikasi_tematik')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                                <i class="bi bi-download"></i>
-                                                <span>Unduh Template</span>
-                                            </button>
+                                            <div class="flex items-center gap-1.5">
+                                                <button type="button" onclick="openTemplatePreviewModal('tematik')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                                                    <i class="bi bi-eye"></i>
+                                                    <span>Pratinjau</span>
+                                                </button>
+                                                <button type="button" onclick="downloadTemplateDoc('publikasi_tematik')" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                                    <i class="bi bi-download"></i>
+                                                    <span>Unduh</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- 4. Leaflet -->
-                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-300 transition shadow-2xs group flex flex-col justify-between gap-3">
+                                    <!-- 4. Leaflet (PIC: Rini) -->
+                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-[#DCE3DD] transition shadow-2xs group flex flex-col justify-between gap-3">
                                         <div>
-                                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                            <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                                                 <div class="flex items-center gap-2">
-                                                    <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center text-xs font-bold shrink-0">
+                                                    <span class="w-7 h-7 rounded-lg bg-[#E6ECE6] text-[#2D3B2D] flex items-center justify-center text-xs font-bold shrink-0">
                                                         <i class="bi bi-file-earmark-medical-fill"></i>
                                                     </span>
-                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition">4. Leaflet</h4>
+                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-[#3B4D3B] transition">4. Leaflet</h4>
                                                 </div>
-                                                <span class="text-[9.5px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.5 rounded">CANVA &bull; PDF</span>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-[9px] font-black uppercase text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">PIC: Rini</span>
+                                                    <span class="text-[9.5px] font-bold text-[#2D3B2D] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">CANVA &bull; PDF</span>
+                                                </div>
                                             </div>
                                             <p class="text-[11px] text-slate-600 leading-relaxed">
                                                 Desain publikasi lipat tiga (tri-fold brochure) siap cetak resolusi tinggi untuk sosialisasi ke warga.
                                             </p>
                                         </div>
-                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                             <span class="text-[10px] text-slate-400">Tri-Fold HD &bull; 2,8 MB</span>
-                                            <button type="button" onclick="downloadTemplateDoc('leaflet')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                                <i class="bi bi-download"></i>
-                                                <span>Unduh Template</span>
-                                            </button>
+                                            <div class="flex items-center gap-1.5">
+                                                <button type="button" onclick="openTemplatePreviewModal('leaflet')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                                                    <i class="bi bi-eye"></i>
+                                                    <span>Pratinjau</span>
+                                                </button>
+                                                <button type="button" onclick="downloadTemplateDoc('leaflet')" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                                    <i class="bi bi-download"></i>
+                                                    <span>Unduh</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <!-- 5. Infografis -->
-                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-300 transition shadow-2xs group flex flex-col justify-between gap-3">
+                                    <!-- 5. Infografis (PIC: Ilham) -->
+                                    <div class="p-3.5 rounded-xl border border-slate-200/90 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-[#DCE3DD] transition shadow-2xs group flex flex-col justify-between gap-3">
                                         <div>
-                                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                            <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
                                                 <div class="flex items-center gap-2">
                                                     <span class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold shrink-0">
                                                         <i class="bi bi-pie-chart-fill"></i>
                                                     </span>
-                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-emerald-800 transition">5. Infografis</h4>
+                                                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-[#3B4D3B] transition">5. Infografis</h4>
                                                 </div>
-                                                <span class="text-[9.5px] font-bold text-teal-700 bg-teal-50 border border-teal-200 px-1.5 py-0.5 rounded">PNG &bull; SVG</span>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-[9px] font-black uppercase text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-1.5 py-0.5 rounded">PIC: Ilham</span>
+                                                    <span class="text-[9.5px] font-bold text-teal-700 bg-teal-50 border border-teal-200 px-1.5 py-0.5 rounded">PNG &bull; SVG</span>
+                                                </div>
                                             </div>
                                             <p class="text-[11px] text-slate-600 leading-relaxed">
                                                 Kanvas visual piramida kependudukan dan matriks capaian indikator untuk media sosial dan papan desa.
                                             </p>
                                         </div>
-                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                                        <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between gap-1 flex-wrap">
                                             <span class="text-[10px] text-slate-400">1080x1080 &bull; 1,9 MB</span>
-                                            <button type="button" onclick="downloadTemplateDoc('infografis')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
-                                                <i class="bi bi-download"></i>
-                                                <span>Unduh Template</span>
-                                            </button>
+                                            <div class="flex items-center gap-1.5">
+                                                <button type="button" onclick="openTemplatePreviewModal('infografis')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition shadow-2xs flex items-center gap-1 cursor-pointer">
+                                                    <i class="bi bi-eye"></i>
+                                                    <span>Pratinjau</span>
+                                                </button>
+                                                <button type="button" onclick="downloadTemplateDoc('infografis')" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white font-bold text-[11px] transition shadow-2xs flex items-center gap-1.5 cursor-pointer active:scale-95">
+                                                    <i class="bi bi-download"></i>
+                                                    <span>Unduh</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -4566,8 +4698,43 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- ===================================================================== -->
+                <!-- MODUL C: LEMBAR KERJA EVALUASI (LKE) & PENILAIAN (SRS UC-07 s/d UC-12)-->
+                <!-- ===================================================================== -->
+                                <!-- MODUL C: LEMBAR KERJA EVALUASI (LKE) - SRS UC-07 S/D 12 -->
+                @include('components.lke.lke-section')
+
+                <!-- ===================================================================== -->
+                <!-- MODUL B: 20 TAHAPAN PEMBINAAN BPS KABUPATEN KOLAKA UTARA (SRS UC-04/05)-->
+                <!-- ===================================================================== -->
+                @include('components.tahapan.tahapan-section')
+
+                <!-- ===================================================================== -->
+                <!-- MODUL F: GENERATOR LAPORAN DESA CANTIK OTOMATIS (SRS UC-21)           -->
+                <!-- ===================================================================== -->
+                @include('components.laporan.laporan-section')
+
             <!-- Tutup max-w-[1600px] -->
         </div>
+
+    <!-- ============================================================== -->
+    <!-- MODAL SRS: PRATINJAU TEMPLATE PUBLIKASI DESA (TUGAS MENTOR)    -->
+    <!-- Robbith (Profil), Asma (Monografi), Aidil (Tematik), Rini      -->
+    <!-- (Leaflet), Ilham (Infografis)                                   -->
+    <!-- ============================================================== -->
+    <!-- MODAL SRS: PRATINJAU TEMPLATE PUBLIKASI DESA -->
+    @include('components.modals.template-preview-modal')
+
+    <!-- ============================================================== -->
+    <!-- MODAL SRS: UNGGAH OUTPUT 20 TAHAPAN (SRS UC-05)                -->
+    <!-- ============================================================== -->
+    <!-- MODAL SRS: UNGGAH OUTPUT 20 TAHAPAN -->
+    @include('components.modals.upload-output-modal')
+
+    <!-- MODAL SRS: LIHAT DATA ASLI SEKTORAL & MASKING (SRS UC-18) -->
+    @include('components.modals.raw-data-modal')
+
     <!-- Tutup mainMenuContent -->
     </main>
 
@@ -5217,8 +5384,8 @@
                 if (contentEl) {
                     contentEl.innerHTML = `
                         <div class="space-y-4">
-                            <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-950">
-                                <span class="text-xs font-black uppercase tracking-wider text-rose-700 block mb-1">Pedoman Publikasi • ${book.chapters[currentReaderPage - 1]?.title || 'Bab ' + currentReaderPage}</span>
+                            <div class="p-4 rounded-xl bg-[#E6ECE6] border border-[#DCE3DD] text-slate-800">
+                                <span class="text-xs font-black uppercase tracking-wider text-[#2D3B2D] block mb-1">Pedoman Publikasi • ${book.chapters[currentReaderPage - 1]?.title || 'Bab ' + currentReaderPage}</span>
                                 <h4 class="text-base font-black">${book.chapters[currentReaderPage - 1]?.title || 'Struktur Buku Monografi'}</h4>
                                 <p class="text-xs text-rose-800 mt-1">Diseminasi statistik desa, infografis capaian, dan rilis data resmi.</p>
                             </div>
@@ -5645,13 +5812,13 @@
                     `;
                 }
             } else if (docType === 'leaflet') {
-                if (iconEl) iconEl.innerHTML = '<i class="bi bi-file-earmark-richtext-fill text-xl text-rose-200"></i>';
+                if (iconEl) iconEl.innerHTML = '<i class="bi bi-file-earmark-richtext-fill text-xl text-emerald-200"></i>';
                 if (tagEl) tagEl.textContent = 'LEAFLET INFOGRAFIS TEMATIK LIPAT 3 • BPS DESA CANTIK';
                 if (titleEl) titleEl.textContent = `Leaflet Infografis Tematik ${vTitle} 2025`;
                 if (bodyEl) {
                     bodyEl.innerHTML = `
                         <div class="space-y-4">
-                            <div class="p-4 rounded-2xl bg-rose-50/70 border border-rose-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                            <div class="p-4 rounded-2xl bg-[#E6ECE6] border border-[#DCE3DD] flex flex-wrap items-center justify-between gap-2 text-xs">
                                 <div>
                                     <div class="text-[10px] font-black uppercase text-rose-800">Spesifikasi Diseminasi Cetak</div>
                                     <div class="font-bold text-slate-800 text-sm">Brosur Tri-Fold A4 (297 x 210 mm)</div>
@@ -5681,7 +5848,7 @@
                                 </div>
                             </div>
 
-                            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-950 text-xs flex items-center gap-2">
+                            <div class="p-3 rounded-xl bg-[#E6ECE6] border border-[#DCE3DD] text-slate-800 text-xs flex items-center gap-2">
                                 <span class="text-base">✓</span>
                                 <div><b>Diseminasi Publik:</b> Sangat cocok dibagikan kepada warga, mahasiswa KKN, tamu kedinasan, dan peserta Musrenbangdes.</div>
                             </div>
@@ -8980,6 +9147,56 @@ function triggerPubDownload() {
         descanSectoralData.lestari = descanSectoralData.sawangaoha;
 
 
+        
+        // ==============================================================
+        // FUNCTIONS: SIDEBAR ACCORDION DROPDOWN (MODERN FLOW UI)
+        // ==============================================================
+        function toggleDcGroup(groupKey) {
+            const submenuEl = document.getElementById('dcSubmenu-' + groupKey) || document.getElementById(groupKey);
+            const btnEl = document.getElementById('dcGroupBtn-' + groupKey) || document.getElementById('head-' + groupKey);
+            const chevronEl = document.getElementById('dcChevron-' + groupKey) || (btnEl ? btnEl.querySelector('.group-chevron') : null);
+            if (!submenuEl) return;
+
+            const isCurrentlyOpen = btnEl ? btnEl.classList.contains('open') : (submenuEl.style.display !== 'none' && !submenuEl.classList.contains('collapsed'));
+
+            if (isCurrentlyOpen) {
+                submenuEl.style.display = 'none';
+                submenuEl.classList.add('collapsed');
+                if (btnEl) btnEl.classList.remove('open');
+                if (chevronEl) chevronEl.style.transform = 'rotate(0deg)';
+            } else {
+                submenuEl.style.display = 'block';
+                submenuEl.classList.remove('collapsed');
+                if (btnEl) btnEl.classList.add('open');
+                if (chevronEl) chevronEl.style.transform = 'rotate(180deg)';
+            }
+        }
+        window.toggleSidebarGroup = toggleDcGroup;
+
+        let areAllSidebarGroupsOpen = true;
+        function toggleAllSidebarGroups() {
+            areAllSidebarGroupsOpen = !areAllSidebarGroupsOpen;
+            const containers = document.querySelectorAll('.sidebar-submenu-container');
+            const headBtns = document.querySelectorAll('.sidebar-group-btn');
+            const chevrons = document.querySelectorAll('.group-chevron');
+            const labelEl = document.getElementById('labelToggleAllGroups');
+
+            containers.forEach(el => {
+                el.style.display = areAllSidebarGroupsOpen ? 'block' : 'none';
+                el.classList.toggle('collapsed', !areAllSidebarGroupsOpen);
+            });
+            headBtns.forEach(btn => {
+                btn.classList.toggle('open', areAllSidebarGroupsOpen);
+            });
+            chevrons.forEach(ch => {
+                ch.style.transform = areAllSidebarGroupsOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+
+            if (labelEl) {
+                labelEl.textContent = areAllSidebarGroupsOpen ? 'Tutup Semua' : 'Buka Semua';
+            }
+        }
+
         function switchNavMenu(menuKey) {
             // Handle aliases & shortcuts
             if (menuKey === 'gallery') menuKey = 'galeri';
@@ -9022,6 +9239,12 @@ function triggerPubDownload() {
             }
             if (menuKey === 'excel') menuKey = 'buku';
             if (menuKey === 'posttest') menuKey = 'pretest';
+            if (menuKey === '20tahap' || menuKey === 'tahap' || menuKey === 'output_tahap' || menuKey === 'tahapan') menuKey = 'lke';
+            if (menuKey === 'evaluasi' || menuKey === 'lembar_evaluasi') menuKey = 'lke';
+            if (menuKey === 'report' || menuKey === 'laporan_akhir') menuKey = 'laporan';
+            if (menuKey === '20tahap' || menuKey === 'tahap' || menuKey === 'output_tahap' || menuKey === 'tahapan') menuKey = 'lke';
+            if (menuKey === 'evaluasi' || menuKey === 'lembar_evaluasi') menuKey = 'lke';
+            if (menuKey === 'report' || menuKey === 'laporan_akhir') menuKey = 'laporan';
             if (menuKey === 'layanan' || menuKey === 'pengaduan') {
                 openLayananModal();
                 return;
@@ -9032,19 +9255,31 @@ function triggerPubDownload() {
             }
 
             // DAFTAR MENU RESMI DESCAN
-            const validMenus = ['portal', 'beranda', 'dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes'];
+            // DAFTAR MENU RESMI DESCAN (DIPERLUAS DENGAN SRS & MENTOR)
+            const validMenus = ['portal', 'beranda', 'dashboard', 'tentang', 'galeri', 'output', 'monitoring', 'publikasi', 'pembelajaran', 'video', 'pretest', 'buku', 'monev', 'pembinaan', 'podes', 'lke', 'tahapan', 'laporan'];
             if (!validMenus.includes(menuKey)) {
                 menuKey = 'dashboard';
             }
             currentNavMenu = menuKey;
 
-            // Update Top Nav Tabs
-            document.querySelectorAll('.nav-tab').forEach(el => {
+            // Update Top Nav Tabs & Accordion Sub-tabs
+            document.querySelectorAll('.nav-tab, .nav-sub-tab').forEach(el => {
                 el.classList.remove('active');
             });
             const dBtn = document.getElementById('nav-' + menuKey);
             if (dBtn) {
                 dBtn.classList.add('active');
+                // Auto-expand parent container if it's inside an accordion group
+                const parentGroup = dBtn.closest('.sidebar-submenu-container');
+                if (parentGroup) {
+                    parentGroup.style.display = 'block';
+                    parentGroup.classList.remove('collapsed');
+                    const groupKey = parentGroup.id.replace('dcSubmenu-', '');
+                    const headBtn = document.getElementById('dcGroupBtn-' + groupKey) || document.getElementById('head-' + parentGroup.id);
+                    const chevronEl = document.getElementById('dcChevron-' + groupKey) || (headBtn ? headBtn.querySelector('.group-chevron') : null);
+                    if (headBtn) headBtn.classList.add('open');
+                    if (chevronEl) chevronEl.style.transform = 'rotate(180deg)';
+                }
             }
 
             // Update Header Output & Galeri Button Active State
@@ -9100,6 +9335,9 @@ function triggerPubDownload() {
                 if (menuKey === 'publikasi') renderPublikasiDesa(currentTargetVillage);
                 if (menuKey === 'podes') syncPodesSpreadsheetForVillage(currentTargetVillage);
                 if (menuKey === 'buku') updateDigitalReaderFromData();
+                if (menuKey === 'lke') renderLkeComponents();
+                if (menuKey === 'tahapan') render20TahapanList();
+                if (menuKey === 'laporan') compileDescanReport();
                 syncPretestCardUI();
                 syncPosttestCardUI();
                 if (menuKey === 'galeri') renderPageGaleriPhotos('all', '');
@@ -9869,9 +10107,9 @@ function triggerPubDownload() {
                     <td class="p-2.5 font-bold text-slate-900">${d.name}</td>
                     <td class="p-2.5 text-slate-700 font-mono">${(d.pop || 0).toLocaleString('id-ID')}</td>
                     <td class="p-2.5 text-slate-700 font-mono">${(d.kk || 0).toLocaleString('id-ID')}</td>
-                    <td class="p-2.5 text-rose-600 font-bold">${d.pre || 0} KK</td>
+                    <td class="p-2.5 text-red-600 font-bold">${d.pre || 0} KK</td>
                     <td class="p-2.5 text-center">
-                        <button type="button" onclick="deleteDusunItem(${idx})" class="w-6 h-6 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 inline-flex items-center justify-center text-xs transition cursor-pointer" title="Hapus Dusun">✕</button>
+                        <button type="button" onclick="deleteDusunItem(${idx})" class="w-6 h-6 rounded-lg bg-[#E6ECE6] hover:bg-[#E6ECE6] text-red-600 hover:text-[#2D3B2D] inline-flex items-center justify-center text-xs transition cursor-pointer" title="Hapus Dusun">✕</button>
                     </td>
                 </tr>
             `).join('');
@@ -10301,7 +10539,7 @@ function triggerPubDownload() {
                         <!-- Female Bar (Extending rightward) -->
                         <div class="col-span-5 flex justify-start items-center pl-1">
                             <div class="w-full bg-slate-100/60 rounded-xs h-3.5 flex justify-start overflow-hidden">
-                                <div class="bg-[#e11d48] hover:bg-[#be123c] h-full rounded-xs transition-all duration-500 flex items-center justify-start pl-1 text-[8px] text-white font-extrabold" style="width: ${fPct}%;">
+                                <div class="bg-[#e11d48] hover:bg-[#3B4D3B] h-full rounded-xs transition-all duration-500 flex items-center justify-start pl-1 text-[8px] text-white font-extrabold" style="width: ${fPct}%;">
                                     ${fCount > 180 ? fCount : ''}
                                 </div>
                             </div>
@@ -12062,7 +12300,7 @@ function triggerPubDownload() {
                                     <i class="bi bi-arrow-repeat"></i>
                                     <span>Ganti Akun Desa</span>
                                 </button>
-                                <button type="button" onclick="logoutFromMenu()" class="w-full py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                <button type="button" onclick="logoutFromMenu()" class="w-full py-2 rounded-xl bg-[#E6ECE6] hover:bg-[#E6ECE6] text-[#2D3B2D] font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Keluar ke 6 Desa Binaan</span>
                                 </button>
@@ -12419,7 +12657,7 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
                             <span class="absolute left-3.5 text-slate-400 text-sm">
                                 <i class="bi bi-link-45deg"></i>
                             </span>
-                            <input type="url" id="modalPodesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-xs font-medium text-slate-900 transition outline-none">
+                            <input type="url" id="modalPodesSheetUrlInput" placeholder="Tempel link Google Spreadsheet PODES desa di sini (https://docs.google.com/spreadsheets/d/...)" class="w-full pl-9 pr-20 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-emerald-500 focus:ring-2 focus:ring-[#3B4D3B]/20 text-xs font-medium text-slate-900 transition outline-none">
                             <button type="button" onclick="clearPodesSheetInput('modal')" class="absolute right-3 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer">
                                 Hapus
                             </button>
@@ -12945,7 +13183,7 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
                 <div class="flex items-center gap-2 shrink-0">
                     <div class="relative w-full sm:w-60">
                         <i class="bi bi-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari foto atau desa..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition">
+                        <input type="text" id="galeriSearchInput" oninput="searchGaleriPhotos(this.value)" placeholder="Cari foto atau desa..." class="w-full pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-medium text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B] focus:border-transparent transition">
                     </div>
                 </div>
             </div>
@@ -13059,7 +13297,7 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
                         <img id="uploadPhotoPreviewImg" src="" alt="Pratinjau Foto" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-2.5 flex items-center justify-between text-white text-[11px]">
                             <span id="uploadPhotoPreviewInfo" class="font-bold truncate max-w-[240px]">Pratinjau Foto</span>
-                            <button type="button" onclick="removeUploadPreview()" class="px-2 py-0.5 rounded-md bg-rose-600 hover:bg-rose-700 text-white text-[10px] font-bold transition cursor-pointer">
+                            <button type="button" onclick="removeUploadPreview()" class="px-2 py-0.5 rounded-md bg-rose-600 hover:bg-red-700 text-white text-[10px] font-bold transition cursor-pointer">
                                 Hapus
                             </button>
                         </div>
@@ -13195,6 +13433,946 @@ Badan Pusat Statistik (BPS) Kabupaten Kolaka Utara - Satu Data Indonesia
                 if (btnEN) btnEN.className = 'px-2 py-0.5 rounded-full text-slate-600 hover:text-[#0b2545] font-bold text-[11px]';
             }
         };
+
+        // ==============================================================
+        // MASTER STATE & DATA LOGIC: SRS DESCAN & MENTOR ASSIGNMENTS
+        // ==============================================================
+        let currentActiveRole = 'operator'; // 'operator', 'kades', 'admin', 'penilai', 'publik'
+        let currentLkeFilterGroup = 'all';
+        let currentTahapanFilterFase = 'all';
+        let isDataMaskingActive = true;
+        let activePreviewTemplateType = 'profil';
+
+        // 1. DATA MASTER KOMPONEN LEMBAR KERJA EVALUASI (LKE) - SRS MODUL C
+        const lkeComponentsData = [
+            // Kelompok I: Kelembagaan & Regulasi (Bobot 25%)
+            {
+                id: 'k1_1', group: 'k1', groupTitle: 'Kelompok I: Kelembagaan & Regulasi Desa (25%)',
+                code: '1.1', title: 'Surat Keputusan (SK) Tim Agen Statistik Desa',
+                desc: 'Penerbitan SK Kepala Desa tentang Tim Agen Statistik Desa dengan struktur pelaksana yang jelas.',
+                bobot: 10, score: 4, maxScore: 4, evidence: 'SK_Agen_Statistik_2026.pdf', hasEvidence: true,
+                note: 'Telah terverifikasi dengan tanda tangan & stempel resmi Kepala Desa.'
+            },
+            {
+                id: 'k1_2', group: 'k1', groupTitle: 'Kelompok I: Kelembagaan & Regulasi Desa (25%)',
+                code: '1.2', title: 'Penyediaan Pojok Statistik & Sarana Komputer/Internet',
+                desc: 'Alokasi ruang fisik/digital Pojok Statistik Desa dan fasilitas perangkat pendukung pendataan.',
+                bobot: 8, score: 4, maxScore: 4, evidence: 'Dokumentasi_Pojok_Statistik.jpg', hasEvidence: true,
+                note: 'Ruang layanan statistik terintegrasi dengan jaringan internet kantor desa.'
+            },
+            {
+                id: 'k1_3', group: 'k1', groupTitle: 'Kelompok I: Kelembagaan & Regulasi Desa (25%)',
+                code: '1.3', title: 'Komitmen Anggaran APBDes untuk Keberlanjutan Data',
+                desc: 'Penyertaan anggaran APBDes dalam RKPDes untuk kegiatan statistik sektoral desa tahun berikutnya.',
+                bobot: 7, score: 3, maxScore: 4, evidence: 'Dokumen_RKPDes_Anggaran.pdf', hasEvidence: true,
+                note: 'Komitmen tertera pada bidang pembinaan kemasyarakatan desa.'
+            },
+
+            // Kelompok II: Ketersediaan & Standar Data Statistik Sektoral (Bobot 30%)
+            {
+                id: 'k2_1', group: 'k2', groupTitle: 'Kelompok II: Ketersediaan & Standar Data Sektoral (30%)',
+                code: '2.1', title: 'Penerapan Prinsip Satu Data Indonesia (SDI)',
+                desc: 'Kepatuhan format data terhadap standar data, metadata statistik baku, dan kode referensi Kemendagri.',
+                bobot: 10, score: 4, maxScore: 4, evidence: 'Sertifikasi_Metadata_SDI_BPS.pdf', hasEvidence: true,
+                note: 'Metadata kegiatan, indikator, dan variabel telah terdaftar di BPS Kolaka Utara.'
+            },
+            {
+                id: 'k2_2', group: 'k2', groupTitle: 'Kelompok II: Ketersediaan & Standar Data Sektoral (30%)',
+                code: '2.2', title: 'Kelengkapan 44 Variabel Inti Potensi Desa (PODES)',
+                desc: 'Pencacahan 100% data kependudukan, perumahan, perkebunan kakao, perikanan, dan sanitasi dusun.',
+                bobot: 10, score: 3, maxScore: 4, evidence: 'Tabulasi_PODES_44_Variabel.xlsx', hasEvidence: true,
+                note: 'Capaian pengisian mencapai 41 dari 44 variabel (93%).'
+            },
+            {
+                id: 'k2_3', group: 'k2', groupTitle: 'Kelompok II: Ketersediaan & Standar Data Sektoral (30%)',
+                code: '2.3', title: 'Validasi NIK 16 Digit & Rekonsiliasi Data DTKS/P3KE',
+                desc: 'Pembersihan data anomali dan pencocokan silang data penerima bansos bersama Dukcapil.',
+                bobot: 10, score: 4, maxScore: 4, evidence: 'Berita_Acara_Rekon_Dukcapil.pdf', hasEvidence: true,
+                note: 'Bebas data duplikasi dan 100% NIK terverifikasi valid.'
+            },
+
+            // Kelompok III: Peningkatan Kapasitas SDM Aparatur (Bobot 20%)
+            {
+                id: 'k3_1', group: 'k3', groupTitle: 'Kelompok III: Peningkatan Kapasitas SDM (20%)',
+                code: '3.1', title: 'Keikutsertaan Agen Statistik dalam Bimtek BPS',
+                desc: 'Kehadiran aparatur desa dalam 4 modul bimbingan teknis intensif BPS Kabupaten Kolaka Utara.',
+                bobot: 8, score: 4, maxScore: 4, evidence: 'Sertifikat_Bimtek_Agen_BPS.pdf', hasEvidence: true,
+                note: 'PIC desa mengikuti seluruh sesi pembinaan tatap muka dan daring.'
+            },
+            {
+                id: 'k3_2', group: 'k3', groupTitle: 'Kelompok III: Peningkatan Kapasitas SDM (20%)',
+                code: '3.2', title: 'Kelulusan Ujian Evaluasi Pre-Test & Post-Test',
+                desc: 'Pencapaian skor evaluasi pemahaman statistik sektoral dengan nilai minimal passing grade 75.',
+                bobot: 6, score: 4, maxScore: 4, evidence: 'Sertifikat_Kompetensi_Nilai_85.pdf', hasEvidence: true,
+                note: 'Skor Post-test mencapai 85 / 100 (Predikat Kompeten).'
+            },
+            {
+                id: 'k3_3', group: 'k3', groupTitle: 'Kelompok III: Peningkatan Kapasitas SDM (20%)',
+                code: '3.3', title: 'Kemampuan Praktik Formula Microsoft Excel',
+                desc: 'Penguasaan 30 lembar kerja praktik formula matematika, logika IF, VLOOKUP, dan Pivot Table.',
+                bobot: 6, score: 3, maxScore: 4, evidence: 'Lembar_Kerja_Praktik_Excel.xlsx', hasEvidence: true,
+                note: 'Mampu membuat rekapitulasi data otomatis per dusun.'
+            },
+
+            // Kelompok IV: Diseminasi & Pemanfaatan Data (Bobot 25%)
+            {
+                id: 'k4_1', group: 'k4', groupTitle: 'Kelompok IV: Diseminasi & Pemanfaatan Data (25%)',
+                code: '4.1', title: 'Penerbitan Buku Monografi & Profil Desa BPS',
+                desc: 'Diseminasi buku monografi resmi ber-ISBN lokal dan publikasi statistik sektoral desa.',
+                bobot: 10, score: 4, maxScore: 4, evidence: 'Buku_Monografi_Desa_2026.pdf', hasEvidence: true,
+                note: 'Telah terbit dan disahkan oleh Tim Pembina BPS Kabupaten.'
+            },
+            {
+                id: 'k4_2', group: 'k4', groupTitle: 'Kelompok IV: Diseminasi & Pemanfaatan Data (25%)',
+                code: '4.2', title: 'Pembuatan Leaflet Tri-Fold & Infografis Tematik',
+                desc: 'Diseminasi visual piramida penduduk dan komoditas kakao untuk papan informasi dan media warga.',
+                bobot: 8, score: 3, maxScore: 4, evidence: 'Leaflet_HD_Infografis_Desa.png', hasEvidence: true,
+                note: 'Telah dicetak dan dibagikan dalam musyawarah dusun.'
+            },
+            {
+                id: 'k4_3', group: 'k4', groupTitle: 'Kelompok IV: Diseminasi & Pemanfaatan Data (25%)',
+                code: '4.3', title: 'Pemanfaatan Data Statistik dalam Musrenbangdes',
+                desc: 'Penggunaan data faktual PODES untuk penetapan prioritas alokasi dana desa dan intervensi kemiskinan.',
+                bobot: 7, score: 4, maxScore: 4, evidence: 'Notulen_Musrenbangdes_Data_PODES.pdf', hasEvidence: true,
+                note: 'Data digunakan untuk penentuan bansos dan bantuan pupuk kakao.'
+            }
+        ];
+
+        // 2. DATA MASTER 20 TAHAPAN PEMBINAAN BPS KABUPATEN KOLAKA UTARA (SRS MODUL B)
+        const tahapan20Data = [
+            { no: 1, fase: '1', title: 'Koordinasi Kandidat Desa Binaan', jadwal: 'Januari 2026', sasaran: '6 Desa Binaan', output: 'Surat Usulan Desa', status: 'done', file: 'Surat_Usulan_Kandidat.pdf' },
+            { no: 2, fase: '1', title: 'Sosialisasi Program Desa Cantik', jadwal: 'Februari 2026', sasaran: 'Aparatur Pemdes & BPD', output: 'Berita Acara Sosialisasi', status: 'done', file: 'BA_Sosialisasi_Descan.pdf' },
+            { no: 3, fase: '1', title: 'Penandatanganan MoU & Komitmen Pemdes', jadwal: 'Maret 2026', sasaran: 'BPS & Kepala Desa', output: 'Naskah Perjanjian Kerjasama (MoU)', status: 'done', file: 'MoU_Descan_BPS.pdf' },
+            { no: 4, fase: '1', title: 'Pembentukan & Penerbitan SK Agen Statistik', jadwal: 'April 2026', sasaran: 'Agen Statistik Desa', output: 'SK Kepala Desa', status: 'done', file: 'SK_Agen_Statistik_Desa.pdf' },
+            { no: 5, fase: '2', title: 'Identifikasi Kebutuhan Data Sektoral', jadwal: 'Mei 2026', sasaran: 'Perangkat Desa', output: 'Daftar Kebutuhan Variabel Data', status: 'done', file: 'Matriks_Kebutuhan_Data.xlsx' },
+            { no: 6, fase: '2', title: 'Perancangan Instrumen Kuesioner PODES', jadwal: 'Juni 2026', sasaran: 'Tim Teknis BPS', output: 'Kuesioner Baku 44 Variabel', status: 'done', file: 'Kuesioner_PODES_44_Var.pdf' },
+            { no: 7, fase: '2', title: 'Bimtek Konsep & Definisi Operasional SDI', jadwal: 'Juli 2026', sasaran: 'Agen Statistik', output: 'Daftar Hadir & Modul Bimtek 1', status: 'done', file: 'Modul_Bimtek_SDI.pdf' },
+            { no: 8, fase: '2', title: 'Bimtek Etika & Tata Cara Pencacahan Lapangan', jadwal: 'Agustus 2026', sasaran: 'Pencacah Dusun', output: 'SOP Pendataan Lapangan', status: 'done', file: 'SOP_Pencacahan_Dusun.pdf' },
+            { no: 9, fase: '2', title: 'Pelaksanaan Sensus PODES & Monografi Dusun', jadwal: 'Sep - Okt 2026', sasaran: 'Seluruh Rumah Tangga', output: 'Berkas Kuesioner Terisi Lengkap', status: 'done', file: 'Rekap_Sensus_Dusun.zip' },
+            { no: 10, fase: '2', title: 'Pengumpulan Berkas Kuesioner & Geotagging', jadwal: 'November 2026', sasaran: 'Wilayah Dusun', output: 'Peta Geotagging Batas Dusun', status: 'done', file: 'Shapefile_Batas_Dusun.zip' },
+            { no: 11, fase: '2', title: 'Bimtek Pengolahan & Rumus Microsoft Excel', jadwal: 'Desember 2026', sasaran: 'Operator Desa', output: '30 Lembar Kerja Praktik Excel', status: 'done', file: 'Latihan_Rumus_Excel.xlsx' },
+            { no: 12, fase: '2', title: 'Pembersihan Data (Cleansing) & Validasi NIK', jadwal: 'Januari 2027', sasaran: 'Database Sektoral', output: 'Log Anomali & Rekon NIK', status: 'done', file: 'Log_Pembersihan_Data.xlsx' },
+            { no: 13, fase: '2', title: 'Tabulasi Silang 44 Variabel Inti Sektoral', jadwal: 'Februari 2027', sasaran: 'Pojok Statistik', output: 'Matriks Tabulasi Silang SDI', status: 'done', file: 'Matriks_Tabulasi_44.xlsx' },
+            { no: 14, fase: '2', title: 'Validasi & Rekonsiliasi Dukcapil / DTKS', jadwal: 'Maret 2027', sasaran: 'Dinas Sosial & Dukcapil', output: 'Berita Acara Rekonsiliasi Data', status: 'done', file: 'BA_Rekon_Dukcapil.pdf' },
+            { no: 15, fase: '3', title: 'Penyusunan Buku Monografi & Profil Desa', jadwal: 'April 2027', sasaran: 'Tim Diseminasi', output: 'Draf Buku Monografi Desa', status: 'running', file: 'Draf_Buku_Monografi.pdf' },
+            { no: 16, fase: '3', title: 'Desain Publikasi Tematik Kakao & Leaflet', jadwal: 'Mei 2027', sasaran: 'Masyarakat Desa', output: 'Leaflet Lipat Tiga Siap Cetak HD', status: 'running', file: 'Leaflet_TriFold_Desa.pdf' },
+            { no: 17, fase: '3', title: 'Pembuatan Infografis Capaian Potensi Wilayah', jadwal: 'Juni 2027', sasaran: 'Media Sosial Pemdes', output: 'Paket Infografis 1080x1080 Digital', status: 'review', file: 'Infografis_Digital_Desa.png' },
+            { no: 18, fase: '3', title: 'Ekspose Data & Diseminasi Tingkat Kecamatan', jadwal: 'Juli 2027', sasaran: 'Camat & Stakeholder', output: 'Notulen & Paparan Diseminasi', status: 'pending', file: null },
+            { no: 19, fase: '4', title: 'Penilaian Mandiri & Verifikasi Lapangan LKE', jadwal: 'Agustus 2027', sasaran: 'Tim Penilai BPS', output: 'Lembar Verifikasi Nilai LKE', status: 'pending', file: null },
+            { no: 20, fase: '4', title: 'Sidang Pleno & Pengumuman Desa Cantik Terbaik', jadwal: '26 September 2027', sasaran: 'Seluruh Desa Binaan', output: 'SK Penetapan Pemenang Descan', status: 'pending', file: null }
+        ];
+
+        // 3. DATA MASTER TEMPLATE PUBLIKASI (ARAHAN MENTOR NOVEMBER)
+        const mentorTemplatesData = {
+            profil: {
+                title: 'Template Profil Desa Resmi',
+                pic: 'Robbith',
+                role: 'Tim Teknis Diseminasi BPS',
+                badge: 'PROFIL DESA &bull; ROBBITH',
+                format: 'DOCX &bull; PDF (Layout A4)',
+                size: '4.2 MB',
+                heading: 'Kerangka Naskah Komprehensif Profil Desa BPS',
+                desc: 'Template dokumen naskah resmi profil geografis, sejarah, demografi piramida penduduk, potensi ekonomi perkebunan kakao, dan struktur aparatur desa binaan.',
+                chapters: [
+                    'Bab I: Kondisi Geografis, Topografi, dan Peta Batas Wilayah Desa',
+                    'Bab II: Kependudukan, Struktur Usia, Angkatan Kerja & Rasio Gender',
+                    'Bab III: Potensi Pertanian, Perkebunan Kakao Rakyat & Perikanan Bahari',
+                    'Bab IV: Sarana Prasarana Kesehatan, Pendidikan, dan Ibadah',
+                    'Bab V: Struktur Organisasi Pemerintahan Desa & Profil BPD'
+                ]
+            },
+            monografi: {
+                title: 'Template Buku Monografi Desa',
+                pic: 'Asma',
+                role: 'Tim Teknis Pengolahan Data BPS',
+                badge: 'MONOGRAFI DESA &bull; ASMA',
+                format: 'XLSX &bull; DOCX (44 Variabel PODES)',
+                size: '5.8 MB',
+                heading: 'Template Buku Monografi 44 Variabel Statistik Sektoral',
+                desc: 'Format tabel resmi buku monografi semesteran berstandar BPS dengan rumus otomatis kalkulasi data dusun, keluarga prasejahtera, dan komoditas unggulan.',
+                chapters: [
+                    'Tabel 01-10: Indikator Pokok Demografi dan Mutasi Kependudukan',
+                    'Tabel 11-20: Pemilikan Lahan Pertanian, Sentra Kakao & Ternak',
+                    'Tabel 21-30: Sarana Transportasi, Akses Internet, dan Fasilitas Umum',
+                    'Tabel 31-40: Kesejahteraan Sosial, Desil P3KE, dan Penerima Bansos',
+                    'Tabel 41-44: Rekapitulasi Anggaran APBDes & Pendapatan Asli Desa (PAD)'
+                ]
+            },
+            tematik: {
+                title: 'Template Publikasi Tematik Sektoral',
+                pic: 'Aidil',
+                role: 'Tim Teknis Analisis Statistik BPS',
+                badge: 'PUBLIKASI TEMATIK &bull; AIDIL',
+                format: 'DOCX &bull; PPTX (Analisis Mendalam)',
+                size: '3.5 MB',
+                heading: 'Laporan Kajian Tematik Sektor Unggulan & Kemiskinan',
+                desc: 'Template kajian tematik spesifik untuk mengulas produktivitas perkebunan kakao sambung pucuk, potensi nelayan tangkap pesisir, dan efektivitas bansos desa.',
+                chapters: [
+                    'Ringkasan Eksekutif: Pokok Temuan & Sorotan Angka Makro',
+                    'Bab I: Analisis Rantai Pasok dan Nilai Tambah Komoditas Kakao',
+                    'Bab II: Evaluasi Distribusi Bantuan Sosial dan Pengentasan Kemiskinan Ekstrem',
+                    'Bab III: Pemetaan Spasial Kantong Potensi & Titik Rawan Bencana',
+                    'Bab IV: Rekomendasi Kebijakan untuk Perencanaan Musrenbangdes'
+                ]
+            },
+            leaflet: {
+                title: 'Template Leaflet Tri-Fold Siap Cetak',
+                pic: 'Rini',
+                role: 'Tim Teknis Visual & Media BPS',
+                badge: 'LEAFLET DESA &bull; RINI',
+                format: 'CANVA LINK &bull; PDF PRINT READY (CMYK)',
+                size: '2.8 MB',
+                heading: 'Desain Brosur Lipat Tiga (Tri-Fold HD) Edukasi Warga',
+                desc: 'Kanvas grafis siap cetak resolusi tinggi untuk sosialisasi indikator desa, panduan layanan administrasi kependudukan, dan capaian program Desa Cantik.',
+                chapters: [
+                    'Panel Depan: Logo Desa, Visi Misi, dan QR Code Portal Satu Data',
+                    'Panel Lipat 1: Sorotan Angka Statistik Kunci (Penduduk, Luas Wilayah)',
+                    'Panel Lipat 2: Kalender Pelayanan & Alur Pembuatan Surat Pengantar',
+                    'Panel Dalam (Spread): Infografis Potensi Kakao, Wisata, dan BUMDes',
+                    'Panel Belakang: Kontak Layanan Pengaduan & Media Sosial Resmi Desa'
+                ]
+            },
+            infografis: {
+                title: 'Template Infografis Media Sosial & Papan Desa',
+                pic: 'Ilham',
+                role: 'Tim Teknis Grafis & Infografis BPS',
+                badge: 'INFOGRAFIS STATISTIK &bull; ILHAM',
+                format: 'PNG &bull; SVG &bull; PSD (1080x1080 HD)',
+                size: '1.9 MB',
+                heading: 'Koleksi Visual Grafis Piramida Penduduk & Matriks Capaian',
+                desc: 'Paket kanvas infografis rasio 1:1 dan rasio cetak 16:9 dengan tipografi modern, hierarki data jelas, dan palet warna hijau zamrud khas BPS Kolaka Utara.',
+                chapters: [
+                    'Infografis 1: Piramida Penduduk & Struktur Kelompok Usia Produktif',
+                    'Infografis 2: Diagram Alokasi & Realisasi APBDes Transparan',
+                    'Infografis 3: Sebaran Fasilitas Pendidikan & Sarana Kesehatan Dusun',
+                    'Infografis 4: Statistik Produksi Kakao & Luas Lahan Produktif Desa'
+                ]
+            }
+        };
+
+        // 4. DATA MIKRO TABULAR DATA ASLI (RAW DATA VIEWER - SRS UC-18)
+        const rawDataSampleRecords = [
+            { no: 1, nama: 'Baharuddin Sangaji', nikReal: '7408011205780002', dusun: 'Dusun I', rt: '01', statusRumah: 'Milik Sendiri', komoditas: 'Kakao & Cengkeh', luas: '2.5', bansos: 'PKH & BPNT' },
+            { no: 2, nama: 'Jumail Asri', nikReal: '7408011508820001', dusun: 'Dusun I', rt: '02', statusRumah: 'Milik Sendiri', komoditas: 'Kakao Sambung Pucuk', luas: '1.8', bansos: 'Non-Bansos' },
+            { no: 3, nama: 'Nurhidayah K.', nikReal: '7408014511850003', dusun: 'Dusun II', rt: '01', statusRumah: 'Milik Sendiri', komoditas: 'Perikanan Tangkap', luas: '0.0', bansos: 'BLT Dana Desa' },
+            { no: 4, nama: 'Hasan Basri M.', nikReal: '7408012304750004', dusun: 'Dusun II', rt: '02', statusRumah: 'Milik Sendiri', komoditas: 'Rumput Laut & Kakao', luas: '1.2', bansos: 'Non-Bansos' },
+            { no: 5, nama: 'Amiruddin Tahir', nikReal: '7408011909700001', dusun: 'Dusun III', rt: '01', statusRumah: 'Sewa / Kontrak', komoditas: 'Padi Sawah & Jagung', luas: '0.8', bansos: 'P3KE Desil 1' },
+            { no: 6, nama: 'Fatmawati S.', nikReal: '7408016012880002', dusun: 'Dusun I', rt: '03', statusRumah: 'Milik Sendiri', komoditas: 'Kakao & Kelapa', luas: '3.0', bansos: 'Non-Bansos' },
+            { no: 7, nama: 'Sulaiman Rahim', nikReal: '7408010403730005', dusun: 'Dusun III', rt: '02', statusRumah: 'Milik Sendiri', komoditas: 'Peternakan Sapi', luas: '1.5', bansos: 'Bantuan Pupuk' },
+            { no: 8, nama: 'Kasmawati', nikReal: '7408015507910001', dusun: 'Dusun II', rt: '03', statusRumah: 'Milik Sendiri', komoditas: 'Perikanan Tangkap', luas: '0.0', bansos: 'KIP Kuliah' },
+            { no: 9, nama: 'Rustam Efendi', nikReal: '7408011010800003', dusun: 'Dusun I', rt: '01', statusRumah: 'Milik Sendiri', komoditas: 'Kakao Sambung Pucuk', luas: '2.2', bansos: 'Non-Bansos' },
+            { no: 10, nama: 'Rosmini Dewi', nikReal: '7408014806860002', dusun: 'Dusun III', rt: '01', statusRumah: 'Milik Sendiri', komoditas: 'Industri Olahan Kakao', luas: '0.5', bansos: 'Bantuan UMKM' },
+            { no: 11, nama: 'Syamsul Bahri', nikReal: '7408010101770008', dusun: 'Dusun II', rt: '02', statusRumah: 'Milik Sendiri', komoditas: 'Nelayan Perahu Katir', luas: '0.0', bansos: 'BPNT' },
+            { no: 12, nama: 'Hasnani Rahim', nikReal: '7408016408840004', dusun: 'Dusun I', rt: '02', statusRumah: 'Milik Sendiri', komoditas: 'Kakao & Nilam', luas: '1.6', bansos: 'Non-Bansos' }
+        ];
+
+        // ==============================================================
+        // FUNCTIONS: SIMULASI PERAN PENGGUNA (SRS MODUL A: UC-01/02/03)
+        // 4 Peran Terpadu: super_admin, admin_bps, operator_desa, publik
+        // ==============================================================
+        function setUserRoleContext(roleKey) {
+            // Normalisasi peran legacy jika ada
+            if (roleKey === 'operator' || roleKey === 'kades') roleKey = 'operator_desa';
+            if (roleKey === 'admin' || roleKey === 'penilai') roleKey = 'admin_bps';
+            
+            currentActiveRole = roleKey || 'operator_desa';
+
+            // Update Role Buttons
+            document.querySelectorAll('.role-pill-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-white', 'text-[#3B4D3B]', 'shadow-xs', 'border', 'border-[#DCE3DD]');
+                btn.classList.add('text-slate-600');
+            });
+            const activeBtn = document.getElementById('role-btn-' + currentActiveRole);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600');
+                activeBtn.classList.add('active', 'bg-white', 'text-[#3B4D3B]', 'shadow-xs', 'border', 'border-[#DCE3DD]');
+            }
+
+            // Update Badge & UI Text
+            const roleLabels = {
+                super_admin: 'Super Admin (Master Sistem)',
+                admin_bps: 'Admin BPS (Tim Pembina & Evaluasi)',
+                operator_desa: 'Admin Operator Desa (Operator & Kades)',
+                publik: 'Publik (Masyarakat / Pemda / Mahasiswa)'
+            };
+            const roleLabel = roleLabels[currentActiveRole] || 'Admin Operator Desa';
+            const badgeEl = document.getElementById('currentRoleBadge');
+            const actionLabel = document.getElementById('lkeActionRoleLabel');
+            if (badgeEl) badgeEl.textContent = roleLabel;
+            if (actionLabel) actionLabel.textContent = roleLabel;
+
+            // Sync Action Buttons in LKE
+            const btnDesaSaveApprove = document.getElementById('btnLkeDesaSaveApprove');
+            const btnBpsVerify = document.getElementById('btnLkeBpsVerify');
+            const btnBpsLock = document.getElementById('btnLkeBpsLock');
+            const btnSuperReset = document.getElementById('btnLkeSuperReset');
+            const badgePublik = document.getElementById('lkePublikReadOnlyBadge');
+
+            if (btnDesaSaveApprove) btnDesaSaveApprove.classList.toggle('hidden', currentActiveRole !== 'operator_desa' && currentActiveRole !== 'super_admin');
+            if (btnBpsVerify) btnBpsVerify.classList.toggle('hidden', currentActiveRole !== 'admin_bps' && currentActiveRole !== 'super_admin');
+            if (btnBpsLock) btnBpsLock.classList.toggle('hidden', currentActiveRole !== 'admin_bps' && currentActiveRole !== 'super_admin');
+            if (btnSuperReset) btnSuperReset.classList.toggle('hidden', currentActiveRole !== 'super_admin');
+            if (badgePublik) badgePublik.classList.toggle('hidden', currentActiveRole !== 'publik');
+
+            // Set radio button scoring disabled for publik
+            const lkeInputs = document.querySelectorAll('#lkeContainerBody input[type="radio"]');
+            lkeInputs.forEach(inp => {
+                inp.disabled = (currentActiveRole === 'publik');
+            });
+
+            showDescanFeedbackToast(`✓ Mode peran beralih ke: ${roleLabel}`);
+        }
+
+        // ==============================================================
+        // FUNCTIONS: LEMBAR KERJA EVALUASI (LKE) - SRS MODUL C (UC-07 s/d 12)
+        // ==============================================================
+        function renderLkeComponents(filterGroup) {
+            filterGroup = filterGroup || currentLkeFilterGroup || 'all';
+            const container = document.getElementById('lkeContainerBody');
+            if (!container) return;
+
+            const filtered = filterGroup === 'all' 
+                ? lkeComponentsData 
+                : lkeComponentsData.filter(item => item.group === filterGroup);
+
+            // Group by group title
+            const grouped = {};
+            filtered.forEach(item => {
+                if (!grouped[item.groupTitle]) grouped[item.groupTitle] = [];
+                grouped[item.groupTitle].push(item);
+            });
+
+            let html = '';
+            for (const [groupTitle, items] of Object.entries(grouped)) {
+                html += `
+                    <div class="rounded-2xl border border-slate-200 overflow-hidden shadow-2xs">
+                        <div class="px-4 py-3 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between">
+                            <span class="font-black text-xs sm:text-sm text-slate-800 flex items-center gap-2">
+                                <i class="bi bi-folder-fill text-blue-600"></i>
+                                <span>${groupTitle}</span>
+                            </span>
+                            <span class="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">${items.length} Butir</span>
+                        </div>
+                        <div class="divide-y divide-slate-100 p-2 sm:p-3 bg-white">
+                `;
+
+                items.forEach(item => {
+                    html += `
+                        <div class="p-3 sm:p-4 rounded-xl hover:bg-slate-50/70 transition space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                                <div class="space-y-1 max-w-2xl">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-6 h-6 rounded-md bg-blue-100 text-[#005ea6] text-xs font-black flex items-center justify-center shrink-0">${item.code}</span>
+                                        <h4 class="text-xs sm:text-sm font-black text-slate-900">${item.title}</h4>
+                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">Bobot: ${item.bobot}%</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500 leading-relaxed pl-8">${item.desc}</p>
+                                </div>
+                                <div class="pl-8 sm:pl-0 shrink-0">
+                                    ${item.hasEvidence 
+                                        ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200"><i class="bi bi-file-earmark-check-fill text-emerald-600"></i><span>${item.evidence}</span></span>`
+                                        : `<span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#2D3B2D] bg-[#E6ECE6] px-2.5 py-1 rounded-lg border border-[#DCE3DD]"><i class="bi bi-exclamation-triangle-fill text-red-600"></i><span>Belum Ada Bukti</span></span>`
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Radio Skor 0 s/d 4 -->
+                            <div class="pl-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                                <div class="flex items-center gap-2 flex-wrap text-xs">
+                                    <span class="font-bold text-slate-700 text-[11px]">Nilai Mandiri:</span>
+                                    ${[0, 1, 2, 3, 4].map(val => `
+                                        <label class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs cursor-pointer select-none transition ${item.score === val ? 'bg-[#3B4D3B] text-white font-black border-[#3B4D3B] shadow-2xs' : 'bg-slate-50 hover:bg-emerald-50/50 text-slate-700 border-slate-200'}">
+                                            <input type="radio" name="score_${item.id}" value="${val}" ${item.score === val ? 'checked' : ''} onchange="updateLkeRadioScore('${item.id}', ${val})" class="hidden">
+                                            <span>${val} ${val === 4 ? '(Sangat Baik)' : val === 3 ? '(Baik)' : val === 2 ? '(Cukup)' : val === 1 ? '(Kurang)' : '(Nol)'}</span>
+                                        </label>
+                                    `).join('')}
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <button type="button" onclick="uploadLkeEvidence('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 text-[11px] font-bold border border-slate-200 transition flex items-center gap-1 cursor-pointer">
+                                        <i class="bi bi-upload"></i>
+                                        <span>Unggah Bukti</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Catatan Tim Penilai BPS -->
+                            <div class="pl-8 text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-100 flex items-start gap-2">
+                                <i class="bi bi-chat-quote-fill text-blue-600 shrink-0 mt-0.5"></i>
+                                <div class="flex-1">
+                                    <strong class="text-slate-700">Catatan Penilai BPS:</strong> ${item.note}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            }
+
+            container.innerHTML = html;
+            recalculateLkeTotalScore();
+        }
+
+        function filterLkeGroup(groupVal) {
+            currentLkeFilterGroup = groupVal;
+            renderLkeComponents(groupVal);
+        }
+
+        function updateLkeRadioScore(itemId, scoreVal) {
+            const item = lkeComponentsData.find(i => i.id === itemId);
+            if (item) {
+                item.score = scoreVal;
+                renderLkeComponents(currentLkeFilterGroup);
+                showDescanFeedbackToast(`✓ Butir ${item.code} diperbarui ke nilai: ${scoreVal}`);
+            }
+        }
+
+        function recalculateLkeTotalScore() {
+            let totalWeighted = 0;
+            let totalBobot = 0;
+            lkeComponentsData.forEach(item => {
+                const ratio = item.score / (item.maxScore || 4);
+                totalWeighted += ratio * item.bobot;
+                totalBobot += item.bobot;
+            });
+
+            const score = totalWeighted.toFixed(1);
+            const scoreEl = document.getElementById('lkeScoreDisplay');
+            const badgeEl = document.getElementById('lkeStatusBadge');
+            const repScoreEl = document.getElementById('repFieldLkeScore');
+
+            if (scoreEl) scoreEl.textContent = score;
+            if (repScoreEl) repScoreEl.textContent = `${score} / 100`;
+
+            const isLayak = parseFloat(score) >= 75.0;
+            if (badgeEl) {
+                if (isLayak) {
+                    badgeEl.className = 'inline-flex items-center gap-1 text-xs sm:text-sm font-black text-emerald-900 bg-emerald-200/80 px-2.5 py-1 rounded-lg border border-emerald-400';
+                    badgeEl.innerHTML = '<i class="bi bi-patch-check-fill text-emerald-600"></i><span>LAYAK DESA CANTIK</span>';
+                } else {
+                    badgeEl.className = 'inline-flex items-center gap-1 text-xs sm:text-sm font-black text-red-900 bg-red-100 px-2.5 py-1 rounded-lg border border-[#DCE3DD]';
+                    badgeEl.innerHTML = '<i class="bi bi-x-circle-fill text-red-600"></i><span>BELUM MEMENUHI STANDAR</span>';
+                }
+            }
+        }
+
+        function uploadLkeEvidence(itemId) {
+            const item = lkeComponentsData.find(i => i.id === itemId);
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.pdf,.png,.jpg,.jpeg,.xlsx';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file && item) {
+                    item.evidence = file.name;
+                    item.hasEvidence = true;
+                    renderLkeComponents(currentLkeFilterGroup);
+                    showDescanFeedbackToast(`✓ Bukti dukung "${file.name}" berhasil diunggah untuk butir ${item.code}!`);
+                }
+            };
+            input.click();
+        }
+
+        function saveLkeDraft(notify) {
+            try {
+                localStorage.setItem('descan_lke_draft', JSON.stringify(lkeComponentsData));
+            } catch(e) {}
+            if (notify) showDescanFeedbackToast('✓ Draf LKE berhasil disimpan ke penyimpanan lokal.');
+        }
+
+        function saveAndApproveLkeDesa() {
+            saveLkeDraft(false);
+            showDescanFeedbackToast('✓ Penilaian Mandiri LKE berhasil disimpan & disahkan oleh Pemerintah Desa (Admin Operator Desa)!');
+        }
+
+        function bpsVerifyLke() {
+            showDescanFeedbackToast('✓ Nilai verifikasi evaluasi BPS berhasil disimpan ke sistem oleh Admin BPS.');
+        }
+
+        function bpsLockLkePleno() {
+            showDescanFeedbackToast('✓ Sidang Pleno BPS: Penilaian LKE resmi dikunci & status kelayakan diterbitkan oleh Admin BPS!');
+        }
+
+        function superAdminResetLke() {
+            showDescanFeedbackToast('✓ Master Reset: Seluruh draft dan status verifikasi LKE berhasil diatur ulang oleh Super Admin.');
+        }
+
+        function printLkeSheet() {
+            window.print();
+        }
+
+        // ==============================================================
+        // FUNCTIONS: 20 TAHAPAN PEMBINAAN BPS - SRS MODUL B (UC-04 s/d 06)
+        // ==============================================================
+        function render20TahapanList(filterFase) {
+            filterFase = filterFase || currentTahapanFilterFase || 'all';
+            const container = document.getElementById('tahapanCardsGrid');
+            if (!container) return;
+
+            const filtered = filterFase === 'all' 
+                ? tahapan20Data 
+                : tahapan20Data.filter(t => t.fase === filterFase);
+
+            container.innerHTML = filtered.map(item => {
+                const isDone = item.status === 'done';
+                const isRunning = item.status === 'running';
+                const isReview = item.status === 'review';
+
+                const statusBadge = isDone 
+                    ? '<span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">✓ Selesai</span>'
+                    : isRunning 
+                    ? '<span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-black border border-blue-300 animate-pulse">Sedang Berjalan</span>'
+                    : isReview 
+                    ? '<span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[10px] font-black border border-amber-300">Menunggu Tinjauan</span>'
+                    : '<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 text-[10px] font-bold">Belum Mulai</span>';
+
+                return `
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border ${isRunning ? 'border-blue-400 ring-2 ring-blue-100' : 'border-slate-200'} shadow-2xs hover:shadow-md transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#3B4D3B] text-white font-black text-xs flex items-center justify-center shrink-0">${item.no}</span>
+                                ${statusBadge}
+                            </div>
+                            <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-snug">${item.title}</h4>
+                            <div class="text-[11px] text-slate-500 mt-1 space-y-0.5">
+                                <div><strong class="text-slate-700">Jadwal:</strong> ${item.jadwal}</div>
+                                <div><strong class="text-slate-700">Sasaran:</strong> ${item.sasaran}</div>
+                                <div><strong class="text-slate-700">Output:</strong> <span class="text-emerald-700 font-semibold">${item.output}</span></div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                            ${item.file 
+                                ? `<button type="button" onclick="showTahapFileMock('${item.file}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-bold transition flex items-center gap-1 cursor-pointer"><i class="bi bi-file-earmark-check text-emerald-600"></i><span>${item.file}</span></button>`
+                                : `<span class="text-[10px] text-slate-400">Berkas belum ada</span>`
+                            }
+                            <button type="button" onclick="openUploadOutputModal(${item.no})" class="px-2.5 py-1 rounded-lg bg-[#3B4D3B] hover:bg-[#660033] text-white text-[10px] font-bold transition shadow-2xs flex items-center gap-1 cursor-pointer active:scale-95">
+                                <i class="bi bi-cloud-arrow-up"></i>
+                                <span>Unggah</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterTahapanFase(faseVal) {
+            currentTahapanFilterFase = faseVal;
+            document.querySelectorAll('.tahap-fase-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById('btnTahapFase-' + faseVal);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                activeBtn.classList.add('active', 'bg-[#3B4D3B]', 'text-white', 'shadow-2xs');
+            }
+            render20TahapanList(faseVal);
+        }
+
+        function openUploadOutputModal(stepNum) {
+            const modal = document.getElementById('uploadOutputModal');
+            const sel = document.getElementById('selTahapUpload');
+            if (sel) {
+                sel.innerHTML = tahapan20Data.map(t => `
+                    <option value="${t.no}" ${stepNum && t.no === parseInt(stepNum) ? 'selected' : ''}>
+                        Tahap ${t.no}: ${t.title} (${t.output})
+                    </option>
+                `).join('');
+            }
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeUploadOutputModal() {
+            const modal = document.getElementById('uploadOutputModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitOutputTahapForm(e) {
+            e.preventDefault();
+            const sel = document.getElementById('selTahapUpload');
+            const fileInp = document.getElementById('inpOutputFile');
+            const stepNo = sel ? parseInt(sel.value) : 1;
+            const file = fileInp && fileInp.files[0] ? fileInp.files[0].name : 'Output_Tahapan.pdf';
+
+            const tahap = tahapan20Data.find(t => t.no === stepNo);
+            if (tahap) {
+                tahap.file = file;
+                tahap.status = 'review';
+                render20TahapanList();
+                closeUploadOutputModal();
+                showDescanFeedbackToast(`✓ Berkas "${file}" berhasil diunggah untuk Tahap ${stepNo}! Menunggu verifikasi Admin.`);
+            }
+        }
+
+        function showTahapFileMock(fileName) {
+            showDescanFeedbackToast(`✓ Membuka pratinjau dokumen resmi: ${fileName}`);
+        }
+
+        // ==============================================================
+        // FUNCTIONS: LIHAT DATA ASLI SEKTORAL & MASKING - SRS UC-18
+        // ==============================================================
+        function openRawDataModal(datasetKey) {
+            const modal = document.getElementById('rawDataModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                renderRawDataTableRecords('all');
+            }
+        }
+
+        function closeRawDataModal() {
+            const modal = document.getElementById('rawDataModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function toggleDataMasking(isChecked) {
+            isDataMaskingActive = !!isChecked;
+            const dusunSel = document.getElementById('selRawDataDusun');
+            renderRawDataTableRecords(dusunSel ? dusunSel.value : 'all');
+            showDescanFeedbackToast(isDataMaskingActive ? '✓ Sensor data sensitif (Masking NIK) diaktifkan sesuai UU PDP.' : '⚠ Perhatian: Data sensitif NIK ditampilkan penuh.');
+        }
+
+        function filterRawDataDusun(dusunVal) {
+            renderRawDataTableRecords(dusunVal);
+        }
+
+        function renderRawDataTableRecords(dusunFilter) {
+            const tbody = document.getElementById('tbodyRawDataRecords');
+            if (!tbody) return;
+
+            const filtered = (!dusunFilter || dusunFilter === 'all')
+                ? rawDataSampleRecords
+                : rawDataSampleRecords.filter(r => r.dusun === dusunFilter);
+
+            tbody.innerHTML = filtered.map(row => {
+                const nikDisplay = isDataMaskingActive 
+                    ? row.nikReal.substring(0, 6) + '******' + row.nikReal.substring(12) 
+                    : row.nikReal;
+
+                return `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-2 px-3 font-mono text-slate-500">${row.no}</td>
+                        <td class="py-2 px-3 font-bold text-slate-900">${row.nama}</td>
+                        <td class="py-2 px-3 font-mono ${isDataMaskingActive ? 'text-slate-600 bg-slate-100 px-2 rounded' : 'text-blue-700 font-bold'}">${nikDisplay}</td>
+                        <td class="py-2 px-3 text-slate-600">${row.dusun} / RT ${row.rt}</td>
+                        <td class="py-2 px-3 text-emerald-800 font-bold">${row.komoditas}</td>
+                        <td class="py-2 px-3 text-slate-700 font-mono">${row.luas} Ha</td>
+                        <td class="py-2 px-3 text-center">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${row.bansos === 'Non-Bansos' ? 'bg-slate-100 text-slate-600' : 'bg-emerald-100 text-emerald-800'}">${row.bansos}</span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function downloadRawDataCsv() {
+            showDescanFeedbackToast('✓ Berkas Excel/CSV data asli desa sedang diunduh...');
+        }
+
+        // ==============================================================
+        // FUNCTIONS: PENYUSUNAN OTOMATIS LAPORAN DESA CANTIK - SRS UC-21
+        // ==============================================================
+        function compileDescanReport() {
+            const vKey = currentTargetVillage || currentVillageKey || 'kamisi';
+            const vData = (typeof villagesData !== 'undefined' && villagesData[vKey]) ? villagesData[vKey] : {};
+            const vName = vData.title || 'Desa Kamisi';
+            const vKec = vData.kecamatan || 'Kodeoha';
+
+            const subEl = document.getElementById('repDocVillageSub');
+            const fDesa = document.getElementById('repFieldDesa');
+            const fKec = document.getElementById('repFieldKec');
+            const fKades = document.getElementById('repFieldKades');
+            const fKadesSign = document.getElementById('repDocKadesSign');
+
+            if (subEl) subEl.textContent = `${vName.toUpperCase()} • KECAMATAN ${vKec.toUpperCase()} • TAHUN 2026/2027`;
+            if (fDesa) fDesa.textContent = vName;
+            if (fKec) fKec.textContent = vKec;
+            if (fKades) fKades.textContent = `Pemerintah ${vName}`;
+            if (fKadesSign) fKadesSign.textContent = `Kepala ${vName}`;
+
+            recalculateLkeTotalScore();
+            showDescanFeedbackToast(`✓ Seluruh data laporan otomatis disinkronkan untuk ${vName}!`);
+        }
+
+        function printDescanReport() {
+            window.print();
+        }
+
+        function exportDescanReportWord() {
+            showDescanFeedbackToast('✓ Laporan Desa Cantik berhasil diekspor dalam format dokumen Microsoft Word (.docx)!');
+        }
+
+        // ==============================================================
+        // FUNCTIONS: PRATINJAU 5 TEMPLATE MENTOR (ROBBITH, ASMA, AIDIL, RINI, ILHAM)
+        // ==============================================================
+        function openTemplatePreviewModal(tplKey) {
+            activePreviewTemplateType = tplKey || 'profil';
+            const data = mentorTemplatesData[activePreviewTemplateType] || mentorTemplatesData.profil;
+            const modal = document.getElementById('templatePreviewModal');
+
+            const titleEl = document.getElementById('tplModalTitle');
+            const picBadge = document.getElementById('tplModalPicBadge');
+            const formatBadge = document.getElementById('tplModalFormatBadge');
+            const headingEl = document.getElementById('tplModalDocHeading');
+            const descEl = document.getElementById('tplModalDocDesc');
+            const authorEl = document.getElementById('tplModalAuthor');
+            const metaSize = document.getElementById('tplModalMetaSize');
+            const structList = document.getElementById('tplModalStructureList');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (picBadge) picBadge.textContent = `PIC: ${data.pic}`;
+            if (formatBadge) formatBadge.textContent = data.format;
+            if (headingEl) headingEl.textContent = data.heading;
+            if (descEl) descEl.textContent = data.desc;
+            if (authorEl) authorEl.textContent = `${data.pic} (${data.role})`;
+            if (metaSize) metaSize.textContent = `Ukuran: ${data.size}`;
+
+            if (structList && data.chapters) {
+                structList.innerHTML = data.chapters.map((ch, idx) => `
+                    <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-50 border border-slate-100">
+                        <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+                        <span class="text-xs text-slate-700">${ch}</span>
+                    </div>
+                `).join('');
+            }
+
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeTemplatePreviewModal() {
+            const modal = document.getElementById('templatePreviewModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function triggerTemplateDownload() {
+            const data = mentorTemplatesData[activePreviewTemplateType] || mentorTemplatesData.profil;
+            showDescanFeedbackToast(`✓ Mengunduh berkas template: ${data.title} (${data.format})`);
+            closeTemplatePreviewModal();
+        }
+
+        function showDescanFeedbackToast(msg) {
+            let toast = document.getElementById('descanGlobalFeedbackToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'descanGlobalFeedbackToast';
+                toast.className = 'fixed bottom-5 right-5 z-50 px-4 py-3 rounded-2xl bg-slate-900 text-white text-xs font-bold shadow-2xl border border-slate-700 transition-all duration-300';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+
 </script>
+<!-- MODAL UNGGAH OUTPUT PROGRAM DESA (OPERATOR) -->
+    <div id="modalUploadOutput" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-[#BAE6FD] animate-scaleUp">
+            <div class="px-6 py-4 bg-gradient-to-r from-sky-50 via-white to-[#F8FAF8] border-b border-[#BAE6FD] flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-[#E6ECE6] text-[#3B4D3B] flex items-center justify-center font-bold text-lg">
+                        📤
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-extrabold text-slate-900">Unggah Output Desa ke Publik</h4>
+                        <p class="text-[11px] text-slate-500">Dokumen akan ditampilkan di Repositori Dashboard Utama</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeUploadOutputModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center cursor-pointer">
+                    <i class="bi bi-x-lg text-xs"></i>
+                </button>
+            </div>
+            <form id="formVillageOutput" onsubmit="handleVillageOutputSubmit(event)" class="p-6 space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Judul Dokumen Output <span class="text-rose-500">*</span></label>
+                    <input type="text" id="outJudul" required placeholder="Contoh: Monografi Potensi Bahari Desa Kamisi 2026" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]/20 focus:border-[#3B4D3B]">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Kategori Output <span class="text-rose-500">*</span></label>
+                        <select id="outKategori" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]/20">
+                            <option value="Monografi Desa">Monografi Desa</option>
+                            <option value="Profil Desa">Profil Desa</option>
+                            <option value="Publikasi Tematik">Publikasi Tematik</option>
+                            <option value="Leaflet &amp; Infografis">Leaflet &amp; Infografis</option>
+                            <option value="Tabel Sektoral">Tabel Sektoral</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Ukuran / Format</label>
+                        <input type="text" id="outSize" placeholder="3.2 MB (PDF)" value="2.5 MB (PDF)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]/20">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Ringkasan Dokumen <span class="text-rose-500">*</span></label>
+                    <textarea id="outSummary" rows="3" required placeholder="Jelaskan secara ringkas hasil pendataan atau isi dari dokumen output ini..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3B4D3B]/20"></textarea>
+                </div>
+
+                <div class="p-3 rounded-xl bg-sky-50 border border-[#BAE6FD] text-[11px] text-slate-600 flex items-center gap-2">
+                    <i class="bi bi-info-circle-fill text-[#0284C7] text-sm shrink-0"></i>
+                    <span>Setelah diunggah, dokumen langsung terhubung dan dapat diakses oleh publik di <strong>Halaman Resmi Output Program Desa Cantik</strong>.</span>
+                </div>
+
+                <div class="pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closeUploadOutputModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition cursor-pointer">Batal</button>
+                    <button type="submit" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#3B4D3B] to-[#3B4D3B] hover:from-[#2D3B2D] hover:to-[#3B4D3B] text-white font-bold shadow-sm hover:shadow-md transition cursor-pointer">Unggah &amp; Publikasikan ke Dashboard</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openUploadOutputModal() {
+            const m = document.getElementById('modalUploadOutput');
+            if (m) m.classList.remove('hidden');
+        }
+        function closeUploadOutputModal() {
+            const m = document.getElementById('modalUploadOutput');
+            if (m) m.classList.add('hidden');
+        }
+        function handleVillageOutputSubmit(e) {
+            e.preventDefault();
+            const judul = document.getElementById('outJudul').value.trim();
+            const kategori = document.getElementById('outKategori').value;
+            const size = document.getElementById('outSize').value.trim() || '2.5 MB (PDF)';
+            const summary = document.getElementById('outSummary').value.trim();
+
+            const currentDesa = (typeof activeVillageKey !== 'undefined' ? activeVillageKey : 'kamisi').toLowerCase();
+            const desaInfo = (typeof DESCAN_ACCOUNTS !== 'undefined' && DESCAN_ACCOUNTS[currentDesa]) ? DESCAN_ACCOUNTS[currentDesa] : { desaName: 'Desa Binaan', kecamatan: 'Kolaka Utara' };
+
+            let outputs = (typeof getVillageOutputs === 'function') ? getVillageOutputs() : [];
+            const newOutput = {
+                id: 'out-' + Date.now(),
+                desaKey: currentDesa,
+                desaName: desaInfo.desaName,
+                kecamatan: desaInfo.kecamatan,
+                title: judul,
+                category: kategori,
+                type: kategori.toLowerCase().includes('monografi') ? 'monografi' : (kategori.toLowerCase().includes('profil') ? 'profil' : (kategori.toLowerCase().includes('leaflet') ? 'leaflet' : (kategori.toLowerCase().includes('tabel') ? 'tabel' : 'brs'))),
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+                size: size,
+                status: (typeof DESCAN_STATUS !== 'undefined' ? DESCAN_STATUS.PENDING : 'Menunggu Verifikasi BPS'),
+                downloadUrl: '/data/output/dokumen_resmi_desa.pdf',
+                summary: summary
+            };
+
+            outputs.unshift(newOutput);
+            if (typeof saveVillageOutputs === 'function') {
+                saveVillageOutputs(outputs);
+            }
+
+            closeUploadOutputModal();
+            document.getElementById('formVillageOutput').reset();
+            alert('✓ Dokumen output berhasil diajukan! Status saat ini: Menunggu Verifikasi BPS. Dokumen akan otomatis tampil di Dashboard Utama Publik setelah disetujui oleh Pembina BPS.');
+        }
+    </script>
+
+    <script>
+        function renderVillageOperatorOutputs() {
+            const container = document.getElementById('villageOperatorOutputsList');
+            if (!container) return;
+
+            const currentDesa = (typeof activeVillageKey !== 'undefined' ? activeVillageKey : 'kamisi').toLowerCase();
+            const allOutputs = (typeof getVillageOutputs === 'function') ? getVillageOutputs() : [];
+            const myOutputs = allOutputs.filter(o => (o.desaKey || '').toLowerCase() === currentDesa);
+
+            if (myOutputs.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-400 py-4 text-center">Belum ada dokumen output yang diajukan oleh desa ini. Klik tombol di atas untuk mengajukan dokumen baru.</p>';
+                return;
+            }
+
+            container.innerHTML = myOutputs.map(doc => {
+                const s = (doc.status || '').toLowerCase();
+                const isPending = s.includes('menunggu');
+                const isRevision = s.includes('revisi') || s.includes('kembali');
+                const isApproved = s.includes('terverifikasi') || s.includes('setujui');
+
+                let badge = '';
+                let boxClass = 'border-slate-200 bg-white';
+
+                if (isPending) {
+                    badge = '<span class="text-[10px] font-black text-amber-800 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> Menunggu Verifikasi BPS (Belum Tampil di Publik)</span>';
+                    boxClass = 'border-amber-300 bg-amber-50/20';
+                } else if (isRevision) {
+                    badge = '<span class="text-[10px] font-black text-[#3B4D3B] bg-[#E6ECE6] border border-[#DCE3DD] px-2.5 py-0.5 rounded-full flex items-center gap-1"><i class="bi bi-exclamation-triangle-fill text-red-600"></i> Perlu Revisi / Dikembalikan</span>';
+                    boxClass = 'border-[#DCE3DD] bg-emerald-50/30';
+                } else {
+                    badge = '<span class="text-[10px] font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full flex items-center gap-1"><i class="bi bi-check-circle-fill text-emerald-600"></i> Terverifikasi BPS (Aktif di Publik)</span>';
+                    boxClass = 'border-emerald-300 bg-emerald-50/20';
+                }
+
+                return `
+                    <div class="p-4 rounded-2xl border-2 ${boxClass} space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-[10px] font-black uppercase text-[#0369A1] bg-[#E0F2FE] border border-[#BAE6FD] px-2 py-0.5 rounded">
+                                    ${doc.category}
+                                </span>
+                                <span class="text-xs font-black text-slate-900">${doc.title}</span>
+                                <span class="text-[11px] text-slate-400 font-medium">• ${doc.date || '2026'} • ${doc.size || '2 MB'}</span>
+                            </div>
+                            <div>${badge}</div>
+                        </div>
+
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                            ${doc.summary || ''}
+                        </p>
+
+                        ${isRevision && doc.bpsNotes ? `
+                            <div class="p-3 rounded-xl bg-[#E6ECE6]/90 border border-[#DCE3DD] text-xs text-slate-800 space-y-1">
+                                <span class="font-black text-[#3B4D3B] flex items-center gap-1.5">
+                                    <i class="bi bi-chat-left-dots-fill"></i> Catatan Koreksi dari Pembina BPS:
+                                </span>
+                                <p class="text-xs leading-relaxed font-semibold pl-5">
+                                    "${doc.bpsNotes}"
+                                </p>
+                                <div class="pt-1 pl-5">
+                                    <button type="button" onclick="openUploadOutputModal(); document.getElementById('outJudul').value='${doc.title.replace(/'/g, "\'")}'; document.getElementById('outSummary').value='${(doc.summary||'').replace(/'/g, "\'")}';" class="px-3 py-1.5 rounded-lg bg-[#3B4D3B] text-white font-extrabold text-[11px] hover:bg-[#2D3B2D] transition cursor-pointer flex items-center gap-1">
+                                        <i class="bi bi-pencil-square"></i>
+                                        <span>Perbaiki &amp; Kirim Ulang ke BPS</span>
+                                    </button>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        ${isApproved ? `
+                            <div class="pt-1 flex items-center justify-between text-xs text-slate-500">
+                                <span class="text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                                    <i class="bi bi-shield-check text-emerald-600"></i> Dokumen telah disetujui BPS dan dapat diakses publik.
+                                </span>
+                                <a href="/descan/output" target="_blank" class="text-xs font-extrabold text-[#0284C7] hover:underline flex items-center gap-1">
+                                    <span>Lihat di Halaman Publik</span>
+                                    <i class="bi bi-box-arrow-up-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        ` : ''}
+
+                        ${isPending ? `
+                            <div class="pt-1 text-[11px] font-semibold text-amber-800 flex items-center gap-1.5">
+                                <i class="bi bi-hourglass-split text-amber-600"></i>
+                                <span>Dokumen dalam antrean peninjauan oleh Tim Pembina BPS Kolaka Utara. Akan otomatis tampil di portal publik setelah disetujui.</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Hook render on DOM and tab switch
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(renderVillageOperatorOutputs, 300);
+        });
+
+        const origSwitchNavMenu = window.switchNavMenu;
+        window.switchNavMenu = function(tab) {
+            if (typeof origSwitchNavMenu === 'function') origSwitchNavMenu(tab);
+            if (tab === 'output' || tab === 'diseminasi' || tab === 'laporan') {
+                setTimeout(renderVillageOperatorOutputs, 100);
+            }
+        };
+    </script>
+
 </body>
 </html>

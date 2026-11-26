@@ -422,9 +422,7 @@
                     <a href="#desa" class="nav-link">
                         6 Desa Binaan
                     </a>
-                    <a href="#output" class="nav-link">
-                        Output Program
-                    </a>
+                    <a href="/descan/output" class="nav-link">Output Program</a>
                     <a href="#galeri" onclick="openDescanGaleriModal(event)" class="nav-link cursor-pointer">
                         Galeri
                     </a>
@@ -1753,110 +1751,27 @@
     <!-- ============================================================== -->
     <!-- 7. MENU 4: OUTPUT PROGRAM DESA CANTIK (#output)                -->
     <!-- ============================================================== -->
-    <section class="py-14 bg-white border-t border-slate-200" id="output">
-        <div class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 space-y-8">
-            
-            <div class="text-center max-w-xl mx-auto space-y-1.5">
-                <span class="text-[11px] font-black uppercase tracking-widest text-[#0E7C5A] bg-emerald-100 px-3 py-1 rounded-full">
-                    Hasil Pembinaan BPS
-                </span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                    Output Desa Cantik Kolaka Utara
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-500">
-                    Dokumen resmi, tabel data sektoral, dan media diseminasi hasil pembinaan BPS.
-                </p>
+        <!-- ============================================================== -->
+    <!-- 7. REPOSITORI OUTPUT PROGRAM RESMI (HALAMAN TERSENDIRI)        -->
+    <!-- Dipisahkan ke Halaman Khusus Sesuai Arahan & Warna Hijau Madani-->
+    <!-- ============================================================== -->
+    <section class="py-12 bg-white border-t border-[#DCE3DD]" id="output">
+        <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="bg-gradient-to-r from-[#2D3B2D] via-[#3B4D3B] to-[#566B53] rounded-3xl p-6 sm:p-10 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6 border border-[#DCE3DD]">
+                <div class="space-y-2.5 text-center md:text-left">
+                    <span class="inline-flex items-center gap-1.5 text-[10.5px] font-black uppercase tracking-wider text-emerald-200 bg-white/10 px-3.5 py-1 rounded-full border border-white/20">
+                        <span>📑</span> <span>REPOSITORI PUBLIKASI RESMI DESA CANTIK</span>
+                    </span>
+                    <h3 class="text-xl sm:text-3xl font-extrabold text-white">Output Program Desa Cantik Kolaka Utara</h3>
+                    <p class="text-xs sm:text-sm text-emerald-100/90 max-w-xl leading-relaxed">
+                        Akses publik mandiri terhadap monografi, profil desa, infografis, dan publikasi statistik 6 desa binaan telah disediakan pada halaman tersendiri dengan palet hijau Desa Madani.
+                    </p>
+                </div>
+                <a href="/descan/output" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-emerald-50 text-[#3B4D3B] font-extrabold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 shrink-0 hover:scale-[1.02] active:scale-95">
+                    <span>Buka Halaman Output Program</span>
+                    <span>→</span>
+                </a>
             </div>
-
-            <!-- 4 Output Cards (Identik Format Perindu) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- 1. Monografi Desa -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-[#0E7C5A] flex items-center justify-center text-xl font-bold">
-                            📘
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Monografi Desa 2026</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Profil komprehensif demografi, potensi kakao, dan sosial ekonomi 6 desa binaan.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('monografi')" class="flex-1 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#0E7C5A] font-bold text-xs text-center transition cursor-pointer">
-                            Buka Dokumen
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('monografi')" class="py-2 px-3 rounded-xl bg-[#0E7C5A] hover:bg-[#096347] text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Monografi">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 2. Tabel Statistik Sektoral -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">
-                            📊
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Tabel Statistik Sektoral</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Tabel data rekapitulasi 44 variabel sosial ekonomi keluarga berstandar SDI.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('tabel')" class="flex-1 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-xs text-center transition cursor-pointer">
-                            Spreadsheet
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('tabel')" class="py-2 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Excel">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 3. BRS Sektoral BPS -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
-                            📑
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Publikasi BRS Sektoral</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Berita Resmi Statistik indikator ketenagakerjaan daerah dan komoditas perkebunan kakao.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('brs')" class="flex-1 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka BRS
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('brs')" class="py-2 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download BRS">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 4. Leaflet & Infografis -->
-                <div class="card-surface p-5 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2.5">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center text-xl font-bold">
-                            🗺️
-                        </div>
-                        <h3 class="text-sm font-black text-slate-900">Leaflet & Infografis</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Ringkasan visual statistik dusun dalam format infografis ramah baca bagi masyarakat.
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-100 flex items-center gap-2">
-                        <button type="button" onclick="openOutputDoc('leaflet')" class="flex-1 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 font-bold text-xs text-center transition cursor-pointer">
-                            Buka Leaflet
-                        </button>
-                        <button type="button" onclick="downloadOutputDoc('leaflet')" class="py-2 px-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs flex items-center justify-center transition cursor-pointer shadow-2xs" title="Download Leaflet">
-                            📥
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
     </section>
 
@@ -2044,7 +1959,7 @@
                     <a href="#beranda" class="hover:text-emerald-400 transition">Beranda</a>
                     <a href="#dashboard" class="hover:text-emerald-400 transition">Dashboard & Grafik</a>
                     <a href="#desa" class="hover:text-emerald-400 transition">6 Desa Binaan</a>
-                    <a href="#output" class="hover:text-emerald-400 transition">Output Program</a>
+                    <a href="/descan/output" class="hover:text-emerald-400 transition">Output Program</a>
                 </div>
             </div>
 
