@@ -88,6 +88,20 @@ Route::get('/desa-cantik', function () {
     return view('desacan');
 });
 
+// Halaman Publik Khusus Output Program Resmi Desa Cantik (Tersendiri & Warna Hijau Desa Madani)
+Route::get('/descan/output', function () {
+    return view('descan-output');
+});
+Route::get('/desacan/output', function () {
+    return view('descan-output');
+});
+Route::get('/output-desa', function () {
+    return view('descan-output');
+});
+Route::get('/descan-output', function () {
+    return view('descan-output');
+});
+
 // Halaman Login Administrator & Operator Desa Madani
 Route::get('/login', function () {
     if (\Illuminate\Support\Facades\Auth::check()) {
@@ -110,6 +124,19 @@ Route::get('/descan/login', function () {
 
 Route::get('/desacan/login', function () {
     return view('desacan-login');
+});
+
+// Halaman Khusus Admin BPS Desa Cantik (Monitoring, Upload Pembinaan & Video Edukasi)
+Route::get('/descan/bps', function () {
+    return view('descan-bps');
+});
+Route::get('/descan/admin-bps', function () {
+    return view('descan-bps');
+});
+
+// Halaman Khusus Admin Operator Desa (View Materi BPS, Input LKE & Upload Output Program Desa)
+Route::get('/descan/operator', function () {
+    return view('desacan-menu');
 });
 
 // Halaman Menu Utama Desa DESCAN (Detail Desa Binaan dengan Multi-Menu)
